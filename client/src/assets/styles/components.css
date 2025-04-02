@@ -1,0 +1,50 @@
+@layer base {
+	html,
+	body {
+		height: 100%;
+	}
+	body {
+		font-size: 1rem;
+		-ms-text-size-adjust: 100%;
+		-moz-text-size-adjust: 100%;
+		-webkit-text-size-adjust: 100%;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		overflow: auto;
+		/* scrollbar-width: none; */
+		-ms-overflow-style: none; /* IE и Edge */
+	}
+
+	body::-webkit-scrollbar {
+		display: none; /* Chrome, Safari */
+	}
+	.menu-open body {
+		touch-action: none;
+		overscroll-behavior: none;
+		overflow: hidden;
+	}
+}
+
+@layer components {
+	#app {
+		min-height: 100%;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+
+		@supports (overflow: clip) {
+			overflow: clip;
+		}
+
+		> main {
+			flex: 1 1 auto;
+		}
+		> * {
+			min-width: 0;
+		}
+	}
+}
+
+.p-dark {
+	color-scheme: dark;
+}

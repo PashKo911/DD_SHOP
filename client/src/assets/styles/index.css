@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+
+@import '@/assets/styles/components.css';
+@import '@/assets/styles/theme.css';
+@import '@/assets/styles/prime.css';
+@import '@/assets/styles/utilities.css';

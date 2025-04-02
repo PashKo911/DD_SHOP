@@ -1,0 +1,175 @@
+{
+	"menu": {
+		"shop": "Каталог",
+		"men": "Для чоловіків",
+		"women": "Для жінок"
+	},
+	"buttons": {
+		"edit": "Редагувати",
+		"create": "Створити",
+		"add": "Додати",
+		"save": "Зберегти",
+		"cancel": "Скасувати",
+		"login": "Увійти",
+		"logout": "Вийти"
+	},
+	"categories": {
+		"therapist": "Терапевт",
+		"cardiologist": "Кардіолог",
+		"urologist": "Уролог",
+		"psychologist": "Психолог",
+		"dentist": "Стоматолог"
+	},
+	"pages": {
+		"home": {
+			"title": {
+				"menu": "Головна",
+				"page": "Головна сторінка"
+			},
+			"messages": {
+				"welcome": "Ласкаво просимо!"
+			}
+		},
+		"appointments": {
+			"title": {
+				"menu": "Призначення",
+				"page": "Сторінка призначень"
+			},
+			"buttons": {
+				"edit": "Налаштування"
+			},
+			"messages": {
+				"empty-list": "Немає візитів"
+			}
+		},
+		"specialists": {
+			"title": {
+				"menu": "Спеціалісти",
+				"page": "Список спеціалістів",
+				"edit": "Редагування даних спеціаліста",
+				"create": "Додавання нового спеціаліста"
+			},
+			"messages": {
+				"empty-list": "Список порожній"
+			},
+			"buttons": {
+				"make-appointment": "Записатися на прийом",
+				"cancel-appointment": "Скасувати призначення"
+			},
+			"fields": {
+				"name": {
+					"label": "Ім'я",
+					"placeholder": "Введіть ім'я"
+				},
+				"image": {
+					"label": "Виберіть зображення",
+					"placeholder": "Введіть заголовок"
+				},
+				"category": {
+					"label": "Категорія",
+					"placeholder": "Введіть категорію"
+				},
+				"rating": {
+					"label": "Рейтинг"
+				}
+			}
+		},
+		"specialistsConfig": {
+			"title": {
+				"page": "Сторінка редагування користувачів"
+			}
+		},
+		"login": {
+			"title": {
+				"menu": "Увійти",
+				"page": "Сторінка входу"
+			},
+			"buttons": {
+				"toHome": "На головну"
+			},
+			"fields": {
+				"email": {
+					"label": "Електронна пошта",
+					"placeholder": "Введіть свою електронну пошту"
+				},
+				"password": {
+					"label": "Пароль",
+					"placeholder": "Введіть свій пароль"
+				},
+				"phone": {
+					"label": "Телефон",
+					"placeholder": "Введіть свій телефон"
+				}
+			}
+		},
+		"users": {
+			"title": {
+				"menu": "Користувачі",
+				"page": "Сторінка користувачів"
+			},
+			"fields": {
+				"email": "Електронна пошта",
+				"create": "Створити",
+				"read": "Читати",
+				"update": "Оновити",
+				"delete": "Видалити"
+			}
+		},
+		"edit": {
+			"title": {
+				"menu": "Про нас",
+				"page": {
+					"edit": "Редагувати продукт",
+					"create": "Створити продукт"
+				}
+			},
+			"fields": {
+				"title": {
+					"label": "Заголовок",
+					"placeholder": "Введіть заголовок"
+				},
+				"image": {
+					"label": "Виберіть зображення",
+					"placeholder": "Введіть заголовок"
+				},
+				"price": {
+					"label": "Ціна",
+					"placeholder": "Введіть ціну"
+				}
+			},
+			"button": {
+				"edit": "Зберегти",
+				"create": "Створити"
+			}
+		},
+		"about": {
+			"title": {
+				"menu": "Про нас",
+				"page": "Сторінка про нас"
+			},
+			"messages": {
+				"text": "Це сторінка про нас"
+			}
+		},
+		"error": {
+			"title": {
+				"page": "Сторінка помилки"
+			},
+			"messages": {
+				"smth_wrong": "Щось пішло не так!"
+			}
+		}
+	},
+	"placeholders": {
+		"search": "Пошук"
+	},
+	"messages": {
+		"welcome": "Ласкаво просимо",
+		"currentLanguage": "Поточна мова"
+	},
+	"actionTitles": {
+		"login": "Увійти",
+		"logout": "Вийти",
+		"addTask": "Додати завдання"
+	}
+}

@@ -1,0 +1,17 @@
+@utility container {
+	max-width: 91.875rem;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 0.9375rem;
+	padding-right: 0.9375rem;
+}
+@utility gx-md-100-30 {
+	column-gap: clamp(1.875rem, -1.769rem + 7.59vw, 6.25rem);
+}
+
+@utility gx-md-30-8 {
+	column-gap: clamp(0.5rem, 0.136rem + 0.76vw, 0.938rem);
+}
+
+@custom-variant dark (&:where(.p-dark, .p-dark *));
+@custom-variant menu-open (&:where(.menu-open, .menu-open *));

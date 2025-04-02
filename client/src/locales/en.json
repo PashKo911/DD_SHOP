@@ -1,0 +1,177 @@
+{
+	"menu": {
+		"shop": "Shop",
+		"men": "Men",
+		"women": "Women"
+	},
+
+	"buttons": {
+		"edit": "Edit",
+		"create": "Create",
+		"add": "Add",
+		"save": "Save",
+		"cancel": "Cancel",
+		"login": "Login",
+		"logout": "Logout"
+	},
+	"categories": {
+		"therapist": "Therapist",
+		"cardiologist": "Cardiologist",
+		"urologist": "Urologist",
+		"psychologist": "Psychologist",
+		"dentist": "Dentist"
+	},
+	"pages": {
+		"home": {
+			"title": {
+				"menu": "Home",
+				"page": "Home page"
+			},
+			"messages": {
+				"welcome": "Welcome!"
+			}
+		},
+		"appointments": {
+			"title": {
+				"menu": "Appointments",
+				"page": "Appointments page"
+			},
+			"buttons": {
+				"edit": "Config"
+			},
+			"messages": {
+				"empty-list": "No visits"
+			}
+		},
+		"specialists": {
+			"title": {
+				"menu": "Specialists",
+				"page": "Specialists list",
+				"edit": "Edit specialist data",
+				"create": "Add specialist data"
+			},
+			"messages": {
+				"empty-list": "List is empty"
+			},
+			"buttons": {
+				"make-appointment": "Make an appointment",
+				"cancel-appointment": "Cancel appointment"
+			},
+			"fields": {
+				"name": {
+					"label": "Name",
+					"placeholder": "Input name"
+				},
+				"image": {
+					"label": "Select an image",
+					"placeholder": "Input title"
+				},
+				"category": {
+					"label": "Category",
+					"placeholder": "Input category"
+				},
+				"rating": {
+					"label": "Rating"
+				}
+			}
+		},
+		"specialistsConfig": {
+			"title": {
+				"page": "Edit specialist page"
+			}
+		},
+		"login": {
+			"title": {
+				"menu": "Login",
+				"page": "Login page"
+			},
+			"buttons": {
+				"toHome": "Home"
+			},
+			"fields": {
+				"email": {
+					"label": "Email",
+					"placeholder": "Input your email"
+				},
+				"password": {
+					"label": "Password",
+					"placeholder": "Input your password"
+				},
+				"phone": {
+					"label": "Phone",
+					"placeholder": "Input your phone"
+				}
+			}
+		},
+		"users": {
+			"title": {
+				"menu": "Users",
+				"page": "Users page"
+			},
+
+			"fields": {
+				"email": "Email",
+				"create": "Crteate",
+				"read": "Read",
+				"update": "Update",
+				"delete": "Delete"
+			}
+		},
+		"edit": {
+			"title": {
+				"menu": "About",
+				"page": {
+					"edit": "Edit product",
+					"create": "Create a product"
+				}
+			},
+			"fields": {
+				"title": {
+					"label": "Title",
+					"placeholder": "Input title"
+				},
+				"image": {
+					"label": "Select an image",
+					"placeholder": "Input title"
+				},
+				"price": {
+					"label": "Price",
+					"placeholder": "Input title"
+				}
+			},
+			"button": {
+				"edit": "Save",
+				"create": "Create"
+			}
+		},
+		"about": {
+			"title": {
+				"menu": "About",
+				"page": "About page"
+			},
+			"messages": {
+				"text": "This is an about page"
+			}
+		},
+		"error": {
+			"title": {
+				"page": "Error page"
+			},
+			"messages": {
+				"smth_wrong": "Something went wrong!"
+			}
+		}
+	},
+	"messages": {
+		"welcome": "Welcome",
+		"currentLanguage": "Current language"
+	},
+	"actionTitles": {
+		"login": "Login",
+		"logout": "Logout",
+		"addTask": "Add task"
+	},
+	"placeholders": {
+		"search": "Search"
+	}
+}
