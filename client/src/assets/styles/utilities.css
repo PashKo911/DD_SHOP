@@ -1,16 +1,29 @@
 @utility container {
-	max-width: 91.875rem;
+	max-width: var(--breakpoint-xl);
 	margin-left: auto;
 	margin-right: auto;
 	padding-left: 0.9375rem;
 	padding-right: 0.9375rem;
 }
-@utility gx-md-100-30 {
-	column-gap: clamp(1.875rem, -1.769rem + 7.59vw, 6.25rem);
+@utility gx-lg-100-30 {
+	column-gap: clamp(1.875rem, -4.622rem + 10.48vw, 6.25rem);
 }
 
 @utility gx-md-30-8 {
 	column-gap: clamp(0.5rem, 0.136rem + 0.76vw, 0.938rem);
+}
+@utility gx-lg-32-16 {
+	column-gap: clamp(1rem, -0.485rem + 2.4vw, 2rem);
+}
+
+@utility py-md-57-15 {
+	padding-top: clamp(0.938rem, 0.311rem + 3.13vw, 3.563rem);
+	padding-bottom: clamp(0.938rem, 0.311rem + 3.13vw, 3.563rem);
+}
+
+@utility px-md-84-15 {
+	padding-left: clamp(0.938rem, -0.092rem + 5.15vw, 5.25rem);
+	padding-right: clamp(0.938rem, -0.092rem + 5.15vw, 5.25rem);
 }
 
 @custom-variant dark (&:where(.p-dark, .p-dark *));

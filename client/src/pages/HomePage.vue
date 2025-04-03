@@ -1,8 +1,8 @@
 <template>
 	<main-layout>
-		<div class="font-league font-semibold">League Spartan</div>
+		<div class="font-heading font-bold">League Spartan</div>
 		<div class="font-pridi">Pridi</div>
-		<div class="font-sans font-semibold">Montserrat</div>
+		<div class="font-semibold">Montserrat</div>
 		<div class="font-aBeeZee font-semibold">ABeeZee</div>
 		<Select
 			v-model="selectedCity"

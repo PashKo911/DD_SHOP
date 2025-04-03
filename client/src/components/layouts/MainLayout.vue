@@ -7,6 +7,7 @@
 			<slot />
 		</div>
 	</main>
+	<SubscribeSection />
 	<app-footer />
 </template>
 
@@ -15,4 +16,5 @@ import HeaderMenu from '@/components/partials/header/HeaderMenu.vue'
 import AppFooter from '@/components/partials/AppFooter.vue'
 import Toast from '@/volt/Toast.vue'
 import HeaderDarkThemeToggler from '../partials/header/HeaderDarkThemeToggler.vue'
+import SubscribeSection from '../SubscribeSection/SubscribeSection.vue'
 </script>

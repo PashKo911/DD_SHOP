@@ -8,6 +8,7 @@
 			type="search"
 			pt:root="ps-10"
 			fluid
+			:aria-label="$t('accessibility.searchInput')"
 		/>
 	</div>
 </template>

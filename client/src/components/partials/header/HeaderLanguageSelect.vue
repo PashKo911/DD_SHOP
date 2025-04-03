@@ -6,6 +6,7 @@
 		optionLabel="name"
 		size="small"
 		type="language"
+		:ariaLabel="$t('accessibility.languageSelect')"
 	>
 		<template #value="slotProps">
 			<div v-if="slotProps.value" class="flex items-center">

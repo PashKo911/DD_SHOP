@@ -4,7 +4,19 @@
 		"men": "Men",
 		"women": "Women"
 	},
-
+	"accessibility": {
+		"logo": "Website Logo",
+		"searchInput": "Search",
+		"languageSelect": "Language Toggler",
+		"menuVisibilityToggler": "Open, Close Navigation Menu",
+		"cartLink": "Link to Cart",
+		"signIn": "Link to Sign-In Page"
+	},
+	"subscribeSection": {
+		"title": "STAY UP TO DATE ABOUT OUR LATEST OFFERS",
+		"placeholder": "Enter your E-mail address",
+		"buttonLabel": "Subscribe to our news"
+	},
 	"buttons": {
 		"edit": "Edit",
 		"create": "Create",

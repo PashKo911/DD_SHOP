@@ -17,7 +17,7 @@ const searchTheme = ref<InputTextPassThroughOptions>({
 	root: `appearance-none rounded-[1.0625rem] outline-hidden
 	  bg-inverse
 	  text-primary text-xl
-	  font-league
+	  font-heading
 	  border-2 border-primary
 	  placeholder:text-surface-300 text-xl dark:placeholder:text-surface-400 focus:placeholder:opacity-0 placeholder:transition-opacity placeholder:duration-300
 	  enabled:hover:border-t-hover dark:enabled:hover:border-t-hover
@@ -39,7 +39,7 @@ const theme = ref<InputTextPassThroughOptions>({
 	  bg-inverse
 	  p-filled:bg-surface-50 dark:p-filled:bg-surface-800
 	  text-primary 
-	  font-league
+	  font-heading
 	  placeholder:text-surface-500 dark:placeholder:text-surface-400 focus:placeholder:opacity-0 placeholder:transition-opacity placeholder:duration-300
 	  border border-surface-300 dark:border-surface-700
 	  enabled:hover:border-surface-400 dark:enabled:hover:border-surface-600

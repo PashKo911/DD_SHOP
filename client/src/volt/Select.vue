@@ -47,7 +47,7 @@ const themeLanguage = ref<SelectPassThroughOptions>({
 
 	label: `block whitespace-nowrap overflow-hidden flex-auto w-[1%]
         py-2 px-3 overflow-ellipsis 
-        text-inverse font-league  border-none outline-none
+        text-inverse font-heading  border-none outline-none
         p-placeholder:text-inverse 
         p-small:text-[1.125rem]  p-small:px-[0.625rem] p-small:py-[0.375rem]`,
 
@@ -55,12 +55,12 @@ const themeLanguage = ref<SelectPassThroughOptions>({
 	overlay: `absolute top-0 left-0 rounded-md p-portal-self:min-w-full
         bg-inverse dark:bg-surface-900
         border border-surface-200 dark:border-surface-700
-        text-surface-700 dark:text-surface-0 font-league p-small:px-[0.625rem]
+        text-surface-700 dark:text-surface-0 font-heading p-small:px-[0.625rem]
         shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]`,
 	header: `pt-2 pb-1 px-4`,
 	listContainer: `overflow-auto`,
 	list: `m-0 p-1 list-none gap-[.125rem] flex flex-col`,
-	optionGroup: `m-0 px-3 py-2 bg-transparent text-surface-500 dark:text-surface-400 font-semibold`,
+	optionGroup: `m-0 px-3 py-2 bg-transparent text-surface-500 dark:text-surface-400 font-bold`,
 	option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center
         px-3 py-2 border-none text-primary dark:text-surface-0 bg-transparent rounded-sm
         p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
@@ -121,7 +121,7 @@ const theme = ref<SelectPassThroughOptions>({
 	},
 	listContainer: `overflow-auto`,
 	list: `m-0 p-1 list-none gap-[2px] flex flex-col`,
-	optionGroup: `m-0 px-3 py-2 bg-transparent text-surface-500 dark:text-surface-400 font-semibold`,
+	optionGroup: `m-0 px-3 py-2 bg-transparent text-surface-500 dark:text-surface-400 font-bold`,
 	optionGroupLabel: ``,
 	option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center
         px-3 py-2 border-none text-surface-700 dark:text-surface-0 bg-transparent rounded-sm

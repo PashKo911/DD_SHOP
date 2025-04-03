@@ -5,11 +5,12 @@
 		<div id="headerContainer" class="container grid gap-y-1 py-3 md:py-6">
 			<div
 				id="headerTop"
-				class="md:gx-md-100-30 flex items-center justify-between gap-x-4"
+				class="md:gx-lg-100-30 flex items-center justify-between gap-x-4"
 			>
 				<router-link
 					:to="{ name: 'shop' }"
-					class="text-inverse font-league text-34-28 z-30 order-2 font-semibold md:order-1"
+					:aria-label="$t('accessibility.logo')"
+					class="text-inverse font-heading text-md-34-28 z-30 order-2 font-bold md:order-1"
 				>
 					DD_SHOP
 				</router-link>
@@ -18,7 +19,7 @@
 					class="md:order-2"
 				/>
 				<teleport defer :to="searchInputPosition">
-					<search-input class="z-30 order-3 min-w-[8.125rem] grow" />
+					<search-input class="z-30 order-3 min-w-[130px] grow" />
 				</teleport>
 				<div
 					id="headerActions"
@@ -29,12 +30,20 @@
 					</teleport>
 					<HeaderMenuVisibilityToggler @click="menuVisibilityToggler" />
 					<teleport defer :to="curtPosition">
-						<router-link :to="{ name: 'cart' }" class="z-30 order-3 md:order-2">
+						<router-link
+							:to="{ name: 'cart' }"
+							:aria-label="$t('accessibility.cartLink')"
+							class="z-30 order-3 md:order-2"
+						>
 							<cart-icon class="fill-inverse hover:fill-t-hover duration-300" />
 						</router-link>
 					</teleport>
 					<teleport defer :to="languageSelectPosition">
-						<router-link :to="{ name: 'signIn' }" class="order-3">
+						<router-link
+							:to="{ name: 'signIn' }"
+							:aria-label="$t('accessibility.signIn')"
+							class="order-3"
+						>
 							<sign-in-icon
 								class="fill-inverse hover:fill-t-hover duration-300"
 							/>
@@ -42,7 +51,7 @@
 					</teleport>
 				</div>
 			</div>
-			<div id="headerBottom" class="md:hidden"></div>
+			<div id="headerBottom" class="lg:hidden"></div>
 		</div>
 	</header>
 </template>
@@ -63,12 +72,13 @@ import HeaderMenuVisibilityToggler from './HeaderMenuVisibilityToggler.vue'
 const routes = router.getRoutes()
 
 const isMobile = useMediaQuery('(max-width: 767.98px)')
+const isTablet = useMediaQuery('(max-width: 991.98px)')
 
 const languageSelectPosition = computed(() =>
 	isMobile.value ? '#appNav' : '#headerActions',
 )
 const searchInputPosition = computed(() => {
-	return isMobile.value ? '#headerBottom' : '#headerTop'
+	return isTablet.value ? '#headerBottom' : '#headerTop'
 })
 const curtPosition = computed(() => {
 	return isMobile.value ? '#headerTop' : '#headerActions'

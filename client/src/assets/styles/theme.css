@@ -1,18 +1,17 @@
-@theme {
+@theme default {
 	--font-sans: 'Montserrat', sans-serif;
-	--font-league: 'League Spartan', sans-serif;
-	--font-pridi: 'Pridi', sans-serif;
-	--font-aBeeZee: 'ABeeZee', sans-serif;
+	--font-heading: 'M PLUS Rounded 1c', sans-serif;
 
 	/* ! CLAMP */
 	--text-32-16: clamp(1rem, 0.722rem + 1.39vw, 2rem);
-	--text-34-28: clamp(1.75rem, 1.662rem + 0.44vw, 2.125rem);
+	--text-md-34-28: clamp(1.75rem, 1.427rem + 0.67vw, 2.125rem);
+	--text-55-20: clamp(1.25rem, 0.728rem + 2.61vw, 3.438rem);
 
 	/*! BREAKPOINTS */
-	--breakpoint-sm: 30rem; /* 480 */
-	--breakpoint-md: 48rem; /* 768 */
-	--breakpoint-lg: 62rem; /* 992 */
-	--breakpoint-xl: 105.625rem; /*!  */
+	--breakpoint-sm: 29.9988rem; /* 479.9808px */
+	--breakpoint-md: 47.9988rem; /* 767.98px */
+	--breakpoint-lg: 61.9988rem; /* 991.98px */
+	--breakpoint-xl: 105.6238rem; /*! 1689.98px */
 
 	/* ! border radius */
 	--radius-sm: 0.3125rem;
@@ -350,7 +349,7 @@
 	--tracking-wider: 0.05em;
 	--tracking-widest: 0.1em;
 	/* Line Height */
-	--leading-tight: 1.25;
+	--leading-tight: 1.2;
 	--leading-snug: 1.375;
 	--leading-normal: 1.5;
 	--leading-relaxed: 1.625;
