@@ -4,6 +4,7 @@ import WomenPage from '@/pages/WomenPage.vue'
 import MenPage from '@/pages/MenPage.vue'
 import SignInPage from '@/pages/SignInPage.vue'
 import CartPage from '@/pages/CartPage.vue'
+import NotFoundPage from '@/pages/NotFoundPage.vue'
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -64,6 +65,7 @@ const router = createRouter({
 				requiredAuth: false,
 			},
 		},
+		{ path: '/:pathMatch(.*)*', name: 'notFound', component: NotFoundPage },
 	],
 })
 

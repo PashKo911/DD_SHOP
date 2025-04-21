@@ -4,18 +4,83 @@
 		"men": "Men",
 		"women": "Women"
 	},
-	"accessibility": {
-		"logo": "Website Logo",
-		"searchInput": "Search",
-		"languageSelect": "Language Toggler",
-		"menuVisibilityToggler": "Open, Close Navigation Menu",
-		"cartLink": "Link to Cart",
-		"signIn": "Link to Sign-In Page"
+	"footer": {
+		"footerMenu": {
+			"company": {
+				"title": "Company",
+				"items": {
+					"about": "About",
+					"features": "Features",
+					"works": "Works",
+					"career": "Career"
+				}
+			},
+			"help": {
+				"title": "Help",
+				"items": {
+					"support": "Customer Support",
+					"details": "Delivery Details",
+					"terms": "Terms & Conditions",
+					"privacy": "Privacy Policy"
+				}
+			},
+			"faq": {
+				"title": "FAQ",
+				"items": {
+					"account": "Account",
+					"delivery": "Manage Delivery",
+					"terms": "Terms",
+					"career": "Career"
+				}
+			},
+			"resources": {
+				"title": "Resources",
+				"items": {
+					"ebooks": "Free eBooks",
+					"development": "Development tutorial",
+					"blog": "How to-blog",
+					"playList": "Youtube Playlist"
+				}
+			}
+		},
+		"footerText": {
+			"topText": "We have clothes that suits your style and which you`re proud to wear. From women to men."
+		},
+		"footerCopy": "2025 © Designed By:"
 	},
+	"errors": {
+		"email": {
+			"invalid": "Invalid email",
+			"required": "Email is required"
+		}
+	},
+	"accessibility": {
+		"logo": "Website Logo/ go to homepage",
+		"searchInput": "Input text to search",
+		"languageSelect": "Choose the language",
+		"menuVisibilityToggler": "Open, Close Navigation Menu",
+		"cartLink": "Go to Cart",
+		"signIn": "Go to Sign-In Page",
+
+		"socialLabels": {
+			"facebookLink": "Visit our Facebook page",
+			"twitterLink": "Visit our Twitter page",
+			"telegramLink": "Visit our Telegram channel",
+			"instagramLink": "Visit our Instagram page",
+			"vimeoLink": "Visit our Vimeo profile"
+		},
+		"paymentMethodsLabels": {
+			"visa": "Visa Card",
+			"mastercard": "Mastercard",
+			"paypal": "PayPal Service",
+			"gPay": "Google Pay Service"
+		}
+	},
+
 	"subscribeSection": {
 		"title": "STAY UP TO DATE ABOUT OUR LATEST OFFERS",
-		"placeholder": "Enter your E-mail address",
-		"buttonLabel": "Subscribe to our news"
+		"placeholder": "Enter your email",
+		"buttonLabel": "Subscribe to news"
 	},
 	"buttons": {
 		"edit": "Edit",

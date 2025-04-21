@@ -53,7 +53,8 @@
 	--color-dark-grey: #8f8c8c;
 	--color-inverse: #fbf3f1;
 	--color-t-hover: var(--color-yellow-300);
-	--color-bg-inverse: var(--color-yellow-300);
+	--color-b-hover: #ffd6cc;
+	--color-b-active: #ffc1b2;
 }
 
 :root.p-dark {

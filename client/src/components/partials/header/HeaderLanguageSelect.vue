@@ -5,6 +5,7 @@
 		:options="languages"
 		optionLabel="name"
 		size="small"
+		:tabindex="0"
 		type="language"
 		:ariaLabel="$t('accessibility.languageSelect')"
 	>

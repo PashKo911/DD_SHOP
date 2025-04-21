@@ -4,6 +4,10 @@
 		<div class="font-pridi">Pridi</div>
 		<div class="font-semibold">Montserrat</div>
 		<div class="font-aBeeZee font-semibold">ABeeZee</div>
+		<Search class="text-primary" />
+		<div class="font-title text-[80px] uppercase">
+			знайти одяг, який відповідає вашому стилю
+		</div>
 		<Select
 			v-model="selectedCity"
 			:options="cities"
@@ -20,6 +24,7 @@ import InputText from '@/volt/InputText.vue'
 import MainLayout from '@/components/layouts/MainLayout.vue'
 import Select from '@/volt/Select.vue'
 import { ref } from 'vue'
+import Search from '@primevue/icons/search'
 
 const selectedCity = ref(null)
 const cities = ref([

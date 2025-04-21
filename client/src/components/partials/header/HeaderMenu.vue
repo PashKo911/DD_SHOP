@@ -10,7 +10,8 @@
 				<router-link
 					:to="{ name: 'shop' }"
 					:aria-label="$t('accessibility.logo')"
-					class="text-inverse font-heading text-md-34-28 z-30 order-2 font-bold md:order-1"
+					tabindex="0"
+					class="text-inverse font-heading text-md-34-28 focus-visible:outline-t-hover z-30 order-2 rounded-sm font-bold outline outline-transparent transition-colors md:order-1"
 				>
 					DD_SHOP
 				</router-link>
@@ -19,7 +20,7 @@
 					class="md:order-2"
 				/>
 				<teleport defer :to="searchInputPosition">
-					<search-input class="z-30 order-3 min-w-[130px] grow" />
+					<icon-field class="z-30 order-3 min-w-[8.125rem] grow" />
 				</teleport>
 				<div
 					id="headerActions"
@@ -33,7 +34,7 @@
 						<router-link
 							:to="{ name: 'cart' }"
 							:aria-label="$t('accessibility.cartLink')"
-							class="z-30 order-3 md:order-2"
+							class="focus-visible:outline-t-hover z-30 order-3 rounded-sm outline outline-transparent md:order-2"
 						>
 							<cart-icon class="fill-inverse hover:fill-t-hover duration-300" />
 						</router-link>
@@ -42,10 +43,10 @@
 						<router-link
 							:to="{ name: 'signIn' }"
 							:aria-label="$t('accessibility.signIn')"
-							class="order-3"
+							class="focus-visible:outline-t-hover order-3 rounded-sm outline outline-transparent transition-colors duration-300"
 						>
 							<sign-in-icon
-								class="fill-inverse hover:fill-t-hover duration-300"
+								class="fill-inverse hover:fill-t-hover duration-200"
 							/>
 						</router-link>
 					</teleport>
@@ -59,7 +60,7 @@
 <script setup>
 import CartIcon from '@/components/icons/CartIcon.vue'
 import SignInIcon from '@/components/icons/SignInIcon.vue'
-import SearchInput from '@/components/ui/SearchInput.vue'
+import IconField from '@/components/ui/IconField.vue'
 import HeaderMenuList from './HeaderMenuList.vue'
 import HeaderLanguageSelect from './HeaderLanguageSelect.vue'
 
@@ -106,7 +107,7 @@ const menuVisibilityToggler = () => {
 }
 
 onBeforeRouteLeave((to, from, next) => {
-	menuVisibilityToggler()
+	document.documentElement.classList.remove('menu-open')
 	next()
 })
 </script>

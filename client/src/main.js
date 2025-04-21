@@ -5,6 +5,7 @@ import { createPinia } from 'pinia'
 import i18n from './plugins/i18n'
 import PrimeVue from 'primevue/config'
 import StyleClass from 'primevue/styleclass'
+import ToastService from 'primevue/toastservice'
 
 import App from './App.vue'
 import router from './router'
@@ -21,5 +22,6 @@ app.use(PrimeVue, {
 	unstyled: true,
 })
 app.directive('styleclass', StyleClass)
+app.use(ToastService)
 
 app.mount('#app')

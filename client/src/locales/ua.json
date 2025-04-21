@@ -4,17 +4,82 @@
 		"men": "Чоловіки",
 		"women": "Жінки"
 	},
+	"footer": {
+		"footerMenu": {
+			"company": {
+				"title": "Компанія",
+				"items": {
+					"about": "Про нас",
+					"features": "Переваги",
+					"works": "Проєкти",
+					"career": "Кар’єра"
+				}
+			},
+			"help": {
+				"title": "Допомога",
+				"items": {
+					"support": "Підтримка",
+					"details": "Доставка",
+					"terms": "Умови",
+					"privacy": "Політика"
+				}
+			},
+			"faq": {
+				"title": "Питання",
+				"items": {
+					"account": "Акаунт",
+					"delivery": "Доставка",
+					"terms": "Умови",
+					"career": "Кар’єра"
+				}
+			},
+			"resources": {
+				"title": "Ресурси",
+				"items": {
+					"ebooks": "Е‑книги",
+					"development": "Туторіал",
+					"blog": "Блог",
+					"playList": "Плейліст"
+				}
+			}
+		},
+		"footerText": {
+			"topText": "У нас є одяг, який ідеально пасує вашому стилю та яким ви будете пишатися. Для жінок і чоловіків."
+		},
+		"footerCopy": "2025 © Розроблено:"
+	},
+
+	"errors": {
+		"email": {
+			"invalid": "Некоректний email",
+			"required": "Email обов'язковий"
+		}
+	},
 	"accessibility": {
 		"logo": "Логотип сайту",
 		"searchInput": "Пошук",
 		"languageSelect": "Перемикач мови",
 		"menuVisibilityToggler": "Відкрити, закрити навігаційне меню",
 		"cartLink": "Посилання на кошик",
-		"signIn": "Посилання на сторінку входу"
+		"signIn": "Посилання на сторінку входу",
+
+		"socialLabels": {
+			"facebookLink": "Відвідайте нашу сторінку у Facebook",
+			"twitterLink": "Відвідайте нашу сторінку у Twitter",
+			"telegramLink": "Відвідайте наш канал у Telegram",
+			"instagramLink": "Відвідайте нашу сторінку в Instagram",
+			"vimeoLink": "Відвідайте наш профіль на Vimeo"
+		},
+		"paymentMethodsLabels": {
+			"visa": "Картка Visa",
+			"mastercard": "Картка Mastercard",
+			"paypal": "Сервіс PayPal",
+			"gPay": "Сервіс Google Pay"
+		}
 	},
 	"subscribeSection": {
 		"title": "БУДЬТЕ В КУРСІ НАШИХ ОСТАННІХ ПРОПОЗИЦІЙ",
-		"placeholder": "Введіть вашу електронну адресу",
+		"placeholder": "Введіть email",
 		"buttonLabel": "Підписатися на новини"
 	},
 	"buttons": {
