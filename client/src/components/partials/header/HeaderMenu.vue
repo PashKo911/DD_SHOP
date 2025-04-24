@@ -1,6 +1,6 @@
 <template>
 	<header
-		class="bg-primary max-md:before:bg-primary fixed top-0 left-0 z-50 w-full max-md:before:absolute max-md:before:z-20 max-md:before:h-full max-md:before:w-full"
+		class="bg-primary max-md:before:bg-primary sticky top-0 left-0 z-50 w-full max-md:before:absolute max-md:before:z-20 max-md:before:h-full max-md:before:w-full"
 	>
 		<div id="headerContainer" class="container grid gap-y-1 py-3 md:py-6">
 			<div

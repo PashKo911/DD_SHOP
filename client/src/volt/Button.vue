@@ -38,20 +38,18 @@ const theme = ref<ButtonPassThroughOptions>({
         p-outlined:bg-transparent enabled:hover:p-outlined:bg-primary-50 enabled:active:p-outlined:bg-primary-100
         p-outlined:border-primary-200 enabled:hover:p-outlined:border-primary-200 enabled:active:p-outlined:border-primary-200
         p-outlined:text-primary enabled:hover:p-outlined:text-primary enabled:active:p-outlined:text-primary
-        dark:p-outlined:bg-transparent dark:enabled:hover:p-outlined:bg-primary/5 dark:enabled:active:p-outlined:bg-primary/15
-        dark:p-outlined:border-primary-700 dark:enabled:hover:p-outlined:border-primary-700 dark:enabled:active:p-outlined:border-primary-700
-        dark:p-outlined:text-primary dark:enabled:hover:p-outlined:text-primary dark:enabled:active:p-outlined:text-primary
         p-text:bg-transparent enabled:hover:p-text:bg-primary-50 enabled:active:p-text:bg-primary-100
         p-text:border-transparent enabled:hover:p-text:border-transparent enabled:active:p-text:border-transparent
         p-text:text-primary enabled:hover:p-text:text-primary enabled:active:p-text:text-primary
-        dark:p-text:bg-transparent dark:enabled:hover:p-text:bg-primary/5 dark:enabled:active:p-text:bg-primary/15
-        dark:p-text:border-transparent dark:enabled:hover:p-text:border-transparent dark:enabled:active:p-text:border-transparent
-        dark:p-text:text-primary dark:enabled:hover:p-text:text-primary dark:enabled:active:p-text:text-primary
+
+		group before:bg-creamy-cloud relative transition-opacity before:absolute before:inset-[.1875rem] before:scale-0 before:rounded-[.4375rem] before:opacity-0 before:transition-transform before:duration-300 hover:before:scale-100 hover:before:opacity-100
     `,
 	loadingIcon: ``,
 	icon: `p-right:order-1 p-bottom:order-2`,
 	label: `font-medium p-icon-only:invisible p-icon-only:w-0
-        p-small:text-sm p-large:text-[1.125rem]`,
+        p-small:text-sm p-large:text-[1.125rem]
+		group-hover:text-primary relative text-white transition-colors 
+		`,
 	pcBadge: {
 		root: `min-w-4 h-4 leading-4 bg-primary-contrast rounded-full text-primary text-xs font-bold`,
 	},

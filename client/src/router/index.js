@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/pages/HomePage.vue'
 import WomenPage from '@/pages/WomenPage.vue'
 import MenPage from '@/pages/MenPage.vue'
-import SignInPage from '@/pages/SignInPage.vue'
 import CartPage from '@/pages/CartPage.vue'
 import NotFoundPage from '@/pages/NotFoundPage.vue'
 
@@ -24,7 +23,7 @@ const router = createRouter({
 			meta: {
 				useInMenu: true,
 				requiredAuth: false,
-				localeName: 'menu.shop',
+				localeName: 'partials.headerMenu.shop',
 			},
 		},
 		{
@@ -34,7 +33,7 @@ const router = createRouter({
 			meta: {
 				useInMenu: true,
 				requiredAuth: false,
-				localeName: 'menu.women',
+				localeName: 'partials.headerMenu.women',
 			},
 		},
 		{
@@ -44,13 +43,30 @@ const router = createRouter({
 			meta: {
 				useInMenu: true,
 				requiredAuth: false,
-				localeName: 'menu.men',
+				localeName: 'partials.headerMenu.men',
 			},
 		},
 		{
-			path: '/signIn',
+			path: '/auth',
+			redirect: { name: 'signIn' },
+			meta: {
+				useInMenu: false,
+				requiredAuth: false,
+			},
+		},
+		{
+			path: '/auth/sign-in',
 			name: 'signIn',
-			component: SignInPage,
+			component: () => import('@/pages/signIn/SignInPage.vue'),
+			meta: {
+				useInMenu: false,
+				requiredAuth: false,
+			},
+		},
+		{
+			path: '/auth/sign-up',
+			name: 'signUp',
+			component: () => import('@/pages/signUp/SignUpPage.vue'),
 			meta: {
 				useInMenu: false,
 				requiredAuth: false,

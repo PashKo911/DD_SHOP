@@ -1,66 +1,92 @@
 {
-	"menu": {
-		"shop": "Shop",
-		"men": "Men",
-		"women": "Women"
-	},
-	"footer": {
-		"footerMenu": {
-			"company": {
-				"title": "Company",
-				"items": {
-					"about": "About",
-					"features": "Features",
-					"works": "Works",
-					"career": "Career"
-				}
+	"pages": {
+		"home": {
+			"title": {
+				"menu": "Home",
+				"page": "Home page"
 			},
-			"help": {
-				"title": "Help",
-				"items": {
-					"support": "Customer Support",
-					"details": "Delivery Details",
-					"terms": "Terms & Conditions",
-					"privacy": "Privacy Policy"
-				}
-			},
-			"faq": {
-				"title": "FAQ",
-				"items": {
-					"account": "Account",
-					"delivery": "Manage Delivery",
-					"terms": "Terms",
-					"career": "Career"
-				}
-			},
-			"resources": {
-				"title": "Resources",
-				"items": {
-					"ebooks": "Free eBooks",
-					"development": "Development tutorial",
-					"blog": "How to-blog",
-					"playList": "Youtube Playlist"
-				}
+			"messages": {
+				"welcome": "Welcome!"
 			}
 		},
-		"footerText": {
-			"topText": "We have clothes that suits your style and which you`re proud to wear. From women to men."
+		"signIn": {
+			"title": "Sing in page",
+			"separator": "or",
+			"emailFieldLabel": "Email address",
+			"passwordFieldLabel": "Password",
+			"showLabel": "Show",
+			"HideLabel": "Hide",
+			"forgetText": "Forget your password",
+			"subButtonText": "Don`t have an account?",
+			"signUpLinkLabel": "Sing up"
 		},
-		"footerCopy": "2025 © Designed By:"
+		"pageNotFound": {
+			"title": "Oops... something went wrong",
+			"text": "Try reloading the page"
+		}
 	},
-	"errors": {
-		"email": {
-			"invalid": "Invalid email",
-			"required": "Email is required"
+	"partials": {
+		"headerMenu": {
+			"shop": "Shop",
+			"men": "Men",
+			"women": "Women"
+		},
+		"footer": {
+			"footerMenu": {
+				"company": {
+					"title": "Company",
+					"items": {
+						"about": "About",
+						"features": "Features",
+						"works": "Works",
+						"career": "Career"
+					}
+				},
+				"help": {
+					"title": "Help",
+					"items": {
+						"support": "Customer Support",
+						"details": "Delivery Details",
+						"terms": "Terms & Conditions",
+						"privacy": "Privacy Policy"
+					}
+				},
+				"faq": {
+					"title": "FAQ",
+					"items": {
+						"account": "Account",
+						"delivery": "Manage Delivery",
+						"terms": "Terms",
+						"career": "Career"
+					}
+				},
+				"resources": {
+					"title": "Resources",
+					"items": {
+						"ebooks": "Free eBooks",
+						"development": "Development tutorial",
+						"blog": "How to-blog",
+						"playList": "Youtube Playlist"
+					}
+				}
+			},
+			"footerText": {
+				"topText": "We have clothes that suits your style and which you`re proud to wear. From women to men."
+			},
+			"footerCopy": "2025 © Designed By:"
+		},
+		"subscribeSection": {
+			"title": "STAY UP TO DATE ABOUT OUR LATEST OFFERS"
 		}
 	},
 	"accessibility": {
 		"logo": "Website Logo/ go to homepage",
-		"searchInput": "Input text to search",
+		"searchInput": "Input to search",
 		"languageSelect": "Choose the language",
 		"menuVisibilityToggler": "Open, Close Navigation Menu",
 		"cartLink": "Go to Cart",
 		"signIn": "Go to Sign-In Page",
+		"notFoundAlt": "Illustration of the number 404 indicating page not found",
 
 		"socialLabels": {
 			"facebookLink": "Visit our Facebook page",
@@ -74,13 +100,30 @@
 			"mastercard": "Mastercard",
 			"paypal": "PayPal Service",
 			"gPay": "Google Pay Service"
+		},
+		"passwordFieldTips": {
+			"promptLabel": "Enter a password",
+			"showPassword": "Show Password",
+			"hidePassword": "Hide Password",
+			"required": "Password is required",
+			"level": {
+				"weakLabel": "Too weak",
+				"mediumLabel": "Could be stronger",
+				"strongLabel": "Very strong"
+			},
+			"validateTips": {
+				"lowercase": "Lowercase letter required",
+				"uppercase": "Uppercase letter required",
+				"numeric": "Number required",
+				"minLength": "At least 6 characters"
+			}
 		}
 	},
-
-	"subscribeSection": {
-		"title": "STAY UP TO DATE ABOUT OUR LATEST OFFERS",
-		"placeholder": "Enter your email",
-		"buttonLabel": "Subscribe to news"
+	"errors": {
+		"email": {
+			"invalid": "Invalid email",
+			"required": "Email is required"
+		}
 	},
 	"buttons": {
 		"edit": "Edit",
@@ -88,167 +131,16 @@
 		"add": "Add",
 		"save": "Save",
 		"cancel": "Cancel",
-		"login": "Login",
-		"logout": "Logout"
-	},
-	"categories": {
-		"therapist": "Therapist",
-		"cardiologist": "Cardiologist",
-		"urologist": "Urologist",
-		"psychologist": "Psychologist",
-		"dentist": "Dentist"
-	},
-	"pages": {
-		"home": {
-			"title": {
-				"menu": "Home",
-				"page": "Home page"
-			},
-			"messages": {
-				"welcome": "Welcome!"
-			}
-		},
-		"appointments": {
-			"title": {
-				"menu": "Appointments",
-				"page": "Appointments page"
-			},
-			"buttons": {
-				"edit": "Config"
-			},
-			"messages": {
-				"empty-list": "No visits"
-			}
-		},
-		"specialists": {
-			"title": {
-				"menu": "Specialists",
-				"page": "Specialists list",
-				"edit": "Edit specialist data",
-				"create": "Add specialist data"
-			},
-			"messages": {
-				"empty-list": "List is empty"
-			},
-			"buttons": {
-				"make-appointment": "Make an appointment",
-				"cancel-appointment": "Cancel appointment"
-			},
-			"fields": {
-				"name": {
-					"label": "Name",
-					"placeholder": "Input name"
-				},
-				"image": {
-					"label": "Select an image",
-					"placeholder": "Input title"
-				},
-				"category": {
-					"label": "Category",
-					"placeholder": "Input category"
-				},
-				"rating": {
-					"label": "Rating"
-				}
-			}
-		},
-		"specialistsConfig": {
-			"title": {
-				"page": "Edit specialist page"
-			}
-		},
-		"login": {
-			"title": {
-				"menu": "Login",
-				"page": "Login page"
-			},
-			"buttons": {
-				"toHome": "Home"
-			},
-			"fields": {
-				"email": {
-					"label": "Email",
-					"placeholder": "Input your email"
-				},
-				"password": {
-					"label": "Password",
-					"placeholder": "Input your password"
-				},
-				"phone": {
-					"label": "Phone",
-					"placeholder": "Input your phone"
-				}
-			}
-		},
-		"users": {
-			"title": {
-				"menu": "Users",
-				"page": "Users page"
-			},
-
-			"fields": {
-				"email": "Email",
-				"create": "Crteate",
-				"read": "Read",
-				"update": "Update",
-				"delete": "Delete"
-			}
-		},
-		"edit": {
-			"title": {
-				"menu": "About",
-				"page": {
-					"edit": "Edit product",
-					"create": "Create a product"
-				}
-			},
-			"fields": {
-				"title": {
-					"label": "Title",
-					"placeholder": "Input title"
-				},
-				"image": {
-					"label": "Select an image",
-					"placeholder": "Input title"
-				},
-				"price": {
-					"label": "Price",
-					"placeholder": "Input title"
-				}
-			},
-			"button": {
-				"edit": "Save",
-				"create": "Create"
-			}
-		},
-		"about": {
-			"title": {
-				"menu": "About",
-				"page": "About page"
-			},
-			"messages": {
-				"text": "This is an about page"
-			}
-		},
-		"error": {
-			"title": {
-				"page": "Error page"
-			},
-			"messages": {
-				"smth_wrong": "Something went wrong!"
-			}
-		}
-	},
-	"messages": {
-		"welcome": "Welcome",
-		"currentLanguage": "Current language"
-	},
-	"actionTitles": {
-		"login": "Login",
 		"logout": "Logout",
-		"addTask": "Add task"
+
+		"signIn": "Sign In",
+		"subscribe": "Subscribe to news",
+		"backHome": "Back to HomePage",
+		"googleButton": "Continue with Google"
 	},
 	"placeholders": {
-		"search": "Search"
+		"search": "Search",
+		"emailField": "Enter your email",
+		"passwordField": "Enter your password"
 	}
 }

@@ -4,7 +4,7 @@
 			<h2 class="text-[2.5rem] leading-tight font-bold uppercase">dd_shop</h2>
 			<div class="grid gap-2.5">
 				<p class="lg:w-lg-440-235 max-w-110 font-medium capitalize">
-					{{ t('footer.footerText.topText') }}
+					{{ t('partials.footer.footerText.topText') }}
 				</p>
 			</div>
 			<social-list class="lg:w-lg-440-235 max-w-110" />

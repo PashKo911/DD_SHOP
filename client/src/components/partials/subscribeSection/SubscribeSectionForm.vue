@@ -16,7 +16,7 @@
 					<InputText
 						name="email"
 						type="iconField"
-						:placeholder="$t('subscribeSection.placeholder')"
+						:placeholder="$t('placeholders.emailField')"
 						fluid
 					/>
 					<Message
@@ -34,7 +34,7 @@
 		<ContrastButton
 			type="submit"
 			severity="secondary"
-			:label="$t('subscribeSection.buttonLabel')"
+			:label="$t('buttons.subscribe')"
 		>
 			<template #icon>
 				<subscribe-icon class="shrink-0" />
@@ -54,9 +54,9 @@ import InputText from '@/volt/InputText.vue'
 import ContrastButton from '@/volt/ContrastButton.vue'
 import { Form } from '@primevue/forms'
 import Message from '@/volt/Message.vue'
-import MailIcon from '../icons/MailIcon.vue'
-import IconField from '../ui/IconField.vue'
-import SubscribeIcon from '../icons/SubscribeIcon.vue'
+import MailIcon from '@/components/icons/MailIcon.vue'
+import IconField from '@/components/ui/IconField.vue'
+import SubscribeIcon from '@/components/icons/SubscribeIcon.vue'
 
 const toast = useToast()
 const { t } = useI18n()
@@ -64,6 +64,7 @@ const { t } = useI18n()
 const schema = yup.object().shape({
 	email: yup
 		.string()
+		.trim()
 		.email(t('errors.email.invalid'))
 		.required(t('errors.email.required')),
 })

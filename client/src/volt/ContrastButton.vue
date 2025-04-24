@@ -31,14 +31,14 @@ const theme = ref<ButtonPassThroughOptions>({
         px-3 py-16-12 gap-2.5 rounded-2xl disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
         bg-inverse enabled:hover:bg-b-hover enabled:active:bg-b-active
         border  border-transparent   
-        text-primary font-bold 
+        text-primary font-bold font-heading
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2
         focus-visible:outline-t-hover 
         p-vertical:flex-col p-fluid:w-full p-fluid:p-icon-only:w-10
         p-icon-only:w-10 p-icon-only:px-0 p-icon-only:gap-0
         p-icon-only:p-rounded:rounded-full p-icon-only:p-rounded:h-10
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
-        p-large:text-[1.125rem] p-large:px-[0.875rem] p-large:py-[0.625rem]
+        p-large:px-[0.875rem] p-large:py-[.625rem] sm:p-large:py-4.5 p-large:rounded-lg
         p-raised:shadow-sm p-rounded:rounded-[2rem]
         p-outlined:bg-transparent enabled:hover:p-outlined:bg-surface-50 enabled:active:p-outlined:bg-surface-100
         p-outlined:border-surface-700 enabled:hover:p-outlined:border-surface-700 enabled:active:p-outlined:border-surface-700
@@ -50,7 +50,7 @@ const theme = ref<ButtonPassThroughOptions>({
 	loadingIcon: ``,
 	icon: `p-right:order-1 p-bottom:order-2`,
 	label: `font-bold p-icon-only:invisible p-icon-only:w-0 text-xl
-        p-small:text-sm p-large:text-[1.125rem]`,
+        p-small:text-sm p-large:text-24-18`,
 	pcBadge: {
 		root: `min-w-4 h-4 leading-4`,
 	},

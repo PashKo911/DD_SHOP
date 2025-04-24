@@ -51,6 +51,22 @@
 	padding-left: clamp(0.938rem, -0.092rem + 5.15vw, 5.25rem);
 	padding-right: clamp(0.938rem, -0.092rem + 5.15vw, 5.25rem);
 }
+@utility p-35-15 {
+	padding: clamp(0.938rem, 0.639rem + 1.49vw, 2.188rem);
+}
+@utility p-50-15 {
+	padding: clamp(0.938rem, 0.415rem + 2.61vw, 3.125rem);
+}
+
+@utility mb-45-15 {
+	margin-bottom: clamp(0.938rem, 0.49rem + 2.24vw, 2.813rem);
+}
+@utility mb-50-20 {
+	margin-bottom: clamp(1.25rem, 0.802rem + 2.24vw, 3.125rem);
+}
+@utility mb-50-30 {
+	margin-bottom: clamp(1.875rem, 1.576rem + 1.49vw, 3.125rem);
+}
 
 @utility my-100-30 {
 	margin-top: clamp(1.875rem, 0.83rem + 5.22vw, 6.25rem);
@@ -59,6 +75,10 @@
 
 @utility w-lg-440-235 {
 	width: clamp(14.688rem, -4.338rem + 30.69vw, 27.5rem);
+}
+
+@utility w-md-670-450 {
+	width: clamp(28.125rem, 16.258rem + 24.69vw, 41.875rem);
 }
 
 @custom-variant dark (&:where(.p-dark, .p-dark *));

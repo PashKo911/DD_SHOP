@@ -6,7 +6,7 @@
 			<SeparatorInverse class="absolute top-0 left-0 w-full" />
 			<div class="flex items-center gap-1.5 text-white capitalize">
 				<span>
-					{{ t('footer.footerCopy') }}
+					{{ t('partials.footer.footerCopy') }}
 				</span>
 				<a
 					href="https://suncavefreelancer.github.io/Site_code_lg/index.html"

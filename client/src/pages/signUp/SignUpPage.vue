@@ -1,6 +1,6 @@
 <template>
 	<main-layout>
-		<div>LoginPage</div>
+		<div>Sign up</div>
 	</main-layout>
 </template>
 
