@@ -37,7 +37,9 @@
 			:label="$t('buttons.subscribe')"
 		>
 			<template #icon>
-				<subscribe-icon class="shrink-0" />
+				<subscribe-icon
+					class="relative shrink-0 transition-colors group-hover:fill-white"
+				/>
 			</template>
 		</ContrastButton>
 	</Form>
@@ -50,10 +52,10 @@ import * as yup from 'yup'
 import { useI18n } from 'vue-i18n'
 import { useToast } from 'primevue/usetoast'
 
-import InputText from '@/volt/InputText.vue'
-import ContrastButton from '@/volt/ContrastButton.vue'
+import InputText from '@/components/ui/InputText.vue'
+import ContrastButton from '@/components/ui/ContrastButton.vue'
 import { Form } from '@primevue/forms'
-import Message from '@/volt/Message.vue'
+import Message from '@/components/ui/Message.vue'
 import MailIcon from '@/components/icons/MailIcon.vue'
 import IconField from '@/components/ui/IconField.vue'
 import SubscribeIcon from '@/components/icons/SubscribeIcon.vue'

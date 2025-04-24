@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import InputText from '@/volt/InputText.vue'
+import InputText from '@/components/ui/InputText.vue'
 import MainLayout from '@/components/layouts/MainLayout.vue'
 import Select from '@/volt/Select.vue'
 import { ref } from 'vue'

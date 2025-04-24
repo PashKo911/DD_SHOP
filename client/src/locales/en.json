@@ -12,13 +12,18 @@
 		"signIn": {
 			"title": "Sing in page",
 			"separator": "or",
-			"emailFieldLabel": "Email address",
-			"passwordFieldLabel": "Password",
-			"showLabel": "Show",
-			"HideLabel": "Hide",
-			"forgetText": "Forget your password",
-			"subButtonText": "Don`t have an account?",
-			"signUpLinkLabel": "Sing up"
+			"subButtonText": "Don`t have an account?"
+		},
+		"signUp": {
+			"title": "Sing up page",
+			"subtitle": "Sing up for free to access to in any of Our products",
+			"privacy": "I agree to the",
+			"privacyLinkLabel": "Privacy Policy",
+			"subscribe": "Subscribe to our monthly newsletter",
+			"subButtonText": "Already have an account?"
+		},
+		"cart": {
+			"title": "Your Cart"
 		},
 		"pageNotFound": {
 			"title": "Oops... something went wrong",
@@ -134,13 +139,19 @@
 		"logout": "Logout",
 
 		"signIn": "Sign In",
+		"signUp": "Sign Up",
 		"subscribe": "Subscribe to news",
 		"backHome": "Back to HomePage",
-		"googleButton": "Continue with Google"
+		"googleButton": "Continue with Google",
+		"cartCheckout": "Go To Checkout"
 	},
 	"placeholders": {
 		"search": "Search",
 		"emailField": "Enter your email",
 		"passwordField": "Enter your password"
+	},
+	"inputLabels": {
+		"emailFieldLabel": "Email address",
+		"passwordFieldLabel": "Password"
 	}
 }

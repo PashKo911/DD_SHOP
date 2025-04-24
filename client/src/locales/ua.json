@@ -12,13 +12,15 @@
 		"signIn": {
 			"title": "Сторінка входу",
 			"separator": "або",
-			"emailFieldLabel": "Електронна адреса",
-			"passwordFieldLabel": "Пароль",
-			"showLabel": "Показати",
-			"HideLabel": "Приховати",
-			"forgetText": "Забули пароль?",
-			"subButtonText": "Ще не маєте облікового запису?",
-			"signUpLinkLabel": "Зареєструватися"
+			"subButtonText": "Ще не маєте облікового запису?"
+		},
+		"signUp": {
+			"title": "Сторінка реєстрації",
+			"subtitle": "Зареєструйтесь безкоштовно, щоб отримати доступ до наших продуктів",
+			"privacy": "Я погоджуюсь з",
+			"privacyLinkLabel": "Політикою конфіденційності",
+			"subscribe": "Підписатися на наш щомісячний дайджест",
+			"subButtonText": "Вже маєте акаунт?"
 		},
 		"pageNotFound": {
 			"title": "Ой... щось пішло не так",
@@ -134,13 +136,19 @@
 		"logout": "Вийти",
 
 		"signIn": "Увійти",
+		"signUp": "Зареєструватися",
 		"subscribe": "Підписатися на новини",
 		"backHome": "Назад на головну",
-		"googleButton": "Продовжити з Google"
+		"googleButton": "Продовжити з Google",
+		"cartCheckout": "Go To Checkout"
 	},
 	"placeholders": {
 		"search": "Пошук",
 		"emailField": "Введіть email",
 		"passwordField": "Введіть пароль"
+	},
+	"inputLabels": {
+		"emailFieldLabel": "Електронна адреса",
+		"passwordFieldLabel": "Пароль"
 	}
 }

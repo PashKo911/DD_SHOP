@@ -41,8 +41,8 @@ const props = defineProps<{ type?: string }>()
 
 const themeLanguage = ref<SelectPassThroughOptions>({
 	root: `inline-flex cursor-pointer relative select-none rounded-md p-fluid:flex
- 		border border-transparent hover:border-t-hover
-        p-focus:border-t-hover
+ 		border border-transparent hover:border-t-inverse-hover
+        p-focus:border-t-inverse-hover
         transition-colors`,
 
 	label: `block whitespace-nowrap overflow-hidden flex-auto w-[1%]

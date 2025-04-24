@@ -21,5 +21,5 @@
 
 <script setup>
 import Search from '../icons/SearchIcon.vue'
-import InputText from '@/volt/InputText.vue'
+import InputText from '@/components/ui/InputText.vue'
 </script>

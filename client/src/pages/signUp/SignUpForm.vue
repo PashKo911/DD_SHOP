@@ -2,36 +2,28 @@
 	<Form
 		v-slot="$form"
 		:resolver="resolver"
+		@submit="onFormSubmit"
 		:validateOnSubmit="true"
 		:validateOnValueUpdate="false"
-		@submit="onFormSubmit"
-		class="p-50-15 bg-primary w-full rounded-xl"
+		class="p-50-15 bg-creamy-cloud w-full rounded-xl"
 	>
 		<h1
-			class="text-creamy-cloud font-heading text-50-28 not-last:mb-50-20 leading-tight font-semibold capitalize"
+			class="text-primary font-heading text-50-28 not-last:mb-50-20 leading-tight font-semibold capitalize"
 		>
-			{{ t('pages.signIn.title') }}
+			{{ t('pages.signUp.title') }}
 		</h1>
 		<div class="not-last:mb-4 md:mb-6">
-			<ContinueWithGoogleButton />
+			<ContinueWithGoogleButton :is-contrast="false" />
 		</div>
-		<div class="flex items-center justify-center gap-8 not-last:mb-4 md:mb-6">
-			<span class="h-[.0625rem] w-[26.236882%] bg-[#A5A5A5]"> </span>
-			<span
-				class="font-heading text-24-18 leading-tight text-[#595757] uppercase"
-			>
-				{{ t('pages.signIn.separator') }}
-			</span>
-			<span class="h-[.0625rem] w-[26.236882%] bg-[#A5A5A5]"> </span>
-		</div>
+
 		<div class="relative flex flex-col gap-1 not-last:mb-6">
 			<label
 				for="email"
-				class="text-creamy-cloud text-24-18 font-heading mb-1.5 w-max leading-tight"
+				class="text-primary text-24-18 font-heading mb-1.5 w-max leading-tight"
 			>
 				{{ t('inputLabels.emailFieldLabel') }}
 			</label>
-			<InputText
+			<ContrastInputText
 				id="email"
 				name="email"
 				type="text"
@@ -52,11 +44,12 @@
 		<div class="not-last:mb-50-30 relative flex flex-col gap-1">
 			<label
 				for="password"
-				class="text-creamy-cloud text-24-18 font-heading mb-1.5 w-max leading-tight"
+				class="text-primary text-24-18 font-heading mb-1.5 w-max leading-tight"
 			>
 				{{ t('inputLabels.passwordFieldLabel') }}
 			</label>
-			<Password
+
+			<ContrastPassword
 				input-id="password"
 				type="text"
 				:placeholder="t('placeholders.passwordField')"
@@ -76,7 +69,7 @@
 						</li>
 					</ul>
 				</template>
-			</Password>
+			</ContrastPassword>
 			<Message
 				v-if="$form.password?.invalid"
 				severity="error"
@@ -88,24 +81,24 @@
 			</Message>
 		</div>
 
-		<ContrastButton
+		<Button
 			type="submit"
 			severity="secondary"
 			class="min-w-60 not-last:mb-4"
 			size="large"
-			:label="t('buttons.signIn')"
+			:label="t('buttons.signUp')"
 		/>
 		<div
-			class="text-creamy-cloud text-24-18 font-heading flex flex-wrap gap-x-1.5 align-bottom leading-tight"
+			class="text-primary text-24-18 font-heading flex flex-wrap gap-x-1.5 align-bottom leading-tight"
 		>
 			<span>
-				{{ t('pages.signIn.subButtonText') }}
+				{{ t('pages.signUp.subButtonText') }}
 			</span>
 			<router-link
-				:to="{ name: 'signUp' }"
-				class="focus-visible:outline-t-inverse-hover hover:text-t-inverse-hover rounded-sm underline outline outline-transparent transition-colors duration-300"
+				:to="{ name: 'signIn' }"
+				class="focus-visible:outline-primary hover:text-t-hover rounded-sm underline outline outline-transparent transition-colors duration-300"
 			>
-				{{ t('buttons.signUp') }}
+				{{ t('buttons.signIn') }}
 			</router-link>
 		</div>
 	</Form>
@@ -117,12 +110,13 @@ import * as yup from 'yup'
 import { useI18n } from 'vue-i18n'
 import { ref, computed } from 'vue'
 
-import InputText from '@/components/ui/InputText.vue'
-import ContrastButton from '@/components/ui/ContrastButton.vue'
+import Button from '@/components/ui/Button.vue'
 import { Form } from '@primevue/forms'
 import Message from '@/components/ui/Message.vue'
 import Password from '@/components/ui/Password.vue'
 import ContinueWithGoogleButton from '@/components/ui/ContinueWithGoogleButton.vue'
+import ContrastInputText from '@/components/ui/ContrastInputText.vue'
+import ContrastPassword from '@/components/ui/ContrastPassword.vue'
 
 const { t, tm } = useI18n()
 

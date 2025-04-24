@@ -11,7 +11,7 @@
 				<a
 					href="https://suncavefreelancer.github.io/Site_code_lg/index.html"
 					target="_blank"
-					class="hover:text-t-hover focus-visible:outline-t-hover rounded-sm font-bold underline outline outline-transparent transition-colors duration-300"
+					class="hover:text-t-inverse-hover focus-visible:outline-t-inverse-hover rounded-sm font-bold underline outline outline-transparent transition-colors duration-300"
 				>
 					CODE_LG
 				</a>

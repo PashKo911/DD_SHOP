@@ -1,5 +1,6 @@
 <template>
-	<ContrastButton
+	<component
+		:is="currentComponent"
 		type="button"
 		severity="secondary"
 		fluid
@@ -7,12 +8,25 @@
 		:label="$t('buttons.googleButton')"
 	>
 		<template #icon>
-			<google-icon class="shrink-0" />
+			<google-icon class="relative shrink-0" />
 		</template>
-	</ContrastButton>
+	</component>
 </template>
 
 <script setup>
-import ContrastButton from '@/volt/ContrastButton.vue'
+import { computed, defineProps } from 'vue'
+import ContrastButton from '@/components/ui/ContrastButton.vue'
+import Button from '@/components/ui/Button.vue'
 import GoogleIcon from '@/components/icons/GoogleIcon.vue'
+
+const props = defineProps({
+	isContrast: {
+		type: Boolean,
+		default: true,
+	},
+})
+
+const currentComponent = computed(() => {
+	return props.isContrast ? ContrastButton : Button
+})
 </script>

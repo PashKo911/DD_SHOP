@@ -43,7 +43,7 @@
 
 <script setup>
 import MainLayout from '@/components/layouts/MainLayout.vue'
-import Button from '@/volt/Button.vue'
+import Button from '@/components/ui/Button.vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 

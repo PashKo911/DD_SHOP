@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import InputText, { type InputTextPassThroughOptions } from 'primevue/inputtext'
-import { ptViewMerge } from './utils'
+import { ptViewMerge } from '../../volt/utils'
 
 const props = defineProps<{ type?: string }>()
 
@@ -20,11 +20,11 @@ const iconFieldTheme = ref<InputTextPassThroughOptions>({
 	  font-heading
 	  border-2 border-primary rounded-2xl
 	  placeholder:text-surface-300 text-xl  focus:placeholder:opacity-0 placeholder:transition-opacity placeholder:duration-300
-	  enabled:hover:border-t-hover 
-	  enabled:focus:border-t-hover
+	  enabled:hover:border-t-inverse-hover
+	  enabled:focus:border-t-inverse-hover
 	  p-invalid:border-red-400 
 	  p-invalid:placeholder:text-red-600 
-	  px-3 ps-12 py-16-12 p-fluid:w-full
+	  px-3 ps-12 py-3 md:py-[1.0625rem] p-fluid:w-full
 	  p-small:py-[.4375rem]
 
 	  p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem]
@@ -40,10 +40,10 @@ const theme = ref<InputTextPassThroughOptions>({
 	  p-filled:bg-surface-50
 	  text-primary
 	  font-heading leading-tight
-	  placeholder:text-surface-500 focus:placeholder:opacity-0 placeholder:transition-opacity placeholder:duration-300
+	  placeholder:text-surface-300 focus:placeholder:opacity-0 placeholder:transition-opacity placeholder:duration-300
 	  border-2 border-primary
-	  enabled:hover:border-t-hover 
-	  enabled:focus:border-t-hover
+	  enabled:hover:border-t-inverse-hover
+	  enabled:focus:border-t-inverse-hover
 	  disabled:bg-surface-200 disabled:text-surface-500
 	  p-invalid:border-red-400
 	  p-invalid:placeholder:text-red-600

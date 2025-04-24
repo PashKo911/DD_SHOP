@@ -8,8 +8,8 @@
 		>
 			<li v-for="r in visibleMenuItems" :key="r.path">
 				<router-link
-					class="hover:text-t-hover text-inverse font-heading focus-visible:outline-t-hover rounded-sm text-3xl capitalize outline outline-transparent transition-colors duration-300 md:text-2xl"
-					active-class="text-t-hover!"
+					class="hover:text-t-inverse-hover text-inverse font-heading focus-visible:outline-t-inverse-hover rounded-sm text-3xl capitalize outline outline-transparent transition-colors duration-300 md:text-2xl"
+					active-class="text-t-inverse-hover!"
 					:to="{ name: r.name }"
 					v-if="r.meta.useInMenu"
 				>

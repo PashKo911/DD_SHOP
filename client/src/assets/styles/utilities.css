@@ -38,10 +38,6 @@
 	padding-top: clamp(0.938rem, 0.311rem + 3.13vw, 3.563rem);
 	padding-bottom: clamp(0.938rem, 0.311rem + 3.13vw, 3.563rem);
 }
-@utility py-16-12 {
-	padding-top: clamp(0.75rem, 0.692rem + 0.29vw, 1rem);
-	padding-bottom: clamp(0.75rem, 0.692rem + 0.29vw, 1rem);
-}
 @utility py-44-30 {
 	padding-top: clamp(1.875rem, 1.666rem + 1.04vw, 2.75rem);
 	padding-bottom: clamp(1.875rem, 1.666rem + 1.04vw, 2.75rem);

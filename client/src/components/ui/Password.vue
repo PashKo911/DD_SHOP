@@ -35,7 +35,7 @@ import Password, {
 	type PasswordProps,
 } from 'primevue/password'
 import { ref } from 'vue'
-import { ptViewMerge } from './utils'
+import { ptViewMerge } from '../../volt/utils'
 
 const { t } = useI18n()
 
@@ -50,10 +50,10 @@ const theme = ref<PasswordPassThroughOptions>({
         p-filled:bg-surface-50
         text-primary
 		font-heading leading-tight
-        placeholder:text-surface-500 focus:placeholder:opacity-0 placeholder:transition-opacity placeholder:duration-300
+        placeholder:text-surface-300 focus:placeholder:opacity-0 placeholder:transition-opacity placeholder:duration-300
         border-2 border-primary
-		enabled:hover:border-t-hover 
-	  	enabled:focus:border-t-hover
+		enabled:hover:border-t-inverse-hover
+	  	enabled:focus:border-t-inverse-hover
         disabled:bg-surface-200 disabled:text-surface-500
         p-invalid:border-red-400
         p-invalid:placeholder:text-red-600

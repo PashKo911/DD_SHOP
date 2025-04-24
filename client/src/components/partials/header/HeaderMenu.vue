@@ -1,6 +1,6 @@
 <template>
 	<header
-		class="bg-primary max-md:before:bg-primary sticky top-0 left-0 z-50 w-full max-md:before:absolute max-md:before:z-20 max-md:before:h-full max-md:before:w-full"
+		class="bg-primary max-md:before:bg-primary sticky top-0 left-0 z-50 w-full max-md:before:absolute max-md:before:z-20 max-md:before:h-full max-md:before:w-full lg:min-h-[6.1875rem]"
 	>
 		<div id="headerContainer" class="container grid gap-y-1 py-3 md:py-6">
 			<div
@@ -11,7 +11,7 @@
 					:to="{ name: 'shop' }"
 					:aria-label="$t('accessibility.logo')"
 					tabindex="0"
-					class="text-inverse font-heading text-md-34-28 focus-visible:outline-t-hover z-30 order-2 rounded-sm font-bold outline outline-transparent transition-colors md:order-1"
+					class="text-inverse font-heading text-md-34-28 focus-visible:outline-t-inverse-hover z-30 order-2 rounded-sm font-bold outline outline-transparent transition-colors md:order-1"
 				>
 					DD_SHOP
 				</router-link>
@@ -34,19 +34,21 @@
 						<router-link
 							:to="{ name: 'cart' }"
 							:aria-label="$t('accessibility.cartLink')"
-							class="focus-visible:outline-t-hover z-30 order-3 rounded-sm outline outline-transparent md:order-2"
+							class="focus-visible:outline-t-inverse-hover z-30 order-3 rounded-sm outline outline-transparent md:order-2"
 						>
-							<cart-icon class="fill-inverse hover:fill-t-hover duration-300" />
+							<cart-icon
+								class="fill-inverse hover:fill-t-inverse-hover [.router-link-active_&]:fill-t-inverse-hover duration-300"
+							/>
 						</router-link>
 					</teleport>
 					<teleport defer :to="languageSelectPosition">
 						<router-link
 							:to="{ name: 'signIn' }"
 							:aria-label="$t('accessibility.signIn')"
-							class="focus-visible:outline-t-hover order-3 rounded-sm outline outline-transparent transition-colors duration-300"
+							class="focus-visible:outline-t-inverse-hover order-3 rounded-sm outline outline-transparent transition-colors duration-300"
 						>
 							<sign-in-icon
-								class="fill-inverse hover:fill-t-hover duration-200"
+								class="fill-inverse [.router-link-active_&]:fill-t-inverse-hover duration-200"
 							/>
 						</router-link>
 					</teleport>

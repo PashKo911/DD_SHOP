@@ -52,7 +52,8 @@
 	--color-creamy-cloud: #f9f2f0;
 	--color-dark-grey: #8f8c8c;
 	--color-inverse: #fbf3f1;
-	--color-t-hover: var(--color-yellow-300);
+	--color-t-inverse-hover: var(--color-yellow-300);
+	--color-t-hover: #800000;
 	--color-b-hover: #ffd6cc;
 	--color-b-active: #ffc1b2;
 	--color-border-color: #c8c8c8;
