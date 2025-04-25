@@ -13,6 +13,9 @@
 @utility gx-md-30-8 {
 	column-gap: clamp(0.5rem, 0.136rem + 0.76vw, 0.938rem);
 }
+@utility gx-md-40-20 {
+	column-gap: clamp(1.25rem, 0.174rem + 2.24vw, 2.5rem);
+}
 @utility gx-md-50-25 {
 	column-gap: clamp(1.563rem, 0.217rem + 2.8vw, 3.125rem);
 }
@@ -54,6 +57,13 @@
 	padding: clamp(0.938rem, 0.415rem + 2.61vw, 3.125rem);
 }
 
+@utility pb-24-16 {
+	padding-bottom: clamp(1rem, 0.881rem + 0.6vw, 1.5rem);
+}
+
+@utility mb-24-16 {
+	margin-bottom: clamp(1rem, 0.881rem + 0.6vw, 1.5rem);
+}
 @utility mb-45-15 {
 	margin-bottom: clamp(0.938rem, 0.49rem + 2.24vw, 2.813rem);
 }
@@ -62,6 +72,10 @@
 }
 @utility mb-50-30 {
 	margin-bottom: clamp(1.875rem, 1.576rem + 1.49vw, 3.125rem);
+}
+
+@utility mb-80-30 {
+	margin-bottom: clamp(1.875rem, 1.129rem + 3.73vw, 5rem);
 }
 
 @utility my-100-30 {
@@ -75,6 +89,9 @@
 
 @utility w-md-670-450 {
 	width: clamp(28.125rem, 16.258rem + 24.69vw, 41.875rem);
+}
+@utility w-md-644-250 {
+	width: clamp(15.625rem, -5.576rem + 44.17vw, 40.25rem);
 }
 
 @custom-variant dark (&:where(.p-dark, .p-dark *));

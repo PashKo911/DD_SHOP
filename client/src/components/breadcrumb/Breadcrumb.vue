@@ -18,7 +18,7 @@ import Breadcrumb, {
 	type BreadcrumbProps,
 } from 'primevue/breadcrumb'
 import { ref } from 'vue'
-import { ptViewMerge } from '../../volt/utils'
+import { ptViewMerge } from '@/utils/volt'
 
 interface Props extends /* @vue-ignore */ BreadcrumbProps {}
 defineProps<Props>()

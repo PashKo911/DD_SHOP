@@ -23,7 +23,17 @@
 			"subButtonText": "Already have an account?"
 		},
 		"cart": {
-			"title": "Your Cart"
+			"title": "Your Cart",
+			"orderSummary": {
+				"title": "Order summary:",
+				"subtotal": "Subtotal",
+				"discount": "Discount",
+				"total": "Total"
+			},
+			"cartProductCard": {
+				"color": "color",
+				"size": "size"
+			}
 		},
 		"pageNotFound": {
 			"title": "Oops... something went wrong",
@@ -31,10 +41,11 @@
 		}
 	},
 	"partials": {
-		"headerMenu": {
+		"pageTitles": {
 			"shop": "Shop",
 			"men": "Men",
-			"women": "Women"
+			"women": "Women",
+			"cart": "Cart"
 		},
 		"footer": {
 			"footerMenu": {
@@ -143,7 +154,8 @@
 		"subscribe": "Subscribe to news",
 		"backHome": "Back to HomePage",
 		"googleButton": "Continue with Google",
-		"cartCheckout": "Go To Checkout"
+		"cartCheckout": "Go To Checkout",
+		"deleteProduct": "Delete product"
 	},
 	"placeholders": {
 		"search": "Search",

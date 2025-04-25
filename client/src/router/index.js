@@ -23,7 +23,7 @@ const router = createRouter({
 			meta: {
 				useInMenu: true,
 				requiredAuth: false,
-				localeName: 'partials.headerMenu.shop',
+				localeName: 'partials.pageTitles.shop',
 			},
 		},
 		{
@@ -33,7 +33,7 @@ const router = createRouter({
 			meta: {
 				useInMenu: true,
 				requiredAuth: false,
-				localeName: 'partials.headerMenu.women',
+				localeName: 'partials.pageTitles.women',
 			},
 		},
 		{
@@ -43,7 +43,7 @@ const router = createRouter({
 			meta: {
 				useInMenu: true,
 				requiredAuth: false,
-				localeName: 'partials.headerMenu.men',
+				localeName: 'partials.pageTitles.men',
 			},
 		},
 		{
@@ -79,6 +79,7 @@ const router = createRouter({
 			meta: {
 				useInMenu: false,
 				requiredAuth: false,
+				localeName: 'partials.pageTitles.cart',
 			},
 		},
 		{ path: '/:pathMatch(.*)*', name: 'notFound', component: NotFoundPage },

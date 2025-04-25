@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import InputText, { type InputTextPassThroughOptions } from 'primevue/inputtext'
-import { ptViewMerge } from '../../volt/utils'
+import { ptViewMerge } from '@/utils/volt'
 
 const props = defineProps<{ type?: string }>()
 

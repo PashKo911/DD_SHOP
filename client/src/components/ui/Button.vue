@@ -18,7 +18,7 @@ import Button, {
 	type ButtonProps,
 } from 'primevue/button'
 import { ref } from 'vue'
-import { ptViewMerge } from '../../volt/utils'
+import { ptViewMerge } from '@/utils/volt'
 
 interface Props extends /* @vue-ignore */ ButtonProps {}
 defineProps<Props>()
@@ -38,10 +38,11 @@ const theme = ref<ButtonPassThroughOptions>({
         p-outlined:bg-transparent enabled:hover:p-outlined:bg-primary-50 enabled:active:p-outlined:bg-primary-100
         p-outlined:border-primary-200 enabled:hover:p-outlined:border-primary-200 enabled:active:p-outlined:border-primary-200
         p-outlined:text-primary enabled:hover:p-outlined:text-primary enabled:active:p-outlined:text-primary
-        p-text:bg-transparent enabled:hover:p-text:bg-primary-50 enabled:active:p-text:bg-primary-100
+        p-text:bg-transparent enabled:hover:p-text:bg-creamy-cloud 
         p-text:border-transparent enabled:hover:p-text:border-transparent enabled:active:p-text:border-transparent
         p-text:text-primary enabled:hover:p-text:text-primary enabled:active:p-text:text-primary
-		before:rounded-[.4375rem]
+
+		before:rounded-[.4375rem] p-text:before:hidden
 		group before:bg-creamy-cloud relative transition-opacity before:absolute before:inset-[.1875rem] before:scale-0 p-large:before:rounded-[.75rem] before:opacity-0 before:transition-transform before:duration-300 hover:before:scale-100 hover:before:opacity-100
     `,
 	loadingIcon: ``,

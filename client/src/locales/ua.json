@@ -22,16 +22,30 @@
 			"subscribe": "Підписатися на наш щомісячний дайджест",
 			"subButtonText": "Вже маєте акаунт?"
 		},
+		"cart": {
+			"title": "Ваш кошик",
+			"orderSummary": {
+				"title": "Підсумок:",
+				"subtotal": "Без знижки",
+				"discount": "Знижка",
+				"total": "Разом"
+			},
+			"cartProductCard": {
+				"color": "колір",
+				"size": "розмір"
+			}
+		},
 		"pageNotFound": {
 			"title": "Ой... щось пішло не так",
 			"text": "Спробуйте перезавантажити сторінку"
 		}
 	},
 	"partials": {
-		"headerMenu": {
+		"pageTitles": {
 			"shop": "Каталог",
 			"men": "Чоловіки",
-			"women": "Жінки"
+			"women": "Жінки",
+			"cart": "Кошик"
 		},
 		"footer": {
 			"footerMenu": {
@@ -79,6 +93,9 @@
 		},
 		"subscribeSection": {
 			"title": "БУДЬТЕ В КУРСІ НАШИХ ОСТАННІХ ПРОПОЗИЦІЙ"
+		},
+		"breadcrumbs": {
+			"cart": ""
 		}
 	},
 	"accessibility": {
@@ -140,7 +157,8 @@
 		"subscribe": "Підписатися на новини",
 		"backHome": "Назад на головну",
 		"googleButton": "Продовжити з Google",
-		"cartCheckout": "Go To Checkout"
+		"cartCheckout": "Оформити замовлення",
+		"deleteProduct": "Видалити товар"
 	},
 	"placeholders": {
 		"search": "Пошук",

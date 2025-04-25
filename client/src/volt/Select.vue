@@ -34,7 +34,7 @@ import Select, {
 	type SelectProps,
 } from 'primevue/select'
 import { ref, computed } from 'vue'
-import { ptViewMerge } from './utils'
+import { ptViewMerge } from '@/utils/volt'
 
 interface Props extends /* @vue-ignore */ SelectProps {}
 const props = defineProps<{ type?: string }>()

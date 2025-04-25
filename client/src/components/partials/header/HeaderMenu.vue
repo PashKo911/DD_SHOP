@@ -43,12 +43,14 @@
 					</teleport>
 					<teleport defer :to="languageSelectPosition">
 						<router-link
-							:to="{ name: 'signIn' }"
+							to="/auth"
 							:aria-label="$t('accessibility.signIn')"
+							:class="{ 'fill-t-inverse-hover': isAuthSection }"
 							class="focus-visible:outline-t-inverse-hover order-3 rounded-sm outline outline-transparent transition-colors duration-300"
 						>
 							<sign-in-icon
-								class="fill-inverse [.router-link-active_&]:fill-t-inverse-hover duration-200"
+								:class="{ 'fill-t-inverse-hover': isAuthSection }"
+								class="fill-inverse hover:fill-t-inverse-hover duration-300"
 							/>
 						</router-link>
 					</teleport>
@@ -67,15 +69,19 @@ import HeaderMenuList from './HeaderMenuList.vue'
 import HeaderLanguageSelect from './HeaderLanguageSelect.vue'
 
 import { onBeforeRouteLeave } from 'vue-router'
+import { useRoute } from 'vue-router'
 import router from '@/router'
 import { computed } from 'vue'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import HeaderMenuVisibilityToggler from './HeaderMenuVisibilityToggler.vue'
 
 const routes = router.getRoutes()
+const route = useRoute()
 
 const isMobile = useMediaQuery('(max-width: 767.98px)')
 const isTablet = useMediaQuery('(max-width: 991.98px)')
+
+const isAuthSection = computed(() => route.path.startsWith('/auth'))
 
 const languageSelectPosition = computed(() =>
 	isMobile.value ? '#appNav' : '#headerActions',
