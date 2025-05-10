@@ -5,8 +5,15 @@
 				"menu": "Home",
 				"page": "Home page"
 			},
-			"messages": {
-				"welcome": "Welcome!"
+			"heroSection": {
+				"title": "find clothes that matches your style",
+				"text": "the best prices and cost-free delivery from stores in Europe",
+				"mainImgAlt": "Young man and woman in basic white t-shirts and jeans — modern everyday style",
+				"achievements": {
+					"brands": "International Brands",
+					"quality": "High Quality Products",
+					"customers": "Happy Customers"
+				}
 			}
 		},
 		"shop": {
@@ -212,7 +219,8 @@
 		"showMore": "show more...",
 		"hide": "hide",
 		"nextSlide": "Next slide",
-		"prevSlide": "Previous slide"
+		"prevSlide": "Previous slide",
+		"shopNow": "shop now"
 	},
 	"placeholders": {
 		"search": "Search",

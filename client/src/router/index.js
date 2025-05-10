@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '@/pages/HomePage.vue'
+import HomePage from '@/pages/home/HomePage.vue'
 import NotFoundPage from '@/pages/NotFoundPage.vue'
 import authRoutes from './routes/authRoutes'
 import shopRoutes from './routes/shopRoutes'

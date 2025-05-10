@@ -64,6 +64,10 @@
 	padding-top: clamp(1.875rem, 1.129rem + 3.73vw, 5rem);
 }
 
+@utility pb-80-30 {
+	padding-bottom: clamp(1.875rem, 1.129rem + 3.73vw, 5rem);
+}
+
 @utility pb-24-16 {
 	padding-bottom: clamp(1rem, 0.881rem + 0.6vw, 1.5rem);
 }
