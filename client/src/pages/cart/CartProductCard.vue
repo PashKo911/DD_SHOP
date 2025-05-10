@@ -64,12 +64,11 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import InputNumber from '@/components/ui/InputNumber.vue'
+import InputNumber from '@/components/ui/inputNumber/InputNumber.vue'
 import DeleteIcon from '@/components/icons/DeleteIcon.vue'
-import Button from '@/components/ui/Button.vue'
+import Button from '@/components/ui/button/Button.vue'
 
 const { t } = useI18n()
 

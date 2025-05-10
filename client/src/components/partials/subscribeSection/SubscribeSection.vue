@@ -7,7 +7,7 @@
 		>
 			{{ $t('partials.subscribeSection.title') }}
 		</h2>
-		<SubscribeSectionForm
+		<subscribe-section-form
 			class="md:max-w-[39.5rem] md:basis-[45%] md:self-center"
 		/>
 	</section>

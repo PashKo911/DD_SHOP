@@ -6,7 +6,7 @@
 		optionLabel="name"
 		size="small"
 		:tabindex="0"
-		type="language"
+		transparent
 		:ariaLabel="$t('accessibility.languageSelect')"
 	>
 		<template #value="slotProps">
@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import Select from '@/volt/Select.vue'
+import Select from '@/components/ui/select/Select.vue'
 import { ref, markRaw } from 'vue'
 import { useLocales } from '@/composables/useLocales'
 import UaFlagIcon from '@/components/icons/UaFlagIcon.vue'
@@ -43,7 +43,7 @@ import UsaFlagIcon from '@/components/icons/UsaFlagIcon.vue'
 const { setLocale, locale } = useLocales()
 
 const languages = ref([
-	{ name: 'UA', code: 'ua', flag: markRaw(UaFlagIcon) },
+	{ name: 'UA', code: 'uk', flag: markRaw(UaFlagIcon) },
 	{ name: 'EN', code: 'en', flag: markRaw(UsaFlagIcon) },
 ])
 

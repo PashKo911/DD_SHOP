@@ -10,10 +10,10 @@
 		<h1
 			class="text-creamy-cloud font-heading text-50-28 not-last:mb-50-20 leading-tight font-semibold capitalize"
 		>
-			{{ t('pages.signIn.title') }}
+			{{ t('pages.signIn.title.page') }}
 		</h1>
 		<div class="not-last:mb-4 md:mb-6">
-			<ContinueWithGoogleButton />
+			<continue-with-google-button />
 		</div>
 		<div class="flex items-center justify-center gap-8 not-last:mb-4 md:mb-6">
 			<span class="h-[.0625rem] w-[26.236882%] bg-[#A5A5A5]"> </span>
@@ -34,8 +34,8 @@
 			<InputText
 				id="email"
 				name="email"
-				type="text"
 				size="large"
+				contrast
 				placeholder="hello@email.com"
 				fluid
 			/>
@@ -62,6 +62,7 @@
 				:placeholder="t('placeholders.passwordField')"
 				toggleMask
 				fluid
+				contrast=""
 				:promptLabel="t('accessibility.passwordFieldTips.promptLabel')"
 				:weakLabel="t('accessibility.passwordFieldTips.level.weakLabel')"
 				:mediumLabel="t('accessibility.passwordFieldTips.level.mediumLabel')"
@@ -88,10 +89,11 @@
 			</Message>
 		</div>
 
-		<ContrastButton
+		<Button
 			type="submit"
 			severity="secondary"
 			class="min-w-60 not-last:mb-4"
+			contrast
 			size="large"
 			:label="t('buttons.signIn')"
 		/>
@@ -117,12 +119,12 @@ import * as yup from 'yup'
 import { useI18n } from 'vue-i18n'
 import { ref, computed } from 'vue'
 
-import InputText from '@/components/ui/InputText.vue'
-import ContrastButton from '@/components/ui/ContrastButton.vue'
+import InputText from '@/components/ui/inputText/InputText.vue'
+import Button from '@/components/ui/button/Button.vue'
 import { Form } from '@primevue/forms'
-import Message from '@/components/ui/Message.vue'
-import Password from '@/components/ui/Password.vue'
-import ContinueWithGoogleButton from '@/components/ui/ContinueWithGoogleButton.vue'
+import Message from '@/components/ui/message/Message.vue'
+import Password from '@/components/ui/password/Password.vue'
+import ContinueWithGoogleButton from '@/components/formControls/ContinueWithGoogleButton.vue'
 
 const { t, tm } = useI18n()
 

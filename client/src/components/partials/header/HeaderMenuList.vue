@@ -6,14 +6,13 @@
 		<ul
 			class="gx-lg-32-16 col-span-full flex flex-wrap items-center gap-y-5 max-md:flex-col md:gap-y-1"
 		>
-			<li v-for="r in visibleMenuItems" :key="r.path">
+			<li v-for="r in menuItems" :key="r.path">
 				<router-link
 					class="hover:text-t-inverse-hover text-inverse font-heading focus-visible:outline-t-inverse-hover rounded-sm text-3xl capitalize outline outline-transparent transition-colors duration-300 md:text-2xl"
 					active-class="text-t-inverse-hover!"
-					:to="{ name: r.name }"
-					v-if="r.meta.useInMenu"
+					:to="{ name: r.name, params: r.params }"
 				>
-					{{ $t(r.meta?.localeName) }}
+					{{ t(r.label) }}
 				</router-link>
 			</li>
 		</ul>
@@ -21,8 +20,11 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 defineProps({
-	visibleMenuItems: {
+	menuItems: {
 		type: Array,
 		default: () => [],
 	},

@@ -9,13 +9,46 @@
 				"welcome": "Ласкаво просимо!"
 			}
 		},
+		"shop": {
+			"title": {
+				"menu": "Магазин"
+			}
+		},
+		"women": {
+			"title": {
+				"menu": "Жінкам"
+			}
+		},
+		"men": {
+			"title": {
+				"menu": "Чоловікам"
+			}
+		},
+		"productDetail": {
+			"title": {
+				"page": "опис",
+				"menu": "опис",
+				"sameProductsSection": "Схожі товари"
+			},
+			"tabs": {
+				"head": {
+					"details": "Опис товару",
+					"reviews": "Оцінки та відгуки",
+					"faq": "Поширені запитання"
+				}
+			}
+		},
 		"signIn": {
-			"title": "Сторінка входу",
+			"title": {
+				"page": "Сторінка входу"
+			},
 			"separator": "або",
 			"subButtonText": "Ще не маєте облікового запису?"
 		},
 		"signUp": {
-			"title": "Сторінка реєстрації",
+			"title": {
+				"page": "Сторінка реєстрації"
+			},
 			"subtitle": "Зареєструйтесь безкоштовно, щоб отримати доступ до наших продуктів",
 			"privacy": "Я погоджуюсь з",
 			"privacyLinkLabel": "Політикою конфіденційності",
@@ -23,7 +56,9 @@
 			"subButtonText": "Вже маєте акаунт?"
 		},
 		"cart": {
-			"title": "Ваш кошик",
+			"title": {
+				"page": "Ваш кошик"
+			},
 			"orderSummary": {
 				"title": "Підсумок:",
 				"subtotal": "Без знижки",
@@ -36,17 +71,13 @@
 			}
 		},
 		"pageNotFound": {
-			"title": "Ой... щось пішло не так",
+			"title": {
+				"page": "Ой... щось пішло не так"
+			},
 			"text": "Спробуйте перезавантажити сторінку"
 		}
 	},
 	"partials": {
-		"pageTitles": {
-			"shop": "Каталог",
-			"men": "Чоловіки",
-			"women": "Жінки",
-			"cart": "Кошик"
-		},
 		"footer": {
 			"footerMenu": {
 				"company": {
@@ -94,8 +125,8 @@
 		"subscribeSection": {
 			"title": "БУДЬТЕ В КУРСІ НАШИХ ОСТАННІХ ПРОПОЗИЦІЙ"
 		},
-		"breadcrumbs": {
-			"cart": ""
+		"reviews": {
+			"postedOn": "Опубліковано {date}"
 		}
 	},
 	"accessibility": {
@@ -106,7 +137,16 @@
 		"cartLink": "Посилання на кошик",
 		"signIn": "Посилання на сторінку входу",
 		"notFoundAlt": "Ілюстрація числа 404, що позначає сторінку не знайдено",
-
+		"ratingLabel": {
+			"start": "Рейтинг товару",
+			"end": "зірочок"
+		},
+		"colorRadioGroup": {
+			"title": "Оберіть колір"
+		},
+		"sizeRadioGroup": {
+			"title": "Оберіть розмір"
+		},
 		"socialLabels": {
 			"facebookLink": "Відвідайте нашу сторінку у Facebook",
 			"twitterLink": "Відвідайте нашу сторінку у Twitter",
@@ -142,12 +182,20 @@
 		"email": {
 			"invalid": "Некоректний email",
 			"required": "Email обов'язковий"
+		},
+		"colorInputGroup": {
+			"required": "Оберіть колір *"
+		},
+		"sizeInputGroup": {
+			"required": "Оберіть розмір *"
+		},
+		"countInput": {
+			"required": "Оберіть кількість *"
 		}
 	},
 	"buttons": {
 		"edit": "Редагувати",
 		"create": "Створити",
-		"add": "Додати",
 		"save": "Зберегти",
 		"cancel": "Скасувати",
 		"logout": "Вийти",
@@ -158,7 +206,12 @@
 		"backHome": "Назад на головну",
 		"googleButton": "Продовжити з Google",
 		"cartCheckout": "Оформити замовлення",
-		"deleteProduct": "Видалити товар"
+		"deleteProduct": "Видалити товар",
+		"addToCart": "Додати в кошик",
+		"showMore": "Показати ще...",
+		"hide": "Приховати",
+		"nextSlide": "Наступний слайд",
+		"prevSlide": "Попередній слайд"
 	},
 	"placeholders": {
 		"search": "Пошук",

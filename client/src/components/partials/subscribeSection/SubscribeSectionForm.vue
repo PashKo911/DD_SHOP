@@ -15,7 +15,7 @@
 				<template #input>
 					<InputText
 						name="email"
-						type="iconField"
+						icon-field
 						:placeholder="$t('placeholders.emailField')"
 						fluid
 					/>
@@ -31,9 +31,10 @@
 				</template>
 			</icon-field>
 		</div>
-		<ContrastButton
+		<Button
 			type="submit"
-			severity="secondary"
+			size="small"
+			contrast
 			:label="$t('buttons.subscribe')"
 		>
 			<template #icon>
@@ -41,7 +42,7 @@
 					class="relative shrink-0 transition-colors group-hover:fill-white"
 				/>
 			</template>
-		</ContrastButton>
+		</Button>
 	</Form>
 </template>
 
@@ -49,15 +50,15 @@
 import { ref } from 'vue'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 import * as yup from 'yup'
-import { useI18n } from 'vue-i18n'
 import { useToast } from 'primevue/usetoast'
+import { useI18n } from 'vue-i18n'
 
-import InputText from '@/components/ui/InputText.vue'
-import ContrastButton from '@/components/ui/ContrastButton.vue'
+import InputText from '@/components/ui/inputText/InputText.vue'
+import Button from '@/components/ui/button/Button.vue'
 import { Form } from '@primevue/forms'
-import Message from '@/components/ui/Message.vue'
+import Message from '@/components/ui/message/Message.vue'
 import MailIcon from '@/components/icons/MailIcon.vue'
-import IconField from '@/components/ui/IconField.vue'
+import IconField from '@/components/formControls/IconField.vue'
 import SubscribeIcon from '@/components/icons/SubscribeIcon.vue'
 
 const toast = useToast()

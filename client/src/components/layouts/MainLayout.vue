@@ -11,6 +11,6 @@
 <script setup>
 import HeaderMenu from '@/components/partials/header/HeaderMenu.vue'
 import AppFooter from '@/components/partials/footer/AppFooter.vue'
-import Toast from '@/components/ui/Toast.vue'
+import Toast from '@/components/ui/toast/Toast.vue'
 import SubscribeSection from '@/components/partials/subscribeSection/SubscribeSection.vue'
 </script>

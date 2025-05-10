@@ -39,7 +39,7 @@
 		</p>
 		<Button :label="t('buttons.cartCheckout')" iconPos="right" class="w-full">
 			<template #icon>
-				<ArrowIcon
+				<arrow-icon
 					class="group-hover:fill-primary fill-creamy-cloud relative order-1 shrink-0 transition-colors"
 				/>
 			</template>
@@ -49,7 +49,7 @@
 
 <script setup>
 import ArrowIcon from '@/components/icons/ArrowIcon.vue'
-import Button from '@/components/ui/Button.vue'
+import Button from '@/components/ui/button/Button.vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()

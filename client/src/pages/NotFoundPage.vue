@@ -22,7 +22,7 @@
 						<h1
 							class="font-heading text-58-22 not-last:mb-45-15 text-center leading-tight font-semibold"
 						>
-							{{ t('pages.pageNotFound.title') }}
+							{{ t('pages.pageNotFound.title.page') }}
 						</h1>
 						<p
 							class="font-heading text-24-18 text-center leading-tight not-last:mb-6"
@@ -43,7 +43,7 @@
 
 <script setup>
 import MainLayout from '@/components/layouts/MainLayout.vue'
-import Button from '@/components/ui/Button.vue'
+import Button from '@/components/ui/button/Button.vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
@@ -51,6 +51,6 @@ const { t } = useI18n()
 const router = useRouter()
 
 const onBack = () => {
-	router.push({ name: 'shop' })
+	router.push({ name: 'home' })
 }
 </script>

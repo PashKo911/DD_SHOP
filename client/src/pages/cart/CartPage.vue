@@ -5,7 +5,7 @@
 			<h1
 				class="font-heading text-58-22 leading-tight font-semibold uppercase not-last:mb-6"
 			>
-				{{ t('pages.cart.title') }}
+				{{ t('pages.cart.title.page') }}
 			</h1>
 			<div class="gx-md-40-20 grid items-start gap-8 md:flex">
 				<CartList class="grow" />

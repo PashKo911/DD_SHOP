@@ -9,13 +9,46 @@
 				"welcome": "Welcome!"
 			}
 		},
+		"shop": {
+			"title": {
+				"menu": "Магазин"
+			}
+		},
+		"women": {
+			"title": {
+				"menu": "Women"
+			}
+		},
+		"men": {
+			"title": {
+				"menu": "Men"
+			}
+		},
+		"productDetail": {
+			"title": {
+				"page": "product detail",
+				"menu": "product detail",
+				"sameProductsSection": "You might also like"
+			},
+			"tabs": {
+				"head": {
+					"details": "Product Details",
+					"reviews": "Rating & Reviews",
+					"faq": "FAQs"
+				}
+			}
+		},
 		"signIn": {
-			"title": "Sing in page",
+			"title": {
+				"page": "Sing in page"
+			},
 			"separator": "or",
 			"subButtonText": "Don`t have an account?"
 		},
 		"signUp": {
-			"title": "Sing up page",
+			"title": {
+				"page": "Sing up page"
+			},
 			"subtitle": "Sing up for free to access to in any of Our products",
 			"privacy": "I agree to the",
 			"privacyLinkLabel": "Privacy Policy",
@@ -23,7 +56,9 @@
 			"subButtonText": "Already have an account?"
 		},
 		"cart": {
-			"title": "Your Cart",
+			"title": {
+				"page": "Your Cart"
+			},
 			"orderSummary": {
 				"title": "Order summary:",
 				"subtotal": "Subtotal",
@@ -36,17 +71,13 @@
 			}
 		},
 		"pageNotFound": {
-			"title": "Oops... something went wrong",
+			"title": {
+				"page": "Oops... something went wrong"
+			},
 			"text": "Try reloading the page"
 		}
 	},
 	"partials": {
-		"pageTitles": {
-			"shop": "Shop",
-			"men": "Men",
-			"women": "Women",
-			"cart": "Cart"
-		},
 		"footer": {
 			"footerMenu": {
 				"company": {
@@ -93,6 +124,9 @@
 		},
 		"subscribeSection": {
 			"title": "STAY UP TO DATE ABOUT OUR LATEST OFFERS"
+		},
+		"reviews": {
+			"postedOn": "Posted on {date}"
 		}
 	},
 	"accessibility": {
@@ -103,7 +137,16 @@
 		"cartLink": "Go to Cart",
 		"signIn": "Go to Sign-In Page",
 		"notFoundAlt": "Illustration of the number 404 indicating page not found",
-
+		"ratingLabel": {
+			"start": "Product rating",
+			"end": "stars"
+		},
+		"colorRadioGroup": {
+			"title": "Select Color"
+		},
+		"sizeRadioGroup": {
+			"title": "Choose Size"
+		},
 		"socialLabels": {
 			"facebookLink": "Visit our Facebook page",
 			"twitterLink": "Visit our Twitter page",
@@ -139,6 +182,15 @@
 		"email": {
 			"invalid": "Invalid email",
 			"required": "Email is required"
+		},
+		"colorInputGroup": {
+			"required": "Select the color *"
+		},
+		"sizeInputGroup": {
+			"required": "Select the size *"
+		},
+		"countInput": {
+			"required": "Select quantity *"
 		}
 	},
 	"buttons": {
@@ -155,7 +207,12 @@
 		"backHome": "Back to HomePage",
 		"googleButton": "Continue with Google",
 		"cartCheckout": "Go To Checkout",
-		"deleteProduct": "Delete product"
+		"deleteProduct": "Delete product",
+		"addToCart": "Add to cart",
+		"showMore": "show more...",
+		"hide": "hide",
+		"nextSlide": "Next slide",
+		"prevSlide": "Previous slide"
 	},
 	"placeholders": {
 		"search": "Search",

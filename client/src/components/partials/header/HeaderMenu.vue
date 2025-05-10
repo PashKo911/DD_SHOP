@@ -8,17 +8,14 @@
 				class="md:gx-lg-100-30 flex items-center justify-between gap-x-4"
 			>
 				<router-link
-					:to="{ name: 'shop' }"
+					:to="{ name: 'home' }"
 					:aria-label="$t('accessibility.logo')"
 					tabindex="0"
 					class="text-inverse font-heading text-md-34-28 focus-visible:outline-t-inverse-hover z-30 order-2 rounded-sm font-bold outline outline-transparent transition-colors md:order-1"
 				>
 					DD_SHOP
 				</router-link>
-				<HeaderMenuList
-					:visibleMenuItems="visibleMenuItems"
-					class="md:order-2"
-				/>
+				<header-menu-list :menuItems="menuItems" class="md:order-2" />
 				<teleport defer :to="searchInputPosition">
 					<icon-field class="z-30 order-3 min-w-[8.125rem] grow" />
 				</teleport>
@@ -29,7 +26,7 @@
 					<teleport defer :to="languageSelectPosition">
 						<header-language-select class="order-1 hidden md:visible" />
 					</teleport>
-					<HeaderMenuVisibilityToggler @click="menuVisibilityToggler" />
+					<header-menu-visibility-toggler @click="menuVisibilityToggler" />
 					<teleport defer :to="curtPosition">
 						<router-link
 							:to="{ name: 'cart' }"
@@ -64,19 +61,19 @@
 <script setup>
 import CartIcon from '@/components/icons/CartIcon.vue'
 import SignInIcon from '@/components/icons/SignInIcon.vue'
-import IconField from '@/components/ui/IconField.vue'
+import IconField from '@/components/formControls/IconField.vue'
 import HeaderMenuList from './HeaderMenuList.vue'
 import HeaderLanguageSelect from './HeaderLanguageSelect.vue'
 
 import { onBeforeRouteLeave } from 'vue-router'
 import { useRoute } from 'vue-router'
-import router from '@/router'
 import { computed } from 'vue'
+import { useMenuItems } from '@/composables/useMenuItems'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import HeaderMenuVisibilityToggler from './HeaderMenuVisibilityToggler.vue'
 
-const routes = router.getRoutes()
 const route = useRoute()
+const { menuItems } = useMenuItems()
 
 const isMobile = useMediaQuery('(max-width: 767.98px)')
 const isTablet = useMediaQuery('(max-width: 991.98px)')
@@ -92,23 +89,6 @@ const searchInputPosition = computed(() => {
 const curtPosition = computed(() => {
 	return isMobile.value ? '#headerTop' : '#headerActions'
 })
-
-function checkRoutesList(routeItems, menuItemsRoutes = []) {
-	for (const routeItem of routeItems) {
-		if (routeItem.children.length)
-			checkRoutesList(routeItem.children, menuItemsRoutes)
-		//  else if (routeItem.meta?.useInMenu && isRouteAvailable(routeItem)) {
-		if (routeItem.meta?.useInMenu) {
-			menuItemsRoutes.push({
-				name: routeItem.name,
-				meta: routeItem.meta,
-			})
-		}
-	}
-	return menuItemsRoutes
-}
-
-const visibleMenuItems = computed(() => checkRoutesList(routes))
 
 const menuVisibilityToggler = () => {
 	document.documentElement.classList.toggle('menu-open')

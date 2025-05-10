@@ -3,15 +3,31 @@ import localesEN from '@/locales/en.json'
 import localesUA from '@/locales/ua.json'
 
 const i18n = createI18n({
-	legacy: false, //for Composition API
+	legacy: false,
 	locale:
 		localStorage.getItem('lastLocale') ||
 		import.meta.env.VITE_I18N_LOCALE ||
-		'ua',
-	fallbackLocale: import.meta.env.VITE_I18N_FALLBACK_LOCALE || 'ua',
+		'uk',
+	fallbackLocale: import.meta.env.VITE_I18N_FALLBACK_LOCALE || 'uk',
 	messages: {
 		en: localesEN,
-		ua: localesUA,
+		uk: localesUA,
+	},
+	datetimeFormats: {
+		en: {
+			long: {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric',
+			},
+		},
+		uk: {
+			long: {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric',
+			},
+		},
 	},
 	globalInjection: true,
 })

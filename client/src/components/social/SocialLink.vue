@@ -7,7 +7,7 @@
 	>
 		<span class="duration-300 will-change-transform group-hover:scale-125">
 			<slot>
-				<FacebookIcon />
+				<facebook-icon />
 			</slot>
 		</span>
 	</a>

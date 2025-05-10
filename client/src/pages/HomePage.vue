@@ -3,35 +3,28 @@
 		<div class="font-heading font-bold">League Spartan</div>
 		<div class="font-pridi">Pridi</div>
 		<div class="font-semibold">Montserrat</div>
-		<div class="font-aBeeZee font-semibold">ABeeZee</div>
+		<div
+			data-a
+			data-b
+			class="a b c d e f g h i j k l m n o p q aspect-square w-40"
+		></div>
 		<Search class="text-primary" />
 		<div class="font-title text-[80px] uppercase">
 			знайти одяг, який відповідає вашому стилю
 		</div>
-		<Select
-			v-model="selectedCity"
-			:options="cities"
-			optionLabel="name"
-			placeholder="Select a City"
-			class="w-full md:w-56"
-		/>
-		<InputText />
+		<slider-base :items="reviews">
+			<template #default="{ item }">
+				<card-review :review-data="item" />
+			</template>
+		</slider-base>
 	</main-layout>
 </template>
 
 <script setup>
-import InputText from '@/components/ui/InputText.vue'
 import MainLayout from '@/components/layouts/MainLayout.vue'
-import Select from '@/volt/Select.vue'
-import { ref } from 'vue'
 import Search from '@primevue/icons/search'
 
-const selectedCity = ref(null)
-const cities = ref([
-	{ name: 'New York', code: 'NY' },
-	{ name: 'Rome', code: 'RM' },
-	{ name: 'London', code: 'LDN' },
-	{ name: 'Istanbul', code: 'IST' },
-	{ name: 'Paris', code: 'PRS' },
-])
+import CardReview from '@/components/cards/CardReview.vue'
+import SliderBase from '@/components/sliders/SliderBase.vue'
+import { reviews } from '@/data/reviews'
 </script>

@@ -9,7 +9,7 @@
 			</div>
 			<social-list class="lg:w-lg-440-235 max-w-110" />
 		</div>
-		<AppFooterMenu />
+		<app-footer-menu />
 	</div>
 </template>
 
