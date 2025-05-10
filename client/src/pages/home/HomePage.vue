@@ -1,6 +1,9 @@
 <template>
 	<main-layout>
 		<HomeHeroSection class="pb-80-30 pt-10 lg:pt-14" />
+
+		<SliderSingle :items="specialOfferItems" />
+
 		<slider-base :items="reviews">
 			<template #default="{ item }">
 				<card-review :review-data="item" />
@@ -11,9 +14,11 @@
 
 <script setup>
 import { reviews } from '@/data/reviews'
+import specialOfferItems from '@/data/specialOfferItems'
 
 import MainLayout from '@/components/layouts/MainLayout.vue'
 import CardReview from '@/components/cards/CardReview.vue'
 import SliderBase from '@/components/sliders/SliderBase.vue'
 import HomeHeroSection from './HomeHeroSection.vue'
+import SliderSingle from '@/components/sliders/SliderSingle.vue'
 </script>

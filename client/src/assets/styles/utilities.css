@@ -98,6 +98,9 @@
 	margin-bottom: clamp(1.875rem, 0.83rem + 5.22vw, 6.25rem);
 }
 
+@utility w-41-10 {
+	width: clamp(0.625rem, 0.162rem + 2.31vw, 2.563rem);
+}
 @utility w-lg-440-235 {
 	width: clamp(14.688rem, -4.338rem + 30.69vw, 27.5rem);
 }
