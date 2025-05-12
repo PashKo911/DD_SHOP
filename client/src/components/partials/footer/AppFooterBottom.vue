@@ -3,7 +3,7 @@
 		<div
 			class="relative container flex flex-col flex-wrap items-center justify-between gap-8 pt-8 md:flex-row"
 		>
-			<separator-inverse class="absolute top-0 left-0 w-full" />
+			<separator-inverse class="absolute top-0 left-0" />
 			<div class="flex items-center gap-1.5 text-white capitalize">
 				<span>
 					{{ t('partials.footer.footerCopy') }}
