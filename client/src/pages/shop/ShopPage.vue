@@ -1,8 +1,16 @@
 <template>
-	<div>Men women product page</div>
+	<div class="flex gap-5">
+		<ShopFilter class="w-100" />
+		<ShopList :items="sliderData" />
+	</div>
 </template>
 
 <script setup>
+import sliderData from '@/data/sliderData'
+
+import ShopFilter from './ShopFilter.vue'
+import ShopList from './ShopList.vue'
+
 const props = defineProps({
 	category: {
 		type: String,

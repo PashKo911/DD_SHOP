@@ -39,7 +39,7 @@
 				class="h-auto"
 			>
 				<slot :item="item">
-					<card-slider :data="item" />
+					<product-card :data="item" />
 				</slot>
 			</swiper-slide>
 			<span
@@ -56,7 +56,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import SliderNavButton from './SliderNavButton.vue'
 import ArrowLeftIcon from '@/components/icons/ArrowLeftIcon.vue'
 import ArrowRightIcon from '@/components/icons/ArrowRightIcon.vue'
-import CardSlider from '../cards/CardSlider.vue'
+import ProductCard from '../cards/ProductCard.vue'
 
 import 'swiper/css'
 

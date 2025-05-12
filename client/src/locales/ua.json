@@ -24,6 +24,9 @@
 				"blackFriday": "Чорна пʼятниця — знижка 50% на обрані товари",
 				"priceWeek": "Ціна тижня — встигни купити вигідно"
 			},
+			"imgAltAttr": {
+				"newCollection": "Зображення із джинсами, нова колекція"
+			},
 			"dressStyleTitles": {
 				"casual": "повсякденний",
 				"sport": "спортивний",
@@ -34,6 +37,15 @@
 		"shop": {
 			"title": {
 				"menu": "Магазин"
+			},
+			"filter": {
+				"title": "Фільтри",
+				"sectionsTitles": {
+					"price": "ціна",
+					"color": "колір",
+					"size": "розмір",
+					"style": "стиль"
+				}
 			}
 		},
 		"women": {

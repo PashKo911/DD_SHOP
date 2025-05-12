@@ -24,6 +24,9 @@
 				"blackFriday": "Special sale black friday 50% off",
 				"priceWeek": "Price of the week"
 			},
+			"imgAltAttr": {
+				"newCollection": "Image with jeans, new collection"
+			},
 			"dressStyleTitles": {
 				"casual": "casual",
 				"sport": "sport",
@@ -34,6 +37,15 @@
 		"shop": {
 			"title": {
 				"menu": "Магазин"
+			},
+			"filter": {
+				"title": "Filters",
+				"sectionsTitles": {
+					"price": "price",
+					"color": "color",
+					"size": "size",
+					"style": "dress style"
+				}
 			}
 		},
 		"women": {

@@ -39,7 +39,10 @@
 			<home-dress-style-section class="not-last:mb-80-50" />
 		</div>
 		<div class="not-last:mb-80-50">
-			<img src="@/assets/img/hero/new-collection.webp" alt="Image" />
+			<img
+				src="@/assets/img/hero/new-collection.webp"
+				:alt="t('pages.home.imgAltAttr.newCollection')"
+			/>
 		</div>
 		<div class="not-last:mb-80-50 container">
 			<slider-base
@@ -47,7 +50,7 @@
 				:title="t('pages.home.sectionTitles.reviews')"
 			>
 				<template #default="{ item }">
-					<card-review :review-data="item" />
+					<review-card :review-data="item" />
 				</template>
 			</slider-base>
 		</div>
@@ -63,7 +66,7 @@ import fashionPartners from '@/data/fashionPartners'
 import sliderData from '@/data/sliderData'
 
 import MainLayout from '@/components/layouts/MainLayout.vue'
-import CardReview from '@/components/cards/CardReview.vue'
+import ReviewCard from '@/components/cards/ReviewCard.vue'
 import SliderBase from '@/components/sliders/SliderBase.vue'
 import HomeHeroSection from './HomeHeroSection.vue'
 import SliderSingle from '@/components/sliders/SliderSingle.vue'
