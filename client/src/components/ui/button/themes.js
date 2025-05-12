@@ -16,7 +16,7 @@ export const DEFAULT_BUTTON_THEME = {
     enabled:active:p-outlined:bg-primary-100
     p-outlined:border-primary-200 enabled:hover:p-outlined:border-primary-200
     p-outlined:text-primary enabled:hover:p-outlined:text-primary
-    p-text:bg-transparent enabled:hover:p-text:text-red-400 p-text:before:hidden p-text:border-none 
+    p-text:bg-transparent enabled:hover:p-text:text-red-400 p-text:py-[.1875rem] enabled:hover:p-text:bg-transparent p-text:before:hidden p-text:border-none 
     before:rounded-[.4375rem] group before:bg-creamy-cloud
     before:absolute before:inset-[.1875rem] before:scale-0
     p-large:before:rounded-[.75rem] before:opacity-0 before:transition-transform

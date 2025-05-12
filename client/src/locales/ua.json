@@ -15,10 +15,20 @@
 					"customers": "Задоволені клієнти"
 				}
 			},
-			"singleSlider": {
+			"sectionTitles": {
+				"newArrivals": "нові надходження",
+				"topSelling": "топ продажів",
+				"dressStyle": "Обирай за стилем",
+				"reviews": "наші задоволені клієнти",
 				"fashionSale": "Модний розпродаж — знижки до 40%",
 				"blackFriday": "Чорна пʼятниця — знижка 50% на обрані товари",
 				"priceWeek": "Ціна тижня — встигни купити вигідно"
+			},
+			"dressStyleTitles": {
+				"casual": "повсякденний",
+				"sport": "спортивний",
+				"party": "святковий",
+				"office": "офісний"
 			}
 		},
 		"shop": {
@@ -138,7 +148,7 @@
 			"title": "БУДЬТЕ В КУРСІ НАШИХ ОСТАННІХ ПРОПОЗИЦІЙ"
 		},
 		"reviews": {
-			"postedOn": "Опубліковано {date}"
+			"postedOn": "Опубліковано: {date}"
 		}
 	},
 	"accessibility": {

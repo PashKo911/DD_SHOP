@@ -14,7 +14,7 @@
 				</p>
 			</show-more>
 		</div>
-		<span class="block lg:text-xl">
+		<span class="md:text-md block text-sm lg:text-xl">
 			{{ t('partials.reviews.postedOn') }}
 			<time :datetime="reviewData.date">
 				{{ d(reviewData.date, 'long') }}

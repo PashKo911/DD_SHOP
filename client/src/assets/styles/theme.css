@@ -10,11 +10,14 @@
 	--text-32-16: clamp(1rem, 0.722rem + 1.39vw, 2rem);
 	--text-32-26: clamp(1.625rem, 1.535rem + 0.45vw, 2rem);
 	--text-24-18: clamp(1.125rem, 1.035rem + 0.45vw, 1.5rem);
+	--text-80-20: clamp(1.25rem, 0.354rem + 4.48vw, 5rem);
 
 	--text-md-34-28: clamp(1.75rem, 1.427rem + 0.67vw, 2.125rem);
 	--text-md-52-28: clamp(1.75rem, 0.459rem + 2.69vw, 3.25rem);
+	--text-md-55-38: clamp(2.375rem, 1.46rem + 1.91vw, 3.438rem);
 
 	--text-max-md-40-20: clamp(1.25rem, 0.357rem + 4.46vw, 2.5rem);
+	--text-max-md-55-28: clamp(1.75rem, 0.545rem + 6.03vw, 3.438rem);
 	--text-max-lg-60-26: clamp(1.625rem, 0.613rem + 5.06vw, 3.75rem);
 	--text-max-lg-70-32: clamp(2rem, 0.869rem + 5.65vw, 4.375rem);
 

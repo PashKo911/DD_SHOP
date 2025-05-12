@@ -33,6 +33,14 @@
 @utility gy-30-10 {
 	row-gap: clamp(0.625rem, 0.326rem + 1.49vw, 1.875rem);
 }
+
+@utility gy-md-32-16 {
+	row-gap: clamp(1rem, 0.139rem + 1.79vw, 2rem);
+}
+@utility gy-max-md-32-16 {
+	row-gap: clamp(1rem, 0.286rem + 3.57vw, 2rem);
+}
+
 @utility gy-40-25 {
 	row-gap: clamp(1.563rem, 1.339rem + 1.12vw, 2.5rem);
 }
@@ -40,6 +48,10 @@
 	row-gap: clamp(1.875rem, 0.982rem + 4.46vw, 3.125rem);
 }
 
+@utility py-50-15 {
+	padding-top: clamp(0.938rem, 0.415rem + 2.61vw, 3.125rem);
+	padding-bottom: clamp(0.938rem, 0.415rem + 2.61vw, 3.125rem);
+}
 @utility py-md-57-15 {
 	padding-top: clamp(0.938rem, 0.311rem + 3.13vw, 3.563rem);
 	padding-bottom: clamp(0.938rem, 0.311rem + 3.13vw, 3.563rem);
@@ -58,6 +70,13 @@
 }
 @utility p-50-15 {
 	padding: clamp(0.938rem, 0.415rem + 2.61vw, 3.125rem);
+}
+
+@utility p-md-70-20 {
+	padding: clamp(1.25rem, -1.44rem + 5.61vw, 4.375rem);
+}
+@utility p-maxmd-70-20 {
+	padding: clamp(1.25rem, -0.982rem + 11.16vw, 4.375rem);
 }
 
 @utility pt-80-30 {
@@ -84,9 +103,11 @@
 @utility mb-50-30 {
 	margin-bottom: clamp(1.875rem, 1.576rem + 1.49vw, 3.125rem);
 }
-
 @utility mb-80-30 {
 	margin-bottom: clamp(1.875rem, 1.129rem + 3.73vw, 5rem);
+}
+@utility mb-80-50 {
+	margin-bottom: clamp(3.125rem, 2.677rem + 2.24vw, 5rem);
 }
 
 @utility mb-100-60 {
@@ -109,6 +130,10 @@
 	width: clamp(28.125rem, 16.258rem + 24.69vw, 41.875rem);
 }
 @utility w-md-644-250 {
+	width: clamp(15.625rem, -5.576rem + 44.17vw, 40.25rem);
+}
+
+@utility minh-md-292-200 {
 	width: clamp(15.625rem, -5.576rem + 44.17vw, 40.25rem);
 }
 

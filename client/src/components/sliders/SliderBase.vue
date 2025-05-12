@@ -2,7 +2,7 @@
 	<section>
 		<div class="not-last:mb-50-30 flex items-start justify-between gap-8">
 			<h2 class="font-heading text-50-28 leading-tight font-semibold uppercase">
-				{{ t('pages.productDetail.title.sameProductsSection') }}
+				{{ title }}
 			</h2>
 			<div class="hidden items-center gap-4 sm:flex">
 				<slider-nav-button

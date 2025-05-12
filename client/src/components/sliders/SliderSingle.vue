@@ -2,7 +2,6 @@
 	<Swiper
 		loop
 		@swiper="setSlider"
-		data-base-slider
 		:autoplay="{
 			delay: 4000,
 			pauseOnMouseEnter: true,
@@ -32,7 +31,6 @@
 				type="button"
 				:aria-label="t('buttons.prevSlide')"
 				@click="slider.slideNext()"
-				data-single-slider-button
 				class="focus-visible:outline-t-inverse-hover any-hover:translate-x-1/2 any-hover:opacity-0 absolute top-1/2 right-1.5 -translate-y-1/2 cursor-pointer rounded-md bg-black/30 p-3 outline outline-transparent transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 focus-visible:translate-x-0 focus-visible:opacity-100 md:p-4"
 			>
 				<arrow-right-triangle

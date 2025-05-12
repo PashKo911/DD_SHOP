@@ -5,17 +5,17 @@ import priceWeek from '@/assets/img/hero/price-week.webp'
 const specialOfferItems = [
 	{
 		id: 1,
-		label: 'pages.home.singleSlider.fashionSale',
+		label: 'pages.home.sectionTitles.fashionSale',
 		img: fashionSale,
 	},
 	{
 		id: 2,
-		label: 'pages.home.singleSlider.blackFriday',
+		label: 'pages.home.sectionTitles.blackFriday',
 		img: blackFriday,
 	},
 	{
 		id: 3,
-		label: 'pages.home.singleSlider.priceWeek',
+		label: 'pages.home.sectionTitles.priceWeek',
 		img: priceWeek,
 	},
 ]
