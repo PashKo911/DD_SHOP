@@ -2,18 +2,18 @@
 	<section>
 		<div class="not-last:mb-50-30 flex items-start justify-between gap-8">
 			<h2 class="font-heading text-50-28 leading-tight font-semibold uppercase">
-				{{ t('pages.productDetail.title.sameProductsSection') }}
+				{{ title }}
 			</h2>
 			<div class="hidden items-center gap-4 sm:flex">
 				<slider-nav-button
-					@click="mainSwiper.slidePrev()"
+					@click="slider.slidePrev()"
 					:aria-label="t('buttons.prevSlide')"
 					class="bg-[#FCF9F6] shadow-lg hover:shadow-md"
 				>
 					<arrow-left-icon />
 				</slider-nav-button>
 				<slider-nav-button
-					@click="mainSwiper.slideNext()"
+					@click="slider.slideNext()"
 					:aria-label="t('buttons.nextSlide')"
 					class="bg-[#FCF9F6] shadow-lg hover:shadow-md"
 				>
@@ -25,13 +25,9 @@
 			loop
 			:initial-slide="1"
 			:breakpoints="breakpoints"
-			:a11y="{
-				prevSlideMessage: 'Previous slide',
-				nextSlideMessage: 'Next slide',
-			}"
-			@swiper="setMainSwiper"
+			@swiper="setSlider"
 			data-base-slider
-			class="group relative"
+			class="relative"
 		>
 			<span
 				class="absolute top-0 -left-4 z-20 hidden h-full w-screen -translate-x-full backdrop-blur-[.1563rem] xl:block"
@@ -104,10 +100,10 @@ const breakpoints = {
 
 const { t } = useI18n()
 
-const mainSwiper = ref(null)
+const slider = ref(null)
 
-const setMainSwiper = (swiperInstance) => {
-	mainSwiper.value = swiperInstance
+const setSlider = (swiperInstance) => {
+	slider.value = swiperInstance
 }
 </script>
 
