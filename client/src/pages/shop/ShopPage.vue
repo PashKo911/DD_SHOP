@@ -1,7 +1,9 @@
 <template>
-	<div class="flex gap-5">
-		<ShopFilter class="w-100 shrink-0" />
-		<ShopList :items="sliderData" />
+	<div class="flex items-start gap-5">
+		<ShopFilter class="w-[340px] shrink-0" />
+		<div class="grow">
+			<ShopList :items="sliderData" />
+		</div>
 	</div>
 </template>
 

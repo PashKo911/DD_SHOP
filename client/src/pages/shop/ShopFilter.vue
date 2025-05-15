@@ -8,7 +8,7 @@
 			</h2>
 			<filter-icon />
 		</div>
-		<accordion :value="['0', '1']" multiple>
+		<accordion :value="['0', '1', '2', '3']" multiple>
 			<accordion-panel value="0">
 				<accordion-header>
 					{{ t('pages.shop.filter.sectionsTitles.style') }}
@@ -34,6 +34,30 @@
 					/>
 				</accordion-content>
 			</accordion-panel>
+			<accordion-panel value="2">
+				<accordion-header>
+					{{ t('pages.shop.filter.sectionsTitles.color') }}
+				</accordion-header>
+				<accordion-content>
+					<color-radio-group
+						v-model="filter.color"
+						:items="availableColors"
+						multiple
+					/>
+				</accordion-content>
+			</accordion-panel>
+			<accordion-panel value="3">
+				<accordion-header>
+					{{ t('pages.shop.filter.sectionsTitles.size') }}
+				</accordion-header>
+				<accordion-content>
+					<size-radio-group
+						v-model="filter.size"
+						:items="availableSizes"
+						multiple
+					/>
+				</accordion-content>
+			</accordion-panel>
 		</accordion>
 		{{ filter }}
 	</div>
@@ -45,6 +69,8 @@ import { reactive, onMounted, watchEffect, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import dressStyleItems from '@/data/dressStyleItems'
 import exchangeRates from '@/locales/exchangeRates'
+import availableColors from '@/data/availableColors'
+import availableSizes from '@/data/availableSizes'
 
 import FilterIcon from '@/components/icons/FilterIcon.vue'
 import Accordion from '@/components/accordion/Accordion.vue'
@@ -53,6 +79,8 @@ import AccordionHeader from '@/components/accordion/AccordionHeader.vue'
 import AccordionContent from '@/components/accordion/AccordionContent.vue'
 import StyleRadioGroup from '@/components/formControls/StyleRadioGroup.vue'
 import SliderPrice from '@/components/formControls/SliderPrice.vue'
+import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
+import SizeRadioGroup from '@/components/formControls/SizeRadioGroup.vue'
 
 const { t, numberFormats, locale } = useI18n()
 
@@ -61,6 +89,8 @@ const router = useRouter()
 const filter = reactive({
 	style: [],
 	price: [],
+	color: [],
+	size: [],
 })
 //========================================================================================================================================================
 
