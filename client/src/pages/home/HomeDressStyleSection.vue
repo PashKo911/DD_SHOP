@@ -25,13 +25,13 @@
 					<h3
 						class="font-heading text-creamy-cloud text-max-md-55-28 md:text-md-55-38 relative z-[2] leading-tight font-semibold capitalize"
 					>
-						{{ t(s.title) }}
+						{{ t(s.label) }}
 					</h3>
 					<arrow-down-simple />
 				</div>
 				<img
 					:src="s.img"
-					:alt="s.title"
+					:alt="s.label"
 					class="pointer-events-none absolute top-0"
 					:class="{
 						'right-0 w-[70.37594%]': index === 0,

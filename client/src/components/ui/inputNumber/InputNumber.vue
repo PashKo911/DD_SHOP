@@ -1,10 +1,14 @@
 <template>
 	<InputNumber unstyled :pt="DEFAULT_INPUT_NUMBER_THEME" :ptOptions="ptOptions">
 		<template #incrementicon>
-			<PlusIcon />
+			<slot name="incrementicon">
+				<PlusIcon />
+			</slot>
 		</template>
 		<template #decrementicon>
-			<MinusIcon />
+			<slot name="decrementicon">
+				<MinusIcon />
+			</slot>
 		</template>
 		<template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
 			<slot :name="slotName" v-bind="slotProps ?? {}" />

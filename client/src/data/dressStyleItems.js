@@ -5,23 +5,27 @@ import officeImg from '@/assets/img/hero/office.webp'
 
 const dressStyleItems = [
 	{
-		id: 1,
-		title: 'pages.home.dressStyleTitles.casual',
+		_id: '1',
+		label: 'pages.home.dressStyleTitles.casual',
+		value: 'casual',
 		img: casualImg,
 	},
 	{
-		id: 2,
-		title: 'pages.home.dressStyleTitles.sport',
+		_id: '2',
+		label: 'pages.home.dressStyleTitles.sport',
+		value: 'sport',
 		img: sportImg,
 	},
 	{
-		id: 3,
-		title: 'pages.home.dressStyleTitles.party',
+		_id: '3',
+		label: 'pages.home.dressStyleTitles.party',
+		value: 'party',
 		img: partyImg,
 	},
 	{
-		id: 4,
-		title: 'pages.home.dressStyleTitles.office',
+		_id: '4',
+		label: 'pages.home.dressStyleTitles.office',
+		value: 'office',
 		img: officeImg,
 	},
 ]

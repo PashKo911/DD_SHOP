@@ -1,6 +1,6 @@
 <template>
 	<div class="flex gap-5">
-		<ShopFilter class="w-100" />
+		<ShopFilter class="w-100 shrink-0" />
 		<ShopList :items="sliderData" />
 	</div>
 </template>

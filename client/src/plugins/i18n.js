@@ -29,6 +29,22 @@ const i18n = createI18n({
 			},
 		},
 	},
+	numberFormats: {
+		en: {
+			currency: {
+				style: 'currency',
+				currency: 'USD',
+				currencyDisplay: 'symbol',
+			},
+		},
+		uk: {
+			currency: {
+				style: 'currency',
+				currency: 'UAH',
+				currencyDisplay: 'symbol',
+			},
+		},
+	},
 	globalInjection: true,
 })
 
