@@ -3,20 +3,16 @@ import cors from 'cors'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import loggerConfig from '../config/logger.mjs'
-import auth from './auth.mjs'
+import helmet from 'helmet'
 
-// Визначення поточного файлу і директорії
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const middleware = (app) => {
-	// Middleware для підтримки CORS
+	app.use(helmet())
+
 	app.use(cors())
 
-	// Middleware для аутентифікації та авторизації
-	auth(app)
-
-	// Добавляем __dirname в объект req
 	app.use((req, res, next) => {
 		req.__dirname = __dirname
 		next()

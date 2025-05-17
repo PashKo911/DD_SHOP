@@ -11,6 +11,9 @@
 			<span
 				:style="{ backgroundColor: item.value }"
 				class="grid aspect-square w-10 cursor-pointer place-items-center rounded-full shadow-lg transition-shadow duration-300 peer-checked:shadow-none hover:shadow-md"
+				:class="{
+					'hover:shadow-none': checked,
+				}"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

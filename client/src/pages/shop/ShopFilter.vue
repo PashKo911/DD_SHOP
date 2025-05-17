@@ -59,16 +59,21 @@
 				</accordion-content>
 			</accordion-panel>
 		</accordion>
-		{{ filter }}
+		{{ allOptions }}
 	</div>
 </template>
 
 <script setup>
 import { useI18n } from 'vue-i18n'
-import { reactive, onMounted, watchEffect, computed, watch } from 'vue'
+import { onMounted, computed, watch } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useRoute, useRouter } from 'vue-router'
-import dressStyleItems from '@/data/dressStyleItems'
 import exchangeRates from '@/locales/exchangeRates'
+import { useFacetOptionsStore } from '@/stores/facetOptions'
+
+import { useFilterStore } from '@/stores/filter'
+
+import dressStyleItems from '@/data/dressStyleItems'
 import availableColors from '@/data/availableColors'
 import availableSizes from '@/data/availableSizes'
 
@@ -86,12 +91,16 @@ const { t, numberFormats, locale } = useI18n()
 
 const route = useRoute()
 const router = useRouter()
-const filter = reactive({
-	style: [],
-	price: [],
-	color: [],
-	size: [],
-})
+
+const filterStore = useFilterStore()
+const facetOptionsStore = useFacetOptionsStore()
+
+const { setFilterProp, parseFilterFromQuery } = filterStore
+const { filter, serializedFilters, hasSelectedFilters } =
+	storeToRefs(filterStore)
+
+const { getOptions } = facetOptionsStore
+const { allOptions } = storeToRefs(facetOptionsStore)
 //========================================================================================================================================================
 
 const currency = computed(() => {
@@ -108,48 +117,32 @@ const minPriceExchanged = computed(() => {
 const maxPriceExchanged = computed(() => {
 	return initialMaxPrice * exchangeRates[currency.value]
 })
+
+const hasQueryFilters = computed(() => {
+	return Object.keys(route.query).length
+})
 //========================================================================================================================================================
 
-function serializeFilters(obj) {
-	return Object.entries(obj).reduce((q, [key, val]) => {
-		if (Array.isArray(val) && val.length) {
-			q[key] = val.join(',')
-		} else {
-			q[key] = val
-		}
-		return q
-	}, {})
-}
-
 watch(currency, () => {
-	filter.price = [minPriceExchanged.value, maxPriceExchanged.value]
+	setFilterProp('price', [minPriceExchanged.value, maxPriceExchanged.value])
 })
 
-watchEffect(() => {
-	const query = serializeFilters(filter)
-	router.push({ query })
+watch(filter.value, () => {
+	router.push({ query: serializedFilters.value })
 })
 //========================================================================================================================================================
 
 const onSlideEnd = ({ value }) => {
-	const [minPrice, maxPrice] = value
-	console.log(minPrice, maxPrice)
-	if (minPrice >= maxPrice) {
-		filter.price = [minPriceExchanged.value, maxPriceExchanged.value]
-	}
-	filter.price = value
+	setFilterProp('price', [...value])
 }
 
-onMounted(() => {
-	for (const key of Object.keys(filter)) {
-		const val = route.query[key]
-		if (typeof val === 'string' && val.length && val.includes(',')) {
-			if (key === 'price') {
-				filter[key] = val.split(',').map(Number)
-			} else {
-				filter[key] = val.split(',')
-			}
-		}
+onMounted(async () => {
+	if (hasQueryFilters.value) {
+		parseFilterFromQuery(route.query)
 	}
+	if (hasSelectedFilters.value) {
+		router.push({ query: serializedFilters.value })
+	}
+	await getOptions()
 })
 </script>

@@ -103,7 +103,7 @@ watch(localPrice, ([newMin, newMax], [prevMin, prevMax]) => {
 
 const onPriceChange = ({ value }) => {
 	if (!isValid.value) return
-	price.value = [...value]
+	price.value = value
 }
 const debouncedPriceChange = debounce(onPriceChange)
 function onInput({ value }, idx) {

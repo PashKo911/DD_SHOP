@@ -46,6 +46,10 @@
 					"size": "size",
 					"style": "dress style"
 				}
+			},
+			"sortSelect": {
+				"ascending": "Price: Low to High",
+				"descending": "Price: High to Low"
 			}
 		},
 		"women": {

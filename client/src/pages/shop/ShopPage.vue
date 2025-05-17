@@ -1,8 +1,9 @@
 <template>
 	<div class="flex items-start gap-5">
-		<ShopFilter class="w-[340px] shrink-0" />
+		<shop-filter class="w-[340px] shrink-0" />
 		<div class="grow">
-			<ShopList :items="sliderData" />
+			<shop-list :items="sliderData" class="mb-8" />
+			<paginator :rows="10" :totalRecords="120" />
 		</div>
 	</div>
 </template>
@@ -12,6 +13,7 @@ import sliderData from '@/data/sliderData'
 
 import ShopFilter from './ShopFilter.vue'
 import ShopList from './ShopList.vue'
+import Paginator from '@/components/paginator/Paginator.vue'
 
 const props = defineProps({
 	category: {
