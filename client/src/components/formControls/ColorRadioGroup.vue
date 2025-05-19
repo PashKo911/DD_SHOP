@@ -43,7 +43,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import RadioGroup from '@/components/ui/radioGroup/RadioGroup.vue'
 
@@ -63,9 +63,11 @@ const props = defineProps({
 })
 
 const checkPath = ref('checkPath')
-const totalPathLength = ref()
 
-onMounted(() => {
-	totalPathLength.value = checkPath.value.getTotalLength()
+const totalPathLength = computed(() => {
+	if (typeof checkPath.value !== 'string') {
+		return checkPath.value.getTotalLength()
+	}
+	return null
 })
 </script>

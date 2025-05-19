@@ -16,8 +16,8 @@
 				<accordion-content>
 					<style-radio-group
 						multiple
-						v-model="filter.style"
-						:items="dressStyleItems"
+						v-model="styleFilterValue"
+						:items="facetOptionsValue.styles"
 					/>
 				</accordion-content>
 			</accordion-panel>
@@ -27,9 +27,10 @@
 				</accordion-header>
 				<accordion-content>
 					<slider-price
-						v-model="filter.price"
-						:min="minPriceExchanged"
-						:max="maxPriceExchanged"
+						v-model="priceFilterValue"
+						v-if="facetOptionsValue.priceRange[0]"
+						:min="facetOptionsValue.priceRange[0]"
+						:max="facetOptionsValue.priceRange[1]"
 						@slideend="onSlideEnd"
 					/>
 				</accordion-content>
@@ -40,8 +41,8 @@
 				</accordion-header>
 				<accordion-content>
 					<color-radio-group
-						v-model="filter.color"
-						:items="availableColors"
+						v-model="colorFilterValue"
+						:items="facetOptionsValue.colors"
 						multiple
 					/>
 				</accordion-content>
@@ -52,14 +53,13 @@
 				</accordion-header>
 				<accordion-content>
 					<size-radio-group
-						v-model="filter.size"
-						:items="availableSizes"
+						v-model="sizeFilterValue"
+						:items="facetOptionsValue.sizes"
 						multiple
 					/>
 				</accordion-content>
 			</accordion-panel>
 		</accordion>
-		{{ allOptions }}
 	</div>
 </template>
 
@@ -68,14 +68,9 @@ import { useI18n } from 'vue-i18n'
 import { onMounted, computed, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRoute, useRouter } from 'vue-router'
-import exchangeRates from '@/locales/exchangeRates'
 import { useFacetOptionsStore } from '@/stores/facetOptions'
 
 import { useFilterStore } from '@/stores/filter'
-
-import dressStyleItems from '@/data/dressStyleItems'
-import availableColors from '@/data/availableColors'
-import availableSizes from '@/data/availableSizes'
 
 import FilterIcon from '@/components/icons/FilterIcon.vue'
 import Accordion from '@/components/accordion/Accordion.vue'
@@ -86,8 +81,9 @@ import StyleRadioGroup from '@/components/formControls/StyleRadioGroup.vue'
 import SliderPrice from '@/components/formControls/SliderPrice.vue'
 import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
 import SizeRadioGroup from '@/components/formControls/SizeRadioGroup.vue'
+import { useFilterModel } from '@/composables/useFilterModel'
 
-const { t, numberFormats, locale } = useI18n()
+const { t } = useI18n()
 
 const route = useRoute()
 const router = useRouter()
@@ -96,27 +92,16 @@ const filterStore = useFilterStore()
 const facetOptionsStore = useFacetOptionsStore()
 
 const { setFilterProp, parseFilterFromQuery } = filterStore
-const { filter, serializedFilters, hasSelectedFilters } =
+const { filter, serializedFilter, hasSelectedFilters } =
 	storeToRefs(filterStore)
 
-const { getOptions } = facetOptionsStore
-const { allOptions } = storeToRefs(facetOptionsStore)
+const { getFacetOptions } = facetOptionsStore
+const { facetOptionsValue, currency } = storeToRefs(facetOptionsStore)
 //========================================================================================================================================================
-
-const currency = computed(() => {
-	const { currency } = numberFormats.value[locale.value]
-	return currency.currency
-})
-
-const initialMinPrice = 40
-const initialMaxPrice = 250
-
-const minPriceExchanged = computed(() => {
-	return initialMinPrice * exchangeRates[currency.value]
-})
-const maxPriceExchanged = computed(() => {
-	return initialMaxPrice * exchangeRates[currency.value]
-})
+const styleFilterValue = useFilterModel(filter.value, 'style', setFilterProp)
+const priceFilterValue = useFilterModel(filter.value, 'price', setFilterProp)
+const colorFilterValue = useFilterModel(filter.value, 'color', setFilterProp)
+const sizeFilterValue = useFilterModel(filter.value, 'size', setFilterProp)
 
 const hasQueryFilters = computed(() => {
 	return Object.keys(route.query).length
@@ -124,11 +109,14 @@ const hasQueryFilters = computed(() => {
 //========================================================================================================================================================
 
 watch(currency, () => {
-	setFilterProp('price', [minPriceExchanged.value, maxPriceExchanged.value])
+	setFilterProp('price', [
+		facetOptionsValue.value.priceRange[0],
+		facetOptionsValue.value.priceRange[1],
+	])
 })
 
 watch(filter.value, () => {
-	router.push({ query: serializedFilters.value })
+	router.push({ query: serializedFilter.value })
 })
 //========================================================================================================================================================
 
@@ -141,8 +129,8 @@ onMounted(async () => {
 		parseFilterFromQuery(route.query)
 	}
 	if (hasSelectedFilters.value) {
-		router.push({ query: serializedFilters.value })
+		router.push({ query: serializedFilter.value })
 	}
-	await getOptions()
+	await getFacetOptions()
 })
 </script>

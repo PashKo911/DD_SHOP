@@ -9,7 +9,7 @@ export const useFilterStore = defineStore('filter', () => {
 		size: [],
 	})
 
-	const serializedFilters = computed(() => {
+	const serializedFilter = computed(() => {
 		return Object.entries(filter).reduce((q, [key, val]) => {
 			if (Array.isArray(val) && val.length) {
 				q[key] = val.join(',')
@@ -43,7 +43,7 @@ export const useFilterStore = defineStore('filter', () => {
 
 	return {
 		filter,
-		serializedFilters,
+		serializedFilter,
 		setFilterProp,
 		parseFilterFromQuery,
 		hasSelectedFilters,

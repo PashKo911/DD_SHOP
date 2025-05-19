@@ -71,10 +71,7 @@ class ProductsDBService extends MongooseCRUDManager {
 				return { minPrice: 0, maxPrice: 0 }
 			}
 
-			return {
-				minPrice: result[0].minPrice,
-				maxPrice: result[0].maxPrice,
-			}
+			return [result[0].minPrice, result[0].maxPrice]
 		} catch (error) {
 			throw new Error('Error retrieving price range: ' + error.message)
 		}

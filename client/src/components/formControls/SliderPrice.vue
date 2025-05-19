@@ -11,6 +11,7 @@
 				:currency="currency"
 				:locale="locale"
 				showButtons
+				:maxFractionDigits="0"
 				@input="onInput($event, 0)"
 				class="w-full"
 			>
@@ -31,6 +32,7 @@
 				:currency="currency"
 				:locale="locale"
 				showButtons
+				:maxFractionDigits="0"
 				@input="onInput($event, 1)"
 				class="w-full"
 			>

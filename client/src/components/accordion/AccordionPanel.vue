@@ -18,6 +18,6 @@ const props = defineProps()
 const ptOptions = computed(() => ({ mergeProps: ptViewMerge }))
 
 const theme = {
-	root: `flex flex-col border-b border-border-color`,
+	root: `flex flex-col not-last:border-b border-border-color`,
 }
 </script>

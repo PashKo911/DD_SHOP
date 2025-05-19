@@ -1,14 +1,14 @@
 const apiEndpoints = {
 	products: {
-		getOptions: () => '/products/options',
+		getOptions: '/products/options',
 	},
 	auth: {
-		signin: () => '/auth/signin',
-		signup: () => '/auth/signup',
-		profileByToken: () => '/auth/profile',
+		signin: '/auth/signin',
+		signup: '/auth/signup',
+		profileByToken: '/auth/profile',
 	},
 	users: {
-		getUsersWithAttempts: () => '/users/users-with-attempts',
+		getUsersWithAttempts: '/users/users-with-attempts',
 		deleteUser: (id) => `/users/${id}`,
 	},
 }
