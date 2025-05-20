@@ -29,6 +29,7 @@
 					<slider-price
 						v-model="priceFilterValue"
 						v-if="facetOptionsValue.priceRange[0]"
+						:key="currency"
 						:min="facetOptionsValue.priceRange[0]"
 						:max="facetOptionsValue.priceRange[1]"
 						@slideend="onSlideEnd"
@@ -67,10 +68,11 @@
 import { useI18n } from 'vue-i18n'
 import { onMounted, computed, watch } from 'vue'
 import { storeToRefs } from 'pinia'
+
 import { useRoute, useRouter } from 'vue-router'
 import { useFacetOptionsStore } from '@/stores/facetOptions'
-
 import { useFilterStore } from '@/stores/filter'
+import { useFilterModel } from '@/composables/useFilterModel'
 
 import FilterIcon from '@/components/icons/FilterIcon.vue'
 import Accordion from '@/components/accordion/Accordion.vue'
@@ -81,7 +83,14 @@ import StyleRadioGroup from '@/components/formControls/StyleRadioGroup.vue'
 import SliderPrice from '@/components/formControls/SliderPrice.vue'
 import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
 import SizeRadioGroup from '@/components/formControls/SizeRadioGroup.vue'
-import { useFilterModel } from '@/composables/useFilterModel'
+
+const panels = [
+	{
+		key: 'styles',
+		component: StyleRadioGroup,
+		title: 'pages.shop.filter.sectionsTitles.style',
+	},
+]
 
 const { t } = useI18n()
 
@@ -97,23 +106,17 @@ const { filter, serializedFilter, hasSelectedFilters } =
 
 const { getFacetOptions } = facetOptionsStore
 const { facetOptionsValue, currency } = storeToRefs(facetOptionsStore)
+
 //========================================================================================================================================================
-const styleFilterValue = useFilterModel(filter.value, 'style', setFilterProp)
+const styleFilterValue = useFilterModel(filter.value, 'styles', setFilterProp)
 const priceFilterValue = useFilterModel(filter.value, 'price', setFilterProp)
-const colorFilterValue = useFilterModel(filter.value, 'color', setFilterProp)
-const sizeFilterValue = useFilterModel(filter.value, 'size', setFilterProp)
+const colorFilterValue = useFilterModel(filter.value, 'colors', setFilterProp)
+const sizeFilterValue = useFilterModel(filter.value, 'sizes', setFilterProp)
 
 const hasQueryFilters = computed(() => {
 	return Object.keys(route.query).length
 })
 //========================================================================================================================================================
-
-watch(currency, () => {
-	setFilterProp('price', [
-		facetOptionsValue.value.priceRange[0],
-		facetOptionsValue.value.priceRange[1],
-	])
-})
 
 watch(filter.value, () => {
 	router.push({ query: serializedFilter.value })
@@ -125,12 +128,13 @@ const onSlideEnd = ({ value }) => {
 }
 
 onMounted(async () => {
+	await getFacetOptions()
+
 	if (hasQueryFilters.value) {
 		parseFilterFromQuery(route.query)
 	}
 	if (hasSelectedFilters.value) {
 		router.push({ query: serializedFilter.value })
 	}
-	await getFacetOptions()
 })
 </script>

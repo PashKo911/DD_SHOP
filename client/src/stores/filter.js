@@ -1,23 +1,22 @@
 import { defineStore } from 'pinia'
 import { reactive, computed } from 'vue'
+import { useFacetOptionsStore } from './facetOptions'
+import { storeToRefs } from 'pinia'
+import { serializeFilter, parseFilter } from '@/utils/filterHelpers'
 
 export const useFilterStore = defineStore('filter', () => {
-	const filter = reactive({
-		style: [],
-		price: [],
-		color: [],
-		size: [],
-	})
+	const facetOptionsStore = useFacetOptionsStore()
+	const { facetOptions } = storeToRefs(facetOptionsStore)
 
+	const filter = reactive({
+		text: '',
+		styles: [],
+		price: [],
+		colors: [],
+		sizes: [],
+	})
 	const serializedFilter = computed(() => {
-		return Object.entries(filter).reduce((q, [key, val]) => {
-			if (Array.isArray(val) && val.length) {
-				q[key] = val.join(',')
-			} else {
-				q[key] = val
-			}
-			return q
-		}, {})
+		return serializeFilter(filter, facetOptions.value)
 	})
 
 	const hasSelectedFilters = computed(() => {
@@ -25,16 +24,7 @@ export const useFilterStore = defineStore('filter', () => {
 	})
 
 	function parseFilterFromQuery(query) {
-		for (const key of Object.keys(filter)) {
-			const val = query[key]
-			if (typeof val === 'string' && val.length && val.includes(',')) {
-				if (key === 'price') {
-					filter[key] = val.split(',').map(Number)
-				} else {
-					filter[key] = val.split(',')
-				}
-			}
-		}
+		parseFilter(query, filter, facetOptions.value)
 	}
 
 	const setFilterProp = (prop, value) => {
