@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { reactive, computed } from 'vue'
+import { reactive, computed, ref } from 'vue'
 import { useGeneralStore } from './general'
 import { useI18n } from 'vue-i18n'
 import apiClient from '@/api/axiosConfig'
@@ -17,6 +17,12 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 		colors: [],
 		sizes: [],
 		priceRange: [],
+	})
+
+	const availableStyles = ref()
+
+	const availableStylesValue = computed(() => {
+		return availableStyles.value
 	})
 
 	const currency = computed(() => {
@@ -47,11 +53,23 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 		Object.assign(facetOptions, data)
 	}
 
+	const getAvailableStyles = async () => {
+		availableStyles.value = await generalApiOperation({
+			operation: async () => {
+				const response = await apiClient.get(apiEndpoints.products.getStyles)
+				return response.data.styles
+			},
+		})
+	}
+
 	return {
 		facetOptions,
 		facetOptionsValue,
 		getFacetOptions,
 		exchangeRate,
 		currency,
+		availableStyles,
+		availableStylesValue,
+		getAvailableStyles,
 	}
 })

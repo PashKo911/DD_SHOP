@@ -9,7 +9,12 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const middleware = (app) => {
-	app.use(helmet())
+	app.use(
+		helmet({
+			crossOriginResourcePolicy: { policy: 'cross-origin' },
+			crossOriginEmbedderPolicy: false,
+		})
+	)
 
 	app.use(cors())
 

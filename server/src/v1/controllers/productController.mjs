@@ -97,9 +97,11 @@ class ProductController {
 
 	static async getOptions(req, res) {
 		try {
-			const colors = await ColorsDBService.getList({})
-			const sizes = await SizeDBService.getList({})
-			const styles = await DressStyleDBService.getList({})
+			const language = req.headers['accept-language']
+
+			const colors = await ColorsDBService.getList(language)
+			const sizes = await SizeDBService.getList()
+			const styles = await DressStyleDBService.getList(language)
 			const genders = await GenderDBService.getList({})
 
 			const priceRange = await ProductsDBService.getPriceRange()
@@ -110,6 +112,20 @@ class ProductController {
 				colors,
 				sizes,
 				priceRange,
+			})
+		} catch (error) {
+			console.error(error)
+			res.status(500).json({ message: 'Server error' })
+		}
+	}
+
+	static async getStyles(req, res) {
+		try {
+			const language = req.headers['accept-language']
+
+			const styles = await DressStyleDBService.getListWithImg(language)
+			res.status(200).json({
+				styles,
 			})
 		} catch (error) {
 			console.error(error)

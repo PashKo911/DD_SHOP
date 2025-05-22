@@ -22,7 +22,7 @@
 						}"
 					>
 					</i>
-					{{ t(item.label) }}
+					{{ item.labelUk ?? item.label }}
 				</span>
 			</span>
 			<arrow-right-icon

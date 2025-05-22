@@ -1,6 +1,7 @@
 const apiEndpoints = {
 	products: {
 		getOptions: '/products/options',
+		getStyles: '/products/styles',
 	},
 	auth: {
 		signin: '/auth/signin',

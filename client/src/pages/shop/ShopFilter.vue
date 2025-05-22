@@ -84,15 +84,7 @@ import SliderPrice from '@/components/formControls/SliderPrice.vue'
 import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
 import SizeRadioGroup from '@/components/formControls/SizeRadioGroup.vue'
 
-const panels = [
-	{
-		key: 'styles',
-		component: StyleRadioGroup,
-		title: 'pages.shop.filter.sectionsTitles.style',
-	},
-]
-
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const route = useRoute()
 const router = useRouter()
@@ -120,6 +112,9 @@ const hasQueryFilters = computed(() => {
 
 watch(filter.value, () => {
 	router.push({ query: serializedFilter.value })
+})
+watch(locale, async () => {
+	await getFacetOptions()
 })
 //========================================================================================================================================================
 

@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { useAuthStore } from '@/stores/auth'
+import { useI18n } from 'vue-i18n'
+import i18n from '@/plugins/i18n'
 import router from '@/router'
 
 const API_VERSION = import.meta.env.VITE_APP_API_VERSION
@@ -22,6 +24,15 @@ apiClient.interceptors.request.use(
 		if (token) {
 			config.headers.Authorization = `Bearer ${token}`
 		}
+		return config
+	},
+	(error) => Promise.reject(error),
+)
+
+apiClient.interceptors.request.use(
+	(config) => {
+		const locale = i18n.global.locale.value
+		config.headers['Accept-Language'] = locale
 		return config
 	},
 	(error) => Promise.reject(error),

@@ -7,6 +7,7 @@ const router = express.Router()
 router.get('/', ProductController.getAllProducts)
 
 router.get('/options', ProductController.getOptions)
+router.get('/styles', ProductController.getStyles)
 router.get('/detail/:id', ProductController.getProduct)
 
 export default router
