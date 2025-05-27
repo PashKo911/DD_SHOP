@@ -10,7 +10,7 @@ class QueryParser {
 	 * @returns {object[]} - Масив об'єктів фільтрів.
 	 */
 	static range(fieldName, filterValue) {
-		const [minValue, maxValue] = filterValue.split(',').map(Number)
+		const [minValue, maxValue] = filterValue.map(Number)
 
 		const filtersContent = []
 

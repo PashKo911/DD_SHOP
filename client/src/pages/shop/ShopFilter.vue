@@ -28,10 +28,9 @@
 				<accordion-content>
 					<slider-price
 						v-model="priceFilterValue"
-						v-if="facetOptionsValue.priceRange[0]"
-						:key="currency"
-						:min="facetOptionsValue.priceRange[0]"
-						:max="facetOptionsValue.priceRange[1]"
+						v-if="facetOptionsValue.price[0]"
+						:min="facetOptionsValue.price[0]"
+						:max="facetOptionsValue.price[1]"
 						@slideend="onSlideEnd"
 					/>
 				</accordion-content>
@@ -73,6 +72,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useFacetOptionsStore } from '@/stores/facetOptions'
 import { useFilterStore } from '@/stores/filter'
 import { useFilterModel } from '@/composables/useFilterModel'
+import { useProductsStore } from '@/stores/products'
 
 import FilterIcon from '@/components/icons/FilterIcon.vue'
 import Accordion from '@/components/accordion/Accordion.vue'
@@ -91,13 +91,16 @@ const router = useRouter()
 
 const filterStore = useFilterStore()
 const facetOptionsStore = useFacetOptionsStore()
+const productsStore = useProductsStore()
 
-const { setFilterProp, parseFilterFromQuery } = filterStore
-const { filter, serializedFilter, hasSelectedFilters } =
+const { getProducts } = productsStore
+
+const { setFilterProp, parseFilterFromQuery, resetPrice } = filterStore
+const { filter, displayFilterString, hasSelectedFilters } =
 	storeToRefs(filterStore)
 
 const { getFacetOptions } = facetOptionsStore
-const { facetOptionsValue, currency } = storeToRefs(facetOptionsStore)
+const { facetOptionsValue } = storeToRefs(facetOptionsStore)
 
 //========================================================================================================================================================
 const styleFilterValue = useFilterModel(filter.value, 'styles', setFilterProp)
@@ -110,11 +113,13 @@ const hasQueryFilters = computed(() => {
 })
 //========================================================================================================================================================
 
-watch(filter.value, () => {
-	router.push({ query: serializedFilter.value })
+watch(filter.value, async () => {
+	router.push({ query: displayFilterString.value })
+	await getProducts()
 })
 watch(locale, async () => {
 	await getFacetOptions()
+	resetPrice()
 })
 //========================================================================================================================================================
 
@@ -129,7 +134,7 @@ onMounted(async () => {
 		parseFilterFromQuery(route.query)
 	}
 	if (hasSelectedFilters.value) {
-		router.push({ query: serializedFilter.value })
+		router.push({ query: displayFilterString.value })
 	}
 })
 </script>

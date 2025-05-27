@@ -6,18 +6,17 @@ import DressStyleDBService from '../models/dressStyle/DressStyleDBService.mjs'
 import SizeDBService from '../models/size/SizeDBService.mjs'
 import GenderDBService from '../models/gender/GenderDBService.mjs'
 import ProductsDBService from '../models/product/ProductsDBService.mjs'
+import { getRate } from '../../../services/ratesCache.mjs'
 
 import FormatValidationErrors from '../../../validators/formatValidationErrors.mjs'
 
 class ProductController {
 	static async getAllProducts(req, res) {
 		try {
-			const filters = {}
+			const language = req.headers['accept-language']
+			const currency = req.headers.currency
 
-			for (const key in req.query) {
-				if (req.query[key]) filters[key] = req.query[key]
-			}
-			const productsList = await ProductsDBService.getList(filters)
+			const productsList = await ProductsDBService.getList(req.query, language, currency)
 			res.status(200).json({
 				products: productsList,
 			})
@@ -98,20 +97,21 @@ class ProductController {
 	static async getOptions(req, res) {
 		try {
 			const language = req.headers['accept-language']
+			const currency = req.headers.currency
 
 			const colors = await ColorsDBService.getList(language)
 			const sizes = await SizeDBService.getList()
 			const styles = await DressStyleDBService.getList(language)
 			const genders = await GenderDBService.getList({})
 
-			const priceRange = await ProductsDBService.getPriceRange()
+			const price = await ProductsDBService.getPriceRange(currency)
 
 			res.status(200).json({
 				genders,
 				styles,
 				colors,
 				sizes,
-				priceRange,
+				price,
 			})
 		} catch (error) {
 			console.error(error)

@@ -12,7 +12,7 @@
 				nextPageCallback,
 			}"
 		>
-			<div class="flex flex-wrap items-center justify-center gap-2">
+			<div class="flex flex-wrap items-center justify-center gap-3">
 				<SecondaryButton text @click="firstPageCallback" :disabled="page === 0">
 					<template #icon>
 						<AngleDoubleLeftIcon />
@@ -23,8 +23,11 @@
 						<AngleLeftIcon />
 					</template>
 				</SecondaryButton>
-				<div class="hidden items-center justify-center gap-2 sm:flex">
-					<SecondaryButton
+				<div class="items-center justify-center gap-3 sm:flex">
+					<span class="font-heading text-xl font-bold">
+						{{ `( ${t('buttons.paginator', { page: page + 1, pageCount })} )` }}
+					</span>
+					<!-- <SecondaryButton
 						v-for="pageLink of pageLinks"
 						:key="pageLink"
 						:text="page + 1 !== pageLink"
@@ -36,7 +39,7 @@
 							},
 						]"
 						>{{ pageLink }}
-					</SecondaryButton>
+					</SecondaryButton> -->
 				</div>
 				<SecondaryButton
 					text
@@ -67,6 +70,7 @@
 <script setup>
 import { computed } from 'vue'
 import { ptViewMerge } from '@/utils/volt'
+import { useI18n } from 'vue-i18n'
 
 import AngleDoubleLeftIcon from '@primevue/icons/angledoubleleft'
 import AngleDoubleRightIcon from '@primevue/icons/angledoubleright'
@@ -77,7 +81,9 @@ import SecondaryButton from '../ui/secondaryButton/SecondaryButton.vue'
 
 const ptOptions = computed(() => ({ mergeProps: ptViewMerge }))
 
-const activeButtonClass = 'bg-primary hover:bg-primary! text-white!'
+const { t } = useI18n()
+
+// const activeButtonClass = 'bg-primary hover:bg-primary! text-white!'
 
 const theme = {
 	root: `flex items-center justify-center flex-wrap py-2 gap-1`,

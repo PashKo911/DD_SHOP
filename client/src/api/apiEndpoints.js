@@ -1,5 +1,6 @@
 const apiEndpoints = {
 	products: {
+		getProducts: '/products',
 		getOptions: '/products/options',
 		getStyles: '/products/styles',
 	},

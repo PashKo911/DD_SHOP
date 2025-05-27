@@ -36,8 +36,10 @@
 		},
 		"shop": {
 			"title": {
-				"menu": "Магазин"
+				"menu": "shop",
+				"countTitle": "Found {count} products"
 			},
+
 			"filter": {
 				"title": "Filters",
 				"sectionsTitles": {
@@ -251,7 +253,8 @@
 		"hide": "hide",
 		"nextSlide": "Next slide",
 		"prevSlide": "Previous slide",
-		"shopNow": "shop now"
+		"shopNow": "shop now",
+		"paginator": "Page {page} of {pageCount}"
 	},
 	"placeholders": {
 		"search": "Search",

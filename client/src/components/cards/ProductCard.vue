@@ -1,9 +1,12 @@
 <template>
-	<article class="flex h-full flex-col">
+	<RouterLink
+		:to="{ name: 'productDetail', params: { productId: data._id } }"
+		class="flex h-full flex-col"
+	>
 		<div
-			class="grid aspect-square place-items-center rounded-2xl bg-white shadow-lg not-last:mb-4"
+			class="aspect-square overflow-hidden rounded-2xl bg-white shadow-lg not-last:mb-4"
 		>
-			<img :src="data.imgSrc" :alt="data.title" />
+			<img :src="`${API_BASE}${data.paths[0]}`" :alt="data.title" />
 		</div>
 		<div class="grow not-last:mb-2">
 			<h3 class="font-heading line-clamp-2 text-2xl font-bold">
@@ -29,13 +32,14 @@
 				:value="getDiscount(data.oldPrice, data.price)"
 			/>
 		</div>
-	</article>
+	</RouterLink>
 </template>
 
 <script setup>
 import RatingComp from '@/components/ui/rating/RatingComp.vue'
 import Badge from '@/components/ui/budge/Badge.vue'
 import getDiscount from '@/utils/getDiscount'
+import { API_BASE } from '@/config/apiConfig'
 
 defineProps({
 	data: {

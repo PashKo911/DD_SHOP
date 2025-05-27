@@ -167,7 +167,6 @@ const resolver = ref(yupResolver(schema))
 
 const onFormSubmit = ({ values, valid }) => {
 	if (valid) {
-		console.log(values)
 		toast.add({
 			severity: 'success',
 			summary: 'Form is submitted.',

@@ -5,7 +5,6 @@ const colorSchema = new Schema({
 	label: {
 		type: String,
 		required: [true, 'Color label is required'],
-		unique: true,
 		trim: true,
 		set: (v) => v.toLowerCase(),
 	},

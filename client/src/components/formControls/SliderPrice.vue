@@ -94,9 +94,17 @@ const isValid = computed(() => {
 })
 
 watch(price, () => {
-	localPrice.value = [...price.value]
+	if (price.value.length) {
+		localPrice.value = [...price.value]
+	}
 })
 
+watch(
+	() => [props.min, props.max],
+	() => {
+		localPrice.value = [props.min, props.max]
+	},
+)
 watch(localPrice, ([newMin, newMax], [prevMin, prevMax]) => {
 	if (newMin >= newMax) {
 		localPrice.value = [prevMin, prevMax]

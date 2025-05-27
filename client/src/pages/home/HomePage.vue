@@ -17,24 +17,24 @@
 				</ul>
 			</div>
 		</div>
-		<div class="not-last:mb-80-50 container">
+		<!-- <div class="not-last:mb-80-50 container">
 			<slider-base
 				:items="sliderData"
 				:title="t('pages.home.sectionTitles.newArrivals')"
 			/>
-		</div>
+		</div> -->
 		<div class="not-last:mb-80-50">
 			<img
 				src="@/assets/img/hero/black-friday-section.webp"
 				:alt="t('pages.home.sectionTitles.blackFriday')"
 			/>
 		</div>
-		<div class="not-last:mb-100-60 container">
+		<!-- <div class="not-last:mb-100-60 container">
 			<slider-base
 				:items="sliderData"
 				:title="t('pages.home.sectionTitles.topSelling')"
 			/>
-		</div>
+		</div> -->
 		<div class="not-last:mb-100-60 container">
 			<home-dress-style-section class="not-last:mb-80-50" />
 		</div>
@@ -44,7 +44,7 @@
 				:alt="t('pages.home.imgAltAttr.newCollection')"
 			/>
 		</div>
-		<div class="not-last:mb-80-50 container">
+		<!-- <div class="not-last:mb-80-50 container">
 			<slider-base
 				:items="reviews"
 				:title="t('pages.home.sectionTitles.reviews')"
@@ -53,7 +53,7 @@
 					<review-card :review-data="item" />
 				</template>
 			</slider-base>
-		</div>
+		</div> -->
 	</main-layout>
 </template>
 

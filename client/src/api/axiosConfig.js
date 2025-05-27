@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useAuthStore } from '@/stores/auth'
-import { useI18n } from 'vue-i18n'
 import i18n from '@/plugins/i18n'
 import router from '@/router'
 
@@ -32,7 +31,12 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.request.use(
 	(config) => {
 		const locale = i18n.global.locale.value
-		config.headers['Accept-Language'] = locale
+		const { currency } = i18n.global.numberFormats.value[locale].currency
+		config.headers = {
+			...config.headers,
+			'Accept-Language': locale,
+			Currency: currency,
+		}
 		return config
 	},
 	(error) => Promise.reject(error),

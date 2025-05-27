@@ -9,14 +9,29 @@ export const useFilterStore = defineStore('filter', () => {
 	const { facetOptions } = storeToRefs(facetOptionsStore)
 
 	const filter = reactive({
-		text: '',
+		title: '',
 		styles: [],
 		price: [],
 		colors: [],
 		sizes: [],
+		page: 0,
+		perPage: 9,
 	})
-	const serializedFilter = computed(() => {
+
+	const displayFilterString = computed(() => {
 		return serializeFilter(filter, facetOptions.value)
+	})
+
+	const apiQueryParams = computed(() => {
+		return {
+			text: filter.text,
+			styles: filter.styles.join(','),
+			colors: filter.colors.join(','),
+			sizes: filter.sizes.join(','),
+			price: filter.price,
+			page: filter.page,
+			perPage: filter.perPage,
+		}
 	})
 
 	const hasSelectedFilters = computed(() => {
@@ -30,12 +45,17 @@ export const useFilterStore = defineStore('filter', () => {
 	const setFilterProp = (prop, value) => {
 		filter[prop] = value
 	}
+	const resetPrice = () => {
+		filter.price = []
+	}
 
 	return {
 		filter,
-		serializedFilter,
+		displayFilterString,
 		setFilterProp,
 		parseFilterFromQuery,
 		hasSelectedFilters,
+		apiQueryParams,
+		resetPrice,
 	}
 })

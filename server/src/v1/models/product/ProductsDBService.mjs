@@ -1,5 +1,6 @@
 import Product from './Product.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
+import { getRate } from '../../../../services/ratesCache.mjs'
 
 class ProductsDBService extends MongooseCRUDManager {
 	static fieldsConfigurations = [
@@ -29,9 +30,12 @@ class ProductsDBService extends MongooseCRUDManager {
 		},
 	]
 
-	async getList(reqQuery) {
+	async getList(reqQuery, language, currency) {
 		try {
-			// const res = await super.getList(filters, { title: 1, price: 1, count: 1, paths: 1 })
+			const rate = await getRate(currency)
+			if (reqQuery.price) {
+				reqQuery.price = [Math.floor(reqQuery.price[0] / rate), Math.ceil(reqQuery.price[1] / rate)]
+			}
 
 			const res = await this.findManyWithSearchOptions(reqQuery, ProductsDBService.fieldsConfigurations, {
 				title: 1,
@@ -55,9 +59,10 @@ class ProductsDBService extends MongooseCRUDManager {
 			throw new Error('Error finding data by id: ' + error.message)
 		}
 	}
-	async getPriceRange() {
+	async getPriceRange(currency) {
+		const rate = await getRate(currency)
 		try {
-			const result = await this.model.aggregate([
+			const [result] = await this.model.aggregate([
 				{
 					$group: {
 						_id: null,
@@ -65,13 +70,19 @@ class ProductsDBService extends MongooseCRUDManager {
 						maxPrice: { $max: '$price' },
 					},
 				},
+				{
+					$project: {
+						_id: 0,
+						minPrice: { $multiply: ['$minPrice', rate] },
+						maxPrice: { $multiply: ['$maxPrice', rate] },
+					},
+				},
 			])
 
 			if (result.length === 0) {
-				return { minPrice: 0, maxPrice: 0 }
+				throw new Error('Price range array is empty ' + error.message)
 			}
-
-			return [result[0].minPrice, result[0].maxPrice]
+			return [result.minPrice, result.maxPrice]
 		} catch (error) {
 			throw new Error('Error retrieving price range: ' + error.message)
 		}

@@ -4,7 +4,6 @@ import { useGeneralStore } from './general'
 import { useI18n } from 'vue-i18n'
 import apiClient from '@/api/axiosConfig'
 import apiEndpoints from '@/api/apiEndpoints'
-import exchangeRates from '@/locales/exchangeRates'
 
 export const useFacetOptionsStore = defineStore('facetOptions', () => {
 	const generalStore = useGeneralStore()
@@ -16,7 +15,7 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 		styles: [],
 		colors: [],
 		sizes: [],
-		priceRange: [],
+		price: [],
 	})
 
 	const availableStyles = ref()
@@ -29,16 +28,12 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 		return numberFormats.value[locale.value].currency
 	})
 
-	const exchangeRate = computed(() => {
-		return exchangeRates[currency.value.currency]
-	})
-
 	const facetOptionsValue = computed(() => {
 		return {
 			...facetOptions,
-			priceRange: [
-				parseInt(facetOptions.priceRange[0] * exchangeRate.value),
-				parseInt(facetOptions.priceRange[1] * exchangeRate.value),
+			price: [
+				Math.round(facetOptions.price[0]),
+				Math.round(facetOptions.price[1]),
 			],
 		}
 	})
@@ -66,7 +61,6 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 		facetOptions,
 		facetOptionsValue,
 		getFacetOptions,
-		exchangeRate,
 		currency,
 		availableStyles,
 		availableStylesValue,

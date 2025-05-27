@@ -36,7 +36,8 @@
 		},
 		"shop": {
 			"title": {
-				"menu": "Магазин"
+				"menu": "Магазин",
+				"countTitle": "Знайдено {count} товарів"
 			},
 			"filter": {
 				"title": "Фільтри",
@@ -250,7 +251,8 @@
 		"hide": "Приховати",
 		"nextSlide": "Наступний слайд",
 		"prevSlide": "Попередній слайд",
-		"shopNow": "до покупок"
+		"shopNow": "до покупок",
+		"paginator": "Сторінка {page} із {pageCount}"
 	},
 	"placeholders": {
 		"search": "Пошук",
