@@ -6,7 +6,6 @@ import DressStyleDBService from '../models/dressStyle/DressStyleDBService.mjs'
 import SizeDBService from '../models/size/SizeDBService.mjs'
 import GenderDBService from '../models/gender/GenderDBService.mjs'
 import ProductsDBService from '../models/product/ProductsDBService.mjs'
-import { getRate } from '../../../services/ratesCache.mjs'
 
 import FormatValidationErrors from '../../../validators/formatValidationErrors.mjs'
 

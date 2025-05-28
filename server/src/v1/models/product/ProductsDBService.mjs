@@ -1,6 +1,7 @@
 import Product from './Product.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
 import { getRate } from '../../../../services/ratesCache.mjs'
+import getDiscount from '../../../../utils/getDiscount.mjs'
 
 class ProductsDBService extends MongooseCRUDManager {
 	static fieldsConfigurations = [
@@ -33,24 +34,55 @@ class ProductsDBService extends MongooseCRUDManager {
 	async getList(reqQuery, language, currency) {
 		try {
 			const rate = await getRate(currency)
+
 			if (reqQuery.price) {
 				reqQuery.price = [Math.floor(reqQuery.price[0] / rate), Math.ceil(reqQuery.price[1] / rate)]
 			}
 
-			const res = await this.findManyWithSearchOptions(reqQuery, ProductsDBService.fieldsConfigurations, {
-				title: 1,
-				price: 1,
-				count: 1,
-				paths: 1,
-				gender: 1,
+			const { documents, count } = await this.findManyWithSearchOptions(
+				reqQuery,
+				ProductsDBService.fieldsConfigurations,
+				{
+					title: 1,
+					price: 1,
+					oldPrice: 1,
+					count: 1,
+					paths: 1,
+					description: 1,
+					gender: 1,
+				}
+			)
+
+			const localized = documents.map((doc) => {
+				const obj = doc.toObject()
+				return this.formatDocumentData(obj, language, currency, rate)
 			})
 
-			return res
+			return { documents: localized, count }
 		} catch (error) {
 			console.error(error)
-			return []
+			return { documents: [], count: 0 }
 		}
 	}
+
+	formatDocumentData(product, language, currency, rate) {
+		const formatter = new Intl.NumberFormat(language === 'uk' ? 'uk-UA' : 'en-US', {
+			style: 'currency',
+			currency,
+			maximumFractionDigits: 0,
+		})
+
+		const exchangedPrice = Math.round(product.price * rate)
+
+		return {
+			...product,
+			title: product.title[language],
+			description: product.description[language],
+			price: formatter.format(exchangedPrice),
+			discount: getDiscount(product.oldPrice, product.price),
+		}
+	}
+
 	async getById(id) {
 		try {
 			const res = await super.getById(id, {}, ['colors', 'styles', 'gender', 'sizes'])

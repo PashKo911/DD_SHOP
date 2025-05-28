@@ -1,15 +1,26 @@
 import mongoose from 'mongoose'
 const { Schema } = mongoose
 
+const localizedString = (field, min, max) => ({
+	en: {
+		type: String,
+		required: [true, `${field} (en) is required`],
+		minlength: [min, `${field} (en) must be at least ${min} characters long`],
+		maxlength: max ? [max, `${field} (en) must be at most ${max} characters long`] : undefined,
+		trim: true,
+	},
+	uk: {
+		type: String,
+		required: [true, `${field} (uk) is required`],
+		minlength: [min, `${field} (uk) must be at least ${min} characters long`],
+		maxlength: max ? [max, `${field} (uk) must be at most ${max} characters long`] : undefined,
+		trim: true,
+	},
+})
+
 const productSchema = new Schema(
 	{
-		title: {
-			type: String,
-			required: [true, 'Title is required'],
-			minlength: [3, 'Title must be at least 3 characters long'],
-			maxlength: [50, 'Title must be at most 50 characters long'],
-			trim: true,
-		},
+		title: localizedString('Title', 3, 50),
 		price: {
 			type: Number,
 			required: [true, 'Price is required'],
@@ -25,11 +36,7 @@ const productSchema = new Schema(
 			required: [true, 'Rating is required'],
 			min: [2, 'Rating must be at least 2'],
 		},
-		description: {
-			type: String,
-			required: [true, 'Description is required'],
-			minlength: [10, 'Description must be at least 3 characters long'],
-		},
+		description: localizedString('Description', 10, 1000),
 		paths: {
 			type: [String],
 			required: [true, 'Images are required'],

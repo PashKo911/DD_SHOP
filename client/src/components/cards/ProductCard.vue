@@ -16,20 +16,14 @@
 		<rating-comp v-model="data.rating" readonly class="not-last:mb-2" />
 		<div class="flex flex-wrap items-center gap-3 not-last:mb-4">
 			<span class="text-2xl leading-tight font-semibold">
-				${{ data.price }}
-			</span>
-			<span
-				v-show="getDiscount(data.oldPrice, data.price)"
-				class="text-dark-grey text-2xl leading-tight font-semibold line-through decoration-2"
-			>
-				${{ data.oldPrice }}
+				{{ data.price }}
 			</span>
 			<Badge
-				v-show="getDiscount(data.oldPrice, data.price)"
+				v-if="data.discount"
 				severity="success"
 				circle
 				size="xlarge"
-				:value="getDiscount(data.oldPrice, data.price)"
+				:value="data.discount"
 			/>
 		</div>
 	</RouterLink>
@@ -38,7 +32,6 @@
 <script setup>
 import RatingComp from '@/components/ui/rating/RatingComp.vue'
 import Badge from '@/components/ui/budge/Badge.vue'
-import getDiscount from '@/utils/getDiscount'
 import { API_BASE } from '@/config/apiConfig'
 
 defineProps({
