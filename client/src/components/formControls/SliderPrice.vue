@@ -59,7 +59,7 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import debounce from '@/utils/debounce'
 
 import InputNumber from '@/components/ui/inputNumber/InputNumber.vue'
@@ -120,4 +120,10 @@ function onInput({ value }, idx) {
 	localPrice.value[idx] = value
 	debouncedPriceChange({ value: [...localPrice.value] })
 }
+//========================================================================================================================================================
+onMounted(() => {
+	if (price.value.length) {
+		localPrice.value = [...price.value]
+	}
+})
 </script>
