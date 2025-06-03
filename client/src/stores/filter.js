@@ -2,13 +2,17 @@ import { defineStore } from 'pinia'
 import { reactive, computed } from 'vue'
 import { useFacetOptionsStore } from './facetOptions'
 import { storeToRefs } from 'pinia'
+import { useRoute } from 'vue-router'
+
 import { serializeFilter, parseFilter } from '@/utils/filterHelpers'
 
 export const useFilterStore = defineStore('filter', () => {
+	const route = useRoute()
 	const facetOptionsStore = useFacetOptionsStore()
 	const { facetOptions } = storeToRefs(facetOptionsStore)
 
 	const filter = reactive({
+		gender: '',
 		title: '',
 		styles: [],
 		price: [],
@@ -24,7 +28,8 @@ export const useFilterStore = defineStore('filter', () => {
 
 	const apiQueryParams = computed(() => {
 		return {
-			text: filter.text,
+			gender: filter.gender,
+			title: filter.title,
 			styles: filter.styles.join(','),
 			colors: filter.colors.join(','),
 			sizes: filter.sizes.join(','),
@@ -35,7 +40,15 @@ export const useFilterStore = defineStore('filter', () => {
 	})
 
 	const hasSelectedFilters = computed(() => {
-		return Object.values(filter).some((f) => f.length)
+		return Object.keys(filter).some((k) => {
+			if (Array.isArray(filter[k])) return filter[k].length
+			if (k === 'perPage') return false
+			return Boolean(filter[k])
+		})
+	})
+
+	const hasQueryFilters = computed(() => {
+		return Object.keys(route.query).length
 	})
 
 	function parseFilterFromQuery(query) {
@@ -55,6 +68,7 @@ export const useFilterStore = defineStore('filter', () => {
 		setFilterProp,
 		parseFilterFromQuery,
 		hasSelectedFilters,
+		hasQueryFilters,
 		apiQueryParams,
 		resetPrice,
 	}

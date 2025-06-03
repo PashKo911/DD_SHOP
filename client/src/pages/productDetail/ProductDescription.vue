@@ -37,7 +37,7 @@
 				severity="success"
 				circle
 				size="xlarge"
-				:value="getDiscount(productData.oldPrice, productData.price)"
+				:value="productData.discount"
 			/>
 		</div>
 		<div
@@ -129,7 +129,6 @@ import { useI18n } from 'vue-i18n'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 import * as yup from 'yup'
 import { useToast } from 'primevue/usetoast'
-import getDiscount from '@/utils/getDiscount'
 
 import RatingComp from '@/components/ui/rating/RatingComp.vue'
 import SizeRadioGroup from '@/components/formControls/SizeRadioGroup.vue'

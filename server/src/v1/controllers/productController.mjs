@@ -12,12 +12,26 @@ import FormatValidationErrors from '../../../validators/formatValidationErrors.m
 class ProductController {
 	static async getAllProducts(req, res) {
 		try {
+			console.log('GET PRODUCTS CHECKING ++++++++++++++++++++++++++')
 			const language = req.headers['accept-language']
 			const currency = req.headers.currency
+			const data = await ProductsDBService.getList(req.query, language, currency)
 
-			const productsList = await ProductsDBService.getList(req.query, language, currency)
 			res.status(200).json({
-				products: productsList,
+				data,
+			})
+		} catch (error) {
+			res.status(500).json({ error: 'Error fetching products' })
+		}
+	}
+	static async getSuggestions(req, res) {
+		try {
+			const language = req.headers['accept-language']
+			const currency = req.headers.currency
+			const data = await ProductsDBService.getSuggestions(req.query, language, currency)
+
+			res.status(200).json({
+				data,
 			})
 		} catch (error) {
 			res.status(500).json({ error: 'Error fetching products' })

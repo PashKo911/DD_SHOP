@@ -166,6 +166,9 @@
 		},
 		"reviews": {
 			"postedOn": "Опубліковано: {date}"
+		},
+		"mainSearchInput": {
+			"suggestionTitle": "{title}? {gender}"
 		}
 	},
 	"accessibility": {

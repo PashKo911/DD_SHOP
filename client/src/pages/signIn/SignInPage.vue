@@ -1,18 +1,14 @@
 <template>
-	<main-layout>
+	<div
+		class="relative bg-[url(@/assets/img/auth/sign-in.jpg)] bg-cover bg-[20%] xl:bg-left-top"
+	>
+		<div class="absolute inset-0 bg-black/30 backdrop-blur-md md:hidden"></div>
 		<div
-			class="relative bg-[url(@/assets/img/auth/sign-in.jpg)] bg-cover bg-[20%] xl:bg-left-top"
+			class="container flex min-h-[calc(100svh_-_7.375rem)] items-center justify-end pt-7 pb-8 md:min-h-[calc(100svh_-_8.75rem)] lg:min-h-[calc(100svh_-_6.125rem)]"
 		>
-			<div
-				class="absolute inset-0 bg-black/30 backdrop-blur-md md:hidden"
-			></div>
-			<div
-				class="container flex min-h-[calc(100svh_-_7.375rem)] items-center justify-end pt-7 pb-8 md:min-h-[calc(100svh_-_8.75rem)] lg:min-h-[calc(100svh_-_6.125rem)]"
-			>
-				<sign-in-form class="md:w-md-670-450 relative" />
-			</div>
+			<sign-in-form class="md:w-md-670-450 relative" />
 		</div>
-	</main-layout>
+	</div>
 </template>
 
 <script setup>

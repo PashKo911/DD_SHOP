@@ -12,6 +12,7 @@
 				v-if="isPaginatorVisible"
 				:rows="filter.perPage"
 				:totalRecords="count"
+				v-model="filter.page"
 				@page="onPageChange"
 			/>
 		</div>
@@ -22,12 +23,13 @@
 import { useProductsStore } from '@/stores/products'
 import { useFilterStore } from '@/stores/filter'
 import { useI18n } from 'vue-i18n'
+import { useRoute, useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { computed, onMounted } from 'vue'
 
 import ShopFilter from './ShopFilter.vue'
 import ShopList from './ShopList.vue'
 import Paginator from '@/components/paginator/Paginator.vue'
-import { storeToRefs } from 'pinia'
-import { computed, onMounted } from 'vue'
 
 const props = defineProps({
 	category: {
@@ -37,12 +39,13 @@ const props = defineProps({
 
 const productsStore = useProductsStore()
 const filterStore = useFilterStore()
-const { t } = useI18n()
+const route = useRouter()
+const { t } = useI18n({ useScope: 'global' })
 
 const { productsValue, count } = storeToRefs(productsStore)
 const { getProducts } = productsStore
 
-const { filter } = storeToRefs(filterStore)
+const { filter, hasSelectedFilters, hasQueryFilters } = storeToRefs(filterStore)
 const { setFilterProp } = filterStore
 
 const isPaginatorVisible = computed(() => {
@@ -54,6 +57,8 @@ const onPageChange = ({ page }) => {
 }
 
 onMounted(async () => {
-	await getProducts()
+	if (!hasQueryFilters.value && !hasSelectedFilters.value) {
+		await getProducts()
+	}
 })
 </script>

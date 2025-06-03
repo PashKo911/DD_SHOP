@@ -62,7 +62,12 @@ class QueryParser {
 	static filtersParser(fieldsConfigurations, query) {
 		const filters = []
 		fieldsConfigurations.forEach(({ fieldName, filterCategory }) => {
-			if (query[fieldName]) filters.push(...this[filterCategory](fieldName, query[fieldName]))
+			let rootFieldName = fieldName
+
+			if (fieldName.includes('.')) {
+				rootFieldName = fieldName.split('.')[0]
+			}
+			if (query[rootFieldName]) filters.push(...this[filterCategory](fieldName, query[rootFieldName]))
 		})
 		return filters
 	}
@@ -86,6 +91,8 @@ class QueryParser {
 	static parseQuery(query, fieldsConfigurations) {
 		const filters = this.filtersParser(fieldsConfigurations, query)
 		const actions = this.actionsParser(query)
+		// console.log('filters ++++++++')
+		// console.log(filters)
 		return { filters, actions }
 	}
 }

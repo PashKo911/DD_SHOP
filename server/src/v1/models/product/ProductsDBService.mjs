@@ -6,12 +6,12 @@ import getDiscount from '../../../../utils/getDiscount.mjs'
 class ProductsDBService extends MongooseCRUDManager {
 	static fieldsConfigurations = [
 		{
-			fieldName: 'title',
-			filterCategory: 'search',
-		},
-		{
 			fieldName: 'gender',
 			filterCategory: 'list',
+		},
+		{
+			fieldName: 'title.{lang}',
+			filterCategory: 'search',
 		},
 		{
 			fieldName: 'price',
@@ -31,27 +31,32 @@ class ProductsDBService extends MongooseCRUDManager {
 		},
 	]
 
+	static getFieldsConfigurations(language) {
+		return this.fieldsConfigurations.map((cfg) => ({
+			...cfg,
+			fieldName: cfg.fieldName.replace('{lang}', language),
+		}))
+	}
+
 	async getList(reqQuery, language, currency) {
 		try {
 			const rate = await getRate(currency)
+			const fieldsConfigurations = ProductsDBService.getFieldsConfigurations(language)
 
 			if (reqQuery.price) {
 				reqQuery.price = [Math.floor(reqQuery.price[0] / rate), Math.ceil(reqQuery.price[1] / rate)]
 			}
 
-			const { documents, count } = await this.findManyWithSearchOptions(
-				reqQuery,
-				ProductsDBService.fieldsConfigurations,
-				{
-					title: 1,
-					price: 1,
-					oldPrice: 1,
-					count: 1,
-					paths: 1,
-					description: 1,
-					gender: 1,
-				}
-			)
+			const { documents, count } = await this.findManyWithSearchOptions(reqQuery, fieldsConfigurations, {
+				title: 1,
+				price: 1,
+				oldPrice: 1,
+				count: 1,
+				paths: 1,
+				rating: 1,
+				description: 1,
+				gender: 1,
+			})
 
 			const localized = documents.map((doc) => {
 				const obj = doc.toObject()
@@ -59,6 +64,28 @@ class ProductsDBService extends MongooseCRUDManager {
 			})
 
 			return { documents: localized, count }
+		} catch (error) {
+			console.error(error)
+			return { documents: [], count: 0 }
+		}
+	}
+
+	async getSuggestions(reqQuery, language, currency) {
+		try {
+			const fieldsConfigurations = ProductsDBService.getFieldsConfigurations(language)
+
+			const { documents } = await this.findManyWithSearchOptions(
+				reqQuery,
+				fieldsConfigurations,
+				{
+					title: 1,
+					gender: 1,
+					_id: 0,
+				},
+				['gender']
+			)
+			const res = documents.map((d) => ({ title: d.title[language], gender: d.gender }))
+			return res
 		} catch (error) {
 			console.error(error)
 			return { documents: [], count: 0 }

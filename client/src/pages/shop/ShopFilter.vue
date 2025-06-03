@@ -96,21 +96,18 @@ const productsStore = useProductsStore()
 const { getProducts } = productsStore
 
 const { setFilterProp, parseFilterFromQuery, resetPrice } = filterStore
-const { filter, displayFilterString, hasSelectedFilters } =
+const { filter, displayFilterString, hasSelectedFilters, hasQueryFilters } =
 	storeToRefs(filterStore)
 
 const { getFacetOptions } = facetOptionsStore
 const { facetOptionsValue } = storeToRefs(facetOptionsStore)
 
 //========================================================================================================================================================
-const styleFilterValue = useFilterModel(filter.value, 'styles', setFilterProp)
-const priceFilterValue = useFilterModel(filter.value, 'price', setFilterProp)
-const colorFilterValue = useFilterModel(filter.value, 'colors', setFilterProp)
-const sizeFilterValue = useFilterModel(filter.value, 'sizes', setFilterProp)
+const styleFilterValue = useFilterModel('styles')
+const priceFilterValue = useFilterModel('price')
+const colorFilterValue = useFilterModel('colors')
+const sizeFilterValue = useFilterModel('sizes')
 
-const hasQueryFilters = computed(() => {
-	return Object.keys(route.query).length
-})
 //========================================================================================================================================================
 
 watch(filter.value, async () => {

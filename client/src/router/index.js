@@ -6,6 +6,17 @@ import shopRoutes from './routes/shopRoutes'
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
+	scrollBehavior(to, from) {
+		const pathFrom = from.path
+		const pageFrom = from.query.page ?? null
+		const pathTo = to.path
+		const pageTo = to.query.page ?? null
+
+		if (pathFrom === pathTo && pageFrom !== pageTo) {
+			return { left: 0, top: 0, behavior: 'smooth' }
+		}
+		return { top: 0, left: 0 }
+	},
 	routes: [
 		{
 			path: '/',
@@ -41,4 +52,16 @@ const router = createRouter({
 	],
 })
 
+// router.beforeEach(async (to, from) => {
+// 	if (document.documentElement.classList.contains('menu-open')) {
+// 		document.documentElement.classList.remove('menu-open')
+// 	}
+// 	return true
+// })
+
+router.afterEach((to, from) => {
+	if (document.documentElement.classList.contains('menu-open')) {
+		document.documentElement.classList.remove('menu-open')
+	}
+})
 export default router

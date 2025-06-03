@@ -10,7 +10,8 @@
 			<InputText
 				:tabindex="1"
 				:placeholder="$t('placeholders.search')"
-				pt:root="rounded-[1.0625rem]"
+				pt:root="rounded-md"
+				v-model="model"
 				size="small"
 				icon-field
 				fluid
@@ -23,4 +24,6 @@
 <script setup>
 import SearchIcon from '../icons/SearchIcon.vue'
 import InputText from '../ui/inputText/InputText.vue'
+
+const model = defineModel()
 </script>

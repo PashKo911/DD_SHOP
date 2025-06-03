@@ -17,7 +17,7 @@
 				</router-link>
 				<header-menu-list :menuItems="menuItems" class="md:order-2" />
 				<teleport defer :to="searchInputPosition">
-					<icon-field class="z-30 order-3 min-w-[8.125rem] grow" />
+					<MainSearchInput />
 				</teleport>
 				<div
 					id="headerActions"
@@ -55,23 +55,24 @@
 			</div>
 			<div id="headerBottom" class="lg:hidden"></div>
 		</div>
+		<div
+			class="overlay-active:block overlay-active:opacity-100 pointer-events-none fixed inset-0 z-[100] hidden bg-black/30 opacity-0 transition-opacity duration-120"
+		></div>
 	</header>
 </template>
 
 <script setup>
-import CartIcon from '@/components/icons/CartIcon.vue'
-import SignInIcon from '@/components/icons/SignInIcon.vue'
-import IconField from '@/components/formControls/IconField.vue'
-import HeaderMenuList from './HeaderMenuList.vue'
-import HeaderLanguageSelect from './HeaderLanguageSelect.vue'
-
-import { onBeforeRouteLeave } from 'vue-router'
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
-import { useMenuItems } from '@/composables/useMenuItems'
+import { useMenuItems } from '@/utils/headerMenuGenerator'
 import { useMediaQuery } from '@/composables/useMediaQuery'
-import HeaderMenuVisibilityToggler from './HeaderMenuVisibilityToggler.vue'
 
+import CartIcon from '@/components/icons/CartIcon.vue'
+import SignInIcon from '@/components/icons/SignInIcon.vue'
+import HeaderMenuList from './HeaderMenuList.vue'
+import HeaderLanguageSelect from './HeaderLanguageSelect.vue'
+import HeaderMenuVisibilityToggler from './HeaderMenuVisibilityToggler.vue'
+import MainSearchInput from '@/components/formControls/MainSearchInput.vue'
 const route = useRoute()
 const { menuItems } = useMenuItems()
 
@@ -93,9 +94,4 @@ const curtPosition = computed(() => {
 const menuVisibilityToggler = () => {
 	document.documentElement.classList.toggle('menu-open')
 }
-
-onBeforeRouteLeave((to, from, next) => {
-	document.documentElement.classList.remove('menu-open')
-	next()
-})
 </script>

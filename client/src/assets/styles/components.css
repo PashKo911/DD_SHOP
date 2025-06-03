@@ -24,6 +24,11 @@
 		overscroll-behavior: none;
 		overflow: hidden;
 	}
+	.overlay-active body {
+		touch-action: none;
+		overscroll-behavior: none;
+		overflow: hidden;
+	}
 }
 
 @layer components {
@@ -44,8 +49,4 @@
 			min-width: 0;
 		}
 	}
-}
-
-.p-dark {
-	color-scheme: dark;
 }

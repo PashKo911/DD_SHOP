@@ -1,4 +1,3 @@
-import { computed } from 'vue'
 import router from '@/router'
 
 const SHOP_CATEGORIES = ['women', 'men']
@@ -37,7 +36,7 @@ export function useMenuItems() {
 		})
 	}
 
-	const menuItems = computed(() => recurse(declaredRoutes))
+	const menuItems = recurse(declaredRoutes)
 
 	return { menuItems }
 }

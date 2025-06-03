@@ -167,6 +167,9 @@
 		},
 		"reviews": {
 			"postedOn": "Posted: {date}"
+		},
+		"mainSearchInput": {
+			"suggestionTitle": "{title} | {gender}"
 		}
 	},
 	"accessibility": {

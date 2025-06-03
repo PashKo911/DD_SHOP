@@ -1,6 +1,14 @@
 export function serializeFilter(filter, options) {
 	if (!Object.keys(options).length) return {}
 	return Object.entries(filter).reduce((q, [key, val]) => {
+		if (key === 'page' && val > 0) {
+			q[key] = Number(val) + 1
+			return q
+		}
+		if (!Array.isArray(val) && key !== 'perPage' && key !== 'gender' && val) {
+			q[key] = val
+			return q
+		}
 		const arr = Array.isArray(val) ? val : []
 		if (!arr.length) return q
 
@@ -29,7 +37,13 @@ export function parseFilter(query, filter, facetOptions) {
 
 		const values = val.split(',').filter(Boolean)
 
-		if (key === 'price') {
+		if (!Array.isArray(facetOptions[key])) {
+			if (key === 'page') {
+				filter[key] = Number(val) - 1
+				continue
+			}
+			filter[key] = val
+		} else if (key === 'price') {
 			filter[key] = values.map(Number)
 		} else {
 			const options = Array.isArray(facetOptions[key]) ? facetOptions[key] : []

@@ -13,19 +13,29 @@
 			}"
 		>
 			<div class="flex flex-wrap items-center justify-center gap-3">
-				<SecondaryButton text @click="firstPageCallback" :disabled="page === 0">
+				<SecondaryButton
+					text
+					@click="firstPageCallback"
+					:disabled="model === 0"
+				>
 					<template #icon>
 						<AngleDoubleLeftIcon />
 					</template>
 				</SecondaryButton>
-				<SecondaryButton text @click="prevPageCallback" :disabled="page === 0">
+				<SecondaryButton
+					text
+					@click="() => changePageCallback(model - 1)"
+					:disabled="model === 0"
+				>
 					<template #icon>
 						<AngleLeftIcon />
 					</template>
 				</SecondaryButton>
 				<div class="items-center justify-center gap-3 sm:flex">
 					<span class="font-heading text-xl font-bold">
-						{{ `( ${t('buttons.paginator', { page: page + 1, pageCount })} )` }}
+						{{
+							`( ${t('buttons.paginator', { page: model + 1, pageCount })} )`
+						}}
 					</span>
 					<!-- <SecondaryButton
 						v-for="pageLink of pageLinks"
@@ -43,8 +53,8 @@
 				</div>
 				<SecondaryButton
 					text
-					@click="nextPageCallback"
-					:disabled="page === pageCount - 1"
+					@click="() => changePageCallback(model + 1)"
+					:disabled="model === pageCount - 1"
 				>
 					<template #icon>
 						<AngleRightIcon />
@@ -53,7 +63,7 @@
 				<SecondaryButton
 					text
 					@click="lastPageCallback"
-					:disabled="page === pageCount - 1"
+					:disabled="model === pageCount - 1"
 				>
 					<template #icon>
 						<AngleDoubleRightIcon />
@@ -82,6 +92,8 @@ import SecondaryButton from '../ui/secondaryButton/SecondaryButton.vue'
 const ptOptions = computed(() => ({ mergeProps: ptViewMerge }))
 
 const { t } = useI18n()
+
+const model = defineModel()
 
 // const activeButtonClass = 'bg-primary hover:bg-primary! text-white!'
 

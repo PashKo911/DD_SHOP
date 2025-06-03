@@ -1,40 +1,49 @@
-import { ref, computed } from 'vue'
+import { ref, computed, reactive } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useGeneralStore = defineStore('general', () => {
-	const loading = ref(null)
-	const error = ref(null)
+	const loadingStates = reactive({})
+	const errorStates = reactive({})
 
-	const isLoading = computed(() => loading.value)
-	const hasError = computed(() => error.value)
+	function isLoading(operationName) {
+		return Boolean(loadingStates[operationName])
+	}
+	function hasError(operationName) {
+		return errorStates[operationName] || null
+	}
 
-	function setLoading(val) {
-		loading.value = val
+	function setLoading(operationName, val) {
+		loadingStates[operationName] = val
 	}
-	function setError(val) {
-		error.value = val
+	function setError(operationName, val) {
+		errorStates[operationName] = val
 	}
-	function startLoading() {
-		setLoading(true)
-		setError(null)
+	function startLoading(operationName) {
+		setLoading(operationName, true)
+		setError(operationName, null)
 	}
 
 	async function generalApiOperation({
+		operationName,
 		operation,
 		successCallback,
-		errorCallBack,
+		errorCallback,
 	}) {
-		startLoading()
+		if (!operationName) {
+			throw new Error('generalApiOperation: operationName is required')
+		}
+
+		startLoading(operationName)
 
 		try {
 			const res = await operation()
 			if (successCallback) successCallback(res)
 			return res
-		} catch (error) {
-			setError(error)
-			if (errorCallBack) errorCallBack(error)
+		} catch (err) {
+			setError(operationName, err)
+			if (errorCallback) errorCallback(err)
 		} finally {
-			setLoading(false)
+			setLoading(operationName, false)
 		}
 	}
 
