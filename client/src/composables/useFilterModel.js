@@ -13,7 +13,6 @@ export function useFilterModel(prop) {
 		},
 		set(newVal) {
 			setFilterProp(prop, newVal)
-			setFilterProp('page', 0)
 		},
 	})
 }

@@ -56,6 +56,9 @@ export const useFilterStore = defineStore('filter', () => {
 	}
 
 	const setFilterProp = (prop, value) => {
+		if (prop !== 'page' && filter.page !== 0) {
+			filter.page = 0
+		}
 		filter[prop] = value
 	}
 	const resetPrice = () => {

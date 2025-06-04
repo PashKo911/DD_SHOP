@@ -13,7 +13,13 @@ export function serializeFilter(filter, options) {
 		if (!arr.length) return q
 
 		if (key === 'price') {
-			q.price = arr.join(',')
+			const [min, max] = arr
+			const [optionsMin, optionsMax] = options[key]
+
+			if (min !== optionsMin || max !== optionsMax) {
+				q.price = arr.join(',')
+			}
+
 			return q
 		}
 

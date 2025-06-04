@@ -19,10 +19,9 @@
 			<shop-list :items="productsValue" class="mb-8" />
 			<paginator
 				v-if="isPaginatorVisible"
-				v-model="filter.page"
+				v-model:first="pageFilterValue"
 				:rows="filter.perPage"
 				:totalRecords="count"
-				@page="onPageChange"
 			/>
 		</div>
 	</div>
@@ -71,6 +70,16 @@ const styleFilterValue = useFilterModel('styles')
 const priceFilterValue = useFilterModel('price')
 const colorFilterValue = useFilterModel('colors')
 const sizeFilterValue = useFilterModel('sizes')
+
+const pageFilterValue = computed({
+	get() {
+		return filter.value.page * filter.value.perPage
+	},
+	set(newVal) {
+		const newPage = Math.floor(newVal / filter.value.perPage)
+		setFilterProp('page', newPage)
+	},
+})
 //========================================================================================================================================================
 
 watch(filter.value, async () => {
@@ -82,12 +91,6 @@ watch(locale, async () => {
 	await getFacetOptions()
 	resetPrice()
 })
-//========================================================================================================================================================
-
-const onPageChange = ({ page }) => {
-	console.log(page)
-	setFilterProp('page', page)
-}
 //========================================================================================================================================================
 
 onMounted(async () => {
