@@ -38,6 +38,8 @@ export function serializeFilter(filter, options) {
 
 export function parseFilter(query, filter, facetOptions) {
 	for (const key of Object.keys(filter)) {
+		if (key === 'gender') continue
+
 		const val = query[key]
 		if (typeof val !== 'string' || !val.length) continue
 

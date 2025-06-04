@@ -41,6 +41,13 @@ import { useFacetOptionsStore } from '@/stores/facetOptions'
 import ShopFilter from './ShopFilter.vue'
 import ShopList from './ShopList.vue'
 import Paginator from '@/components/paginator/Paginator.vue'
+
+const props = defineProps({
+	category: {
+		type: String,
+		required: true,
+	},
+})
 //========================================================================================================================================================
 
 const { t, locale } = useI18n()
@@ -91,10 +98,15 @@ watch(locale, async () => {
 	await getFacetOptions()
 	resetPrice()
 })
+watch(props, ({ category }) => {
+	setFilterProp('gender', category)
+})
 //========================================================================================================================================================
 
 onMounted(async () => {
 	await getFacetOptions()
+
+	setFilterProp('gender', props.category)
 
 	if (hasQueryFilters.value) {
 		parseFilterFromQuery(route.query)
@@ -104,6 +116,6 @@ onMounted(async () => {
 		router.push({ query: displayFilterString.value })
 	}
 
-	await getProducts()
+	// await getProducts()
 })
 </script>
