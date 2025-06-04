@@ -44,16 +44,6 @@ export const useProductsStore = defineStore('products', () => {
 		}))
 		return res
 	})
-	// const suggestionsValue = computed(() => {
-	// 	const res = suggestions.value.map((s) => ({
-	// 		title: s.title,
-	// 		formattedTitle: t('partials.mainSearchInput.suggestionTitle', {
-	// 			title: s.title,
-	// 			gender: s.gender.label[locale.value],
-	// 		}),
-	// 	}))
-	// 	return res
-	// })
 	const isSuggestionsLoading = computed(() => {
 		return isLoading('getSuggestions')
 	})

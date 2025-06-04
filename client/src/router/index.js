@@ -8,11 +8,9 @@ const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	scrollBehavior(to, from) {
 		const pathFrom = from.path
-		const pageFrom = from.query.page ?? null
 		const pathTo = to.path
-		const pageTo = to.query.page ?? null
 
-		if (pathFrom === pathTo && pageFrom !== pageTo) {
+		if (pathFrom === pathTo) {
 			return { left: 0, top: 0, behavior: 'smooth' }
 		}
 		return { top: 0, left: 0 }

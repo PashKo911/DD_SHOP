@@ -3,7 +3,6 @@ import { reactive, computed } from 'vue'
 import { useFacetOptionsStore } from './facetOptions'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
-import getGenderId from '@/utils/getGenderId'
 
 import { serializeFilter, parseFilter } from '@/utils/filterHelpers'
 
@@ -29,7 +28,7 @@ export const useFilterStore = defineStore('filter', () => {
 
 	const apiQueryParams = computed(() => {
 		return {
-			gender: getGenderId(filter, facetOptions),
+			gender: filter.gender,
 			title: filter.title,
 			styles: filter.styles.join(','),
 			colors: filter.colors.join(','),
@@ -65,6 +64,15 @@ export const useFilterStore = defineStore('filter', () => {
 	const resetPrice = () => {
 		filter.price = []
 	}
+	const clearFilter = () => {
+		filter.title = ''
+		filter.styles = []
+		filter.colors = []
+		filter.sizes = []
+		filter.price = []
+		filter.page = 0
+		filter.perPage = 9
+	}
 
 	return {
 		filter,
@@ -75,5 +83,6 @@ export const useFilterStore = defineStore('filter', () => {
 		hasQueryFilters,
 		apiQueryParams,
 		resetPrice,
+		clearFilter,
 	}
 })

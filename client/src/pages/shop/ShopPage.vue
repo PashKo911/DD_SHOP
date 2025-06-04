@@ -28,11 +28,11 @@
 </template>
 
 <script setup>
-import { computed, onMounted, watch } from 'vue'
+import { computed, onMounted, onUnmounted, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 
 import { useI18n } from 'vue-i18n'
-import { useRoute, useRouter } from 'vue-router'
+import { onBeforeRouteLeave, useRoute, useRouter } from 'vue-router'
 import { useFilterModel } from '@/composables/useFilterModel'
 import { useProductsStore } from '@/stores/products'
 import { useFilterStore } from '@/stores/filter'
@@ -62,7 +62,8 @@ const facetOptionsStore = useFacetOptionsStore()
 const { getProducts } = productsStore
 const { count, productsValue } = storeToRefs(productsStore)
 
-const { setFilterProp, parseFilterFromQuery, resetPrice } = filterStore
+const { setFilterProp, parseFilterFromQuery, resetPrice, clearFilter } =
+	filterStore
 
 const { filter, displayFilterString, hasSelectedFilters, hasQueryFilters } =
 	storeToRefs(filterStore)
@@ -87,6 +88,12 @@ const pageFilterValue = computed({
 		setFilterProp('page', newPage)
 	},
 })
+const currentGenderId = computed(() => {
+	const found = facetOptionsValue.value.genders?.find(
+		(g) => g.label.en === props.category,
+	)
+	return found?._id ?? null
+})
 //========================================================================================================================================================
 
 watch(filter.value, async () => {
@@ -98,15 +105,17 @@ watch(locale, async () => {
 	await getFacetOptions()
 	resetPrice()
 })
-watch(props, ({ category }) => {
-	setFilterProp('gender', category)
+
+watch(currentGenderId, () => {
+	setFilterProp('gender', currentGenderId.value)
+	clearFilter()
 })
 //========================================================================================================================================================
 
 onMounted(async () => {
 	await getFacetOptions()
 
-	setFilterProp('gender', props.category)
+	setFilterProp('gender', currentGenderId.value)
 
 	if (hasQueryFilters.value) {
 		parseFilterFromQuery(route.query)
@@ -115,7 +124,9 @@ onMounted(async () => {
 	if (hasSelectedFilters.value) {
 		router.push({ query: displayFilterString.value })
 	}
+})
 
-	// await getProducts()
+onUnmounted(() => {
+	setFilterProp('gender', '')
 })
 </script>

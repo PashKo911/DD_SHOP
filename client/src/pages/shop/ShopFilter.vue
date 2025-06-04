@@ -29,6 +29,7 @@
 				</accordion-header>
 				<accordion-content>
 					<slider-price
+						v-if="facetOptions.price[0]"
 						:min="facetOptions.price[0]"
 						:max="facetOptions.price[1]"
 						v-model="price"
