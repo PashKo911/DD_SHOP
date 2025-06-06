@@ -13,7 +13,7 @@ export const useProductsStore = defineStore('products', () => {
 	const { locale, t } = useI18n()
 
 	const { generalApiOperation, isLoading } = generalStore
-	const { apiQueryParams } = storeToRefs(filterStore)
+	const { apiQueryParams, filter } = storeToRefs(filterStore)
 
 	const products = ref([])
 	const suggestions = ref([])
@@ -39,7 +39,8 @@ export const useProductsStore = defineStore('products', () => {
 			label,
 			items: arr.map((i) => ({
 				label: i.title,
-				categoryId: i.gender._id,
+				genderId: i.gender._id,
+				genderName: i.gender.label.en,
 			})),
 		}))
 		return res

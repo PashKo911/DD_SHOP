@@ -28,8 +28,18 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onUnmounted, watch } from 'vue'
+import {
+	computed,
+	nextTick,
+	onBeforeMount,
+	onMounted,
+	onUnmounted,
+	watch,
+	watchEffect,
+	watchPostEffect,
+} from 'vue'
 import { storeToRefs } from 'pinia'
+import debounce from '@/utils/debounce'
 
 import { useI18n } from 'vue-i18n'
 import { onBeforeRouteLeave, useRoute, useRouter } from 'vue-router'
@@ -69,7 +79,8 @@ const { filter, displayFilterString, hasSelectedFilters, hasQueryFilters } =
 	storeToRefs(filterStore)
 
 const { getFacetOptions } = facetOptionsStore
-const { facetOptionsValue } = storeToRefs(facetOptionsStore)
+const { facetOptionsValue, isFacetOptionsLoaded } =
+	storeToRefs(facetOptionsStore)
 //========================================================================================================================================================
 
 const isPaginatorVisible = computed(() => count.value > filter.value.perPage)
@@ -96,24 +107,21 @@ const currentGenderId = computed(() => {
 })
 //========================================================================================================================================================
 
-watch(filter.value, async () => {
-	router.replace({ query: displayFilterString.value })
-	await getProducts()
-})
-
 watch(locale, async () => {
 	await getFacetOptions()
-	resetPrice()
-})
-
-watch(currentGenderId, () => {
-	setFilterProp('gender', currentGenderId.value)
 	clearFilter()
+})
+watch(currentGenderId, async () => {
+	clearFilter()
+	setFilterProp('gender', currentGenderId.value)
 })
 //========================================================================================================================================================
 
+let unwatch
 onMounted(async () => {
-	await getFacetOptions()
+	if (!isFacetOptionsLoaded.value) {
+		await getFacetOptions()
+	}
 
 	setFilterProp('gender', currentGenderId.value)
 
@@ -124,9 +132,19 @@ onMounted(async () => {
 	if (hasSelectedFilters.value) {
 		router.push({ query: displayFilterString.value })
 	}
+
+	await getProducts()
+
+	unwatch = watch(filter.value, async () => {
+		router.replace({ query: displayFilterString.value })
+		await getProducts()
+	})
 })
 
 onUnmounted(() => {
-	setFilterProp('gender', '')
+	if (typeof unwatch === 'function') {
+		unwatch()
+	}
+	clearFilter()
 })
 </script>

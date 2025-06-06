@@ -38,6 +38,12 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 		}
 	})
 
+	const isFacetOptionsLoaded = computed(() => {
+		return Object.values(facetOptionsValue.value).every(
+			(arr) => Array.isArray(arr) && arr.length > 0,
+		)
+	})
+
 	const getFacetOptions = async () => {
 		const data = await generalApiOperation({
 			operationName: 'getFacetOptions',
@@ -67,5 +73,6 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 		availableStyles,
 		availableStylesValue,
 		getAvailableStyles,
+		isFacetOptionsLoaded,
 	}
 })

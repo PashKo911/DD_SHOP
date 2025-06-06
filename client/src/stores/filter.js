@@ -6,21 +6,23 @@ import { useRoute } from 'vue-router'
 
 import { serializeFilter, parseFilter } from '@/utils/filterHelpers'
 
+const DEFAULT_FILTER = {
+	gender: '',
+	title: '',
+	styles: [],
+	price: [],
+	colors: [],
+	sizes: [],
+	page: 0,
+	perPage: 9,
+}
+
 export const useFilterStore = defineStore('filter', () => {
 	const route = useRoute()
 	const facetOptionsStore = useFacetOptionsStore()
 	const { facetOptions } = storeToRefs(facetOptionsStore)
 
-	const filter = reactive({
-		gender: '',
-		title: '',
-		styles: [],
-		price: [],
-		colors: [],
-		sizes: [],
-		page: 0,
-		perPage: 9,
-	})
+	const filter = reactive({ ...DEFAULT_FILTER })
 
 	const displayFilterString = computed(() => {
 		return serializeFilter(filter, facetOptions.value)
@@ -40,15 +42,21 @@ export const useFilterStore = defineStore('filter', () => {
 	})
 
 	const hasSelectedFilters = computed(() => {
-		return Object.keys(filter).some((k) => {
-			if (Array.isArray(filter[k])) return filter[k].length
-			if (k === 'perPage') return false
-			return Boolean(filter[k])
+		return Object.entries(filter).some(([key, val]) => {
+			const def = DEFAULT_FILTER[key]
+
+			if (key === 'gender') return false
+
+			if (Array.isArray(def)) {
+				return Array.isArray(val) && val.length > 0
+			}
+
+			return val !== def
 		})
 	})
 
 	const hasQueryFilters = computed(() => {
-		return Object.keys(route.query).length
+		return Boolean(Object.keys(route.query).length)
 	})
 
 	function parseFilterFromQuery(query) {
@@ -65,13 +73,7 @@ export const useFilterStore = defineStore('filter', () => {
 		filter.price = []
 	}
 	const clearFilter = () => {
-		filter.title = ''
-		filter.styles = []
-		filter.colors = []
-		filter.sizes = []
-		filter.price = []
-		filter.page = 0
-		filter.perPage = 9
+		Object.assign(filter, DEFAULT_FILTER)
 	}
 
 	return {
