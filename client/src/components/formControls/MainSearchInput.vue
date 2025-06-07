@@ -10,7 +10,7 @@
 			:tabindex="1"
 			:suggestions="suggestionsValue"
 			:loading="isSuggestionsLoading"
-			:emptySearchMessage="$t('partials.emptySearchMessage')"
+			:emptySearchMessage="t('partials.emptySearchMessage')"
 			@complete="onSearch"
 			@option-select="applySearchFilter"
 			@clear="onClear"
@@ -41,9 +41,10 @@ import { useFilterStore } from '@/stores/filter'
 import { useProductsStore } from '@/stores/products'
 import { useRouter } from 'vue-router'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 import { storeToRefs } from 'pinia'
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 import AutoComplete from '../ui/autocomplete/AutoComplete.vue'
 import CloseIcon from '../icons/CloseIcon.vue'
@@ -61,6 +62,8 @@ const { setFilterProp } = filterStore
 
 const { suggestionsValue, isSuggestionsLoading } = storeToRefs(productStore)
 const { getSuggestions } = productStore
+
+const { t } = useI18n()
 
 const localState = ref(null)
 //========================================================================================================================================================

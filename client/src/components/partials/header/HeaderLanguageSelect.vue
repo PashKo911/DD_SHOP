@@ -7,7 +7,7 @@
 		size="small"
 		:tabindex="0"
 		transparent
-		:ariaLabel="$t('accessibility.languageSelect')"
+		:ariaLabel="t('accessibility.languageSelect')"
 	>
 		<template #value="slotProps">
 			<div v-if="slotProps.value" class="flex items-center">
@@ -34,13 +34,17 @@
 </template>
 
 <script setup>
-import Select from '@/components/ui/select/Select.vue'
 import { ref, markRaw } from 'vue'
+
+import { useI18n } from 'vue-i18n'
 import { useLocales } from '@/composables/useLocales'
+
+import Select from '@/components/ui/select/Select.vue'
 import UaFlagIcon from '@/components/icons/UaFlagIcon.vue'
 import UsaFlagIcon from '@/components/icons/UsaFlagIcon.vue'
 
 const { setLocale, locale } = useLocales()
+const { t } = useI18n()
 
 const languages = ref([
 	{ name: 'UA', code: 'uk', flag: markRaw(UaFlagIcon) },

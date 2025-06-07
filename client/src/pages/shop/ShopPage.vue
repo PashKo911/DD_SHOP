@@ -11,12 +11,29 @@
 		/>
 
 		<div class="grow">
-			<div class="not-last:mb-6">
+			<div
+				class="flex flex-wrap items-center justify-between gap-8 not-last:mb-6"
+			>
 				<h3 class="font-heading text-xl leading-tight font-semibold">
 					{{ t('pages.shop.title.countTitle', { count }) }}
 				</h3>
+				<SelectButton
+					v-model="viewMode"
+					:options="viewModeData"
+					optionLabel="value"
+					dataKey="value"
+					aria-labelledby="custom"
+				>
+					<template #option="slotProps">
+						<component :is="slotProps.option.icon"> </component>
+					</template>
+				</SelectButton>
 			</div>
-			<shop-list :items="productsValue" class="mb-8" />
+			<shop-list
+				:items="productsValue"
+				:view-mode="viewMode.value"
+				class="mb-8"
+			/>
 			<paginator
 				v-if="isPaginatorVisible"
 				v-model:first="pageFilterValue"
@@ -28,7 +45,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onUnmounted, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 
 import { useI18n } from 'vue-i18n'
@@ -38,9 +55,12 @@ import { useProductsStore } from '@/stores/products'
 import { useFilterStore } from '@/stores/filter'
 import { useFacetOptionsStore } from '@/stores/facetOptions'
 
+import viewModeData from '@/data/viewModeData'
+
 import ShopFilter from './ShopFilter.vue'
 import ShopList from './ShopList.vue'
 import Paginator from '@/components/paginator/Paginator.vue'
+import SelectButton from '@/components/ui/selectButton/SelectButton.vue'
 
 const props = defineProps({
 	category: {
@@ -71,6 +91,8 @@ const { filter, displayFilterString, hasSelectedFilters, hasQueryFilters } =
 const { getFacetOptions } = facetOptionsStore
 const { facetOptionsValue, isFacetOptionsLoaded } =
 	storeToRefs(facetOptionsStore)
+
+const viewMode = ref(viewModeData[0])
 //========================================================================================================================================================
 
 const isPaginatorVisible = computed(() => count.value > filter.value.perPage)

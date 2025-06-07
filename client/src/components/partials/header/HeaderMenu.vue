@@ -9,7 +9,7 @@
 			>
 				<router-link
 					:to="{ name: 'home' }"
-					:aria-label="$t('accessibility.logo')"
+					:aria-label="t('accessibility.logo')"
 					tabindex="0"
 					class="text-inverse font-heading text-md-34-28 focus-visible:outline-t-inverse-hover z-30 order-2 rounded-sm font-bold outline outline-transparent transition-colors md:order-1"
 				>
@@ -30,7 +30,7 @@
 					<teleport defer :to="curtPosition">
 						<router-link
 							:to="{ name: 'cart' }"
-							:aria-label="$t('accessibility.cartLink')"
+							:aria-label="t('accessibility.cartLink')"
 							class="focus-visible:outline-t-inverse-hover z-30 order-3 rounded-sm outline outline-transparent md:order-2"
 						>
 							<cart-icon
@@ -41,7 +41,7 @@
 					<teleport defer :to="languageSelectPosition">
 						<router-link
 							to="/auth"
-							:aria-label="$t('accessibility.signIn')"
+							:aria-label="t('accessibility.signIn')"
 							:class="{ 'fill-t-inverse-hover': isAuthSection }"
 							class="focus-visible:outline-t-inverse-hover order-3 rounded-sm outline outline-transparent transition-colors duration-300"
 						>
@@ -59,10 +59,12 @@
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router'
 import { computed } from 'vue'
+
+import { useRoute } from 'vue-router'
 import { useMenuItems } from '@/utils/headerMenuGenerator'
 import { useMediaQuery } from '@/composables/useMediaQuery'
+import { useI18n } from 'vue-i18n'
 
 import CartIcon from '@/components/icons/CartIcon.vue'
 import SignInIcon from '@/components/icons/SignInIcon.vue'
@@ -70,11 +72,15 @@ import HeaderMenuList from './HeaderMenuList.vue'
 import HeaderLanguageSelect from './HeaderLanguageSelect.vue'
 import HeaderMenuVisibilityToggler from './HeaderMenuVisibilityToggler.vue'
 import MainSearchInput from '@/components/formControls/MainSearchInput.vue'
+
 const route = useRoute()
 const { menuItems } = useMenuItems()
 
+const { t } = useI18n()
+
 const isMobile = useMediaQuery('(max-width: 767.98px)')
 const isTablet = useMediaQuery('(max-width: 991.98px)')
+//========================================================================================================================================================
 
 const isAuthSection = computed(() => route.path.startsWith('/auth'))
 
@@ -87,6 +93,7 @@ const searchInputPosition = computed(() => {
 const curtPosition = computed(() => {
 	return isMobile.value ? '#headerTop' : '#headerActions'
 })
+//========================================================================================================================================================
 
 const menuVisibilityToggler = () => {
 	document.documentElement.classList.toggle('menu-open')
