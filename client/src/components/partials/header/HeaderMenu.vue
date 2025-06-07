@@ -55,9 +55,6 @@
 			</div>
 			<div id="headerBottom" class="lg:hidden"></div>
 		</div>
-		<div
-			class="overlay-active:block overlay-active:opacity-100 pointer-events-none fixed inset-0 z-[100] hidden bg-black/30 opacity-0 transition-opacity duration-120"
-		></div>
 	</header>
 </template>
 

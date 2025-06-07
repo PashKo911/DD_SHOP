@@ -28,21 +28,11 @@
 </template>
 
 <script setup>
-import {
-	computed,
-	nextTick,
-	onBeforeMount,
-	onMounted,
-	onUnmounted,
-	watch,
-	watchEffect,
-	watchPostEffect,
-} from 'vue'
+import { computed, onMounted, onUnmounted, watch } from 'vue'
 import { storeToRefs } from 'pinia'
-import debounce from '@/utils/debounce'
 
 import { useI18n } from 'vue-i18n'
-import { onBeforeRouteLeave, useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useFilterModel } from '@/composables/useFilterModel'
 import { useProductsStore } from '@/stores/products'
 import { useFilterStore } from '@/stores/filter'
@@ -110,6 +100,7 @@ const currentGenderId = computed(() => {
 watch(locale, async () => {
 	await getFacetOptions()
 	clearFilter()
+	setFilterProp('gender', currentGenderId.value)
 })
 watch(currentGenderId, async () => {
 	clearFilter()

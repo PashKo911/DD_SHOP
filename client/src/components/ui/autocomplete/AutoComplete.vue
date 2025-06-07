@@ -1,9 +1,9 @@
 <template>
-	<AutoComplete unstyled :pt="theme" :ptOptions="ptOptions">
+	<AutoComplete unstyled :pt="theme" :ptOptions="ptOptions" appendTo="self">
 		<template #dropdownicon>
-			<search-icon
-				class="fill-primary transition-transform duration-300 hover:scale-125"
-			/>
+			<slot name="dropdownicon">
+				<ChevronDownIcon />
+			</slot>
 		</template>
 		<template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
 			<slot :name="slotName" v-bind="slotProps ?? {}" />
@@ -13,7 +13,6 @@
 
 <script setup>
 import ChevronDownIcon from '@primevue/icons/chevrondown'
-import SearchIcon from '@/components/icons/SearchIcon.vue'
 import AutoComplete from 'primevue/autocomplete'
 import { computed } from 'vue'
 import { ptViewMerge } from '@/utils/volt'
@@ -76,18 +75,18 @@ const theme = {
 		focus-visible:border-t-inverse-hover
         transition-colors duration-200`,
 	dropdownIcon: ``,
-	overlay: `search-overlay max-w-[calc(100%_-_30px)]! absolute top-0 rounded-md overflow-x-auto overflow-hidden
+	overlay: `search-overlay w-full absolute top-0 overflow-hidden
         bg-creamy-cloud
-		overflow-x-auto
+		rounded-md
         border border-surface-200
         text-surface-700
         shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]`,
 	virtualScroller: ``,
-	listContainer: `w-full`,
-	list: `m-0 p-1 list-none flex flex-col gap-[2px]`,
-	optionGroup: `m-0 px-3 py-2 text-surface-500 font-semibold bg-transparent `,
-	option: `cursor-pointer whitespace-nowrap relative  flex items-center px-3 py-2 rounded-md
-        text-surface-700 bg-transparent border-none
+	listContainer: `w-full overflow-auto`,
+	list: `m-0 p-1 list-none flex flex-col`,
+	optionGroup: `m-0 px-3 py-1 text-primary font-semibold bg-transparent capitalize`,
+	option: `cursor-pointer whitespace-nowrap relative flex items-center px-3 py-[3px] rounded-sm
+        text-primary bg-transparent border-none
         p-focus:bg-surface-100 p-focus:text-surface-800
         p-selected:bg-highlight p-focus:p-selected:bg-highlight-emphasis
         transition-colors duration-200`,

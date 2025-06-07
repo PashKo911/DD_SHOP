@@ -168,9 +168,7 @@
 		"reviews": {
 			"postedOn": "Posted: {date}"
 		},
-		"mainSearchInput": {
-			"suggestionTitle": "{title} | {gender}"
-		}
+		"emptySearchMessage": "No results found"
 	},
 	"accessibility": {
 		"logo": "Website Logo/ go to homepage",
@@ -257,7 +255,8 @@
 		"nextSlide": "Next slide",
 		"prevSlide": "Previous slide",
 		"shopNow": "shop now",
-		"paginator": "Page {page} of {pageCount}"
+		"paginator": "Page {page} of {pageCount}",
+		"clearSearchInput": "Clear search input"
 	},
 	"placeholders": {
 		"search": "Search",

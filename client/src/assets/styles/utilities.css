@@ -146,4 +146,3 @@
 }
 
 @custom-variant menu-open (&:where(.menu-open, .menu-open *));
-@custom-variant overlay-active (&:where(.overlay-active, .overlay-active *));

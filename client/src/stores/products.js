@@ -25,7 +25,7 @@ export const useProductsStore = defineStore('products', () => {
 
 	const suggestionsValue = computed(() => {
 		const grouped = suggestions.value.reduce((acc, s) => {
-			const genderKey = s.gender.label[locale.value]
+			const genderKey = `${s.gender.label[locale.value]}:`
 
 			if (!acc[genderKey]) {
 				acc[genderKey] = []

@@ -167,9 +167,7 @@
 		"reviews": {
 			"postedOn": "Опубліковано: {date}"
 		},
-		"mainSearchInput": {
-			"suggestionTitle": "{title}? {gender}"
-		}
+		"emptySearchMessage": "Нічого не знайдено"
 	},
 	"accessibility": {
 		"logo": "Логотип сайту",
@@ -255,7 +253,8 @@
 		"nextSlide": "Наступний слайд",
 		"prevSlide": "Попередній слайд",
 		"shopNow": "до покупок",
-		"paginator": "Сторінка {page} із {pageCount}"
+		"paginator": "Сторінка {page} із {pageCount}",
+		"clearSearchInput": "Очистити поле пошуку"
 	},
 	"placeholders": {
 		"search": "Пошук",

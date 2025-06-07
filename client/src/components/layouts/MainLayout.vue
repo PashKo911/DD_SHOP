@@ -1,8 +1,6 @@
 <template>
 	<header-menu />
-	<main
-		class="pb-80-30 mb-80-30 overlay-active:pointer-events-none relative grow"
-	>
+	<main class="pb-80-30 mb-80-30 relative grow">
 		<separator-base class="absolute bottom-0 left-0" />
 		<toast />
 		<slot />

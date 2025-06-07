@@ -1,26 +1,38 @@
 <template>
-	<div class="search-input relative z-[200] order-3 min-w-[8.125rem] grow">
+	<div class="search-input relative z-20 order-3 min-w-[8.125rem] grow">
 		<auto-complete
 			v-model="localState"
 			optionLabel="label"
 			optionGroupLabel="label"
 			optionGroupChildren="items"
+			fluid
+			dropdown
 			:tabindex="1"
 			:suggestions="suggestionsValue"
 			:loading="isSuggestionsLoading"
+			:emptySearchMessage="$t('partials.emptySearchMessage')"
 			@complete="onSearch"
 			@option-select="applySearchFilter"
 			@clear="onClear"
-			@before-show="onShow"
-			@before-hide="onHide"
-			fluid
-			dropdown
-		/>
-		<close-icon
+		>
+			<template #dropdownicon>
+				<search-icon
+					class="fill-primary transition-transform duration-300 hover:scale-125"
+				/>
+			</template>
+		</auto-complete>
+
+		<button
+			type="button"
 			v-show="isClearButtonVisible"
 			@click="onClear"
-			class="fill-primary absolute top-1/2 right-4 z-50 h-full -translate-y-1/2 cursor-pointer transition-colors duration-300 hover:fill-red-400"
-		/>
+			:tabindex="activeTabIndex"
+			class="group focus-visible:border-t-inverse-hover absolute top-1/2 right-0 z-50 grid h-full w-10 -translate-y-1/2 cursor-pointer place-items-center rounded-r-md border-2 border-transparent transition-colors duration-200 outline-none"
+		>
+			<close-icon
+				class="fill-primary h-full transition-colors duration-300 group-hover:fill-red-400"
+			/>
+		</button>
 	</div>
 </template>
 
@@ -31,10 +43,11 @@ import { useRouter } from 'vue-router'
 import { useRoute } from 'vue-router'
 
 import { storeToRefs } from 'pinia'
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 
 import AutoComplete from '../ui/autocomplete/AutoComplete.vue'
 import CloseIcon from '../icons/CloseIcon.vue'
+import SearchIcon from '@/components/icons/SearchIcon.vue'
 //========================================================================================================================================================
 
 const filterStore = useFilterStore()
@@ -54,6 +67,9 @@ const localState = ref(null)
 
 const isClearButtonVisible = computed(() => {
 	return !isSuggestionsLoading.value && localState.value
+})
+const activeTabIndex = computed(() => {
+	return isClearButtonVisible.value ? 2 : -1
 })
 //========================================================================================================================================================
 
@@ -81,13 +97,6 @@ const onClear = () => {
 	}
 }
 
-const onShow = () => {
-	document.documentElement.classList.add('overlay-active')
-}
-
-const onHide = () => {
-	document.documentElement.classList.remove('overlay-active')
-}
 //========================================================================================================================================================
 
 watch(
