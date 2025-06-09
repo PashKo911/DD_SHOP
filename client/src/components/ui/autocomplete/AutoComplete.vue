@@ -86,7 +86,7 @@ const theme = {
 	list: `m-0 p-1 list-none flex flex-col`,
 	optionGroup: `m-0 px-3 py-1 text-primary font-semibold bg-transparent capitalize`,
 	option: `cursor-pointer whitespace-nowrap relative flex items-center px-3 py-[3px] rounded-sm
-        text-primary bg-transparent border-none
+        text-primary bg-transparent border-none font-heading
         p-focus:bg-surface-100 p-focus:text-surface-800
         p-selected:bg-highlight p-focus:p-selected:bg-highlight-emphasis
         transition-colors duration-200`,

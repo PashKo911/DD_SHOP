@@ -6,9 +6,6 @@ class FiltersHelper {
 		filters.forEach((filter) => {
 			switch (filter.filterType) {
 				case 'search':
-					// const regex = new RegExp(filter.filterContent, 'i')
-					// query.or([{ 'title.uk': regex }, { 'title.en': regex }])
-					// Застосовуємо пошуковий фільтр з регулярним виразом
 					query.where(filter.fieldName).regex(new RegExp(filter.filterContent, 'i'))
 					break
 				case 'minValue':

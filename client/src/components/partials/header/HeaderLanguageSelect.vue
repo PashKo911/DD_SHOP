@@ -1,36 +1,39 @@
 <template>
-	<Select
-		v-model="selectedLanguage"
-		@update:modelValue="(val) => setLocale(val.code)"
-		:options="languages"
-		optionLabel="name"
-		size="small"
-		:tabindex="0"
-		transparent
-		:ariaLabel="t('accessibility.languageSelect')"
-	>
-		<template #value="slotProps">
-			<div v-if="slotProps.value" class="flex items-center">
-				<component
-					:is="slotProps.value?.flag"
-					class="mr-2 h-[1.125rem] w-[1.125rem] shrink-0 -translate-y-[.1062rem]"
-				/>
-				<div class="uppercase">{{ slotProps.value?.name }}</div>
-			</div>
-			<span v-else>
-				{{ slotProps.placeholder }}
-			</span>
-		</template>
-		<template #option="slotProps">
-			<div class="flex items-center">
-				<component
-					:is="slotProps.option?.flag"
-					class="mr-2 h-[1.125rem] w-[1.125rem] shrink-0"
-				/>
-				<div class="uppercase">{{ slotProps.option?.name }}</div>
-			</div>
-		</template>
-	</Select>
+	<div id="header-language-wrapper">
+		<Select
+			v-model="selectedLanguage"
+			@update:modelValue="(val) => setLocale(val.code)"
+			:options="languages"
+			optionLabel="name"
+			size="small"
+			:tabindex="0"
+			transparent
+			append-to="#header-language-wrapper"
+			:ariaLabel="t('accessibility.languageSelect')"
+		>
+			<template #value="slotProps">
+				<div v-if="slotProps.value" class="flex items-center">
+					<component
+						:is="slotProps.value?.flag"
+						class="mr-2 h-[1.125rem] w-[1.125rem] shrink-0 -translate-y-[.1062rem]"
+					/>
+					<div class="uppercase">{{ slotProps.value?.name }}</div>
+				</div>
+				<span v-else>
+					{{ slotProps.placeholder }}
+				</span>
+			</template>
+			<template #option="slotProps">
+				<div class="flex items-center">
+					<component
+						:is="slotProps.option?.flag"
+						class="mr-2 h-[1.125rem] w-[1.125rem] shrink-0"
+					/>
+					<div class="uppercase">{{ slotProps.option?.name }}</div>
+				</div>
+			</template>
+		</Select>
+	</div>
 </template>
 
 <script setup>

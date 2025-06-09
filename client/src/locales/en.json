@@ -50,8 +50,10 @@
 				}
 			},
 			"sortSelect": {
-				"ascending": "Price: Low to High",
-				"descending": "Price: High to Low"
+				"priceAsc": "Price: Lowest first",
+				"priceDesc": "Price: Highest first",
+				"newest": "Newest",
+				"ratingDesc": "Most popular"
 			}
 		},
 		"women": {
@@ -256,7 +258,8 @@
 		"prevSlide": "Previous slide",
 		"shopNow": "shop now",
 		"paginator": "Page {page} of {pageCount}",
-		"clearSearchInput": "Clear search input"
+		"clearSearchInput": "Clear search input",
+		"viewModeToggler": "Change products view mode"
 	},
 	"placeholders": {
 		"search": "Search",

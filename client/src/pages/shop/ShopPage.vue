@@ -17,17 +17,31 @@
 				<h3 class="font-heading text-xl leading-tight font-semibold">
 					{{ t('pages.shop.title.countTitle', { count }) }}
 				</h3>
-				<SelectButton
-					v-model="viewMode"
-					:options="viewModeData"
-					optionLabel="value"
-					dataKey="value"
-					aria-labelledby="custom"
-				>
-					<template #option="slotProps">
-						<component :is="slotProps.option.icon"> </component>
-					</template>
-				</SelectButton>
+
+				<div class="flex flex-wrap items-center gap-4">
+					<div class="min-w-[14.5rem]">
+						<Select
+							v-model="sortFilterValue"
+							optionLabel="label"
+							fluid
+							checkmark
+							:options="optionsData"
+							:placeholder="sortFilterValue.label"
+						/>
+					</div>
+					<select-button
+						v-model="viewMode"
+						:options="viewModeData"
+						:allowEmpty="false"
+						optionLabel="value"
+						dataKey="value"
+						aria-labelledby="custom"
+					>
+						<template #option="slotProps">
+							<component :is="slotProps.option.icon"> </component>
+						</template>
+					</select-button>
+				</div>
 			</div>
 			<shop-list
 				:items="productsValue"
@@ -56,11 +70,14 @@ import { useFilterStore } from '@/stores/filter'
 import { useFacetOptionsStore } from '@/stores/facetOptions'
 
 import viewModeData from '@/data/viewModeData'
+import sortOptionsData from '@/data/sortOptionsData'
 
 import ShopFilter from './ShopFilter.vue'
 import ShopList from './ShopList.vue'
 import Paginator from '@/components/paginator/Paginator.vue'
 import SelectButton from '@/components/ui/selectButton/SelectButton.vue'
+import Select from '@/components/ui/select/Select.vue'
+//========================================================================================================================================================
 
 const props = defineProps({
 	category: {
@@ -102,6 +119,15 @@ const priceFilterValue = useFilterModel('price')
 const colorFilterValue = useFilterModel('colors')
 const sizeFilterValue = useFilterModel('sizes')
 
+const sortFilterValue = computed({
+	get() {
+		return filter.value.sort
+	},
+	set(newVal) {
+		setFilterProp('sort', newVal)
+	},
+})
+
 const pageFilterValue = computed({
 	get() {
 		return filter.value.page * filter.value.perPage
@@ -116,6 +142,10 @@ const currentGenderId = computed(() => {
 		(g) => g.label.en === props.category,
 	)
 	return found?._id ?? null
+})
+
+const optionsData = computed(() => {
+	return sortOptionsData.map(({ label, value }) => ({ value, label: t(label) }))
 })
 //========================================================================================================================================================
 
@@ -159,5 +189,6 @@ onUnmounted(() => {
 		unwatch()
 	}
 	clearFilter()
+	setFilterProp('gender', '')
 })
 </script>

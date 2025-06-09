@@ -1,6 +1,6 @@
 <template>
 	<header
-		class="bg-primary max-md:before:bg-primary sticky top-0 left-0 z-50 w-full max-md:before:absolute max-md:before:z-20 max-md:before:h-full max-md:before:w-full lg:min-h-[6.1875rem]"
+		class="bg-primary max-md:before:bg-primary sticky top-0 left-0 z-1002 w-full max-md:before:absolute max-md:before:z-20 max-md:before:h-full max-md:before:w-full lg:min-h-[6.1875rem]"
 	>
 		<div id="headerContainer" class="container grid gap-y-1 py-3 md:py-6">
 			<div
@@ -24,7 +24,7 @@
 					class="md:gx-md-30-8 z-30 order-1 flex items-center gap-2 md:order-4"
 				>
 					<teleport defer :to="languageSelectPosition">
-						<header-language-select class="order-1 hidden md:visible" />
+						<header-language-select class="order-1" />
 					</teleport>
 					<header-menu-visibility-toggler @click="menuVisibilityToggler" />
 					<teleport defer :to="curtPosition">

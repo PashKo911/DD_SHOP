@@ -1,31 +1,40 @@
 import { defineStore } from 'pinia'
-import { reactive, computed } from 'vue'
-import { useFacetOptionsStore } from './facetOptions'
 import { storeToRefs } from 'pinia'
+import { reactive, computed } from 'vue'
+
+import { useFacetOptionsStore } from './facetOptions'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
-import { serializeFilter, parseFilter } from '@/utils/filterHelpers'
-
-const DEFAULT_FILTER = {
-	gender: '',
-	title: '',
-	styles: [],
-	price: [],
-	colors: [],
-	sizes: [],
-	page: 0,
-	perPage: 9,
-}
+import parseFilter from '@/utils/parseFilter'
+import serializeFilter from '@/utils/serializeFilter'
+import sortOptionsData from '@/data/sortOptionsData'
 
 export const useFilterStore = defineStore('filter', () => {
 	const route = useRoute()
 	const facetOptionsStore = useFacetOptionsStore()
+	const { t } = useI18n()
 	const { facetOptions } = storeToRefs(facetOptionsStore)
 
-	const filter = reactive({ ...DEFAULT_FILTER })
+	const defaultFilter = computed(() => ({
+		gender: '',
+		title: '',
+		styles: [],
+		price: [],
+		colors: [],
+		sizes: [],
+		sort: {
+			label: t(sortOptionsData[3].label),
+			value: sortOptionsData[3].value,
+		},
+		page: 0,
+		perPage: 9,
+	}))
+
+	const filter = reactive({ ...defaultFilter.value })
 
 	const displayFilterString = computed(() => {
-		return serializeFilter(filter, facetOptions.value)
+		return serializeFilter(filter, facetOptions.value, defaultFilter.value)
 	})
 
 	const apiQueryParams = computed(() => {
@@ -37,13 +46,14 @@ export const useFilterStore = defineStore('filter', () => {
 			sizes: filter.sizes.join(','),
 			price: filter.price,
 			page: filter.page,
+			sort: filter.sort.value,
 			perPage: filter.perPage,
 		}
 	})
 
 	const hasSelectedFilters = computed(() => {
 		return Object.entries(filter).some(([key, val]) => {
-			const def = DEFAULT_FILTER[key]
+			const def = defaultFilter.value[key]
 
 			if (key === 'gender') return false
 
@@ -60,7 +70,14 @@ export const useFilterStore = defineStore('filter', () => {
 	})
 
 	function parseFilterFromQuery(query) {
-		parseFilter(query, filter, facetOptions.value)
+		parseFilter(
+			query,
+			filter,
+			defaultFilter.value,
+			facetOptions.value,
+			sortOptionsData,
+			t,
+		)
 	}
 
 	const setFilterProp = (prop, value) => {
@@ -73,7 +90,7 @@ export const useFilterStore = defineStore('filter', () => {
 		filter.price = []
 	}
 	const clearFilter = () => {
-		Object.assign(filter, DEFAULT_FILTER)
+		Object.assign(filter, defaultFilter.value)
 	}
 
 	return {

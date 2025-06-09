@@ -49,8 +49,10 @@
 				}
 			},
 			"sortSelect": {
-				"ascending": "Ціна: початку дешеві",
-				"descending": "Ціна: спочатку дорогі"
+				"priceAsc": "Ціна: спочатку дешеві",
+				"priceDesc": "Ціна: спочатку дорогі",
+				"newest": "Спочатку нові",
+				"ratingDesc": "Найпопулярніші"
 			}
 		},
 		"women": {
@@ -254,7 +256,8 @@
 		"prevSlide": "Попередній слайд",
 		"shopNow": "до покупок",
 		"paginator": "Сторінка {page} із {pageCount}",
-		"clearSearchInput": "Очистити поле пошуку"
+		"clearSearchInput": "Очистити поле пошуку",
+		"viewModeToggler": "Перемкнути режим відображення товарів"
 	},
 	"placeholders": {
 		"search": "Пошук",
