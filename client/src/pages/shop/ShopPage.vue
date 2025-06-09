@@ -17,30 +17,31 @@
 				<h3 class="font-heading text-xl leading-tight font-semibold">
 					{{ t('pages.shop.title.countTitle', { count }) }}
 				</h3>
-
-				<div class="flex flex-wrap items-center gap-4">
-					<div class="min-w-[14.5rem]">
-						<Select
-							v-model="sortFilterValue"
-							optionLabel="label"
-							fluid
-							checkmark
-							:options="optionsData"
-							:placeholder="sortFilterValue.label"
-						/>
+				<div>
+					<div class="flex flex-wrap items-center gap-4">
+						<div class="min-w-[14.5rem]">
+							<Select
+								v-model="sortFilterValue"
+								optionLabel="label"
+								fluid
+								checkmark
+								:options="optionsData"
+								:placeholder="sortFilterValue.label"
+							/>
+						</div>
+						<select-button
+							v-model="viewMode"
+							:options="viewModeData"
+							:allowEmpty="false"
+							optionLabel="value"
+							dataKey="value"
+							aria-labelledby="custom"
+						>
+							<template #option="slotProps">
+								<component :is="slotProps.option.icon"> </component>
+							</template>
+						</select-button>
 					</div>
-					<select-button
-						v-model="viewMode"
-						:options="viewModeData"
-						:allowEmpty="false"
-						optionLabel="value"
-						dataKey="value"
-						aria-labelledby="custom"
-					>
-						<template #option="slotProps">
-							<component :is="slotProps.option.icon"> </component>
-						</template>
-					</select-button>
 				</div>
 			</div>
 			<shop-list

@@ -137,8 +137,6 @@
 	width: clamp(15.625rem, -5.576rem + 44.17vw, 40.25rem);
 }
 
-@custom-variant dark (&:where(.p-dark, .p-dark *));
-
 @custom-variant any-hover {
 	@media (any-hover: hover) {
 		@slot;
