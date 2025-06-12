@@ -6,15 +6,18 @@ import { useFacetOptionsStore } from './facetOptions'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
-import parseFilter from '@/utils/parseFilter'
-import serializeFilter from '@/utils/serializeFilter'
+import parseFilter from '@/utils/filterHelpers/parseFilter'
+import serializeFilter from '@/utils/filterHelpers/serializeFilter'
 import sortOptionsData from '@/data/sortOptionsData'
+import mapFilterToChips from '@/utils/filterHelpers/mapFilterToChips'
+import { removeFilterChip } from '@/utils/filterHelpers/removeFilterChip'
 
 export const useFilterStore = defineStore('filter', () => {
 	const route = useRoute()
 	const facetOptionsStore = useFacetOptionsStore()
-	const { t } = useI18n()
-	const { facetOptions } = storeToRefs(facetOptionsStore)
+
+	const { t, locale } = useI18n()
+	const { facetOptions, currency } = storeToRefs(facetOptionsStore)
 
 	const defaultFilter = computed(() => ({
 		gender: '',
@@ -24,8 +27,8 @@ export const useFilterStore = defineStore('filter', () => {
 		colors: [],
 		sizes: [],
 		sort: {
+			...sortOptionsData[3],
 			label: t(sortOptionsData[3].label),
-			value: sortOptionsData[3].value,
 		},
 		page: 0,
 		perPage: 9,
@@ -33,7 +36,7 @@ export const useFilterStore = defineStore('filter', () => {
 
 	const filter = reactive({ ...defaultFilter.value })
 
-	const displayFilterString = computed(() => {
+	const filterStrings = computed(() => {
 		return serializeFilter(filter, facetOptions.value, defaultFilter.value)
 	})
 
@@ -57,6 +60,10 @@ export const useFilterStore = defineStore('filter', () => {
 
 			if (key === 'gender') return false
 
+			if (key === 'sort') {
+				return val.value !== def.value
+			}
+
 			if (Array.isArray(def)) {
 				return Array.isArray(val) && val.length > 0
 			}
@@ -67,6 +74,16 @@ export const useFilterStore = defineStore('filter', () => {
 
 	const hasQueryFilters = computed(() => {
 		return Boolean(Object.keys(route.query).length)
+	})
+
+	const activeChips = computed(() => {
+		return mapFilterToChips(
+			filter,
+			facetOptions.value,
+			defaultFilter.value,
+			locale.value,
+			currency.value,
+		)
 	})
 
 	function parseFilterFromQuery(query) {
@@ -89,19 +106,33 @@ export const useFilterStore = defineStore('filter', () => {
 	const resetPrice = () => {
 		filter.price = []
 	}
-	const clearFilter = () => {
+	const resetAllFilters = () => {
 		Object.assign(filter, defaultFilter.value)
+	}
+	const resetFiltersExceptGender = () => {
+		const currentGender = filter.gender
+
+		Object.assign(filter, defaultFilter.value)
+
+		filter.gender = currentGender
+	}
+	function removeChip(chip) {
+		removeFilterChip(filter, defaultFilter.value, chip)
 	}
 
 	return {
+		defaultFilter,
 		filter,
-		displayFilterString,
+		activeChips,
+		filterStrings,
 		setFilterProp,
 		parseFilterFromQuery,
 		hasSelectedFilters,
 		hasQueryFilters,
 		apiQueryParams,
 		resetPrice,
-		clearFilter,
+		resetAllFilters,
+		resetFiltersExceptGender,
+		removeChip,
 	}
 })

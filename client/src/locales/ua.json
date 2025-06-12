@@ -257,7 +257,9 @@
 		"shopNow": "до покупок",
 		"paginator": "Сторінка {page} із {pageCount}",
 		"clearSearchInput": "Очистити поле пошуку",
-		"viewModeToggler": "Перемкнути режим відображення товарів"
+		"viewModeToggler": "Перемкнути режим відображення товарів",
+		"clearFilterChip": "Очистити фільтр",
+		"clearAllFilterChips": "Очистити все"
 	},
 	"placeholders": {
 		"search": "Пошук",

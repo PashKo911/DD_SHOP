@@ -17,33 +17,37 @@
 				<h3 class="font-heading text-xl leading-tight font-semibold">
 					{{ t('pages.shop.title.countTitle', { count }) }}
 				</h3>
-				<div>
-					<div class="flex flex-wrap items-center gap-4">
-						<div class="min-w-[14.5rem]">
-							<Select
-								v-model="sortFilterValue"
-								optionLabel="label"
-								fluid
-								checkmark
-								:options="optionsData"
-								:placeholder="sortFilterValue.label"
-							/>
-						</div>
-						<select-button
-							v-model="viewMode"
-							:options="viewModeData"
-							:allowEmpty="false"
-							optionLabel="value"
-							dataKey="value"
-							aria-labelledby="custom"
-						>
-							<template #option="slotProps">
-								<component :is="slotProps.option.icon"> </component>
-							</template>
-						</select-button>
+				<div class="flex flex-wrap items-center gap-4">
+					<div class="min-w-[14.5rem]">
+						<Select
+							v-model="sortFilterValue"
+							optionLabel="label"
+							fluid
+							checkmark
+							:options="optionsData"
+							:placeholder="sortFilterValue.label"
+						/>
 					</div>
+					<select-button
+						v-model="viewMode"
+						:options="viewModeData"
+						:allowEmpty="false"
+						optionLabel="value"
+						dataKey="value"
+						aria-labelledby="custom"
+					>
+						<template #option="slotProps">
+							<component :is="slotProps.option.icon"> </component>
+						</template>
+					</select-button>
 				</div>
 			</div>
+			<shop-chips-group
+				:items="activeChips"
+				@remove="removeChip"
+				@remove-all="resetFiltersExceptGender"
+				class="mb-6"
+			/>
 			<shop-list
 				:items="productsValue"
 				:view-mode="viewMode.value"
@@ -78,6 +82,7 @@ import ShopList from './ShopList.vue'
 import Paginator from '@/components/paginator/Paginator.vue'
 import SelectButton from '@/components/ui/selectButton/SelectButton.vue'
 import Select from '@/components/ui/select/Select.vue'
+import ShopChipsGroup from './ShopChipsGroup.vue'
 //========================================================================================================================================================
 
 const props = defineProps({
@@ -100,11 +105,22 @@ const facetOptionsStore = useFacetOptionsStore()
 const { getProducts } = productsStore
 const { count, productsValue } = storeToRefs(productsStore)
 
-const { setFilterProp, parseFilterFromQuery, resetPrice, clearFilter } =
-	filterStore
+const {
+	setFilterProp,
+	parseFilterFromQuery,
+	resetPrice,
+	resetAllFilters,
+	resetFiltersExceptGender,
+	removeChip,
+} = filterStore
 
-const { filter, displayFilterString, hasSelectedFilters, hasQueryFilters } =
-	storeToRefs(filterStore)
+const {
+	filter,
+	filterStrings,
+	hasSelectedFilters,
+	hasQueryFilters,
+	activeChips,
+} = storeToRefs(filterStore)
 
 const { getFacetOptions } = facetOptionsStore
 const { facetOptionsValue, isFacetOptionsLoaded } =
@@ -152,13 +168,16 @@ const optionsData = computed(() => {
 
 watch(locale, async () => {
 	await getFacetOptions()
-	clearFilter()
+	resetAllFilters()
 	setFilterProp('gender', currentGenderId.value)
 })
-watch(currentGenderId, async () => {
-	clearFilter()
-	setFilterProp('gender', currentGenderId.value)
+watch(currentGenderId, async (newVal, oldVal) => {
+	if (oldVal) {
+		resetAllFilters()
+	}
+	setFilterProp('gender', newVal)
 })
+
 //========================================================================================================================================================
 
 let unwatch
@@ -174,13 +193,13 @@ onMounted(async () => {
 	}
 
 	if (hasSelectedFilters.value) {
-		router.push({ query: displayFilterString.value })
+		router.push({ query: filterStrings.value })
 	}
 
 	await getProducts()
 
 	unwatch = watch(filter.value, async () => {
-		router.replace({ query: displayFilterString.value })
+		router.replace({ query: filterStrings.value })
 		await getProducts()
 	})
 })
@@ -189,7 +208,7 @@ onUnmounted(() => {
 	if (typeof unwatch === 'function') {
 		unwatch()
 	}
-	clearFilter()
+	resetAllFilters()
 	setFilterProp('gender', '')
 })
 </script>

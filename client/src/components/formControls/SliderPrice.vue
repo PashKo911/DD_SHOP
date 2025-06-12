@@ -10,6 +10,7 @@
 				mode="currency"
 				:currency="currency"
 				:locale="locale"
+				currencyDisplay="narrowSymbol"
 				showButtons
 				:maxFractionDigits="0"
 				@input="onInput($event, 0)"
@@ -31,6 +32,7 @@
 				mode="currency"
 				:currency="currency"
 				:locale="locale"
+				currencyDisplay="narrowSymbol"
 				showButtons
 				:maxFractionDigits="0"
 				@input="onInput($event, 1)"
@@ -93,11 +95,16 @@ const isValid = computed(() => {
 	return minPrice < maxPrice
 })
 
-watch(price, () => {
-	if (price.value.length) {
+watch(
+	() => price.value,
+	() => {
+		if (!price.value.length) {
+			localPrice.value = [props.min, props.max]
+			return
+		}
 		localPrice.value = [...price.value]
-	}
-})
+	},
+)
 
 watch(
 	() => [props.min, props.max],

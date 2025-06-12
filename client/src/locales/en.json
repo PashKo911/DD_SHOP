@@ -259,7 +259,9 @@
 		"shopNow": "shop now",
 		"paginator": "Page {page} of {pageCount}",
 		"clearSearchInput": "Clear search input",
-		"viewModeToggler": "Change products view mode"
+		"viewModeToggler": "Change products view mode",
+		"clearFilterChip": "Clear Filter",
+		"clearAllFilterChips": "Clear All"
 	},
 	"placeholders": {
 		"search": "Search",

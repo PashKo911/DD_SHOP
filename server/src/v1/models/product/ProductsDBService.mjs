@@ -43,6 +43,12 @@ class ProductsDBService extends MongooseCRUDManager {
 			const rate = await getRate(currency)
 			const fieldsConfigurations = ProductsDBService.getFieldsConfigurations(language)
 
+			const formatter = new Intl.NumberFormat(language === 'uk' ? 'uk-UA' : 'en-US', {
+				style: 'currency',
+				currency,
+				maximumFractionDigits: 0,
+			})
+
 			if (reqQuery.price) {
 				reqQuery.price = [Math.floor(reqQuery.price[0] / rate), Math.ceil(reqQuery.price[1] / rate)]
 			}
@@ -60,7 +66,7 @@ class ProductsDBService extends MongooseCRUDManager {
 
 			const localized = documents.map((doc) => {
 				const obj = doc.toObject()
-				return this.formatDocumentData(obj, language, currency, rate)
+				return this.formatDocumentData(obj, language, rate, formatter)
 			})
 
 			return { documents: localized, count }
@@ -92,13 +98,7 @@ class ProductsDBService extends MongooseCRUDManager {
 		}
 	}
 
-	formatDocumentData(product, language, currency, rate) {
-		const formatter = new Intl.NumberFormat(language === 'uk' ? 'uk-UA' : 'en-US', {
-			style: 'currency',
-			currency,
-			maximumFractionDigits: 0,
-		})
-
+	formatDocumentData(product, language, rate, formatter) {
 		const exchangedPrice = Math.round(product.price * rate)
 
 		return {
