@@ -219,7 +219,8 @@
 				"numeric": "Number required",
 				"minLength": "At least 6 characters"
 			}
-		}
+		},
+		"discountLabel": "{discount} discount"
 	},
 	"errors": {
 		"email": {

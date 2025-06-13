@@ -83,7 +83,7 @@ const onSearch = async ({ query }) => {
 
 const applySearchFilter = ({ value }) => {
 	setFilterProp('gender', value.genderId)
-	setFilterProp('title', value.label.trim().toLowerCase())
+	setFilterProp('title', value.label)
 
 	if (route.name !== 'shopCategory') {
 		router.push({

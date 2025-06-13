@@ -218,7 +218,8 @@
 				"numeric": "Потрібна цифра",
 				"minLength": "Мінімум 6 символів"
 			}
-		}
+		},
+		"discountLabel": "Знижка {discount}"
 	},
 	"errors": {
 		"email": {

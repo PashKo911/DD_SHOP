@@ -6,7 +6,7 @@
 				:aria-label="t('buttons.clearFilterChip')"
 				@click="removeCallback"
 				@keydown="keydownCallback"
-				class="focus-visible:outline-t-inverse-hover group grid h-8 w-8 cursor-pointer place-items-center rounded-md outline-transparent duration-300 focus-visible:outline-2"
+				class="group focus-visible:outline-primary grid h-8 w-8 cursor-pointer place-items-center rounded-md focus-visible:outline focus-visible:outline-offset-2"
 			>
 				<close-icon
 					class="h-3 w-3 fill-white transition-colors duration-300 group-hover:fill-red-400 group-focus-visible:fill-red-400"

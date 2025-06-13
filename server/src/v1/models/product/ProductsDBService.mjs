@@ -53,16 +53,23 @@ class ProductsDBService extends MongooseCRUDManager {
 				reqQuery.price = [Math.floor(reqQuery.price[0] / rate), Math.ceil(reqQuery.price[1] / rate)]
 			}
 
-			const { documents, count } = await this.findManyWithSearchOptions(reqQuery, fieldsConfigurations, {
-				title: 1,
-				price: 1,
-				oldPrice: 1,
-				count: 1,
-				paths: 1,
-				rating: 1,
-				description: 1,
-				gender: 1,
-			})
+			const { documents, count } = await this.findManyWithSearchOptions(
+				reqQuery,
+				fieldsConfigurations,
+				{
+					title: 1,
+					price: 1,
+					oldPrice: 1,
+					count: 1,
+					paths: 1,
+					rating: 1,
+					description: 1,
+					gender: 1,
+					colors: 1,
+					sizes: 1,
+				},
+				['colors', 'sizes']
+			)
 
 			const localized = documents.map((doc) => {
 				const obj = doc.toObject()
@@ -105,6 +112,7 @@ class ProductsDBService extends MongooseCRUDManager {
 			...product,
 			title: product.title[language],
 			description: product.description[language],
+			oldPrice: formatter.format(product.oldPrice),
 			price: formatter.format(exchangedPrice),
 			discount: getDiscount(product.oldPrice, product.price),
 		}

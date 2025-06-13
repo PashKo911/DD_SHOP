@@ -43,7 +43,7 @@ export const useFilterStore = defineStore('filter', () => {
 	const apiQueryParams = computed(() => {
 		return {
 			gender: filter.gender,
-			title: filter.title,
+			title: filter.title.trim().toLowerCase(),
 			styles: filter.styles.join(','),
 			colors: filter.colors.join(','),
 			sizes: filter.sizes.join(','),

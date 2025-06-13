@@ -13,7 +13,7 @@
 			v-show="items.length"
 			@click="removeAll"
 			@keydown="removeAll"
-			class="bg-primary focus-visible:outline-t-inverse-hover group font-heading relative inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-md ps-3 outline-transparent duration-300 focus-visible:outline-2"
+			class="bg-primary focus-visible:outline-primary group font-heading relative inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-md ps-3 outline-transparent focus-visible:outline-1 focus-visible:outline-offset-2"
 		>
 			<span class="text-primary z-[2] capitalize">{{
 				t('buttons.clearAllFilterChips')
@@ -32,7 +32,6 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
-import Button from '@/components/ui/button/Button.vue'
 import Chip from '@/components/ui/chip/Chip.vue'
 import CloseIcon from '@/components/icons/CloseIcon.vue'
 

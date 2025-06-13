@@ -23,6 +23,4 @@ defineProps({
 		default: '3',
 	},
 })
-
-const mode = defineModel()
 </script>
