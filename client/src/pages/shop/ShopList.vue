@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="grid grid-cols-3 gap-5 gap-x-5 gap-y-15"
+		class="grid gap-5"
 		:class="{
 			'grid-cols-3': viewMode === '3',
 			'grid-cols-4': viewMode === '4',

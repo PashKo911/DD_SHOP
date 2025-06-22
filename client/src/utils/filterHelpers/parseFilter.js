@@ -43,7 +43,6 @@ function parseFilter(
 		},
 		sort: (v) => {
 			const found = sortOptionsData.find(({ value }) => value === v)
-
 			return found ? { ...found, label: t(found.label) } : defaultFilter.sort
 		},
 		price: (v) => {

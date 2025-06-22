@@ -7,35 +7,50 @@ class ProductsDBService extends MongooseCRUDManager {
 	static fieldsConfigurations = [
 		{
 			fieldName: 'gender',
+			subField: null,
+			queryParam: 'gender',
 			filterCategory: 'list',
 		},
 		{
-			fieldName: 'title.{lang}',
+			fieldName: 'title',
+			subField: '{lang}',
+			queryParam: 'title',
 			filterCategory: 'search',
 		},
 		{
-			fieldName: 'price',
+			fieldName: 'variants',
+			subField: 'price',
+			queryParam: 'price',
 			filterCategory: 'range',
 		},
 		{
-			fieldName: 'colors',
+			fieldName: 'variants',
+			subField: 'color',
+			queryParam: 'colors',
 			filterCategory: 'list',
 		},
 		{
-			fieldName: 'sizes',
+			fieldName: 'variants',
+			subField: 'sizes',
+			queryParam: 'sizes',
 			filterCategory: 'list',
 		},
 		{
-			fieldName: 'styles',
+			fieldName: 'style',
+			subField: null,
+			queryParam: 'styles',
 			filterCategory: 'list',
 		},
 	]
 
 	static getFieldsConfigurations(language) {
-		return this.fieldsConfigurations.map((cfg) => ({
-			...cfg,
-			fieldName: cfg.fieldName.replace('{lang}', language),
-		}))
+		return this.fieldsConfigurations.map((cfg) => {
+			const subField = cfg.subField ? cfg.subField.replace('{lang}', language) : null
+			return {
+				...cfg,
+				subField,
+			}
+		})
 	}
 
 	async getList(reqQuery, language, currency) {
@@ -53,23 +68,10 @@ class ProductsDBService extends MongooseCRUDManager {
 				reqQuery.price = [Math.floor(reqQuery.price[0] / rate), Math.ceil(reqQuery.price[1] / rate)]
 			}
 
-			const { documents, count } = await this.findManyWithSearchOptions(
-				reqQuery,
-				fieldsConfigurations,
-				{
-					title: 1,
-					price: 1,
-					oldPrice: 1,
-					count: 1,
-					paths: 1,
-					rating: 1,
-					description: 1,
-					gender: 1,
-					colors: 1,
-					sizes: 1,
-				},
-				['colors', 'sizes']
-			)
+			const { documents, count } = await this.findManyWithSearchOptions(reqQuery, fieldsConfigurations, {}, [
+				'variants.color',
+				'variants.sizes',
+			])
 
 			const localized = documents.map((doc) => {
 				const obj = doc.toObject()
@@ -106,15 +108,24 @@ class ProductsDBService extends MongooseCRUDManager {
 	}
 
 	formatDocumentData(product, language, rate, formatter) {
-		const exchangedPrice = Math.round(product.price * rate)
+		const formattedVariants = product.variants.map((v) => {
+			const exchangedPrice = Math.round(v.price * rate)
+			const exchangedOldPrice = v.oldPrice ? Math.round(v.oldPrice * rate) : null
+			const oldPrice = exchangedOldPrice ? formatter.format(exchangedOldPrice) : null
+
+			return {
+				...v,
+				oldPrice,
+				price: formatter.format(exchangedPrice),
+				discount: getDiscount(v.oldPrice, v.price),
+			}
+		})
 
 		return {
 			...product,
+			variants: formattedVariants,
 			title: product.title[language],
 			description: product.description[language],
-			oldPrice: formatter.format(product.oldPrice),
-			price: formatter.format(exchangedPrice),
-			discount: getDiscount(product.oldPrice, product.price),
 		}
 	}
 
@@ -128,13 +139,15 @@ class ProductsDBService extends MongooseCRUDManager {
 	}
 	async getPriceRange(currency) {
 		const rate = await getRate(currency)
+
 		try {
 			const [result] = await this.model.aggregate([
+				{ $unwind: '$variants' },
 				{
 					$group: {
 						_id: null,
-						minPrice: { $min: '$price' },
-						maxPrice: { $max: '$price' },
+						minPrice: { $min: '$variants.price' },
+						maxPrice: { $max: '$variants.price' },
 					},
 				},
 				{
@@ -146,9 +159,10 @@ class ProductsDBService extends MongooseCRUDManager {
 				},
 			])
 
-			if (result.length === 0) {
-				throw new Error('Price range array is empty ' + error.message)
+			if (!result) {
+				throw new Error('No price data found')
 			}
+
 			return [result.minPrice, result.maxPrice]
 		} catch (error) {
 			throw new Error('Error retrieving price range: ' + error.message)

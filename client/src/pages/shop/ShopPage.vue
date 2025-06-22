@@ -1,16 +1,21 @@
 <template>
-	<div class="flex items-start gap-5">
+	<div class="relative flex items-start gap-5">
 		<shop-filter
-			class="w-[340px] shrink-0"
 			v-model:styles="styleFilterValue"
 			v-model:price="priceFilterValue"
 			v-model:colors="colorFilterValue"
 			v-model:sizes="sizeFilterValue"
 			:facet-options="facetOptionsValue"
+			:is-filter-open="isFilterOpen"
+			:active-chips="activeChips"
 			@reset-price="resetPrice"
+			@close-filter="filterVisibilityToggler"
+			@remove-chip="removeChip"
+			@remove-all="resetFiltersExceptGender"
+			class="lg:w-md-340-290 lg:shrink-0"
 		/>
 
-		<div class="grow">
+		<div id="shopListBlock" class="grow">
 			<div
 				class="flex flex-wrap items-center justify-between gap-8 not-last:mb-6"
 			>
@@ -29,7 +34,7 @@
 						/>
 					</div>
 					<select-button
-						v-model="viewMode"
+						v-model="viewModeValue"
 						:options="viewModeData"
 						:allowEmpty="false"
 						optionLabel="value"
@@ -40,26 +45,49 @@
 							<component :is="slotProps.option.icon"> </component>
 						</template>
 					</select-button>
+
+					<Button
+						:label="activeChipsCountString"
+						size="small"
+						@click="filterVisibilityToggler"
+						class="min-w-11 rounded-md!"
+					>
+						<template #icon>
+							<FilterIcon
+								class="group-hover:stroke-primary relative shrink-0 stroke-white transition-colors"
+							/>
+						</template>
+					</Button>
 				</div>
 			</div>
-			<shop-chips-group
-				:items="activeChips"
-				@remove="removeChip"
-				@remove-all="resetFiltersExceptGender"
-				class="mb-6"
-			/>
+
 			<shop-list
 				:items="productsValue"
 				:view-mode="viewMode.value"
 				class="mb-8"
 			/>
 			<paginator
-				v-if="isPaginatorVisible"
+				v-show="isPaginatorVisible"
 				v-model:first="pageFilterValue"
 				:rows="filter.perPage"
 				:totalRecords="count"
 			/>
 		</div>
+		<progress-bar
+			mode="indeterminate"
+			v-show="isProductsLoading"
+			:style="{
+				position: 'fixed',
+				top: '0',
+				left: '0',
+				zIndex: '1010',
+				width: '100%',
+			}"
+		/>
+		<backdrop
+			:visible="isProductsLoading"
+			background-class="bg-creamy-cloud/50"
+		/>
 	</div>
 </template>
 
@@ -71,6 +99,7 @@ import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import { useFilterModel } from '@/composables/useFilterModel'
 import { useProductsStore } from '@/stores/products'
+import { useCommonStore } from '@/stores/commonStore'
 import { useFilterStore } from '@/stores/filter'
 import { useFacetOptionsStore } from '@/stores/facetOptions'
 
@@ -83,6 +112,10 @@ import Paginator from '@/components/paginator/Paginator.vue'
 import SelectButton from '@/components/ui/selectButton/SelectButton.vue'
 import Select from '@/components/ui/select/Select.vue'
 import ShopChipsGroup from './ShopChipsGroup.vue'
+import ProgressBar from '@/components/ui/progressBar/ProgressBar.vue'
+import Button from '@/components/ui/button/Button.vue'
+import Backdrop from '@/components/ui/Backdrop.vue'
+import FilterIcon from '@/components/icons/FilterIcon.vue'
 //========================================================================================================================================================
 
 const props = defineProps({
@@ -92,7 +125,6 @@ const props = defineProps({
 	},
 })
 //========================================================================================================================================================
-
 const { t, locale } = useI18n()
 const router = useRouter()
 const route = useRoute()
@@ -100,10 +132,11 @@ const route = useRoute()
 const productsStore = useProductsStore()
 const filterStore = useFilterStore()
 const facetOptionsStore = useFacetOptionsStore()
+const commonStore = useCommonStore()
 //========================================================================================================================================================
 
 const { getProducts } = productsStore
-const { count, productsValue } = storeToRefs(productsStore)
+const { count, productsValue, isProductsLoading } = storeToRefs(productsStore)
 
 const {
 	setFilterProp,
@@ -126,10 +159,14 @@ const { getFacetOptions } = facetOptionsStore
 const { facetOptionsValue, isFacetOptionsLoaded } =
 	storeToRefs(facetOptionsStore)
 
-const viewMode = ref(viewModeData[0])
+const { viewMode, currentProductsPerPageByViewMode } = storeToRefs(commonStore)
+const { setViewMode } = commonStore
+const isFilterOpen = ref(false)
 //========================================================================================================================================================
 
-const isPaginatorVisible = computed(() => count.value > filter.value.perPage)
+const isPaginatorVisible = computed(
+	() => count.value > currentProductsPerPageByViewMode.value,
+)
 
 const styleFilterValue = useFilterModel('styles')
 const priceFilterValue = useFilterModel('price')
@@ -164,12 +201,38 @@ const currentGenderId = computed(() => {
 const optionsData = computed(() => {
 	return sortOptionsData.map(({ label, value }) => ({ value, label: t(label) }))
 })
+
+const viewModeValue = computed({
+	get() {
+		const modeNum = filter.value.perPage / 3
+		const mode = viewModeData.find((m) => Number(m.value) === modeNum)
+		setViewMode(mode)
+
+		return mode
+	},
+	set(newVal) {
+		const newPerPage = newVal.value * 3
+		const productsCount = productsValue.value.length
+
+		if (
+			newPerPage > productsCount &&
+			!(currentProductsPerPageByViewMode.value > productsCount)
+		) {
+			setFilterProp('perPage', newPerPage)
+		}
+		setViewMode(newVal)
+	},
+})
+
+const activeChipsCountString = computed(() => {
+	return activeChips.value.length ? String(activeChips.value.length) : ''
+})
 //========================================================================================================================================================
 
 watch(locale, async () => {
-	await getFacetOptions()
 	resetAllFilters()
 	setFilterProp('gender', currentGenderId.value)
+	await getFacetOptions()
 })
 watch(currentGenderId, async (newVal, oldVal) => {
 	if (oldVal) {
@@ -211,4 +274,9 @@ onUnmounted(() => {
 	resetAllFilters()
 	setFilterProp('gender', '')
 })
+//========================================================================================================================================================
+
+const filterVisibilityToggler = () => {
+	isFilterOpen.value = !isFilterOpen.value
+}
 </script>

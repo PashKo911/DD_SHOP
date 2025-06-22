@@ -3,6 +3,8 @@ import HomePage from '@/pages/home/HomePage.vue'
 import NotFoundPage from '@/pages/NotFoundPage.vue'
 import authRoutes from './routes/authRoutes'
 import shopRoutes from './routes/shopRoutes'
+import { useCommonStore } from '@/stores/commonStore'
+import { storeToRefs } from 'pinia'
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,8 +60,12 @@ const router = createRouter({
 // })
 
 router.afterEach((to, from) => {
-	if (document.documentElement.classList.contains('menu-open')) {
-		document.documentElement.classList.remove('menu-open')
+	const commonStore = useCommonStore()
+	const { isHeaderMenuOpen } = storeToRefs(commonStore)
+	const { toggleHeaderMenu } = commonStore
+
+	if (isHeaderMenuOpen.value) {
+		toggleHeaderMenu()
 	}
 })
 export default router

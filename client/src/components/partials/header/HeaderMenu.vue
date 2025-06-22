@@ -1,6 +1,6 @@
 <template>
 	<header
-		class="bg-primary max-md:before:bg-primary sticky top-0 left-0 z-1002 w-full max-md:before:absolute max-md:before:z-20 max-md:before:h-full max-md:before:w-full lg:min-h-[6.1875rem]"
+		class="bg-primary max-md:before:bg-primary fixed top-0 left-0 z-1002 w-full pr-(--p-scrollbar-width) max-md:before:absolute max-md:before:z-20 max-md:before:h-full max-md:before:w-full lg:min-h-[6.1875rem]"
 	>
 		<div id="headerContainer" class="container grid gap-y-1 py-3 md:py-6">
 			<div
@@ -11,13 +11,17 @@
 					:to="{ name: 'home' }"
 					:aria-label="t('accessibility.logo')"
 					tabindex="0"
-					class="text-inverse font-heading text-md-34-28 focus-visible:outline-t-inverse-hover z-30 order-2 rounded-sm font-bold outline outline-transparent transition-colors md:order-1"
+					class="text-inverse font-heading focus-visible:outline-t-inverse-hover z-30 order-2 rounded-sm text-[34px] font-bold outline outline-transparent transition-colors md:order-1"
 				>
 					DD_SHOP
 				</router-link>
-				<header-menu-list :menuItems="menuItems" class="md:order-2" />
+				<header-menu-list
+					:menuItems="menuItems"
+					:is-header-menu-open="isHeaderMenuOpen"
+					class="md:order-2"
+				/>
 				<teleport defer :to="searchInputPosition">
-					<MainSearchInput />
+					<main-search-input />
 				</teleport>
 				<div
 					id="headerActions"
@@ -26,7 +30,10 @@
 					<teleport defer :to="languageSelectPosition">
 						<header-language-select class="order-1" />
 					</teleport>
-					<header-menu-visibility-toggler @click="menuVisibilityToggler" />
+					<header-menu-visibility-toggler
+						:is-header-menu-open="isHeaderMenuOpen"
+						@click="toggleHeaderMenu"
+					/>
 					<teleport defer :to="curtPosition">
 						<router-link
 							:to="{ name: 'cart' }"
@@ -60,11 +67,13 @@
 
 <script setup>
 import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
 
 import { useRoute } from 'vue-router'
 import { useMenuItems } from '@/utils/headerMenuGenerator'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useI18n } from 'vue-i18n'
+import { useCommonStore } from '@/stores/commonStore'
 
 import CartIcon from '@/components/icons/CartIcon.vue'
 import SignInIcon from '@/components/icons/SignInIcon.vue'
@@ -75,6 +84,10 @@ import MainSearchInput from '@/components/formControls/MainSearchInput.vue'
 
 const route = useRoute()
 const { menuItems } = useMenuItems()
+const commonStore = useCommonStore()
+
+const { isHeaderMenuOpen } = storeToRefs(commonStore)
+const { toggleHeaderMenu } = commonStore
 
 const { t } = useI18n()
 
@@ -94,8 +107,4 @@ const curtPosition = computed(() => {
 	return isMobile.value ? '#headerTop' : '#headerActions'
 })
 //========================================================================================================================================================
-
-const menuVisibilityToggler = () => {
-	document.documentElement.classList.toggle('menu-open')
-}
 </script>

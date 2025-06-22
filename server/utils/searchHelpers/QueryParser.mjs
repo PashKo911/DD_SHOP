@@ -61,13 +61,13 @@ class QueryParser {
 	//------- парсимо всі фільтри ---------
 	static filtersParser(fieldsConfigurations, query) {
 		const filters = []
-		fieldsConfigurations.forEach(({ fieldName, filterCategory }) => {
-			let rootFieldName = fieldName
+		fieldsConfigurations.forEach(({ fieldName, subField, queryParam, filterCategory }) => {
+			const fullFieldName = subField ? `${fieldName}.${subField}` : fieldName
+			const param = query[queryParam]
 
-			if (fieldName.includes('.')) {
-				rootFieldName = fieldName.split('.')[0]
+			if (param) {
+				if (query[queryParam]) filters.push(...this[filterCategory](fullFieldName, query[queryParam]))
 			}
-			if (query[rootFieldName]) filters.push(...this[filterCategory](fieldName, query[rootFieldName]))
 		})
 		return filters
 	}
@@ -91,8 +91,6 @@ class QueryParser {
 	static parseQuery(query, fieldsConfigurations) {
 		const filters = this.filtersParser(fieldsConfigurations, query)
 		const actions = this.actionsParser(query)
-		// console.log('filters ++++++++')
-		// console.log(filters)
 		return { filters, actions }
 	}
 }

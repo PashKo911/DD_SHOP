@@ -19,7 +19,7 @@ export const DEFAULT_SELECT_THEME = {
 	dropdown: `flex items-center justify-center shrink-0 bg-transparent
         text-surface-400 w-10 rounded-e-md`,
 	overlay: `absolute top-0 left-0 rounded-md p-portal-self:min-w-full
-        bg-surface-0
+        bg-inverse
         border border-surface-200
         text-surface-700
         shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]`,

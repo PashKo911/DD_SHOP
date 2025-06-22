@@ -28,7 +28,7 @@ function serializeFilter(filter, options, defaultFilter) {
 			if (val > 0) return Number(val) + 1
 		},
 		sort: (val) => {
-			return defaultFilter.sort.value !== val.value ? val.value : null
+			return defaultFilter.sort.label !== val.label ? val.label : null
 		},
 		price: (arr) => {
 			const [min, max] = arr
@@ -40,7 +40,7 @@ function serializeFilter(filter, options, defaultFilter) {
 	}
 
 	for (const [key, val] of Object.entries(filter)) {
-		if (key === 'gender') continue
+		if (key === 'gender' || 'perPage') continue
 		const def = defaultFilter[key]
 
 		const isDefault = Array.isArray(def)

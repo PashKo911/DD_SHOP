@@ -34,6 +34,25 @@ import SliderBase from '@/components/sliders/SliderBase.vue'
 import ProductDescription from './ProductDescription.vue'
 import ProductDetailTabs from './ProductDetailTabs.vue'
 
+const props = defineProps({
+	category: {
+		type: String,
+		required: true,
+	},
+	slug: {
+		type: [String, Number],
+		required: true,
+	},
+	id: {
+		type: [String, Number],
+		required: true,
+	},
+	variant: {
+		type: [String, Number],
+		required: true,
+	},
+})
+
 const imagesList = [
 	{
 		_id: '1',
@@ -114,17 +133,6 @@ const productData = {
 		},
 	],
 }
-
-const props = defineProps({
-	category: {
-		type: String,
-		required: true,
-	},
-	productId: {
-		type: [String, Number],
-		required: true,
-	},
-})
 
 const { t } = useI18n()
 </script>

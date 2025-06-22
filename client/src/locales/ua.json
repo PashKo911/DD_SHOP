@@ -45,7 +45,8 @@
 					"price": "ціна",
 					"color": "колір",
 					"size": "розмір",
-					"style": "стиль"
+					"style": "стиль",
+					"activeFilters": "активні фільтри"
 				}
 			},
 			"sortSelect": {
@@ -260,7 +261,8 @@
 		"clearSearchInput": "Очистити поле пошуку",
 		"viewModeToggler": "Перемкнути режим відображення товарів",
 		"clearFilterChip": "Очистити фільтр",
-		"clearAllFilterChips": "Очистити все"
+		"clearAllFilterChips": "Очистити все",
+		"closeFilter": "Закрити фільтр"
 	},
 	"placeholders": {
 		"search": "Пошук",

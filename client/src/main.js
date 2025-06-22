@@ -4,7 +4,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import i18n from './plugins/i18n'
 import PrimeVue from 'primevue/config'
-import StyleClass from 'primevue/styleclass'
+import lockScroll from './directives/lockScroll'
 import ToastService from 'primevue/toastservice'
 
 import App from './App.vue'
@@ -21,7 +21,8 @@ app.use(i18n)
 app.use(PrimeVue, {
 	unstyled: true,
 })
-app.directive('styleclass', StyleClass)
 app.use(ToastService)
+
+app.directive('lockScroll', lockScroll)
 
 app.mount('#app')

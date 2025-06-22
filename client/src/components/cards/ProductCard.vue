@@ -1,89 +1,127 @@
 <template>
-	<RouterLink
-		:to="{ name: 'productDetail', params: { productId: data._id } }"
-		class="@container flex h-full flex-col pb-4 duration-500 hover:bg-white hover:shadow-lg"
+	<article
+		class="group any-hover:bg-transparent any-hover:shadow-none any-hover:pb-0 @container flex h-full flex-col bg-white pb-2 shadow-lg duration-500 hover:bg-white hover:shadow-lg"
 	>
-		<div
-			class="group relative aspect-[3/3.6] overflow-hidden bg-white not-last:mb-4"
+		<router-link
+			:to="{
+				name: 'productDetail',
+				params: { slug: data.slug, id: data._id, variant: activeVariantId },
+			}"
+			class="group/image focus-visible:outline-primary relative aspect-[3/3.6] overflow-hidden bg-white outline-1 outline-transparent transition-colors duration-300 not-last:mb-4 focus-visible:outline-offset-2"
 		>
 			<img
-				:src="`${API_BASE}${data.paths[0]}`"
+				:src="`${API_BASE}${currentVariant.images[0]}`"
 				:alt="data.title"
 				class="absolute inset-0"
 			/>
 			<img
-				:src="`${API_BASE}${data.paths[1]}`"
+				:src="`${API_BASE}${currentVariant.images[1]}`"
 				:alt="data.title"
-				class="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+				class="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover/image:opacity-100"
 			/>
 			<span
-				v-if="data.discount"
+				v-if="currentVariant.discount"
 				:aria-label="
-					t('accessibility.discountLabel', { discount: data.discount })
+					t('accessibility.discountLabel', {
+						discount: currentVariant.discount,
+					})
 				"
-				class="test-child bg-primary absolute top-0 right-0 p-1.5 text-xl text-[6.5cqw] font-semibold text-white"
+				class="bg-primary absolute top-0 right-0 p-1.5 text-[max(min(6.5cqw,_1.6875rem),.875rem)] font-semibold text-white"
 			>
-				{{ data.discount }}
+				{{ currentVariant.discount }}
 			</span>
-		</div>
-		<div class="flex flex-col gap-2 px-2.5">
-			<div class="grow">
-				<h3
-					class="font-heading line-clamp-2 text-[7.5cqw] leading-tight font-bold"
+		</router-link>
+		<div class="flex grow flex-col justify-between gap-2 px-2.5">
+			<h3>
+				<router-link
+					:to="{
+						name: 'productDetail',
+						params: {
+							slug: data.slug,
+							id: data._id,
+							variant: activeVariantId,
+						},
+					}"
+					class="font-heading focus-visible:outline-primary line-clamp-2 w-full rounded-sm text-[max(min(9cqw,_1.625rem),1rem)] leading-tight font-bold outline-1 outline-transparent transition-colors duration-300"
 				>
 					{{ data.title }}
-				</h3>
-			</div>
-			<div class="grid gap-2">
-				<rating-comp v-model="data.rating" readonly />
-				<div class="flex flex-wrap items-center gap-8">
-					<span class="text-[7cqw] leading-tight font-semibold">
-						{{ data.price }}
-					</span>
-					<span
-						class="text-dark-grey text-[6cqw] leading-tight font-semibold line-through decoration-2"
+				</router-link>
+			</h3>
+			<div class="flex grow flex-col justify-end gap-2">
+				<div class="relative grid gap-2 overflow-hidden">
+					<div
+						class="flex flex-col gap-2 transition-transform duration-300 group-hover:absolute group-hover:-translate-y-full"
 					>
-						{{ data.oldPrice }}
-					</span>
+						<rating-comp :model-value="currentVariant.rating" readonly />
+						<div class="flex flex-wrap items-center gap-x-[7.5%] gap-y-2">
+							<span class="text-xl leading-tight font-semibold">
+								{{ currentVariant.price }}
+							</span>
+						</div>
+					</div>
+					<color-radio-group
+						:items="availableColors"
+						size="small"
+						v-model="activeColorValue"
+						class="any-hover:min-h-12 any-hover:items-center any-hover:absolute any-hover:translate-y-full bottom-0 pt-[.125rem] pb-[.375rem] pl-[2%] transition-transform duration-300 group-hover:static group-hover:translate-y-0"
+					/>
 				</div>
 			</div>
-			<div>
-				<ul class="flex items-center gap-1.5">
-					<li
-						v-for="s in data.sizes"
-						:key="s._id"
-						class="font-heading text-[7cqw] font-bold"
-					>
-						{{ s.label }}
-					</li>
-				</ul>
-				<ul class="flex items-center gap-1.5">
-					<li
-						v-for="c in data.colors"
-						:key="c._id"
-						:aria-label="locale === 'uk' ? c.labelUk : c.label"
-						:style="{ backgroundColor: c.value }"
-						class="aspect-square w-8 rounded-full"
-					></li>
-				</ul>
-			</div>
 		</div>
-	</RouterLink>
+	</article>
 </template>
 
 <script setup>
+import { computed, ref, watch } from 'vue'
 import { API_BASE } from '@/config/apiConfig'
 
 import { useI18n } from 'vue-i18n'
 
 import RatingComp from '@/components/ui/rating/RatingComp.vue'
+import ColorRadioGroup from '../formControls/ColorRadioGroup.vue'
 
-defineProps({
+const props = defineProps({
 	data: {
 		type: Object,
 		required: true,
 	},
 })
+//========================================================================================================================================================
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
+
+const activeVariantId = ref(null)
+
+//========================================================================================================================================================
+const availableColors = computed(() => {
+	const firstVariants = props.data.variants.slice(0, 4)
+	return firstVariants.map((v) => v.color)
+})
+
+const currentVariant = computed(() => {
+	return props.data.variants.find((v) => v._id === activeVariantId.value)
+})
+
+const activeColorValue = computed({
+	get() {
+		return currentVariant.value.color._id
+	},
+	set(newColorId) {
+		const found = props.data.variants.find((v) => v.color._id === newColorId)
+		if (found) {
+			activeVariantId.value = found._id
+		}
+	},
+})
+//========================================================================================================================================================
+
+watch(
+	() => props.data,
+	(newData) => {
+		if (newData?.defaultVariant) {
+			activeVariantId.value = newData.defaultVariant
+		}
+	},
+	{ immediate: true },
+)
 </script>

@@ -33,12 +33,6 @@
 			>
 				${{ productData.oldPrice }}
 			</span>
-			<Badge
-				severity="success"
-				circle
-				size="xlarge"
-				:value="productData.discount"
-			/>
 		</div>
 		<div
 			class="not-last:mb-24-16 pb-24-16 not-last:border-border-color not-last:border-b"
@@ -135,7 +129,6 @@ import SizeRadioGroup from '@/components/formControls/SizeRadioGroup.vue'
 import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
 import InputNumber from '@/components/ui/inputNumber/InputNumber.vue'
 import Button from '@/components/ui/button/Button.vue'
-import Badge from '@/components/ui/budge/Badge.vue'
 import { Form } from '@primevue/forms'
 import { FormField } from '@primevue/forms'
 import Message from '@/components/ui/message/Message.vue'

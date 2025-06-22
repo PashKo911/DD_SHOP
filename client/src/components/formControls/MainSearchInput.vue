@@ -31,7 +31,7 @@
 			class="group focus-visible:border-t-inverse-hover absolute top-1/2 right-0 z-50 grid h-full w-10 -translate-y-1/2 cursor-pointer place-items-center rounded-r-md border-2 border-transparent transition-colors duration-200 outline-none"
 		>
 			<close-icon
-				class="fill-primary h-full transition-colors duration-300 group-hover:fill-red-400 group-focus-visible:fill-red-400"
+				class="fill-primary h-full w-4 transition-colors duration-300 group-hover:fill-red-400 group-focus-visible:fill-red-400"
 			/>
 		</button>
 	</div>

@@ -46,7 +46,8 @@
 					"price": "price",
 					"color": "color",
 					"size": "size",
-					"style": "dress style"
+					"style": "dress style",
+					"activeFilters": "active filters"
 				}
 			},
 			"sortSelect": {
@@ -262,7 +263,8 @@
 		"clearSearchInput": "Clear search input",
 		"viewModeToggler": "Change products view mode",
 		"clearFilterChip": "Clear Filter",
-		"clearAllFilterChips": "Clear All"
+		"clearAllFilterChips": "Clear All",
+		"closeFilter": "Close filter"
 	},
 	"placeholders": {
 		"search": "Search",
