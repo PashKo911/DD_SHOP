@@ -1,6 +1,8 @@
 <template>
 	<header-menu />
-	<main class="pb-80-30 mb-80-30 relative grow">
+	<main
+		class="pb-80-30 mb-80-30 relative grow pt-[7.6875rem] md:pt-[9.4375rem] lg:pt-[6.1875rem]"
+	>
 		<separator-base class="absolute bottom-0 left-0" />
 		<toast />
 		<slot />

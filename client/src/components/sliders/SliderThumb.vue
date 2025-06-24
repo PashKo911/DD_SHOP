@@ -59,14 +59,14 @@
 					:aria-label="t('buttons.prevSlide')"
 					class="any-hover:-translate-x-full any-hover:opacity-0 absolute top-1/2 left-2 -translate-y-1/2 group-hover:translate-x-0 group-hover:opacity-100 focus-visible:translate-x-0 focus-visible:opacity-100"
 				>
-					<arrow-left-icon />
+					<arrow-left-icon class="aspect-square w-8" />
 				</slider-nav-button>
 				<slider-nav-button
 					@click="mainSwiper.slideNext()"
 					:aria-label="t('buttons.prevSlide')"
 					class="any-hover:translate-x-full any-hover:opacity-0 absolute top-1/2 right-2 -translate-y-1/2 group-hover:translate-x-0 group-hover:opacity-100 focus-visible:translate-x-0 focus-visible:opacity-100"
 				>
-					<arrow-right-icon />
+					<arrow-right-icon class="aspect-square w-8" />
 				</slider-nav-button>
 			</div>
 		</Swiper>

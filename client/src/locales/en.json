@@ -24,6 +24,9 @@
 				"blackFriday": "Special sale black friday 50% off",
 				"priceWeek": "Price of the week"
 			},
+			"imgAltAttr": {
+				"newCollection": "Image with jeans, new collection"
+			},
 			"dressStyleTitles": {
 				"casual": "casual",
 				"sport": "sport",
@@ -33,7 +36,25 @@
 		},
 		"shop": {
 			"title": {
-				"menu": "Магазин"
+				"menu": "shop",
+				"countTitle": "Found {totalCount} products"
+			},
+
+			"filter": {
+				"title": "Filters",
+				"sectionsTitles": {
+					"price": "price",
+					"color": "color",
+					"size": "size",
+					"style": "dress style",
+					"activeFilters": "active filters"
+				}
+			},
+			"sortSelect": {
+				"priceAsc": "Cheapest first",
+				"priceDesc": "Expensive first",
+				"newest": "Newest",
+				"ratingDesc": "Most popular"
 			}
 		},
 		"women": {
@@ -149,7 +170,8 @@
 		},
 		"reviews": {
 			"postedOn": "Posted: {date}"
-		}
+		},
+		"emptySearchMessage": "No results found"
 	},
 	"accessibility": {
 		"logo": "Website Logo/ go to homepage",
@@ -198,7 +220,8 @@
 				"numeric": "Number required",
 				"minLength": "At least 6 characters"
 			}
-		}
+		},
+		"discountLabel": "{discount} discount"
 	},
 	"errors": {
 		"email": {
@@ -235,7 +258,13 @@
 		"hide": "hide",
 		"nextSlide": "Next slide",
 		"prevSlide": "Previous slide",
-		"shopNow": "shop now"
+		"shopNow": "shop now",
+		"paginator": "Page {page} of {pageCount}",
+		"clearSearchInput": "Clear search input",
+		"viewModeToggler": "Change products view mode",
+		"clearFilterChip": "Clear Filter",
+		"clearAllFilterChips": "Clear All",
+		"closeFilter": "Close filter"
 	},
 	"placeholders": {
 		"search": "Search",

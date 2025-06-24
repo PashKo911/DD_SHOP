@@ -3,7 +3,7 @@ export const DEFAULT_BUTTON_THEME = {
     overflow-hidden relative px-3 py-3 gap-2 rounded-md
     disabled:pointer-events-none disabled:opacity-60
     transition-colors duration-200 bg-primary
-    enabled:hover:bg-primary-emphasis enabled:active:bg-primary-emphasis-alt
+    any-hover:enabled:hover:bg-primary
     text-primary text-24-18 font-bold font-heading border border-primary
     enabled:hover:border-primary-emphasis enabled:active:border-primary-emphasis-alt
     focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary

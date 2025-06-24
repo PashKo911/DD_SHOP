@@ -11,6 +11,7 @@
   "dependencies": {
     "@primevue/forms": "^4.3.3",
     "@tailwindcss/vite": "^4.0.17",
+    "axios": "^1.9.0",
     "pinia": "^3.0.1",
     "primevue": "^4.3.3",
     "swiper": "^11.2.6",

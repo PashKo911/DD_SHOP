@@ -12,14 +12,26 @@ import FormatValidationErrors from '../../../validators/formatValidationErrors.m
 class ProductController {
 	static async getAllProducts(req, res) {
 		try {
-			const filters = {}
+			console.log('GET PRODUCTS CHECKING ++++++++++++++++++++++++++')
+			const language = req.headers['accept-language']
+			const currency = req.headers.currency
+			const data = await ProductsDBService.getList(req.query, language, currency)
 
-			for (const key in req.query) {
-				if (req.query[key]) filters[key] = req.query[key]
-			}
-			const productsList = await ProductsDBService.getList(filters)
 			res.status(200).json({
-				products: productsList,
+				data,
+			})
+		} catch (error) {
+			res.status(500).json({ error: 'Error fetching products' })
+		}
+	}
+	static async getSuggestions(req, res) {
+		try {
+			const language = req.headers['accept-language']
+			const currency = req.headers.currency
+			const data = await ProductsDBService.getSuggestions(req.query, language, currency)
+
+			res.status(200).json({
+				data,
 			})
 		} catch (error) {
 			res.status(500).json({ error: 'Error fetching products' })
@@ -97,19 +109,36 @@ class ProductController {
 
 	static async getOptions(req, res) {
 		try {
-			const colors = await ColorsDBService.getList({})
-			const sizes = await SizeDBService.getList({})
-			const styles = await DressStyleDBService.getList({})
+			const language = req.headers['accept-language']
+			const currency = req.headers.currency
+
+			const colors = await ColorsDBService.getList(language)
+			const sizes = await SizeDBService.getList()
+			const styles = await DressStyleDBService.getList(language)
 			const genders = await GenderDBService.getList({})
 
-			const priceRange = await ProductsDBService.getPriceRange()
+			const price = await ProductsDBService.getPriceRange(currency)
 
 			res.status(200).json({
 				genders,
 				styles,
 				colors,
 				sizes,
-				priceRange,
+				price,
+			})
+		} catch (error) {
+			console.error(error)
+			res.status(500).json({ message: 'Server error' })
+		}
+	}
+
+	static async getStyles(req, res) {
+		try {
+			const language = req.headers['accept-language']
+
+			const styles = await DressStyleDBService.getListWithImg(language)
+			res.status(200).json({
+				styles,
 			})
 		} catch (error) {
 			console.error(error)
