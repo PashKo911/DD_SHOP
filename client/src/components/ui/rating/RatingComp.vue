@@ -4,7 +4,7 @@
 		:aria-readonly="props.readonly.toString()"
 		:tabindex="props.readonly ? -1 : 0"
 		role="radiogroup"
-		class="focus-visible:outline-primary inline-flex h-5 items-start gap-[.3125rem] rounded-sm outline outline-transparent transition-colors"
+		class="focus-visible:outline-primary inline-flex h-4 items-start gap-[.3125rem] rounded-sm outline outline-transparent transition-colors"
 	>
 		<label
 			v-for="index in stars"
@@ -18,7 +18,7 @@
 			@keydown.enter.prevent="selectStar(index)"
 			@keydown.space.prevent="selectStar(index)"
 			@focus="focusIndex = index"
-			class="star focus-visible:outline-primary relative h-5 w-5 rounded-sm bg-contain bg-no-repeat outline outline-transparent transition-colors"
+			class="star focus-visible:outline-primary relative h-4 w-4 rounded-sm bg-contain bg-no-repeat outline outline-transparent transition-colors"
 			:class="{
 				'cursor-pointer': !props.readonly,
 				'cursor-default': props.readonly,
@@ -95,9 +95,9 @@ function moveFocus(delta) {
 
 <style scoped>
 .star {
-	background: url('./icons/star.svg') 0 0 / 1.25rem no-repeat;
+	background: url('./icons/star.svg') 0 0 / 1rem no-repeat;
 }
 .star-filled {
-	background: url('./icons/star-filled.svg') 0 0 / 1.25rem no-repeat;
+	background: url('./icons/star-filled.svg') 0 0 / 1rem no-repeat;
 }
 </style>

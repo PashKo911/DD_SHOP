@@ -19,7 +19,7 @@ export default {
 			component: ShopPage,
 		},
 		{
-			path: ':productId',
+			path: ':slug/:id/:variant',
 			name: 'productDetail',
 			component: () => import('@/pages/productDetail/ProductDetailPage.vue'),
 			props: true,

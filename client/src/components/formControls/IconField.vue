@@ -9,18 +9,25 @@
 		<slot name="input">
 			<InputText
 				:tabindex="1"
-				:placeholder="$t('placeholders.search')"
-				pt:root="rounded-[1.0625rem]"
+				:placeholder="t('placeholders.search')"
+				pt:root="rounded-md"
+				v-model="model"
 				size="small"
 				icon-field
 				fluid
-				:aria-label="$t('accessibility.searchInput')"
+				:aria-label="t('accessibility.searchInput')"
 			/>
 		</slot>
 	</div>
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+
 import SearchIcon from '../icons/SearchIcon.vue'
 import InputText from '../ui/inputText/InputText.vue'
+
+const { t } = useI18n()
+
+const model = defineModel()
 </script>

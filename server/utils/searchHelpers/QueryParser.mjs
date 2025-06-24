@@ -10,7 +10,7 @@ class QueryParser {
 	 * @returns {object[]} - Масив об'єктів фільтрів.
 	 */
 	static range(fieldName, filterValue) {
-		const [minValue, maxValue] = filterValue.split(',').map(Number)
+		const [minValue, maxValue] = filterValue.map(Number)
 
 		const filtersContent = []
 
@@ -61,8 +61,13 @@ class QueryParser {
 	//------- парсимо всі фільтри ---------
 	static filtersParser(fieldsConfigurations, query) {
 		const filters = []
-		fieldsConfigurations.forEach(({ fieldName, filterCategory }) => {
-			if (query[fieldName]) filters.push(...this[filterCategory](fieldName, query[fieldName]))
+		fieldsConfigurations.forEach(({ fieldName, subField, queryParam, filterCategory }) => {
+			const fullFieldName = subField ? `${fieldName}.${subField}` : fieldName
+			const param = query[queryParam]
+
+			if (param) {
+				if (query[queryParam]) filters.push(...this[filterCategory](fullFieldName, query[queryParam]))
+			}
 		})
 		return filters
 	}

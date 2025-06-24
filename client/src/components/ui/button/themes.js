@@ -3,14 +3,14 @@ export const DEFAULT_BUTTON_THEME = {
     overflow-hidden relative px-3 py-3 gap-2 rounded-md
     disabled:pointer-events-none disabled:opacity-60
     transition-colors duration-200 bg-primary
-    enabled:hover:bg-primary-emphasis enabled:active:bg-primary-emphasis-alt
+    any-hover:enabled:hover:bg-primary
     text-primary text-24-18 font-bold font-heading border border-primary
     enabled:hover:border-primary-emphasis enabled:active:border-primary-emphasis-alt
     focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
     p-vertical:flex-col p-fluid:w-full p-icon-only:w-10
     p-icon-only:px-0 p-icon-only:gap-0 p-icon-only:rounded-full
     p-small:text-sm p-small:px-3 p-small:py-2
-    p-large:px-[0.875rem] sm:p-large:py-4.5 p-large:rounded-lg p-large:uppercase
+    p-large:px-[0.875rem] sm:p-large:py-4.5 p-large:rounded-lg
     p-raised:shadow-sm p-rounded:rounded-[2rem]
     p-outlined:bg-transparent enabled:hover:p-outlined:bg-primary-50
     enabled:active:p-outlined:bg-primary-100
@@ -43,7 +43,7 @@ export const CONTRAST_BUTTON_THEME = {
     p-vertical:flex-col p-fluid:w-full p-icon-only:w-10
     p-icon-only:px-0 p-icon-only:gap-0 p-icon-only:rounded-full
     p-small:text-md p-small:px-3 py-[.9063rem] md:p-small:py-[1.2188rem]
-    p-large:px-[0.875rem] sm:p-large:py-[1.1563rem] p-large:rounded-lg p-large:uppercase
+    p-large:px-[0.875rem] sm:p-large:py-[1.1563rem] p-large:rounded-lg
     p-raised:shadow-sm p-rounded:rounded-[2rem]
     p-outlined:bg-transparent enabled:hover:p-outlined:bg-surface-50
     enabled:active:p-outlined:bg-surface-100

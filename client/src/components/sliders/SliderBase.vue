@@ -10,14 +10,14 @@
 					:aria-label="t('buttons.prevSlide')"
 					class="bg-[#FCF9F6] shadow-lg hover:shadow-md"
 				>
-					<arrow-left-icon />
+					<arrow-left-icon class="aspect-square w-8" />
 				</slider-nav-button>
 				<slider-nav-button
 					@click="slider.slideNext()"
 					:aria-label="t('buttons.nextSlide')"
 					class="bg-[#FCF9F6] shadow-lg hover:shadow-md"
 				>
-					<arrow-right-icon />
+					<arrow-right-icon class="aspect-square w-8" />
 				</slider-nav-button>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 				class="h-auto"
 			>
 				<slot :item="item">
-					<card-slider :data="item" />
+					<product-card :data="item" />
 				</slot>
 			</swiper-slide>
 			<span
@@ -56,7 +56,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import SliderNavButton from './SliderNavButton.vue'
 import ArrowLeftIcon from '@/components/icons/ArrowLeftIcon.vue'
 import ArrowRightIcon from '@/components/icons/ArrowRightIcon.vue'
-import CardSlider from '../cards/CardSlider.vue'
+import ProductCard from '../cards/ProductCard.vue'
 
 import 'swiper/css'
 

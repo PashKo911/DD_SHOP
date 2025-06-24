@@ -5,7 +5,7 @@
 		fluid
 		:contrast="isContrast"
 		size="large"
-		:label="$t('buttons.googleButton')"
+		:label="t('buttons.googleButton')"
 	>
 		<template #icon>
 			<google-icon class="relative shrink-0" />
@@ -14,6 +14,8 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+
 import Button from '@/components/ui/button/Button.vue'
 import GoogleIcon from '@/components/icons/GoogleIcon.vue'
 
@@ -23,4 +25,6 @@ const props = defineProps({
 		default: true,
 	},
 })
+
+const { t } = useI18n()
 </script>
