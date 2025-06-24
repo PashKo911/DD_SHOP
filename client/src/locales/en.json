@@ -37,7 +37,7 @@
 		"shop": {
 			"title": {
 				"menu": "shop",
-				"countTitle": "Found {count} products"
+				"countTitle": "Found {totalCount} products"
 			},
 
 			"filter": {
@@ -51,8 +51,8 @@
 				}
 			},
 			"sortSelect": {
-				"priceAsc": "Price: Lowest first",
-				"priceDesc": "Price: Highest first",
+				"priceAsc": "Cheapest first",
+				"priceDesc": "Expensive first",
 				"newest": "Newest",
 				"ratingDesc": "Most popular"
 			}

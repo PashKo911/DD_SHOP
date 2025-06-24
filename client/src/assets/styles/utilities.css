@@ -141,7 +141,7 @@
 }
 
 @custom-variant any-hover {
-	@media (any-hover: hover) {
+	@media (hover: hover) and (pointer: fine) {
 		@slot;
 	}
 }

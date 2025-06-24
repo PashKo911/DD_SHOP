@@ -1,11 +1,10 @@
 <template>
 	<aside
-		id="shopFilter"
-		class="border-border-color fixed top-[7.6875rem] right-0 bottom-0 z-[1001] w-full max-w-[21.25rem] overflow-y-auto border-l bg-white px-[max(min(1.875vw,_2.25rem),_1.125rem)] py-5 transition-transform duration-300 ease-in md:top-[9.4375rem] lg:static lg:rounded-2xl lg:border lg:pt-9 lg:pb-6"
+		class="border-border-color fixed top-[7.6875rem] right-0 bottom-0 z-[1001] w-full max-w-[21.25rem] overflow-y-auto border-l bg-white px-8 py-5 transition-transform duration-300 ease-in md:top-[9.4375rem] lg:static lg:rounded-2xl lg:border lg:px-[max(min(1.875vw,_2.25rem),_1.125rem)] lg:pt-9 lg:pb-6"
 		:class="filterToggleClass"
 	>
 		<div
-			class="border-border-color flex items-center justify-between gap-8 border-b pb-8"
+			class="border-border-color flex items-center justify-between gap-8 border-b pb-4 md:pb-8"
 		>
 			<h2 class="font-heading text-32-26 leading-tight font-bold">
 				{{ t('pages.shop.filter.title') }}
@@ -37,7 +36,6 @@
 						:items="activeChips"
 						@remove="onRemoveChip"
 						@remove-all="onRemoveAll"
-						class="mb-6"
 					/>
 				</accordion-content>
 			</accordion-panel>
@@ -171,8 +169,8 @@ const filterHeaderIcon = computed(() => {
 const onFilterClose = () => {
 	emits('closeFilter')
 }
-const onRemoveChip = () => {
-	emits('removeChip')
+const onRemoveChip = (chip) => {
+	emits('removeChip', chip)
 }
 const onRemoveAll = () => {
 	emits('removeAll')

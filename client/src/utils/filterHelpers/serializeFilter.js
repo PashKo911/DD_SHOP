@@ -40,7 +40,7 @@ function serializeFilter(filter, options, defaultFilter) {
 	}
 
 	for (const [key, val] of Object.entries(filter)) {
-		if (key === 'gender' || 'perPage') continue
+		if (key === 'gender' || key === 'perPage') continue
 		const def = defaultFilter[key]
 
 		const isDefault = Array.isArray(def)

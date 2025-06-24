@@ -12,9 +12,6 @@ export const useCommonStore = defineStore('commonStore', () => {
 		return viewMode.value
 	})
 
-	const currentProductsPerPageByViewMode = computed(() => {
-		return viewMode.value.value * 3
-	})
 	//========================================================================================================================================================
 
 	const setViewMode = (mode) => {
@@ -31,6 +28,5 @@ export const useCommonStore = defineStore('commonStore', () => {
 		viewMode,
 		setViewMode,
 		viewModeValue,
-		currentProductsPerPageByViewMode,
 	}
 })

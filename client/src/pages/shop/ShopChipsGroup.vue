@@ -1,5 +1,7 @@
 <template>
-	<div class="flex items-start justify-between gap-8">
+	<div
+		class="flex flex-col-reverse items-start justify-between gap-5 lg:flex-row lg:gap-8"
+	>
 		<div class="flex flex-wrap items-center gap-2">
 			<chip
 				v-for="i in items"
@@ -13,7 +15,7 @@
 			v-show="items.length"
 			@click="removeAll"
 			@keydown="removeAll"
-			class="bg-primary focus-visible:outline-primary group font-heading relative inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-md ps-3 outline-transparent focus-visible:outline-1 focus-visible:outline-offset-2"
+			class="bg-primary focus-visible:outline-primary group font-heading relative inline-flex shrink-0 cursor-pointer items-center gap-2 self-end rounded-md ps-3 outline-transparent focus-visible:outline-1 focus-visible:outline-offset-2 lg:self-start"
 		>
 			<span class="text-primary z-[2] capitalize">{{
 				t('buttons.clearAllFilterChips')

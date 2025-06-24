@@ -22,20 +22,21 @@
 		padding-right: var(--p-scrollbar-width);
 	}
 
-	::-webkit-scrollbar {
-		width: 0.5rem;
-		height: 0.5rem;
-	}
+	@media (any-hover: hover) {
+		::-webkit-scrollbar {
+			width: 0.5rem;
+			height: 0.5rem;
+		}
+		::-webkit-scrollbar-track {
+			background: var(--color-creamy-cloud);
+			border-radius: 0.25rem;
+		}
 
-	::-webkit-scrollbar-track {
-		background: var(--color-creamy-cloud);
-		border-radius: 0.25rem;
-	}
-
-	::-webkit-scrollbar-thumb {
-		background-color: var(--p-primary-color);
-		border-radius: 4px;
-		border: 2px solid transparent;
+		::-webkit-scrollbar-thumb {
+			background-color: var(--p-primary-color);
+			border-radius: 0.25rem;
+			border: 0.125rem solid transparent;
+		}
 	}
 }
 

@@ -37,7 +37,7 @@
 		"shop": {
 			"title": {
 				"menu": "Магазин",
-				"countTitle": "Знайдено {count} товарів"
+				"countTitle": "Знайдено {totalCount} товарів"
 			},
 			"filter": {
 				"title": "Фільтри",
@@ -50,8 +50,8 @@
 				}
 			},
 			"sortSelect": {
-				"priceAsc": "Ціна: спочатку дешеві",
-				"priceDesc": "Ціна: спочатку дорогі",
+				"priceAsc": "Cпочатку дешеві",
+				"priceDesc": "Cпочатку дорогі",
 				"newest": "Спочатку нові",
 				"ratingDesc": "Найпопулярніші"
 			}

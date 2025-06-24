@@ -3,6 +3,7 @@ import { storeToRefs } from 'pinia'
 import { reactive, computed } from 'vue'
 
 import { useFacetOptionsStore } from './facetOptions'
+import { useCommonStore } from './commonStore'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
@@ -15,9 +16,11 @@ import { removeFilterChip } from '@/utils/filterHelpers/removeFilterChip'
 export const useFilterStore = defineStore('filter', () => {
 	const route = useRoute()
 	const facetOptionsStore = useFacetOptionsStore()
+	const commonStore = useCommonStore()
 
 	const { t, locale } = useI18n()
 	const { facetOptions, currency } = storeToRefs(facetOptionsStore)
+	const { viewMode } = storeToRefs(commonStore)
 
 	const defaultFilter = computed(() => ({
 		gender: '',
@@ -31,8 +34,11 @@ export const useFilterStore = defineStore('filter', () => {
 			label: t(sortOptionsData[3].label),
 		},
 		page: 0,
-		perPage: 9,
 	}))
+
+	const perPage = computed(() => {
+		return viewMode.value.value * 3
+	})
 
 	const filter = reactive({ ...defaultFilter.value })
 
@@ -50,7 +56,7 @@ export const useFilterStore = defineStore('filter', () => {
 			price: filter.price,
 			page: filter.page,
 			sort: filter.sort.value,
-			perPage: filter.perPage,
+			perPage: perPage.value,
 		}
 	})
 
@@ -123,6 +129,7 @@ export const useFilterStore = defineStore('filter', () => {
 	return {
 		defaultFilter,
 		filter,
+		perPage,
 		activeChips,
 		filterStrings,
 		setFilterProp,

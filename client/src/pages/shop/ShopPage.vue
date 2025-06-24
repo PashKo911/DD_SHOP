@@ -1,5 +1,5 @@
 <template>
-	<div class="relative flex items-start gap-5">
+	<div class="relative flex gap-5">
 		<shop-filter
 			v-model:styles="styleFilterValue"
 			v-model:price="priceFilterValue"
@@ -12,18 +12,18 @@
 			@close-filter="filterVisibilityToggler"
 			@remove-chip="removeChip"
 			@remove-all="resetFiltersExceptGender"
-			class="lg:w-md-340-290 lg:shrink-0"
+			class="lg:w-md-340-290 lg:shrink-0 lg:self-start"
 		/>
 
-		<div id="shopListBlock" class="grow">
+		<div class="flex grow flex-col">
 			<div
-				class="flex flex-wrap items-center justify-between gap-8 not-last:mb-6"
+				class="flex flex-col-reverse flex-wrap justify-between gap-5 not-last:mb-6 min-[660px]:flex-row min-[660px]:items-center md:gap-8"
 			>
 				<h3 class="font-heading text-xl leading-tight font-semibold">
-					{{ t('pages.shop.title.countTitle', { count }) }}
+					{{ t('pages.shop.title.countTitle', { totalCount }) }}
 				</h3>
-				<div class="flex flex-wrap items-center gap-4">
-					<div class="min-w-[14.5rem]">
+				<div class="flex flex-wrap items-center gap-3 md:gap-4">
+					<div class="min-w-[11.4375rem] grow">
 						<Select
 							v-model="sortFilterValue"
 							optionLabel="label"
@@ -33,44 +33,55 @@
 							:placeholder="sortFilterValue.label"
 						/>
 					</div>
-					<select-button
-						v-model="viewModeValue"
-						:options="viewModeData"
-						:allowEmpty="false"
-						optionLabel="value"
-						dataKey="value"
-						aria-labelledby="custom"
+					<div
+						class="flex grow flex-wrap items-center justify-end gap-3 md:gap-4"
 					>
-						<template #option="slotProps">
-							<component :is="slotProps.option.icon"> </component>
-						</template>
-					</select-button>
-
-					<Button
-						:label="activeChipsCountString"
-						size="small"
-						@click="filterVisibilityToggler"
-						class="min-w-11 rounded-md!"
-					>
-						<template #icon>
-							<FilterIcon
-								class="group-hover:stroke-primary relative shrink-0 stroke-white transition-colors"
-							/>
-						</template>
-					</Button>
+						<select-button
+							v-model="viewModeValue"
+							:options="viewModeData"
+							:allowEmpty="false"
+							optionLabel="value"
+							dataKey="value"
+							aria-labelledby="custom"
+						>
+							<template #option="slotProps">
+								<component :is="slotProps.option.icon"> </component>
+							</template>
+						</select-button>
+						<Button
+							:label="activeChipsCountString"
+							size="small"
+							v-if="!isDesktop"
+							@click="filterVisibilityToggler"
+							class="min-w-11 rounded-md!"
+						>
+							<template #icon>
+								<FilterIcon
+									class="group-hover:stroke-primary relative shrink-0 stroke-white transition-colors"
+								/>
+							</template>
+						</Button>
+					</div>
 				</div>
 			</div>
-
+			<shop-chips-group
+				v-if="activeChips.length && isDesktop"
+				:items="activeChips"
+				@remove="removeChip"
+				@remove-all="resetFiltersExceptGender"
+				class="mb-6"
+			/>
 			<shop-list
 				:items="productsValue"
-				:view-mode="viewMode.value"
-				class="mb-8"
+				:view-mode="Number(viewMode.value)"
+				class="mb-8 grow"
 			/>
 			<paginator
 				v-show="isPaginatorVisible"
 				v-model:first="pageFilterValue"
-				:rows="filter.perPage"
-				:totalRecords="count"
+				:page-link-size="paginatorButtonsCount"
+				:rows="perPage"
+				:totalRecords="totalCount"
 			/>
 		</div>
 		<progress-bar
@@ -102,6 +113,7 @@ import { useProductsStore } from '@/stores/products'
 import { useCommonStore } from '@/stores/commonStore'
 import { useFilterStore } from '@/stores/filter'
 import { useFacetOptionsStore } from '@/stores/facetOptions'
+import { useMediaQuery } from '@/composables/useMediaQuery'
 
 import viewModeData from '@/data/viewModeData'
 import sortOptionsData from '@/data/sortOptionsData'
@@ -133,10 +145,16 @@ const productsStore = useProductsStore()
 const filterStore = useFilterStore()
 const facetOptionsStore = useFacetOptionsStore()
 const commonStore = useCommonStore()
+
+const isDesktop = useMediaQuery('(min-width: 991.98px)')
+const isTablet = useMediaQuery('(min-width: 767.98px)')
+const isMobile = useMediaQuery('(min-width: 479.98px)')
+
 //========================================================================================================================================================
 
 const { getProducts } = productsStore
-const { count, productsValue, isProductsLoading } = storeToRefs(productsStore)
+const { totalCount, productsValue, products, isProductsLoading } =
+	storeToRefs(productsStore)
 
 const {
 	setFilterProp,
@@ -149,6 +167,7 @@ const {
 
 const {
 	filter,
+	perPage,
 	filterStrings,
 	hasSelectedFilters,
 	hasQueryFilters,
@@ -159,13 +178,13 @@ const { getFacetOptions } = facetOptionsStore
 const { facetOptionsValue, isFacetOptionsLoaded } =
 	storeToRefs(facetOptionsStore)
 
-const { viewMode, currentProductsPerPageByViewMode } = storeToRefs(commonStore)
+const { viewMode } = storeToRefs(commonStore)
 const { setViewMode } = commonStore
 const isFilterOpen = ref(false)
 //========================================================================================================================================================
 
 const isPaginatorVisible = computed(
-	() => count.value > currentProductsPerPageByViewMode.value,
+	() => totalCount.value > perPage.value || Number(filter.value.page) !== 0,
 )
 
 const styleFilterValue = useFilterModel('styles')
@@ -184,10 +203,11 @@ const sortFilterValue = computed({
 
 const pageFilterValue = computed({
 	get() {
-		return filter.value.page * filter.value.perPage
+		return filter.value.page * perPage.value
 	},
 	set(newVal) {
-		const newPage = Math.floor(newVal / filter.value.perPage)
+		console.log(newVal)
+		const newPage = Math.floor(newVal / perPage.value)
 		setFilterProp('page', newPage)
 	},
 })
@@ -204,28 +224,54 @@ const optionsData = computed(() => {
 
 const viewModeValue = computed({
 	get() {
-		const modeNum = filter.value.perPage / 3
+		const modeNum = perPage.value / 3
 		const mode = viewModeData.find((m) => Number(m.value) === modeNum)
-		setViewMode(mode)
 
 		return mode
 	},
-	set(newVal) {
+	async set(newVal) {
 		const newPerPage = newVal.value * 3
-		const productsCount = productsValue.value.length
+		const productsCount = products.value.length
+		const newPageByViewMode = Math.floor(
+			(filter.value.page * perPage.value) / newPerPage,
+		)
 
-		if (
-			newPerPage > productsCount &&
-			!(currentProductsPerPageByViewMode.value > productsCount)
-		) {
-			setFilterProp('perPage', newPerPage)
-		}
 		setViewMode(newVal)
+
+		if (newPageByViewMode !== filter.value.page) {
+			setFilterProp('page', newPageByViewMode)
+			return
+		}
+
+		if (newPerPage > productsCount && totalCount.value > productsCount) {
+			await getProducts()
+		}
 	},
 })
 
 const activeChipsCountString = computed(() => {
 	return activeChips.value.length ? String(activeChips.value.length) : ''
+})
+
+const paginatorButtonsCount = computed(() => {
+	let buttonsCount
+
+	switch (true) {
+		case isDesktop.value:
+			buttonsCount = 8
+			break
+		case isTablet.value:
+			buttonsCount = 6
+			break
+		case isMobile.value:
+			buttonsCount = 3
+			break
+
+		default:
+			buttonsCount = 1
+			break
+	}
+	return buttonsCount
 })
 //========================================================================================================================================================
 
@@ -261,7 +307,7 @@ onMounted(async () => {
 
 	await getProducts()
 
-	unwatch = watch(filter.value, async () => {
+	unwatch = watch(filter.value, async (newVal, oldVal) => {
 		router.replace({ query: filterStrings.value })
 		await getProducts()
 	})

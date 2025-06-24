@@ -31,7 +31,7 @@
 				{{ currentVariant.discount }}
 			</span>
 		</router-link>
-		<div class="flex grow flex-col justify-between gap-2 px-2.5">
+		<div class="flex grow flex-col justify-between gap-2 px-[3.225806%]">
 			<h3>
 				<router-link
 					:to="{
@@ -63,7 +63,7 @@
 						:items="availableColors"
 						size="small"
 						v-model="activeColorValue"
-						class="any-hover:min-h-12 any-hover:items-center any-hover:absolute any-hover:translate-y-full bottom-0 pt-[.125rem] pb-[.375rem] pl-[2%] transition-transform duration-300 group-hover:static group-hover:translate-y-0"
+						class="any-hover:min-h-12 any-hover:items-center any-hover:absolute any-hover:translate-y-full bottom-0 pt-[.125rem] pb-[.375rem] pl-[min(2%,_.125rem)] transition-transform duration-300 group-hover:static group-hover:translate-y-0"
 					/>
 				</div>
 			</div>
