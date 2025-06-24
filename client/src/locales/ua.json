@@ -24,6 +24,9 @@
 				"blackFriday": "Чорна пʼятниця — знижка 50% на обрані товари",
 				"priceWeek": "Ціна тижня — встигни купити вигідно"
 			},
+			"imgAltAttr": {
+				"newCollection": "Зображення із джинсами, нова колекція"
+			},
 			"dressStyleTitles": {
 				"casual": "повсякденний",
 				"sport": "спортивний",
@@ -33,7 +36,24 @@
 		},
 		"shop": {
 			"title": {
-				"menu": "Магазин"
+				"menu": "Магазин",
+				"countTitle": "Знайдено {totalCount} товарів"
+			},
+			"filter": {
+				"title": "Фільтри",
+				"sectionsTitles": {
+					"price": "ціна",
+					"color": "колір",
+					"size": "розмір",
+					"style": "стиль",
+					"activeFilters": "активні фільтри"
+				}
+			},
+			"sortSelect": {
+				"priceAsc": "Cпочатку дешеві",
+				"priceDesc": "Cпочатку дорогі",
+				"newest": "Спочатку нові",
+				"ratingDesc": "Найпопулярніші"
 			}
 		},
 		"women": {
@@ -149,7 +169,8 @@
 		},
 		"reviews": {
 			"postedOn": "Опубліковано: {date}"
-		}
+		},
+		"emptySearchMessage": "Нічого не знайдено"
 	},
 	"accessibility": {
 		"logo": "Логотип сайту",
@@ -198,7 +219,8 @@
 				"numeric": "Потрібна цифра",
 				"minLength": "Мінімум 6 символів"
 			}
-		}
+		},
+		"discountLabel": "Знижка {discount}"
 	},
 	"errors": {
 		"email": {
@@ -234,7 +256,13 @@
 		"hide": "Приховати",
 		"nextSlide": "Наступний слайд",
 		"prevSlide": "Попередній слайд",
-		"shopNow": "до покупок"
+		"shopNow": "до покупок",
+		"paginator": "Сторінка {page} із {pageCount}",
+		"clearSearchInput": "Очистити поле пошуку",
+		"viewModeToggler": "Перемкнути режим відображення товарів",
+		"clearFilterChip": "Очистити фільтр",
+		"clearAllFilterChips": "Очистити все",
+		"closeFilter": "Закрити фільтр"
 	},
 	"placeholders": {
 		"search": "Пошук",

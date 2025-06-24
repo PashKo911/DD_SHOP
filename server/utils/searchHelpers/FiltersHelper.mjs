@@ -6,7 +6,6 @@ class FiltersHelper {
 		filters.forEach((filter) => {
 			switch (filter.filterType) {
 				case 'search':
-					// Застосовуємо пошуковий фільтр з регулярним виразом
 					query.where(filter.fieldName).regex(new RegExp(filter.filterContent, 'i'))
 					break
 				case 'minValue':

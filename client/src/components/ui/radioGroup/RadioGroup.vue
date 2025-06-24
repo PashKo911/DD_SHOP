@@ -12,11 +12,13 @@
 			ref="labels"
 			:class="labelClass"
 			:aria-checked="modelValue === item._id"
-			:aria-label="item.label"
+			:aria-label="item.labelUk ? item.labelUk : item.label"
 			@keydown.space.prevent="onToggleOrSelect(item._id, idx)"
 			@keydown.enter.prevent="onToggleOrSelect(item._id, idx)"
 			@keydown.arrow-right.prevent="moveFocus(1)"
+			@keydown.arrow-down.prevent="moveFocus(1)"
 			@keydown.arrow-left.prevent="moveFocus(-1)"
+			@keydown.arrow-up.prevent="moveFocus(-1)"
 			@focus="focusIndex = idx"
 		>
 			<input
@@ -61,12 +63,20 @@ function onToggleOrSelect(value, idx) {
 }
 
 function toggle(value, idx) {
-	const arr = model.value
-	const pos = arr.indexOf(value)
-	if (pos === -1) arr.push(value)
-	else arr.splice(pos, 1)
+	const current = Array.isArray(model.value) ? model.value : []
+	let next
+	if (current.includes(value)) {
+		next = current.filter((v) => v !== value)
+	} else {
+		next = [...current, value]
+	}
+	emit('update:modelValue', next)
 	focusIndex.value = idx
 	labels.value[idx]?.focus()
+}
+
+const onInput = (e) => {
+	emit('input', e)
 }
 
 const select = (value, idx) => {
@@ -77,11 +87,6 @@ const select = (value, idx) => {
 	})
 	focusIndex.value = idx
 	labels.value[idx]?.focus()
-}
-
-const onInput = (e) => {
-	model.value = e.target.value
-	emit('input', e)
 }
 
 const moveFocus = (delta) => {

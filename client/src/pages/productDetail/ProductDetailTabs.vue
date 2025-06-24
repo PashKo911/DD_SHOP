@@ -25,9 +25,9 @@
 			</TabPanel>
 			<TabPanel value="1">
 				<div class="grid gap-x-6 gap-y-8 md:grid-cols-2">
-					<card-review v-for="r in reviews" :key="r._id" :review-data="r">
+					<review-card v-for="r in reviews" :key="r._id" :review-data="r">
 						{{ item }}
-					</card-review>
+					</review-card>
 				</div>
 			</TabPanel>
 			<TabPanel value="2">
@@ -53,7 +53,7 @@ import TabList from '@/components/tab/TabList.vue'
 import Tab from '@/components/tab/Tab.vue'
 import TabPanels from '@/components/tab/TabPanels.vue'
 import TabPanel from '@/components/tab/TabPanel.vue'
-import CardReview from '@/components/cards/CardReview.vue'
+import ReviewCard from '@/components/cards/ReviewCard.vue'
 
 const { t } = useI18n()
 const props = defineProps({

@@ -14,10 +14,10 @@
 				class="font-heading not-last:mb-50-30 text-50-28 leading-tight font-semibold uppercase"
 			></h2>
 		</div>
-		<slider-base
+		<!-- <slider-base
 			:items="sliderData"
 			:title="t('pages.productDetail.title.sameProductsSection')"
-		/>
+		/> -->
 	</section>
 </template>
 <script setup>
@@ -33,6 +33,25 @@ import SliderThumb from '@/components/sliders/SliderThumb.vue'
 import SliderBase from '@/components/sliders/SliderBase.vue'
 import ProductDescription from './ProductDescription.vue'
 import ProductDetailTabs from './ProductDetailTabs.vue'
+
+const props = defineProps({
+	category: {
+		type: String,
+		required: true,
+	},
+	slug: {
+		type: [String, Number],
+		required: true,
+	},
+	id: {
+		type: [String, Number],
+		required: true,
+	},
+	variant: {
+		type: [String, Number],
+		required: true,
+	},
+})
 
 const imagesList = [
 	{
@@ -114,17 +133,6 @@ const productData = {
 		},
 	],
 }
-
-const props = defineProps({
-	category: {
-		type: String,
-		required: true,
-	},
-	productId: {
-		type: [String, Number],
-		required: true,
-	},
-})
 
 const { t } = useI18n()
 </script>

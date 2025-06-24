@@ -6,6 +6,7 @@ export function useLocales() {
 
 	function setLocale(lang) {
 		locale.value = lang
+		document.documentElement.lang = lang
 		localStorage.setItem('lastLocale', lang)
 	}
 	function checkLocale() {

@@ -39,7 +39,7 @@
 		</p>
 		<Button :label="t('buttons.cartCheckout')" iconPos="right" class="w-full">
 			<template #icon>
-				<arrow-icon
+				<arrow-right-simple
 					class="group-hover:fill-primary fill-creamy-cloud relative order-1 shrink-0 transition-colors"
 				/>
 			</template>
@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import ArrowIcon from '@/components/icons/ArrowIcon.vue'
+import ArrowRightSimple from '@/components/icons/ArrowRightSimple.vue'
 import Button from '@/components/ui/button/Button.vue'
 import { useI18n } from 'vue-i18n'
 

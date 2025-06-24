@@ -11,18 +11,32 @@
 		-webkit-text-size-adjust: 100%;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		overflow: auto;
-		/* scrollbar-width: none; */
-		-ms-overflow-style: none; /* IE и Edge */
+		background-color: var(--color-creamy-cloud);
 	}
 
-	body::-webkit-scrollbar {
-		display: none; /* Chrome, Safari */
-	}
-	.menu-open body {
+	body:has(#backdrop[data-body-locked='true']),
+	.p-overflow-hidden {
+		overflow: hidden;
 		touch-action: none;
 		overscroll-behavior: none;
-		overflow: hidden;
+		padding-right: var(--p-scrollbar-width);
+	}
+
+	@media (any-hover: hover) {
+		::-webkit-scrollbar {
+			width: 0.5rem;
+			height: 0.5rem;
+		}
+		::-webkit-scrollbar-track {
+			background: var(--color-creamy-cloud);
+			border-radius: 0.25rem;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: var(--p-primary-color);
+			border-radius: 0.25rem;
+			border: 0.125rem solid transparent;
+		}
 	}
 }
 
@@ -44,8 +58,4 @@
 			min-width: 0;
 		}
 	}
-}
-
-.p-dark {
-	color-scheme: dark;
 }

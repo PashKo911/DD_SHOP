@@ -4,18 +4,22 @@
 		:items="items"
 		:multiple="multiple"
 		:aria-label="t('accessibility.colorRadioGroup.title')"
-		group-class="flex gap-3 flex-wrap"
+		:group-class="`flex flex-wrap ${groupClassBySize}`"
 		label-class="relative rounded-full outline-1 outline-offset-2 outline-transparent group focus-visible:outline-primary transition-colors"
 	>
 		<template #item="{ item, checked }">
 			<span
 				:style="{ backgroundColor: item.value }"
-				class="grid aspect-square w-8 cursor-pointer place-items-center rounded-full shadow-lg transition-shadow duration-300 peer-checked:shadow-none hover:shadow-md"
+				class="grid aspect-square cursor-pointer place-items-center rounded-full shadow-lg transition-shadow duration-300 peer-checked:shadow-none hover:shadow-md"
+				:class="
+				buttonClassBySize,
+				{
+					'hover:shadow-none': checked,
+				}"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
-					width="16"
-					height="11"
+					class="aspect-[16/11] w-[40%]"
 					viewBox="0 0 16 11"
 					fill="none"
 				>
@@ -40,7 +44,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import RadioGroup from '@/components/ui/radioGroup/RadioGroup.vue'
 
@@ -57,12 +61,41 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	size: {
+		type: String,
+		default: 'middle',
+	},
 })
 
 const checkPath = ref('checkPath')
-const totalPathLength = ref()
 
-onMounted(() => {
-	totalPathLength.value = checkPath.value.getTotalLength()
+const totalPathLength = computed(() => {
+	if (typeof checkPath.value !== 'string') {
+		return checkPath.value?.getTotalLength()
+	}
+	return null
+})
+const buttonClassBySize = computed(() => {
+	switch (props.size) {
+		case 'small':
+			return 'w-6.5'
+		case 'large':
+			return 'w-13'
+
+		default:
+			return 'w-10'
+	}
+})
+const groupClassBySize = computed(() => {
+	 switch(props.size){
+		case 'small':
+		return 'gap-1.5'
+
+		case 'large': 
+		return 'gap-4'
+
+		default: 
+		return 'gap-3'
+	}
 })
 </script>

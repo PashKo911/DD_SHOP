@@ -1,0 +1,32 @@
+[{
+  "_id": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "label": "casual",
+  "imgSrc": "/images/styleSection/casual.webp",
+  "labelUk": "звичайний"
+},
+{
+  "_id": {
+    "$oid": "676bff378a281b4943246183"
+  },
+  "label": "sport",
+  "imgSrc": "/images/styleSection/sport.webp",
+  "labelUk": "спортивний"
+},
+{
+  "_id": {
+    "$oid": "676bff378a281b4943246184"
+  },
+  "label": "party",
+  "imgSrc": "/images/styleSection/party.webp",
+  "labelUk": "святковий"
+},
+{
+  "_id": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "label": "office",
+  "imgSrc": "/images/styleSection/office.webp",
+  "labelUk": "офісний"
+}]

@@ -33,12 +33,6 @@
 			>
 				${{ productData.oldPrice }}
 			</span>
-			<Badge
-				severity="success"
-				circle
-				size="xlarge"
-				:value="getDiscount(productData.oldPrice, productData.price)"
-			/>
 		</div>
 		<div
 			class="not-last:mb-24-16 pb-24-16 not-last:border-border-color not-last:border-b"
@@ -129,14 +123,12 @@ import { useI18n } from 'vue-i18n'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 import * as yup from 'yup'
 import { useToast } from 'primevue/usetoast'
-import getDiscount from '@/utils/getDiscount'
 
 import RatingComp from '@/components/ui/rating/RatingComp.vue'
 import SizeRadioGroup from '@/components/formControls/SizeRadioGroup.vue'
 import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
 import InputNumber from '@/components/ui/inputNumber/InputNumber.vue'
 import Button from '@/components/ui/button/Button.vue'
-import Badge from '@/components/ui/budge/Badge.vue'
 import { Form } from '@primevue/forms'
 import { FormField } from '@primevue/forms'
 import Message from '@/components/ui/message/Message.vue'
@@ -167,7 +159,6 @@ const resolver = ref(yupResolver(schema))
 
 const onFormSubmit = ({ values, valid }) => {
 	if (valid) {
-		console.log(values)
 		toast.add({
 			severity: 'success',
 			summary: 'Form is submitted.',

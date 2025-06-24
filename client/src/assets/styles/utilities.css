@@ -132,17 +132,18 @@
 @utility w-md-644-250 {
 	width: clamp(15.625rem, -5.576rem + 44.17vw, 40.25rem);
 }
+@utility w-md-340-290 {
+	width: clamp(18.125rem, 13.684rem + 7.16vw, 21.25rem);
+}
 
 @utility minh-md-292-200 {
 	width: clamp(15.625rem, -5.576rem + 44.17vw, 40.25rem);
 }
 
-@custom-variant dark (&:where(.p-dark, .p-dark *));
-
 @custom-variant any-hover {
-	@media (any-hover: hover) {
+	@media (hover: hover) and (pointer: fine) {
 		@slot;
 	}
 }
 
-@custom-variant menu-open (&:where(.menu-open, .menu-open *));
+/* @custom-variant menu-open (&:where(.menu-open, .menu-open *)); */

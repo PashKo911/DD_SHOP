@@ -16,7 +16,7 @@
 					<InputText
 						name="email"
 						icon-field
-						:placeholder="$t('placeholders.emailField')"
+						:placeholder="t('placeholders.emailField')"
 						fluid
 					/>
 					<Message
@@ -31,12 +31,7 @@
 				</template>
 			</icon-field>
 		</div>
-		<Button
-			type="submit"
-			size="small"
-			contrast
-			:label="$t('buttons.subscribe')"
-		>
+		<Button type="submit" size="small" contrast :label="t('buttons.subscribe')">
 			<template #icon>
 				<subscribe-icon
 					class="relative shrink-0 transition-colors group-hover:fill-white"
@@ -50,8 +45,9 @@
 import { ref } from 'vue'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 import * as yup from 'yup'
-import { useToast } from 'primevue/usetoast'
+
 import { useI18n } from 'vue-i18n'
+import { useToast } from 'primevue/usetoast'
 
 import InputText from '@/components/ui/inputText/InputText.vue'
 import Button from '@/components/ui/button/Button.vue'
@@ -73,6 +69,7 @@ const schema = yup.object().shape({
 })
 
 const resolver = ref(yupResolver(schema))
+//========================================================================================================================================================
 
 const onFormSubmit = ({ valid }) => {
 	if (valid) {
