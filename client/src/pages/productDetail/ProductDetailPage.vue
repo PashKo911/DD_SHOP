@@ -135,6 +135,7 @@ const productData = {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const props = defineProps({
 	category: {
 		type: String,
@@ -146,6 +147,8 @@ const props = defineProps({
 	},
 })
 
+=======
+>>>>>>> release/v1.0.0
 =======
 >>>>>>> release/v1.0.0
 const { t } = useI18n()

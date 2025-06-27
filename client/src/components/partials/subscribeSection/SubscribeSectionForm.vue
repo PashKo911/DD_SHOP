@@ -44,7 +44,7 @@
 <script setup>
 import { ref } from 'vue'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
-import * as yup from 'yup'
+import { object, string } from 'yup'
 
 import { useI18n } from 'vue-i18n'
 import { useToast } from 'primevue/usetoast'
@@ -60,9 +60,8 @@ import SubscribeIcon from '@/components/icons/SubscribeIcon.vue'
 const toast = useToast()
 const { t } = useI18n()
 
-const schema = yup.object().shape({
-	email: yup
-		.string()
+const schema = object().shape({
+	email: string()
 		.trim()
 		.email(t('errors.email.invalid'))
 		.required(t('errors.email.required')),

@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '@/pages/home/HomePage.vue'
-import NotFoundPage from '@/pages/NotFoundPage.vue'
 import authRoutes from './routes/authRoutes'
 import shopRoutes from './routes/shopRoutes'
 import { useCommonStore } from '@/stores/commonStore'
@@ -29,7 +27,7 @@ const router = createRouter({
 		{
 			path: '/home',
 			name: 'home',
-			component: HomePage,
+			component: () => import('@/pages/home/HomePage.vue'),
 			meta: {
 				useInMenu: true,
 				requiredAuth: false,
@@ -48,7 +46,11 @@ const router = createRouter({
 				localeName: 'pages.cart.title.page',
 			},
 		},
-		{ path: '/:pathMatch(.*)*', name: 'notFound', component: NotFoundPage },
+		{
+			path: '/:pathMatch(.*)*',
+			name: 'notFound',
+			component: () => import('@/pages/NotFoundPage.vue'),
+		},
 	],
 })
 

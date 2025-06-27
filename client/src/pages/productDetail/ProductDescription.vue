@@ -121,7 +121,7 @@
 import { computed, ref, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
-import * as yup from 'yup'
+import { object, string, number } from 'yup'
 import { useToast } from 'primevue/usetoast'
 
 import RatingComp from '@/components/ui/rating/RatingComp.vue'
@@ -149,10 +149,10 @@ const initialValues = reactive({
 	count: 1,
 })
 
-const schema = yup.object().shape({
-	color: yup.string().required(t('errors.colorInputGroup.required')),
-	size: yup.string().required(t('errors.sizeInputGroup.required')),
-	count: yup.number().required(t('errors.countInput.required')),
+const schema = object().shape({
+	color: string().required(t('errors.colorInputGroup.required')),
+	size: string().required(t('errors.sizeInputGroup.required')),
+	count: number().required(t('errors.countInput.required')),
 })
 
 const resolver = ref(yupResolver(schema))

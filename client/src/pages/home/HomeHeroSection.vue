@@ -22,6 +22,8 @@
 				size="large"
 				class="min-w-full lg:min-w-[18.125rem] not-last:lg:mb-10 not-last:xl:mb-[3.125rem]"
 			/>
+			<!-- :to="{ name: 'shop', params: { category: 'women' } }" -->
+
 			<Teleport defer :to="achievementsPosition">
 				<ul
 					class="flex w-full items-start justify-evenly gap-x-4 lg:justify-between"

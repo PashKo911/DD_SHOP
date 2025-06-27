@@ -85,10 +85,11 @@ class ProductsDBService extends MongooseCRUDManager {
 		}
 	}
 
-	async getSuggestions(reqQuery, language, currency) {
+	async getSuggestions(reqQuery, language) {
 		try {
 			const fieldsConfigurations = ProductsDBService.getFieldsConfigurations(language)
-
+			console.log('____+++++++++++= reqQuery')
+			console.log(reqQuery)
 			const { documents } = await this.findManyWithSearchOptions(
 				reqQuery,
 				fieldsConfigurations,
