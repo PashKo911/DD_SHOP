@@ -16,24 +16,26 @@
 			</ul>
 		</div>
 	</div>
-	<!-- <div class="not-last:mb-80-50 container">
-			<slider-base
-				:items="sliderData"
-				:title="t('pages.home.sectionTitles.newArrivals')"
-			/>
-		</div> -->
+	<div class="not-last:mb-80-50 container">
+		<slider-base
+			v-if="newestProductsValue.length"
+			:items="newestProductsValue"
+			:title="t('pages.home.sectionTitles.newArrivals')"
+		/>
+	</div>
 	<div class="not-last:mb-80-50">
 		<img
 			src="@/assets/img/hero/black-friday-section.webp"
 			:alt="t('pages.home.sectionTitles.blackFriday')"
 		/>
 	</div>
-	<!-- <div class="not-last:mb-100-60 container">
-			<slider-base
-				:items="sliderData"
-				:title="t('pages.home.sectionTitles.topSelling')"
-			/>
-		</div> -->
+	<div class="not-last:mb-100-60 container">
+		<slider-base
+			v-if="newestProductsValue.length"
+			:items="topSalesProductsValue"
+			:title="t('pages.home.sectionTitles.topSelling')"
+		/>
+	</div>
 	<div class="not-last:mb-100-60 container">
 		<home-dress-style-section class="not-last:mb-80-50" />
 	</div>
@@ -43,27 +45,29 @@
 			:alt="t('pages.home.imgAltAttr.newCollection')"
 		/>
 	</div>
-	<!-- <div class="not-last:mb-80-50 container">
-			<slider-base
-				:items="reviews"
-				:title="t('pages.home.sectionTitles.reviews')"
-			>
-				<template #default="{ item }">
-					<review-card :review-data="item" />
-				</template>
-			</slider-base>
-		</div> -->
+	<div class="not-last:mb-80-50 container">
+		<!-- <slider-base
+			:items="reviews"
+			:title="t('pages.home.sectionTitles.reviews')"
+		>
+			<template #default="{ item }">
+				<review-card :review-data="item" />
+			</template>
+		</slider-base> -->
+	</div>
 </template>
 
 <script setup>
+import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
+
 import { useI18n } from 'vue-i18n'
+import { useProductsStore } from '@/stores/products'
 
 import { reviews } from '@/data/reviews'
 import specialOfferItems from '@/data/specialOfferItems'
 import fashionPartners from '@/data/fashionPartners'
-import sliderData from '@/data/sliderData'
 
-import MainLayout from '@/components/layouts/MainLayout.vue'
 import ReviewCard from '@/components/cards/ReviewCard.vue'
 import SliderBase from '@/components/sliders/SliderBase.vue'
 import HomeHeroSection from './HomeHeroSection.vue'
@@ -71,4 +75,15 @@ import SliderSingle from '@/components/sliders/SliderSingle.vue'
 import HomeDressStyleSection from './HomeDressStyleSection.vue'
 
 const { t } = useI18n()
+
+const productsStore = useProductsStore()
+
+const { newestProductsValue, topSalesProductsValue } =
+	storeToRefs(productsStore)
+const { getNewestProducts, getTopSalesProducts } = productsStore
+
+onMounted(async () => {
+	await getNewestProducts()
+	await getTopSalesProducts()
+})
 </script>

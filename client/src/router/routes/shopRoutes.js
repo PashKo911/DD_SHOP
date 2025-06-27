@@ -1,10 +1,7 @@
-import BreadcrumbLayout from '@/components/layouts/BreadcrumbLayout.vue'
-import ShopPage from '@/pages/shop/ShopPage.vue'
-
 export default {
-	path: '/shop/:category',
+	path: '/shop/:category?',
 	name: 'shop',
-	component: BreadcrumbLayout,
+	component: () => import('@/components/layouts/BreadcrumbLayout.vue'),
 	redirect: { name: 'shopCategory' },
 	meta: {
 		useInMenu: true,
@@ -16,7 +13,7 @@ export default {
 			path: '',
 			name: 'shopCategory',
 			props: true,
-			component: ShopPage,
+			component: () => import('@/pages/shop/ShopPage.vue'),
 		},
 		{
 			path: ':slug/:id/:variant',

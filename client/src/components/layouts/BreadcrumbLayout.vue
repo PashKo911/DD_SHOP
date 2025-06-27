@@ -7,5 +7,4 @@
 
 <script setup>
 import BreadcrumbWrapper from '@/components/breadcrumb/BreadcrumbWrapper.vue'
-import MainLayout from '@/components/layouts/MainLayout.vue'
 </script>

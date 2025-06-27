@@ -20,7 +20,7 @@
 				class="flex flex-col-reverse flex-wrap justify-between gap-5 not-last:mb-6 min-[660px]:flex-row min-[660px]:items-center md:gap-8"
 			>
 				<h3 class="font-heading text-xl leading-tight font-semibold">
-					{{ t('pages.shop.title.countTitle', { totalCount }) }}
+					{{ t('pages.shop.title.countTitle', { totalDefaultProductsCount }) }}
 				</h3>
 				<div class="flex flex-wrap items-center gap-3 md:gap-4">
 					<div class="min-w-[11.4375rem] grow">
@@ -72,7 +72,7 @@
 				class="mb-6"
 			/>
 			<shop-list
-				:items="productsValue"
+				:items="defaultProductsValue"
 				:view-mode="Number(viewMode.value)"
 				class="mb-8 grow"
 			/>
@@ -81,7 +81,7 @@
 				v-model:first="pageFilterValue"
 				:page-link-size="paginatorButtonsCount"
 				:rows="perPage"
-				:totalRecords="totalCount"
+				:totalRecords="totalDefaultProductsCount"
 			/>
 		</div>
 		<progress-bar
@@ -152,9 +152,13 @@ const isMobile = useMediaQuery('(min-width: 479.98px)')
 
 //========================================================================================================================================================
 
-const { getProducts } = productsStore
-const { totalCount, productsValue, products, isProductsLoading } =
-	storeToRefs(productsStore)
+const { getDefaultProducts } = productsStore
+const {
+	totalDefaultProductsCount,
+	defaultProducts,
+	defaultProductsValue,
+	isProductsLoading,
+} = storeToRefs(productsStore)
 
 const {
 	setFilterProp,
@@ -184,7 +188,9 @@ const isFilterOpen = ref(false)
 //========================================================================================================================================================
 
 const isPaginatorVisible = computed(
-	() => totalCount.value > perPage.value || Number(filter.value.page) !== 0,
+	() =>
+		totalDefaultProductsCount.value > perPage.value ||
+		Number(filter.value.page) !== 0,
 )
 
 const styleFilterValue = useFilterModel('styles')
@@ -231,7 +237,7 @@ const viewModeValue = computed({
 	},
 	async set(newVal) {
 		const newPerPage = newVal.value * 3
-		const productsCount = products.value.length
+		const productsCount = defaultProducts.value.documents.length
 		const newPageByViewMode = Math.floor(
 			(filter.value.page * perPage.value) / newPerPage,
 		)
@@ -243,8 +249,11 @@ const viewModeValue = computed({
 			return
 		}
 
-		if (newPerPage > productsCount && totalCount.value > productsCount) {
-			await getProducts()
+		if (
+			newPerPage > productsCount &&
+			totalDefaultProductsCount.value > productsCount
+		) {
+			await getDefaultProducts()
 		}
 	},
 })
@@ -305,11 +314,11 @@ onMounted(async () => {
 		router.push({ query: filterStrings.value })
 	}
 
-	await getProducts()
+	await getDefaultProducts()
 
 	unwatch = watch(filter.value, async (newVal, oldVal) => {
 		router.replace({ query: filterStrings.value })
-		await getProducts()
+		await getDefaultProducts()
 	})
 })
 

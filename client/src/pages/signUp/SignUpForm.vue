@@ -106,9 +106,9 @@
 
 <script setup>
 import { yupResolver } from '@primevue/forms/resolvers/yup'
-import * as yup from 'yup'
+import { object, string } from 'yup'
 import { useI18n } from 'vue-i18n'
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 
 import Button from '@/components/ui/button/Button.vue'
 import { Form } from '@primevue/forms'
@@ -124,14 +124,12 @@ const passwordTips = computed(() => {
 })
 
 const schema = computed(() =>
-	yup.object().shape({
-		email: yup
-			.string()
+	object().shape({
+		email: string()
 			.trim()
 			.required(t('errors.email.required'))
 			.email(t('errors.email.invalid')),
-		password: yup
-			.string()
+		password: string()
 			.required(t('accessibility.passwordFieldTips.required'))
 			.min(6, t('accessibility.passwordFieldTips.validateTips.minLength'))
 			.matches(

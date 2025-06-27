@@ -37,7 +37,7 @@
 		"shop": {
 			"title": {
 				"menu": "shop",
-				"countTitle": "Found {totalCount} products"
+				"countTitle": "Found {totalDefaultProductsCount} products"
 			},
 
 			"filter": {

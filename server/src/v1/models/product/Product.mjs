@@ -18,53 +18,21 @@ const localizedString = (field, min, max) => ({
 	},
 })
 
-const variantSchema = new Schema({
-	variantId: {
-		type: Schema.Types.ObjectId,
-		required: true,
-		auto: false,
-	},
-	color: {
-		type: Schema.Types.ObjectId,
-		ref: 'Color',
-		required: [true, 'Color is required'],
-	},
-	price: {
-		type: Number,
-		required: [true, 'Price is required'],
-		min: [0, 'Price must be a positive number'],
-	},
-	oldPrice: {
-		type: Number,
-		min: [0, 'Old price must be a positive number'],
-	},
-	count: {
-		type: Number,
-		required: [true, 'Count is required'],
-		min: [0, 'Count must be at least 0'],
-	},
-	rating: {
-		type: Number,
-		min: [0, 'Rating must be at least 0'],
-		max: [5, 'Rating cannot exceed 5'],
-	},
-	images: {
-		type: [String],
-		required: [true, 'Images are required'],
-		validate: {
-			validator: (v) => Array.isArray(v) && v.length > 0,
-			message: 'At least one image is required',
+const variantSchema = new Schema(
+	{
+		color: { type: Schema.Types.ObjectId, ref: 'Color', required: true },
+		price: { type: Number, required: true, min: 0 },
+		oldPrice: { type: Number, min: 0 },
+		count: { type: Number, required: true, min: 0 },
+		rating: { type: Number, min: 0, max: 5 },
+		images: { type: [String], required: true },
+		sizes: {
+			type: [{ type: Schema.Types.ObjectId, ref: 'Size' }],
+			required: true,
 		},
 	},
-	sizes: {
-		type: [{ type: Schema.Types.ObjectId, ref: 'Size' }],
-		required: [true, 'Sizes are required'],
-		validate: {
-			validator: (v) => Array.isArray(v) && v.length > 0,
-			message: 'At least one size is required',
-		},
-	},
-})
+	{ _id: true }
+)
 
 const productSchema = new Schema(
 	{

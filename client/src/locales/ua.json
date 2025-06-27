@@ -37,7 +37,7 @@
 		"shop": {
 			"title": {
 				"menu": "Магазин",
-				"countTitle": "Знайдено {totalCount} товарів"
+				"countTitle": "Знайдено {totalDefaultProductsCount} товарів"
 			},
 			"filter": {
 				"title": "Фільтри",

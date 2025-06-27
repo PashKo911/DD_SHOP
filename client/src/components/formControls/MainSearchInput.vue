@@ -26,8 +26,8 @@
 		<button
 			type="button"
 			v-show="isClearButtonVisible"
-			@click="onClear"
 			:tabindex="activeTabIndex"
+			@click="onClear"
 			class="group focus-visible:border-t-inverse-hover absolute top-1/2 right-0 z-50 grid h-full w-10 -translate-y-1/2 cursor-pointer place-items-center rounded-r-md border-2 border-transparent transition-colors duration-200 outline-none"
 		>
 			<close-icon
@@ -100,7 +100,6 @@ const onClear = () => {
 		localState.value = ''
 	}
 }
-
 //========================================================================================================================================================
 
 watch(

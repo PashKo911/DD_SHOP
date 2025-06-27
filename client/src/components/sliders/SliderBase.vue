@@ -22,11 +22,11 @@
 			</div>
 		</div>
 		<Swiper
+			v-if="items.length"
 			loop
-			:initial-slide="1"
 			:breakpoints="breakpoints"
-			@swiper="setSlider"
 			data-base-slider
+			@swiper="setSlider"
 			class="relative"
 		>
 			<span
@@ -67,7 +67,7 @@ const props = defineProps({
 	},
 	items: {
 		type: Array,
-		required: true,
+		default: [],
 	},
 })
 
@@ -108,11 +108,9 @@ const setSlider = (swiperInstance) => {
 </script>
 
 <style scoped>
-/* @media (min-width: 479.98px) { */
 [data-base-slider-slide].swiper-slide {
 	height: auto;
 }
-/* } */
 
 [data-base-slider].swiper {
 	overflow: visible;
