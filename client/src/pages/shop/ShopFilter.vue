@@ -1,6 +1,6 @@
 <template>
 	<aside
-		class="border-border-color fixed top-[7.6875rem] right-0 bottom-0 z-[1001] w-full max-w-[21.25rem] overflow-y-auto border-l bg-white px-8 py-5 transition-transform duration-300 ease-in md:top-[9.4375rem] lg:static lg:rounded-2xl lg:border lg:px-[max(min(1.875vw,_2.25rem),_1.125rem)] lg:pt-9 lg:pb-6"
+		class="border-border-color fixed top-[7.6875rem] right-0 bottom-0 w-full max-w-[21.25rem] overflow-y-auto border-l bg-white px-8 py-5 transition-transform duration-300 ease-in max-lg:z-[1001] md:top-[9.4375rem] lg:static lg:rounded-2xl lg:border lg:px-[max(min(1.875vw,_2.25rem),_1.125rem)] lg:pt-9 lg:pb-6"
 		:class="filterToggleClass"
 	>
 		<div
@@ -12,8 +12,9 @@
 			<Button
 				variant="text"
 				:aria-label="t('buttons.closeFilter')"
+				:disabled="isDesktop"
 				@click="onFilterClose"
-				class="aspect-square w-10"
+				class="aspect-square w-10 opacity-100!"
 			>
 				<component
 					:is="filterHeaderIcon"
@@ -116,7 +117,7 @@ import StyleRadioGroup from '@/components/formControls/StyleRadioGroup.vue'
 import SliderPrice from '@/components/formControls/SliderPrice.vue'
 import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
 import SizeRadioGroup from '@/components/formControls/SizeRadioGroup.vue'
-import Button from '@/components/ui/button/Button.vue'
+import Button from '@/components/ui/buttons/Button.vue'
 import CloseIcon from '@/components/icons/CloseIcon.vue'
 import Backdrop from '@/components/ui/Backdrop.vue'
 import ShopChipsGroup from './ShopChipsGroup.vue'

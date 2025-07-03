@@ -1,7 +1,7 @@
 <template>
-	<HomeHeroSection class="pb-80-30 pt-10 lg:pt-14" />
+	<home-hero-section class="pb-80-30 pt-10 lg:pt-14" />
 	<div class="not-last:mb-80-50">
-		<SliderSingle :items="specialOfferItems" />
+		<slider-single :items="specialOfferItems" />
 		<div class="py-50-15 bg-primary relative z-20 -mt-[.0625rem]">
 			<ul
 				class="container flex flex-wrap items-center justify-around gap-2 md:justify-between md:gap-4"
@@ -37,7 +37,7 @@
 		/>
 	</div>
 	<div class="not-last:mb-100-60 container">
-		<home-dress-style-section class="not-last:mb-80-50" />
+		<home-dress-style-section />
 	</div>
 	<div class="not-last:mb-80-50">
 		<img
@@ -46,14 +46,14 @@
 		/>
 	</div>
 	<div class="not-last:mb-80-50 container">
-		<!-- <slider-base
+		<slider-base
 			:items="reviews"
 			:title="t('pages.home.sectionTitles.reviews')"
 		>
 			<template #default="{ item }">
 				<review-card :review-data="item" />
 			</template>
-		</slider-base> -->
+		</slider-base>
 	</div>
 </template>
 

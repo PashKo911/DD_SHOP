@@ -30,7 +30,7 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Button from '../ui/button/Button.vue'
+import Button from '../ui/buttons/Button.vue'
 
 const { t } = useI18n()
 

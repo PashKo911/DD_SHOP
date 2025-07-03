@@ -16,7 +16,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 
-import Button from '@/components/ui/button/Button.vue'
+import Button from '@/components/ui/buttons/Button.vue'
 import GoogleIcon from '@/components/icons/GoogleIcon.vue'
 
 const props = defineProps({
