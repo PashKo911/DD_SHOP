@@ -1,10 +1,9 @@
 <template>
 	<section
-		id="1"
 		data-wrp
 		class="container flex flex-col items-center max-lg:gap-3 lg:flex-row"
 	>
-		<div data-cnt class="shrink-0 basis-[56%]">
+		<div data-cnt class="grid shrink-0 basis-[56%] lg:justify-items-start">
 			<h1
 				class="font-title lg:text-lg-80-48 text-max-lg-70-32 text-center leading-tight font-bold uppercase not-last:mb-5 lg:text-left"
 			>
@@ -17,14 +16,12 @@
 					{{ t('pages.home.heroSection.text') }}
 				</p>
 			</div>
-
-			<Button
+			<button-link
 				:label="t('buttons.shopNow')"
 				size="large"
-				class="min-w-full lg:min-w-[18.125rem] not-last:lg:mb-10 not-last:xl:mb-[3.125rem]"
+				:to="{ name: 'shop', params: { category: 'women' } }"
+				class="min-w-[18.125rem] not-last:lg:mb-10 not-last:xl:mb-[3.125rem]"
 			/>
-			<!-- :to="{ name: 'shop', params: { category: 'women' } }" -->
-
 			<Teleport defer :to="achievementsPosition">
 				<ul
 					class="flex w-full items-start justify-evenly gap-x-4 lg:justify-between"
@@ -44,7 +41,7 @@
 				</ul>
 			</Teleport>
 		</div>
-		<div class="lg:basis-{44%} not-last:mb-2">
+		<div class="not-last:mb-2 lg:basis-[44%]">
 			<img
 				src="@/assets/img/hero/main.webp"
 				:alt="t('pages.home.heroSection.mainImgAlt')"
@@ -59,7 +56,7 @@ import { useI18n } from 'vue-i18n'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import achievements from '@/data/achievements'
 
-import Button from '@/components/ui/button/Button.vue'
+import ButtonLink from '@/components/ui/buttons/ButtonLink.vue'
 
 const isTablet = useMediaQuery('(max-width: 991.98px)')
 const achievementsPosition = computed(() => {

@@ -121,7 +121,7 @@ import { useI18n } from 'vue-i18n'
 import { ref, computed } from 'vue'
 
 import InputText from '@/components/ui/inputText/InputText.vue'
-import Button from '@/components/ui/button/Button.vue'
+import Button from '@/components/ui/buttons/Button.vue'
 import { Form } from '@primevue/forms'
 import Message from '@/components/ui/message/Message.vue'
 import Password from '@/components/ui/password/Password.vue'

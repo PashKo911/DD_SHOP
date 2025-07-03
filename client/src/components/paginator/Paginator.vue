@@ -81,7 +81,7 @@ import AngleDoubleRightIcon from '@primevue/icons/angledoubleright'
 import AngleLeftIcon from '@primevue/icons/angleleft'
 import AngleRightIcon from '@primevue/icons/angleright'
 import Paginator from 'primevue/paginator'
-import SecondaryButton from '../ui/secondaryButton/SecondaryButton.vue'
+import SecondaryButton from '../ui/buttons/SecondaryButton.vue'
 
 const ptOptions = computed(() => ({ mergeProps: ptViewMerge }))
 

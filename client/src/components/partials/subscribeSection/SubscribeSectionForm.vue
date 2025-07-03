@@ -50,7 +50,7 @@ import { useI18n } from 'vue-i18n'
 import { useToast } from 'primevue/usetoast'
 
 import InputText from '@/components/ui/inputText/InputText.vue'
-import Button from '@/components/ui/button/Button.vue'
+import Button from '@/components/ui/buttons/Button.vue'
 import { Form } from '@primevue/forms'
 import Message from '@/components/ui/message/Message.vue'
 import MailIcon from '@/components/icons/MailIcon.vue'

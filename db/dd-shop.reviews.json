@@ -1,0 +1,122 @@
+[
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f179600" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdef" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef12" },
+		"rating": 5,
+		"comment": "Excellent product, highly recommend!",
+		"createdAt": "2025-07-01T10:20:30.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f179601" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdef" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef13" },
+		"rating": 4,
+		"comment": "Good quality, but delivery was delayed.",
+		"createdAt": "2025-07-02T15:45:00.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f179602" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdef" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef14" },
+		"rating": 3,
+		"comment": "Average product, expected better.",
+		"createdAt": "2025-07-02T18:30:45.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f179603" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdea" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef15" },
+		"rating": 5,
+		"comment": "Very satisfied with the purchase!",
+		"createdAt": "2025-07-03T12:00:00.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f179604" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdeb" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef16" },
+		"rating": 2,
+		"comment": "Product does not match the description.",
+		"createdAt": "2025-07-04T09:15:25.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f179605" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdec" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef17" },
+		"rating": 4,
+		"comment": "The price is justified by the quality.",
+		"createdAt": "2025-07-04T20:10:30.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f179606" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdee" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef18" },
+		"rating": 5,
+		"comment": "Great service and fast delivery.",
+		"createdAt": "2025-07-05T11:25:55.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f179607" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdef" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef19" },
+		"rating": 1,
+		"comment": "Very poor quality, disappointed.",
+		"createdAt": "2025-07-06T14:40:00.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f179608" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdef0" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef20" },
+		"rating": 3,
+		"comment": "Average product, but good price.",
+		"createdAt": "2025-07-06T16:55:10.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f179609" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdef1" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef21" },
+		"rating": 4,
+		"comment": "Nice design, works as promised.",
+		"createdAt": "2025-07-07T10:05:45.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f17960a" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdef2" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef22" },
+		"rating": 5,
+		"comment": "Very satisfied, highly recommend!",
+		"createdAt": "2025-07-07T13:30:20.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f17960b" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdef3" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef23" },
+		"rating": 2,
+		"comment": "Did not meet expectations, returned the product.",
+		"createdAt": "2025-07-08T09:00:00.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f17960c" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdef4" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef24" },
+		"rating": 4,
+		"comment": "Good value for the price.",
+		"createdAt": "2025-07-08T18:20:35.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f17960d" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdef5" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef25" },
+		"rating": 5,
+		"comment": "Everything is great, will buy again!",
+		"createdAt": "2025-07-09T11:15:00.000Z"
+	},
+	{
+		"_id": { "$oid": "64f1a9d2a0eb91c09f17960e" },
+		"productId": { "$oid": "64f1a1a2b234567890abcdef6" },
+		"userId": { "$oid": "64f1b2c3d4567890abcdef26" },
+		"rating": 3,
+		"comment": "Okay, but could be better.",
+		"createdAt": "2025-07-09T14:45:10.000Z"
+	}
+]

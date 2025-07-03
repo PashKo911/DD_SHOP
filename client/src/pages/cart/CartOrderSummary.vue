@@ -49,7 +49,7 @@
 
 <script setup>
 import ArrowRightSimple from '@/components/icons/ArrowRightSimple.vue'
-import Button from '@/components/ui/button/Button.vue'
+import Button from '@/components/ui/buttons/Button.vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
