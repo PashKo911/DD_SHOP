@@ -2,6 +2,7 @@ import Product from './Product.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
 import { getRate } from '../../../../services/ratesCache.mjs'
 import getDiscount from '../../../../utils/getDiscount.mjs'
+import { HttpError } from '../../../../errors/HttpError.mjs'
 
 class ProductsDBService extends MongooseCRUDManager {
 	static fieldsConfigurations = [
@@ -79,9 +80,9 @@ class ProductsDBService extends MongooseCRUDManager {
 			})
 
 			return { documents: localized, count }
-		} catch (error) {
-			console.error(error)
-			return { documents: [], count: 0 }
+		} catch (err) {
+			if (err instanceof HttpError) throw err
+			throw new HttpError(500, 'Failed to get product list', err)
 		}
 	}
 
@@ -102,31 +103,9 @@ class ProductsDBService extends MongooseCRUDManager {
 			)
 			const res = documents.map((d) => ({ title: d.title[language], gender: d.gender }))
 			return res
-		} catch (error) {
-			console.error(error)
-			return { documents: [], count: 0 }
-		}
-	}
-
-	formatDocumentData(product, language, rate, formatter) {
-		const formattedVariants = product.variants.map((v) => {
-			const exchangedPrice = Math.round(v.price * rate)
-			const exchangedOldPrice = v.oldPrice ? Math.round(v.oldPrice * rate) : null
-			const oldPrice = exchangedOldPrice ? formatter.format(exchangedOldPrice) : null
-
-			return {
-				...v,
-				oldPrice,
-				price: formatter.format(exchangedPrice),
-				discount: getDiscount(v.oldPrice, v.price),
-			}
-		})
-
-		return {
-			...product,
-			variants: formattedVariants,
-			title: product.title[language],
-			description: product.description[language],
+		} catch (err) {
+			if (err instanceof HttpError) throw err
+			throw new HttpError(500, 'Failed to get suggestions', err)
 		}
 	}
 
@@ -134,8 +113,9 @@ class ProductsDBService extends MongooseCRUDManager {
 		try {
 			const res = await super.getById(id, {}, ['colors', 'styles', 'gender', 'sizes'])
 			return res
-		} catch (error) {
-			throw new Error('Error finding data by id: ' + error.message)
+		} catch (err) {
+			if (err instanceof HttpError) throw err
+			throw new HttpError(500, `Failed to load product id:${id}`, err)
 		}
 	}
 	async getPriceRange(currency) {
@@ -161,12 +141,35 @@ class ProductsDBService extends MongooseCRUDManager {
 			])
 
 			if (!result) {
-				throw new Error('No price data found')
+				throw new HttpError(404, 'Price data not found')
 			}
 
 			return [result.minPrice, result.maxPrice]
-		} catch (error) {
-			throw new Error('Error retrieving price range: ' + error.message)
+		} catch (err) {
+			if (err instanceof HttpError) throw err
+			throw new HttpError(500, 'Failed to retrieve price range', err)
+		}
+	}
+
+	formatDocumentData(product, language, rate, formatter) {
+		const formattedVariants = product.variants.map((v) => {
+			const exchangedPrice = Math.round(v.price * rate)
+			const exchangedOldPrice = v.oldPrice ? Math.round(v.oldPrice * rate) : null
+			const oldPrice = exchangedOldPrice ? formatter.format(exchangedOldPrice) : null
+
+			return {
+				...v,
+				oldPrice,
+				price: formatter.format(exchangedPrice),
+				discount: getDiscount(v.oldPrice, v.price),
+			}
+		})
+
+		return {
+			...product,
+			variants: formattedVariants,
+			title: product.title[language],
+			description: product.description[language],
 		}
 	}
 }

@@ -1,13 +1,15 @@
 import Type from './Type.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
+import { HttpError } from '../../../../errors/HttpError.mjs'
 
 class TypesDBService extends MongooseCRUDManager {
 	async getList({ filters }) {
 		try {
 			const res = await Type.find(filters, { title: 1 })
 			return res
-		} catch (error) {
-			return []
+		} catch (err) {
+			if (err instanceof HttpError) throw err
+			throw new HttpError(500, 'Failed to get types', err)
 		}
 	}
 }

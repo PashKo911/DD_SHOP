@@ -2,7 +2,7 @@ import CartDBService from '../models/cart/CartDBService.mjs'
 import ProductsDBService from '../models/product/ProductsDBService.mjs'
 
 class CartController {
-	static async getCartDetails(req, res) {
+	static async getCartDetails(req, res, next) {
 		try {
 			const userId = req.user.id // Отримання id користувача
 
@@ -11,12 +11,11 @@ class CartController {
 				cartDetails
 				// user: req.user,
 			)
-		} catch (error) {
-			console.error(error)
-			res.status(500).json({ error: 'Error fetching products' })
+		} catch (err) {
+			next(err)
 		}
 	}
-	static async addProduct(req, res) {
+	static async addProduct(req, res, next) {
 		const userId = req.user.id // Отримання id користувача
 
 		try {
@@ -37,11 +36,10 @@ class CartController {
 
 			res.status(200).json({ message: 'Product added successfully', cart })
 		} catch (err) {
-			console.error(err)
-			res.status(500).json({ errors: [{ msg: err.message }] })
+			next(err)
 		}
 	}
-	static async updateProductAmount(req, res) {
+	static async updateProductAmount(req, res, next) {
 		const userId = req.user.id // Отримання id користувача
 
 		try {
@@ -61,17 +59,17 @@ class CartController {
 
 			res.status(200).json({ message: 'Product amount updated successfully', cart })
 		} catch (err) {
-			res.status(500).json({ errors: [{ msg: err.message }] })
+			next(err)
 		}
 	}
-	static async deleteProduct(req, res) {
+	static async deleteProduct(req, res, next) {
 		const userId = req.user.id
 		try {
 			const { id } = req.body
 			const cart = await CartDBService.deleteProduct({ userId, productId: id })
 			res.status(200).json({ message: 'Product deleted', cart })
-		} catch (error) {
-			res.status(500).json({ error: 'Error deleting product' })
+		} catch (err) {
+			next(err)
 		}
 	}
 }
