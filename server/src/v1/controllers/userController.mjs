@@ -5,7 +5,7 @@ import UsersDBService from '../models/user/UsersDBService.mjs'
 import TypesDBService from '../models/type/TypesDBService.mjs'
 
 class UserController {
-	static async usersList(req, res) {
+	static async usersList(req, res, next) {
 		try {
 			const filters = {}
 			for (const key in req.query) {
@@ -13,29 +13,30 @@ class UserController {
 			}
 
 			const usersTypes = await TypesDBService.getList()
-			const dataList = await UsersDBService.getList(filters)
+			const users = await UsersDBService.getList(filters)
+
 			res.status(200).json({
-				users: dataList,
+				users,
 				types: usersTypes,
 			})
 		} catch (err) {
-			res.status(500).json({ error: err.message })
+			next(err)
 		}
 	}
 
 	// !! При необходимости del
-	static async getUser(req, res) {
+	static async getUser(req, res, next) {
 		try {
 			const id = req.params.id
 			const user = await UsersDBService.getById(id)
 			res.status(200).json(user)
-		} catch (error) {
-			res.status(500).json({ error: 'Error fetching products' })
+		} catch (err) {
+			next(err)
 		}
 	}
 
 	// !! При необходимости del
-	static async registerUser(req, res) {
+	static async registerUser(req, res, next) {
 		const expressErrors = validationResult(req)
 
 		if (!expressErrors.isEmpty()) {
@@ -53,13 +54,13 @@ class UserController {
 			}
 
 			res.status(200).json({ message: 'User registered successfully' })
-		} catch (error) {
-			const errors = FormatValidationErrors.formatMongooseErrors(error.message, 'User')
-			res.status(400).json({ errors })
+		} catch (err) {
+			// const errors = FormatValidationErrors.formatMongooseErrors(error.message, 'User')
+			next(err)
 		}
 	}
 
-	static async updateUser(req, res) {
+	static async updateUser(req, res, next) {
 		try {
 			const id = req.params.id
 
@@ -83,18 +84,17 @@ class UserController {
 				message: 'User updated successfully',
 				user: updatedUser,
 			})
-		} catch (error) {
-			console.error('Error updating user:', error.message)
-			res.status(500).json({ error: 'Failed to update user' })
+		} catch (err) {
+			next(err)
 		}
 	}
 
-	static async deleteUser(req, res) {
+	static async deleteUser(req, res, next) {
 		try {
 			await UsersDBService.deleteById(req.body.id)
 			res.status(200).json({ success: true })
-		} catch (error) {
-			res.status(500).json({ success: false, message: 'Failed to delete user' })
+		} catch (err) {
+			next(err)
 		}
 	}
 }
