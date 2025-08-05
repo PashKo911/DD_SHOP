@@ -64,6 +64,51 @@ class MongooseCRUDManager {
 			throw new HttpError(500, 'Error retrieving data', err)
 		}
 	}
+	/**
+	 * Fetches a random sample of documents with optional filtering and population.
+	 *
+	 * @param {Object}   [options]
+	 * @param {number}   [options.limit=10]            - Number of documents to sample.
+	 * @param {Object}   [options.match={}]           - MongoDB filter to apply before sampling.
+	 * @param {Array<Object>} [options.populateFields]
+	 *     - Array of population specs, each object must have:
+	 *       @param {string} from          - The target collection name (e.g. 'users').
+	 *       @param {string} localField    - Local field in the aggregation input (e.g. 'author').
+	 *       @param {string} [foreignField='_id']
+	 *                                   - Field in the foreign collection to match.
+	 *       @param {string} as            - Alias for the populated field in the result.
+	 *
+	 * @returns {Promise<Array<Document>>}
+	 *     - A promise resolving to an array of hydrated Mongoose documents.
+	 *
+	 * @throws {HttpError}
+	 *     - 400 if invalid parameters (e.g. non-integer `limit`).
+	 *     - 500 on any other database or aggregation error.
+	 */
+	async getRandomList({ limit = 10, match = {}, populateFields = [] } = {}) {
+		try {
+			const pipeline = [{ $match: match }, { $sample: { size: limit } }]
+
+			populateFields.forEach((field) => {
+				const { from, localField, foreignField, as } = field
+
+				pipeline.push({
+					$lookup: { from, localField, foreignField, as },
+				})
+				pipeline.push({ $unwind: `$${as}` })
+			})
+
+			const documents = await this.model.aggregate(pipeline).exec()
+
+			return documents
+		} catch (err) {
+			if (err instanceof HttpError) throw err
+			if (err.name === 'CastError') {
+				throw new HttpError(400, 'Invalid query parameters', err)
+			}
+			throw new HttpError(500, 'Error retrieving data', err)
+		}
+	}
 
 	async create(data) {
 		try {

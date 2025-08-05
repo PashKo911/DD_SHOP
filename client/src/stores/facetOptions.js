@@ -19,6 +19,7 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 	})
 
 	const availableStyles = ref()
+	//========================================================================================================================================================
 
 	const availableStylesValue = computed(() => {
 		return availableStyles.value
@@ -43,6 +44,7 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 			(arr) => Array.isArray(arr) && arr.length > 0,
 		)
 	})
+	//========================================================================================================================================================
 
 	const getFacetOptions = async () => {
 		const data = await generalApiOperation({
@@ -66,13 +68,18 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 	}
 
 	return {
-		facetOptions,
-		facetOptionsValue,
-		getFacetOptions,
-		currency,
+		// refs
 		availableStyles,
+		facetOptions,
+
+		// computed
+		facetOptionsValue,
+		currency,
 		availableStylesValue,
-		getAvailableStyles,
 		isFacetOptionsLoaded,
+
+		// actions
+		getFacetOptions,
+		getAvailableStyles,
 	}
 })

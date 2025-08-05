@@ -6,68 +6,87 @@ import { useGeneralStore } from './general'
 import { useUsersStore } from './users'
 
 export const useAuthStore = defineStore('auth', () => {
-  const generalStore = useGeneralStore()
-  const usersStore = useUsersStore()
-  const { generalApiOperation } = generalStore
+	const generalStore = useGeneralStore()
+	const usersStore = useUsersStore()
+	const { generalApiOperation } = generalStore
 
-  const user = ref(null)
-  const token = ref(localStorage.getItem('token') || null)
-  const getCurrentUserPermissions = computed(() => user.value?.permissions || {})
+	const user = ref(null)
+	const token = ref(localStorage.getItem('token') || null)
+	//========================================================================================================================================================
 
-  const setToken = (newToken) => {
-    token.value = newToken
-    if (newToken) {
-      localStorage.setItem('token', newToken)
-    } else {
-      localStorage.removeItem('token')
-    }
-  }
+	const currentUserPermissions = computed(() => user.value?.permissions || {})
+	//========================================================================================================================================================
 
-  const login = async (username, password) => {
-    return generalApiOperation({
-      operation: async () => {
-        const response = await apiClient.post(apiEndpoints.auth.login(), { username, password })
+	const setToken = (newToken) => {
+		token.value = newToken
+		if (newToken) {
+			localStorage.setItem('token', newToken)
+		} else {
+			localStorage.removeItem('token')
+		}
+	}
 
-        setToken(response.data.token)
-        user.value = response.data.user
-        return response.data.user
-      }
-    })
-  }
+	const login = async (username, password) => {
+		return generalApiOperation({
+			operation: async () => {
+				const response = await apiClient.post(apiEndpoints.auth.login(), {
+					username,
+					password,
+				})
 
-  const getUserProfileByToken = async () => {
-    const currentToken = localStorage.getItem('token')
+				setToken(response.data.token)
+				user.value = response.data.user
+				return response.data.user
+			},
+		})
+	}
 
-    if (!currentToken) return null
-    return generalApiOperation({
-      operation: async () => {
-        const response = await apiClient.get(apiEndpoints.auth.profileByToken())
-        setToken(response.data.token)
-        user.value = response.data.user
-        return response.data.user
-      }
-    })
-  }
+	const getUserProfileByToken = async () => {
+		const currentToken = localStorage.getItem('token')
 
-  const register = async (email, password) => {
-    return generalApiOperation({
-      operation: async () => {
-        const response = await apiClient.post(apiEndpoints.auth.register(), {
-          email,
-          password
-        })
+		if (!currentToken) return null
+		return generalApiOperation({
+			operation: async () => {
+				const response = await apiClient.get(apiEndpoints.auth.profileByToken())
+				setToken(response.data.token)
+				user.value = response.data.user
+				return response.data.user
+			},
+		})
+	}
 
-        setToken(response.data.token)
-        user.value = response.data.user
-        return response.data
-      }
-    })
-  }
+	const register = async (email, password) => {
+		return generalApiOperation({
+			operation: async () => {
+				const response = await apiClient.post(apiEndpoints.auth.register(), {
+					email,
+					password,
+				})
 
-  const logout = () => {
-    setToken(null)
-    user.value = null
-  }
+				setToken(response.data.token)
+				user.value = response.data.user
+				return response.data
+			},
+		})
+	}
 
-  return { user, token, getUserProfileByToken, getCurrentUserPermissions, login, register, logout }
+	const logout = () => {
+		setToken(null)
+		user.value = null
+	}
+
+	return {
+		// refs
+		user,
+		token,
+
+		// computed
+		currentUserPermissions,
+
+		// actions
+		getUserProfileByToken,
+		login,
+		register,
+		logout,
+	}
 })

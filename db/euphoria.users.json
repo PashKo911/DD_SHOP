@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "67695f4de915d46b5dd2558c"
+  },
+  "email": "admin@admin.com",
+  "password": "$2a$10$dzT1CYlCInqw9me6A2T1MO8J/wCdmkkeZ7SwXTA2PoEQ3hfvKSpc2",
+  "status": "guest",
+  "type": {
+    "$oid": "67434eafe0c00366f89f7188"
+  },
+  "name": "Admin",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "677c207e3c0c4f0efdb499cc"
+  },
+  "email": "manager@manager.com",
+  "password": "$2a$10$P5bmcchIqikMMAOzHatWaOMwmOb2/JI8dK8PQeRgFkHt6fukX.y6K",
+  "type": {
+    "$oid": "67434dc0e0c00366f89f7187"
+  },
+  "name": "Guest",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67810f150e8d9ddd8458e963"
+  },
+  "email": "test@test.com",
+  "password": "$2a$10$m1ix7JRBq0bbpoex3JrUieyD.Py8ltdy40mvOVdH54XiScpDj6mU2",
+  "type": {
+    "$oid": "677c1233e3da04adc6ade35e"
+  },
+  "name": "Guest",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67869911565e5fe9f1837099"
+  },
+  "email": "guest-f84ca0cc-5339-475d-977f-f980959d66ac@example.com",
+  "password": "$2a$10$.iRLKkBQIDVDgFRRbDCWK.RLzf9SuJRSpKKc3ptNdZ.baJriJ5Dfy",
+  "type": {
+    "$oid": "677c1233e3da04adc6ade35e"
+  },
+  "name": "Guest",
+  "__v": 0
+}]

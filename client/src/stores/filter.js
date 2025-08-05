@@ -91,6 +91,7 @@ export const useFilterStore = defineStore('filter', () => {
 			currency.value,
 		)
 	})
+	//========================================================================================================================================================
 
 	function parseFilterFromQuery(query) {
 		parseFilter(
@@ -127,16 +128,21 @@ export const useFilterStore = defineStore('filter', () => {
 	}
 
 	return {
-		defaultFilter,
+		// refs
 		filter,
+
+		// computed
+		defaultFilter,
 		perPage,
 		activeChips,
 		filterStrings,
-		setFilterProp,
-		parseFilterFromQuery,
 		hasSelectedFilters,
 		hasQueryFilters,
 		apiQueryParams,
+
+		// actions
+		parseFilterFromQuery,
+		setFilterProp,
 		resetPrice,
 		resetAllFilters,
 		resetFiltersExceptGender,
