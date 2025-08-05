@@ -4,6 +4,7 @@ import { defineStore } from 'pinia'
 export const useGeneralStore = defineStore('general', () => {
 	const loadingStates = reactive({})
 	const errorStates = reactive({})
+	//========================================================================================================================================================
 
 	function isLoading(operationName) {
 		return Boolean(loadingStates[operationName])
@@ -48,6 +49,11 @@ export const useGeneralStore = defineStore('general', () => {
 	}
 
 	return {
+		// refs
+		loadingStates,
+		errorStates,
+
+		// actions
 		isLoading,
 		hasError,
 		setLoading,

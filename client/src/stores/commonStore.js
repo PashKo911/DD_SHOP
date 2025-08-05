@@ -23,10 +23,15 @@ export const useCommonStore = defineStore('commonStore', () => {
 	}
 
 	return {
+		// refs
 		isHeaderMenuOpen,
-		toggleHeaderMenu,
 		viewMode,
-		setViewMode,
+
+		// computed
 		viewModeValue,
+
+		// actions
+		toggleHeaderMenu,
+		setViewMode,
 	}
 })

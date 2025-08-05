@@ -14,6 +14,9 @@ const apiEndpoints = {
 		getUsersWithAttempts: '/users/users-with-attempts',
 		deleteUser: (id) => `/users/${id}`,
 	},
+	reviews: {
+		getRandomReviews: '/reviews',
+	},
 }
 
 export default apiEndpoints

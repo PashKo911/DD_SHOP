@@ -7,10 +7,15 @@ const ReviewSchema = new mongoose.Schema(
 			ref: 'Product',
 			required: true,
 		},
-		userId: {
+		author: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'User',
 			required: true,
+		},
+		verified: {
+			type: Boolean,
+			required: true,
+			default: false,
 		},
 		rating: {
 			type: Number,

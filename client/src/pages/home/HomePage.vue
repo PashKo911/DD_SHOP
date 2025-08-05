@@ -1,5 +1,5 @@
 <template>
-	<home-hero-section class="pb-80-30 pt-10 lg:pt-14" />
+	<!-- <home-hero-section class="pb-80-30 pt-10 lg:pt-14" />
 	<div class="not-last:mb-80-50">
 		<slider-single :items="specialOfferItems" />
 		<div class="py-50-15 bg-primary relative z-20 -mt-[.0625rem]">
@@ -15,7 +15,7 @@
 				</li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
 	<div class="not-last:mb-80-50 container">
 		<slider-base
 			v-if="newestProductsValue.length"
@@ -47,7 +47,8 @@
 	</div>
 	<div class="not-last:mb-80-50 container">
 		<slider-base
-			:items="reviews"
+			v-if="reviewsValue.length"
+			:items="reviewsValue"
 			:title="t('pages.home.sectionTitles.reviews')"
 		>
 			<template #default="{ item }">
@@ -63,6 +64,7 @@ import { onMounted } from 'vue'
 
 import { useI18n } from 'vue-i18n'
 import { useProductsStore } from '@/stores/products'
+import { useReviewsStore } from '@/stores/reviews'
 
 import { reviews } from '@/data/reviews'
 import specialOfferItems from '@/data/specialOfferItems'
@@ -76,13 +78,20 @@ import HomeDressStyleSection from './HomeDressStyleSection.vue'
 const { t } = useI18n()
 
 const productsStore = useProductsStore()
+const reviewsStore = useReviewsStore()
 
 const { newestProductsValue, topSalesProductsValue } =
 	storeToRefs(productsStore)
 const { getNewestProducts, getTopSalesProducts } = productsStore
 
+const { getReviews } = reviewsStore
+const { reviewsValue } = storeToRefs(reviewsStore)
+
 onMounted(async () => {
-	await getNewestProducts()
-	await getTopSalesProducts()
+	await Promise.allSettled([
+		await getNewestProducts(),
+		await getTopSalesProducts(),
+		await getReviews(),
+	])
 })
 </script>
