@@ -6,14 +6,15 @@
 			</h2>
 			<div class="hidden items-center gap-4 sm:flex">
 				<slider-nav-button
+					:disabled="hasError"
 					@click="slider.slidePrev()"
 					:aria-label="t('buttons.prevSlide')"
-					class="bg-[#FCF9F6] shadow-lg hover:shadow-md"
 				>
 					<arrow-left-icon class="aspect-square w-8" />
 				</slider-nav-button>
 				<slider-nav-button
 					@click="slider.slideNext()"
+					:disabled="hasError"
 					:aria-label="t('buttons.nextSlide')"
 					class="bg-[#FCF9F6] shadow-lg hover:shadow-md"
 				>
@@ -21,11 +22,17 @@
 				</slider-nav-button>
 			</div>
 		</div>
-		<Swiper
-			v-if="items.length"
-			loop
+		<ErrorMessageBlock
+			v-if="isErrorBlockVisible"
+			:is-loading="isLoading"
+			@reload-items="$emit('reloadItems')"
+		/>
+		<swiper
+			v-else
 			:breakpoints="breakpoints"
 			data-base-slider
+			loop
+			:preload-images="false"
 			@swiper="setSlider"
 			class="relative"
 		>
@@ -33,43 +40,37 @@
 				class="absolute top-0 -left-4 z-20 hidden h-full w-screen -translate-x-full backdrop-blur-[.1563rem] xl:block"
 			></span>
 			<swiper-slide
-				v-for="item in items"
-				:key="item._id"
+				v-for="(item, idx) in isLoading ? itemsCount : items"
+				:key="isLoading ? idx : item._id"
 				data-base-slider-slide
 				class="h-auto"
 			>
 				<slot :item="item">
-					<product-card :data="item" />
+					<component
+						:is="activeComponent"
+						v-bind="isLoading ? { data: {} } : { data: item }"
+					/>
 				</slot>
 			</swiper-slide>
 			<span
 				class="absolute top-0 -right-4 z-20 hidden h-full w-screen translate-x-full backdrop-blur-[.1563rem] xl:block"
 			></span>
-		</Swiper>
+		</swiper>
 	</section>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import SliderNavButton from './SliderNavButton.vue'
 import ArrowLeftIcon from '@/components/icons/ArrowLeftIcon.vue'
 import ArrowRightIcon from '@/components/icons/ArrowRightIcon.vue'
-import ProductCard from '../cards/ProductCard.vue'
+import ProductCard from '@/components/cards/productCard/ProductCard.vue'
+import ProductCardSkeleton from '@/components/cards/productCard/ProductCardSkeleton.vue'
+import ErrorMessageBlock from '@/components/errorMessageBlock/ErrorMessageBlock.vue'
 
 import 'swiper/css'
-
-const props = defineProps({
-	title: {
-		type: String,
-		default: 'Title',
-	},
-	items: {
-		type: Array,
-		default: [],
-	},
-})
 
 const breakpoints = {
 	320: {
@@ -98,12 +99,47 @@ const breakpoints = {
 	},
 }
 
+const props = defineProps({
+	title: {
+		type: String,
+		default: 'Title',
+	},
+	items: {
+		type: Array,
+		default: [],
+	},
+	itemsCount: {
+		type: Number,
+		default: 15,
+	},
+	isLoading: {
+		type: Boolean,
+		default: false,
+	},
+	hasError: {
+		type: Boolean,
+		default: false,
+	},
+})
+
+defineEmits(['reloadItems'])
+
 const { t } = useI18n()
 
 const slider = ref(null)
 
+const activeComponent = computed(() => {
+	return props.isLoading ? ProductCardSkeleton : ProductCard
+})
+
+const isErrorBlockVisible = computed(() => {
+	return (props.hasError || !props.items.length) && !props.isLoading
+})
+
 const setSlider = (swiperInstance) => {
-	slider.value = swiperInstance
+	if (props.items.length) {
+		slider.value = swiperInstance
+	}
 }
 </script>
 

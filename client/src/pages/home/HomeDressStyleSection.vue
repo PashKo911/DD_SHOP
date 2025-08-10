@@ -5,38 +5,63 @@
 		>
 			{{ t('pages.home.sectionTitles.dressStyle') }}
 		</h2>
+		<error-message-block
+			v-if="isErrorBlockVisible"
+			:is-loading="isLoading"
+			@reload-items="$emit('reloadItems')"
+			class="w-full"
+		/>
 		<div
+			v-else
 			class="gy-max-md-32-16 md:gy-md-32-16 grid w-full md:flex md:max-w-[94rem] md:flex-wrap md:gap-x-[2.12766%]"
 		>
-			<dress-style-card
-				v-for="(productData, index) in availableStylesValue"
-				:key="productData.id"
-				:product-data="productData"
-				:index="index"
+			<component
+				:is="activeComponent"
+				v-for="(productData, idx) in isLoading ? itemsCount : items"
+				:key="isLoading ? idx : productData._id"
+				:product-data="isLoading ? {} : productData"
+				:index="idx"
 			/>
 		</div>
 	</div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useFacetOptionsStore } from '@/stores/facetOptions'
-import { storeToRefs } from 'pinia'
 
-import { onMounted, watch } from 'vue'
-import DressStyleCard from '@/components/cards/DressStyleCard.vue'
+import DressStyleCard from '@/components/cards/dressStyleCard/DressStyleCard.vue'
+import DressStyleCardSkeleton from '@/components/cards/dressStyleCard/DressStyleCardSkeleton.vue'
+import ErrorMessageBlock from '@/components/errorMessageBlock/ErrorMessageBlock.vue'
 
-const { t, locale } = useI18n()
-const facetOptionStore = useFacetOptionsStore()
+const { t } = useI18n()
 
-const { availableStylesValue } = storeToRefs(facetOptionStore)
-const { getAvailableStyles } = facetOptionStore
+defineEmits(['reloadItems'])
 
-watch(locale, async () => {
-	await getAvailableStyles()
+const props = defineProps({
+	items: {
+		type: Array,
+		default: [],
+	},
+	itemsCount: {
+		type: Number,
+		default: 4,
+	},
+	isLoading: {
+		type: Boolean,
+		default: false,
+	},
+	hasError: {
+		type: Boolean,
+		default: false,
+	},
 })
 
-onMounted(async () => {
-	await getAvailableStyles()
+const activeComponent = computed(() => {
+	return props.isLoading ? DressStyleCardSkeleton : DressStyleCard
+})
+
+const isErrorBlockVisible = computed(() => {
+	return (props.hasError || !props.items.length) && !props.isLoading
 })
 </script>

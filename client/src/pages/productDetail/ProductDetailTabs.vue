@@ -53,7 +53,7 @@ import TabList from '@/components/tab/TabList.vue'
 import Tab from '@/components/tab/Tab.vue'
 import TabPanels from '@/components/tab/TabPanels.vue'
 import TabPanel from '@/components/tab/TabPanel.vue'
-import ReviewCard from '@/components/cards/ReviewCard.vue'
+import ReviewCard from '@/components/cards/reviewCard/ReviewCard.vue'
 
 const { t } = useI18n()
 const props = defineProps({

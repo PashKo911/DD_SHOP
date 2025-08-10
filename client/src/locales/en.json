@@ -171,7 +171,8 @@
 		"reviews": {
 			"postedOn": "Posted: {date}"
 		},
-		"emptySearchMessage": "No results found"
+		"emptySearchMessage": "No results found",
+		"errorBlockTitle": "Error loading data"
 	},
 	"accessibility": {
 		"logo": "Website Logo/ go to homepage",
@@ -264,7 +265,8 @@
 		"viewModeToggler": "Change products view mode",
 		"clearFilterChip": "Clear Filter",
 		"clearAllFilterChips": "Clear All",
-		"closeFilter": "Close filter"
+		"closeFilter": "Close filter",
+		"reloadButton": "Reload"
 	},
 	"placeholders": {
 		"search": "Search",

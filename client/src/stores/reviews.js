@@ -10,7 +10,7 @@ export const useReviewsStore = defineStore('reviews', () => {
 	const minRating = 4
 	const generalStore = useGeneralStore()
 
-	const { isLoading, generalApiOperation } = generalStore
+	const { isLoading, generalApiOperation, hasError } = generalStore
 	const reviews = ref([])
 	//========================================================================================================================================================
 
@@ -19,13 +19,17 @@ export const useReviewsStore = defineStore('reviews', () => {
 	})
 
 	const isReviewsLoading = computed(() => {
-		return isLoading('getReviews')
+		return isLoading('reviews')
+	})
+
+	const hasReviewsError = computed(() => {
+		return Boolean(hasError('reviews'))
 	})
 	//========================================================================================================================================================
 
 	const getReviews = async () => {
 		const response = await generalApiOperation({
-			operationName: 'getReviews',
+			operationName: 'reviews',
 			operation: async () => {
 				const response = await apiClient(
 					apiEndpoints.reviews.getRandomReviews,
@@ -47,7 +51,10 @@ export const useReviewsStore = defineStore('reviews', () => {
 
 		// computed
 		reviewsValue,
+
+		// status
 		isReviewsLoading,
+		hasReviewsError,
 
 		// actions
 		getReviews,

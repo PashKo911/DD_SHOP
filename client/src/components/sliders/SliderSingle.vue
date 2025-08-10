@@ -6,13 +6,23 @@
 			delay: 4000,
 			pauseOnMouseEnter: true,
 		}"
+		:preloadImages="false"
 		:modules="modules"
 		class="group relative"
 	>
 		<swiper-slide v-for="item in items" :key="item.id" data-base-slider-slide>
 			<slot :item="item">
 				<div>
-					<img :src="item.img" :alt="t(item.label)" />
+					<img
+						:src="item.img"
+						:alt="t(item.label)"
+						loading="lazy"
+						width="1920"
+						height="480"
+					/>
+					<div
+						class="swiper-lazy-preloader border-t-primary! border-r-primary! border-b-transparent! border-l-transparent!"
+					></div>
 				</div>
 			</slot>
 		</swiper-slide>

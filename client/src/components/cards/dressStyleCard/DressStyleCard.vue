@@ -24,28 +24,50 @@
 				{{ productData.labelUk ?? productData.label }}
 			</h3>
 			<arrow-down-simple
-				class="group-hover:animate-soft-bounce w-7 self-center justify-self-center"
+				class="group-hover:animate-soft-bounce w-4 self-center justify-self-center sm:w-7"
 			/>
 		</div>
 		<img
 			:src="`${API_BASE}${productData.imgSrc}`"
 			:alt="productData.labelUk ?? productData.label"
+			:loading="lazyAttr"
+			:width="imgConfig.width"
+			:height="imgConfig.height"
 			class="pointer-events-none absolute top-0"
-			:class="{
-				'right-0 w-[70.37594%]': index === 0,
-				'left-0 w-[41.831683%]': index === 1,
-				'left-0 w-[47.95539%]': index === 2,
-				'right-0 w-[60.300752%]': index === 3,
-			}"
+			:class="imgConfig.class"
 		/>
 	</router-link>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { API_BASE } from '@/config/apiConfig'
 import ArrowDownSimple from '@/components/icons/ArrowDownSimple.vue'
 
-defineProps({
+const imageConfigs = [
+	{
+		class: 'right-0 w-[70.37594%]',
+		width: 468,
+		height: 292,
+	},
+	{
+		class: 'left-0 w-[41.831683%]',
+		width: 338,
+		height: 292,
+	},
+	{
+		class: 'left-0 w-[47.95539%]',
+		width: 387,
+		height: 292,
+	},
+	{
+		class: 'right-0 w-[60.300752%]',
+		width: 401,
+		height: 292,
+	},
+]
+
+const props = defineProps({
 	productData: {
 		type: Object,
 		required: true,
@@ -54,5 +76,17 @@ defineProps({
 		type: Number,
 		required: true,
 	},
+	lazy: {
+		type: Boolean,
+		default: true,
+	},
+})
+
+const lazyAttr = computed(() => {
+	return props.lazy ? 'lazy' : 'eager'
+})
+
+const imgConfig = computed(() => {
+	return imageConfigs[props.index] || imageConfigs[0]
 })
 </script>
