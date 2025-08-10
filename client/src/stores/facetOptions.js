@@ -7,7 +7,7 @@ import apiEndpoints from '@/api/apiEndpoints'
 
 export const useFacetOptionsStore = defineStore('facetOptions', () => {
 	const generalStore = useGeneralStore()
-	const { generalApiOperation } = generalStore
+	const { generalApiOperation, isLoading, hasError } = generalStore
 	const { locale, numberFormats } = useI18n()
 
 	const facetOptions = reactive({
@@ -44,6 +44,13 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 			(arr) => Array.isArray(arr) && arr.length > 0,
 		)
 	})
+
+	const isAvailableStylesLoading = computed(() => {
+		return isLoading('availableStyles')
+	})
+	const hasAvailableStylesError = computed(() => {
+		return Boolean(hasError('availableStyles'))
+	})
 	//========================================================================================================================================================
 
 	const getFacetOptions = async () => {
@@ -76,7 +83,12 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 		facetOptionsValue,
 		currency,
 		availableStylesValue,
+
+		// Status
 		isFacetOptionsLoaded,
+		isAvailableStylesLoading,
+
+		hasAvailableStylesError,
 
 		// actions
 		getFacetOptions,

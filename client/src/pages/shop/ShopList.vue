@@ -7,7 +7,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useMediaQuery } from '@/composables/useMediaQuery'
-import ProductCard from '@/components/cards/ProductCard.vue'
+import ProductCard from '@/components/cards/productCard/ProductCard.vue'
 
 const props = defineProps({
 	items: {

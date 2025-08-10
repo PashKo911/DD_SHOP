@@ -1,13 +1,14 @@
 <template>
 	<button
-		class="btn-prev focus-visible:outline-primary z-[1] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full outline outline-transparent transition-all duration-300 hover:shadow-lg"
+		class="btn-prev group focus-visible:outline-primary disabled:fill-dark-grey z-[1] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#FCF9F6] shadow-lg outline outline-transparent transition-all duration-300 hover:shadow-md disabled:pointer-events-none disabled:shadow-sm disabled:select-none"
 	>
 		<slot>
-			<arrow-left-icon class="aspect-square w-8" />
+			<arrow-left-icon class="aspect-square" />
 		</slot>
 	</button>
 </template>
 
 <script setup>
 import ArrowLeftIcon from '../icons/ArrowLeftIcon.vue'
+import Button from '../ui/buttons/Button.vue'
 </script>

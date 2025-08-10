@@ -170,7 +170,8 @@
 		"reviews": {
 			"postedOn": "Опубліковано: {date}"
 		},
-		"emptySearchMessage": "Нічого не знайдено"
+		"emptySearchMessage": "Нічого не знайдено",
+		"errorBlockTitle": "Не вдалося завантажити дані"
 	},
 	"accessibility": {
 		"logo": "Логотип сайту",
@@ -262,7 +263,8 @@
 		"viewModeToggler": "Перемкнути режим відображення товарів",
 		"clearFilterChip": "Очистити фільтр",
 		"clearAllFilterChips": "Очистити все",
-		"closeFilter": "Закрити фільтр"
+		"closeFilter": "Закрити фільтр",
+		"reloadButton": "Перезавантажити"
 	},
 	"placeholders": {
 		"search": "Пошук",

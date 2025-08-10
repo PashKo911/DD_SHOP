@@ -43,8 +43,11 @@
 		</div>
 		<div class="not-last:mb-2 lg:basis-[44%]">
 			<img
-				src="@/assets/img/hero/main.webp"
+				width="730"
+				height="730"
+				:src="heroImg"
 				:alt="t('pages.home.heroSection.mainImgAlt')"
+				fetchpriority="high"
 			/>
 		</div>
 	</section>
@@ -52,11 +55,15 @@
 
 <script setup>
 import { computed } from 'vue'
+
 import { useI18n } from 'vue-i18n'
 import { useMediaQuery } from '@/composables/useMediaQuery'
+import { useHead } from '@vueuse/head'
+
 import achievements from '@/data/achievements'
 
 import ButtonLink from '@/components/ui/buttons/ButtonLink.vue'
+import heroImg from '@/assets/img/hero/main.webp'
 
 const isTablet = useMediaQuery('(max-width: 991.98px)')
 const achievementsPosition = computed(() => {
@@ -64,4 +71,16 @@ const achievementsPosition = computed(() => {
 })
 
 const { t } = useI18n()
+
+useHead({
+	link: [
+		{
+			rel: 'preload',
+			as: 'image',
+			href: heroImg,
+			type: 'image/webp',
+			fetchpriority: 'high',
+		},
+	],
+})
 </script>

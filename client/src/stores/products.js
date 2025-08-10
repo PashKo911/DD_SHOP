@@ -17,7 +17,7 @@ export const useProductsStore = defineStore('products', () => {
 	const { locale } = useI18n()
 	//========================================================================================================================================================
 
-	const { generalApiOperation, isLoading } = generalStore
+	const { generalApiOperation, isLoading, hasError } = generalStore
 	const { apiQueryParams, filter, perPage } = storeToRefs(filterStore)
 
 	const defaultProducts = ref([])
@@ -26,6 +26,28 @@ export const useProductsStore = defineStore('products', () => {
 	const suggestions = ref([])
 
 	//========================================================================================================================================================
+	const queryPresets = computed(() => ({
+		default: {
+			name: 'defaultProducts',
+			queryParams: apiQueryParams.value,
+		},
+		topSales: {
+			name: 'topSalesProducts',
+			queryParams: { sort: 'maxRating:desc,', page: 0, perPage: 15 },
+		},
+		newest: {
+			name: 'newestProducts',
+			queryParams: { sort: 'createdAt:desc', page: 0, perPage: 15 },
+		},
+		suggestions: {
+			name: 'suggestions',
+			queryParams: {
+				gender: filter.value.gender,
+				perPage: 5,
+				page: 0,
+			},
+		},
+	}))
 
 	const defaultProductsValue = computed(() => {
 		const products = defaultProducts.value.documents
@@ -57,30 +79,34 @@ export const useProductsStore = defineStore('products', () => {
 	const suggestionsValue = computed(() => {
 		return buildSuggestionGroups(suggestions.value, locale.value)
 	})
+
 	const isSuggestionsLoading = computed(() => {
-		return isLoading('getSuggestions')
+		return isLoading(queryPresets.value.suggestions.name)
 	})
+
 	const isProductsLoading = computed(() => {
 		return isLoading(queryPresets.value.default.name)
 	})
+
+	const isNewestProductsLoading = computed(() => {
+		return isLoading(queryPresets.value.newest.name)
+	})
+
+	const hasNewestProductsError = computed(() => {
+		return Boolean(hasError(queryPresets.value.newest.name))
+	})
+
+	const isTopSalesProductsLoading = computed(() => {
+		return isLoading(queryPresets.value.topSales.name)
+	})
+	const hasTopSalesProductsError = computed(() => {
+		return Boolean(hasError(queryPresets.value.topSales.name))
+	})
+
 	//========================================================================================================================================================
-	const queryPresets = computed(() => ({
-		default: {
-			name: 'defaultProducts',
-			queryParams: apiQueryParams.value,
-		},
-		topSales: {
-			name: 'topSalesProducts',
-			queryParams: { sort: 'maxRating:desc,', page: 0, perPage: 15 },
-		},
-		newest: {
-			name: 'newestProducts',
-			queryParams: { sort: 'createdAt:desc', page: 0, perPage: 15 },
-		},
-	}))
 
 	const getProducts = async (queryParams = {}, targetRef, operationName) => {
-		const { data } = await generalApiOperation({
+		const result = await generalApiOperation({
 			operationName: operationName,
 			operation: async () => {
 				const response = await apiClient(apiEndpoints.products.getProducts, {
@@ -89,8 +115,9 @@ export const useProductsStore = defineStore('products', () => {
 				return response.data
 			},
 		})
+		if (!result) return
 
-		targetRef.value = data
+		targetRef.value = result.data
 	}
 
 	const getDefaultProducts = async () =>
@@ -113,23 +140,20 @@ export const useProductsStore = defineStore('products', () => {
 			queryPresets.value.newest.name,
 		)
 
-	const getSuggestions = async (querySearch) => {
-		const queryParams = {
-			gender: filter.value.gender,
-			perPage: 5,
-			page: 0,
-			title: querySearch,
-		}
-		const { data } = await generalApiOperation({
-			operationName: 'getSuggestions',
+	const getSuggestions = async (title) => {
+		const params = { ...queryPresets.value.suggestions.queryParams, title }
+		const result = await generalApiOperation({
+			operationName: queryPresets.value.suggestions.name,
 			operation: async () => {
 				const response = await apiClient(apiEndpoints.products.getSuggestions, {
-					params: queryParams,
+					params,
 				})
 				return response.data
 			},
 		})
-		suggestions.value = data
+		if (!result) return
+
+		suggestions.value = result.data
 	}
 
 	return {
@@ -145,10 +169,16 @@ export const useProductsStore = defineStore('products', () => {
 		suggestionsValue,
 		topSalesProductsValue,
 		newestProductsValue,
+		queryPresets,
 
 		// status
 		isProductsLoading,
 		isSuggestionsLoading,
+		isNewestProductsLoading,
+		isTopSalesProductsLoading,
+
+		hasNewestProductsError,
+		hasTopSalesProductsError,
 
 		// actions
 		getProducts,

@@ -7,17 +7,23 @@
 				name: 'productDetail',
 				params: { slug: data.slug, id: data._id, variant: activeVariantId },
 			}"
-			class="group/image focus-visible:outline-primary relative aspect-[3/3.6] overflow-hidden bg-white outline-1 outline-transparent transition-colors duration-300 not-last:mb-4 focus-visible:outline-offset-2"
+			class="group/image focus-visible:outline-primary relative aspect-[270/405] overflow-hidden bg-white outline-1 outline-transparent transition-colors duration-300 not-last:mb-4 focus-visible:outline-offset-2"
 		>
 			<img
 				:src="`${API_BASE}${currentVariant.images[0]}`"
 				:alt="data.title"
-				class="absolute inset-0"
+				:loading="loadingAttr"
+				width="420"
+				height="630"
+				class="h-full object-cover"
 			/>
 			<img
 				:src="`${API_BASE}${currentVariant.images[1]}`"
 				:alt="data.title"
-				class="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover/image:opacity-100"
+				:loading="loadingAttr"
+				width="420"
+				height="630"
+				class="h-full object-cover opacity-0 transition-opacity duration-500 group-hover/image:opacity-100"
 			/>
 			<span
 				v-if="currentVariant.discount"
@@ -78,12 +84,16 @@ import { API_BASE } from '@/config/apiConfig'
 import { useI18n } from 'vue-i18n'
 
 import RatingComp from '@/components/ui/rating/RatingComp.vue'
-import ColorRadioGroup from '../formControls/ColorRadioGroup.vue'
+import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
 
 const props = defineProps({
 	data: {
 		type: Object,
 		required: true,
+	},
+	lazy: {
+		type: Boolean,
+		default: true,
 	},
 })
 //========================================================================================================================================================
@@ -112,6 +122,10 @@ const activeColorValue = computed({
 			activeVariantId.value = found._id
 		}
 	},
+})
+
+const loadingAttr = computed(() => {
+	return props.lazy ? 'lazy' : 'eager'
 })
 //========================================================================================================================================================
 
