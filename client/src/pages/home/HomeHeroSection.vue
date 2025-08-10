@@ -16,11 +16,7 @@
 					{{ t('pages.home.heroSection.text') }}
 				</p>
 			</div>
-<<<<<<< HEAD
-			<Button
-=======
 			<button-link
->>>>>>> release/v1.0.0
 				:label="t('buttons.shopNow')"
 				size="large"
 				:to="{ name: 'shop', params: { category: 'women' } }"
