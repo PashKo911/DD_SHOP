@@ -1,27 +1,38 @@
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+
+import { defaultLocale } from '@/config/i18nConfig'
 
 export function useLocales() {
-	const { t, locale } = useI18n({ useScope: 'global' })
+	const { locale } = useI18n()
+	const router = useRouter()
+	const route = useRoute()
 
 	function setLocale(lang) {
+		if (locale.value === lang) return
 		locale.value = lang
-		document.documentElement.lang = lang
 		localStorage.setItem('lastLocale', lang)
+
+		router.push({
+			name: route.name || 'home',
+			params: { ...route.params, locale: lang },
+			query: route.query,
+		})
 	}
 	function checkLocale() {
-		const lastLocale = localStorage.getItem('lastLocale')
-		if (lastLocale && lastLocale !== locale.value) {
-			setLocale(localStorage.getItem('lastLocale'))
-			useRouter().go()
+		const storageLocale = localStorage.getItem('lastLocale')
+
+		if (storageLocale && storageLocale !== locale.value) {
+			setLocale(storageLocale)
+			return
 		}
+
+		locale.value = defaultLocale
 	}
 
 	window.addEventListener('storage', () => checkLocale())
 
 	return {
-		locale,
-		t,
 		setLocale,
 		checkLocale,
 	}

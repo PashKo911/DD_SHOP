@@ -1,5 +1,5 @@
 export default {
-	path: '/shop/:category?',
+	path: 'shop/:category?',
 	name: 'shop',
 	component: () => import('@/components/layouts/BreadcrumbLayout.vue'),
 	redirect: { name: 'shopCategory' },

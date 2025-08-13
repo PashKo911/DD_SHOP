@@ -2,12 +2,7 @@ import axios from 'axios'
 import { useAuthStore } from '@/stores/auth'
 import i18n from '@/plugins/i18n'
 import router from '@/router'
-
-const API_VERSION = import.meta.env.VITE_APP_API_VERSION
-
-const API_BASE = import.meta.env.VITE_APP_API_BASE || 'http://localhost:3000'
-
-const API_URL = `${API_BASE}/api/${API_VERSION}`
+import { API_URL } from './apiConfig'
 
 const apiClient = axios.create({
 	baseURL: API_URL,
