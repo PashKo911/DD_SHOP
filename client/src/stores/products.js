@@ -5,7 +5,7 @@ import { useGeneralStore } from './general'
 import { useFilterStore } from './filter'
 import { useI18n } from 'vue-i18n'
 
-import apiClient from '@/api/axiosConfig'
+import apiClient from '@/config/axiosConfig'
 import apiEndpoints from '@/api/apiEndpoints'
 import applyColorFilterToProducts from '@/utils/productsHelpers/applyColorFilterToProducts'
 import buildSuggestionGroups from '@/utils/productsHelpers/buildSuggestionGroups'

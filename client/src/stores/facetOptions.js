@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { reactive, computed, ref } from 'vue'
 import { useGeneralStore } from './general'
 import { useI18n } from 'vue-i18n'
-import apiClient from '@/api/axiosConfig'
+import apiClient from '@/config/axiosConfig'
 import apiEndpoints from '@/api/apiEndpoints'
 
 export const useFacetOptionsStore = defineStore('facetOptions', () => {

@@ -1,8 +1,41 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { storeToRefs } from 'pinia'
+
 import authRoutes from './routes/authRoutes'
 import shopRoutes from './routes/shopRoutes'
+
 import { useCommonStore } from '@/stores/commonStore'
-import { storeToRefs } from 'pinia'
+import { localeCodes, defaultLocale } from '@/config/i18nConfig'
+
+const appInnerRoutes = [
+	{
+		path: 'home',
+		name: 'home',
+		component: () => import('@/pages/home/HomePage.vue'),
+		meta: {
+			useInMenu: true,
+			requiredAuth: false,
+			localeName: 'pages.home.title.menu',
+		},
+	},
+	...authRoutes,
+	shopRoutes,
+	{
+		path: 'cart',
+		name: 'cart',
+		component: () => import('@/pages/cart/CartPage.vue'),
+		meta: {
+			useInMenu: false,
+			requiredAuth: false,
+			localeName: 'pages.cart.title.page',
+		},
+	},
+	{
+		path: ':pathMatch(.*)*',
+		name: 'notFound',
+		component: () => import('@/pages/NotFoundPage.vue'),
+	},
+]
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,48 +51,41 @@ const router = createRouter({
 	routes: [
 		{
 			path: '/',
-			redirect: { name: 'home' },
+			redirect: { name: 'home', params: { locale: defaultLocale } },
 			meta: {
 				useInMenu: false,
 				requiredAuth: false,
 			},
 		},
+
 		{
-			path: '/home',
-			name: 'home',
-			component: () => import('@/pages/home/HomePage.vue'),
-			meta: {
-				useInMenu: true,
-				requiredAuth: false,
-				localeName: 'pages.home.title.menu',
-			},
+			path: '/:locale(en|uk)?',
+			children: appInnerRoutes,
 		},
-		...authRoutes,
-		shopRoutes,
-		{
-			path: '/cart',
-			name: 'cart',
-			component: () => import('@/pages/cart/CartPage.vue'),
-			meta: {
-				useInMenu: false,
-				requiredAuth: false,
-				localeName: 'pages.cart.title.page',
-			},
-		},
+
 		{
 			path: '/:pathMatch(.*)*',
-			name: 'notFound',
-			component: () => import('@/pages/NotFoundPage.vue'),
+			redirect: { name: 'notFound', params: { locale: defaultLocale } },
 		},
 	],
 })
 
-// router.beforeEach(async (to, from) => {
-// 	if (document.documentElement.classList.contains('menu-open')) {
-// 		document.documentElement.classList.remove('menu-open')
-// 	}
-// 	return true
-// })
+router.beforeEach(async (to, from, next) => {
+	const localeParam = to.params.locale
+
+	if (!localeParam) {
+		return next({
+			name: to.name || 'home',
+			params: { ...to.params, locale: defaultLocale },
+			query: to.query,
+		})
+	}
+
+	if (!localeCodes.includes(localeParam)) {
+		return next({ name: 'notFound', params: { locale: defaultLocale } })
+	}
+	return next()
+})
 
 router.afterEach((to, from) => {
 	const commonStore = useCommonStore()

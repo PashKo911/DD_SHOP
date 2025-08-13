@@ -1,6 +1,6 @@
 export default [
 	{
-		path: '/auth',
+		path: 'auth',
 		redirect: { name: 'signIn' },
 		meta: {
 			useInMenu: false,
