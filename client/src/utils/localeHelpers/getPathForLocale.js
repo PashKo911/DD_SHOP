@@ -1,4 +1,4 @@
-import { SITE_BASE } from '@/config/apiConfig'
+import { SITE_BASE } from '@/constants/config'
 
 function getPathForLocale(targetLocale, router, route) {
 	const params = { ...route.params, locale: targetLocale }

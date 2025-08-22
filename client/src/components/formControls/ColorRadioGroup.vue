@@ -48,7 +48,7 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import RadioGroup from '@/components/ui/radioGroup/RadioGroup.vue'
 
-const { t } = useI18n()
+
 
 const model = defineModel()
 
@@ -66,6 +66,8 @@ const props = defineProps({
 		default: 'middle',
 	},
 })
+
+const { t } = useI18n()
 
 const checkPath = ref('checkPath')
 

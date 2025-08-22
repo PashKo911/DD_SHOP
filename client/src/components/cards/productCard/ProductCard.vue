@@ -5,7 +5,7 @@
 		<router-link
 			:to="{
 				name: 'productDetail',
-				params: { slug: data.slug, id: data._id, variant: activeVariantId },
+				params: routeParams,
 			}"
 			class="group/image focus-visible:outline-primary relative aspect-[270/405] overflow-hidden bg-white outline-1 outline-transparent transition-colors duration-300 not-last:mb-4 focus-visible:outline-offset-2"
 		>
@@ -15,7 +15,7 @@
 				:loading="loadingAttr"
 				width="420"
 				height="630"
-				class="h-full object-cover"
+				class="absolute inset-0 h-full w-full object-cover"
 			/>
 			<img
 				:src="`${API_BASE}${currentVariant.images[1]}`"
@@ -23,7 +23,7 @@
 				:loading="loadingAttr"
 				width="420"
 				height="630"
-				class="h-full object-cover opacity-0 transition-opacity duration-500 group-hover/image:opacity-100"
+				class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover/image:opacity-100"
 			/>
 			<span
 				v-if="currentVariant.discount"
@@ -42,13 +42,9 @@
 				<router-link
 					:to="{
 						name: 'productDetail',
-						params: {
-							slug: data.slug,
-							id: data._id,
-							variant: activeVariantId,
-						},
+						params: routeParams,
 					}"
-					class="font-heading focus-visible:outline-primary line-clamp-2 w-full rounded-sm text-[max(min(9cqw,_1.625rem),1rem)] leading-tight font-bold outline-1 outline-transparent transition-colors duration-300"
+					class="font-heading focus-visible:outline-primary hover:decoration-primary line-clamp-2 w-max rounded-sm text-[max(min(9cqw,_1.625rem),1rem)] leading-tight font-bold underline decoration-transparent outline-1 outline-transparent transition-colors duration-300"
 				>
 					{{ data.title }}
 				</router-link>
@@ -79,7 +75,8 @@
 
 <script setup>
 import { computed, ref, watch } from 'vue'
-import { API_BASE } from '@/config/apiConfig'
+
+import { API_BASE } from '@/constants/config'
 
 import { useI18n } from 'vue-i18n'
 
@@ -126,6 +123,15 @@ const activeColorValue = computed({
 
 const loadingAttr = computed(() => {
 	return props.lazy ? 'lazy' : 'eager'
+})
+
+const routeParams = computed(() => {
+	return {
+		category: props.data.gender.label,
+		slug: props.data.title.toLowerCase().replace(' ', '-'),
+		id: props.data._id,
+		variant: activeVariantId.value,
+	}
 })
 //========================================================================================================================================================
 

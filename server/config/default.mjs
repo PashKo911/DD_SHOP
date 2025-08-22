@@ -9,4 +9,6 @@ export default Object.freeze({
 	tokenKey: process.env.SECRET_KEY,
 	expiredTime: process.env.EXPIRE_PERIOD,
 	exchangeRateApiUrl: process.env.EXCHANGE_RATE_API_URL,
+	defaultLanguage: 'en',
+	defaultCurrency: 'USD',
 })

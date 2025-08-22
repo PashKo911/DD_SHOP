@@ -36,13 +36,6 @@ const variantSchema = new Schema(
 
 const productSchema = new Schema(
 	{
-		slug: {
-			type: String,
-			required: [true, 'Slug is required'],
-			unique: true,
-			trim: true,
-			lowercase: true,
-		},
 		title: localizedString('Title', 3, 50),
 		description: localizedString('Description', 10, 1000),
 		style: {

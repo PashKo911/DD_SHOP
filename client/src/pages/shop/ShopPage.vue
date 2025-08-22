@@ -200,10 +200,16 @@ const sizeFilterValue = useFilterModel('sizes')
 
 const sortFilterValue = computed({
 	get() {
-		return filter.value.sort
+		const val = filter.value.sort
+		const upperCaseLabel =
+			val.label.charAt(0).toUpperCase() + val.label.slice(1)
+		return {
+			...val,
+			label: upperCaseLabel,
+		}
 	},
 	set(newVal) {
-		setFilterProp('sort', newVal)
+		setFilterProp('sort', { ...newVal, label: newVal.label.toLowerCase() })
 	},
 })
 
@@ -285,10 +291,15 @@ const paginatorButtonsCount = computed(() => {
 //========================================================================================================================================================
 
 watch(locale, async () => {
-	resetAllFilters()
-	setFilterProp('gender', currentGenderId.value)
 	await getFacetOptions()
+	if (hasSelectedFilters.value) {
+		resetAllFilters()
+	}
+	await getDefaultProducts()
+	if (!defaultProductsValue.value.length) {
+	}
 })
+
 watch(currentGenderId, async (newVal, oldVal) => {
 	if (oldVal) {
 		resetAllFilters()
@@ -300,9 +311,7 @@ watch(currentGenderId, async (newVal, oldVal) => {
 
 let unwatch
 onMounted(async () => {
-	if (!isFacetOptionsLoaded.value) {
-		await getFacetOptions()
-	}
+	await getFacetOptions()
 
 	setFilterProp('gender', currentGenderId.value)
 
@@ -311,13 +320,21 @@ onMounted(async () => {
 	}
 
 	if (hasSelectedFilters.value) {
-		router.push({ query: filterStrings.value })
+		router.push({
+			name: route.name,
+			query: filterStrings.value,
+			params: { ...route.params, locale: locale.value },
+		})
 	}
 
 	await getDefaultProducts()
 
-	unwatch = watch(filter.value, async (newVal, oldVal) => {
-		router.replace({ query: filterStrings.value })
+	unwatch = watch(filter.value, async () => {
+		router.replace({
+			name: route.name,
+			query: filterStrings.value,
+			params: { ...route.params, locale: locale.value },
+		})
 		await getDefaultProducts()
 	})
 })

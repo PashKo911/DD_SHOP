@@ -6,17 +6,20 @@ import DressStyleDBService from '../models/dressStyle/DressStyleDBService.mjs'
 import SizeDBService from '../models/size/SizeDBService.mjs'
 import GenderDBService from '../models/gender/GenderDBService.mjs'
 import ProductsDBService from '../models/product/ProductsDBService.mjs'
+import { getRate } from '../../../services/ratesCache.mjs'
+import config from '../../../config/default.mjs'
 
 import FormatValidationErrors from '../../../validators/formatValidationErrors.mjs'
-import { HttpError } from '../../../errors/HttpError.mjs'
 
 class ProductController {
 	static async getAllProducts(req, res, next) {
 		try {
 			console.log('GET PRODUCTS CHECKING ++++++++++++++++++++++++++')
-			const language = req.headers['accept-language']
-			const currency = req.headers.currency
-			const data = await ProductsDBService.getList(req.query, language, currency)
+			const language = req.headers['accept-language'] || config.defaultLanguage
+			const currency = req.headers.currency || config.defaultCurrency
+
+			const rate = await getRate(currency)
+			const data = await ProductsDBService.getList(req.query, language, currency, rate)
 
 			res.status(200).json({
 				data,
@@ -27,9 +30,8 @@ class ProductController {
 	}
 	static async getSuggestions(req, res, next) {
 		try {
-			const language = req.headers['accept-language']
-			const currency = req.headers.currency
-			const data = await ProductsDBService.getSuggestions(req.query, language, currency)
+			const language = req.headers['accept-language'] || config.defaultLanguage
+			const data = await ProductsDBService.getSuggestions(req.query, language)
 
 			res.status(200).json({
 				data,
@@ -41,9 +43,14 @@ class ProductController {
 
 	static async getProduct(req, res, next) {
 		try {
+			console.log('GET PRODUCT DETAIL CHECKING ++++++++++++++++++++++++++')
+			const language = req.headers['accept-language'] || config.defaultLanguage
+			const currency = req.headers.currency || config.defaultCurrency
 			const id = req.params.id
 
-			const product = await ProductsDBService.getById(id)
+			const rate = await getRate(currency)
+
+			const product = await ProductsDBService.getById(id, language, currency, rate)
 			res.status(200).json(product)
 		} catch (err) {
 			next(err)
@@ -108,15 +115,17 @@ class ProductController {
 
 	static async getOptions(req, res, next) {
 		try {
-			const language = req.headers['accept-language']
-			const currency = req.headers.currency
+			const language = req.headers['accept-language'] || config.defaultLanguage
+			const currency = req.headers.currency || config.defaultCurrency
+
+			const rate = await getRate(currency)
 
 			const colors = await ColorsDBService.getList(language)
 			const sizes = await SizeDBService.getList()
 			const styles = await DressStyleDBService.getList(language)
 			const genders = await GenderDBService.getList({})
 
-			const price = await ProductsDBService.getPriceRange(currency)
+			const price = await ProductsDBService.getPriceRange(rate)
 
 			res.status(200).json({
 				genders,
@@ -132,7 +141,7 @@ class ProductController {
 
 	static async getStyles(req, res, next) {
 		try {
-			const language = req.headers['accept-language']
+			const language = req.headers['accept-language'] || config.defaultLanguage
 
 			const styles = await DressStyleDBService.getListWithImg(language)
 			res.status(200).json({

@@ -1,6 +1,6 @@
 <template>
 	<div class="container pt-6 pb-8">
-		<breadcrumb-wrapper class="mb-50-30" />
+		<breadcrumb-wrapper class="mb-8" />
 		<router-view />
 	</div>
 </template>

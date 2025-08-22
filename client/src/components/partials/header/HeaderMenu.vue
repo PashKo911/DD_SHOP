@@ -70,10 +70,10 @@ import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 
 import { useRoute } from 'vue-router'
-import { useMenuItems } from '@/utils/headerMenuGenerator'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useI18n } from 'vue-i18n'
 import { useCommonStore } from '@/stores/commonStore'
+import { getMenuItems } from '@/utils/getMenuItems'
 
 import CartIcon from '@/components/icons/CartIcon.vue'
 import SignInIcon from '@/components/icons/SignInIcon.vue'
@@ -84,7 +84,7 @@ import MainSearchInput from '@/components/formControls/MainSearchInput.vue'
 //========================================================================================================================================================
 
 const route = useRoute()
-const { menuItems } = useMenuItems()
+const { menuItems } = getMenuItems()
 const commonStore = useCommonStore()
 
 const { isHeaderMenuOpen } = storeToRefs(commonStore)

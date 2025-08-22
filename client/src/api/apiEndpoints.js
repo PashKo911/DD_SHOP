@@ -4,6 +4,7 @@ const apiEndpoints = {
 		getSuggestions: '/products/suggestions',
 		getOptions: '/products/options',
 		getStyles: '/products/styles',
+		getProductDetails: (id) => `/products/detail/${id}`,
 	},
 	auth: {
 		signin: '/auth/signin',

@@ -13,15 +13,16 @@
 					@click="navigate"
 					class="hover:text-t-hover capitalize underline decoration-transparent transition-colors"
 				>
-					<span>{{ t(item.label) }}</span>
+					<span>{{ item.label }}</span>
 				</a>
 			</router-link>
 			<span
 				v-else
 				v-bind="props.action"
+				aria-current="page"
 				class="text-t-hover font-bold capitalize"
 			>
-				<span>{{ t(item.label) }}</span>
+				<span>{{ item.label }}</span>
 			</span>
 		</template>
 	</Breadcrumb>
@@ -36,22 +37,41 @@ import Breadcrumb from '@/components/breadcrumb/Breadcrumb.vue'
 
 const route = useRoute()
 const { t } = useI18n()
+//========================================================================================================================================================
 
 const items = computed(() =>
 	route.matched
-		.filter((record) => record.meta?.localeName != null)
-		.map((record, index, arr) => ({
-			label:
-				typeof record.meta.localeName === 'function'
-					? record.meta.localeName(route)
-					: record.meta.localeName,
-			route: { name: record.name },
-			isLast: index === arr.length - 1,
-		})),
+		.filter((r) => r.meta?.localeName != null)
+		.map((record, idx, arr) => {
+			const isLast = idx === arr.length - 1
+			const localeKey = resolveLocaleName(record.meta.localeName, route)
+			const label =
+				isLast && route.params.slug
+					? humanizeSlug(route.params.slug)
+					: t(localeKey ?? record.name)
+
+			return {
+				label,
+				route: { name: record.name },
+				isLast,
+			}
+		}),
 )
 
 const home = computed(() => ({
-	label: 'pages.home.title.menu',
+	label: t('pages.home.title.menu'),
 	route: { name: 'home' },
 }))
+//========================================================================================================================================================
+
+function humanizeSlug(slug = '') {
+	return decodeURIComponent(slug).replace(/[-_]+/g, ' ')
+}
+
+function resolveLocaleName(localeName, route) {
+	if (!localeName) return null
+	return typeof localeName === 'function'
+		? localeName(route.params.category)
+		: localeName
+}
 </script>

@@ -1,8 +1,7 @@
 import router from '@/router'
+import { SHOP_CATEGORIES } from '@/constants/config'
 
-const SHOP_CATEGORIES = ['women', 'men']
-
-export function useMenuItems() {
+export function getMenuItems() {
 	const declaredRoutes = router.options.routes
 
 	function recurse(routes) {
@@ -11,14 +10,16 @@ export function useMenuItems() {
 
 			let self = []
 			if (route.name === 'shop' && route.meta?.useInMenu) {
-				self = SHOP_CATEGORIES.map((cat) => ({
-					name: 'shop',
-					params: { category: cat },
-					label:
-						typeof route.meta.localeName === 'function'
-							? route.meta.localeName({ params: { category: cat } })
-							: route.meta.localeName,
-				}))
+				self = SHOP_CATEGORIES.map((cat) => {
+					return {
+						name: 'shop',
+						params: { category: cat },
+						label:
+							typeof route.meta.localeName === 'function'
+								? route.meta.localeName(cat)
+								: route.meta.localeName,
+					}
+				})
 			} else if (route.meta?.useInMenu && !route.children?.length) {
 				self = [
 					{

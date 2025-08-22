@@ -24,6 +24,7 @@ export const useProductsStore = defineStore('products', () => {
 	const topSalesProducts = ref([])
 	const newestProducts = ref([])
 	const suggestions = ref([])
+	const productDetails = ref({})
 
 	//========================================================================================================================================================
 	const queryPresets = computed(() => ({
@@ -46,6 +47,9 @@ export const useProductsStore = defineStore('products', () => {
 				perPage: 5,
 				page: 0,
 			},
+		},
+		productDetail: {
+			name: 'productDetail',
 		},
 	}))
 
@@ -80,6 +84,10 @@ export const useProductsStore = defineStore('products', () => {
 		return buildSuggestionGroups(suggestions.value, locale.value)
 	})
 
+	const productDetailsValue = computed(() => {
+		return productDetails.value
+	})
+
 	const isSuggestionsLoading = computed(() => {
 		return isLoading(queryPresets.value.suggestions.name)
 	})
@@ -101,6 +109,13 @@ export const useProductsStore = defineStore('products', () => {
 	})
 	const hasTopSalesProductsError = computed(() => {
 		return Boolean(hasError(queryPresets.value.topSales.name))
+	})
+
+	const isProductDetailsLoading = computed(() => {
+		return isLoading(queryPresets.value.productDetail.name)
+	})
+	const hasProductDetailError = computed(() => {
+		return Boolean(hasError(queryPresets.value.productDetail.name))
 	})
 
 	//========================================================================================================================================================
@@ -156,6 +171,20 @@ export const useProductsStore = defineStore('products', () => {
 		suggestions.value = result.data
 	}
 
+	const getProductDetails = async (id) => {
+		const result = await generalApiOperation({
+			operationName: queryPresets.value.productDetail.name,
+			operation: async () => {
+				const response = await apiClient(
+					apiEndpoints.products.getProductDetails(id),
+				)
+				return response.data
+			},
+		})
+		if (!result) return
+		productDetails.value = result
+	}
+
 	return {
 		// refs
 		defaultProducts,
@@ -163,6 +192,7 @@ export const useProductsStore = defineStore('products', () => {
 		newestProducts,
 		suggestions,
 		totalDefaultProductsCount,
+		productDetails,
 
 		// computed
 		defaultProductsValue,
@@ -170,15 +200,18 @@ export const useProductsStore = defineStore('products', () => {
 		topSalesProductsValue,
 		newestProductsValue,
 		queryPresets,
+		productDetailsValue,
 
 		// status
 		isProductsLoading,
 		isSuggestionsLoading,
 		isNewestProductsLoading,
 		isTopSalesProductsLoading,
+		isProductDetailsLoading,
 
 		hasNewestProductsError,
 		hasTopSalesProductsError,
+		hasProductDetailError,
 
 		// actions
 		getProducts,
@@ -186,5 +219,6 @@ export const useProductsStore = defineStore('products', () => {
 		getTopSalesProducts,
 		getNewestProducts,
 		getSuggestions,
+		getProductDetails,
 	}
 })

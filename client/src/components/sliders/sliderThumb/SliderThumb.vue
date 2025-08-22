@@ -1,33 +1,32 @@
 <template>
 	<div
-		class="flex w-full flex-col-reverse gap-6 overflow-hidden p-2.5 sm:aspect-[830/590] sm:flex-row sm:p-5 lg:max-w-[51.875rem]"
+		class="flex w-full flex-col-reverse gap-6 overflow-hidden p-2.5 sm:flex-row sm:p-5 lg:max-w-[51.875rem]"
 	>
 		<Swiper
 			:modules="modules"
-			spaceBetween="20"
-			slidesPerView="3"
+			:spaceBetween="20"
+			:slidesPerView="3"
 			:autoHeight="true"
 			:direction="thumbSwiperDirection"
-			loop
 			@swiper="setThumbsSwiper"
 			data-thumb-swiper
 			class="max-w-full cursor-pointer sm:basis-[23.631841%] [&_.swiper-button-prev]:hidden"
 		>
-			<SwiperSlide v-for="i in imagesList" :key="i.id" class="">
+			<SwiperSlide v-for="i in imagesList" :key="i">
 				<div
-					class="[.swiper-slide-thumb-active_&]:outline-primary flex h-full items-center justify-center rounded-lg bg-[#FCF9F6] outline outline-offset-5 outline-transparent transition-colors max-sm:aspect-square sm:outline-offset-10 [.swiper-slide-visible_&]:shadow-lg"
+					class="[.swiper-slide-thumb-active_&]:outline-primary flex items-center justify-center overflow-hidden rounded-lg bg-[#FCF9F6] outline outline-offset-5 outline-transparent transition-colors sm:outline-offset-10 [.swiper-slide-visible_&]:shadow-lg"
 				>
 					<img
-						:src="i.imgSrc"
-						alt="Image"
-						class="aspect-square w-[74.210526%]"
+						:src="`${API_BASE}${i}`"
+						:alt="altImageAttr"
+						width="143"
+						height="215"
 					/>
 				</div>
 			</SwiperSlide>
 		</Swiper>
 		<Swiper
 			:modules="modules"
-			loop
 			:zoom="{
 				enabled: true,
 				limitToOriginalSize: true,
@@ -36,25 +35,27 @@
 			:thumbs="{ swiper: thumbsSwiper }"
 			:navigation="{ prevEl: '.btn-prev', nextEl: '.btn-next' }"
 			@swiper="setMainSwiper"
-			class="group max-w-full min-w-0 rounded-lg shadow-lg max-sm:aspect-square sm:basis-[76.243781%]"
+			class="group max-w-full min-w-0 overflow-hidden rounded-lg shadow-lg sm:basis-[75.243781%]"
 		>
 			<SwiperSlide
 				v-for="i in imagesList"
-				:key="i.id"
-				class="overflow-hidden bg-[#FCF9F6]"
+				:key="i"
+				class="bg-[#FCF9F6]"
+				v-slot="{ isNext, isPrev }"
 			>
-				<div
-					class="swiper-zoom-container flex h-full items-center justify-center"
-				>
+				<div class="swiper-zoom-container aspect-[457/686]">
 					<img
-						:src="i.imgSrc"
-						alt="Image"
-						class="w-[74.225122%] max-sm:aspect-square"
+						:src="`${API_BASE}${i}`"
+						:alt="altImageAttr"
+						width="457"
+						height="686"
+						class="h-full"
 					/>
 				</div>
 			</SwiperSlide>
 			<div class="absolute inset-0 overflow-hidden">
 				<slider-nav-button
+					:disabled="isFirstSlide"
 					@click="mainSwiper.slidePrev()"
 					:aria-label="t('buttons.prevSlide')"
 					class="any-hover:-translate-x-full any-hover:opacity-0 absolute top-1/2 left-2 -translate-y-1/2 group-hover:translate-x-0 group-hover:opacity-100 focus-visible:translate-x-0 focus-visible:opacity-100"
@@ -62,6 +63,7 @@
 					<arrow-left-icon class="aspect-square w-8" />
 				</slider-nav-button>
 				<slider-nav-button
+					:disabled="isLastSlide"
 					@click="mainSwiper.slideNext()"
 					:aria-label="t('buttons.prevSlide')"
 					class="any-hover:translate-x-full any-hover:opacity-0 absolute top-1/2 right-2 -translate-y-1/2 group-hover:translate-x-0 group-hover:opacity-100 focus-visible:translate-x-0 focus-visible:opacity-100"
@@ -74,24 +76,28 @@
 </template>
 
 <script setup>
-import ArrowLeftIcon from '@/components/icons/ArrowLeftIcon.vue'
-import ArrowRightIcon from '@/components/icons/ArrowRightIcon.vue'
-
 import 'swiper/css'
 import 'swiper/css/zoom'
 
 import { ref, computed } from 'vue'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useI18n } from 'vue-i18n'
+import { API_BASE } from '@/constants/config'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Thumbs, Zoom } from 'swiper/modules'
-import SliderNavButton from './SliderNavButton.vue'
+import SliderNavButton from '@/components/sliders/SliderNavButton.vue'
+import ArrowLeftIcon from '@/components/icons/ArrowLeftIcon.vue'
+import ArrowRightIcon from '@/components/icons/ArrowRightIcon.vue'
 
-defineProps({
+const props = defineProps({
 	imagesList: {
 		type: Array,
-		required: true,
+		required: [],
+	},
+	altImageAttr: {
+		type: String,
+		default: 'Image',
 	},
 })
 
@@ -113,6 +119,14 @@ const isMobileSmall = useMediaQuery('(max-width: 479.98px)')
 
 const thumbSwiperDirection = computed(() => {
 	return isMobileSmall.value ? 'horizontal' : 'vertical'
+})
+const isLastSlide = computed(() => {
+	if (!props.imagesList?.length) return null
+	return mainSwiper.value?.activeIndex === props.imagesList?.length - 1
+})
+const isFirstSlide = computed(() => {
+	if (!props.imagesList?.length) return null
+	return mainSwiper.value?.activeIndex === 0
 })
 </script>
 

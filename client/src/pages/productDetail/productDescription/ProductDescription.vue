@@ -9,15 +9,17 @@
 		class="lg:pt-5"
 	>
 		<h1
-			class="font-heading text-50-28 lg:text-lg-50-30 leading-tight font-medium uppercase"
+			class="font-heading text-50-28 lg:text-lg-50-30 leading-tight font-medium uppercase not-last:mb-2"
 		>
-			{{ productData.title }}
+			{{ productData?.title }}
 		</h1>
 
-		<div class="flex items-center gap-4 not-last:mb-4">
+		<div class="flex items-center gap-4 not-last:mb-5">
 			<rating-comp
 				v-model="productData.rating"
-				:aria-label="ratingAriaLabel"
+				:aria-label="
+					t('accessibility.ratingLabel', { rating: productData.rating })
+				"
 				:readonly="true"
 			/>
 			<span class="text-lg leading-tight font-bold md:text-xl">
@@ -26,12 +28,12 @@
 		</div>
 		<div class="flex flex-wrap items-center gap-3 not-last:mb-4">
 			<span class="text-32-26 leading-tight font-semibold">
-				${{ productData.price }}
+				{{ productData.price }}
 			</span>
 			<span
 				class="text-32-26 text-dark-grey leading-tight font-semibold line-through decoration-2"
 			>
-				${{ productData.oldPrice }}
+				{{ productData.oldPrice }}
 			</span>
 		</div>
 		<div
@@ -41,7 +43,7 @@
 				{{ productData.description }}
 			</p>
 		</div>
-		<FormField
+		<form-field
 			v-slot="$field"
 			name="color"
 			class="not-last:mb-24-16 pb-24-16 not-last:border-border-color grid gap-4 not-last:border-b"
@@ -50,22 +52,27 @@
 				<h3 class="text-24-18 leading-tight">
 					{{ t('accessibility.colorRadioGroup.title') }}
 				</h3>
-				<Message
+				<message
 					v-if="$form.color?.invalid"
 					severity="error"
 					size="small"
 					variant="simple"
 				>
 					{{ $form.color?.error.message }}
-				</Message>
+				</message>
 			</div>
 			<color-radio-group
 				v-model="$field.value"
 				:items="productData.colors"
-				@input="$field.onInput"
+				@input="
+					(e) => {
+						$field.onInput(e)
+						onColorUpdate(e?.target?.value ?? e)
+					}
+				"
 			/>
-		</FormField>
-		<FormField
+		</form-field>
+		<form-field
 			v-slot="$field"
 			name="size"
 			class="not-last:mb-24-16 not-last:pb-24-16 not-last:border-border-color relative grid gap-4 not-last:border-b"
@@ -74,20 +81,20 @@
 				<h3 class="text-24-18 leading-tight">
 					{{ t('accessibility.sizeRadioGroup.title') }}
 				</h3>
-				<Message
+				<message
 					v-if="$form.size?.invalid"
 					severity="error"
 					size="small"
 					variant="simple"
 				>
 					{{ $form.size?.error.message }}
-				</Message>
+				</message>
 			</div>
 			<size-radio-group :items="productData.sizes" @input="$field.onInput" />
-		</FormField>
+		</form-field>
 		<div class="flex items-center gap-4 sm:gap-8">
 			<div class="relative">
-				<InputNumber
+				<input-number
 					:inputId="productData._id"
 					showButtons
 					buttonLayout="horizontal"
@@ -97,7 +104,7 @@
 					name="count"
 					class="rounded-md shadow-lg sm:min-w-[10.625rem]"
 				/>
-				<Message
+				<message
 					v-if="$form.count?.invalid"
 					severity="error"
 					size="small"
@@ -105,7 +112,7 @@
 					class="absolute bottom-0 left-1 translate-y-[calc(100%_+_.3125rem)]"
 				>
 					{{ $form.count?.error.message }}
-				</Message>
+				</message>
 			</div>
 			<Button
 				fluid
@@ -143,11 +150,7 @@ const props = defineProps({
 	},
 })
 
-const initialValues = reactive({
-	color: null,
-	size: null,
-	count: 1,
-})
+const emits = defineEmits(['changeVariant'])
 
 const schema = object().shape({
 	color: string().required(t('errors.colorInputGroup.required')),
@@ -156,6 +159,15 @@ const schema = object().shape({
 })
 
 const resolver = ref(yupResolver(schema))
+
+const initialValues = computed(() => {
+	return {
+		color: props.productData.color._id,
+		size: null,
+		count: 1,
+	}
+})
+//========================================================================================================================================================
 
 const onFormSubmit = ({ values, valid }) => {
 	if (valid) {
@@ -167,7 +179,7 @@ const onFormSubmit = ({ values, valid }) => {
 	}
 }
 
-const ratingAriaLabel = computed(() => {
-	return `${t('accessibility.ratingLabel.start')} ${props.productData.rating} ${t('accessibility.ratingLabel.end')}`
-})
+const onColorUpdate = (val) => {
+	emits('changeVariant', val)
+}
 </script>

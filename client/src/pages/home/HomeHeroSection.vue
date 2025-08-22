@@ -19,7 +19,7 @@
 			<button-link
 				:label="t('buttons.shopNow')"
 				size="large"
-				:to="{ name: 'shop', params: { category: 'women' } }"
+				:to="{ name: 'shop', params: { category: DEFAULT_CATEGORY } }"
 				class="min-w-[18.125rem] not-last:lg:mb-10 not-last:xl:mb-[3.125rem]"
 			/>
 			<Teleport defer :to="achievementsPosition">
@@ -61,6 +61,7 @@ import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useHead } from '@vueuse/head'
 
 import achievements from '@/data/achievements'
+import { DEFAULT_CATEGORY } from '@/constants/config'
 
 import ButtonLink from '@/components/ui/buttons/ButtonLink.vue'
 import heroImg from '@/assets/img/hero/main.webp'

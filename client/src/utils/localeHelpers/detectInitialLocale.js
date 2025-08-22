@@ -1,4 +1,5 @@
-import { localeCodes, defaultLocale } from '@/config/i18nConfig'
+import { localeCodes } from '@/config/i18nConfig'
+import { DEFAULT_LOCALE } from '@/constants/config'
 
 function detectInitialLocale(route) {
 	const urlLocale = route?.params?.locale
@@ -6,7 +7,7 @@ function detectInitialLocale(route) {
 
 	return localeCodes.includes(urlLocale)
 		? urlLocale
-		: storageLocale || defaultLocale
+		: storageLocale || DEFAULT_LOCALE
 }
 
 export default detectInitialLocale

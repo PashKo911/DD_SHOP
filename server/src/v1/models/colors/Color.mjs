@@ -3,16 +3,18 @@ const { Schema } = mongoose
 
 const colorSchema = new Schema({
 	label: {
-		type: String,
-		required: [true, 'Color label is required'],
-		trim: true,
-		set: (v) => v.toLowerCase(),
-	},
-	labelUk: {
-		type: String,
-		required: [true, 'Заголовок для кольору обовʼязковий'],
-		trim: true,
-		set: () => v.toLowerCase(),
+		en: {
+			type: String,
+			required: [true, 'English color label is required'],
+			trim: true,
+			set: (v) => v.toLowerCase(),
+		},
+		uk: {
+			type: String,
+			required: [true, 'Ukrainian color label is required'],
+			trim: true,
+			set: (v) => v.toLowerCase(),
+		},
 	},
 	value: {
 		type: String,
