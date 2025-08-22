@@ -6,7 +6,7 @@ export default {
 	meta: {
 		useInMenu: true,
 		requiredAuth: false,
-		localeName: (route) => `pages.${route.params.category}.title.menu`,
+		localeName: (category) => `pages.${category}.title.menu`,
 	},
 	children: [
 		{

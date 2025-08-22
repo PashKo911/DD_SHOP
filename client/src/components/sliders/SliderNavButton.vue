@@ -10,5 +10,4 @@
 
 <script setup>
 import ArrowLeftIcon from '../icons/ArrowLeftIcon.vue'
-import Button from '../ui/buttons/Button.vue'
 </script>

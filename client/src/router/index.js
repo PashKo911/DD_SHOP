@@ -5,7 +5,8 @@ import authRoutes from './routes/authRoutes'
 import shopRoutes from './routes/shopRoutes'
 
 import { useCommonStore } from '@/stores/commonStore'
-import { localeCodes, defaultLocale } from '@/config/i18nConfig'
+import { localeCodes } from '@/config/i18nConfig'
+import { DEFAULT_LOCALE } from '@/constants/config'
 
 const appInnerRoutes = [
 	{
@@ -51,7 +52,7 @@ const router = createRouter({
 	routes: [
 		{
 			path: '/',
-			redirect: { name: 'home', params: { locale: defaultLocale } },
+			redirect: { name: 'home', params: { locale: DEFAULT_LOCALE } },
 			meta: {
 				useInMenu: false,
 				requiredAuth: false,
@@ -65,7 +66,7 @@ const router = createRouter({
 
 		{
 			path: '/:pathMatch(.*)*',
-			redirect: { name: 'notFound', params: { locale: defaultLocale } },
+			redirect: { name: 'notFound', params: { locale: DEFAULT_LOCALE } },
 		},
 	],
 })
@@ -76,13 +77,13 @@ router.beforeEach(async (to, from, next) => {
 	if (!localeParam) {
 		return next({
 			name: to.name || 'home',
-			params: { ...to.params, locale: defaultLocale },
+			params: { ...to.params, locale: DEFAULT_LOCALE },
 			query: to.query,
 		})
 	}
 
 	if (!localeCodes.includes(localeParam)) {
-		return next({ name: 'notFound', params: { locale: defaultLocale } })
+		return next({ name: 'notFound', params: { locale: DEFAULT_LOCALE } })
 	}
 	return next()
 })

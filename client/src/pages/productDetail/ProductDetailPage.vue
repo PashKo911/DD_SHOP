@@ -2,8 +2,17 @@
 	<section
 		class="lg:gx-lg-80-12 not-last:mb-100-60 flex flex-col items-start justify-between gap-x-4 gap-y-10 lg:flex-row"
 	>
-		<slider-thumb :images-list="imagesList" class="lg:shrink-0 lg:basis-1/2" />
-		<product-description :product-data="productData" class="lg:grow" />
+		<component
+			:is="activeThumbSwiperComponent"
+			v-bind="descriptionAttributes"
+			class="lg:shrink-0 lg:basis-[max(40%,_32.5rem)]"
+		/>
+		<component
+			:is="activeDescriptionComponent"
+			v-bind="sliderAttributes"
+			@change-variant="onVariantChange"
+			class="w-full lg:grow"
+		/>
 	</section>
 
 	<product-detail-tabs :reviews="reviews" class="not-last:mb-100-60" />
@@ -21,20 +30,29 @@
 	</section>
 </template>
 <script setup>
-import { useI18n } from 'vue-i18n'
+import { storeToRefs } from 'pinia'
+import { computed, watch, onMounted, ref } from 'vue'
 
-import img1 from '@/assets/img/products/1.webp'
-import img2 from '@/assets/img/products/2.webp'
-import img3 from '@/assets/img/products/3.webp'
+import { useI18n } from 'vue-i18n'
+import { useProductsStore } from '@/stores/products'
+import { useRouter, useRoute } from 'vue-router'
+
 import { reviews } from '@/data/reviews'
 import sliderData from '@/data/sliderData'
+import { DEFAULT_LOCALE } from '@/constants/config'
 
-import SliderThumb from '@/components/sliders/SliderThumb.vue'
+import SliderThumb from '@/components/sliders/sliderThumb/SliderThumb.vue'
 import SliderBase from '@/components/sliders/SliderBase.vue'
-import ProductDescription from './ProductDescription.vue'
+import ProductDescription from './productDescription/ProductDescription.vue'
 import ProductDetailTabs from './ProductDetailTabs.vue'
+import SliderThumbSkeleton from '@/components/sliders/sliderThumb/SliderThumbSkeleton.vue'
+import ProductDescriptionSkeleton from './productDescription/ProductDescriptionSkeleton.vue'
 
 const props = defineProps({
+	locale: {
+		type: String,
+		default: DEFAULT_LOCALE,
+	},
 	category: {
 		type: String,
 		required: true,
@@ -53,86 +71,83 @@ const props = defineProps({
 	},
 })
 
-const imagesList = [
-	{
-		_id: '1',
-		imgSrc: img1,
-	},
-	{
-		_id: '2',
-		imgSrc: img2,
-	},
-	{
-		_id: '3',
-		imgSrc: img3,
-	},
-	{
-		_id: '4',
-		imgSrc: img1,
-	},
-	{
-		_id: '5',
-		imgSrc: img2,
-	},
-	{
-		_id: '6',
-		imgSrc: img3,
-	},
-]
+const productsStore = useProductsStore()
+const route = useRoute()
+const router = useRouter()
+const { locale } = useI18n()
 
-const productData = {
-	_id: '1',
-	title: 'one life graphic T-Shorts',
-	rating: 4.5,
-	price: 260,
-	oldPrice: 300,
-	description:
-		"Men's T-shirt, two-piece, 200 g/m², multi-colored with graphics, M (8060)",
-	colors: [
-		{
-			_id: '1',
-			label: 'blue',
-			value: '#007ED3',
+const { getProductDetails } = productsStore
+const { productDetailsValue, isProductDetailsLoading, hasProductDetailError } =
+	storeToRefs(productsStore)
+//========================================================================================================================================================
+
+const activeProductVariant = computed(() => {
+	if (!productDetailsValue.value || !productDetailsValue.value.variants)
+		return null
+	const colors = productDetailsValue.value.variants.map((v) => v.color)
+
+	const activeVariant = productDetailsValue.value.variants.find(
+		({ _id }) => _id === props.variant,
+	)
+
+	if (!activeVariant) return null
+
+	const { variants, ...restProduct } = productDetailsValue.value
+	return { colors, ...restProduct, ...activeVariant }
+})
+
+const activeThumbSwiperComponent = computed(() => {
+	return isProductDetailsLoading.value || !activeProductVariant.value
+		? SliderThumbSkeleton
+		: SliderThumb
+})
+const sliderAttributes = computed(() => {
+	if (isProductDetailsLoading.value || !activeProductVariant.value) {
+		return {}
+	}
+	return {
+		productData: activeProductVariant.value,
+		altImageAttr: activeProductVariant?.value.title,
+	}
+})
+const activeDescriptionComponent = computed(() => {
+	return isProductDetailsLoading.value || !activeProductVariant.value
+		? ProductDescriptionSkeleton
+		: ProductDescription
+})
+const descriptionAttributes = computed(() => {
+	if (isProductDetailsLoading.value || !activeProductVariant.value) {
+		return {}
+	}
+	return { imagesList: activeProductVariant.value.images }
+})
+//========================================================================================================================================================
+
+watch(locale, async () => {
+	await getProductDetails(props.id)
+	router.replace({
+		name: route.name,
+		params: {
+			...route.params,
+			slug: activeProductVariant.value.title.toLowerCase(),
 		},
-		{
-			_id: '2',
-			label: 'red',
-			value: '#DA3300',
-		},
-		{
-			_id: '3',
-			label: 'dark gray',
-			value: '#434D58',
-		},
-	],
-	sizes: [
-		{
-			_id: '1',
-			label: 's',
-			value: 's',
-		},
-		{
-			_id: '2',
-			label: 'm',
-			value: 'm',
-		},
-		{
-			_id: '3',
-			label: 'l',
-			value: 'l',
-		},
-		{
-			_id: '4',
-			label: 'xl',
-			value: 'xlsa',
-		},
-		{
-			_id: '5',
-			label: 'sm',
-			value: 'sm',
-		},
-	],
+	})
+})
+
+onMounted(async () => {
+	await getProductDetails(props.id)
+})
+//========================================================================================================================================================
+const onVariantChange = (newColorId) => {
+	const variant = productDetailsValue.value.variants.find(
+		(v) => v.color._id === newColorId,
+	)
+
+	if (!variant) return
+
+	const variantId = variant._id
+	const newParams = { ...route.params, variant: variantId }
+
+	router.replace({ name: route.name, params: newParams })
 }
-
-const { t } = useI18n()
 </script>

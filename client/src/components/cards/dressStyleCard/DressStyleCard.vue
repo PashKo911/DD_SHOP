@@ -2,7 +2,7 @@
 	<router-link
 		:to="{
 			name: 'shop',
-			params: { category: 'women' },
+			params: { category: DEFAULT_CATEGORY },
 			query: {
 				styles: productData.label,
 			},
@@ -21,7 +21,7 @@
 			<h3
 				class="font-heading text-creamy-cloud text-max-md-55-28 md:text-md-55-38 relative z-[2] leading-tight font-semibold capitalize"
 			>
-				{{ productData.labelUk ?? productData.label }}
+				{{ productData.label }}
 			</h3>
 			<arrow-down-simple
 				class="group-hover:animate-soft-bounce w-4 self-center justify-self-center sm:w-7"
@@ -29,7 +29,7 @@
 		</div>
 		<img
 			:src="`${API_BASE}${productData.imgSrc}`"
-			:alt="productData.labelUk ?? productData.label"
+			:alt="productData.label"
 			:loading="lazyAttr"
 			:width="imgConfig.width"
 			:height="imgConfig.height"
@@ -41,7 +41,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { API_BASE } from '@/config/apiConfig'
+import { API_BASE, DEFAULT_CATEGORY } from '@/constants/config'
 import ArrowDownSimple from '@/components/icons/ArrowDownSimple.vue'
 
 const imageConfigs = [

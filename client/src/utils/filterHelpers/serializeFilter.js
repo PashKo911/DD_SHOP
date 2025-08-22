@@ -20,15 +20,14 @@
   // Result: { page: 1, price: '10,50', colors: 'Red,Blue' }
  */
 
-function serializeFilter(filter, options, defaultFilter) {
+function serializeFilter(filter, options, defaultFilter, locale) {
 	const result = {}
-
 	const handlers = {
 		page: (val) => {
 			if (val > 0) return Number(val) + 1
 		},
 		sort: (val) => {
-			return defaultFilter.sort.label !== val.label ? val.label : null
+			return defaultFilter.sort.value !== val.value ? val.label : null
 		},
 		price: (arr) => {
 			const [min, max] = arr
@@ -63,7 +62,9 @@ function serializeFilter(filter, options, defaultFilter) {
 		if (opts) {
 			const labels = opts
 				.filter((o) => val.includes(String(o._id)))
-				.map((o) => o.label)
+				.map((o) => {
+					return o.label.toLowerCase()
+				})
 			if (labels.length) {
 				result[key] = labels.join(',')
 			}

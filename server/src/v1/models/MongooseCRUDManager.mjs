@@ -41,7 +41,7 @@ class MongooseCRUDManager {
 			const count = await this.model.countDocuments(query)
 			query = FiltersHelper.applyActionsOptionsFromQuery(reqQuery, fieldsConfiguration, query)
 			this.addPopulationOptions(query, populateFields)
-			const documents = await query.exec()
+			const documents = await query.lean().exec()
 
 			return { documents, count }
 		} catch (err) {
@@ -132,7 +132,7 @@ class MongooseCRUDManager {
 			populateFields.forEach((field) => {
 				query = query.populate(field)
 			})
-			const document = await query.exec()
+			const document = await query.lean().exec()
 			if (!document) {
 				throw new HttpError(404, `Document with id=${id} not found`)
 			}

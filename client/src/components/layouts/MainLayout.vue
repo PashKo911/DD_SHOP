@@ -16,7 +16,8 @@ import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useHead } from '@vueuse/head'
-import { localeCodes, defaultLocale } from '@/config/i18nConfig'
+import { localeCodes } from '@/config/i18nConfig'
+import { DEFAULT_LOCALE } from '@/constants/config'
 import getPathForLocale from '@/utils/localeHelpers/getPathForLocale'
 
 import HeaderMenu from '@/components/partials/header/HeaderMenu.vue'
@@ -45,7 +46,7 @@ const linkTags = computed(() => {
 	alternates.push({
 		rel: 'alternate',
 		hreflang: 'x-default',
-		href: getPathForLocale(defaultLocale, router, route),
+		href: getPathForLocale(DEFAULT_LOCALE, router, route),
 	})
 
 	return [canonical, ...alternates]

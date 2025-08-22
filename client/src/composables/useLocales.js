@@ -1,7 +1,7 @@
 import { useI18n } from 'vue-i18n'
 import { useRouter, useRoute } from 'vue-router'
 
-import { defaultLocale } from '@/config/i18nConfig'
+import { DEFAULT_LOCALE } from '@/constants/config'
 
 export function useLocales() {
 	const { locale } = useI18n()
@@ -10,6 +10,7 @@ export function useLocales() {
 
 	function setLocale(lang) {
 		if (locale.value === lang) return
+
 		locale.value = lang
 		localStorage.setItem('lastLocale', lang)
 
@@ -27,7 +28,7 @@ export function useLocales() {
 			return
 		}
 
-		locale.value = defaultLocale
+		locale.value = DEFAULT_LOCALE
 	}
 
 	window.addEventListener('storage', () => checkLocale())

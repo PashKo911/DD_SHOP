@@ -1,5137 +1,1116 @@
-[{
-  "_id": {
-    "$oid": "6783fe04e38fd8ed4ff6b05a"
-  },
-  "title": {
-    "en": "Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 120,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
-    "/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp",
-    "/images/products/men/image-4c25f212-aa12-4768-95e5-43da67b8a6d9.webp",
-    "/images/products/men/image-72eef0f4-4ea1-45c0-a8c3-d8aa9c933e1e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6783fe3ce38fd8ed4ff6b05e"
-  },
-  "title": {
-    "en": "Printed T-Shirts",
-    "uk": "Український заголовок"
-  },
-  "price": 340,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.4,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
-    "/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp",
-    "/images/products/men/image-454902d2-f53a-4e21-a380-1af22c8524c1.webp",
-    "/images/products/men/image-32345853-a384-4280-8ecb-f539d237b46c.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6783fe85e38fd8ed4ff6b062"
-  },
-  "title": {
-    "en": "Plain T-Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 789,
-  "oldPrice": 999,
-  "count": 90,
-  "rating": 4.6,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
-    "/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp",
-    "/images/products/men/image-d6e76f53-f235-4ffe-8881-d75435551eab.webp",
-    "/images/products/men/image-1efbae82-7ca4-4367-80ea-918ee5355258.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:40:21.973Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:40:21.973Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6783fec7e38fd8ed4ff6b066"
-  },
-  "title": {
-    "en": "Polo T-Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 999,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.5,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
-    "/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp",
-    "/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
-    "/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:41:27.354Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:41:27.354Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6783ff02e38fd8ed4ff6b06a"
-  },
-  "title": {
-    "en": "Hoodies &amp; Sweetshirt",
-    "uk": "Український заголовок"
-  },
-  "price": 2300,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.9,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-e725ae0c-6b23-488d-b7a2-303e2980ed7e.webp",
-    "/images/products/men/image-8100e143-c0d4-4ff8-954c-66c8b31f8bcd.webp",
-    "/images/products/men/image-cfab8f58-891a-4783-af6d-b43251f05520.webp",
-    "/images/products/men/image-cf6d8cc3-f0b2-483a-b23e-0c071ee7ad73.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617c"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246186"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:42:26.824Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:42:26.824Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6783ff3ce38fd8ed4ff6b06e"
-  },
-  "title": {
-    "en": "Jeans",
-    "uk": "Український заголовок"
-  },
-  "price": 1400,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.3,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-209c9ed4-c8dc-40a7-a656-84366ca3d34e.webp",
-    "/images/products/men/image-bc4211c1-2126-4ebd-8b5e-337c212da9f8.webp",
-    "/images/products/men/image-89c0717d-85d3-4673-8d2b-e9489402cf3f.webp",
-    "/images/products/men/image-81dbdbe9-c32f-4a70-83c2-40d6282ea18a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:43:24.232Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:43:24.232Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6783ff7ee38fd8ed4ff6b072"
-  },
-  "title": {
-    "en": "Activewear",
-    "uk": "Український заголовок"
-  },
-  "price": 1200,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.1,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30a3f882-5de4-42bd-b96b-6ba7ca50e7c3.webp",
-    "/images/products/men/image-014360c1-302a-440a-ab37-ba8f8c5bff94.webp",
-    "/images/products/men/image-bf8db3bd-7868-422d-9dc6-86d1a8d5bf17.webp",
-    "/images/products/men/image-0688a21c-bfd0-4679-ac83-6baf29c7bd4e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:44:30.672Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:44:30.672Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6783ffbbe38fd8ed4ff6b076"
-  },
-  "title": {
-    "en": "Boxers",
-    "uk": "Український заголовок"
-  },
-  "price": 25,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.8,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-0140f760-5304-49bd-b2af-9ab7a3e91d3e.webp",
-    "/images/products/men/image-26db1f60-3c0c-43c0-b442-698502518927.webp",
-    "/images/products/men/image-74ab956a-3705-4d84-a322-edb869912cbf.webp",
-    "/images/products/men/image-41aaf60a-c82a-4398-b875-f5a44f327f8a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    },
-    {
-      "$oid": "676bff288a281b494324617e"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:45:31.856Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:45:31.856Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "67840039e38fd8ed4ff6b0b1"
-  },
-  "title": {
-    "en": "Black Sweatshirt with",
-    "uk": "Український заголовок"
-  },
-  "price": 650,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.6,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-42df7cef-f90c-4978-9dbc-9a0e68b98312.webp",
-    "/images/products/women/image-5508e511-2cce-42e4-9c6b-fca3cdbca864.webp",
-    "/images/products/women/image-1718cc93-8af5-446b-9836-fc37c8d9ecc3.webp",
-    "/images/products/women/image-10e9159a-31ff-4c9d-8085-2c19f79b06e1.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:47:37.427Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:47:37.427Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6784008ae38fd8ed4ff6b0b5"
-  },
-  "title": {
-    "en": "White T-shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 45,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-f347c421-0aec-40d1-b030-d38a6a0e6d70.webp",
-    "/images/products/women/image-4177a8c5-8003-4731-b148-561fd0475b17.webp",
-    "/images/products/women/image-080247c1-e259-4686-a196-6cfc4fa43e37.webp",
-    "/images/products/women/image-54e7a9ee-6549-48b8-9a46-4bfae57f1e33.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:48:58.547Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:48:58.547Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678400c7e38fd8ed4ff6b0b9"
-  },
-  "title": {
-    "en": "Levender Hoodie",
-    "uk": "Український заголовок"
-  },
-  "price": 500,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.7,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-490d4805-6e88-4487-bb5a-ead65935efe4.webp",
-    "/images/products/women/image-7254e6d3-edcf-49f7-be08-a34f042c1629.webp",
-    "/images/products/women/image-068b6c07-1548-4c41-a29b-e3eccc6cb50d.webp",
-    "/images/products/women/image-378ac4f0-17b1-45fe-972e-903deb0834eb.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:49:59.157Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:49:59.157Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "67840110e38fd8ed4ff6b0bd"
-  },
-  "title": {
-    "en": "Leaves Pattern White",
-    "uk": "Український заголовок"
-  },
-  "price": 769,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.4,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-59e3ef52-2ab7-4bef-a928-e6f7be8d432c.webp",
-    "/images/products/women/image-6734c23f-a8f3-4e63-a85d-3d07cb4f42ca.webp",
-    "/images/products/women/image-0fce6eb1-3668-4d6f-ab5e-58296dd12e6c.webp",
-    "/images/products/women/image-7165dbab-e200-4956-a2a5-5b07412e2f43.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617e"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618b"
-    },
-    {
-      "$oid": "676bff418a281b4943246186"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:51:12.247Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:51:12.247Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6784015ae38fd8ed4ff6b0c1"
-  },
-  "title": {
-    "en": "White Graphic Crop Top",
-    "uk": "Український заголовок"
-  },
-  "price": 769,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.9,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-c6967788-e927-4e5b-a2e4-ddcd0fdf849b.webp",
-    "/images/products/women/image-23c5da09-be9a-4d8e-81cb-9fed187a7acb.webp",
-    "/images/products/women/image-47add28f-4df0-47e6-a776-55c40dfccca4.webp",
-    "/images/products/women/image-3c2a8477-8439-404b-adc6-2fbf41ee4e6a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:52:26.415Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:52:26.415Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6784018be38fd8ed4ff6b0c5"
-  },
-  "title": {
-    "en": "Black Shorts",
-    "uk": "Український заголовок"
-  },
-  "price": 888,
-  "oldPrice": 999,
-  "count": 45,
-  "rating": 5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-84be6b92-3c7f-48e6-be05-18a464f49240.webp",
-    "/images/products/women/image-59e3ef52-2ab7-4bef-a928-e6f7be8d432c.webp",
-    "/images/products/women/image-332cae80-af86-47b9-ac05-cf0304e961e2.webp",
-    "/images/products/women/image-d2ed4e9d-3a51-4778-b6df-29a0ab7e7a8a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b4943246180"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:53:15.987Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:53:15.987Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678401c9e38fd8ed4ff6b0c9"
-  },
-  "title": {
-    "en": "Barboreal Gray Sweat",
-    "uk": "Український заголовок"
-  },
-  "price": 345,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-377ca34e-0767-4be0-a482-b59b737cf4eb.webp",
-    "/images/products/women/image-aea5de22-5520-4db6-897d-9b5c44bf6f6b.webp",
-    "/images/products/women/image-3be61d7e-20e3-4f04-9fa7-1670926a5b35.webp",
-    "/images/products/women/image-f3084b84-b5b7-4ea5-a799-b592424c9ac6.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246187"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:54:17.653Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:54:17.653Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "67840200e38fd8ed4ff6b0cd"
-  },
-  "title": {
-    "en": "Yellow Sweatshirt",
-    "uk": "Український заголовок"
-  },
-  "price": 1235,
-  "oldPrice": 999,
-  "count": 45,
-  "rating": 5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-d6b7879a-f674-4572-817d-566a95c96431.webp",
-    "/images/products/women/image-8f8f384a-f140-4d41-91cd-ffb78ce083bc.webp",
-    "/images/products/women/image-9cafa70c-5b4e-48c1-bcb7-41c7735acafa.webp",
-    "/images/products/women/image-0f74b370-0d1a-433c-8f5e-350b8ce27fa7.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "676bff288a281b494324617e"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:55:12.420Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:55:12.420Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6784023be38fd8ed4ff6b0d1"
-  },
-  "title": {
-    "en": "Flower Pattern Black",
-    "uk": "Український заголовок"
-  },
-  "price": 1239,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-d5f42b4e-385f-41ac-a4e4-e26e6e504dea.webp",
-    "/images/products/women/image-750f4bcb-dbdc-4585-b987-7851d645ac12.webp",
-    "/images/products/women/image-6235c648-ede4-4ebc-b645-beea4e709940.webp",
-    "/images/products/women/image-d84ec22b-df08-4507-849b-6d460d79c523.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617c"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:56:11.876Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:56:11.876Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "67840272e38fd8ed4ff6b0d5"
-  },
-  "title": {
-    "en": "I Don’t Graphic T-shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 23,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.9,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-fde6c4a2-ca7d-4c92-bb60-c24bd7049d31.webp",
-    "/images/products/women/image-8d308d66-7efa-4e7b-ac1d-4f538fe5b545.webp",
-    "/images/products/women/image-e2b6fdf6-9ac8-4864-9f2f-f6b4f0b28948.webp",
-    "/images/products/women/image-cbbaf02f-5963-4095-a9ee-02cd9dbe4acd.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617e"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:57:06.421Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:57:06.421Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678402a9e38fd8ed4ff6b0d9"
-  },
-  "title": {
-    "en": "Blue Flower Print Crop",
-    "uk": "Український заголовок"
-  },
-  "price": 2100,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-29c52628-d998-4b64-91cb-1cc3a4963d12.webp",
-    "/images/products/women/image-270285f5-aa46-4328-b80c-78a1d78480eb.webp",
-    "/images/products/women/image-bea4fe16-b270-4f02-8817-2c896518938a.webp",
-    "/images/products/women/image-33a17c66-8654-485b-82ef-6a2aedeb0ccd.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617e"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:58:01.231Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:58:01.231Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678402dce38fd8ed4ff6b0dd"
-  },
-  "title": {
-    "en": "line Pattern Black",
-    "uk": "Український заголовок"
-  },
-  "price": 777,
-  "oldPrice": 999,
-  "count": 45,
-  "rating": 4.9,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-318214f6-47d4-4da8-bce7-70a5c63a3713.webp",
-    "/images/products/women/image-d4d4dbbf-0859-43c0-8961-41884fbf35a2.webp",
-    "/images/products/women/image-327704a1-f8b1-4edd-b573-9c2e5d0bddec.webp",
-    "/images/products/women/image-987954a1-9167-46c6-95d8-2ccf67f45020.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246187"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:58:52.150Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:58:52.150Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0e8"
-  },
-  "title": {
-    "en": "Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 120,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
-    "/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp",
-    "/images/products/men/image-4c25f212-aa12-4768-95e5-43da67b8a6d9.webp",
-    "/images/products/men/image-72eef0f4-4ea1-45c0-a8c3-d8aa9c933e1e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0e9"
-  },
-  "title": {
-    "en": "Printed T-Shirts",
-    "uk": "Український заголовок"
-  },
-  "price": 340,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.4,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
-    "/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp",
-    "/images/products/men/image-454902d2-f53a-4e21-a380-1af22c8524c1.webp",
-    "/images/products/men/image-32345853-a384-4280-8ecb-f539d237b46c.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0ea"
-  },
-  "title": {
-    "en": "Plain T-Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 789,
-  "oldPrice": 999,
-  "count": 90,
-  "rating": 4.6,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
-    "/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp",
-    "/images/products/men/image-d6e76f53-f235-4ffe-8881-d75435551eab.webp",
-    "/images/products/men/image-1efbae82-7ca4-4367-80ea-918ee5355258.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:40:21.973Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:40:21.973Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0eb"
-  },
-  "title": {
-    "en": "Polo T-Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 999,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.5,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
-    "/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp",
-    "/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
-    "/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:41:27.354Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:41:27.354Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0ec"
-  },
-  "title": {
-    "en": "Hoodies &amp; Sweetshirt",
-    "uk": "Український заголовок"
-  },
-  "price": 2300,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.9,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-e725ae0c-6b23-488d-b7a2-303e2980ed7e.webp",
-    "/images/products/men/image-8100e143-c0d4-4ff8-954c-66c8b31f8bcd.webp",
-    "/images/products/men/image-cfab8f58-891a-4783-af6d-b43251f05520.webp",
-    "/images/products/men/image-cf6d8cc3-f0b2-483a-b23e-0c071ee7ad73.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617c"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246186"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:42:26.824Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:42:26.824Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0ed"
-  },
-  "title": {
-    "en": "Jeans",
-    "uk": "Український заголовок"
-  },
-  "price": 1400,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.3,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-209c9ed4-c8dc-40a7-a656-84366ca3d34e.webp",
-    "/images/products/men/image-bc4211c1-2126-4ebd-8b5e-337c212da9f8.webp",
-    "/images/products/men/image-89c0717d-85d3-4673-8d2b-e9489402cf3f.webp",
-    "/images/products/men/image-81dbdbe9-c32f-4a70-83c2-40d6282ea18a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:43:24.232Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:43:24.232Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0ee"
-  },
-  "title": {
-    "en": "Activewear",
-    "uk": "Український заголовок"
-  },
-  "price": 1200,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.1,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30a3f882-5de4-42bd-b96b-6ba7ca50e7c3.webp",
-    "/images/products/men/image-014360c1-302a-440a-ab37-ba8f8c5bff94.webp",
-    "/images/products/men/image-bf8db3bd-7868-422d-9dc6-86d1a8d5bf17.webp",
-    "/images/products/men/image-0688a21c-bfd0-4679-ac83-6baf29c7bd4e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:44:30.672Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:44:30.672Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0ef"
-  },
-  "title": {
-    "en": "Boxers",
-    "uk": "Український заголовок"
-  },
-  "price": 25,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.8,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-0140f760-5304-49bd-b2af-9ab7a3e91d3e.webp",
-    "/images/products/men/image-26db1f60-3c0c-43c0-b442-698502518927.webp",
-    "/images/products/men/image-74ab956a-3705-4d84-a322-edb869912cbf.webp",
-    "/images/products/men/image-41aaf60a-c82a-4398-b875-f5a44f327f8a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    },
-    {
-      "$oid": "676bff288a281b494324617e"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:45:31.856Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:45:31.856Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0f0"
-  },
-  "title": {
-    "en": "Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 120,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
-    "/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp",
-    "/images/products/men/image-4c25f212-aa12-4768-95e5-43da67b8a6d9.webp",
-    "/images/products/men/image-72eef0f4-4ea1-45c0-a8c3-d8aa9c933e1e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0f1"
-  },
-  "title": {
-    "en": "Printed T-Shirts",
-    "uk": "Український заголовок"
-  },
-  "price": 340,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.4,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
-    "/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp",
-    "/images/products/men/image-454902d2-f53a-4e21-a380-1af22c8524c1.webp",
-    "/images/products/men/image-32345853-a384-4280-8ecb-f539d237b46c.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0f2"
-  },
-  "title": {
-    "en": "Plain T-Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 789,
-  "oldPrice": 999,
-  "count": 90,
-  "rating": 4.6,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
-    "/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp",
-    "/images/products/men/image-d6e76f53-f235-4ffe-8881-d75435551eab.webp",
-    "/images/products/men/image-1efbae82-7ca4-4367-80ea-918ee5355258.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:40:21.973Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:40:21.973Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0f3"
-  },
-  "title": {
-    "en": "Polo T-Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 999,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.5,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
-    "/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp",
-    "/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
-    "/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:41:27.354Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:41:27.354Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0f4"
-  },
-  "title": {
-    "en": "Hoodies &amp; Sweetshirt",
-    "uk": "Український заголовок"
-  },
-  "price": 2300,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.9,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-e725ae0c-6b23-488d-b7a2-303e2980ed7e.webp",
-    "/images/products/men/image-8100e143-c0d4-4ff8-954c-66c8b31f8bcd.webp",
-    "/images/products/men/image-cfab8f58-891a-4783-af6d-b43251f05520.webp",
-    "/images/products/men/image-cf6d8cc3-f0b2-483a-b23e-0c071ee7ad73.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617c"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246186"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:42:26.824Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:42:26.824Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0f5"
-  },
-  "title": {
-    "en": "Jeans",
-    "uk": "Український заголовок"
-  },
-  "price": 1400,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.3,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-209c9ed4-c8dc-40a7-a656-84366ca3d34e.webp",
-    "/images/products/men/image-bc4211c1-2126-4ebd-8b5e-337c212da9f8.webp",
-    "/images/products/men/image-89c0717d-85d3-4673-8d2b-e9489402cf3f.webp",
-    "/images/products/men/image-81dbdbe9-c32f-4a70-83c2-40d6282ea18a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:43:24.232Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:43:24.232Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0f6"
-  },
-  "title": {
-    "en": "Activewear",
-    "uk": "Український заголовок"
-  },
-  "price": 1200,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.1,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30a3f882-5de4-42bd-b96b-6ba7ca50e7c3.webp",
-    "/images/products/men/image-014360c1-302a-440a-ab37-ba8f8c5bff94.webp",
-    "/images/products/men/image-bf8db3bd-7868-422d-9dc6-86d1a8d5bf17.webp",
-    "/images/products/men/image-0688a21c-bfd0-4679-ac83-6baf29c7bd4e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:44:30.672Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:44:30.672Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0f7"
-  },
-  "title": {
-    "en": "Boxers",
-    "uk": "Український заголовок"
-  },
-  "price": 25,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.8,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-0140f760-5304-49bd-b2af-9ab7a3e91d3e.webp",
-    "/images/products/men/image-26db1f60-3c0c-43c0-b442-698502518927.webp",
-    "/images/products/men/image-74ab956a-3705-4d84-a322-edb869912cbf.webp",
-    "/images/products/men/image-41aaf60a-c82a-4398-b875-f5a44f327f8a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    },
-    {
-      "$oid": "676bff288a281b494324617e"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:45:31.856Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:45:31.856Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0f8"
-  },
-  "title": {
-    "en": "Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 120,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
-    "/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp",
-    "/images/products/men/image-4c25f212-aa12-4768-95e5-43da67b8a6d9.webp",
-    "/images/products/men/image-72eef0f4-4ea1-45c0-a8c3-d8aa9c933e1e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0f9"
-  },
-  "title": {
-    "en": "Printed T-Shirts",
-    "uk": "Український заголовок"
-  },
-  "price": 340,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.4,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
-    "/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp",
-    "/images/products/men/image-454902d2-f53a-4e21-a380-1af22c8524c1.webp",
-    "/images/products/men/image-32345853-a384-4280-8ecb-f539d237b46c.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0fa"
-  },
-  "title": {
-    "en": "Plain T-Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 789,
-  "oldPrice": 999,
-  "count": 90,
-  "rating": 4.6,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
-    "/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp",
-    "/images/products/men/image-d6e76f53-f235-4ffe-8881-d75435551eab.webp",
-    "/images/products/men/image-1efbae82-7ca4-4367-80ea-918ee5355258.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:40:21.973Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:40:21.973Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0fb"
-  },
-  "title": {
-    "en": "Polo T-Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 999,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.5,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
-    "/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp",
-    "/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
-    "/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:41:27.354Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:41:27.354Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0fc"
-  },
-  "title": {
-    "en": "Hoodies &amp; Sweetshirt",
-    "uk": "Український заголовок"
-  },
-  "price": 2300,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.9,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-e725ae0c-6b23-488d-b7a2-303e2980ed7e.webp",
-    "/images/products/men/image-8100e143-c0d4-4ff8-954c-66c8b31f8bcd.webp",
-    "/images/products/men/image-cfab8f58-891a-4783-af6d-b43251f05520.webp",
-    "/images/products/men/image-cf6d8cc3-f0b2-483a-b23e-0c071ee7ad73.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617c"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246186"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:42:26.824Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:42:26.824Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0fd"
-  },
-  "title": {
-    "en": "Jeans",
-    "uk": "Український заголовок"
-  },
-  "price": 1400,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.3,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-209c9ed4-c8dc-40a7-a656-84366ca3d34e.webp",
-    "/images/products/men/image-bc4211c1-2126-4ebd-8b5e-337c212da9f8.webp",
-    "/images/products/men/image-89c0717d-85d3-4673-8d2b-e9489402cf3f.webp",
-    "/images/products/men/image-81dbdbe9-c32f-4a70-83c2-40d6282ea18a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:43:24.232Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:43:24.232Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0fe"
-  },
-  "title": {
-    "en": "Activewear",
-    "uk": "Український заголовок"
-  },
-  "price": 1200,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.1,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30a3f882-5de4-42bd-b96b-6ba7ca50e7c3.webp",
-    "/images/products/men/image-014360c1-302a-440a-ab37-ba8f8c5bff94.webp",
-    "/images/products/men/image-bf8db3bd-7868-422d-9dc6-86d1a8d5bf17.webp",
-    "/images/products/men/image-0688a21c-bfd0-4679-ac83-6baf29c7bd4e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:44:30.672Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:44:30.672Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a0ff"
-  },
-  "title": {
-    "en": "Boxers",
-    "uk": "Український заголовок"
-  },
-  "price": 25,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.8,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-0140f760-5304-49bd-b2af-9ab7a3e91d3e.webp",
-    "/images/products/men/image-26db1f60-3c0c-43c0-b442-698502518927.webp",
-    "/images/products/men/image-74ab956a-3705-4d84-a322-edb869912cbf.webp",
-    "/images/products/men/image-41aaf60a-c82a-4398-b875-f5a44f327f8a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    },
-    {
-      "$oid": "676bff288a281b494324617e"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:45:31.856Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:45:31.856Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a100"
-  },
-  "title": {
-    "en": "Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 120,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
-    "/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp",
-    "/images/products/men/image-4c25f212-aa12-4768-95e5-43da67b8a6d9.webp",
-    "/images/products/men/image-72eef0f4-4ea1-45c0-a8c3-d8aa9c933e1e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a101"
-  },
-  "title": {
-    "en": "Printed T-Shirts",
-    "uk": "Український заголовок"
-  },
-  "price": 340,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.4,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
-    "/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp",
-    "/images/products/men/image-454902d2-f53a-4e21-a380-1af22c8524c1.webp",
-    "/images/products/men/image-32345853-a384-4280-8ecb-f539d237b46c.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a102"
-  },
-  "title": {
-    "en": "Plain T-Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 789,
-  "oldPrice": 999,
-  "count": 90,
-  "rating": 4.6,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
-    "/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp",
-    "/images/products/men/image-d6e76f53-f235-4ffe-8881-d75435551eab.webp",
-    "/images/products/men/image-1efbae82-7ca4-4367-80ea-918ee5355258.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:40:21.973Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:40:21.973Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a103"
-  },
-  "title": {
-    "en": "Polo T-Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 999,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.5,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
-    "/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp",
-    "/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
-    "/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:41:27.354Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:41:27.354Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a104"
-  },
-  "title": {
-    "en": "Hoodies &amp; Sweetshirt",
-    "uk": "Український заголовок"
-  },
-  "price": 2300,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.9,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-e725ae0c-6b23-488d-b7a2-303e2980ed7e.webp",
-    "/images/products/men/image-8100e143-c0d4-4ff8-954c-66c8b31f8bcd.webp",
-    "/images/products/men/image-cfab8f58-891a-4783-af6d-b43251f05520.webp",
-    "/images/products/men/image-cf6d8cc3-f0b2-483a-b23e-0c071ee7ad73.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617c"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246186"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:42:26.824Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:42:26.824Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a105"
-  },
-  "title": {
-    "en": "Jeans",
-    "uk": "Український заголовок"
-  },
-  "price": 1400,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.3,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-209c9ed4-c8dc-40a7-a656-84366ca3d34e.webp",
-    "/images/products/men/image-bc4211c1-2126-4ebd-8b5e-337c212da9f8.webp",
-    "/images/products/men/image-89c0717d-85d3-4673-8d2b-e9489402cf3f.webp",
-    "/images/products/men/image-81dbdbe9-c32f-4a70-83c2-40d6282ea18a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:43:24.232Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:43:24.232Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a106"
-  },
-  "title": {
-    "en": "Activewear",
-    "uk": "Український заголовок"
-  },
-  "price": 1200,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.1,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30a3f882-5de4-42bd-b96b-6ba7ca50e7c3.webp",
-    "/images/products/men/image-014360c1-302a-440a-ab37-ba8f8c5bff94.webp",
-    "/images/products/men/image-bf8db3bd-7868-422d-9dc6-86d1a8d5bf17.webp",
-    "/images/products/men/image-0688a21c-bfd0-4679-ac83-6baf29c7bd4e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:44:30.672Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:44:30.672Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a107"
-  },
-  "title": {
-    "en": "Boxers",
-    "uk": "Український заголовок"
-  },
-  "price": 25,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.8,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-0140f760-5304-49bd-b2af-9ab7a3e91d3e.webp",
-    "/images/products/men/image-26db1f60-3c0c-43c0-b442-698502518927.webp",
-    "/images/products/men/image-74ab956a-3705-4d84-a322-edb869912cbf.webp",
-    "/images/products/men/image-41aaf60a-c82a-4398-b875-f5a44f327f8a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    },
-    {
-      "$oid": "676bff288a281b494324617e"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:45:31.856Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:45:31.856Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a108"
-  },
-  "title": {
-    "en": "Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 120,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
-    "/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp",
-    "/images/products/men/image-4c25f212-aa12-4768-95e5-43da67b8a6d9.webp",
-    "/images/products/men/image-72eef0f4-4ea1-45c0-a8c3-d8aa9c933e1e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a109"
-  },
-  "title": {
-    "en": "Printed T-Shirts",
-    "uk": "Український заголовок"
-  },
-  "price": 340,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.4,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
-    "/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp",
-    "/images/products/men/image-454902d2-f53a-4e21-a380-1af22c8524c1.webp",
-    "/images/products/men/image-32345853-a384-4280-8ecb-f539d237b46c.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a10a"
-  },
-  "title": {
-    "en": "Plain T-Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 789,
-  "oldPrice": 999,
-  "count": 90,
-  "rating": 4.6,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
-    "/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp",
-    "/images/products/men/image-d6e76f53-f235-4ffe-8881-d75435551eab.webp",
-    "/images/products/men/image-1efbae82-7ca4-4367-80ea-918ee5355258.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:40:21.973Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:40:21.973Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a10b"
-  },
-  "title": {
-    "en": "Polo T-Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 999,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.5,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
-    "/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp",
-    "/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
-    "/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:41:27.354Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:41:27.354Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a10c"
-  },
-  "title": {
-    "en": "Hoodies &amp; Sweetshirt",
-    "uk": "Український заголовок"
-  },
-  "price": 2300,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.9,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-e725ae0c-6b23-488d-b7a2-303e2980ed7e.webp",
-    "/images/products/men/image-8100e143-c0d4-4ff8-954c-66c8b31f8bcd.webp",
-    "/images/products/men/image-cfab8f58-891a-4783-af6d-b43251f05520.webp",
-    "/images/products/men/image-cf6d8cc3-f0b2-483a-b23e-0c071ee7ad73.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617c"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246186"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:42:26.824Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:42:26.824Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a10d"
-  },
-  "title": {
-    "en": "Jeans",
-    "uk": "Український заголовок"
-  },
-  "price": 1400,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.3,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-209c9ed4-c8dc-40a7-a656-84366ca3d34e.webp",
-    "/images/products/men/image-bc4211c1-2126-4ebd-8b5e-337c212da9f8.webp",
-    "/images/products/men/image-89c0717d-85d3-4673-8d2b-e9489402cf3f.webp",
-    "/images/products/men/image-81dbdbe9-c32f-4a70-83c2-40d6282ea18a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:43:24.232Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:43:24.232Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a10e"
-  },
-  "title": {
-    "en": "Activewear",
-    "uk": "Український заголовок"
-  },
-  "price": 1200,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.1,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30a3f882-5de4-42bd-b96b-6ba7ca50e7c3.webp",
-    "/images/products/men/image-014360c1-302a-440a-ab37-ba8f8c5bff94.webp",
-    "/images/products/men/image-bf8db3bd-7868-422d-9dc6-86d1a8d5bf17.webp",
-    "/images/products/men/image-0688a21c-bfd0-4679-ac83-6baf29c7bd4e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:44:30.672Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:44:30.672Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a10f"
-  },
-  "title": {
-    "en": "Boxers",
-    "uk": "Український заголовок"
-  },
-  "price": 25,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.8,
-  "description": {
-    "en": "Upgrade your everyday style with these versatile men&#x27;s jeans, designed for comfort and durability. Made from premium-quality denim, they offer a perfect balance of stretch and structure for all-day wear. Featuring a classic five-pocket design, a secure zip fly, and a modern fit, these jeans are ideal for both casual outings and semi-formal occasions. Pair them effortlessly with your favorite shirts, tees, or jackets to create timeless looks. Available in a variety of washes and colors to match your unique style.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-0140f760-5304-49bd-b2af-9ab7a3e91d3e.webp",
-    "/images/products/men/image-26db1f60-3c0c-43c0-b442-698502518927.webp",
-    "/images/products/men/image-74ab956a-3705-4d84-a322-edb869912cbf.webp",
-    "/images/products/men/image-41aaf60a-c82a-4398-b875-f5a44f327f8a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    },
-    {
-      "$oid": "676bff288a281b494324617e"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:45:31.856Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:45:31.856Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a110"
-  },
-  "title": {
-    "en": "Shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 120,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
-    "/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp",
-    "/images/products/men/image-4c25f212-aa12-4768-95e5-43da67b8a6d9.webp",
-    "/images/products/men/image-72eef0f4-4ea1-45c0-a8c3-d8aa9c933e1e.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f90201747c6d5349b9e5"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:38:12.927Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a111"
-  },
-  "title": {
-    "en": "Printed T-Shirts",
-    "uk": "Український заголовок"
-  },
-  "price": 340,
-  "oldPrice": 999,
-  "count": 89,
-  "rating": 4.4,
-  "description": {
-    "en": "Elevate your wardrobe with this timeless men&#x27;s shirt, designed for both comfort and style. Crafted from high-quality, breathable fabric, it features a classic button-down design, a sharp collar, and a tailored fit that flatters any body type. Perfect for formal occasions, business meetings, or casual outings, this versatile shirt pairs effortlessly with trousers, jeans, or chinos. Available in a range of colors and patterns to suit every personality.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
-    "/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp",
-    "/images/products/men/image-454902d2-f53a-4e21-a380-1af22c8524c1.webp",
-    "/images/products/men/image-32345853-a384-4280-8ecb-f539d237b46c.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246179"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:39:08.472Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a112"
-  },
-  "title": {
-    "en": "Black Sweatshirt with",
-    "uk": "Український заголовок"
-  },
-  "price": 650,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.6,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-42df7cef-f90c-4978-9dbc-9a0e68b98312.webp",
-    "/images/products/women/image-5508e511-2cce-42e4-9c6b-fca3cdbca864.webp",
-    "/images/products/women/image-1718cc93-8af5-446b-9836-fc37c8d9ecc3.webp",
-    "/images/products/women/image-10e9159a-31ff-4c9d-8085-2c19f79b06e1.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:47:37.427Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:47:37.427Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a113"
-  },
-  "title": {
-    "en": "White T-shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 45,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-f347c421-0aec-40d1-b030-d38a6a0e6d70.webp",
-    "/images/products/women/image-4177a8c5-8003-4731-b148-561fd0475b17.webp",
-    "/images/products/women/image-080247c1-e259-4686-a196-6cfc4fa43e37.webp",
-    "/images/products/women/image-54e7a9ee-6549-48b8-9a46-4bfae57f1e33.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:48:58.547Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:48:58.547Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a114"
-  },
-  "title": {
-    "en": "Levender Hoodie",
-    "uk": "Український заголовок"
-  },
-  "price": 500,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.7,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-490d4805-6e88-4487-bb5a-ead65935efe4.webp",
-    "/images/products/women/image-7254e6d3-edcf-49f7-be08-a34f042c1629.webp",
-    "/images/products/women/image-068b6c07-1548-4c41-a29b-e3eccc6cb50d.webp",
-    "/images/products/women/image-378ac4f0-17b1-45fe-972e-903deb0834eb.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:49:59.157Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:49:59.157Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a115"
-  },
-  "title": {
-    "en": "Leaves Pattern White",
-    "uk": "Український заголовок"
-  },
-  "price": 769,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.4,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-59e3ef52-2ab7-4bef-a928-e6f7be8d432c.webp",
-    "/images/products/women/image-6734c23f-a8f3-4e63-a85d-3d07cb4f42ca.webp",
-    "/images/products/women/image-0fce6eb1-3668-4d6f-ab5e-58296dd12e6c.webp",
-    "/images/products/women/image-7165dbab-e200-4956-a2a5-5b07412e2f43.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617e"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618b"
-    },
-    {
-      "$oid": "676bff418a281b4943246186"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:51:12.247Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:51:12.247Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a116"
-  },
-  "title": {
-    "en": "White Graphic Crop Top",
-    "uk": "Український заголовок"
-  },
-  "price": 769,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.9,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-c6967788-e927-4e5b-a2e4-ddcd0fdf849b.webp",
-    "/images/products/women/image-23c5da09-be9a-4d8e-81cb-9fed187a7acb.webp",
-    "/images/products/women/image-47add28f-4df0-47e6-a776-55c40dfccca4.webp",
-    "/images/products/women/image-3c2a8477-8439-404b-adc6-2fbf41ee4e6a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:52:26.415Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:52:26.415Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a117"
-  },
-  "title": {
-    "en": "Black Shorts",
-    "uk": "Український заголовок"
-  },
-  "price": 888,
-  "oldPrice": 999,
-  "count": 45,
-  "rating": 5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-84be6b92-3c7f-48e6-be05-18a464f49240.webp",
-    "/images/products/women/image-1e2bcd72-e08b-4dcf-93ea-9df54f255d46.webp",
-    "/images/products/women/image-332cae80-af86-47b9-ac05-cf0304e961e2.webp",
-    "/images/products/women/image-d2ed4e9d-3a51-4778-b6df-29a0ab7e7a8a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b4943246180"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:53:15.987Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:53:15.987Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a118"
-  },
-  "title": {
-    "en": "Barboreal Gray Sweat",
-    "uk": "Український заголовок"
-  },
-  "price": 345,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-377ca34e-0767-4be0-a482-b59b737cf4eb.webp",
-    "/images/products/women/image-aea5de22-5520-4db6-897d-9b5c44bf6f6b.webp",
-    "/images/products/women/image-3be61d7e-20e3-4f04-9fa7-1670926a5b35.webp",
-    "/images/products/women/image-f3084b84-b5b7-4ea5-a799-b592424c9ac6.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246187"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:54:17.653Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:54:17.653Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a119"
-  },
-  "title": {
-    "en": "Yellow Sweatshirt",
-    "uk": "Український заголовок"
-  },
-  "price": 1235,
-  "oldPrice": 999,
-  "count": 45,
-  "rating": 5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-d6b7879a-f674-4572-817d-566a95c96431.webp",
-    "/images/products/women/image-8f8f384a-f140-4d41-91cd-ffb78ce083bc.webp",
-    "/images/products/women/image-9cafa70c-5b4e-48c1-bcb7-41c7735acafa.webp",
-    "/images/products/women/image-0f74b370-0d1a-433c-8f5e-350b8ce27fa7.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "676bff288a281b494324617e"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:55:12.420Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:55:12.420Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a11a"
-  },
-  "title": {
-    "en": "Flower Pattern Black",
-    "uk": "Український заголовок"
-  },
-  "price": 1239,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-d5f42b4e-385f-41ac-a4e4-e26e6e504dea.webp",
-    "/images/products/women/image-750f4bcb-dbdc-4585-b987-7851d645ac12.webp",
-    "/images/products/women/image-6235c648-ede4-4ebc-b645-beea4e709940.webp",
-    "/images/products/women/image-d84ec22b-df08-4507-849b-6d460d79c523.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617c"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:56:11.876Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:56:11.876Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a11b"
-  },
-  "title": {
-    "en": "I Don’t Graphic T-shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 23,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.9,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-fde6c4a2-ca7d-4c92-bb60-c24bd7049d31.webp",
-    "/images/products/women/image-8d308d66-7efa-4e7b-ac1d-4f538fe5b545.webp",
-    "/images/products/women/image-e2b6fdf6-9ac8-4864-9f2f-f6b4f0b28948.webp",
-    "/images/products/women/image-cbbaf02f-5963-4095-a9ee-02cd9dbe4acd.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617e"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:57:06.421Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:57:06.421Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a11c"
-  },
-  "title": {
-    "en": "Blue Flower Print Crop",
-    "uk": "Український заголовок"
-  },
-  "price": 2100,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-29c52628-d998-4b64-91cb-1cc3a4963d12.webp",
-    "/images/products/women/image-270285f5-aa46-4328-b80c-78a1d78480eb.webp",
-    "/images/products/women/image-bea4fe16-b270-4f02-8817-2c896518938a.webp",
-    "/images/products/women/image-33a17c66-8654-485b-82ef-6a2aedeb0ccd.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617e"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:58:01.231Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:58:01.231Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a11d"
-  },
-  "title": {
-    "en": "line Pattern Black",
-    "uk": "Український заголовок"
-  },
-  "price": 777,
-  "oldPrice": 999,
-  "count": 45,
-  "rating": 4.9,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-318214f6-47d4-4da8-bce7-70a5c63a3713.webp",
-    "/images/products/women/image-d4d4dbbf-0859-43c0-8961-41884fbf35a2.webp",
-    "/images/products/women/image-327704a1-f8b1-4edd-b573-9c2e5d0bddec.webp",
-    "/images/products/women/image-987954a1-9167-46c6-95d8-2ccf67f45020.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246187"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:58:52.150Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:58:52.150Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a11e"
-  },
-  "title": {
-    "en": "Black Sweatshirt with",
-    "uk": "Український заголовок"
-  },
-  "price": 650,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.6,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-42df7cef-f90c-4978-9dbc-9a0e68b98312.webp",
-    "/images/products/women/image-5508e511-2cce-42e4-9c6b-fca3cdbca864.webp",
-    "/images/products/women/image-1718cc93-8af5-446b-9836-fc37c8d9ecc3.webp",
-    "/images/products/women/image-10e9159a-31ff-4c9d-8085-2c19f79b06e1.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:47:37.427Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:47:37.427Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a11f"
-  },
-  "title": {
-    "en": "White T-shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 45,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-f347c421-0aec-40d1-b030-d38a6a0e6d70.webp",
-    "/images/products/women/image-4177a8c5-8003-4731-b148-561fd0475b17.webp",
-    "/images/products/women/image-080247c1-e259-4686-a196-6cfc4fa43e37.webp",
-    "/images/products/women/image-54e7a9ee-6549-48b8-9a46-4bfae57f1e33.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:48:58.547Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:48:58.547Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a120"
-  },
-  "title": {
-    "en": "Levender Hoodie",
-    "uk": "Український заголовок"
-  },
-  "price": 500,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.7,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-490d4805-6e88-4487-bb5a-ead65935efe4.webp",
-    "/images/products/women/image-7254e6d3-edcf-49f7-be08-a34f042c1629.webp",
-    "/images/products/women/image-068b6c07-1548-4c41-a29b-e3eccc6cb50d.webp",
-    "/images/products/women/image-378ac4f0-17b1-45fe-972e-903deb0834eb.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:49:59.157Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:49:59.157Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a121"
-  },
-  "title": {
-    "en": "Leaves Pattern White",
-    "uk": "Український заголовок"
-  },
-  "price": 769,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.4,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-59e3ef52-2ab7-4bef-a928-e6f7be8d432c.webp",
-    "/images/products/women/image-6734c23f-a8f3-4e63-a85d-3d07cb4f42ca.webp",
-    "/images/products/women/image-0fce6eb1-3668-4d6f-ab5e-58296dd12e6c.webp",
-    "/images/products/women/image-7165dbab-e200-4956-a2a5-5b07412e2f43.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617e"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618b"
-    },
-    {
-      "$oid": "676bff418a281b4943246186"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:51:12.247Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:51:12.247Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a122"
-  },
-  "title": {
-    "en": "White Graphic Crop Top",
-    "uk": "Український заголовок"
-  },
-  "price": 769,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.9,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-c6967788-e927-4e5b-a2e4-ddcd0fdf849b.webp",
-    "/images/products/women/image-23c5da09-be9a-4d8e-81cb-9fed187a7acb.webp",
-    "/images/products/women/image-47add28f-4df0-47e6-a776-55c40dfccca4.webp",
-    "/images/products/women/image-3c2a8477-8439-404b-adc6-2fbf41ee4e6a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:52:26.415Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:52:26.415Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a123"
-  },
-  "title": {
-    "en": "Black Shorts",
-    "uk": "Український заголовок"
-  },
-  "price": 888,
-  "oldPrice": 999,
-  "count": 45,
-  "rating": 5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-84be6b92-3c7f-48e6-be05-18a464f49240.webp",
-    "/images/products/women/image-1e2bcd72-e08b-4dcf-93ea-9df54f255d46.webp",
-    "/images/products/women/image-332cae80-af86-47b9-ac05-cf0304e961e2.webp",
-    "/images/products/women/image-d2ed4e9d-3a51-4778-b6df-29a0ab7e7a8a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b4943246180"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:53:15.987Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:53:15.987Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a124"
-  },
-  "title": {
-    "en": "Barboreal Gray Sweat",
-    "uk": "Український заголовок"
-  },
-  "price": 345,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-377ca34e-0767-4be0-a482-b59b737cf4eb.webp",
-    "/images/products/women/image-aea5de22-5520-4db6-897d-9b5c44bf6f6b.webp",
-    "/images/products/women/image-3be61d7e-20e3-4f04-9fa7-1670926a5b35.webp",
-    "/images/products/women/image-f3084b84-b5b7-4ea5-a799-b592424c9ac6.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246187"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:54:17.653Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:54:17.653Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a125"
-  },
-  "title": {
-    "en": "Yellow Sweatshirt",
-    "uk": "Український заголовок"
-  },
-  "price": 1235,
-  "oldPrice": 999,
-  "count": 45,
-  "rating": 5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-d6b7879a-f674-4572-817d-566a95c96431.webp",
-    "/images/products/women/image-8f8f384a-f140-4d41-91cd-ffb78ce083bc.webp",
-    "/images/products/women/image-9cafa70c-5b4e-48c1-bcb7-41c7735acafa.webp",
-    "/images/products/women/image-0f74b370-0d1a-433c-8f5e-350b8ce27fa7.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "676bff288a281b494324617e"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:55:12.420Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:55:12.420Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a126"
-  },
-  "title": {
-    "en": "Flower Pattern Black",
-    "uk": "Український заголовок"
-  },
-  "price": 1239,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-d5f42b4e-385f-41ac-a4e4-e26e6e504dea.webp",
-    "/images/products/women/image-750f4bcb-dbdc-4585-b987-7851d645ac12.webp",
-    "/images/products/women/image-6235c648-ede4-4ebc-b645-beea4e709940.webp",
-    "/images/products/women/image-d84ec22b-df08-4507-849b-6d460d79c523.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617c"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:56:11.876Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:56:11.876Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a127"
-  },
-  "title": {
-    "en": "I Don’t Graphic T-shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 23,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.9,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-fde6c4a2-ca7d-4c92-bb60-c24bd7049d31.webp",
-    "/images/products/women/image-8d308d66-7efa-4e7b-ac1d-4f538fe5b545.webp",
-    "/images/products/women/image-e2b6fdf6-9ac8-4864-9f2f-f6b4f0b28948.webp",
-    "/images/products/women/image-cbbaf02f-5963-4095-a9ee-02cd9dbe4acd.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617e"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:57:06.421Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:57:06.421Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a128"
-  },
-  "title": {
-    "en": "Blue Flower Print Crop",
-    "uk": "Український заголовок"
-  },
-  "price": 2100,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-29c52628-d998-4b64-91cb-1cc3a4963d12.webp",
-    "/images/products/women/image-270285f5-aa46-4328-b80c-78a1d78480eb.webp",
-    "/images/products/women/image-bea4fe16-b270-4f02-8817-2c896518938a.webp",
-    "/images/products/women/image-33a17c66-8654-485b-82ef-6a2aedeb0ccd.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617e"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:58:01.231Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:58:01.231Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a129"
-  },
-  "title": {
-    "en": "line Pattern Black",
-    "uk": "Український заголовок"
-  },
-  "price": 777,
-  "oldPrice": 999,
-  "count": 45,
-  "rating": 4.9,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-318214f6-47d4-4da8-bce7-70a5c63a3713.webp",
-    "/images/products/women/image-d4d4dbbf-0859-43c0-8961-41884fbf35a2.webp",
-    "/images/products/women/image-327704a1-f8b1-4edd-b573-9c2e5d0bddec.webp",
-    "/images/products/women/image-987954a1-9167-46c6-95d8-2ccf67f45020.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246187"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:58:52.150Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:58:52.150Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a12a"
-  },
-  "title": {
-    "en": "Black Sweatshirt with",
-    "uk": "Український заголовок"
-  },
-  "price": 650,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.6,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-42df7cef-f90c-4978-9dbc-9a0e68b98312.webp",
-    "/images/products/women/image-5508e511-2cce-42e4-9c6b-fca3cdbca864.webp",
-    "/images/products/women/image-1718cc93-8af5-446b-9836-fc37c8d9ecc3.webp",
-    "/images/products/women/image-10e9159a-31ff-4c9d-8085-2c19f79b06e1.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:47:37.427Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:47:37.427Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a12b"
-  },
-  "title": {
-    "en": "White T-shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 45,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-f347c421-0aec-40d1-b030-d38a6a0e6d70.webp",
-    "/images/products/women/image-4177a8c5-8003-4731-b148-561fd0475b17.webp",
-    "/images/products/women/image-080247c1-e259-4686-a196-6cfc4fa43e37.webp",
-    "/images/products/women/image-54e7a9ee-6549-48b8-9a46-4bfae57f1e33.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:48:58.547Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:48:58.547Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a12c"
-  },
-  "title": {
-    "en": "Levender Hoodie",
-    "uk": "Український заголовок"
-  },
-  "price": 500,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.7,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-490d4805-6e88-4487-bb5a-ead65935efe4.webp",
-    "/images/products/women/image-7254e6d3-edcf-49f7-be08-a34f042c1629.webp",
-    "/images/products/women/image-068b6c07-1548-4c41-a29b-e3eccc6cb50d.webp",
-    "/images/products/women/image-378ac4f0-17b1-45fe-972e-903deb0834eb.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:49:59.157Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:49:59.157Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a12d"
-  },
-  "title": {
-    "en": "Leaves Pattern White",
-    "uk": "Український заголовок"
-  },
-  "price": 769,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.4,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-59e3ef52-2ab7-4bef-a928-e6f7be8d432c.webp",
-    "/images/products/women/image-6734c23f-a8f3-4e63-a85d-3d07cb4f42ca.webp",
-    "/images/products/women/image-0fce6eb1-3668-4d6f-ab5e-58296dd12e6c.webp",
-    "/images/products/women/image-7165dbab-e200-4956-a2a5-5b07412e2f43.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617e"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618b"
-    },
-    {
-      "$oid": "676bff418a281b4943246186"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:51:12.247Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:51:12.247Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a12e"
-  },
-  "title": {
-    "en": "White Graphic Crop Top",
-    "uk": "Український заголовок"
-  },
-  "price": 769,
-  "oldPrice": 999,
-  "count": 56,
-  "rating": 4.9,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-c6967788-e927-4e5b-a2e4-ddcd0fdf849b.webp",
-    "/images/products/women/image-23c5da09-be9a-4d8e-81cb-9fed187a7acb.webp",
-    "/images/products/women/image-47add28f-4df0-47e6-a776-55c40dfccca4.webp",
-    "/images/products/women/image-3c2a8477-8439-404b-adc6-2fbf41ee4e6a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:52:26.415Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:52:26.415Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a12f"
-  },
-  "title": {
-    "en": "Black Shorts",
-    "uk": "Український заголовок"
-  },
-  "price": 888,
-  "oldPrice": 999,
-  "count": 45,
-  "rating": 5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-84be6b92-3c7f-48e6-be05-18a464f49240.webp",
-    "/images/products/women/image-1e2bcd72-e08b-4dcf-93ea-9df54f255d46.webp",
-    "/images/products/women/image-332cae80-af86-47b9-ac05-cf0304e961e2.webp",
-    "/images/products/women/image-d2ed4e9d-3a51-4778-b6df-29a0ab7e7a8a.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b4943246180"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:53:15.987Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:53:15.987Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a130"
-  },
-  "title": {
-    "en": "Barboreal Gray Sweat",
-    "uk": "Український заголовок"
-  },
-  "price": 345,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-377ca34e-0767-4be0-a482-b59b737cf4eb.webp",
-    "/images/products/women/image-aea5de22-5520-4db6-897d-9b5c44bf6f6b.webp",
-    "/images/products/women/image-3be61d7e-20e3-4f04-9fa7-1670926a5b35.webp",
-    "/images/products/women/image-f3084b84-b5b7-4ea5-a799-b592424c9ac6.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246187"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:54:17.653Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:54:17.653Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a131"
-  },
-  "title": {
-    "en": "Yellow Sweatshirt",
-    "uk": "Український заголовок"
-  },
-  "price": 1235,
-  "oldPrice": 999,
-  "count": 45,
-  "rating": 5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-d6b7879a-f674-4572-817d-566a95c96431.webp",
-    "/images/products/women/image-8f8f384a-f140-4d41-91cd-ffb78ce083bc.webp",
-    "/images/products/women/image-9cafa70c-5b4e-48c1-bcb7-41c7735acafa.webp",
-    "/images/products/women/image-0f74b370-0d1a-433c-8f5e-350b8ce27fa7.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "676bff288a281b494324617e"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b494324618a"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:55:12.420Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:55:12.420Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a132"
-  },
-  "title": {
-    "en": "Flower Pattern Black",
-    "uk": "Український заголовок"
-  },
-  "price": 1239,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.5,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-d5f42b4e-385f-41ac-a4e4-e26e6e504dea.webp",
-    "/images/products/women/image-750f4bcb-dbdc-4585-b987-7851d645ac12.webp",
-    "/images/products/women/image-6235c648-ede4-4ebc-b645-beea4e709940.webp",
-    "/images/products/women/image-d84ec22b-df08-4507-849b-6d460d79c523.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617c"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246186"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:56:11.876Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:56:11.876Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a133"
-  },
-  "title": {
-    "en": "I Don’t Graphic T-shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 23,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.9,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-fde6c4a2-ca7d-4c92-bb60-c24bd7049d31.webp",
-    "/images/products/women/image-8d308d66-7efa-4e7b-ac1d-4f538fe5b545.webp",
-    "/images/products/women/image-e2b6fdf6-9ac8-4864-9f2f-f6b4f0b28948.webp",
-    "/images/products/women/image-cbbaf02f-5963-4095-a9ee-02cd9dbe4acd.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617e"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    },
-    {
-      "$oid": "676bff288a281b4943246180"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246189"
-    },
-    {
-      "$oid": "676bff418a281b4943246187"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:57:06.421Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:57:06.421Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a134"
-  },
-  "title": {
-    "en": "Blue Flower Print Crop",
-    "uk": "Український заголовок"
-  },
-  "price": 2100,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-29c52628-d998-4b64-91cb-1cc3a4963d12.webp",
-    "/images/products/women/image-270285f5-aa46-4328-b80c-78a1d78480eb.webp",
-    "/images/products/women/image-bea4fe16-b270-4f02-8817-2c896518938a.webp",
-    "/images/products/women/image-33a17c66-8654-485b-82ef-6a2aedeb0ccd.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617e"
-    },
-    {
-      "$oid": "676bff288a281b494324617d"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:58:01.231Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:58:01.231Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a135"
-  },
-  "title": {
-    "en": "line Pattern Black",
-    "uk": "Український заголовок"
-  },
-  "price": 777,
-  "oldPrice": 999,
-  "count": 45,
-  "rating": 4.9,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-318214f6-47d4-4da8-bce7-70a5c63a3713.webp",
-    "/images/products/women/image-d4d4dbbf-0859-43c0-8961-41884fbf35a2.webp",
-    "/images/products/women/image-327704a1-f8b1-4edd-b573-9c2e5d0bddec.webp",
-    "/images/products/women/image-987954a1-9167-46c6-95d8-2ccf67f45020.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246187"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:58:52.150Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:58:52.150Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a136"
-  },
-  "title": {
-    "en": "Black Sweatshirt with",
-    "uk": "Український заголовок"
-  },
-  "price": 650,
-  "oldPrice": 999,
-  "count": 67,
-  "rating": 4.6,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-42df7cef-f90c-4978-9dbc-9a0e68b98312.webp",
-    "/images/products/women/image-5508e511-2cce-42e4-9c6b-fca3cdbca864.webp",
-    "/images/products/women/image-1718cc93-8af5-446b-9836-fc37c8d9ecc3.webp",
-    "/images/products/women/image-10e9159a-31ff-4c9d-8085-2c19f79b06e1.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "6783f65101747c6d5349b9e4"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b4943246188"
-    },
-    {
-      "$oid": "676bff418a281b4943246189"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:47:37.427Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:47:37.427Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "678405da6c347c5cf0a3a137"
-  },
-  "title": {
-    "en": "White T-shirt",
-    "uk": "Український заголовок"
-  },
-  "price": 45,
-  "oldPrice": 999,
-  "count": 78,
-  "rating": 4.8,
-  "description": {
-    "en": "100% Bio-washed Cotton – makes the fabric extra soft &amp; silky. Flexible ribbed crew neck. Precisely stitched with no pilling &amp; no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.",
-    "uk": "Український опис"
-  },
-  "paths": [
-    "/images/products/women/image-f347c421-0aec-40d1-b030-d38a6a0e6d70.webp",
-    "/images/products/women/image-4177a8c5-8003-4731-b148-561fd0475b17.webp",
-    "/images/products/women/image-080247c1-e259-4686-a196-6cfc4fa43e37.webp",
-    "/images/products/women/image-54e7a9ee-6549-48b8-9a46-4bfae57f1e33.webp"
-  ],
-  "colors": [
-    {
-      "$oid": "676bff288a281b494324617d"
-    },
-    {
-      "$oid": "676bff288a281b494324617f"
-    }
-  ],
-  "sizes": [
-    {
-      "$oid": "676bff418a281b494324618a"
-    },
-    {
-      "$oid": "676bff418a281b494324618b"
-    }
-  ],
-  "styles": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "gender": {
-    "$oid": "676bff1e8a281b4943246178"
-  },
-  "createdAt": {
-    "$date": "2025-01-12T17:48:58.547Z"
-  },
-  "updatedAt": {
-    "$date": "2025-01-12T17:48:58.547Z"
-  },
-  "__v": 0
-}]
+[
+	{
+		"_id": {
+			"$oid": "0993493fd08a076bffd2167e"
+		},
+		"title": {
+			"en": "Classic Shirt",
+			"uk": "Класична сорочка"
+		},
+		"description": {
+			"en": "A timeless classic shirt for any occasion.",
+			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246179"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246184"
+		},
+		"minPrice": 120,
+		"maxPrice": 125,
+		"maxRating": 4.7,
+		"defaultVariant": {
+			"$oid": "660000000000000000000101"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000101"
+				},
+				"color": {
+					"$oid": "6783f90201747c6d5349b9e5"
+				},
+				"price": 120,
+				"oldPrice": 150,
+				"count": 50,
+				"rating": 4.6,
+				"images": [
+					"/images/products/men/1.webp",
+					"/images/products/men/2.webp",
+					"/images/products/men/3.webp"
+				],
+				"sizes": [
+					"676bff418a281b4943246186",
+					"676bff418a281b4943246187",
+					"676bff418a281b4943246188",
+					"676bff418a281b4943246189",
+					"676bff418a281b494324618a",
+					"676bff418a281b494324618b",
+					"6828578465b546018073c50e",
+					"6828590965b546018073c511"
+				]
+			},
+			{
+				"_id": {
+					"$oid": "660000000000000000000102"
+				},
+				"color": {
+					"$oid": "676bff288a281b4943246180"
+				},
+				"price": 125,
+				"oldPrice": 150,
+				"count": 30,
+				"rating": 4.7,
+				"images": [
+					"/images/products/men/4.webp",
+					"/images/products/men/5.webp",
+					"/images/products/men/6.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246186"
+					},
+					{
+						"$oid": "676bff418a281b4943246187"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-10T12:00:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-10T12:00:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "716b3d2a4a0eb91c09f1796c"
+		},
+		"title": {
+			"en": "Printed T-Shirt",
+			"uk": "Футболка з принтом"
+		},
+		"description": {
+			"en": "Soft cotton T‑shirt with modern print.",
+			"uk": "М'яка бавовняна футболка з сучасним принтом."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246179"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246182"
+		},
+		"minPrice": 80,
+		"maxPrice": 80,
+		"maxRating": 4.4,
+		"defaultVariant": {
+			"$oid": "660000000000000000000103"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000103"
+				},
+				"color": {
+					"$oid": "6783f90201747c6d5349b9e5"
+				},
+				"price": 80,
+				"oldPrice": null,
+				"count": 70,
+				"rating": 4.4,
+				"images": [
+					"/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
+					"/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b494324618a"
+					},
+					{
+						"$oid": "676bff418a281b494324618b"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-11T09:30:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-11T09:30:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "7ffbd5ef2c3843cab79ad0f3"
+		},
+		"title": {
+			"en": "Denim Jeans",
+			"uk": "Джинси"
+		},
+		"description": {
+			"en": "Comfort-fit denim jeans with stretch.",
+			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246178"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246183"
+		},
+		"minPrice": 150,
+		"maxPrice": 155,
+		"maxRating": 4.6,
+		"defaultVariant": {
+			"$oid": "660000000000000000000104"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000104"
+				},
+				"color": {
+					"$oid": "676bff288a281b494324617d"
+				},
+				"price": 150,
+				"oldPrice": 200,
+				"count": 40,
+				"rating": 4.5,
+				"images": [
+					"/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
+					"/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b494324618a"
+					},
+					{
+						"$oid": "676bff418a281b4943246189"
+					}
+				]
+			},
+			{
+				"_id": {
+					"$oid": "660000000000000000000105"
+				},
+				"color": {
+					"$oid": "6783f65101747c6d5349b9e4"
+				},
+				"price": 155,
+				"oldPrice": 200,
+				"count": 25,
+				"rating": 4.6,
+				"images": [
+					"/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
+					"/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246189"
+					},
+					{
+						"$oid": "676bff418a281b4943246186"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-12T14:15:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-12T14:15:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "349881370265f683e95b75b8"
+		},
+		"title": {
+			"en": "Classic Shirt",
+			"uk": "Класична сорочка"
+		},
+		"description": {
+			"en": "A timeless classic shirt for any occasion.",
+			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246179"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246184"
+		},
+		"minPrice": 120,
+		"maxPrice": 125,
+		"maxRating": 4.7,
+		"defaultVariant": {
+			"$oid": "660000000000000000000101"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000101"
+				},
+				"color": {
+					"$oid": "6783f90201747c6d5349b9e5"
+				},
+				"price": 120,
+				"oldPrice": 150,
+				"count": 50,
+				"rating": 4.6,
+				"images": [
+					"/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
+					"/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246188"
+					},
+					{
+						"$oid": "676bff418a281b4943246189"
+					}
+				]
+			},
+			{
+				"_id": {
+					"$oid": "660000000000000000000102"
+				},
+				"color": {
+					"$oid": "676bff288a281b4943246180"
+				},
+				"price": 125,
+				"oldPrice": 150,
+				"count": 30,
+				"rating": 4.7,
+				"images": [
+					"/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
+					"/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246186"
+					},
+					{
+						"$oid": "676bff418a281b4943246187"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-10T12:00:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-10T12:00:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "036c3b19e00b6ac733cdd90a"
+		},
+		"title": {
+			"en": "Printed T-Shirt",
+			"uk": "Футболка з принтом"
+		},
+		"description": {
+			"en": "Soft cotton T‑shirt with modern print.",
+			"uk": "М'яка бавовняна футболка з сучасним принтом."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246179"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246182"
+		},
+		"minPrice": 80,
+		"maxPrice": 80,
+		"maxRating": 4.4,
+		"defaultVariant": {
+			"$oid": "660000000000000000000103"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000103"
+				},
+				"color": {
+					"$oid": "6783f90201747c6d5349b9e5"
+				},
+				"price": 80,
+				"oldPrice": null,
+				"count": 70,
+				"rating": 4.4,
+				"images": [
+					"/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
+					"/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b494324618a"
+					},
+					{
+						"$oid": "676bff418a281b494324618b"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-11T09:30:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-11T09:30:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "c70b89e7ad5ba17e8dab5f32"
+		},
+		"title": {
+			"en": "Denim Jeans",
+			"uk": "Джинси"
+		},
+		"description": {
+			"en": "Comfort-fit denim jeans with stretch.",
+			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246178"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246183"
+		},
+		"minPrice": 150,
+		"maxPrice": 155,
+		"maxRating": 4.6,
+		"defaultVariant": {
+			"$oid": "660000000000000000000104"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000104"
+				},
+				"color": {
+					"$oid": "676bff288a281b494324617d"
+				},
+				"price": 150,
+				"oldPrice": 200,
+				"count": 40,
+				"rating": 4.5,
+				"images": [
+					"/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
+					"/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b494324618a"
+					},
+					{
+						"$oid": "676bff418a281b4943246189"
+					}
+				]
+			},
+			{
+				"_id": {
+					"$oid": "660000000000000000000105"
+				},
+				"color": {
+					"$oid": "6783f65101747c6d5349b9e4"
+				},
+				"price": 155,
+				"oldPrice": 200,
+				"count": 25,
+				"rating": 4.6,
+				"images": [
+					"/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
+					"/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246189"
+					},
+					{
+						"$oid": "676bff418a281b4943246186"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-12T14:15:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-12T14:15:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "04fca1e74471928454b62c65"
+		},
+		"title": {
+			"en": "Classic Shirt",
+			"uk": "Класична сорочка"
+		},
+		"description": {
+			"en": "A timeless classic shirt for any occasion.",
+			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246179"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246184"
+		},
+		"minPrice": 120,
+		"maxPrice": 125,
+		"maxRating": 4.7,
+		"defaultVariant": {
+			"$oid": "660000000000000000000102"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000101"
+				},
+				"color": {
+					"$oid": "6783f90201747c6d5349b9e5"
+				},
+				"price": 120,
+				"oldPrice": 150,
+				"count": 50,
+				"rating": 4.6,
+				"images": [
+					"/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
+					"/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246188"
+					},
+					{
+						"$oid": "676bff418a281b4943246189"
+					}
+				]
+			},
+			{
+				"_id": {
+					"$oid": "660000000000000000000102"
+				},
+				"color": {
+					"$oid": "676bff288a281b4943246180"
+				},
+				"price": 125,
+				"oldPrice": 150,
+				"count": 30,
+				"rating": 4.7,
+				"images": [
+					"/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
+					"/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246186"
+					},
+					{
+						"$oid": "676bff418a281b4943246187"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-10T12:00:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-10T12:00:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "8112d2e5d39790a4a3bb815f"
+		},
+		"title": {
+			"en": "Printed T-Shirt",
+			"uk": "Футболка з принтом"
+		},
+		"description": {
+			"en": "Soft cotton T‑shirt with modern print.",
+			"uk": "М'яка бавовняна футболка з сучасним принтом."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246179"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246182"
+		},
+		"minPrice": 80,
+		"maxPrice": 80,
+		"maxRating": 4.4,
+		"defaultVariant": {
+			"$oid": "660000000000000000000103"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000103"
+				},
+				"color": {
+					"$oid": "6783f90201747c6d5349b9e5"
+				},
+				"price": 80,
+				"oldPrice": null,
+				"count": 70,
+				"rating": 4.4,
+				"images": [
+					"/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
+					"/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b494324618a"
+					},
+					{
+						"$oid": "676bff418a281b494324618b"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-11T09:30:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-11T09:30:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "42735cd52d11f158564ded04"
+		},
+		"title": {
+			"en": "Denim Jeans",
+			"uk": "Джинси"
+		},
+		"description": {
+			"en": "Comfort-fit denim jeans with stretch.",
+			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246178"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246183"
+		},
+		"minPrice": 150,
+		"maxPrice": 155,
+		"maxRating": 4.6,
+		"defaultVariant": {
+			"$oid": "660000000000000000000104"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000104"
+				},
+				"color": {
+					"$oid": "676bff288a281b494324617d"
+				},
+				"price": 150,
+				"oldPrice": 200,
+				"count": 40,
+				"rating": 4.5,
+				"images": [
+					"/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
+					"/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b494324618a"
+					},
+					{
+						"$oid": "676bff418a281b4943246189"
+					}
+				]
+			},
+			{
+				"_id": {
+					"$oid": "660000000000000000000105"
+				},
+				"color": {
+					"$oid": "6783f65101747c6d5349b9e4"
+				},
+				"price": 155,
+				"oldPrice": 200,
+				"count": 25,
+				"rating": 4.6,
+				"images": [
+					"/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
+					"/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246189"
+					},
+					{
+						"$oid": "676bff418a281b4943246186"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-12T14:15:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-12T14:15:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "2052cd29d890ab76f67047b0"
+		},
+		"title": {
+			"en": "Classic Shirt",
+			"uk": "Класична сорочка"
+		},
+		"description": {
+			"en": "A timeless classic shirt for any occasion.",
+			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246179"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246184"
+		},
+		"minPrice": 120,
+		"maxPrice": 150,
+		"maxRating": 4.7,
+		"defaultVariant": {
+			"$oid": "660000000000000000000102"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000101"
+				},
+				"color": {
+					"$oid": "6783f90201747c6d5349b9e5"
+				},
+				"price": 120,
+				"oldPrice": 150,
+				"count": 50,
+				"rating": 4.6,
+				"images": [
+					"/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
+					"/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246188"
+					},
+					{
+						"$oid": "676bff418a281b4943246189"
+					}
+				]
+			},
+			{
+				"_id": {
+					"$oid": "660000000000000000000102"
+				},
+				"color": {
+					"$oid": "676bff288a281b4943246180"
+				},
+				"price": 125,
+				"oldPrice": 150,
+				"count": 30,
+				"rating": 4.7,
+				"images": [
+					"/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
+					"/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246186"
+					},
+					{
+						"$oid": "676bff418a281b4943246187"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-10T12:00:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-10T12:00:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "69d473e1ed163f5d18f5a3ba"
+		},
+		"title": {
+			"en": "Printed T-Shirt",
+			"uk": "Футболка з принтом"
+		},
+		"description": {
+			"en": "Soft cotton T‑shirt with modern print.",
+			"uk": "М'яка бавовняна футболка з сучасним принтом."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246179"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246182"
+		},
+		"minPrice": 80,
+		"maxPrice": 80,
+		"maxRating": 4.4,
+		"defaultVariant": {
+			"$oid": "660000000000000000000103"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000103"
+				},
+				"color": {
+					"$oid": "6783f90201747c6d5349b9e5"
+				},
+				"price": 80,
+				"oldPrice": null,
+				"count": 70,
+				"rating": 4.4,
+				"images": [
+					"/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
+					"/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b494324618a"
+					},
+					{
+						"$oid": "676bff418a281b494324618b"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-11T09:30:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-11T09:30:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "b73f39e5dccb7fd8eccef5e7"
+		},
+		"title": {
+			"en": "Denim Jeans",
+			"uk": "Джинси"
+		},
+		"description": {
+			"en": "Comfort-fit denim jeans with stretch.",
+			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246178"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246183"
+		},
+		"minPrice": 150,
+		"maxPrice": 155,
+		"maxRating": 4.6,
+		"defaultVariant": {
+			"$oid": "660000000000000000000104"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000104"
+				},
+				"color": {
+					"$oid": "676bff288a281b494324617d"
+				},
+				"price": 150,
+				"oldPrice": 200,
+				"count": 40,
+				"rating": 4.5,
+				"images": [
+					"/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
+					"/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b494324618a"
+					},
+					{
+						"$oid": "676bff418a281b4943246189"
+					}
+				]
+			},
+			{
+				"_id": {
+					"$oid": "660000000000000000000105"
+				},
+				"color": {
+					"$oid": "6783f65101747c6d5349b9e4"
+				},
+				"price": 155,
+				"oldPrice": 200,
+				"count": 25,
+				"rating": 4.6,
+				"images": [
+					"/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
+					"/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246189"
+					},
+					{
+						"$oid": "676bff418a281b4943246186"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-12T14:15:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-12T14:15:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "13e9e43313bf4ae3c543084d"
+		},
+		"title": {
+			"en": "Classic Shirt",
+			"uk": "Класична сорочка"
+		},
+		"description": {
+			"en": "A timeless classic shirt for any occasion.",
+			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246179"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246184"
+		},
+		"minPrice": 120,
+		"maxPrice": 125,
+		"maxRating": 4.7,
+		"defaultVariant": {
+			"$oid": "660000000000000000000101"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000101"
+				},
+				"color": {
+					"$oid": "6783f90201747c6d5349b9e5"
+				},
+				"price": 120,
+				"oldPrice": 150,
+				"count": 50,
+				"rating": 4.6,
+				"images": [
+					"/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
+					"/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246188"
+					},
+					{
+						"$oid": "676bff418a281b4943246189"
+					}
+				]
+			},
+			{
+				"_id": {
+					"$oid": "660000000000000000000102"
+				},
+				"color": {
+					"$oid": "676bff288a281b4943246180"
+				},
+				"price": 125,
+				"oldPrice": 150,
+				"count": 30,
+				"rating": 4.7,
+				"images": [
+					"/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
+					"/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246186"
+					},
+					{
+						"$oid": "676bff418a281b4943246187"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-10T12:00:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-10T12:00:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "b951bf554ea739c147adabd1"
+		},
+		"title": {
+			"en": "Printed T-Shirt",
+			"uk": "Футболка з принтом"
+		},
+		"description": {
+			"en": "Soft cotton T‑shirt with modern print.",
+			"uk": "М'яка бавовняна футболка з сучасним принтом."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246179"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246184"
+		},
+		"minPrice": 80,
+		"maxPrice": 80,
+		"maxRating": 4.4,
+		"defaultVariant": {
+			"$oid": "660000000000000000000101"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000101"
+				},
+				"color": {
+					"$oid": "6783f90201747c6d5349b9e5"
+				},
+				"price": 80,
+				"oldPrice": null,
+				"count": 70,
+				"rating": 4.4,
+				"images": [
+					"/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
+					"/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b494324618a"
+					},
+					{
+						"$oid": "676bff418a281b494324618b"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-11T09:30:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-11T09:30:00.000Z"
+		},
+		"__v": 0
+	},
+	{
+		"_id": {
+			"$oid": "734347133542a35047aa41a7"
+		},
+		"title": {
+			"en": "Denim Jeans",
+			"uk": "Джинси"
+		},
+		"description": {
+			"en": "Comfort-fit denim jeans with stretch.",
+			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
+		},
+		"gender": {
+			"$oid": "676bff1e8a281b4943246178"
+		},
+		"style": {
+			"$oid": "676bff378a281b4943246183"
+		},
+		"minPrice": 150,
+		"maxPrice": 155,
+		"maxRating": 4.6,
+		"defaultVariant": {
+			"$oid": "660000000000000000000104"
+		},
+		"variants": [
+			{
+				"_id": {
+					"$oid": "660000000000000000000104"
+				},
+				"color": {
+					"$oid": "676bff288a281b494324617d"
+				},
+				"price": 150,
+				"oldPrice": 200,
+				"count": 40,
+				"rating": 4.5,
+				"images": [
+					"/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
+					"/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b494324618a"
+					},
+					{
+						"$oid": "676bff418a281b4943246189"
+					}
+				]
+			},
+			{
+				"_id": {
+					"$oid": "660000000000000000000105"
+				},
+				"color": {
+					"$oid": "6783f65101747c6d5349b9e4"
+				},
+				"price": 155,
+				"oldPrice": 200,
+				"count": 25,
+				"rating": 4.6,
+				"images": [
+					"/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
+					"/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
+				],
+				"sizes": [
+					{
+						"$oid": "676bff418a281b4943246189"
+					},
+					{
+						"$oid": "676bff418a281b4943246186"
+					}
+				]
+			}
+		],
+		"createdAt": {
+			"$date": "2025-01-12T14:15:00.000Z"
+		},
+		"updatedAt": {
+			"$date": "2025-01-12T14:15:00.000Z"
+		},
+		"__v": 0
+	}
+]

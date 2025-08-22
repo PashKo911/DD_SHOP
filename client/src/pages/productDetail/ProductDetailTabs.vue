@@ -25,9 +25,9 @@
 			</TabPanel>
 			<TabPanel value="1">
 				<div class="grid gap-x-6 gap-y-8 md:grid-cols-2">
-					<review-card v-for="r in reviews" :key="r._id" :review-data="r">
+					<!-- <review-card v-for="r in reviews" :key="r._id" :review-data="r">
 						{{ item }}
-					</review-card>
+					</review-card> -->
 				</div>
 			</TabPanel>
 			<TabPanel value="2">

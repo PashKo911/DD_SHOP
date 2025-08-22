@@ -11,7 +11,7 @@
 			<li v-for="r in menuItems" :key="r.path">
 				<router-link
 					class="hover:text-t-inverse-hover text-inverse font-heading focus-visible:outline-t-inverse-hover rounded-sm text-3xl capitalize outline outline-transparent transition-colors duration-300 md:text-2xl"
-					active-class="text-t-inverse-hover!"
+					:active-class="activeLinkClass"
 					:to="{ name: r.name, params: r.params }"
 				>
 					{{ t(r.label) }}
@@ -23,6 +23,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useI18n } from 'vue-i18n'
 
@@ -37,6 +38,8 @@ const props = defineProps({
 	},
 })
 
+const route = useRoute()
+
 const { t } = useI18n()
 
 const isMobile = useMediaQuery('(max-width: 767.98px)')
@@ -45,5 +48,9 @@ const menuListClass = computed(() => {
 	if (!isMobile.value) return ''
 
 	return props.isHeaderMenuOpen ? `translate-x-0` : '-translate-x-full'
+})
+
+const activeLinkClass = computed(() => {
+	return route.name === 'productDetail' ? '' : 'text-t-inverse-hover!'
 })
 </script>

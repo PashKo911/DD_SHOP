@@ -1,18 +1,13 @@
 import { createI18n } from 'vue-i18n'
 import router from '@/router'
 import detectInitialLocale from '@/utils/localeHelpers/detectInitialLocale'
-
-import {
-	defaultLocale,
-	messages,
-	datetimeFormats,
-	numberFormats,
-} from '@/config/i18nConfig'
+import { DEFAULT_LOCALE } from '@/constants/config'
+import { messages, datetimeFormats, numberFormats } from '@/config/i18nConfig'
 
 const i18n = createI18n({
 	legacy: false,
 	locale: detectInitialLocale(router.currentRoute.value),
-	fallbackLocale: defaultLocale,
+	fallbackLocale: DEFAULT_LOCALE,
 	messages,
 	datetimeFormats,
 	numberFormats,

@@ -5,7 +5,7 @@ export class HttpError extends Error {
 
 		if (cause) {
 			const causeStack = cause.stack || cause.toString()
-			this.stack = `${this.stack}\nCaused by: ${causeStack}`
+			this.stack = `${this.stack}\n\nCaused by: ${causeStack}`
 		}
 	}
 }

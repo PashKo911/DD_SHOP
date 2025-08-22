@@ -14,6 +14,7 @@ import mapFilterToChips from '@/utils/filterHelpers/mapFilterToChips'
 import { removeFilterChip } from '@/utils/filterHelpers/removeFilterChip'
 
 export const useFilterStore = defineStore('filter', () => {
+	const defaultSortValue = sortOptionsData[3]
 	const route = useRoute()
 	const facetOptionsStore = useFacetOptionsStore()
 	const commonStore = useCommonStore()
@@ -30,8 +31,8 @@ export const useFilterStore = defineStore('filter', () => {
 		colors: [],
 		sizes: [],
 		sort: {
-			...sortOptionsData[3],
-			label: t(sortOptionsData[3].label),
+			...defaultSortValue,
+			label: t(defaultSortValue.label),
 		},
 		page: 0,
 	}))
@@ -43,7 +44,12 @@ export const useFilterStore = defineStore('filter', () => {
 	const filter = reactive({ ...defaultFilter.value })
 
 	const filterStrings = computed(() => {
-		return serializeFilter(filter, facetOptions.value, defaultFilter.value)
+		return serializeFilter(
+			filter,
+			facetOptions.value,
+			defaultFilter.value,
+			locale.value,
+		)
 	})
 
 	const apiQueryParams = computed(() => {

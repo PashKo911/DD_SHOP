@@ -12,7 +12,7 @@
 			ref="labels"
 			:class="labelClass"
 			:aria-checked="modelValue === item._id"
-			:aria-label="item.labelUk ? item.labelUk : item.label"
+			:aria-label="item.label"
 			@keydown.space.prevent="onToggleOrSelect(item._id, idx)"
 			@keydown.enter.prevent="onToggleOrSelect(item._id, idx)"
 			@keydown.arrow-right.prevent="moveFocus(1)"

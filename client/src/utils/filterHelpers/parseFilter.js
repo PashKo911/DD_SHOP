@@ -42,8 +42,13 @@ function parseFilter(
 			return Number.isInteger(n) && n >= 0 ? n : defaultFilter.page
 		},
 		sort: (v) => {
-			const found = sortOptionsData.find(({ value }) => value === v)
-			return found ? { ...found, label: t(found.label) } : defaultFilter.sort
+			const found = sortOptionsData.find(
+				({ label }) => t(label).toLowerCase() === v,
+			)
+
+			return found
+				? { ...found, label: t(found.label).toLowerCase() }
+				: defaultFilter.sort
 		},
 		price: (v) => {
 			const numbers = v.split(',').map(Number)

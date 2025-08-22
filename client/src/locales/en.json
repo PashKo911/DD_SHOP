@@ -182,10 +182,7 @@
 		"cartLink": "Go to Cart",
 		"signIn": "Go to Sign-In Page",
 		"notFoundAlt": "Illustration of the number 404 indicating page not found",
-		"ratingLabel": {
-			"start": "Product rating",
-			"end": "stars"
-		},
+		"ratingLabel": "Product rating {rating} stars",
 		"colorRadioGroup": {
 			"title": "Select Color"
 		},
