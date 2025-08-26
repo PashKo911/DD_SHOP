@@ -1,5 +1,5 @@
 import axios from 'axios'
-import config from '../config/default.mjs'
+import { config } from '../config/default.mjs'
 
 export async function fetchRates() {
 	try {

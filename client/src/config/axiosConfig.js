@@ -30,8 +30,8 @@ apiClient.interceptors.request.use(
 
 		config.headers = {
 			...config.headers,
-			'Accept-Language': locale,
-			Currency: currency,
+			// 'Accept-Language': locale,
+			// Currency: currency,
 		}
 		return config
 	},

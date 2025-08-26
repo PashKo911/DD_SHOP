@@ -7,7 +7,8 @@ import SizeDBService from '../models/size/SizeDBService.mjs'
 import GenderDBService from '../models/gender/GenderDBService.mjs'
 import ProductsDBService from '../models/product/ProductsDBService.mjs'
 import { getRate } from '../../../services/ratesCache.mjs'
-import config from '../../../config/default.mjs'
+import { locales } from '../../../config/locales.mjs'
+import { resolveLocale } from '../../../utils/resolveLocale.mjs'
 
 import FormatValidationErrors from '../../../validators/formatValidationErrors.mjs'
 
@@ -15,8 +16,8 @@ class ProductController {
 	static async getAllProducts(req, res, next) {
 		try {
 			console.log('GET PRODUCTS CHECKING ++++++++++++++++++++++++++')
-			const language = req.headers['accept-language'] || config.defaultLanguage
-			const currency = req.headers.currency || config.defaultCurrency
+			const language = resolveLocale(req)
+			const currency = req.headers.currency || locales.defaultCurrency
 
 			const rate = await getRate(currency)
 			const data = await ProductsDBService.getList(req.query, language, currency, rate)
@@ -30,7 +31,7 @@ class ProductController {
 	}
 	static async getSuggestions(req, res, next) {
 		try {
-			const language = req.headers['accept-language'] || config.defaultLanguage
+			const language = resolveLocale(req)
 			const data = await ProductsDBService.getSuggestions(req.query, language)
 
 			res.status(200).json({
@@ -44,8 +45,8 @@ class ProductController {
 	static async getProduct(req, res, next) {
 		try {
 			console.log('GET PRODUCT DETAIL CHECKING ++++++++++++++++++++++++++')
-			const language = req.headers['accept-language'] || config.defaultLanguage
-			const currency = req.headers.currency || config.defaultCurrency
+			const language = resolveLocale(req)
+			const currency = req.headers.currency || locales.defaultCurrency
 			const id = req.params.id
 
 			const rate = await getRate(currency)
@@ -115,8 +116,8 @@ class ProductController {
 
 	static async getOptions(req, res, next) {
 		try {
-			const language = req.headers['accept-language'] || config.defaultLanguage
-			const currency = req.headers.currency || config.defaultCurrency
+			const language = resolveLocale(req)
+			const currency = req.headers.currency || locales.defaultCurrency
 
 			const rate = await getRate(currency)
 
@@ -141,7 +142,7 @@ class ProductController {
 
 	static async getStyles(req, res, next) {
 		try {
-			const language = req.headers['accept-language'] || config.defaultLanguage
+			const language = resolveLocale(req)
 
 			const styles = await DressStyleDBService.getListWithImg(language)
 			res.status(200).json({
