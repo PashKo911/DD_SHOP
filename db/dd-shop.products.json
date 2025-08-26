@@ -14,6 +14,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
+		"categoryKey": "men",
 		"style": {
 			"$oid": "676bff378a281b4943246184"
 		},
@@ -100,6 +101,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
+		"categoryKey": "men",
 		"style": {
 			"$oid": "676bff378a281b4943246182"
 		},
@@ -158,6 +160,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246178"
 		},
+		"categoryKey": "women",
 		"style": {
 			"$oid": "676bff378a281b4943246183"
 		},
@@ -240,6 +243,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
+		"categoryKey": "men",
 		"style": {
 			"$oid": "676bff378a281b4943246184"
 		},
@@ -322,6 +326,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
+		"categoryKey": "men",
 		"style": {
 			"$oid": "676bff378a281b4943246182"
 		},
@@ -380,6 +385,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246178"
 		},
+		"categoryKey": "women",
 		"style": {
 			"$oid": "676bff378a281b4943246183"
 		},
@@ -462,6 +468,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
+		"categoryKey": "men",
 		"style": {
 			"$oid": "676bff378a281b4943246184"
 		},
@@ -544,6 +551,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
+		"categoryKey": "men",
 		"style": {
 			"$oid": "676bff378a281b4943246182"
 		},
@@ -602,6 +610,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246178"
 		},
+		"categoryKey": "women",
 		"style": {
 			"$oid": "676bff378a281b4943246183"
 		},
@@ -684,6 +693,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
+		"categoryKey": "men",
 		"style": {
 			"$oid": "676bff378a281b4943246184"
 		},
@@ -766,6 +776,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
+		"categoryKey": "men",
 		"style": {
 			"$oid": "676bff378a281b4943246182"
 		},
@@ -824,6 +835,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246178"
 		},
+		"categoryKey": "women",
 		"style": {
 			"$oid": "676bff378a281b4943246183"
 		},
@@ -906,6 +918,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
+		"categoryKey": "men",
 		"style": {
 			"$oid": "676bff378a281b4943246184"
 		},
@@ -988,6 +1001,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
+		"categoryKey": "men",
 		"style": {
 			"$oid": "676bff378a281b4943246184"
 		},
@@ -1046,6 +1060,7 @@
 		"gender": {
 			"$oid": "676bff1e8a281b4943246178"
 		},
+		"categoryKey": "women",
 		"style": {
 			"$oid": "676bff378a281b4943246183"
 		},

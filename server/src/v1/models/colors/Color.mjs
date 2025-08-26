@@ -28,6 +28,12 @@ const colorSchema = new Schema({
 			message: (props) => `${props.value} is not a valid HEX color code!`,
 		},
 	},
+	slug: {
+		type: String,
+		required: [true, 'Slug is required'],
+		trim: true,
+		lowercase: true,
+	},
 })
 
 const Color = mongoose.model('Color', colorSchema)

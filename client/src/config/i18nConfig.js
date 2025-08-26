@@ -1,4 +1,5 @@
 import { markRaw } from 'vue'
+import { DEFAULT_LOCALE } from '@/constants/config'
 import UaFlagIcon from '@/components/icons/UaFlagIcon.vue'
 import UsaFlagIcon from '@/components/icons/UsaFlagIcon.vue'
 
@@ -55,3 +56,13 @@ export const datetimeFormats = Object.fromEntries(
 export const numberFormats = Object.fromEntries(
 	localeCodes.map((key) => [key, supportedLocales[key].numberFormat]),
 )
+
+export const i18nConfig = {
+	legacy: false,
+	locale: DEFAULT_LOCALE,
+	fallbackLocale: DEFAULT_LOCALE,
+	messages,
+	datetimeFormats,
+	numberFormats,
+	globalInjection: true,
+}

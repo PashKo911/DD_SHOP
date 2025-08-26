@@ -1,3 +1,5 @@
+import { getSearchField } from './getSearchField'
+
 /**
  * Serializes the filter into a query parameters object.
  * Skips any keys whose values match defaults, omits the 'gender' field,
@@ -21,13 +23,14 @@
  */
 
 function serializeFilter(filter, options, defaultFilter, locale) {
+	const searchField = getSearchField(locale)
 	const result = {}
 	const handlers = {
 		page: (val) => {
 			if (val > 0) return Number(val) + 1
 		},
 		sort: (val) => {
-			return defaultFilter.sort.value !== val.value ? val.label : null
+			return defaultFilter.sort.value !== val.value ? val[searchField] : null
 		},
 		price: (arr) => {
 			const [min, max] = arr
@@ -63,7 +66,8 @@ function serializeFilter(filter, options, defaultFilter, locale) {
 			const labels = opts
 				.filter((o) => val.includes(String(o._id)))
 				.map((o) => {
-					return o.label.toLowerCase()
+					const label = o[searchField] ?? o.label
+					return label.toLowerCase()
 				})
 			if (labels.length) {
 				result[key] = labels.join(',')
@@ -72,7 +76,6 @@ function serializeFilter(filter, options, defaultFilter, locale) {
 			result[key] = val.join(',')
 		}
 	}
-
 	return result
 }
 

@@ -1,12 +1,8 @@
-import i18n from '@/plugins/i18n'
-
 import TwitterIcon from '@/components/icons/TwitterIcon.vue'
 import TelegramIcon from '@/components/icons/TelegramIcon.vue'
 import InstagramIcon from '@/components/icons/InstagramIcon.vue'
 import VimeoIcon from '@/components/icons/VimeoIcon.vue'
 import FacebookIcon from '@/components/icons/FacebookIcon.vue'
-
-const { t } = i18n.global
 
 const socialList = [
 	{

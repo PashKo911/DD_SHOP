@@ -79,6 +79,7 @@ import { computed, ref, watch } from 'vue'
 import { API_BASE } from '@/constants/config'
 
 import { useI18n } from 'vue-i18n'
+import slugify from '@sindresorhus/slugify'
 
 import RatingComp from '@/components/ui/rating/RatingComp.vue'
 import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
@@ -127,8 +128,8 @@ const loadingAttr = computed(() => {
 
 const routeParams = computed(() => {
 	return {
-		category: props.data.gender.label,
-		slug: props.data.title.toLowerCase().replace(' ', '-'),
+		category: props.data.categoryKey,
+		slug: slugify(props.data.title),
 		id: props.data._id,
 		variant: activeVariantId.value,
 	}

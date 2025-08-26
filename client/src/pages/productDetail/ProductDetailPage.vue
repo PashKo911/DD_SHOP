@@ -31,7 +31,8 @@
 </template>
 <script setup>
 import { storeToRefs } from 'pinia'
-import { computed, watch, onMounted, ref } from 'vue'
+import { computed, watch, onMounted, ref, onUnmounted } from 'vue'
+import slugify from '@sindresorhus/slugify'
 
 import { useI18n } from 'vue-i18n'
 import { useProductsStore } from '@/stores/products'
@@ -76,13 +77,17 @@ const route = useRoute()
 const router = useRouter()
 const { locale } = useI18n()
 
-const { getProductDetails } = productsStore
-const { productDetailsValue, isProductDetailsLoading, hasProductDetailError } =
-	storeToRefs(productsStore)
+const { getProductDetails, clearProductDetails } = productsStore
+const {
+	productDetailsValue,
+	isProductDetailsLoading,
+	isProductDetailsLoaded,
+	hasProductDetailError,
+} = storeToRefs(productsStore)
 //========================================================================================================================================================
 
 const activeProductVariant = computed(() => {
-	if (!productDetailsValue.value || !productDetailsValue.value.variants)
+	if (!isProductDetailsLoaded.value || !productDetailsValue.value.variants)
 		return null
 	const colors = productDetailsValue.value.variants.map((v) => v.color)
 
@@ -97,12 +102,12 @@ const activeProductVariant = computed(() => {
 })
 
 const activeThumbSwiperComponent = computed(() => {
-	return isProductDetailsLoading.value || !activeProductVariant.value
+	return isProductDetailsLoading.value || !isProductDetailsLoaded.value
 		? SliderThumbSkeleton
 		: SliderThumb
 })
 const sliderAttributes = computed(() => {
-	if (isProductDetailsLoading.value || !activeProductVariant.value) {
+	if (isProductDetailsLoading.value || !isProductDetailsLoaded.value) {
 		return {}
 	}
 	return {
@@ -111,12 +116,12 @@ const sliderAttributes = computed(() => {
 	}
 })
 const activeDescriptionComponent = computed(() => {
-	return isProductDetailsLoading.value || !activeProductVariant.value
+	return isProductDetailsLoading.value || !isProductDetailsLoaded.value
 		? ProductDescriptionSkeleton
 		: ProductDescription
 })
 const descriptionAttributes = computed(() => {
-	if (isProductDetailsLoading.value || !activeProductVariant.value) {
+	if (isProductDetailsLoading.value || !isProductDetailsLoaded.value) {
 		return {}
 	}
 	return { imagesList: activeProductVariant.value.images }
@@ -129,7 +134,7 @@ watch(locale, async () => {
 		name: route.name,
 		params: {
 			...route.params,
-			slug: activeProductVariant.value.title.toLowerCase(),
+			slug: slugify(activeProductVariant.value.title),
 		},
 	})
 })
@@ -137,6 +142,7 @@ watch(locale, async () => {
 onMounted(async () => {
 	await getProductDetails(props.id)
 })
+onUnmounted(clearProductDetails)
 //========================================================================================================================================================
 const onVariantChange = (newColorId) => {
 	const variant = productDetailsValue.value.variants.find(

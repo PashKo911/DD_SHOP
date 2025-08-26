@@ -87,6 +87,7 @@ export const useProductsStore = defineStore('products', () => {
 	const productDetailsValue = computed(() => {
 		return productDetails.value
 	})
+	//========================================================================================================================================================
 
 	const isSuggestionsLoading = computed(() => {
 		return isLoading(queryPresets.value.suggestions.name)
@@ -114,6 +115,16 @@ export const useProductsStore = defineStore('products', () => {
 	const isProductDetailsLoading = computed(() => {
 		return isLoading(queryPresets.value.productDetail.name)
 	})
+
+	const isProductDetailsLoaded = computed(() => {
+		return (
+			productDetailsValue.value != null &&
+			typeof productDetailsValue.value === 'object' &&
+			!Array.isArray(productDetailsValue.value) &&
+			Object.keys(productDetailsValue.value).length > 0
+		)
+	})
+
 	const hasProductDetailError = computed(() => {
 		return Boolean(hasError(queryPresets.value.productDetail.name))
 	})
@@ -184,6 +195,9 @@ export const useProductsStore = defineStore('products', () => {
 		if (!result) return
 		productDetails.value = result
 	}
+	const clearProductDetails = () => {
+		productDetails.value = {}
+	}
 
 	return {
 		// refs
@@ -208,6 +222,7 @@ export const useProductsStore = defineStore('products', () => {
 		isNewestProductsLoading,
 		isTopSalesProductsLoading,
 		isProductDetailsLoading,
+		isProductDetailsLoaded,
 
 		hasNewestProductsError,
 		hasTopSalesProductsError,
@@ -220,5 +235,6 @@ export const useProductsStore = defineStore('products', () => {
 		getNewestProducts,
 		getSuggestions,
 		getProductDetails,
+		clearProductDetails,
 	}
 })

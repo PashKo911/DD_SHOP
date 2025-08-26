@@ -12,7 +12,7 @@ export function useLocales() {
 		if (locale.value === lang) return
 
 		locale.value = lang
-		localStorage.setItem('lastLocale', lang)
+		localStorage.setItem('locale', lang)
 
 		router.push({
 			name: route.name || 'home',
@@ -21,7 +21,7 @@ export function useLocales() {
 		})
 	}
 	function checkLocale() {
-		const storageLocale = localStorage.getItem('lastLocale')
+		const storageLocale = localStorage.getItem('locale')
 
 		if (storageLocale && storageLocale !== locale.value) {
 			setLocale(storageLocale)

@@ -50,8 +50,8 @@
 				}
 			},
 			"sortSelect": {
-				"priceAsc": "Cпочатку дешеві",
-				"priceDesc": "Cпочатку дорогі",
+				"priceAsc": "Спочатку дешеві",
+				"priceDesc": "Спочатку дорогі",
 				"newest": "Спочатку нові",
 				"ratingDesc": "Найпопулярніші"
 			}

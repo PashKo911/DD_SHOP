@@ -12,9 +12,9 @@ import serializeFilter from '@/utils/filterHelpers/serializeFilter'
 import sortOptionsData from '@/data/sortOptionsData'
 import mapFilterToChips from '@/utils/filterHelpers/mapFilterToChips'
 import { removeFilterChip } from '@/utils/filterHelpers/removeFilterChip'
+import { DEFAULT_SORT } from '@/constants/config'
 
 export const useFilterStore = defineStore('filter', () => {
-	const defaultSortValue = sortOptionsData[3]
 	const route = useRoute()
 	const facetOptionsStore = useFacetOptionsStore()
 	const commonStore = useCommonStore()
@@ -24,16 +24,12 @@ export const useFilterStore = defineStore('filter', () => {
 	const { viewMode } = storeToRefs(commonStore)
 
 	const defaultFilter = computed(() => ({
-		gender: '',
 		title: '',
 		styles: [],
 		price: [],
 		colors: [],
 		sizes: [],
-		sort: {
-			...defaultSortValue,
-			label: t(defaultSortValue.label),
-		},
+		sort: DEFAULT_SORT,
 		page: 0,
 	}))
 
@@ -107,6 +103,7 @@ export const useFilterStore = defineStore('filter', () => {
 			facetOptions.value,
 			sortOptionsData,
 			t,
+			locale.value,
 		)
 	}
 

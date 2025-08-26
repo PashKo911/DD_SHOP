@@ -4,14 +4,13 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { createHead } from '@vueuse/head'
 
-import i18n from './plugins/i18n'
 import PrimeVue from 'primevue/config'
 import lockScroll from './directives/lockScroll'
 import ToastService from 'primevue/toastservice'
+import { initI18n, i18n } from './plugins/i18n'
 
 import App from './App.vue'
 import router from './router'
-import setInitialLocale from './utils/localeHelpers/setInitialLocale'
 
 const app = createApp(App)
 const head = createHead()
@@ -20,9 +19,9 @@ app.use(createPinia())
 
 app.use(router)
 
-app.use(i18n)
+await initI18n()
 
-setInitialLocale(i18n, router)
+app.use(i18n)
 
 app.use(PrimeVue, {
 	unstyled: true,
