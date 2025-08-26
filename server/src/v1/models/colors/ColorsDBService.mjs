@@ -11,6 +11,7 @@ class ColorsDBService extends MongooseCRUDManager {
 			const projection = {
 				[`label.${currentLanguage}`]: 1,
 				value: 1,
+				slug: 1,
 			}
 
 			const docs = await super.getList({}, projection)

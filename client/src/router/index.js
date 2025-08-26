@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { storeToRefs } from 'pinia'
+import { i18n } from '@/plugins/i18n'
 
 import authRoutes from './routes/authRoutes'
 import shopRoutes from './routes/shopRoutes'
 
 import { useCommonStore } from '@/stores/commonStore'
-import { localeCodes } from '@/config/i18nConfig'
+import detectLocale from '@/utils/localeHelpers/detectLocale'
 import { DEFAULT_LOCALE } from '@/constants/config'
 
 const appInnerRoutes = [
@@ -52,7 +53,7 @@ const router = createRouter({
 	routes: [
 		{
 			path: '/',
-			redirect: { name: 'home', params: { locale: DEFAULT_LOCALE } },
+			redirect: { name: 'home' },
 			meta: {
 				useInMenu: false,
 				requiredAuth: false,
@@ -71,21 +72,18 @@ const router = createRouter({
 	],
 })
 
-router.beforeEach(async (to, from, next) => {
-	const localeParam = to.params.locale
+router.beforeEach((to, from, next) => {
+	const detectedLocale = detectLocale(to)
 
-	if (!localeParam) {
-		return next({
-			name: to.name || 'home',
-			params: { ...to.params, locale: DEFAULT_LOCALE },
-			query: to.query,
-		})
+	if (to.params.locale === detectedLocale) {
+		return next()
 	}
 
-	if (!localeCodes.includes(localeParam)) {
-		return next({ name: 'notFound', params: { locale: DEFAULT_LOCALE } })
-	}
-	return next()
+	return next({
+		name: to.name || 'home',
+		params: { ...to.params, locale: detectedLocale },
+		query: to.query,
+	})
 })
 
 router.afterEach((to, from) => {

@@ -2,10 +2,16 @@ import mongoose from 'mongoose'
 const { Schema } = mongoose
 
 const genderSchema = new Schema({
+	key: {
+		type: String,
+		enum: ['men', 'women'],
+		required: true,
+		lowercase: true,
+		trim: true,
+	},
 	label: {
 		en: {
 			type: String,
-			enum: ['women', 'men'],
 			required: [true, 'English gender label is required'],
 			trim: true,
 			set: (v) => v.toLowerCase(),

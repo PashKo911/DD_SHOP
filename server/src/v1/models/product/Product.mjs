@@ -1,4 +1,6 @@
 import mongoose from 'mongoose'
+
+const Gender = mongoose.model('Gender')
 const { Schema } = mongoose
 
 const localizedString = (field, min, max) => ({
@@ -48,7 +50,13 @@ const productSchema = new Schema(
 			ref: 'Gender',
 			required: [true, 'Gender is required'],
 		},
-
+		categoryKey: {
+			type: String,
+			required: true,
+			trim: true,
+			lowercase: true,
+			enum: ['men', 'women'],
+		},
 		minPrice: {
 			type: Number,
 			required: true,
@@ -101,6 +109,21 @@ productSchema.pre('save', function (next) {
 	}
 
 	next()
+})
+productSchema.pre('validate', async function (next) {
+	try {
+		if (this.categoryKey) return next()
+
+		if (!this.gender) return next()
+
+		const g = await Gender.findById(this.gender).lean()
+		if (g) {
+			this.categoryKey = (g.key || (g.label && g.label.en) || '').toString().toLowerCase()
+		}
+		next()
+	} catch (err) {
+		next(err)
+	}
 })
 
 const Product = mongoose.model('Product', productSchema)

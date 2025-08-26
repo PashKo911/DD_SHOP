@@ -32,11 +32,16 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useProductsStore } from '@/stores/products'
 
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb.vue'
+import { storeToRefs } from 'pinia'
 
 const route = useRoute()
 const { t } = useI18n()
+const productsStore = useProductsStore()
+
+const { productDetails, isProductDetailsLoaded } = storeToRefs(productsStore)
 //========================================================================================================================================================
 
 const items = computed(() =>
@@ -46,8 +51,8 @@ const items = computed(() =>
 			const isLast = idx === arr.length - 1
 			const localeKey = resolveLocaleName(record.meta.localeName, route)
 			const label =
-				isLast && route.params.slug
-					? humanizeSlug(route.params.slug)
+				isProductDetailsLoaded.value && isLast
+					? productDetails.value.title
 					: t(localeKey ?? record.name)
 
 			return {
@@ -62,11 +67,8 @@ const home = computed(() => ({
 	label: t('pages.home.title.menu'),
 	route: { name: 'home' },
 }))
-//========================================================================================================================================================
 
-function humanizeSlug(slug = '') {
-	return decodeURIComponent(slug).replace(/[-_]+/g, ' ')
-}
+//========================================================================================================================================================
 
 function resolveLocaleName(localeName, route) {
 	if (!localeName) return null

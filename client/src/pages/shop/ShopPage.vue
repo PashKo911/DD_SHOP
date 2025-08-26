@@ -30,7 +30,7 @@
 							fluid
 							checkmark
 							:options="optionsData"
-							:placeholder="sortFilterValue.label"
+							:placeholder="t(DEFAULT_SORT.label)"
 						/>
 					</div>
 					<div
@@ -117,6 +117,7 @@ import { useMediaQuery } from '@/composables/useMediaQuery'
 
 import viewModeData from '@/data/viewModeData'
 import sortOptionsData from '@/data/sortOptionsData'
+import { DEFAULT_SORT } from '@/constants/config'
 
 import ShopFilter from './ShopFilter.vue'
 import ShopList from './ShopList.vue'
@@ -200,11 +201,11 @@ const sizeFilterValue = useFilterModel('sizes')
 
 const sortFilterValue = computed({
 	get() {
-		const val = filter.value.sort
+		const sort = filter.value.sort
 		const upperCaseLabel =
-			val.label.charAt(0).toUpperCase() + val.label.slice(1)
+			sort.label.charAt(0).toUpperCase() + sort.label.slice(1)
 		return {
-			...val,
+			...sort,
 			label: upperCaseLabel,
 		}
 	},
@@ -231,7 +232,7 @@ const currentGenderId = computed(() => {
 })
 
 const optionsData = computed(() => {
-	return sortOptionsData.map(({ label, value }) => ({ value, label: t(label) }))
+	return sortOptionsData.map((o) => ({ ...o, label: t(o.label) }))
 })
 
 const viewModeValue = computed({
@@ -288,6 +289,7 @@ const paginatorButtonsCount = computed(() => {
 	}
 	return buttonsCount
 })
+
 //========================================================================================================================================================
 
 watch(locale, async () => {

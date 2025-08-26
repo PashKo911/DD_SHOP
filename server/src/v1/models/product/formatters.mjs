@@ -35,10 +35,6 @@ function formatProductForResponse(product, language, rate, formatter) {
 		variants: formattedVariants,
 		title: product.title[language],
 		description: product.description[language],
-		gender: {
-			...product.gender,
-			label: product.gender.label[language],
-		},
 		style: {
 			...product.style,
 			label: product.style.label[language],

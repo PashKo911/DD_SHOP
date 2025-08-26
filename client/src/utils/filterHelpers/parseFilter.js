@@ -1,3 +1,5 @@
+import { getSearchField } from './getSearchField'
+
 /**
  * Parses URL query parameters into the internal filter object, restoring defaults and mapping values.
  *
@@ -35,17 +37,18 @@ function parseFilter(
 	facetOptions,
 	sortOptionsData,
 	t,
+	locale,
 ) {
+	const searchField = getSearchField(locale)
 	const parsers = {
 		page: (v) => {
 			const n = Number(v) - 1
 			return Number.isInteger(n) && n >= 0 ? n : defaultFilter.page
 		},
 		sort: (v) => {
-			const found = sortOptionsData.find(
-				({ label }) => t(label).toLowerCase() === v,
-			)
-
+			const found = sortOptionsData.find((o) => {
+				return locale === 'uk' ? o.slug === v : t(o.label).toLowerCase() === v
+			})
 			return found
 				? { ...found, label: t(found.label).toLowerCase() }
 				: defaultFilter.sort
@@ -77,7 +80,11 @@ function parseFilter(
 			filter[key] = raw
 		} else {
 			filter[key] = facetOptions[key]
-				.filter((opt) => values.includes(String(opt.label)))
+				.filter((opt) =>
+					values.includes(
+						String(opt[searchField].toLowerCase() ?? opt.label.toLowerCase()),
+					),
+				)
 				.map((opt) => opt._id)
 		}
 	}

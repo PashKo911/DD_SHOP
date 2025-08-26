@@ -20,6 +20,12 @@ const styleSchema = new Schema({
 		type: String,
 		trim: true,
 	},
+	slug: {
+		type: String,
+		required: [true, 'Slug is required'],
+		trim: true,
+		lowercase: true,
+	},
 })
 
 const DressStyle = mongoose.model('Style', styleSchema)
