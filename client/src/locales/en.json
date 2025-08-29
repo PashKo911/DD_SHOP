@@ -171,6 +171,43 @@
 		"reviews": {
 			"postedOn": "Posted: {date}"
 		},
+		"faqs": [
+			{
+				"id": "1",
+				"question": "How is delivery carried out?",
+				"answer": "We cooperate with leading delivery services such as Nova Poshta and Ukrposhta. Delivery usually takes 1–3 business days within Ukraine. You will receive an SMS with a tracking number once your order has been shipped."
+			},
+			{
+				"id": "2",
+				"question": "What payment methods are available?",
+				"answer": "You can pay by bank card (Visa, MasterCard), via Apple Pay/Google Pay, or upon receipt at the Nova Poshta branch (cash on delivery)."
+			},
+			{
+				"id": "3",
+				"question": "Can I return or exchange a product?",
+				"answer": "Yes, you can return or exchange an item within 14 days if it hasn’t been used and its original packaging is preserved. Return shipping costs are covered by the customer."
+			},
+			{
+				"id": "4",
+				"question": "How can I track my order?",
+				"answer": "After shipping, we will send you an SMS or email with the tracking number. You can check the delivery status on the selected courier’s website."
+			},
+			{
+				"id": "5",
+				"question": "Can I place an order without registration?",
+				"answer": "Yes, you can order without creating an account. However, registered users enjoy extra benefits such as bonuses and order history saving."
+			},
+			{
+				"id": "6",
+				"question": "What warranty do you provide?",
+				"answer": "We only sell original products with an official manufacturer’s warranty. The warranty period is specified in the product card."
+			},
+			{
+				"id": "7",
+				"question": "Do you have a loyalty program?",
+				"answer": "Yes, we have a bonus system: for each purchase, you earn reward points that can be used for discounts on future orders."
+			}
+		],
 		"emptySearchMessage": "No results found",
 		"errorBlockTitle": "Error loading data"
 	},

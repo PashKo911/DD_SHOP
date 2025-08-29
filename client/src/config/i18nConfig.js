@@ -1,5 +1,5 @@
 import { markRaw } from 'vue'
-import { DEFAULT_LOCALE } from '@/constants/config'
+import { DEFAULT_LOCALE } from './appConfig'
 import UaFlagIcon from '@/components/icons/UaFlagIcon.vue'
 import UsaFlagIcon from '@/components/icons/UsaFlagIcon.vue'
 

@@ -76,7 +76,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 
-import { API_BASE } from '@/constants/config'
+import { API_BASE } from '@/config/apiConfig'
 
 import { useI18n } from 'vue-i18n'
 import slugify from '@sindresorhus/slugify'

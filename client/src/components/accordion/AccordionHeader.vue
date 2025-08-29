@@ -13,7 +13,6 @@
 </template>
 
 <script setup>
-import ChevronUpIcon from '@primevue/icons/chevrondown'
 import ChevronDownIcon from '@primevue/icons/chevronup'
 import AccordionHeader from 'primevue/accordionheader'
 import { computed } from 'vue'
@@ -22,7 +21,7 @@ import { ptViewMerge } from '@/utils/volt'
 const ptOptions = computed(() => ({ mergeProps: ptViewMerge }))
 
 const theme = {
-	root: `cursor-pointer disabled:pointer-events-none disabled:opacity-60 flex items-center justify-between py-[1.125rem] font-semibold
+	root: `cursor-pointer disabled:pointer-events-none disabled:opacity-60 flex items-center justify-between py-[1.125rem] font-semibold text-left
         text-primary capitalize font-heading font-bold text-24-18 leading-tight
         hover:text-surface-700
         p-active:text-surface-700

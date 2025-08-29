@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useAuthStore } from '@/stores/auth'
 import { i18n } from '@/plugins/i18n'
 import router from '@/router'
-import { API_URL } from '@/constants/config'
+import { API_URL } from './apiConfig'
 
 const apiClient = axios.create({
 	baseURL: API_URL,

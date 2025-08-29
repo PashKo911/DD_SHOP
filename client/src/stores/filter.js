@@ -12,7 +12,7 @@ import serializeFilter from '@/utils/filterHelpers/serializeFilter'
 import sortOptionsData from '@/data/sortOptionsData'
 import mapFilterToChips from '@/utils/filterHelpers/mapFilterToChips'
 import { removeFilterChip } from '@/utils/filterHelpers/removeFilterChip'
-import { DEFAULT_SORT } from '@/constants/config'
+import { DEFAULT_SORT } from '@/config/appConfig'
 
 export const useFilterStore = defineStore('filter', () => {
 	const route = useRoute()

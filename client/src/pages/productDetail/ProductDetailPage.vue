@@ -15,7 +15,12 @@
 		/>
 	</section>
 
-	<product-detail-tabs :reviews="reviews" class="not-last:mb-100-60" />
+	<product-detail-tabs
+		:reviews="reviewsValue"
+		:is-reviews-loading="isReviewsLoading"
+		:description="productDetailsValue.description"
+		class="not-last:mb-100-60"
+	/>
 
 	<section>
 		<div>
@@ -23,10 +28,19 @@
 				class="font-heading not-last:mb-50-30 text-50-28 leading-tight font-semibold uppercase"
 			></h2>
 		</div>
-		<!-- <slider-base
-			:items="sliderData"
+		<slider-base
+			:items="sameProductsValue"
 			:title="t('pages.productDetail.title.sameProductsSection')"
-		/> -->
+			:is-loading="isSameProductsLoading"
+			:has-error="hasSameProductsError"
+			@reload-items="
+				() =>
+					getSameProducts(
+						productDetailsValue.gender._id,
+						productDetailsValue.style._id,
+					)
+			"
+		/>
 	</section>
 </template>
 <script setup>
@@ -35,12 +49,11 @@ import { computed, watch, onMounted, ref, onUnmounted } from 'vue'
 import slugify from '@sindresorhus/slugify'
 
 import { useI18n } from 'vue-i18n'
-import { useProductsStore } from '@/stores/products'
 import { useRouter, useRoute } from 'vue-router'
+import { useProductsStore } from '@/stores/products'
+import { useReviewsStore } from '@/stores/reviews'
 
-import { reviews } from '@/data/reviews'
-import sliderData from '@/data/sliderData'
-import { DEFAULT_LOCALE } from '@/constants/config'
+import { DEFAULT_LOCALE } from '@/config/appConfig'
 
 import SliderThumb from '@/components/sliders/sliderThumb/SliderThumb.vue'
 import SliderBase from '@/components/sliders/SliderBase.vue'
@@ -73,17 +86,25 @@ const props = defineProps({
 })
 
 const productsStore = useProductsStore()
+const reviewsStore = useReviewsStore()
 const route = useRoute()
 const router = useRouter()
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 
-const { getProductDetails, clearProductDetails } = productsStore
+const { getProductDetails, clearProductDetails, getSameProducts } =
+	productsStore
 const {
 	productDetailsValue,
 	isProductDetailsLoading,
 	isProductDetailsLoaded,
-	hasProductDetailError,
+	sameProductsValue,
+	isSameProductsLoading,
+	hasSameProductsError,
 } = storeToRefs(productsStore)
+
+const { reviewsValue, isReviewsLoading, hasReviewsError } =
+	storeToRefs(reviewsStore)
+const { getReviews } = reviewsStore
 //========================================================================================================================================================
 
 const activeProductVariant = computed(() => {
@@ -130,6 +151,10 @@ const descriptionAttributes = computed(() => {
 
 watch(locale, async () => {
 	await getProductDetails(props.id)
+	getSameProducts(
+		productDetailsValue.value.gender._id,
+		productDetailsValue.value.style._id,
+	)
 	router.replace({
 		name: route.name,
 		params: {
@@ -139,8 +164,24 @@ watch(locale, async () => {
 	})
 })
 
+watch(
+	() => props.id,
+	async (newId) => {
+		await getProductDetails(newId)
+		getSameProducts(
+			productDetailsValue.value.gender._id,
+			productDetailsValue.value.style._id,
+		)
+	},
+)
+
 onMounted(async () => {
 	await getProductDetails(props.id)
+	getReviews()
+	getSameProducts(
+		productDetailsValue.value.gender._id,
+		productDetailsValue.value.style._id,
+	)
 })
 onUnmounted(clearProductDetails)
 //========================================================================================================================================================
