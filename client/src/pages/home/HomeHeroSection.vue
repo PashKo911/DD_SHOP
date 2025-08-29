@@ -61,7 +61,7 @@ import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useHead } from '@vueuse/head'
 
 import achievements from '@/data/achievements'
-import { DEFAULT_CATEGORY } from '@/constants/config'
+import { DEFAULT_CATEGORY } from '@/config/appConfig'
 
 import ButtonLink from '@/components/ui/buttons/ButtonLink.vue'
 import heroImg from '@/assets/img/hero/main.webp'

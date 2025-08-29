@@ -7,7 +7,7 @@ import shopRoutes from './routes/shopRoutes'
 
 import { useCommonStore } from '@/stores/commonStore'
 import detectLocale from '@/utils/localeHelpers/detectLocale'
-import { DEFAULT_LOCALE } from '@/constants/config'
+import { DEFAULT_LOCALE } from '@/config/appConfig'
 
 const appInnerRoutes = [
 	{
@@ -42,10 +42,10 @@ const appInnerRoutes = [
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	scrollBehavior(to, from) {
-		const pathFrom = from.path
-		const pathTo = to.path
+		const nameFrom = from.name
+		const nameTo = to.name
 
-		if (pathFrom === pathTo) {
+		if (nameFrom === nameTo) {
 			return { left: 0, top: 0, behavior: 'smooth' }
 		}
 		return { top: 0, left: 0 }

@@ -1,7 +1,7 @@
 import { useI18n } from 'vue-i18n'
 import { useRouter, useRoute } from 'vue-router'
 
-import { DEFAULT_LOCALE } from '@/constants/config'
+import { DEFAULT_LOCALE } from '@/config/appConfig'
 
 export function useLocales() {
 	const { locale } = useI18n()

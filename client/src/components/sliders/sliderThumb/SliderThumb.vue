@@ -82,7 +82,7 @@ import 'swiper/css/zoom'
 import { ref, computed } from 'vue'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useI18n } from 'vue-i18n'
-import { API_BASE } from '@/constants/config'
+import { API_BASE } from '@/config/apiConfig'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Thumbs, Zoom } from 'swiper/modules'

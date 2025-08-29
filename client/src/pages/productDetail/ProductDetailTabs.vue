@@ -1,51 +1,41 @@
 <template>
-	<Tabs value="1" scrollable>
-		<TabList>
-			<Tab value="0">
+	<tabs value="1" scrollable :lazy="true">
+		<tab-list>
+			<tab value="0">
 				{{ t('pages.productDetail.tabs.head.details') }}
-			</Tab>
-			<Tab value="1">
+			</tab>
+			<tab value="1">
 				{{ t('pages.productDetail.tabs.head.reviews') }}
-			</Tab>
-			<Tab value="2">
+			</tab>
+			<tab value="2">
 				{{ t('pages.productDetail.tabs.head.faq') }}
-			</Tab>
-		</TabList>
-		<TabPanels>
-			<TabPanel value="0">
+			</tab>
+		</tab-list>
+		<tab-panels>
+			<tab-panel value="0">
 				<p>
-					At vero eos et accusamus et iusto odio dignissimos ducimus qui
-					blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-					et quas molestias excepturi sint occaecati cupiditate non provident,
-					similique sunt in culpa qui officia deserunt mollitia animi, id est
-					laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
-					distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
-					cumque nihil impedit quo minus.
+					{{ description }}
 				</p>
-			</TabPanel>
-			<TabPanel value="1">
+			</tab-panel>
+			<tab-panel value="1">
 				<div class="grid gap-x-6 gap-y-8 md:grid-cols-2">
-					<!-- <review-card v-for="r in reviews" :key="r._id" :review-data="r">
-						{{ item }}
-					</review-card> -->
+					<component
+						:is="activeReviewComponent"
+						v-for="r in reviewCards"
+						:key="r._id"
+						:review-data="!r.isSkeleton ? r : null"
+					/>
 				</div>
-			</TabPanel>
-			<TabPanel value="2">
-				<p>
-					At vero eos et accusamus et iusto odio dignissimos ducimus qui
-					blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-					et quas molestias excepturi sint occaecati cupiditate non provident,
-					similique sunt in culpa qui officia deserunt mollitia animi, id est
-					laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
-					distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
-					cumque nihil impedit quo minus.
-				</p>
-			</TabPanel>
-		</TabPanels>
-	</Tabs>
+			</tab-panel>
+			<tab-panel value="2">
+				<faqs />
+			</tab-panel>
+		</tab-panels>
+	</tabs>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import Tabs from '@/components/tab/Tabs.vue'
@@ -54,6 +44,8 @@ import Tab from '@/components/tab/Tab.vue'
 import TabPanels from '@/components/tab/TabPanels.vue'
 import TabPanel from '@/components/tab/TabPanel.vue'
 import ReviewCard from '@/components/cards/reviewCard/ReviewCard.vue'
+import ReviewCardSkeleton from '@/components/cards/reviewCard/ReviewCardSkeleton.vue'
+import Faqs from '@/components/partials/faqs/Faqs.vue'
 
 const { t } = useI18n()
 const props = defineProps({
@@ -61,5 +53,32 @@ const props = defineProps({
 		type: Array,
 		default: () => [],
 	},
+	isReviewsLoading: {
+		type: Boolean,
+		default: false,
+	},
+	skeletonCount: {
+		type: Number,
+		default: 6,
+	},
+	description: {
+		type: String,
+	},
+})
+
+const activeReviewComponent = computed(() => {
+	return props.isReviewsLoading || !props.reviews.length
+		? ReviewCardSkeleton
+		: ReviewCard
+})
+
+const reviewCards = computed(() => {
+	if (props.isReviewsLoading || !props.reviews.length) {
+		return Array.from({ length: props.skeletonCount }, (_, i) => ({
+			_id: `skeleton-${i}`,
+			isSkeleton: true,
+		}))
+	}
+	return props.reviews
 })
 </script>

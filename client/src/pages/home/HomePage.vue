@@ -22,7 +22,7 @@
 			:title="t('pages.home.sectionTitles.newArrivals')"
 			:is-loading="isNewestProductsLoading"
 			:has-error="hasNewestProductsError"
-			@reload-items="onReloadNewestProducts"
+			@reload-items="getNewestProducts"
 		/>
 	</div>
 	<div class="not-last:mb-80-50">
@@ -40,7 +40,7 @@
 			:title="t('pages.home.sectionTitles.topSelling')"
 			:is-loading="isTopSalesProductsLoading"
 			:has-error="hasTopSalesProductsError"
-			@reload-items="onReloadTopSalesProducts"
+			@reload-items="getTopSalesProducts"
 		/>
 	</div>
 	<div class="not-last:mb-100-60 container">
@@ -48,7 +48,7 @@
 			:items="availableStylesValue"
 			:is-loading="isAvailableStylesLoading"
 			:has-error="hasAvailableStylesError"
-			@reload-items="onReloadAvailableStyles"
+			@reload-items="getAvailableStyles"
 		/>
 	</div>
 	<div class="not-last:mb-80-50">
@@ -66,7 +66,7 @@
 			:title="t('pages.home.sectionTitles.reviews')"
 			:is-loading="isReviewsLoading"
 			:has-error="hasReviewsError"
-			@reload-items="onReloadReviews"
+			@reload-items="getReviews"
 		>
 			<template #default="{ item }">
 				<component :is="activeReviewsSliderComponent" :review-data="item" />
@@ -125,32 +125,16 @@ const activeReviewsSliderComponent = computed(() => {
 	return isReviewsLoading.value ? ReviewCardSkeleton : ReviewCard
 })
 
-watch(locale, async () => {
-	await Promise.allSettled([
+watch(locale, () => {
+	Promise.allSettled([
 		getNewestProducts(),
 		getTopSalesProducts(),
 		getAvailableStyles(),
 	])
 })
 
-const onReloadNewestProducts = async () => {
-	await getNewestProducts()
-}
-
-const onReloadTopSalesProducts = async () => {
-	await getTopSalesProducts()
-}
-
-const onReloadAvailableStyles = async () => {
-	await getAvailableStyles()
-}
-
-const onReloadReviews = async () => {
-	await getReviews()
-}
-
-onMounted(async () => {
-	await Promise.allSettled([
+onMounted(() => {
+	Promise.allSettled([
 		getNewestProducts(),
 		getTopSalesProducts(),
 		getAvailableStyles(),

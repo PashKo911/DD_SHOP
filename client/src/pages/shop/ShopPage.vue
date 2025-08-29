@@ -117,7 +117,7 @@ import { useMediaQuery } from '@/composables/useMediaQuery'
 
 import viewModeData from '@/data/viewModeData'
 import sortOptionsData from '@/data/sortOptionsData'
-import { DEFAULT_SORT } from '@/constants/config'
+import { DEFAULT_SORT } from '@/config/appConfig'
 
 import ShopFilter from './ShopFilter.vue'
 import ShopList from './ShopList.vue'
@@ -329,7 +329,7 @@ onMounted(async () => {
 		})
 	}
 
-	await getDefaultProducts()
+	getDefaultProducts()
 
 	unwatch = watch(filter.value, async () => {
 		router.replace({
@@ -337,7 +337,7 @@ onMounted(async () => {
 			query: filterStrings.value,
 			params: { ...route.params, locale: locale.value },
 		})
-		await getDefaultProducts()
+		getDefaultProducts()
 	})
 })
 

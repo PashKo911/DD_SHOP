@@ -6,7 +6,7 @@
 			</h2>
 			<div class="hidden items-center gap-4 sm:flex">
 				<slider-nav-button
-					:disabled="hasError"
+					:disabled="hasError || isLoading"
 					@click="slider.slidePrev()"
 					:aria-label="t('buttons.prevSlide')"
 				>
@@ -14,7 +14,7 @@
 				</slider-nav-button>
 				<slider-nav-button
 					@click="slider.slideNext()"
-					:disabled="hasError"
+					:disabled="hasError || isLoading"
 					:aria-label="t('buttons.nextSlide')"
 					class="bg-[#FCF9F6] shadow-lg hover:shadow-md"
 				>

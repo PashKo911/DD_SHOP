@@ -23,6 +23,7 @@ export const useProductsStore = defineStore('products', () => {
 	const defaultProducts = ref([])
 	const topSalesProducts = ref([])
 	const newestProducts = ref([])
+	const sameProducts = ref([])
 	const suggestions = ref([])
 	const productDetails = ref({})
 
@@ -39,6 +40,10 @@ export const useProductsStore = defineStore('products', () => {
 		newest: {
 			name: 'newestProducts',
 			queryParams: { sort: 'createdAt:desc', page: 0, perPage: 15 },
+		},
+		same: {
+			name: 'sameProducts',
+			queryParams: { sort: 'maxRating:desc,', page: 0, perPage: 15 },
 		},
 		suggestions: {
 			name: 'suggestions',
@@ -80,6 +85,11 @@ export const useProductsStore = defineStore('products', () => {
 		return Array.isArray(data.documents) ? data.documents : []
 	})
 
+	const sameProductsValue = computed(() => {
+		const data = sameProducts.value
+		return Array.isArray(data.documents) ? data.documents : []
+	})
+
 	const suggestionsValue = computed(() => {
 		return buildSuggestionGroups(suggestions.value, locale.value)
 	})
@@ -110,6 +120,14 @@ export const useProductsStore = defineStore('products', () => {
 	})
 	const hasTopSalesProductsError = computed(() => {
 		return Boolean(hasError(queryPresets.value.topSales.name))
+	})
+
+	const isSameProductsLoading = computed(() => {
+		return isLoading(queryPresets.value.same.name)
+	})
+
+	const hasSameProductsError = computed(() => {
+		return Boolean(hasError(queryPresets.value.same.name))
 	})
 
 	const isProductDetailsLoading = computed(() => {
@@ -166,6 +184,18 @@ export const useProductsStore = defineStore('products', () => {
 			queryPresets.value.newest.name,
 		)
 
+	const getSameProducts = (genderId, styleId) => {
+		getProducts(
+			{
+				...queryPresets.value.same,
+				gender: genderId,
+				styles: styleId,
+			},
+			sameProducts,
+			queryPresets.value.same.name,
+		)
+	}
+
 	const getSuggestions = async (title) => {
 		const params = { ...queryPresets.value.suggestions.queryParams, title }
 		const result = await generalApiOperation({
@@ -204,6 +234,7 @@ export const useProductsStore = defineStore('products', () => {
 		defaultProducts,
 		topSalesProducts,
 		newestProducts,
+		sameProducts,
 		suggestions,
 		totalDefaultProductsCount,
 		productDetails,
@@ -213,6 +244,7 @@ export const useProductsStore = defineStore('products', () => {
 		suggestionsValue,
 		topSalesProductsValue,
 		newestProductsValue,
+		sameProductsValue,
 		queryPresets,
 		productDetailsValue,
 
@@ -221,11 +253,13 @@ export const useProductsStore = defineStore('products', () => {
 		isSuggestionsLoading,
 		isNewestProductsLoading,
 		isTopSalesProductsLoading,
+		isSameProductsLoading,
 		isProductDetailsLoading,
 		isProductDetailsLoaded,
 
 		hasNewestProductsError,
 		hasTopSalesProductsError,
+		hasSameProductsError,
 		hasProductDetailError,
 
 		// actions
@@ -233,6 +267,7 @@ export const useProductsStore = defineStore('products', () => {
 		getDefaultProducts,
 		getTopSalesProducts,
 		getNewestProducts,
+		getSameProducts,
 		getSuggestions,
 		getProductDetails,
 		clearProductDetails,

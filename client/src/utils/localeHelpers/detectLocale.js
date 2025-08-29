@@ -1,5 +1,5 @@
 import { localeCodes } from '@/config/i18nConfig'
-import { DEFAULT_LOCALE } from '@/constants/config'
+import { DEFAULT_LOCALE } from '@/config/appConfig'
 
 function detectLocale(route) {
 	const storageLocale = localStorage.getItem('locale')

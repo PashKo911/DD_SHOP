@@ -1,5 +1,5 @@
 import router from '@/router'
-import { SHOP_CATEGORIES } from '@/constants/config'
+import { SHOP_CATEGORIES } from '@/config/appConfig'
 
 export function getMenuItems() {
 	const declaredRoutes = router.options.routes

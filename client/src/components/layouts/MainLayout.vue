@@ -17,7 +17,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useHead } from '@vueuse/head'
 import { localeCodes } from '@/config/i18nConfig'
-import { DEFAULT_LOCALE } from '@/constants/config'
+import { DEFAULT_LOCALE } from '@/config/appConfig'
 import getPathForLocale from '@/utils/localeHelpers/getPathForLocale'
 
 import HeaderMenu from '@/components/partials/header/HeaderMenu.vue'

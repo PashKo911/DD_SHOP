@@ -41,7 +41,8 @@
 
 <script setup>
 import { computed } from 'vue'
-import { API_BASE, DEFAULT_CATEGORY } from '@/constants/config'
+import { API_BASE } from '@/config/apiConfig'
+import { DEFAULT_CATEGORY } from '@/config/appConfig'
 import ArrowDownSimple from '@/components/icons/ArrowDownSimple.vue'
 
 const imageConfigs = [
