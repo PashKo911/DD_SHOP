@@ -11,6 +11,7 @@
 			:is="activeDescriptionComponent"
 			v-bind="sliderAttributes"
 			@change-variant="onVariantChange"
+			@form-submit="onFormSubmit"
 			class="w-full lg:grow"
 		/>
 	</section>
@@ -52,6 +53,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter, useRoute } from 'vue-router'
 import { useProductsStore } from '@/stores/products'
 import { useReviewsStore } from '@/stores/reviews'
+import { useCartStore } from '@/stores/cart'
 
 import { DEFAULT_LOCALE } from '@/config/appConfig'
 
@@ -86,6 +88,7 @@ const props = defineProps({
 })
 
 const productsStore = useProductsStore()
+const cartStore = useCartStore()
 const reviewsStore = useReviewsStore()
 const route = useRoute()
 const router = useRouter()
@@ -101,6 +104,8 @@ const {
 	isSameProductsLoading,
 	hasSameProductsError,
 } = storeToRefs(productsStore)
+
+const { addToCart } = cartStore
 
 const { reviewsValue, isReviewsLoading, hasReviewsError } =
 	storeToRefs(reviewsStore)
@@ -196,5 +201,15 @@ const onVariantChange = (newColorId) => {
 	const newParams = { ...route.params, variant: variantId }
 
 	router.replace({ name: route.name, params: newParams })
+}
+
+const onFormSubmit = async ({ count, size }) => {
+	const product = {
+		product: props.id,
+		variant: props.variant,
+		size,
+		amount: count,
+	}
+	await addToCart(product)
 }
 </script>

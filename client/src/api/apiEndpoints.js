@@ -11,6 +11,12 @@ const apiEndpoints = {
 		signup: '/auth/signup',
 		profileByToken: '/auth/profile',
 	},
+	cart: {
+		getCartDetails: '/cart',
+		addProduct: '/cart',
+		updateProductAmount: '/cart/amount',
+		deleteProduct: '/cart/delete',
+	},
 	users: {
 		getUsersWithAttempts: '/users/users-with-attempts',
 		deleteUser: (id) => `/users/${id}`,

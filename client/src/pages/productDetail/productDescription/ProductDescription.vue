@@ -150,7 +150,7 @@ const props = defineProps({
 	},
 })
 
-const emits = defineEmits(['changeVariant'])
+const emits = defineEmits(['changeVariant', 'formSubmit'])
 
 const schema = object().shape({
 	color: string().required(t('errors.colorInputGroup.required')),
@@ -171,6 +171,7 @@ const initialValues = computed(() => {
 
 const onFormSubmit = ({ values, valid }) => {
 	if (valid) {
+		emits('formSubmit', values)
 		toast.add({
 			severity: 'success',
 			summary: 'Form is submitted.',
