@@ -15,6 +15,10 @@ export const useAuthStore = defineStore('auth', () => {
 	//========================================================================================================================================================
 
 	const currentUserPermissions = computed(() => user.value?.permissions || {})
+
+	const isAuthenticated = computed(() => {
+		return user.value
+	})
 	//========================================================================================================================================================
 
 	const setToken = (newToken) => {
@@ -82,6 +86,7 @@ export const useAuthStore = defineStore('auth', () => {
 
 		// computed
 		currentUserPermissions,
+		isAuthenticated,
 
 		// actions
 		getUserProfileByToken,

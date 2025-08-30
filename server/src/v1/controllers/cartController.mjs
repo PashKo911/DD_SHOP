@@ -16,25 +16,27 @@ class CartController {
 		}
 	}
 	static async addProduct(req, res, next) {
-		const userId = req.user.id // Отримання id користувача
+		// const userId = req.user.id
 
 		try {
-			const { productId, options } = req.body // Отримання id продукту
+			console.log(req.body, 'addProduct ++++++++++')
+			// const { productId, options } = req.body // Отримання id продукту
 			// Перевірка чи існує продукт const
-			const product = await ProductsDBService.getById(productId)
+			// const product = await ProductsDBService.getById(productId)
 
-			if (!product) {
-				return res.status(404).json({ message: 'Product not found' }) // Відправка помилки, якщо продукт не знайдено
-			}
+			// if (!product) {
+			// 	return res.status(404).json({ message: 'Product not found' }) // Відправка помилки, якщо продукт не знайдено
+			// }
 
 			// Оновлення корзини або додавання нового продукту
-			const cart = await CartDBService.addProduct({
-				userId,
-				productId,
-				options,
-			})
+			// const cart = await CartDBService.addProduct({
+			// 	userId,
+			// 	productId,
+			// 	options,
+			// })
 
-			res.status(200).json({ message: 'Product added successfully', cart })
+			res.status(200).json({ message: 'Product added successfully' })
+			// res.status(200).json({ message: 'Product added successfully', cart })
 		} catch (err) {
 			next(err)
 		}
