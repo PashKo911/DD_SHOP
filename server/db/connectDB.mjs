@@ -1,4 +1,4 @@
-import config from '../config/default.mjs'
+import { config } from '../config/default.mjs'
 import mongoose from 'mongoose'
 
 mongoose.Promise = global.Promise

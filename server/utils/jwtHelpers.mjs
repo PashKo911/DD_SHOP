@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import config from '../config/default.mjs'
+import { config } from '../config/default.mjs'
 
 // Час дії токена
 const expiresIn = config.expiredTime

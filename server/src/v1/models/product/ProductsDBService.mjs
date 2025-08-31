@@ -5,7 +5,7 @@ import { createFieldsConfigurations } from './fieldsConfig.mjs'
 import { HttpError } from '../../../../errors/HttpError.mjs'
 import { PRODUCT_POPULATE_FIELDS, PRODUCT_BASE_FIELDS_CONFIGURATIONS } from './constants.mjs'
 import { formatProductForResponse, formatReqPriceRange } from './formatters.mjs'
-import config from '../../../../config/default.mjs'
+import { config } from '../../../../config/default.mjs'
 
 class ProductsDBService extends MongooseCRUDManager {
 	static fieldsConfigurations = PRODUCT_BASE_FIELDS_CONFIGURATIONS

@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-export default Object.freeze({
+export const config = Object.freeze({
 	port: process.env.PORT,
 	databaseUrl: process.env.MONGODB_URL,
 	databaseName: process.env.DATABASE_NAME,
@@ -9,6 +9,4 @@ export default Object.freeze({
 	tokenKey: process.env.SECRET_KEY,
 	expiredTime: process.env.EXPIRE_PERIOD,
 	exchangeRateApiUrl: process.env.EXCHANGE_RATE_API_URL,
-	defaultLanguage: 'en',
-	defaultCurrency: 'USD',
 })
