@@ -64,7 +64,7 @@ import { useI18n } from 'vue-i18n'
 import { ref, computed, watch, onMounted } from 'vue'
 import debounce from '@/utils/debounce'
 
-import InputNumber from '@/components/ui/inputNumber/InputNumber.vue'
+import InputNumber from '@/components/ui/InputNumber.vue'
 import SliderNumber from '@/components/sliderNumber/SliderNumber.vue'
 import ChevronDownIcon from '@primevue/icons/chevrondown'
 import ChevronUpIcon from '@primevue/icons/chevronup'

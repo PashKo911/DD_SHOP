@@ -80,14 +80,14 @@
 				}
 			}
 		},
-		"signIn": {
+		"signin": {
 			"title": {
 				"page": "Сторінка входу"
 			},
 			"separator": "або",
 			"subButtonText": "Ще не маєте облікового запису?"
 		},
-		"signUp": {
+		"signup": {
 			"title": {
 				"page": "Сторінка реєстрації"
 			},
@@ -207,6 +207,10 @@
 				"answer": "Так, у нас діє бонусна програма: за кожну покупку ви отримуєте бонусні бали, які можна використати для знижки на наступні замовлення."
 			}
 		],
+		"userMenu": {
+			"info": "Мої дані",
+			"dashboard": "Керування товарами"
+		},
 		"emptySearchMessage": "Нічого не знайдено",
 		"errorBlockTitle": "Не вдалося завантажити дані"
 	},
@@ -216,7 +220,7 @@
 		"languageSelect": "Перемикач мови",
 		"menuVisibilityToggler": "Відкрити, закрити навігаційне меню",
 		"cartLink": "Посилання на кошик",
-		"signIn": "Посилання на сторінку входу",
+		"signin": "Посилання на сторінку входу",
 		"notFoundAlt": "Ілюстрація числа 404, що позначає сторінку не знайдено",
 		"ratingLabel": "Рейтинг товару {rating} зірочок",
 		"colorRadioGroup": {
@@ -242,26 +246,30 @@
 			"promptLabel": "Введіть пароль",
 			"showPassword": "Показати пароль",
 			"hidePassword": "Приховати пароль",
-			"required": "Пароль обовʼязковий",
 			"level": {
 				"weakLabel": "Занадто легкий",
 				"mediumLabel": "Повинен бути надійнішим",
 				"strongLabel": "Дуже надійний"
-			},
-			"validateTips": {
-				"lowercase": "Потрібна мала літера",
-				"uppercase": "Потрібна велика літера",
-				"numeric": "Потрібна цифра",
-				"minLength": "Мінімум 6 символів"
 			}
 		},
 		"discountLabel": "Знижка {discount}"
 	},
 	"errors": {
 		"email": {
-			"invalid": "Некоректний email",
-			"required": "Email обов'язковий"
+			"invalid": "Невірна email адреса",
+			"required": "Email є обов'язковим",
+			"length": "Email 3–50 символів",
+			"duplicate": "{value} вже існує"
 		},
+		"password": {
+			"required": "Пароль є обов'язковим",
+			"length": "Пароль ≥ 8 символів",
+			"lowercase": "Потрібна мала літера",
+			"uppercase": "Потрібна велика літера",
+			"numeric": "Потрібна цифра"
+		},
+		"credentials": "Невірний email або пароль",
+		"unsupportedAuthMethod": "Вхід з паролем недоступний. Спробуйте через {value}.",
 		"colorInputGroup": {
 			"required": "Оберіть колір *"
 		},
@@ -277,10 +285,10 @@
 		"create": "Створити",
 		"save": "Зберегти",
 		"cancel": "Скасувати",
-		"logout": "Вийти",
 
-		"signIn": "Увійти",
-		"signUp": "Зареєструватися",
+		"signout": "Вийти",
+		"signin": "Увійти",
+		"signup": "Зареєструватися",
 		"subscribe": "Підписатися на новини",
 		"backHome": "Назад на головну",
 		"googleButton": "Продовжити з Google",

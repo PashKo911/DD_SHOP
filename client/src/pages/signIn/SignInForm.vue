@@ -2,25 +2,25 @@
 	<Form
 		v-slot="$form"
 		:resolver="resolver"
-		:validateOnSubmit="true"
 		:validateOnValueUpdate="false"
+		:validateOnBlur="true"
 		@submit="onFormSubmit"
 		class="p-50-15 bg-primary w-full rounded-xl"
 	>
 		<h1
 			class="text-creamy-cloud font-heading text-50-28 not-last:mb-50-20 leading-tight font-semibold capitalize"
 		>
-			{{ t('pages.signIn.title.page') }}
+			{{ t('pages.signin.title.page') }}
 		</h1>
 		<div class="not-last:mb-4 md:mb-6">
-			<continue-with-google-button />
+			<continue-with-google-button type="button" />
 		</div>
 		<div class="flex items-center justify-center gap-8 not-last:mb-4 md:mb-6">
 			<span class="h-[.0625rem] w-[26.236882%] bg-[#A5A5A5]"> </span>
 			<span
 				class="font-heading text-24-18 leading-tight text-[#595757] uppercase"
 			>
-				{{ t('pages.signIn.separator') }}
+				{{ t('pages.signin.separator') }}
 			</span>
 			<span class="h-[.0625rem] w-[26.236882%] bg-[#A5A5A5]"> </span>
 		</div>
@@ -31,7 +31,7 @@
 			>
 				{{ t('inputLabels.emailFieldLabel') }}
 			</label>
-			<InputText
+			<input-text
 				id="email"
 				name="email"
 				size="large"
@@ -39,15 +39,15 @@
 				placeholder="hello@email.com"
 				fluid
 			/>
-			<Message
-				v-if="$form.email?.invalid"
+			<message
+				v-if="$form.email?.invalid || serverErrorMessages.email"
 				severity="error"
 				size="small"
 				class="absolute bottom-0 left-2 translate-y-[calc(100%_+_.0625rem)]"
 				variant="simple"
 			>
-				{{ $form.email.error.message }}
-			</Message>
+				{{ t($form.email?.error?.message || serverErrorMessages.email) }}
+			</message>
 		</div>
 		<div class="not-last:mb-50-30 relative flex flex-col gap-1">
 			<label
@@ -56,7 +56,7 @@
 			>
 				{{ t('inputLabels.passwordFieldLabel') }}
 			</label>
-			<Password
+			<password
 				input-id="password"
 				type="text"
 				:placeholder="t('placeholders.passwordField')"
@@ -77,91 +77,146 @@
 						</li>
 					</ul>
 				</template>
-			</Password>
-			<Message
-				v-if="$form.password?.invalid"
+			</password>
+			<message
+				v-if="$form.password?.invalid || serverErrorMessages.password"
 				severity="error"
 				size="small"
 				variant="simple"
 				class="absolute bottom-0 left-2 translate-y-[calc(100%_+_.0625rem)]"
 			>
-				{{ $form.password.error.message }}
-			</Message>
+				{{ t($form?.password?.error?.message || serverErrorMessages.password) }}
+			</message>
 		</div>
-
+		<message
+			v-if="serverErrorMessages.general || serverErrorMessages.form"
+			severity="error"
+			size="small"
+			class="mb-3 pl-2"
+			variant="simple"
+		>
+			{{
+				serverErrorMessages.general ||
+				t(serverErrorMessages.form, {
+					value: authAvailableMethods,
+				})
+			}}
+		</message>
 		<Button
 			type="submit"
 			severity="secondary"
 			class="min-w-60 not-last:mb-4"
 			contrast
 			size="large"
-			:label="t('buttons.signIn')"
+			:label="t('buttons.signin')"
 		/>
 		<div
 			class="text-creamy-cloud text-24-18 font-heading flex flex-wrap gap-x-1.5 align-bottom leading-tight"
 		>
 			<span>
-				{{ t('pages.signIn.subButtonText') }}
+				{{ t('pages.signin.subButtonText') }}
 			</span>
 			<router-link
-				:to="{ name: 'signUp' }"
+				:to="{ name: 'signup' }"
 				class="focus-visible:outline-t-inverse-hover hover:text-t-inverse-hover rounded-sm underline outline outline-transparent transition-colors duration-300"
 			>
-				{{ t('buttons.signUp') }}
+				{{ t('buttons.signup') }}
 			</router-link>
 		</div>
+		<backdrop
+			:visible="isSigninLoading"
+			background-class="bg-creamy-cloud/30"
+		/>
+		<progress-bar
+			mode="indeterminate"
+			v-show="isSigninLoading"
+			:style="{
+				position: 'fixed',
+				top: '0',
+				left: '0',
+				zIndex: '1010',
+				width: '100%',
+			}"
+		/>
 	</Form>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
+
 import { yupResolver } from '@primevue/forms/resolvers/yup'
+import { authSchema } from '@/schemas/authSchema'
+import { mapServerErrorKeys } from '@/utils/errorHelpers/mapServerErrorKeys'
 
-import { object, string } from 'yup'
 import { useI18n } from 'vue-i18n'
-import { ref, computed } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 
-import InputText from '@/components/ui/inputText/InputText.vue'
-import Button from '@/components/ui/buttons/Button.vue'
 import { Form } from '@primevue/forms'
-import Message from '@/components/ui/message/Message.vue'
-import Password from '@/components/ui/password/Password.vue'
+import InputText from '@/components/ui/InputText.vue'
+import Button from '@/components/ui/buttons/Button.vue'
+import Message from '@/components/ui/Message.vue'
+import Password from '@/components/ui/Password.vue'
 import ContinueWithGoogleButton from '@/components/formControls/ContinueWithGoogleButton.vue'
+import Backdrop from '@/components/ui/Backdrop.vue'
+import ProgressBar from '@/components/ui/ProgressBar.vue'
+import { onBeforeRouteLeave, useRouter } from 'vue-router'
 
 const { t, tm } = useI18n()
 
+const router = useRouter()
+const authStore = useAuthStore()
+const { signin, clearSigninErrors } = authStore
+
+const { isSigninLoading, signinServerValidationErrors } = storeToRefs(authStore)
+
+const resolver = yupResolver(authSchema)
+
+//========================================================================================================================================================
+
 const passwordTips = computed(() => {
-	return tm('accessibility.passwordFieldTips.validateTips')
+	const { length, lowercase, uppercase, numeric } = tm('errors.password')
+
+	return {
+		length,
+		lowercase,
+		uppercase,
+		numeric,
+	}
 })
 
-const schema = computed(() =>
-	object().shape({
-		email: string()
-			.trim()
-			.required(t('errors.email.required'))
-			.email(t('errors.email.invalid')),
-		password: string()
-			.required(t('accessibility.passwordFieldTips.required'))
-			.min(6, t('accessibility.passwordFieldTips.validateTips.minLength'))
-			.matches(
-				/[a-z]/,
-				t('accessibility.passwordFieldTips.validateTips.lowercase'),
-			)
-			.matches(
-				/[A-Z]/,
-				t('accessibility.passwordFieldTips.validateTips.uppercase'),
-			)
-			.matches(
-				/[0-9]/,
-				t('accessibility.passwordFieldTips.validateTips.numeric'),
-			),
-	}),
-)
+const i18nPathsForServerErrors = {
+	email: 'errors.email',
+	password: 'errors.password',
+	form: 'errors',
+	credentials: 'errors',
+}
 
-const resolver = computed(() => yupResolver(schema.value))
+const serverErrorMessages = computed(() => {
+	return mapServerErrorKeys(
+		signinServerValidationErrors.value,
+		i18nPathsForServerErrors,
+	)
+})
 
-const onFormSubmit = ({ valid, values }) => {
+const authAvailableMethods = computed(() => {
+	const methodsArr = signinServerValidationErrors.value?.form?.value
+	if (!methodsArr || !Array.isArray(methodsArr) || !methodsArr.length) {
+		return null
+	}
+	return methodsArr.join()
+})
+
+//========================================================================================================================================================
+
+const onFormSubmit = async ({ valid, values }) => {
 	if (valid) {
-		console.log('submitted', values)
+		await signin(values)
+		router.push({ name: 'home' })
 	}
 }
+
+onBeforeRouteLeave(() => {
+	clearSigninErrors()
+})
 </script>

@@ -1,7 +1,7 @@
 export default [
 	{
 		path: 'auth',
-		redirect: { name: 'signIn' },
+		redirect: { name: 'signin' },
 		meta: {
 			useInMenu: false,
 			requiredAuth: false,
@@ -9,18 +9,18 @@ export default [
 
 		children: [
 			{
-				path: 'sign-in',
-				name: 'signIn',
-				component: () => import('@/pages/signIn/SignInPage.vue'),
+				path: 'signin',
+				name: 'signin',
+				component: () => import('@/pages/signin/SigninPage.vue'),
 				meta: {
 					useInMenu: false,
 					requiredAuth: false,
 				},
 			},
 			{
-				path: 'sign-up',
-				name: 'signUp',
-				component: () => import('@/pages/signUp/SignUpPage.vue'),
+				path: 'signup',
+				name: 'signup',
+				component: () => import('@/pages/signup/SignupPage.vue'),
 				meta: {
 					useInMenu: false,
 					requiredAuth: false,

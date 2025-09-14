@@ -19,6 +19,9 @@ export const useGeneralStore = defineStore('general', () => {
 	function setError(operationName, val) {
 		errorStates[operationName] = val
 	}
+	function clearError(operationName) {
+		errorStates[operationName] = null
+	}
 	function startLoading(operationName) {
 		setLoading(operationName, true)
 		setError(operationName, null)
@@ -59,6 +62,7 @@ export const useGeneralStore = defineStore('general', () => {
 		hasError,
 		setLoading,
 		setError,
+		clearError,
 		startLoading,
 		generalApiOperation,
 	}

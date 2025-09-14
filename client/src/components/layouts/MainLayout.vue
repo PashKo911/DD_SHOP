@@ -12,17 +12,18 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useHead } from '@vueuse/head'
+
 import { localeCodes } from '@/config/i18nConfig'
 import { DEFAULT_LOCALE } from '@/config/appConfig'
 import getPathForLocale from '@/utils/localeHelpers/getPathForLocale'
 
 import HeaderMenu from '@/components/partials/header/HeaderMenu.vue'
 import AppFooter from '@/components/partials/footer/AppFooter.vue'
-import Toast from '@/components/ui/toast/Toast.vue'
+import Toast from '@/components/ui/Toast.vue'
 import SubscribeSection from '@/components/partials/subscribeSection/SubscribeSection.vue'
 import SeparatorBase from '@/components/separators/SeparatorBase.vue'
 

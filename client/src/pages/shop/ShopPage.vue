@@ -97,7 +97,7 @@
 		/>
 		<backdrop
 			:visible="isProductsLoading"
-			background-class="bg-creamy-cloud/50"
+			background-class="bg-creamy-cloud/30"
 		/>
 	</div>
 </template>
@@ -123,9 +123,9 @@ import ShopFilter from './ShopFilter.vue'
 import ShopList from './ShopList.vue'
 import Paginator from '@/components/paginator/Paginator.vue'
 import SelectButton from '@/components/ui/buttons/SelectButton.vue'
-import Select from '@/components/ui/select/Select.vue'
+import Select from '@/components/ui/Select.vue'
 import ShopChipsGroup from './ShopChipsGroup.vue'
-import ProgressBar from '@/components/ui/progressBar/ProgressBar.vue'
+import ProgressBar from '@/components/ui/ProgressBar.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import Backdrop from '@/components/ui/Backdrop.vue'
 import FilterIcon from '@/components/icons/FilterIcon.vue'

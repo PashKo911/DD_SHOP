@@ -38,7 +38,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 
-import RadioGroup from '@/components/ui/radioGroup/RadioGroup.vue'
+import RadioGroup from '@/components/ui/RadioGroup.vue'
 import ArrowRightIcon from '../icons/ArrowRightIcon.vue'
 
 const { t } = useI18n()

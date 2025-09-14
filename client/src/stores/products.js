@@ -223,7 +223,7 @@ export const useProductsStore = defineStore('products', () => {
 			},
 		})
 		if (!result) return
-		productDetails.value = result
+		productDetails.value = result.product
 	}
 	const clearProductDetails = () => {
 		productDetails.value = {}

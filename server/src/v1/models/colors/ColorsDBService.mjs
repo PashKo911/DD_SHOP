@@ -1,6 +1,7 @@
 import Color from './Color.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
 import { HttpError } from '../../../../errors/HttpError.mjs'
+import { errorCodes } from '../../../../config/errorCodes.mjs'
 
 class ColorsDBService extends MongooseCRUDManager {
 	async getList(language) {
@@ -15,7 +16,10 @@ class ColorsDBService extends MongooseCRUDManager {
 			return docs.map((d) => ({ ...d, label: d.label[language] }))
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			throw new HttpError(500, 'Failed to get available colors', err)
+			throw new HttpError(500, 'Failed to get available colors', {
+				code: errorCodes.DATABASE_ERROR,
+				cause: err,
+			})
 		}
 	}
 }

@@ -1,32 +1,29 @@
+import { normalizeError } from '../utils/errorNormalizers/normalizeError.mjs'
+
 export default function errorHandler(app) {
 	app.use((req, res, next) => {
 		const err = new Error(`Route ${req.method} ${req.originalUrl} not found`)
 		err.status = 404
+		err.expose = true
 		next(err)
 	})
 
 	app.use((err, req, res, next) => {
-		const status = err.status || 500
-		const payload = {
-			error: {
-				message: err.message || 'Internal Server Error',
-				...(req.app.get('env') === 'development' && { stack: err.stack }),
-			},
-		}
+		const { status, body, logLevel } = normalizeError(err)
 
-		if (status === 404) {
-			console.warn(
-				`[WARN] ${new Date().toISOString()} ${req.method} ${req.originalUrl} → ${status}: ${err.message}`
-			)
+		const time = new Date().toISOString()
+		const safeMsg = err && err.message ? err.message : String(err)
+		const messageForLog = `${time} ${req.method} ${req.originalUrl} → ${status}: ${safeMsg}`
+
+		if (logLevel === 'warn') {
+			console.warn('[WARN]', messageForLog)
 		} else {
-			console.error(
-				`[ERROR] ${new Date().toISOString()} ${req.method} ${req.originalUrl} → ${status}: ${err.message}`
-			)
+			console.error('[ERROR]', messageForLog)
 			if (req.app.get('env') === 'development') {
-				console.error(err.stack)
+				console.error(err && err.stack ? err.stack : err)
 			}
 		}
 
-		res.status(status).json(payload)
+		res.status(status).json(body)
 	})
 }

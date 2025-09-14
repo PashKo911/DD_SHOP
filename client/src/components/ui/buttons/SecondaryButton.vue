@@ -18,7 +18,7 @@ const theme = {
         px-3 py-2 gap-2 rounded-sm disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
         bg-surface-700
         border border-primary
-        enabled:hover:text-surface-700
+        hover:text-surface-700
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2
         focus-visible:outline-surface-600
         p-vertical:flex-col p-fluid:w-full p-fluid:p-icon-only:w-10
@@ -27,11 +27,11 @@ const theme = {
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
         p-large:text-[1.125rem] p-large:px-[0.875rem] p-large:py-[0.625rem]
         p-raised:shadow-sm p-rounded:rounded-[2rem]
-        p-outlined:bg-transparent enabled:hover:p-outlined:bg-surface-50 enabled:active:p-outlined:bg-surface-100
-        p-outlined:border-surface-200 enabled:hover:p-outlined:border-surface-200 enabled:active:p-outlined:border-surface-200
-        p-outlined:text-surface-500 enabled:hover:p-outlined:text-surface-500
+        p-outlined:bg-transparent hover:p-outlined:bg-surface-50 active:p-outlined:bg-surface-100
+        p-outlined:border-surface-200 hover:p-outlined:border-surface-200 active:p-outlined:border-surface-200
+        p-outlined:text-surface-500 hover:p-outlined:text-surface-500
         p-text:bg-transparent
-        p-text:border-transparent enabled:hover:p-text:border-primary
+        p-text:border-transparent hover:p-text:border-primary
         p-text:text-surface-500 
     `,
 	loadingIcon: ``,

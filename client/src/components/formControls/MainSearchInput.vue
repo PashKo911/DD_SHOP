@@ -47,7 +47,7 @@ import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { computed, ref, watch } from 'vue'
 
-import AutoComplete from '../ui/autocomplete/AutoComplete.vue'
+import AutoComplete from '../ui/AutoComplete.vue'
 import CloseIcon from '../icons/CloseIcon.vue'
 import SearchIcon from '@/components/icons/SearchIcon.vue'
 //========================================================================================================================================================

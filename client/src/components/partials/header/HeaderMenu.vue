@@ -38,25 +38,15 @@
 						<router-link
 							:to="{ name: 'cart' }"
 							:aria-label="t('accessibility.cartLink')"
-							class="focus-visible:outline-t-inverse-hover z-30 order-3 rounded-sm outline outline-transparent md:order-2"
+							class="focus-visible:outline-t-inverse-hover z-30 order-3 flex items-center rounded-sm outline outline-transparent md:order-2"
 						>
 							<cart-icon
-								class="fill-inverse hover:fill-t-inverse-hover [.router-link-active_&]:fill-t-inverse-hover duration-300"
+								class="fill-inverse hover:fill-t-inverse-hover [.router-link-active_&]:fill-t-inverse-hover"
 							/>
 						</router-link>
 					</teleport>
 					<teleport defer :to="languageSelectPosition">
-						<router-link
-							to="/auth"
-							:aria-label="t('accessibility.signIn')"
-							:class="{ 'fill-t-inverse-hover': isAuthSection }"
-							class="focus-visible:outline-t-inverse-hover order-3 rounded-sm outline outline-transparent transition-colors duration-300"
-						>
-							<sign-in-icon
-								:class="{ 'fill-t-inverse-hover': isAuthSection }"
-								class="fill-inverse hover:fill-t-inverse-hover duration-300"
-							/>
-						</router-link>
+						<user-control class="order-3" />
 					</teleport>
 				</div>
 			</div>
@@ -73,17 +63,17 @@ import { useRoute } from 'vue-router'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useI18n } from 'vue-i18n'
 import { useCommonStore } from '@/stores/commonStore'
+
 import { getMenuItems } from '@/utils/getMenuItems'
 
 import CartIcon from '@/components/icons/CartIcon.vue'
-import SignInIcon from '@/components/icons/SignInIcon.vue'
 import HeaderMenuList from './HeaderMenuList.vue'
 import HeaderLanguageSelect from './HeaderLanguageSelect.vue'
 import HeaderMenuVisibilityToggler from './HeaderMenuVisibilityToggler.vue'
 import MainSearchInput from '@/components/formControls/MainSearchInput.vue'
+import UserControl from '@/components/userControl/UserControl.vue'
 //========================================================================================================================================================
 
-const route = useRoute()
 const { menuItems } = getMenuItems()
 const commonStore = useCommonStore()
 
@@ -95,8 +85,6 @@ const { t } = useI18n()
 const isMobile = useMediaQuery('(max-width: 767.98px)')
 const isTablet = useMediaQuery('(max-width: 991.98px)')
 //========================================================================================================================================================
-
-const isAuthSection = computed(() => route.path.startsWith('/auth'))
 
 const languageSelectPosition = computed(() =>
 	isMobile.value ? '#appNav' : '#headerActions',

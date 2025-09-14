@@ -1,5 +1,6 @@
 import FiltersHelper from '../../../utils/searchHelpers/FiltersHelper.mjs'
 import { HttpError } from '../../../errors/HttpError.mjs'
+import { errorCodes } from '../../../config/errorCodes.mjs'
 
 class MongooseCRUDManager {
 	constructor(model) {
@@ -20,16 +21,14 @@ class MongooseCRUDManager {
 			this.addPopulationOptions(query, populateFields)
 
 			const document = await query.exec()
-			if (!document) {
-				throw new HttpError(404, 'Document not found')
-			}
 			return document
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			if (err.name === 'CastError') {
-				throw new HttpError(400, 'Invalid query parameters', err)
-			}
-			throw new HttpError(500, 'Error retrieving data', err)
+			if (err && (err.name === 'CastError' || err.name === 'ValidationError')) throw err
+			throw new HttpError(500, 'Database operation failed', {
+				cause: err,
+				code: errorCodes.DATABASE_ERROR,
+			})
 		}
 	}
 
@@ -46,10 +45,12 @@ class MongooseCRUDManager {
 			return { documents, count }
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			if (err.name === 'CastError') {
-				throw new HttpError(400, 'Invalid filters or pagination parameters', err)
-			}
-			throw new HttpError(500, 'Failed to fetch documents', err)
+			// CastError might occur if filters contain invalid ids etc.
+			if (err && (err.name === 'CastError' || err.name === 'ValidationError')) throw err
+			throw new HttpError(500, 'Failed to fetch documents', {
+				cause: err,
+				code: errorCodes.DATABASE_ERROR,
+			})
 		}
 	}
 
@@ -61,7 +62,12 @@ class MongooseCRUDManager {
 			return documents.map((doc) => doc.toObject())
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			throw new HttpError(500, 'Error retrieving data', err)
+			if (err && (err.name === 'CastError' || err.name === 'ValidationError')) throw err
+			throw new HttpError(500, 'Failed to get list', {
+				cause: err,
+				code: errorCodes.DATABASE_ERROR,
+				expose: false,
+			})
 		}
 	}
 	/**
@@ -86,6 +92,12 @@ class MongooseCRUDManager {
 	 *     - 500 on any other database or aggregation error.
 	 */
 	async getRandomList({ limit = 10, match = {}, populateFields = [] } = {}) {
+		if (!Number.isInteger(limit) || limit <= 0) {
+			throw new HttpError(400, '`Limit` must be a positive integer', {
+				code: errorCodes.BAD_REQUEST,
+				expose: true,
+			})
+		}
 		try {
 			const pipeline = [{ $match: match }, { $sample: { size: limit } }]
 
@@ -95,7 +107,15 @@ class MongooseCRUDManager {
 				pipeline.push({
 					$lookup: { from, localField, foreignField, as },
 				})
-				pipeline.push({ $unwind: `$${as}` })
+
+				if (as) {
+					pipeline.push({
+						$unwind: {
+							path: `$${as}`,
+							preserveNullAndEmptyArrays: true,
+						},
+					})
+				}
 			})
 
 			const documents = await this.model.aggregate(pipeline).exec()
@@ -103,10 +123,8 @@ class MongooseCRUDManager {
 			return documents
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			if (err.name === 'CastError') {
-				throw new HttpError(400, 'Invalid query parameters', err)
-			}
-			throw new HttpError(500, 'Error retrieving data', err)
+			if (err && (err.name === 'CastError' || err.name === 'ValidationError')) throw err
+			throw new HttpError(500, 'Failed to get random list', { cause: err, code: errorCodes.DATABASE_ERROR })
 		}
 	}
 
@@ -116,13 +134,8 @@ class MongooseCRUDManager {
 			return await newItem.save()
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			if (err.name === 'ValidationError') {
-				throw new HttpError(400, 'Validation failed', err)
-			}
-			if (err.name === 'MongoServerError' && err.code === 11000) {
-				throw new HttpError(409, 'Duplicate key error', err)
-			}
-			throw new HttpError(500, 'Error creating data')
+			if (err && (err.code === 11000 || err.code === 11001 || err.name === 'ValidationError')) throw err
+			throw new HttpError(500, 'Failed to create document', { cause: err, code: errorCodes.DATABASE_ERROR })
 		}
 	}
 
@@ -133,16 +146,15 @@ class MongooseCRUDManager {
 				query = query.populate(field)
 			})
 			const document = await query.lean().exec()
-			if (!document) {
-				throw new HttpError(404, `Document with id=${id} not found`)
-			}
+
 			return document
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			if (err.name === 'CastError') {
-				throw new HttpError(400, `Invalid id format id:${id}`)
-			}
-			throw new HttpError(500, 'Error finding data by id', err)
+			if (err && err.name === 'CastError') throw err
+			throw new HttpError(500, `Failed to get document with id:${id}`, {
+				cause: err,
+				code: errorCodes.DATABASE_ERROR,
+			})
 		}
 	}
 
@@ -160,17 +172,16 @@ class MongooseCRUDManager {
 					query = query.populate(field.fieldForPopulation, field.requiredFieldsFromTargetObject)
 				}
 			})
+			filters
 			const document = await query.exec()
-			if (!document) {
-				throw new HttpError(404, 'Document not found')
-			}
 			return document
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			if (err.name === 'CastError') {
-				throw new HttpError(400, 'Invalid filter parameters', err)
-			}
-			throw new HttpError(500, 'Error finding document', err)
+			if (err && err.name === 'CastError') throw err
+			throw new HttpError(500, 'Failed to get document', {
+				cause: err,
+				code: errorCodes.DATABASE_ERROR,
+			})
 		}
 	}
 
@@ -178,18 +189,23 @@ class MongooseCRUDManager {
 		try {
 			const updated = await this.model.findByIdAndUpdate(id, data, { new: true, runValidators: true }).exec()
 			if (!updated) {
-				throw new HttpError(404, `Document with id:${id} not found`)
+				throw new HttpError(404, `Document with id:${id} not found`, {
+					code: errorCodes.NOT_FOUND,
+					expose: true,
+				})
 			}
 			return updated
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			if (err.name === 'ValidationError' || err.name === 'CastError') {
-				throw new HttpError(400, 'Invalid update data or id format', err)
-			}
-			if (err.name === 'MongoServerError' && err.code === 11000) {
-				throw new HttpError(409, 'Duplicate key error on update', err)
-			}
-			throw new HttpError(500, 'Error updating data', err)
+			if (
+				err &&
+				(err.code === 11000 ||
+					err.code === 11001 ||
+					err.name === 'ValidationError' ||
+					err.name === 'CastError')
+			)
+				throw err
+			throw new HttpError(500, 'Failed to update document', { cause: err, code: errorCodes.DATABASE_ERROR })
 		}
 	}
 
@@ -197,15 +213,19 @@ class MongooseCRUDManager {
 		try {
 			const deleted = await this.model.findByIdAndDelete(id).exec()
 			if (!deleted) {
-				throw new HttpError(404, `Document with id:${id} not found`)
+				throw new HttpError(404, `Document with id:${id} not found`, {
+					code: errorCodes.NOT_FOUND,
+					expose: true,
+				})
 			}
 			return deleted
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			if (err.name === 'CastError') {
-				throw new HttpError(400, `Invalid id format: ${id}`, err)
-			}
-			throw new HttpError(500, 'Error deleting data')
+			if (err && err.name === 'CastError') throw err
+			throw new HttpError(500, `Failed to delete document with id:${id}`, {
+				cause: err,
+				code: errorCodes.DATABASE_ERROR,
+			})
 		}
 	}
 

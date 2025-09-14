@@ -9,6 +9,7 @@ const apiEndpoints = {
 	auth: {
 		signin: '/auth/signin',
 		signup: '/auth/signup',
+		authWithGoogle: '/auth/google',
 		profileByToken: '/auth/profile',
 	},
 	cart: {

@@ -1,14 +1,18 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
-import apiClient from '@/config/axiosConfig'
-import apiEndpoints from '@/api/apiEndpoints'
+import { ref, computed, shallowRef } from 'vue'
+
 import { useGeneralStore } from './general'
 import { useUsersStore } from './users'
+
+import apiClient from '@/config/axiosConfig'
+import apiEndpoints from '@/api/apiEndpoints'
+import authErrorsFormatter from '@/utils/errorHelpers/authErrorsFormatter'
+import router from '@/router'
 
 export const useAuthStore = defineStore('auth', () => {
 	const generalStore = useGeneralStore()
 	const usersStore = useUsersStore()
-	const { generalApiOperation } = generalStore
+	const { generalApiOperation, isLoading, hasError, clearError } = generalStore
 
 	const user = ref(null)
 	const token = ref(localStorage.getItem('token') || null)
@@ -17,8 +21,27 @@ export const useAuthStore = defineStore('auth', () => {
 	const currentUserPermissions = computed(() => user.value?.permissions || {})
 
 	const isAuthenticated = computed(() => {
-		return user.value
+		return Boolean(user.value)
 	})
+
+	const isSignupLoading = computed(() => {
+		return isLoading('signup')
+	})
+
+	const signupServerValidationErrors = computed(() => {
+		const axiosErr = hasError('signup')
+		return authErrorsFormatter(axiosErr)
+	})
+
+	const isSigninLoading = computed(() => {
+		return isLoading('signin')
+	})
+
+	const signinServerValidationErrors = computed(() => {
+		const axiosErr = hasError('signin')
+		return authErrorsFormatter(axiosErr)
+	})
+
 	//========================================================================================================================================================
 
 	const setToken = (newToken) => {
@@ -30,11 +53,42 @@ export const useAuthStore = defineStore('auth', () => {
 		}
 	}
 
-	const login = async (username, password) => {
-		return generalApiOperation({
+	const getTokenAndUserDataWithGoogle = async (googleAuthCode) => {
+		const result = await generalApiOperation({
+			operationName: 'getTokenAndUserDataWithGoogle',
 			operation: async () => {
-				const response = await apiClient.post(apiEndpoints.auth.login(), {
-					username,
+				const response = await apiClient.post(
+					apiEndpoints.auth.authWithGoogle,
+					{
+						code: googleAuthCode.code,
+					},
+				)
+				return response
+			},
+		})
+		user.value = result.data.user
+		setToken(result.data.token)
+	}
+
+	const getUserProfileByToken = async () => {
+		if (!token.value) return null
+		return generalApiOperation({
+			operationName: 'getUserProfileByToken',
+			operation: async () => {
+				const response = await apiClient.get(apiEndpoints.auth.profileByToken)
+
+				user.value = response.data.user
+				return response.data.user
+			},
+		})
+	}
+
+	const signin = async ({ email, password }) => {
+		return generalApiOperation({
+			operationName: 'signin',
+			operation: async () => {
+				const response = await apiClient.post(apiEndpoints.auth.signin, {
+					email,
 					password,
 				})
 
@@ -42,27 +96,17 @@ export const useAuthStore = defineStore('auth', () => {
 				user.value = response.data.user
 				return response.data.user
 			},
-		})
-	}
-
-	const getUserProfileByToken = async () => {
-		const currentToken = localStorage.getItem('token')
-
-		if (!currentToken) return null
-		return generalApiOperation({
-			operation: async () => {
-				const response = await apiClient.get(apiEndpoints.auth.profileByToken())
-				setToken(response.data.token)
-				user.value = response.data.user
-				return response.data.user
+			successCallback: () => {
+				router.push({ name: 'home' })
 			},
 		})
 	}
 
-	const register = async (email, password) => {
+	const signup = async ({ email, password }) => {
 		return generalApiOperation({
+			operationName: 'signup',
 			operation: async () => {
-				const response = await apiClient.post(apiEndpoints.auth.register(), {
+				const response = await apiClient.post(apiEndpoints.auth.signup, {
 					email,
 					password,
 				})
@@ -71,12 +115,23 @@ export const useAuthStore = defineStore('auth', () => {
 				user.value = response.data.user
 				return response.data
 			},
+			successCallback: () => {
+				router.push({ name: 'home' })
+			},
 		})
 	}
 
-	const logout = () => {
+	const signout = () => {
 		setToken(null)
 		user.value = null
+	}
+
+	const clearSigninErrors = () => {
+		clearError('signin')
+	}
+
+	const clearSignupErrors = () => {
+		clearError('signup')
 	}
 
 	return {
@@ -87,11 +142,20 @@ export const useAuthStore = defineStore('auth', () => {
 		// computed
 		currentUserPermissions,
 		isAuthenticated,
+		signupServerValidationErrors,
+		signinServerValidationErrors,
+
+		// status
+		isSignupLoading,
+		isSigninLoading,
 
 		// actions
 		getUserProfileByToken,
-		login,
-		register,
-		logout,
+		signin,
+		getTokenAndUserDataWithGoogle,
+		signup,
+		signout,
+		clearSigninErrors,
+		clearSignupErrors,
 	}
 })

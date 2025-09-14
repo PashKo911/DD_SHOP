@@ -23,6 +23,7 @@ class ProductController {
 			const data = await ProductsDBService.getList(req.query, language, currency, rate)
 
 			res.status(200).json({
+				success: true,
 				data,
 			})
 		} catch (err) {
@@ -35,6 +36,7 @@ class ProductController {
 			const data = await ProductsDBService.getSuggestions(req.query, language)
 
 			res.status(200).json({
+				success: true,
 				data,
 			})
 		} catch (err) {
@@ -52,11 +54,12 @@ class ProductController {
 			const rate = await getRate(currency)
 
 			const product = await ProductsDBService.getById(id, language, currency, rate)
-			res.status(200).json(product)
+			res.status(200).json({ success: true, product })
 		} catch (err) {
 			next(err)
 		}
 	}
+	//========================================================================================================================================================
 
 	static async registerProduct(req, res, next) {
 		const expressErrors = validationResult(req)
@@ -113,6 +116,7 @@ class ProductController {
 			next(err)
 		}
 	}
+	//========================================================================================================================================================
 
 	static async getOptions(req, res, next) {
 		try {
@@ -129,6 +133,7 @@ class ProductController {
 			const price = await ProductsDBService.getPriceRange(rate)
 
 			res.status(200).json({
+				success: true,
 				genders,
 				styles,
 				colors,
@@ -146,6 +151,7 @@ class ProductController {
 
 			const styles = await DressStyleDBService.getListWithImg(language)
 			res.status(200).json({
+				success: true,
 				styles,
 			})
 		} catch (err) {

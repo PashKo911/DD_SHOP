@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { i18n } from '@/plugins/i18n'
 
 import authRoutes from './routes/authRoutes'
 import shopRoutes from './routes/shopRoutes'
 
 import { useCommonStore } from '@/stores/commonStore'
+import { useAuthStore } from '@/stores/auth'
+
 import detectLocale from '@/utils/localeHelpers/detectLocale'
 import { DEFAULT_LOCALE } from '@/config/appConfig'
 
@@ -72,8 +73,15 @@ const router = createRouter({
 	],
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
 	const detectedLocale = detectLocale(to)
+	const authStore = useAuthStore()
+	const { isAuthenticated, token } = storeToRefs(authStore)
+	const { getUserProfileByToken } = authStore
+
+	if (!isAuthenticated.value && token.value) {
+		await getUserProfileByToken()
+	}
 
 	if (to.params.locale === detectedLocale) {
 		return next()
