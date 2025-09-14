@@ -190,7 +190,6 @@ const duplicateKeyVal = computed(() => {
 const onFormSubmit = async ({ valid, values }) => {
 	if (valid) {
 		await signup(values)
-		router.push({ name: 'home' })
 	}
 }
 

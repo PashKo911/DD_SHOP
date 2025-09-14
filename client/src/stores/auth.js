@@ -65,6 +65,9 @@ export const useAuthStore = defineStore('auth', () => {
 				)
 				return response
 			},
+			successCallback: () => {
+				router.push({ name: 'home' })
+			},
 		})
 		user.value = result.data.user
 		setToken(result.data.token)
