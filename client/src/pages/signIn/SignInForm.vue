@@ -212,7 +212,6 @@ const authAvailableMethods = computed(() => {
 const onFormSubmit = async ({ valid, values }) => {
 	if (valid) {
 		await signin(values)
-		router.push({ name: 'home' })
 	}
 }
 
