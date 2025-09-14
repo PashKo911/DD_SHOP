@@ -18,7 +18,6 @@ const theme = {
         p-invalid:outline p-invalid:outline-offset-0 p-invalid:outline-red-400 `,
 	pcToggleButton: {
 		root: `inline-flex items-center justify-center overflow-hidden relative cursor-pointer select-none grow
-
             rounded-none first:rounded-s-md last:rounded-e-md
             bg-primary
             text-primary

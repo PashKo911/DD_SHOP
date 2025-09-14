@@ -1,3 +1,5 @@
+export const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
+
 export const API_VERSION = import.meta.env.VITE_API_VERSION ?? 'v1'
 
 export const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:3000'

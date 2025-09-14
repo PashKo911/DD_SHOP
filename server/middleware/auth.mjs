@@ -1,4 +1,6 @@
+import { errorCodes } from '../config/errorCodes.mjs'
 import { parseBearer } from '../utils/jwtHelpers.mjs'
+import { HttpError } from '../errors/HttpError.mjs'
 
 export const authMiddleware = (req, res, next) => {
 	try {
@@ -6,13 +8,23 @@ export const authMiddleware = (req, res, next) => {
 		req.user = user
 		next()
 	} catch (err) {
-		res.status(401).json({ result: 'Access Denied' })
+		return next(
+			new HttpError(401, 'Invalid or missing token', {
+				cause: err,
+				code: errorCodes.UNAUTHORIZED,
+				details: [{ field: 'token', message: 'Invalid or missing token' }],
+			})
+		)
 	}
 }
 
 export function checkAdmin(req, res, next) {
-	if (!req.user || req.user.role.name !== 'admin') {
-		return res.status(403).json({ message: 'Forbidden: Admins only' })
+	if (!req.user || req.user.type.name !== 'admin') {
+		return next(
+			new HttpError(403, 'Access denied', {
+				code: errorCodes.FORBIDDEN,
+			})
+		)
 	}
 	next()
 }

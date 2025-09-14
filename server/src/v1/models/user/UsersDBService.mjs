@@ -1,6 +1,7 @@
 import User from './User.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
 import { HttpError } from '../../../../errors/HttpError.mjs'
+import { errorCodes } from '../../../../config/errorCodes.mjs'
 
 class UsersDBService extends MongooseCRUDManager {
 	async getList(filters) {
@@ -9,31 +10,31 @@ class UsersDBService extends MongooseCRUDManager {
 			return res
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			throw new HttpError(500, 'Failed to get users', err)
+			throw new HttpError(500, 'Failed to get users', { cause: err, code: errorCodes.DATABASE_ERROR })
 		}
 	}
 	async getById(id) {
 		try {
-			const document = await super.getById(id, { name: 1, type: 1 }, ['type'])
-			if (!document) {
-				throw new HttpError(404, `User with id:${id} not found`)
-			}
+			const document = await super.getById(id, { googleId: 0, password: 0 }, ['type'])
 			return document
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			throw new HttpError(500, `Failed to get user with id:${id}`, err)
+			throw new HttpError(500, `Failed to get user with id:${id}`, {
+				cause: err,
+				code: errorCodes.DATABASE_ERROR,
+			})
 		}
 	}
 	async findOne(filters) {
 		try {
 			const document = await super.findOne(filters, {}, ['type'])
-			if (!document) {
-				throw new HttpError(404, 'User not found')
-			}
 			return document
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			throw new HttpError(500, 'Failed to get user by filters')
+			throw new HttpError(500, 'Failed to get user by filters', {
+				cause: err,
+				code: errorCodes.DATABASE_ERROR,
+			})
 		}
 	}
 }

@@ -46,7 +46,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import RadioGroup from '@/components/ui/radioGroup/RadioGroup.vue'
+import RadioGroup from '@/components/ui/RadioGroup.vue'
 
 
 

@@ -1,20 +1,24 @@
 import mongoose from 'mongoose'
-const { Schema } = mongoose
+import { appConfig } from '../../../../config/appConfig.mjs'
 import bcrypt from 'bcryptjs'
+
+const { Schema } = mongoose
 
 const userSchema = new Schema({
 	email: {
 		type: String,
 		required: [true, 'Email is required'],
+		unique: true,
+		lowercase: true,
 		minlength: [3, 'Email must be at least 3 characters long'],
 		trim: true,
 	},
 	password: {
 		type: String,
 		required: function () {
-			return this.type.toString() !== '677c1233e3da04adc6ade35e'
+			return !this.googleId
 		},
-		// minlength: [6, 'Password must be at least 6 characters long'],
+		minlength: [6, 'Password must be at least 6 characters long'],
 		// validate: {
 		//   validator: function (v) {
 		//     return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
@@ -25,7 +29,14 @@ const userSchema = new Schema({
 		//     'Password must contain at least one letter, one number, and one special character',
 		// },
 	},
-
+	googleId: {
+		type: String,
+		unique: true,
+		sparse: true,
+	},
+	avatar: {
+		type: String,
+	},
 	type: {
 		type: Schema.Types.ObjectId,
 		ref: 'Type',
@@ -33,7 +44,7 @@ const userSchema = new Schema({
 	},
 	name: {
 		type: String,
-		default: 'Guest',
+		default: appConfig.defaultUserName,
 	},
 })
 
@@ -60,6 +71,8 @@ userSchema.pre('findOneAndUpdate', async function (next) {
 
 //---------------- Функція для перевірки правильності пароля ------------
 userSchema.methods.validPassword = async function (password) {
+	if (!this.password) return false
+
 	const isMatch = await bcrypt.compare(password, this.password)
 
 	return isMatch

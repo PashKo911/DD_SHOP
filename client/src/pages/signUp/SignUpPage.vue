@@ -6,12 +6,11 @@
 		<div
 			class="container flex min-h-[calc(100svh_-_7.375rem)] items-center justify-end pt-7 pb-8 md:min-h-[calc(100svh_-_8.75rem)] lg:min-h-[calc(100svh_-_6.1875rem)]"
 		>
-			<sign-up-form class="md:w-md-670-450 relative" />
+			<signup-form class="md:w-md-670-450 relative" />
 		</div>
 	</div>
 </template>
 
 <script setup>
-import MainLayout from '@/components/layouts/MainLayout.vue'
-import SignUpForm from './SignUpForm.vue'
+import SignupForm from './SignupForm.vue'
 </script>

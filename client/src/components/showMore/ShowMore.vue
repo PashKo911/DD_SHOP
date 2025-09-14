@@ -21,7 +21,7 @@
 				:aria-expanded="isOpen.toString()"
 				@click="isOpen = !isOpen"
 				@keydown.escape.prevent="isOpen = false"
-				class="text-t-hover w-max"
+				class="w-max font-black!"
 			/>
 		</slot>
 	</div>

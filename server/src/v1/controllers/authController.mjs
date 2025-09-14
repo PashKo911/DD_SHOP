@@ -1,114 +1,222 @@
 import { validationResult } from 'express-validator'
-import FormatValidationErrors from '../../../validators/formatValidationErrors.mjs'
+import { normalizeExpressValidatorErrors } from '../../../utils/errorNormalizers/normalizeExpressValidatorErrors.mjs'
 import UsersDBService from '../models/user/UsersDBService.mjs'
 import { prepareToken } from '../../../utils/jwtHelpers.mjs'
+import { appConfig } from '../../../config/appConfig.mjs'
+import { exchangeCodeForTokens, verifyIdToken } from '../../../services/googleAuth.mjs'
+import { HttpError } from '../../../errors/HttpError.mjs'
+import { errorCodes } from '../../../config/errorCodes.mjs'
+import { validationErrorCodes } from '../../../config/validationErrorCodes.mjs'
 
 class AuthController {
-	static async signup(req, res) {
+	static async signup(req, res, next) {
 		const expressErrors = validationResult(req)
 
 		if (!expressErrors.isEmpty()) {
-			const error = FormatValidationErrors.formatExpressErrors(expressErrors)
-			return res.status(400).json({
-				message: 'Validation failed',
-				error,
-			})
+			const details = normalizeExpressValidatorErrors(expressErrors)
+			return next(
+				new HttpError(400, 'Validation failed', {
+					code: errorCodes.VALIDATION_ERROR,
+					details,
+					expose: true,
+				})
+			)
 		}
-		try {
-			const newUser = {
-				...req.body,
-				username: req.body.username.toLowerCase(),
-			}
-			const { id, username, role } = await UsersDBService.createAndReturnUser(newUser)
 
-			const { token } = prepareToken({ id, username, role }, req.headers)
+		try {
+			const { email, password } = req.body
+
+			let user
+			user = await UsersDBService.findOne({ email })
+
+			if (user && !user.password && user.googleId) {
+				user.password = password
+				await user.save()
+				user = await UsersDBService.getById(user._id)
+			} else {
+				const { _id } = await UsersDBService.create({ email, password })
+				user = await UsersDBService.getById(_id)
+			}
+
+			const { _id, email: e, name } = user
+
+			const { token } = prepareToken({ _id, email: e, name }, req.headers)
 
 			res.status(201).json({
-				result: 'Signed up successfully',
+				success: true,
+				message: 'User registered successfully',
 				token,
-				user: {
-					id,
-					username,
-					role,
-				},
+				user,
 			})
 		} catch (err) {
-			console.error(err)
-			const error = FormatValidationErrors.formatMongooseErrors(err.message, 'User')
-			res.status(400).json({
-				message: 'Registration unsuccessful',
-				error,
-			})
+			next(err)
 		}
 	}
 
-	static async signin(req, res) {
+	static async signin(req, res, next) {
 		const expressErrors = validationResult(req)
 
 		if (!expressErrors.isEmpty()) {
-			const error = FormatValidationErrors.formatExpressErrors(expressErrors)
-			return res.status(400).json({
-				message: 'Validation failed',
-				error,
-			})
+			const details = normalizeExpressValidatorErrors(expressErrors)
+			return next(
+				new HttpError(400, 'Validation failed', {
+					code: errorCodes.VALIDATION_ERROR,
+					details,
+					expose: true,
+				})
+			)
 		}
 
 		try {
-			const user = await UsersDBService.findOne({ username: req.body.username.toLowerCase() })
+			const { email, password } = req.body
+			const user = await UsersDBService.findOne({ email })
 
-			if (!user || !(await user.validPassword(req.body.password))) {
-				return res.status(401).json({ error: [{ message: 'Invalid username or password' }] })
+			if (!user) {
+				return next(
+					new HttpError(401, 'Invalid email or password', {
+						code: errorCodes.UNAUTHORIZED,
+						details: [
+							{ field: appConfig.generalErrorField, validationCode: validationErrorCodes.CREDENTIALS },
+						],
+						expose: true,
+					})
+				)
 			}
 
-			const { id, username, role } = user
+			if (user.googleId && !user.password) {
+				return next(
+					new HttpError(
+						400,
+						'This account does not support password sign-in, please try another sign-in method',
+						{
+							code: errorCodes.AUTH_METHOD_NOT_SUPPORTED,
+							details: [
+								{
+									field: appConfig.generalErrorField,
+									validationCode: validationErrorCodes.UNSUPPORTED_AUTH_METHOD,
+									params: { value: appConfig.availableMethods },
+								},
+							],
+							expose: true,
+						}
+					)
+				)
+			}
 
-			const { token } = prepareToken({ id, username, role }, req.headers)
+			if (!(await user.validPassword(password))) {
+				return next(
+					new HttpError(401, 'Invalid email or password', {
+						code: errorCodes.UNAUTHORIZED,
+						details: [
+							{ field: appConfig.generalErrorField, validationCode: validationErrorCodes.CREDENTIALS },
+						],
+						expose: true,
+					})
+				)
+			}
 
-			res.json({
-				result: 'Authorized',
+			const { _id, email: e, name, type } = user
+
+			const { token } = prepareToken({ _id, email: e, name }, req.headers)
+
+			res.status(200).json({
+				success: true,
 				token,
 				user: {
-					id,
-					username,
-					role,
+					_id,
+					email: e,
+					name,
+					type,
 				},
 			})
 		} catch (err) {
-			console.error(err)
-			const error = FormatValidationErrors.formatMongooseErrors(err.message, 'User')
-			res.status(400).json({
-				message: 'Authentication unsuccessful',
-				error,
-			})
+			next(err)
 		}
 	}
 
-	static async getProfile(req, res) {
+	static async authWithGoogle(req, res, next) {
 		try {
-			const user = await UsersDBService.findOne({ username: req.user.username })
-
-			if (!user) {
-				return res.status(401).json({ message: 'Invalid credentials' })
+			const { code } = req.body
+			if (!code) {
+				return next(
+					new HttpError(400, 'Authentication code is required', {
+						code: errorCodes.BAD_REQUEST,
+						expose: true,
+					})
+				)
 			}
 
-			const { id, username, role } = user
-			const { token } = prepareToken({ id, username, role }, req.headers)
+			const tokenData = await exchangeCodeForTokens(code)
+			if (!tokenData?.id_token) {
+				return next(
+					new HttpError(400, 'No id_token returned from Google', {
+						code: errorCodes.BAD_REQUEST,
+						expose: true,
+					})
+				)
+			}
 
-			res.json({
+			const googleUserData = await verifyIdToken(tokenData.id_token)
+			if (!googleUserData || !googleUserData.email) {
+				return next(
+					new HttpError(400, 'Invalid Google token', { code: errorCodes.BAD_REQUEST, expose: true })
+				)
+			}
+
+			let user = await UsersDBService.findOne({ googleId: googleUserData.sub })
+
+			if (!user) user = await UsersDBService.findOne({ email: googleUserData.email })
+
+			if (user) {
+				user.googleId = googleUserData.sub
+				if (!user.avatar) user.avatar = googleUserData.picture
+				if (!user.name || user.name === appConfig.defaultUserName) user.name = googleUserData.name
+
+				await user.save()
+			} else {
+				const newUser = {
+					email: googleUserData.email,
+					googleId: googleUserData.sub,
+					avatar: googleUserData.picture,
+					name: googleUserData.name,
+				}
+				await UsersDBService.create(newUser)
+				user = await UsersDBService.findOne({ googleId: googleUserData.sub })
+			}
+
+			const { _id, email, avatar, type, name } = user
+			const { token } = prepareToken({ _id, email, name }, req.headers)
+
+			res.status(200).json({
+				success: true,
 				token,
 				user: {
-					id,
-					username,
-					role,
+					_id,
+					email,
+					avatar,
+					type,
+					name,
 				},
 			})
 		} catch (err) {
-			console.error(err)
-			const error = FormatValidationErrors.formatMongooseErrors(err.message, 'User')
-			res.status(400).json({
-				message: 'Internal server error:',
-				error,
+			next(err)
+		}
+	}
+
+	static async getProfile(req, res, next) {
+		try {
+			const user = await UsersDBService.getById(req.user._id)
+
+			if (!user) {
+				return next(new HttpError(404, 'User not found', { code: errorCodes.NOT_FOUND, expose: true }))
+			}
+
+			res.status(200).json({
+				success: true,
+				user,
 			})
+		} catch (err) {
+			next(err)
 		}
 	}
 }

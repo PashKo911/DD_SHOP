@@ -34,13 +34,13 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 
 import { useI18n } from 'vue-i18n'
 import { useLocales } from '@/composables/useLocales'
 import { supportedLocales } from '@/config/i18nConfig'
 
-import Select from '@/components/ui/select/Select.vue'
+import Select from '@/components/ui/Select.vue'
 
 const { t, locale } = useI18n()
 

@@ -125,7 +125,7 @@
 </template>
 
 <script setup>
-import { computed, ref, reactive } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 import { object, string, number } from 'yup'
@@ -134,11 +134,11 @@ import { useToast } from 'primevue/usetoast'
 import RatingComp from '@/components/ui/rating/RatingComp.vue'
 import SizeRadioGroup from '@/components/formControls/SizeRadioGroup.vue'
 import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
-import InputNumber from '@/components/ui/inputNumber/InputNumber.vue'
+import InputNumber from '@/components/ui/InputNumber.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import { Form } from '@primevue/forms'
 import { FormField } from '@primevue/forms'
-import Message from '@/components/ui/message/Message.vue'
+import Message from '@/components/ui/Message.vue'
 
 const { t } = useI18n()
 const toast = useToast()

@@ -5,6 +5,7 @@ import { createPinia } from 'pinia'
 import { createHead } from '@vueuse/head'
 
 import PrimeVue from 'primevue/config'
+import StyleClass from 'primevue/styleclass'
 import lockScroll from './directives/lockScroll'
 import ToastService from 'primevue/toastservice'
 import { initI18n, i18n } from './plugins/i18n'
@@ -32,5 +33,6 @@ app.use(head)
 app.use(ToastService)
 
 app.directive('lockScroll', lockScroll)
+app.directive('styleclass', StyleClass)
 
 app.mount('#app')

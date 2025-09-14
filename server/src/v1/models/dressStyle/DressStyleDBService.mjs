@@ -1,8 +1,7 @@
 import DressStyle from './DressStyle.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
 import { HttpError } from '../../../../errors/HttpError.mjs'
-import { locales } from '../../../../config/locales.mjs'
-import { resolveLocale } from '../../../../utils/resolveLocale.mjs'
+import { errorCodes } from '../../../../config/errorCodes.mjs'
 
 class DressStyleDBService extends MongooseCRUDManager {
 	async getList(language) {
@@ -17,7 +16,7 @@ class DressStyleDBService extends MongooseCRUDManager {
 			return docs.map((d) => ({ ...d, label: d.label[language] }))
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			throw new HttpError(500, 'Failed to get dress styles', err)
+			throw new HttpError(500, 'Failed to get dress styles', { code: errorCodes.DATABASE_ERROR, cause: err })
 		}
 	}
 	async getListWithImg(language) {
@@ -32,7 +31,10 @@ class DressStyleDBService extends MongooseCRUDManager {
 			return docs.map((d) => ({ ...d, label: d.label[language] }))
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			throw new HttpError(500, 'Failed to get dress styles with img', err)
+			throw new HttpError(500, 'Failed to get dress styles with img', {
+				code: errorCodes.DATABASE_ERROR,
+				cause: err,
+			})
 		}
 	}
 }

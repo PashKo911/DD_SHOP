@@ -34,7 +34,7 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
-import Chip from '@/components/ui/chip/Chip.vue'
+import Chip from '@/components/ui/Chip.vue'
 import CloseIcon from '@/components/icons/CloseIcon.vue'
 
 defineProps({

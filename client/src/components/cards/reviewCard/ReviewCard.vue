@@ -1,8 +1,8 @@
 <template>
 	<article class="border-border-color flex flex-col rounded-lg border p-4">
-		<div class="flex items-center gap-4 not-last:mb-5">
+		<div v-if="reviewData.author" class="flex items-center gap-4 not-last:mb-5">
 			<h3 class="text-xl leading-tight font-semibold capitalize">
-				{{ reviewData.author.name }}
+				{{ reviewData.author?.name }}
 			</h3>
 			<verified-icon v-if="reviewData.verified" />
 		</div>

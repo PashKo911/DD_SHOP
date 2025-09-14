@@ -18,21 +18,9 @@ class ReviewsController {
 					? parsedMinRating
 					: undefined
 
-			const match = {}
-			if (minRating) {
-				match.rating = { $gte: minRating }
-			}
+			const reviews = await ReviewDBService.getRandomReviews(limit, minRating)
 
-			const populateFields = [
-				{
-					from: 'users',
-					localField: 'author',
-					foreignField: '_id',
-					as: 'author',
-				},
-			]
-			const reviews = await ReviewDBService.getRandomList({ limit, match, populateFields })
-			res.status(200).json({ reviews })
+			res.status(200).json({ success: true, reviews })
 		} catch (err) {
 			next(err)
 		}

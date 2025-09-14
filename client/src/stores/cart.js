@@ -27,7 +27,7 @@ export const useCartStore = defineStore('cartList', () => {
 			operationName: 'addToCart',
 			operation: async () => {
 				const response = await apiClient.post(
-					apiEndpoints.cartList.addProduct,
+					apiEndpoints.cart.addProduct,
 					product,
 				)
 				return response

@@ -81,14 +81,14 @@
 				}
 			}
 		},
-		"signIn": {
+		"signin": {
 			"title": {
 				"page": "Sing in page"
 			},
 			"separator": "or",
 			"subButtonText": "Don`t have an account?"
 		},
-		"signUp": {
+		"signup": {
 			"title": {
 				"page": "Sing up page"
 			},
@@ -208,6 +208,10 @@
 				"answer": "Yes, we have a bonus system: for each purchase, you earn reward points that can be used for discounts on future orders."
 			}
 		],
+		"userMenu": {
+			"info": "My info",
+			"dashboard": "Manage Products"
+		},
 		"emptySearchMessage": "No results found",
 		"errorBlockTitle": "Error loading data"
 	},
@@ -217,7 +221,7 @@
 		"languageSelect": "Choose the language",
 		"menuVisibilityToggler": "Open, Close Navigation Menu",
 		"cartLink": "Go to Cart",
-		"signIn": "Go to Sign-In Page",
+		"signin": "Go to Sign-In Page",
 		"notFoundAlt": "Illustration of the number 404 indicating page not found",
 		"ratingLabel": "Product rating {rating} stars",
 		"colorRadioGroup": {
@@ -243,26 +247,30 @@
 			"promptLabel": "Enter a password",
 			"showPassword": "Show Password",
 			"hidePassword": "Hide Password",
-			"required": "Password is required",
 			"level": {
 				"weakLabel": "Too weak",
 				"mediumLabel": "Could be stronger",
 				"strongLabel": "Very strong"
-			},
-			"validateTips": {
-				"lowercase": "Lowercase letter required",
-				"uppercase": "Uppercase letter required",
-				"numeric": "Number required",
-				"minLength": "At least 6 characters"
 			}
 		},
 		"discountLabel": "{discount} discount"
 	},
 	"errors": {
 		"email": {
-			"invalid": "Invalid email",
-			"required": "Email is required"
+			"invalid": "Invalid email address",
+			"required": "Email is required",
+			"length": "Email 3–50 chars",
+			"duplicate": "{value} already exists"
 		},
+		"password": {
+			"required": "Password is required",
+			"length": "Password ≥ 8 chars",
+			"lowercase": "Lowercase letter required",
+			"uppercase": "Uppercase letter required",
+			"numeric": "Number required"
+		},
+		"credentials": "Invalid email or password",
+		"unsupportedAuthMethod": "Password login unavailable. Try signing in with {value}.",
 		"colorInputGroup": {
 			"required": "Select the color *"
 		},
@@ -279,10 +287,10 @@
 		"add": "Add",
 		"save": "Save",
 		"cancel": "Cancel",
-		"logout": "Logout",
 
-		"signIn": "Sign In",
-		"signUp": "Sign Up",
+		"signout": "Sign out",
+		"signin": "Sign In",
+		"signup": "Sign Up",
 		"subscribe": "Subscribe to news",
 		"backHome": "Back to HomePage",
 		"googleButton": "Continue with Google",

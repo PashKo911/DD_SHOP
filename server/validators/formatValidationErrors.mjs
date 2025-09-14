@@ -1,10 +1,4 @@
 class FormatValidationErrors {
-	static formatExpressErrors(errorsObj) {
-		return errorsObj.errors.map((error) => ({
-			message: error.msg,
-		}))
-	}
-
 	static formatMongooseErrors(errorsString, collectionName) {
 		if (errorsString.includes('E11000')) {
 			return [

@@ -1,9 +1,11 @@
 <template>
-	<RouterLink v-bind="routerProps" custom v-slot="{ navigate, href }">
+	<router-link v-bind="routerProps" custom v-slot="{ navigate, href }">
 		<Button as="a" v-bind="$attrs" :href="href" @click="navigate">
-			<slot />
+			<template v-for="(_, name) in $slots" v-slot:[name]="slotProps">
+				<slot :name="name" v-bind="slotProps ?? {}" />
+			</template>
 		</Button>
-	</RouterLink>
+	</router-link>
 </template>
 
 <script setup>

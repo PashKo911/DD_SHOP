@@ -1,4 +1,23 @@
-export const DEFAULT_MESSAGE_THEME = {
+<template>
+	<Toast unstyled :pt="DEFAULT_MESSAGE_THEME" :ptOptions="ptOptions">
+		<template #closeicon>
+			<TimesIcon />
+		</template>
+		<template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
+			<slot :name="slotName" v-bind="slotProps ?? {}" />
+		</template>
+	</Toast>
+</template>
+
+<script setup>
+import TimesIcon from '@primevue/icons/times'
+import Toast from 'primevue/toast'
+import { computed } from 'vue'
+import { ptViewMerge } from '@/utils/volt'
+
+const ptOptions = computed(() => ({ mergeProps: ptViewMerge }))
+
+const DEFAULT_MESSAGE_THEME = {
 	root: `w-96 rounded-md whitespace-pre-line break-words
         p-top-center:-translate-x-1/2 p-bottom-center:-translate-x-1/2
         p-center:min-w-[20vw] p-center:-translate-x-1/2 p-center:-translate-y-1/2`,
@@ -34,3 +53,4 @@ export const DEFAULT_MESSAGE_THEME = {
 		leaveToClass: 'max-h-0 opacity-0 mb-0 overflow-hidden',
 	},
 }
+</script>

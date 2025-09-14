@@ -12,6 +12,7 @@
     "@primevue/forms": "^4.3.3",
     "@sindresorhus/slugify": "^2.2.1",
     "@tailwindcss/vite": "^4.0.17",
+    "@vueuse/core": "^13.9.0",
     "@vueuse/head": "^2.0.0",
     "axios": "^1.9.0",
     "pinia": "^3.0.1",

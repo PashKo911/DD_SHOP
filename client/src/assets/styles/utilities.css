@@ -114,6 +114,10 @@
 	margin-bottom: clamp(3.75rem, 3.153rem + 2.99vw, 6.25rem);
 }
 
+@utility mt-50-30 {
+	margin-top: clamp(1.875rem, 1.576rem + 1.49vw, 3.125rem);
+}
+
 @utility my-100-30 {
 	margin-top: clamp(1.875rem, 0.83rem + 5.22vw, 6.25rem);
 	margin-bottom: clamp(1.875rem, 0.83rem + 5.22vw, 6.25rem);

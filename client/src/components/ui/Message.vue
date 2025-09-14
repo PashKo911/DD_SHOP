@@ -1,4 +1,23 @@
-export const DEFAULT_MESSAGE_THEME = {
+<template>
+	<Message unstyled :pt="DEFAULT_MESSAGE_THEME" :ptOptions="ptOptions">
+		<template #closeicon>
+			<TimesIcon />
+		</template>
+		<template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
+			<slot :name="slotName" v-bind="slotProps ?? {}" />
+		</template>
+	</Message>
+</template>
+
+<script setup>
+import TimesIcon from '@primevue/icons/times'
+import Message from 'primevue/message'
+import { computed } from 'vue'
+import { ptViewMerge } from '@/utils/volt'
+
+const ptOptions = computed(() => ({ mergeProps: ptViewMerge }))
+
+const DEFAULT_MESSAGE_THEME = {
 	root: `rounded-md outline outline-1
         p-outlined:bg-transparent p-outlined:outline p-outlined:outline-1
         p-simple:bg-transparent p-simple:outline-none
@@ -50,3 +69,4 @@ export const DEFAULT_MESSAGE_THEME = {
 		leaveToClass: 'max-h-0 opacity-0 !m-0',
 	},
 }
+</script>

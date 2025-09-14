@@ -66,7 +66,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 
-import InputNumber from '@/components/ui/inputNumber/InputNumber.vue'
+import InputNumber from '@/components/ui/InputNumber.vue'
 import DeleteIcon from '@/components/icons/DeleteIcon.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 

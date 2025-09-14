@@ -1,4 +1,31 @@
-export const DEFAULT_INPUT_NUMBER_THEME = {
+<template>
+	<InputNumber unstyled :pt="DEFAULT_INPUT_NUMBER_THEME" :ptOptions="ptOptions">
+		<template #incrementicon>
+			<slot name="incrementicon">
+				<PlusIcon />
+			</slot>
+		</template>
+		<template #decrementicon>
+			<slot name="decrementicon">
+				<MinusIcon />
+			</slot>
+		</template>
+		<template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
+			<slot :name="slotName" v-bind="slotProps ?? {}" />
+		</template>
+	</InputNumber>
+</template>
+
+<script setup>
+import MinusIcon from '@primevue/icons/minus'
+import PlusIcon from '@primevue/icons/plus'
+import InputNumber from 'primevue/inputnumber'
+import { computed } from 'vue'
+import { ptViewMerge } from '@/utils/volt'
+
+const ptOptions = computed(() => ({ mergeProps: ptViewMerge }))
+
+const DEFAULT_INPUT_NUMBER_THEME = {
 	root: `inline-flex relative group
         p-vertical:flex-col p-fluid:w-full`,
 	pcInputText: {
@@ -44,3 +71,4 @@ export const DEFAULT_INPUT_NUMBER_THEME = {
         p-vertical:py-2 p-vertical:order-3 p-vertical:rounded-ee-md p-vertical:rounded-es-md p-vertical:w-full p-vertical:border-t-0`,
 	decrementIcon: ``,
 }
+</script>

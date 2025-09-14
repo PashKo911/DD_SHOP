@@ -9,14 +9,13 @@
 	>
 		<div class="relative flex flex-col gap-1">
 			<icon-field>
-				<template #icon>
-					<mail-icon class="fill-surface-300" />
-				</template>
 				<template #input>
-					<InputText
+					<input-text
 						name="email"
-						icon-field
+						contrast
+						size="large"
 						:placeholder="t('placeholders.emailField')"
+						class="rounded-2xl! ps-12!"
 						fluid
 					/>
 					<Message
@@ -31,7 +30,13 @@
 				</template>
 			</icon-field>
 		</div>
-		<Button type="submit" size="small" contrast :label="t('buttons.subscribe')">
+		<Button
+			type="submit"
+			contrast
+			size="large"
+			:label="t('buttons.subscribe')"
+			class="rounded-2xl! before:rounded-[20px]!"
+		>
 			<template #icon>
 				<subscribe-icon
 					class="relative shrink-0 transition-colors group-hover:fill-white"
@@ -49,10 +54,10 @@ import { object, string } from 'yup'
 import { useI18n } from 'vue-i18n'
 import { useToast } from 'primevue/usetoast'
 
-import InputText from '@/components/ui/inputText/InputText.vue'
+import InputText from '@/components/ui/InputText.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import { Form } from '@primevue/forms'
-import Message from '@/components/ui/message/Message.vue'
+import Message from '@/components/ui/Message.vue'
 import MailIcon from '@/components/icons/MailIcon.vue'
 import IconField from '@/components/formControls/IconField.vue'
 import SubscribeIcon from '@/components/icons/SubscribeIcon.vue'
