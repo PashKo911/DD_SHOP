@@ -1,4 +1,4 @@
-import { locales } from '../config/locales.mjs'
+import { appConstants } from '../constants/app.mjs'
 
 /**
  * Resolves a valid locale from the request object.
@@ -10,5 +10,5 @@ import { locales } from '../config/locales.mjs'
  */
 export function resolveLocale(req) {
 	const reqLang = req.headers['accept-language']
-	return locales.supportedLanguages.includes(reqLang) ? reqLang : locales.defaultLanguage
+	return appConstants.supportedLanguages.includes(reqLang) ? reqLang : appConstants.defaultLanguage
 }

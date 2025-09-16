@@ -12,6 +12,9 @@ const apiEndpoints = {
 		authWithGoogle: '/auth/google',
 		profileByToken: '/auth/profile',
 	},
+	subscriber: {
+		subscribe: '/subscriber',
+	},
 	cart: {
 		getCartDetails: '/cart',
 		addProduct: '/cart',

@@ -42,7 +42,7 @@ const DEFAULT_BUTTON_THEME = {
 	before:absolute before:inset-[.1875rem] before:scale-0
 	p-large:before:rounded-[.75rem] before:opacity-0 before:transition-transform
 	before:duration-300 hover:before:scale-100 hover:before:opacity-100`,
-	loadingIcon: ``,
+	loadingIcon: `animate-spin`,
 	icon: `p-right:order-1 p-bottom:order-2`,
 	label: `p-icon-only:invisible p-icon-only:w-0 relative text-creamy-cloud group-hover:text-primary transition-colors duration-200`,
 	pcBadge: {
@@ -55,6 +55,10 @@ const CONTRAST_BUTTON_THEME = {
 	root: DEFAULT_BUTTON_THEME.root
 		.replace('bg-primary', 'bg-inverse')
 		.replace('border-primary', 'border-transparent')
+		.replace(
+			'focus-visible:outline-primary',
+			'focus-visible:outline-t-inverse-hover',
+		)
 		.replace('before:bg-creamy-cloud', 'before:bg-primary')
 		.replace(
 			'p-text:[&_span]:text-primary',

@@ -1,8 +1,10 @@
+import routeNames from '../routeNames'
+
 export default {
 	path: 'shop/:category?',
-	name: 'shop',
+	name: routeNames.SHOP,
 	component: () => import('@/components/layouts/BreadcrumbLayout.vue'),
-	redirect: { name: 'shopCategory' },
+	redirect: { name: routeNames.SHOP_CATEGORY },
 	meta: {
 		useInMenu: true,
 		requiredAuth: false,
@@ -11,13 +13,13 @@ export default {
 	children: [
 		{
 			path: '',
-			name: 'shopCategory',
+			name: routeNames.SHOP_CATEGORY,
 			props: true,
 			component: () => import('@/pages/shop/ShopPage.vue'),
 		},
 		{
 			path: ':slug/:id/:variant',
-			name: 'productDetail',
+			name: routeNames.PRODUCT_DETAIL,
 			component: () => import('@/pages/productDetail/ProductDetailPage.vue'),
 			props: true,
 			meta: {

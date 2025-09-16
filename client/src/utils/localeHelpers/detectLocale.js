@@ -1,5 +1,4 @@
-import { localeCodes } from '@/config/i18nConfig'
-import { DEFAULT_LOCALE } from '@/config/appConfig'
+import { i18nMeta } from '@/config/i18n'
 
 /**
  * Detects and resolves the appropriate locale for the application.
@@ -8,7 +7,7 @@ import { DEFAULT_LOCALE } from '@/config/appConfig'
  * 1. **URL parameter (`route.params.locale`)** — if it exists and is a valid locale, it overrides everything else
  *    and also updates `localStorage` if it differs from the stored locale.
  * 2. **LocalStorage (`locale`)** — if available and valid, it is returned.
- * 3. **Default locale (`DEFAULT_LOCALE`)** — used as a fallback if neither of the above are valid.
+ * 3. **Default locale (`i18nMeta.defaultLocale`)** — used as a fallback if neither of the above are valid.
  *
  * @param {Object} route - The Vue Router route object. Expected to have a `params.locale` field.
  * @param {string} [route.params.locale] - Optional locale code from the current route parameters.
@@ -18,18 +17,18 @@ function detectLocale(route) {
 	const storageLocale = localStorage.getItem('locale')
 	const urlLocale = route?.params?.locale
 
-	if (urlLocale && localeCodes.includes(urlLocale)) {
+	if (urlLocale && i18nMeta.localeCodes.includes(urlLocale)) {
 		if (storageLocale !== urlLocale) {
 			localStorage.setItem('locale', urlLocale)
 		}
 		return urlLocale
 	}
 
-	if (storageLocale && localeCodes.includes(storageLocale)) {
+	if (storageLocale && i18nMeta.localeCodes.includes(storageLocale)) {
 		return storageLocale
 	}
 
-	return DEFAULT_LOCALE
+	return i18nMeta.defaultLocale
 }
 
 export default detectLocale

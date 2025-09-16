@@ -19,7 +19,7 @@ import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth'
 import { useScriptTag } from '@vueuse/core'
 
-import { GOOGLE_CLIENT_ID } from '@/config/apiConfig'
+import apiConfig from '@/config/api'
 
 import Button from '@/components/ui/buttons/Button.vue'
 import GoogleIcon from '@/components/icons/GoogleIcon.vue'
@@ -39,7 +39,7 @@ let googleClient
 
 const initGoogleClient = () => {
 	googleClient = window.google.accounts.oauth2.initCodeClient({
-		client_id: GOOGLE_CLIENT_ID,
+		client_id: apiConfig.googleClientId,
 		scope: 'openid profile email',
 		ux_mode: 'popup',
 		callback: getTokenAndUserDataWithGoogle,

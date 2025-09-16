@@ -1,6 +1,6 @@
 import FiltersHelper from '../../../utils/searchHelpers/FiltersHelper.mjs'
 import { HttpError } from '../../../errors/HttpError.mjs'
-import { errorCodes } from '../../../config/errorCodes.mjs'
+import { errorCodes } from '../../../constants/errorCodes.mjs'
 
 class MongooseCRUDManager {
 	constructor(model) {

@@ -8,7 +8,7 @@
 				class="md:gx-lg-100-30 flex items-center justify-between gap-x-4"
 			>
 				<router-link
-					:to="{ name: 'home' }"
+					:to="{ name: routeNames.HOME }"
 					:aria-label="t('accessibility.logo')"
 					tabindex="0"
 					class="text-inverse font-heading focus-visible:outline-t-inverse-hover z-30 order-2 rounded-sm text-[34px] font-bold outline outline-transparent transition-colors md:order-1"
@@ -36,7 +36,7 @@
 					/>
 					<teleport defer :to="curtPosition">
 						<router-link
-							:to="{ name: 'cart' }"
+							:to="{ name: routeNames.CART }"
 							:aria-label="t('accessibility.cartLink')"
 							class="focus-visible:outline-t-inverse-hover z-30 order-3 flex items-center rounded-sm outline outline-transparent md:order-2"
 						>
@@ -59,12 +59,12 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 
-import { useRoute } from 'vue-router'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useI18n } from 'vue-i18n'
-import { useCommonStore } from '@/stores/commonStore'
+import { useCommonStore } from '@/stores/common'
 
 import { getMenuItems } from '@/utils/getMenuItems'
+import routeNames from '@/router/routeNames'
 
 import CartIcon from '@/components/icons/CartIcon.vue'
 import HeaderMenuList from './HeaderMenuList.vue'

@@ -1,76 +1,69 @@
 import jwt from 'jsonwebtoken'
 import { config } from '../config/default.mjs'
 
-// Час дії токена
 const expiresIn = config.expiredTime
-
-// Секретний ключ для токена (повинен бути збережений у .env файлі)
 const tokenKey = config.tokenKey
 
-// Функція для парсингу Bearer токена та декодування користувача
-export function parseBearer(bearer, headers) {
+/**
+ * Parse and verify Bearer JWT token
+ * @param {string} bearer - Authorization header value
+ * @returns {object} decoded payload
+ * @throws {Error} if token is invalid or expired
+ */
+export function parseBearer(bearer) {
 	let token
-	// Перевіряємо, чи токен починається з 'Bearer '
 	if (bearer.startsWith('Bearer ')) {
-		token = bearer.slice(7) // Видаляємо 'Bearer ' з початку токена
+		token = bearer.slice(7)
 	}
 	try {
-		// Декодуємо токен з використанням підготовленого секрету
-		const decoded = jwt.verify(token, prepareSecret(headers))
-		return decoded // Повертаємо декодовані дані
-	} catch (err) {
-		// Якщо токен невірний або закінчився його термін дії, буде згенеровано помилку
+		return jwt.verify(token, tokenKey)
+	} catch {
 		throw new Error('Invalid token')
 	}
 }
 
-// Функція для створення JWT токена
-export function prepareToken(data, headers) {
-	// Підписуємо дані токена з використанням підготовленого секрету
-	const token = jwt.sign(data, prepareSecret(headers), {
-		expiresIn, // Вказуємо час дії токена
-	})
+/**
+ * Generate a signed JWT token
+ * @param {object} data - Payload to sign
+ * @returns {{token: string, expireInMs: number}}
+ */
+export function prepareToken(data) {
+	const token = jwt.sign(data, tokenKey, { expiresIn })
 	const expireInMs = convertDuration(expiresIn)
-	return {
-		token,
-		expireInMs,
-	}
+	return { token, expireInMs }
 }
 
-// Функція для підготовки секретного ключа з додаванням заголовків
-function prepareSecret(headers) {
-	// Секретний ключ токена об'єднується з user-agent та accept-language заголовками
-	return tokenKey + headers['user-agent'] + headers['accept-language']
-}
-
+/**
+ * Convert duration string to milliseconds
+ * @param {string} durationStr - e.g. "10m", "2h", "7d"
+ * @returns {number} duration in ms
+ * @throws {Error} if format is invalid
+ */
 export function convertDuration(durationStr) {
-	// Паттерн для перевірки всіх одиниць вимірювання
 	const timePattern = /^(\d+)([mhdwMy])$/
-
-	// Виконуємо регулярний вираз на рядку часу
 	const match = durationStr.match(timePattern)
 
 	if (!match) {
-		throw new Error('Невірний формат часу')
+		throw new Error('Invalid time format')
 	}
 
 	const value = parseInt(match[1], 10)
 	const unit = match[2]
 
 	switch (unit) {
-		case 'm': // хвилини
+		case 'm':
 			return value * 60 * 1000
-		case 'h': // години
+		case 'h':
 			return value * 60 * 60 * 1000
-		case 'd': // дні
+		case 'd':
 			return value * 24 * 60 * 60 * 1000
-		case 'w': // тижні
+		case 'w':
 			return value * 7 * 24 * 60 * 60 * 1000
-		case 'M': // місяці (приблизно 30.44 днів)
+		case 'M':
 			return value * 30.44 * 24 * 60 * 60 * 1000
-		case 'y': // роки (365.25 днів)
+		case 'y':
 			return value * 365.25 * 24 * 60 * 60 * 1000
 		default:
-			throw new Error('Невірна одиниця вимірювання')
+			throw new Error('Invalid time unit')
 	}
 }

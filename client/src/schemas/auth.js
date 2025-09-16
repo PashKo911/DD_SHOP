@@ -1,6 +1,6 @@
-import { object, string } from 'yup'
+import { string } from 'yup'
 
-const authSchema = object().shape({
+const authSchema = {
 	email: string()
 		.trim()
 		.required('errors.email.required')
@@ -11,6 +11,6 @@ const authSchema = object().shape({
 		.matches(/[a-z]/, 'errors.password.lowercase')
 		.matches(/[A-Z]/, 'errors.password.uppercase')
 		.matches(/[0-9]/, 'errors.password.numeric'),
-})
+}
 
-export { authSchema }
+export default authSchema

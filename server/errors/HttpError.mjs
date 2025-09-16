@@ -1,4 +1,4 @@
-import { errorCodes } from '../config/errorCodes.mjs'
+import { errorCodes } from '../constants/errorCodes.mjs'
 
 export class HttpError extends Error {
 	/**

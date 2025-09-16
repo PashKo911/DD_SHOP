@@ -19,13 +19,23 @@
 						fluid
 					/>
 					<Message
-						v-if="$form.email?.invalid"
+						v-if="
+							$form.email?.invalid || subscriberServerValidationErrors?.email
+						"
 						severity="error"
 						size="small"
 						variant="simple"
 						class="absolute top-0 left-2 -translate-y-[calc(100%_+_.0625rem)]"
 					>
-						{{ $form.email?.error.message }}
+						{{
+							t(
+								$form.email?.error?.message ||
+									`errors.email.${subscriberServerValidationErrors?.email?.validationCode}`,
+								{
+									value: duplicateKeyVal,
+								},
+							)
+						}}
 					</Message>
 				</template>
 			</icon-field>
@@ -34,6 +44,7 @@
 			type="submit"
 			contrast
 			size="large"
+			:loading="isSubscriberLoading"
 			:label="t('buttons.subscribe')"
 			class="rounded-2xl! before:rounded-[20px]!"
 		>
@@ -47,41 +58,74 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
-import { object, string } from 'yup'
+import { object } from 'yup'
+import authSchema from '@/schemas/auth'
+import { errorCodes } from '@/constants/errorCodes'
+import apiEndpoints from '@/api/apiEndpoints'
 
 import { useI18n } from 'vue-i18n'
 import { useToast } from 'primevue/usetoast'
+import { useGeneralStore } from '@/stores/general'
 
 import InputText from '@/components/ui/InputText.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import { Form } from '@primevue/forms'
 import Message from '@/components/ui/Message.vue'
-import MailIcon from '@/components/icons/MailIcon.vue'
 import IconField from '@/components/formControls/IconField.vue'
 import SubscribeIcon from '@/components/icons/SubscribeIcon.vue'
+import serverErrorsFormatter from '@/utils/errorHelpers/serverErrorsFormatter'
+import apiClient from '@/config/axios'
 
 const toast = useToast()
 const { t } = useI18n()
 
-const schema = object().shape({
-	email: string()
-		.trim()
-		.email(t('errors.email.invalid'))
-		.required(t('errors.email.required')),
+const resolver = yupResolver(object().shape({ email: authSchema.email }))
+
+const generalStore = useGeneralStore()
+const { isLoading, hasError, generalApiOperation } = generalStore
+//========================================================================================================================================================
+const operationName = 'createSubscriber'
+
+const supportedSubscriberCodes = [
+	errorCodes.DUPLICATE_KEY,
+	errorCodes.VALIDATION_ERROR,
+]
+
+const isSubscriberLoading = computed(() => {
+	return isLoading(operationName)
 })
 
-const resolver = ref(yupResolver(schema))
-//========================================================================================================================================================
+const subscriberServerValidationErrors = computed(() => {
+	const axiosErr = hasError(operationName)
 
-const onFormSubmit = ({ valid }) => {
+	return serverErrorsFormatter(axiosErr, supportedSubscriberCodes)
+})
+
+const duplicateKeyVal = computed(() => {
+	return subscriberServerValidationErrors.value?.email?.value ?? null
+})
+
+const subscribe = async ({ email }) => {
+	console.log(email)
+	return generalApiOperation({
+		operationName,
+		operation: async () => {
+			await apiClient.post(apiEndpoints.subscriber.subscribe, { email })
+		},
+		successCallback: () =>
+			toast.add({
+				severity: 'success',
+				summary: t('partials.subscribeSection.successSubscribe'),
+				life: 3000,
+			}),
+	})
+}
+
+const onFormSubmit = async ({ valid, values }) => {
 	if (valid) {
-		toast.add({
-			severity: 'success',
-			summary: 'Form is submitted.',
-			life: 3000,
-		})
+		await subscribe(values)
 	}
 }
 </script>

@@ -19,12 +19,11 @@
 
 <script setup>
 import Skeleton from '@/components/skeleton/Skeleton.vue'
-import { ref } from 'vue'
 
 defineProps({
 	imagesList: { type: Array, default: () => [] },
 	altImageAttr: { type: String, default: '' },
 })
 
-const smallSlidesCount = ref(3)
+const smallSlidesCount = 3
 </script>

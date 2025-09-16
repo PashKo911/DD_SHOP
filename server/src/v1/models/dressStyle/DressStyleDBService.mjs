@@ -1,7 +1,7 @@
 import DressStyle from './DressStyle.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
 import { HttpError } from '../../../../errors/HttpError.mjs'
-import { errorCodes } from '../../../../config/errorCodes.mjs'
+import { errorCodes } from '../../../../constants/errorCodes.mjs'
 
 class DressStyleDBService extends MongooseCRUDManager {
 	async getList(language) {

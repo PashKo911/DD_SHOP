@@ -4,13 +4,13 @@
 	>
 		<router-link
 			:to="{
-				name: 'productDetail',
+				name: routeNames.PRODUCT_DETAIL,
 				params: routeParams,
 			}"
 			class="group/image focus-visible:outline-primary relative aspect-[270/405] overflow-hidden bg-white outline-1 outline-transparent transition-colors duration-300 not-last:mb-4 focus-visible:outline-offset-2"
 		>
 			<img
-				:src="`${API_BASE}${currentVariant.images[0]}`"
+				:src="`${apiConfig.apiBase}${currentVariant.images[0]}`"
 				:alt="data.title"
 				:loading="loadingAttr"
 				width="420"
@@ -18,7 +18,7 @@
 				class="absolute inset-0 h-full w-full object-cover"
 			/>
 			<img
-				:src="`${API_BASE}${currentVariant.images[1]}`"
+				:src="`${apiConfig.apiBase}${currentVariant.images[1]}`"
 				:alt="data.title"
 				:loading="loadingAttr"
 				width="420"
@@ -41,7 +41,7 @@
 			<h3>
 				<router-link
 					:to="{
-						name: 'productDetail',
+						name: routeNames.PRODUCT_DETAIL,
 						params: routeParams,
 					}"
 					class="font-heading focus-visible:outline-primary hover:decoration-primary line-clamp-2 w-max rounded-sm text-[max(min(9cqw,_1.625rem),1rem)] leading-tight font-bold underline decoration-transparent outline-1 outline-transparent transition-colors duration-300"
@@ -76,7 +76,8 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 
-import { API_BASE } from '@/config/apiConfig'
+import apiConfig from '@/config/api'
+import routeNames from '@/router/routeNames'
 
 import { useI18n } from 'vue-i18n'
 import slugify from '@sindresorhus/slugify'

@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { useGeneralStore } from './general'
 
-import apiClient from '@/config/axiosConfig'
+import apiClient from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
 
 export const useReviewsStore = defineStore('reviews', () => {

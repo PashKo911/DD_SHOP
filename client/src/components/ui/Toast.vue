@@ -18,9 +18,9 @@ import { ptViewMerge } from '@/utils/volt'
 const ptOptions = computed(() => ({ mergeProps: ptViewMerge }))
 
 const DEFAULT_MESSAGE_THEME = {
-	root: `w-96 rounded-md whitespace-pre-line break-words
+	root: ` w-[calc(100%-2.5rem)] rounded-md whitespace-pre-line break-words
         p-top-center:-translate-x-1/2 p-bottom-center:-translate-x-1/2
-        p-center:min-w-[20vw] p-center:-translate-x-1/2 p-center:-translate-y-1/2`,
+		p-center:-translate-x-1/2 p-center:-translate-y-1/2`,
 	message: `mb-4 not-p-custom:border not-p-custom:backdrop-blur-sm not-p-custom:rounded-md
         p-info:bg-blue-50/95 p-info:border-blue-200 p-info:text-blue-600
         p-success:bg-green-50/95 p-success:border-green-200 p-success:text-green-600

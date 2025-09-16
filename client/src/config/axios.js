@@ -1,12 +1,12 @@
 import axios from 'axios'
+import router from '@/router'
 import { useAuthStore } from '@/stores/auth'
 import { i18n } from '@/plugins/i18n'
-import router from '@/router'
-import { API_URL } from './apiConfig'
-import { DEFAULT_CURRENCY, DEFAULT_LOCALE } from './appConfig'
+import { i18nMeta } from './i18n'
+import apiConfig from './api'
 
 const apiClient = axios.create({
-	baseURL: API_URL,
+	baseURL: apiConfig.apiUrl,
 	headers: {
 		'Content-Type': 'application/json',
 	},
@@ -26,11 +26,10 @@ apiClient.interceptors.request.use(
 
 apiClient.interceptors.request.use(
 	(config) => {
-		const locale = i18n?.global.locale.value ?? DEFAULT_LOCALE
+		const locale = i18n?.global.locale.value ?? i18nMeta.defaultLocale
 		const currency =
 			i18n?.global.numberFormats.value[locale].currency.currency ??
-			DEFAULT_CURRENCY
-
+			i18nMeta.defaultCurrency
 		config.headers = {
 			...config.headers,
 			'Accept-Language': locale,

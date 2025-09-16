@@ -1,7 +1,7 @@
 import { OAuth2Client } from 'google-auth-library'
 import { config } from '../config/default.mjs'
 import { normalizeOAuthError } from '../utils/errorNormalizers/normalizeOAuthError.mjs'
-import { errorCodes } from '../config/errorCodes.mjs'
+import { errorCodes } from '../constants/errorCodes.mjs'
 import { HttpError } from '../errors/HttpError.mjs'
 
 const { googleClientId, googleClientSecret, googleRedirectUri } = config

@@ -1,12 +1,15 @@
 import { defineStore } from 'pinia'
-import { ref, computed, shallowRef } from 'vue'
+import { ref, computed } from 'vue'
 
 import { useGeneralStore } from './general'
 import { useUsersStore } from './users'
+import routeNames from '@/router/routeNames'
 
-import apiClient from '@/config/axiosConfig'
+import apiClient from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
-import authErrorsFormatter from '@/utils/errorHelpers/authErrorsFormatter'
+import serverErrorsFormatter from '@/utils/errorHelpers/serverErrorsFormatter'
+import supportedAuthErrorCodes from '@/constants/authErrorCodes'
+
 import router from '@/router'
 
 export const useAuthStore = defineStore('auth', () => {
@@ -30,7 +33,7 @@ export const useAuthStore = defineStore('auth', () => {
 
 	const signupServerValidationErrors = computed(() => {
 		const axiosErr = hasError('signup')
-		return authErrorsFormatter(axiosErr)
+		return serverErrorsFormatter(axiosErr, supportedAuthErrorCodes)
 	})
 
 	const isSigninLoading = computed(() => {
@@ -39,7 +42,7 @@ export const useAuthStore = defineStore('auth', () => {
 
 	const signinServerValidationErrors = computed(() => {
 		const axiosErr = hasError('signin')
-		return authErrorsFormatter(axiosErr)
+		return serverErrorsFormatter(axiosErr, supportedAuthErrorCodes)
 	})
 
 	//========================================================================================================================================================
@@ -66,7 +69,7 @@ export const useAuthStore = defineStore('auth', () => {
 				return response
 			},
 			successCallback: () => {
-				router.push({ name: 'home' })
+				router.push({ name: routeNames.HOME })
 			},
 		})
 		user.value = result.data.user
@@ -100,7 +103,7 @@ export const useAuthStore = defineStore('auth', () => {
 				return response.data.user
 			},
 			successCallback: () => {
-				router.push({ name: 'home' })
+				router.push({ name: routeNames.HOME })
 			},
 		})
 	}
@@ -119,7 +122,7 @@ export const useAuthStore = defineStore('auth', () => {
 				return response.data
 			},
 			successCallback: () => {
-				router.push({ name: 'home' })
+				router.push({ name: routeNames.HOME })
 			},
 		})
 	}

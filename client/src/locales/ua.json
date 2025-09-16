@@ -165,7 +165,8 @@
 			"footerCopy": "2025 © Дизайн розроблено:"
 		},
 		"subscribeSection": {
-			"title": "БУДЬТЕ В КУРСІ НАШИХ ОСТАННІХ ПРОПОЗИЦІЙ"
+			"title": "БУДЬТЕ В КУРСІ НАШИХ ОСТАННІХ ПРОПОЗИЦІЙ",
+			"successSubscribe": "Дякуємо за підписку!"
 		},
 		"reviews": {
 			"postedOn": "Опубліковано: {date}"
@@ -252,7 +253,8 @@
 				"strongLabel": "Дуже надійний"
 			}
 		},
-		"discountLabel": "Знижка {discount}"
+		"discountLabel": "Знижка {discount}",
+		"userControl": "Відкрити меню навігації користувача"
 	},
 	"errors": {
 		"email": {

@@ -14,13 +14,14 @@
 		>
 			<SwiperSlide v-for="i in imagesList" :key="i">
 				<div
-					class="[.swiper-slide-thumb-active_&]:outline-primary flex items-center justify-center overflow-hidden rounded-lg bg-[#FCF9F6] outline outline-offset-5 outline-transparent transition-colors sm:outline-offset-10 [.swiper-slide-visible_&]:shadow-lg"
+					class="[.swiper-slide-thumb-active_&]:outline-primary flex aspect-[143.4/208] items-center justify-center overflow-hidden rounded-lg bg-[#FCF9F6] outline outline-offset-5 outline-transparent transition-colors sm:outline-offset-10 [.swiper-slide-visible_&]:shadow-lg"
 				>
 					<img
-						:src="`${API_BASE}${i}`"
+						:src="`${apiConfig.apiBase}${i}`"
 						:alt="altImageAttr"
 						width="143"
 						height="215"
+						class="h-full w-full"
 					/>
 				</div>
 			</SwiperSlide>
@@ -45,11 +46,11 @@
 			>
 				<div class="swiper-zoom-container aspect-[457/686]">
 					<img
-						:src="`${API_BASE}${i}`"
+						:src="`${apiConfig.apiBase}${i}`"
 						:alt="altImageAttr"
 						width="457"
 						height="686"
-						class="h-full"
+						class="h-full w-full"
 					/>
 				</div>
 			</SwiperSlide>
@@ -82,7 +83,7 @@ import 'swiper/css/zoom'
 import { ref, computed } from 'vue'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useI18n } from 'vue-i18n'
-import { API_BASE } from '@/config/apiConfig'
+import apiConfig from '@/config/api'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Thumbs, Zoom } from 'swiper/modules'
@@ -133,5 +134,7 @@ const isFirstSlide = computed(() => {
 <style scoped>
 [data-thumb-swiper].swiper {
 	overflow: visible;
+	margin-left: 0;
+	margin-right: 0;
 }
 </style>

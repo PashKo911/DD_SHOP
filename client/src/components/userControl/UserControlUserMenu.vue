@@ -5,6 +5,7 @@
 		aria-haspopup="true"
 		rounded
 		aria-controls="overlay_menu"
+		:aria-label="t('accessibility.userControl')"
 		@click="toggle"
 		class="focus-visible:outline-t-inverse-hover [&:has(+_.wrp)]:text-t-inverse-hover relative aspect-square w-[36px] py-0! outline-1"
 	>
@@ -13,6 +14,8 @@
 				v-if="userData.avatar"
 				:src="userData.avatar"
 				:alt="userData.name"
+				width="36"
+				height="36"
 				@error="userData.avatar = null"
 				class="h-full w-full"
 			/>
@@ -41,6 +44,8 @@
 						v-if="userData.avatar"
 						:src="userData.avatar"
 						:alt="userData.name"
+						width="64"
+						height="64"
 						@error="userData.avatar = null"
 						class="inset-0"
 					/>
@@ -61,31 +66,19 @@
 				</div>
 			</div>
 		</template>
-		<template #item="{ item }">
-			<button-link
-				:label="t(item.label)"
-				size="small"
-				variant="text"
-				class="w-max"
-				:to="{ name: item.routeName }"
+		<template #item="{ item, props }">
+			<component
+				:is="item.routeName ? 'RouterLink' : 'button'"
+				v-bind="{
+					...props.action,
+					...(item.routeName
+						? { to: { name: item.routeName } }
+						: { onClick: item.command }),
+				}"
 			>
-				<template #icon>
-					<component :is="item.icon" width="1.25rem" height="1.25rem" />
-				</template>
-			</button-link>
-		</template>
-		<template #end>
-			<Button
-				:label="t('buttons.signout')"
-				size="small"
-				variant="text"
-				@click="$emit('signout')"
-				class="w-max"
-			>
-				<template #icon>
-					<log-out-icon />
-				</template>
-			</Button>
+				<component :is="item.icon" width="1.25rem" height="1.25rem" />
+				{{ t(item.label) }}
+			</component>
 		</template>
 	</Menu>
 </template>
@@ -93,12 +86,12 @@
 <script setup>
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import routeNames from '@/router/routeNames'
 
-import userMenuItems from '@/data/userMenuItems'
-
-import Button from '@/components/ui/buttons/Button.vue'
 import Menu from '@/volt/Menu.vue'
-import ButtonLink from '../ui/buttons/ButtonLink.vue'
+import Button from '../ui/buttons/Button.vue'
+import SignInIcon from '@/components/icons/SignInIcon.vue'
+import ListIcon from '@/components/icons/ListIcon.vue'
 import LogOutIcon from '@/components/icons/LogOutIcon.vue'
 
 const props = defineProps({
@@ -108,11 +101,40 @@ const props = defineProps({
 	},
 })
 
-const emits = defineEmits(['signout'])
-//========================================================================================================================================================
+const emit = defineEmits(['signout'])
 
 const { t } = useI18n()
 const menu = ref()
+
+const userMenuItems = [
+	{
+		separator: true,
+	},
+	{
+		id: 1,
+		label: 'partials.userMenu.info',
+		routeName: routeNames.HOME,
+		icon: SignInIcon,
+	},
+	{
+		id: 2,
+		label: 'partials.userMenu.dashboard',
+		routeName: routeNames.HOME,
+		icon: ListIcon,
+	},
+	{
+		separator: true,
+	},
+	{
+		id: 3,
+		label: 'buttons.signout',
+		routeName: null,
+		icon: LogOutIcon,
+		command: () => {
+			emit('signout')
+		},
+	},
+]
 //========================================================================================================================================================
 
 const toggle = (event) => {
