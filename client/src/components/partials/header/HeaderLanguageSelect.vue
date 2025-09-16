@@ -38,7 +38,7 @@ import { computed } from 'vue'
 
 import { useI18n } from 'vue-i18n'
 import { useLocales } from '@/composables/useLocales'
-import { supportedLocales } from '@/config/i18nConfig'
+import { i18nMeta } from '@/config/i18n'
 
 import Select from '@/components/ui/Select.vue'
 
@@ -47,7 +47,7 @@ const { t, locale } = useI18n()
 const { setLocale } = useLocales()
 
 const languages = computed(() => {
-	return Object.entries(supportedLocales).map(([code, locale]) => ({
+	return Object.entries(i18nMeta.supportedLocales).map(([code, locale]) => ({
 		name: locale.displayCode,
 		code,
 		flag: locale.flag,

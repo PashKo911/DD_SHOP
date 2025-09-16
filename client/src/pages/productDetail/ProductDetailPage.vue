@@ -55,19 +55,19 @@ import { useProductsStore } from '@/stores/products'
 import { useReviewsStore } from '@/stores/reviews'
 import { useCartStore } from '@/stores/cart'
 
-import { DEFAULT_LOCALE } from '@/config/appConfig'
+import { i18nMeta } from '@/config/i18n'
 
 import SliderThumb from '@/components/sliders/sliderThumb/SliderThumb.vue'
 import SliderBase from '@/components/sliders/SliderBase.vue'
-import ProductDescription from './productDescription/ProductDescription.vue'
+import ProductDetailDescription from './productDetailDescription/ProductDetailDescription.vue'
+import ProductDetailDescriptionSkeleton from './productDetailDescription/ProductDetailDescriptionSkeleton.vue'
 import ProductDetailTabs from './ProductDetailTabs.vue'
 import SliderThumbSkeleton from '@/components/sliders/sliderThumb/SliderThumbSkeleton.vue'
-import ProductDescriptionSkeleton from './productDescription/ProductDescriptionSkeleton.vue'
 
 const props = defineProps({
 	locale: {
 		type: String,
-		default: DEFAULT_LOCALE,
+		default: i18nMeta.defaultLocale,
 	},
 	category: {
 		type: String,
@@ -143,8 +143,8 @@ const sliderAttributes = computed(() => {
 })
 const activeDescriptionComponent = computed(() => {
 	return isProductDetailsLoading.value || !isProductDetailsLoaded.value
-		? ProductDescriptionSkeleton
-		: ProductDescription
+		? ProductDetailDescriptionSkeleton
+		: ProductDetailDescription
 })
 const descriptionAttributes = computed(() => {
 	if (isProductDetailsLoading.value || !isProductDetailsLoaded.value) {

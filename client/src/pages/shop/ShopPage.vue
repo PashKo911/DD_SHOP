@@ -30,7 +30,7 @@
 							fluid
 							checkmark
 							:options="optionsData"
-							:placeholder="t(DEFAULT_SORT.label)"
+							:placeholder="t(shopConstants.defaultSort.label)"
 						/>
 					</div>
 					<div
@@ -110,14 +110,14 @@ import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import { useFilterModel } from '@/composables/useFilterModel'
 import { useProductsStore } from '@/stores/products'
-import { useCommonStore } from '@/stores/commonStore'
+import { useCommonStore } from '@/stores/common'
 import { useFilterStore } from '@/stores/filter'
 import { useFacetOptionsStore } from '@/stores/facetOptions'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 
-import viewModeData from '@/data/viewModeData'
-import sortOptionsData from '@/data/sortOptionsData'
-import { DEFAULT_SORT } from '@/config/appConfig'
+import viewModeData from '@/data/viewMode'
+import sortOptionsData from '@/data/sortOptions'
+import shopConstants from '@/constants/shop'
 
 import ShopFilter from './ShopFilter.vue'
 import ShopList from './ShopList.vue'

@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { useAuthStore } from './auth'
 import { useGeneralStore } from './general'
-import apiClient from '@/config/axiosConfig'
+import apiClient from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
 import { defineStore, storeToRefs } from 'pinia'
 

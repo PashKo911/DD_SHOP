@@ -30,12 +30,14 @@
 
 <script setup>
 import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
+
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useProductsStore } from '@/stores/products'
+import routeNames from '@/router/routeNames'
 
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb.vue'
-import { storeToRefs } from 'pinia'
 
 const route = useRoute()
 const { t } = useI18n()
@@ -44,28 +46,36 @@ const productsStore = useProductsStore()
 const { productDetails, isProductDetailsLoaded } = storeToRefs(productsStore)
 //========================================================================================================================================================
 
-const items = computed(() =>
-	route.matched
-		.filter((r) => r.meta?.localeName != null)
+const items = computed(() => {
+	return route.matched
+		.filter((r) => r.meta?.localeName)
 		.map((record, idx, arr) => {
 			const isLast = idx === arr.length - 1
 			const localeKey = resolveLocaleName(record.meta.localeName, route)
-			const label =
-				isProductDetailsLoaded.value && isLast
-					? productDetails.value.title
-					: t(localeKey ?? record.name)
+
+			if (route.name === routeNames.PRODUCT_DETAIL && isLast) {
+				if (!isProductDetailsLoaded.value) {
+					return null
+				}
+				return {
+					label: productDetails.value.title,
+					route: { name: record.name },
+					isLast,
+				}
+			}
 
 			return {
-				label,
+				label: t(localeKey ?? record.name),
 				route: { name: record.name },
 				isLast,
 			}
-		}),
-)
+		})
+		.filter(Boolean)
+})
 
 const home = computed(() => ({
 	label: t('pages.home.title.menu'),
-	route: { name: 'home' },
+	route: { name: routeNames.HOME },
 }))
 
 //========================================================================================================================================================

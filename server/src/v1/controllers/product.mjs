@@ -7,7 +7,7 @@ import SizeDBService from '../models/size/SizeDBService.mjs'
 import GenderDBService from '../models/gender/GenderDBService.mjs'
 import ProductsDBService from '../models/product/ProductsDBService.mjs'
 import { getRate } from '../../../services/ratesCache.mjs'
-import { locales } from '../../../config/locales.mjs'
+import { appConstants } from '../../../constants/app.mjs'
 import { resolveLocale } from '../../../utils/resolveLocale.mjs'
 
 import FormatValidationErrors from '../../../validators/formatValidationErrors.mjs'
@@ -17,7 +17,7 @@ class ProductController {
 		try {
 			console.log('GET PRODUCTS CHECKING ++++++++++++++++++++++++++')
 			const language = resolveLocale(req)
-			const currency = req.headers.currency || locales.defaultCurrency
+			const currency = req.headers.currency || appConstants.defaultCurrency
 
 			const rate = await getRate(currency)
 			const data = await ProductsDBService.getList(req.query, language, currency, rate)
@@ -48,7 +48,7 @@ class ProductController {
 		try {
 			console.log('GET PRODUCT DETAIL CHECKING ++++++++++++++++++++++++++')
 			const language = resolveLocale(req)
-			const currency = req.headers.currency || locales.defaultCurrency
+			const currency = req.headers.currency || appConstants.defaultCurrency
 			const id = req.params.id
 
 			const rate = await getRate(currency)
@@ -121,7 +121,7 @@ class ProductController {
 	static async getOptions(req, res, next) {
 		try {
 			const language = resolveLocale(req)
-			const currency = req.headers.currency || locales.defaultCurrency
+			const currency = req.headers.currency || appConstants.defaultCurrency
 
 			const rate = await getRate(currency)
 

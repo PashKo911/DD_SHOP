@@ -1,7 +1,7 @@
 import { createI18n } from 'vue-i18n'
 import router from '@/router'
 import detectLocale from '@/utils/localeHelpers/detectLocale'
-import { i18nConfig } from '@/config/i18nConfig'
+import { i18nConfig } from '@/config/i18n'
 
 let i18n
 

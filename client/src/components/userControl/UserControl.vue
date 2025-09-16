@@ -13,7 +13,7 @@
 				class="fill-inverse hover:fill-t-inverse-hover duration-300"
 			/>
 		</router-link>
-		<user-menu v-else :user-data="user" @signout="signout" />
+		<user-control-user-menu v-else :user-data="user" @signout="signout" />
 	</div>
 </template>
 
@@ -25,7 +25,7 @@ import { useAuthStore } from '@/stores/auth'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
-import UserMenu from './UserMenu.vue'
+import UserControlUserMenu from './UserControlUserMenu.vue'
 import SignInIcon from '@/components/icons/SignInIcon.vue'
 
 const { t } = useI18n()

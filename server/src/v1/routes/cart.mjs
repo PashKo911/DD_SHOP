@@ -1,5 +1,5 @@
 import express from 'express'
-import CartController from '../controllers/cartController.mjs'
+import CartController from '../controllers/cart.mjs'
 
 const router = express.Router()
 

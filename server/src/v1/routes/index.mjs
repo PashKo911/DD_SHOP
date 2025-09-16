@@ -1,15 +1,18 @@
 import express from 'express'
 
-import authRoutes from './authRoutes.mjs'
-import userRoutes from './userRoutes.mjs'
-import productRoutes from './productRoutes.mjs'
-import reviewsRoutes from './reviewsRoutes.mjs'
-import dashboardRoutes from './dashboardRoutes.mjs'
-import cartRoutes from './cartRoutes.mjs'
+import authRoutes from './auth.mjs'
+import subscriberRoutes from './subscriber.mjs'
+import userRoutes from './user.mjs'
+import productRoutes from './product.mjs'
+import reviewsRoutes from './reviews.mjs'
+import dashboardRoutes from './dashboard.mjs'
+import cartRoutes from './cart.mjs'
 
 const router = express.Router()
 
 router.use('/auth', authRoutes)
+
+router.use('/subscriber', subscriberRoutes)
 
 router.use('/users', userRoutes)
 

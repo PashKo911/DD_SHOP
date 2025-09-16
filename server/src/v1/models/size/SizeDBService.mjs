@@ -1,7 +1,7 @@
 import Size from './Size.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
 import { HttpError } from '../../../../errors/HttpError.mjs'
-import { errorCodes } from '../../../../config/errorCodes.mjs'
+import { errorCodes } from '../../../../constants/errorCodes.mjs'
 
 class SizeStyleDBService extends MongooseCRUDManager {
 	async getList() {

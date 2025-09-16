@@ -132,8 +132,9 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
+import { object } from 'yup'
 import { mapServerErrorKeys } from '@/utils/errorHelpers/mapServerErrorKeys'
-import { authSchema } from '@/schemas/authSchema'
+import authSchema from '../../schemas/auth'
 
 import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth'
@@ -150,13 +151,12 @@ import { onBeforeRouteLeave, useRouter } from 'vue-router'
 
 const { t, tm } = useI18n()
 
-const router = useRouter()
 const authStore = useAuthStore()
 
 const { signup, clearSignupErrors } = authStore
 
 const { signupServerValidationErrors, isSignupLoading } = storeToRefs(authStore)
-const resolver = yupResolver(authSchema)
+const resolver = yupResolver(object().shape(authSchema))
 //========================================================================================================================================================
 
 const passwordTips = computed(() => {

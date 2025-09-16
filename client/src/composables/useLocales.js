@@ -1,7 +1,8 @@
 import { useI18n } from 'vue-i18n'
 import { useRouter, useRoute } from 'vue-router'
+import routeNames from '@/router/routeNames'
 
-import { DEFAULT_LOCALE } from '@/config/appConfig'
+import { i18nMeta } from '@/config/i18n'
 
 export function useLocales() {
 	const { locale } = useI18n()
@@ -15,7 +16,7 @@ export function useLocales() {
 		localStorage.setItem('locale', lang)
 
 		router.push({
-			name: route.name || 'home',
+			name: route.name || routeNames.HOME,
 			params: { ...route.params, locale: lang },
 			query: route.query,
 		})
@@ -28,7 +29,7 @@ export function useLocales() {
 			return
 		}
 
-		locale.value = DEFAULT_LOCALE
+		locale.value = i18nMeta.defaultLocale
 	}
 
 	window.addEventListener('storage', () => checkLocale())

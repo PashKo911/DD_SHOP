@@ -1,7 +1,7 @@
 import Color from './Color.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
 import { HttpError } from '../../../../errors/HttpError.mjs'
-import { errorCodes } from '../../../../config/errorCodes.mjs'
+import { errorCodes } from '../../../../constants/errorCodes.mjs'
 
 class ColorsDBService extends MongooseCRUDManager {
 	async getList(language) {

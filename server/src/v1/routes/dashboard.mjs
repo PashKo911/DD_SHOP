@@ -2,8 +2,8 @@ import express from 'express'
 import { checkSchema } from 'express-validator'
 
 import ProductValidator from '../../../validators/productValidator.mjs'
-import ProductController from '../controllers/productController.mjs'
-import UserController from '../controllers/userController.mjs'
+import ProductController from '../controllers/product.mjs'
+import UserController from '../controllers/user.mjs'
 import RequestNormalizer from '../../../utils/RequestNormalizer.mjs'
 
 import upload from '../../../middleware/UploadManager.mjs'

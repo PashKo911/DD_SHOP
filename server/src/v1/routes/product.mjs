@@ -1,6 +1,6 @@
 import express from 'express'
 
-import ProductController from '../controllers/productController.mjs'
+import ProductController from '../controllers/product.mjs'
 
 const router = express.Router()
 

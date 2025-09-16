@@ -2,7 +2,7 @@
 	<nav
 		id="appNav"
 		v-lock-scroll="isHeaderMenuOpen"
-		class="bg-primary grid min-w-[14.375rem] grid-cols-2 items-center justify-items-center gap-y-10 ease-in max-md:fixed max-md:-top-0 max-md:left-0 max-md:h-screen max-md:w-full max-md:overflow-y-auto max-md:px-4 max-md:pt-[9.375rem] max-md:pb-8 max-md:transition-all max-md:duration-300"
+		class="bg-primary grid min-w-[14.375rem] grid-cols-2 items-center justify-items-center gap-y-10 ease-in max-md:fixed max-md:-top-0 max-md:left-0 max-md:h-screen max-md:w-full max-md:-translate-x-full max-md:overflow-y-auto max-md:px-4 max-md:pt-[9.375rem] max-md:pb-8 max-md:transition-all max-md:duration-300"
 		:class="menuListClass"
 	>
 		<ul
@@ -23,9 +23,12 @@
 
 <script setup>
 import { computed } from 'vue'
+
 import { useRoute } from 'vue-router'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useI18n } from 'vue-i18n'
+
+import routeNames from '@/router/routeNames'
 
 const props = defineProps({
 	menuItems: {
@@ -47,10 +50,10 @@ const isMobile = useMediaQuery('(max-width: 767.98px)')
 const menuListClass = computed(() => {
 	if (!isMobile.value) return ''
 
-	return props.isHeaderMenuOpen ? `translate-x-0` : '-translate-x-full'
+	return props.isHeaderMenuOpen ? `translate-x-0!` : '-translate-x-full!'
 })
 
 const activeLinkClass = computed(() => {
-	return route.name === 'productDetail' ? '' : 'text-t-inverse-hover!'
+	return route.name === routeNames.PRODUCT_DETAIL ? '' : 'text-t-inverse-hover!'
 })
 </script>

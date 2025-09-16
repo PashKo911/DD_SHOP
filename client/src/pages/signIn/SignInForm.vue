@@ -146,7 +146,8 @@ import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 
 import { yupResolver } from '@primevue/forms/resolvers/yup'
-import { authSchema } from '@/schemas/authSchema'
+import { object } from 'yup'
+import authSchema from '@/schemas/auth'
 import { mapServerErrorKeys } from '@/utils/errorHelpers/mapServerErrorKeys'
 
 import { useI18n } from 'vue-i18n'
@@ -160,17 +161,16 @@ import Password from '@/components/ui/Password.vue'
 import ContinueWithGoogleButton from '@/components/formControls/ContinueWithGoogleButton.vue'
 import Backdrop from '@/components/ui/Backdrop.vue'
 import ProgressBar from '@/components/ui/ProgressBar.vue'
-import { onBeforeRouteLeave, useRouter } from 'vue-router'
+import { onBeforeRouteLeave } from 'vue-router'
 
 const { t, tm } = useI18n()
 
-const router = useRouter()
 const authStore = useAuthStore()
 const { signin, clearSigninErrors } = authStore
 
 const { isSigninLoading, signinServerValidationErrors } = storeToRefs(authStore)
 
-const resolver = yupResolver(authSchema)
+const resolver = yupResolver(object().shape(authSchema))
 
 //========================================================================================================================================================
 

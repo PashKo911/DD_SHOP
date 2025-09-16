@@ -1,8 +1,8 @@
 <template>
 	<router-link
 		:to="{
-			name: 'shop',
-			params: { category: DEFAULT_CATEGORY },
+			name: routeNames.SHOP,
+			params: { category: shopConstants.defaultCategory },
 			query: {
 				styles: productData.label,
 			},
@@ -28,7 +28,7 @@
 			/>
 		</div>
 		<img
-			:src="`${API_BASE}${productData.imgSrc}`"
+			:src="`${apiConfig.apiBase}${productData.imgSrc}`"
 			:alt="productData.label"
 			:loading="lazyAttr"
 			:width="imgConfig.width"
@@ -41,9 +41,11 @@
 
 <script setup>
 import { computed } from 'vue'
-import { API_BASE } from '@/config/apiConfig'
-import { DEFAULT_CATEGORY } from '@/config/appConfig'
+import apiConfig from '@/config/api'
+import shopConstants from '@/constants/shop'
+
 import ArrowDownSimple from '@/components/icons/ArrowDownSimple.vue'
+import routeNames from '@/router/routeNames'
 
 const imageConfigs = [
 	{

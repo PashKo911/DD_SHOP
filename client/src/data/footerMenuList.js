@@ -1,22 +1,24 @@
+import routeNames from '@/router/routeNames'
+
 export const footerMenuList = [
 	{
 		id: 'company',
 		items: [
 			{
 				id: 'about',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 			{
 				id: 'features',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 			{
 				id: 'works',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 			{
 				id: 'career',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 		],
 	},
@@ -25,19 +27,19 @@ export const footerMenuList = [
 		items: [
 			{
 				id: 'support',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 			{
 				id: 'details',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 			{
 				id: 'terms',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 			{
 				id: 'privacy',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 		],
 	},
@@ -46,19 +48,19 @@ export const footerMenuList = [
 		items: [
 			{
 				id: 'account',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 			{
 				id: 'delivery',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 			{
 				id: 'terms',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 			{
 				id: 'career',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 		],
 	},
@@ -67,19 +69,19 @@ export const footerMenuList = [
 		items: [
 			{
 				id: 'ebooks',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 			{
 				id: 'development',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 			{
 				id: 'blog',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 			{
 				id: 'playList',
-				routeName: 'notFound',
+				routeName: routeNames.NOT_FOUND,
 			},
 		],
 	},

@@ -1,7 +1,7 @@
 import User from './User.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
 import { HttpError } from '../../../../errors/HttpError.mjs'
-import { errorCodes } from '../../../../config/errorCodes.mjs'
+import { errorCodes } from '../../../../constants/errorCodes.mjs'
 
 class UsersDBService extends MongooseCRUDManager {
 	async getList(filters) {

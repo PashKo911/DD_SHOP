@@ -1,3 +1,5 @@
+import shopConstants from '@/constants/shop'
+
 const sortOptionsData = [
 	{
 		value: 'minPrice:asc',
@@ -14,11 +16,7 @@ const sortOptionsData = [
 		label: 'pages.shop.sortSelect.newest',
 		slug: 'spochatku-novi',
 	},
-	{
-		value: 'maxRating:desc',
-		label: 'pages.shop.sortSelect.ratingDesc',
-		slug: 'naipopuliarnishi',
-	},
+	shopConstants.defaultSort,
 ]
 
 export default sortOptionsData

@@ -2,11 +2,11 @@ import { validationResult } from 'express-validator'
 import { normalizeExpressValidatorErrors } from '../../../utils/errorNormalizers/normalizeExpressValidatorErrors.mjs'
 import UsersDBService from '../models/user/UsersDBService.mjs'
 import { prepareToken } from '../../../utils/jwtHelpers.mjs'
-import { appConfig } from '../../../config/appConfig.mjs'
+import { appConstants } from '../../../constants/app.mjs'
 import { exchangeCodeForTokens, verifyIdToken } from '../../../services/googleAuth.mjs'
 import { HttpError } from '../../../errors/HttpError.mjs'
-import { errorCodes } from '../../../config/errorCodes.mjs'
-import { validationErrorCodes } from '../../../config/validationErrorCodes.mjs'
+import { errorCodes } from '../../../constants/errorCodes.mjs'
+import { validationErrorCodes } from '../../../constants/validationErrorCodes.mjs'
 
 class AuthController {
 	static async signup(req, res, next) {
@@ -76,7 +76,7 @@ class AuthController {
 					new HttpError(401, 'Invalid email or password', {
 						code: errorCodes.UNAUTHORIZED,
 						details: [
-							{ field: appConfig.generalErrorField, validationCode: validationErrorCodes.CREDENTIALS },
+							{ field: appConstants.generalErrorField, validationCode: validationErrorCodes.CREDENTIALS },
 						],
 						expose: true,
 					})
@@ -92,9 +92,9 @@ class AuthController {
 							code: errorCodes.AUTH_METHOD_NOT_SUPPORTED,
 							details: [
 								{
-									field: appConfig.generalErrorField,
+									field: appConstants.generalErrorField,
 									validationCode: validationErrorCodes.UNSUPPORTED_AUTH_METHOD,
-									params: { value: appConfig.availableMethods },
+									params: { value: appConstants.availableMethods },
 								},
 							],
 							expose: true,
@@ -108,7 +108,7 @@ class AuthController {
 					new HttpError(401, 'Invalid email or password', {
 						code: errorCodes.UNAUTHORIZED,
 						details: [
-							{ field: appConfig.generalErrorField, validationCode: validationErrorCodes.CREDENTIALS },
+							{ field: appConstants.generalErrorField, validationCode: validationErrorCodes.CREDENTIALS },
 						],
 						expose: true,
 					})
@@ -170,7 +170,7 @@ class AuthController {
 			if (user) {
 				user.googleId = googleUserData.sub
 				if (!user.avatar) user.avatar = googleUserData.picture
-				if (!user.name || user.name === appConfig.defaultUserName) user.name = googleUserData.name
+				if (!user.name || user.name === appConstants.defaultUserName) user.name = googleUserData.name
 
 				await user.save()
 			} else {

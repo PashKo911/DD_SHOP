@@ -43,6 +43,7 @@ import { useProductsStore } from '@/stores/products'
 import { useRouter } from 'vue-router'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import routeNames from '@/router/routeNames'
 
 import { storeToRefs } from 'pinia'
 import { computed, ref, watch } from 'vue'
@@ -85,9 +86,9 @@ const applySearchFilter = ({ value }) => {
 	setFilterProp('gender', value.genderId)
 	setFilterProp('title', value.label)
 
-	if (route.name !== 'shopCategory') {
+	if (route.name !== routeNames.SHOP_CATEGORY) {
 		router.push({
-			name: 'shopCategory',
+			name: routeNames.SHOP_CATEGORY,
 			params: { category: value.genderName },
 		})
 	}

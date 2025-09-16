@@ -5,8 +5,8 @@ import { createFieldsConfigurations } from './fieldsConfig.mjs'
 import { HttpError } from '../../../../errors/HttpError.mjs'
 import { PRODUCT_POPULATE_FIELDS, PRODUCT_BASE_FIELDS_CONFIGURATIONS } from './constants.mjs'
 import { formatProductForResponse, formatReqPriceRange } from './formatters.mjs'
-import { config } from '../../../../config/default.mjs'
-import { errorCodes } from '../../../../config/errorCodes.mjs'
+import { appConstants } from '../../../../constants/app.mjs'
+import { errorCodes } from '../../../../constants/errorCodes.mjs'
 
 class ProductsDBService extends MongooseCRUDManager {
 	static fieldsConfigurations = PRODUCT_BASE_FIELDS_CONFIGURATIONS
@@ -17,7 +17,7 @@ class ProductsDBService extends MongooseCRUDManager {
 			const formatter = createCurrencyFormatter(language, currency)
 			const req = { ...reqQuery }
 
-			if (currency !== config.defaultCurrency) {
+			if (currency !== appConstants.defaultCurrency) {
 				formatReqPriceRange(req, rate)
 			}
 

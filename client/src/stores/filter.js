@@ -3,16 +3,16 @@ import { storeToRefs } from 'pinia'
 import { reactive, computed } from 'vue'
 
 import { useFacetOptionsStore } from './facetOptions'
-import { useCommonStore } from './commonStore'
+import { useCommonStore } from './common'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
 import parseFilter from '@/utils/filterHelpers/parseFilter'
 import serializeFilter from '@/utils/filterHelpers/serializeFilter'
-import sortOptionsData from '@/data/sortOptionsData'
+import sortOptionsData from '@/data/sortOptions'
 import mapFilterToChips from '@/utils/filterHelpers/mapFilterToChips'
 import { removeFilterChip } from '@/utils/filterHelpers/removeFilterChip'
-import { DEFAULT_SORT } from '@/config/appConfig'
+import shopConstants from '@/constants/shop'
 
 export const useFilterStore = defineStore('filter', () => {
 	const route = useRoute()
@@ -29,7 +29,7 @@ export const useFilterStore = defineStore('filter', () => {
 		price: [],
 		colors: [],
 		sizes: [],
-		sort: DEFAULT_SORT,
+		sort: shopConstants.defaultSort,
 		page: 0,
 	}))
 

@@ -84,7 +84,7 @@ const DEFAULT_SELECT_THEME = {
 	optionGroupLabel: ``,
 	option: `cursor-pointer font-heading whitespace-nowrap relative overflow-hidden flex items-center
         px-3 py-2 border-none text-surface-700 bg-transparent rounded-sm
-        p-focus:bg-surface-100 p-focus:text-surface-800
+        p-focus:bg-select-hover p-focus:text-surface-800
         p-selected:bg-highlight p-focus:p-selected:bg-highlight-emphasis
         transition-colors duration-200`,
 	optionLabel: ``,
@@ -124,7 +124,7 @@ const TRANSPARENT_SELECT_THEME = {
 	optionGroup: `m-0 px-3 py-2 bg-transparent text-surface-500 font-bold`,
 	option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center
         px-3 py-2 border-none text-primary bg-transparent rounded-sm
-        p-focus:bg-surface-100 p-focus:text-surface-800
+        p-focus:bg-select-hover p-focus:text-surface-800
         transition-colors duration-200`,
 	emptyMessage: `px-3 py-2`,
 	transition: {

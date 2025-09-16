@@ -1,19 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { storeToRefs } from 'pinia'
 
-import authRoutes from './routes/authRoutes'
-import shopRoutes from './routes/shopRoutes'
+import authRoutes from './routes/auth'
+import shopRoutes from './routes/shop'
 
-import { useCommonStore } from '@/stores/commonStore'
+import { useCommonStore } from '@/stores/common'
 import { useAuthStore } from '@/stores/auth'
+import routeNames from './routeNames'
 
 import detectLocale from '@/utils/localeHelpers/detectLocale'
-import { DEFAULT_LOCALE } from '@/config/appConfig'
+import { i18nMeta } from '@/config/i18n'
 
 const appInnerRoutes = [
 	{
 		path: 'home',
-		name: 'home',
+		name: routeNames.HOME,
 		component: () => import('@/pages/home/HomePage.vue'),
 		meta: {
 			useInMenu: true,
@@ -25,7 +26,7 @@ const appInnerRoutes = [
 	shopRoutes,
 	{
 		path: 'cart',
-		name: 'cart',
+		name: routeNames.CART,
 		component: () => import('@/pages/cart/CartPage.vue'),
 		meta: {
 			useInMenu: false,
@@ -35,7 +36,7 @@ const appInnerRoutes = [
 	},
 	{
 		path: ':pathMatch(.*)*',
-		name: 'notFound',
+		name: routeNames.NOT_FOUND,
 		component: () => import('@/pages/NotFoundPage.vue'),
 	},
 ]
@@ -54,7 +55,7 @@ const router = createRouter({
 	routes: [
 		{
 			path: '/',
-			redirect: { name: 'home' },
+			redirect: { name: routeNames.HOME },
 			meta: {
 				useInMenu: false,
 				requiredAuth: false,
@@ -68,7 +69,10 @@ const router = createRouter({
 
 		{
 			path: '/:pathMatch(.*)*',
-			redirect: { name: 'notFound', params: { locale: DEFAULT_LOCALE } },
+			redirect: {
+				name: routeNames.NOT_FOUND,
+				params: { locale: i18nMeta.defaultLocale },
+			},
 		},
 	],
 })
@@ -88,7 +92,7 @@ router.beforeEach(async (to, from, next) => {
 	}
 
 	return next({
-		name: to.name || 'home',
+		name: to.name || routeNames.HOME,
 		params: { ...to.params, locale: detectedLocale },
 		query: to.query,
 	})

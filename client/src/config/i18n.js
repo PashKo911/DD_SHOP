@@ -1,12 +1,13 @@
 import { markRaw } from 'vue'
-import { DEFAULT_LOCALE } from './appConfig'
 import UaFlagIcon from '@/components/icons/UaFlagIcon.vue'
 import UsaFlagIcon from '@/components/icons/UsaFlagIcon.vue'
 
 import localesEN from '@/locales/en.json'
 import localesUA from '@/locales/ua.json'
 
-export const supportedLocales = {
+const defaultLocale = 'en'
+
+const supportedLocales = {
 	en: {
 		displayCode: 'en',
 		label: 'English',
@@ -41,28 +42,36 @@ export const supportedLocales = {
 	},
 }
 
-export const localeCodes = Object.keys(supportedLocales) // ['en','uk']
-
-export const localeRegex = localeCodes.join('|') // 'en|uk'
-
-export const messages = Object.fromEntries(
+const defaultCurrency =
+	supportedLocales[defaultLocale].numberFormat.currency.currency // 'USD'
+const localeCodes = Object.keys(supportedLocales) // ['en','uk']
+const localeRegex = localeCodes.join('|') // 'en|uk'
+const messages = Object.fromEntries(
 	localeCodes.map((key) => [key, supportedLocales[key].messages]),
 )
 
-export const datetimeFormats = Object.fromEntries(
+const datetimeFormats = Object.fromEntries(
 	localeCodes.map((key) => [key, supportedLocales[key].datetimeFormats]),
 )
 
-export const numberFormats = Object.fromEntries(
+const numberFormats = Object.fromEntries(
 	localeCodes.map((key) => [key, supportedLocales[key].numberFormat]),
 )
 
-export const i18nConfig = {
+export const i18nConfig = Object.freeze({
 	legacy: false,
-	locale: DEFAULT_LOCALE,
-	fallbackLocale: DEFAULT_LOCALE,
+	locale: defaultLocale,
+	fallbackLocale: defaultLocale,
 	messages,
 	datetimeFormats,
 	numberFormats,
 	globalInjection: true,
-}
+})
+
+export const i18nMeta = Object.freeze({
+	defaultLocale,
+	defaultCurrency,
+	supportedLocales,
+	localeCodes,
+	localeRegex,
+})

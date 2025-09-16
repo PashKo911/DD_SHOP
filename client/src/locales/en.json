@@ -166,7 +166,8 @@
 			"footerCopy": "2025 © Designed By:"
 		},
 		"subscribeSection": {
-			"title": "STAY UP TO DATE ABOUT OUR LATEST OFFERS"
+			"title": "STAY UP TO DATE ABOUT OUR LATEST OFFERS",
+			"successSubscribe": "Thanks for subscribing!"
 		},
 		"reviews": {
 			"postedOn": "Posted: {date}"
@@ -253,7 +254,8 @@
 				"strongLabel": "Very strong"
 			}
 		},
-		"discountLabel": "{discount} discount"
+		"discountLabel": "{discount} discount",
+		"userControl": "Open user navigation menu"
 	},
 	"errors": {
 		"email": {
@@ -279,7 +281,8 @@
 		},
 		"countInput": {
 			"required": "Select quantity *"
-		}
+		},
+		"userControl": "Open user navigation menu"
 	},
 	"buttons": {
 		"edit": "Edit",

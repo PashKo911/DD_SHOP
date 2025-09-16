@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
-import { appConfig } from '../../../../config/appConfig.mjs'
+import { appConstants } from '../../../../constants/app.mjs'
+
 import bcrypt from 'bcryptjs'
 
 const { Schema } = mongoose
@@ -18,7 +19,7 @@ const userSchema = new Schema({
 		required: function () {
 			return !this.googleId
 		},
-		minlength: [6, 'Password must be at least 6 characters long'],
+		minlength: [8, 'Password must be at least 6 characters long'],
 		// validate: {
 		//   validator: function (v) {
 		//     return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
@@ -44,7 +45,7 @@ const userSchema = new Schema({
 	},
 	name: {
 		type: String,
-		default: appConfig.defaultUserName,
+		default: appConstants.defaultUserName,
 	},
 })
 

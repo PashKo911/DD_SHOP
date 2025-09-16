@@ -41,6 +41,11 @@ export const useGeneralStore = defineStore('general', () => {
 
 		try {
 			const res = await operation()
+
+			if (res?.data?.error) {
+				if (errorCallback) errorCallback(res.data.error)
+				return
+			}
 			if (successCallback) successCallback(res)
 			return res
 		} catch (err) {

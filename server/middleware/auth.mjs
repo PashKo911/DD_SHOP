@@ -1,10 +1,10 @@
-import { errorCodes } from '../config/errorCodes.mjs'
+import { errorCodes } from '../constants/errorCodes.mjs'
 import { parseBearer } from '../utils/jwtHelpers.mjs'
 import { HttpError } from '../errors/HttpError.mjs'
 
 export const authMiddleware = (req, res, next) => {
 	try {
-		const user = parseBearer(req.headers.authorization, req.headers)
+		const user = parseBearer(req.headers.authorization)
 		req.user = user
 		next()
 	} catch (err) {

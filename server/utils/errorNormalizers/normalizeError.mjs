@@ -1,6 +1,6 @@
 import { HttpError } from '../../errors/HttpError.mjs'
-import { errorCodes } from '../../config/errorCodes.mjs'
-import { validationErrorCodes } from '../../config/validationErrorCodes.mjs'
+import { errorCodes } from '../../constants/errorCodes.mjs'
+import { validationErrorCodes } from '../../constants/validationErrorCodes.mjs'
 
 /**
  * Build an array of field-specific details from a Mongoose ValidationError.
