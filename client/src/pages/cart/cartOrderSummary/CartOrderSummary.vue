@@ -12,20 +12,16 @@
 				>
 					{{ t('pages.cart.orderSummary.subtotal') }}
 				</span>
-				<span class="text-32-26 font-heading leading-tight capitalize">
-					$ 778
+				<span class="text-32-26 font-heading leading-tight">
+					{{ n(cartSummary.totalWithoutDiscount, 'currency') }}
 				</span>
 			</p>
 			<p class="flex items-center justify-between gap-6 not-last:mb-6">
-				<span
-					class="text-dark-grey font-heading text-24-18 leading-tight capitalize"
-				>
+				<span class="text-dark-grey font-heading text-24-18 leading-tight">
 					{{ t('pages.cart.orderSummary.discount') }}
 				</span>
-				<span
-					class="text-32-26 font-heading leading-tight text-red-500 capitalize"
-				>
-					$ -194
+				<span class="text-32-26 font-heading leading-tight text-red-500">
+					{{ n(cartSummary.totalDiscount, 'currency') }}
 				</span>
 			</p>
 		</div>
@@ -33,8 +29,8 @@
 			<span class="font-heading text-24-18 leading-tight font-bold capitalize">
 				{{ t('pages.cart.orderSummary.total') }}
 			</span>
-			<span class="font-heading text-32-26 leading-tight font-bold capitalize">
-				$ 525
+			<span class="font-heading text-32-26 leading-tight font-bold">
+				{{ n(cartSummary.total, 'currency') }}
 			</span>
 		</p>
 		<Button :label="t('buttons.cartCheckout')" iconPos="right" class="w-full">
@@ -52,5 +48,12 @@ import ArrowRightSimple from '@/components/icons/ArrowRightSimple.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n()
+defineProps({
+	cartSummary: {
+		type: Object,
+		required: true,
+	},
+})
+
+const { t, n } = useI18n()
 </script>

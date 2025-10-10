@@ -1,6 +1,6 @@
-export const PRODUCT_POPULATE_FIELDS = ['variants.color', 'variants.sizes', 'style', 'gender']
+export const productPopulateFields = ['variants.color', 'variants.sizes', 'style', 'gender']
 
-export const PRODUCT_BASE_FIELDS_CONFIGURATIONS = [
+export const productBaseFieldsConfigurations = [
 	{
 		fieldName: 'gender',
 		subField: null,
@@ -9,7 +9,7 @@ export const PRODUCT_BASE_FIELDS_CONFIGURATIONS = [
 	},
 	{
 		fieldName: 'title',
-		subField: '{lang}',
+		subField: 'label',
 		queryParam: 'title',
 		filterCategory: 'search',
 	},

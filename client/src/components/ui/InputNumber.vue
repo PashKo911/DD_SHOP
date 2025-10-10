@@ -38,7 +38,7 @@ const DEFAULT_INPUT_NUMBER_THEME = {
         border border-border-color
         enabled:hover:border-surface-200
         enabled:focus:border-primary
-        disabled:bg-surface-200 disabled:text-surface-500 
+        disabled:text-surface-500 
         p-invalid:border-red-400
         p-invalid:placeholder:text-red-600
         px-3 py-[.9063rem] p-fluid:w-full w-16
@@ -54,7 +54,7 @@ const DEFAULT_INPUT_NUMBER_THEME = {
         bg-white 
         border border-border-color enabled:hover:border-primary
         text-surface-400 enabled:hover:text-surface-500 enabled:active:text-surface-600
-        transition-colors duration-200 disabled:pointer-events-none
+        transition-colors duration-200 disabled:pointer-events-none disabled:opacity-60
         p-stacked:relative p-stacked:flex-auto p-stacked:border-none
         p-stacked:p-0 p-stacked:rounded-tr-md
         p-horizontal:order-3 p-horizontal:rounded-e-md p-horizontal:border-s-0
@@ -64,7 +64,7 @@ const DEFAULT_INPUT_NUMBER_THEME = {
         bg-white 
         border border-border-color enabled:hover:border-primary
         text-surface-400 enabled:hover:text-surface-500 enabled:active:text-surface-600
-        transition-colors duration-200 disabled:pointer-events-none
+        transition-colors duration-200 disabled:pointer-events-none disabled:opacity-60
         p-stacked:relative p-stacked:flex-auto p-stacked:border-none
         p-stacked:p-0 p-stacked:rounded-br-md
         p-horizontal:order-1 p-horizontal:rounded-s-md p-horizontal:border-e-0

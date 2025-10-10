@@ -111,6 +111,10 @@
 			"cartProductCard": {
 				"color": "color",
 				"size": "size"
+			},
+			"emptyCart": {
+				"title": "Your cart is empty and sad :(",
+				"text": "Add something to make it happy!"
 			}
 		},
 		"pageNotFound": {
@@ -255,7 +259,8 @@
 			}
 		},
 		"discountLabel": "{discount} discount",
-		"userControl": "Open user navigation menu"
+		"userControl": "Open user navigation menu",
+		"amountInput": "Quantity for {title}"
 	},
 	"errors": {
 		"email": {
@@ -311,7 +316,8 @@
 		"clearFilterChip": "Clear Filter",
 		"clearAllFilterChips": "Clear All",
 		"closeFilter": "Close filter",
-		"reloadButton": "Reload"
+		"reloadButton": "Reload",
+		"continueShopping": "Continue Shopping"
 	},
 	"placeholders": {
 		"search": "Search",

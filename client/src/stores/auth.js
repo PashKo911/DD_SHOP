@@ -3,17 +3,16 @@ import { ref, computed } from 'vue'
 
 import { useGeneralStore } from './general'
 import { useUsersStore } from './users'
-import routeNames from '@/router/routeNames'
+import { useCartStore } from './cart'
 
 import apiClient from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
 import serverErrorsFormatter from '@/utils/errorHelpers/serverErrorsFormatter'
 import supportedAuthErrorCodes from '@/constants/authErrorCodes'
 
-import router from '@/router'
-
 export const useAuthStore = defineStore('auth', () => {
 	const generalStore = useGeneralStore()
+	const { initCart } = useCartStore()
 	const usersStore = useUsersStore()
 	const { generalApiOperation, isLoading, hasError, clearError } = generalStore
 
@@ -56,9 +55,9 @@ export const useAuthStore = defineStore('auth', () => {
 		}
 	}
 
-	const getTokenAndUserDataWithGoogle = async (googleAuthCode) => {
+	const signinWithGoogle = async (googleAuthCode, { successCallback }) => {
 		const result = await generalApiOperation({
-			operationName: 'getTokenAndUserDataWithGoogle',
+			operationName: 'signinWithGoogle',
 			operation: async () => {
 				const response = await apiClient.post(
 					apiEndpoints.auth.authWithGoogle,
@@ -68,12 +67,11 @@ export const useAuthStore = defineStore('auth', () => {
 				)
 				return response
 			},
-			successCallback: () => {
-				router.push({ name: routeNames.HOME })
-			},
+			successCallback,
 		})
 		user.value = result.data.user
 		setToken(result.data.token)
+		initCart()
 	}
 
 	const getUserProfileByToken = async () => {
@@ -89,7 +87,7 @@ export const useAuthStore = defineStore('auth', () => {
 		})
 	}
 
-	const signin = async ({ email, password }) => {
+	const signin = async ({ email, password }, successCallback) => {
 		return generalApiOperation({
 			operationName: 'signin',
 			operation: async () => {
@@ -100,15 +98,13 @@ export const useAuthStore = defineStore('auth', () => {
 
 				setToken(response.data.token)
 				user.value = response.data.user
-				return response.data.user
+				initCart()
 			},
-			successCallback: () => {
-				router.push({ name: routeNames.HOME })
-			},
+			successCallback,
 		})
 	}
 
-	const signup = async ({ email, password }) => {
+	const signup = async ({ email, password }, successCallback) => {
 		return generalApiOperation({
 			operationName: 'signup',
 			operation: async () => {
@@ -119,11 +115,9 @@ export const useAuthStore = defineStore('auth', () => {
 
 				setToken(response.data.token)
 				user.value = response.data.user
-				return response.data
+				initCart()
 			},
-			successCallback: () => {
-				router.push({ name: routeNames.HOME })
-			},
+			successCallback,
 		})
 	}
 
@@ -158,7 +152,7 @@ export const useAuthStore = defineStore('auth', () => {
 		// actions
 		getUserProfileByToken,
 		signin,
-		getTokenAndUserDataWithGoogle,
+		signinWithGoogle,
 		signup,
 		signout,
 		clearSigninErrors,

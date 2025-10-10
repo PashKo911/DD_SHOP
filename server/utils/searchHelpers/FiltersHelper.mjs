@@ -33,6 +33,7 @@ class FiltersHelper {
 					console.warn(`Unsupported filter type: ${filter.filterType}`)
 			}
 		})
+
 		return query
 	}
 

@@ -1,0 +1,124 @@
+[{
+  "_id": {
+    "$oid": "660000000000000000000101"
+  },
+  "color": {
+    "$oid": "6783f90201747c6d5349b9e5"
+  },
+  "price": 120,
+  "oldPrice": 150,
+  "count": 50,
+  "rating": 4.6,
+  "images": [
+    "/images/products/men/1.webp",
+    "/images/products/men/2.webp",
+    "/images/products/men/3.webp"
+  ],
+  "sizes": [
+    "676bff418a281b4943246186",
+    "676bff418a281b4943246187",
+    "676bff418a281b4943246188",
+    "676bff418a281b4943246189",
+    "676bff418a281b494324618a",
+    "676bff418a281b494324618b",
+    "6828578465b546018073c50e",
+    "6828590965b546018073c511"
+  ]
+},
+{
+  "_id": {
+    "$oid": "660000000000000000000102"
+  },
+  "color": {
+    "$oid": "676bff288a281b4943246180"
+  },
+  "price": 125,
+  "oldPrice": 150,
+  "count": 30,
+  "rating": 4.7,
+  "images": [
+    "/images/products/men/4.webp",
+    "/images/products/men/5.webp",
+    "/images/products/men/6.webp"
+  ],
+  "sizes": [
+    {
+      "$oid": "676bff418a281b4943246186"
+    },
+    {
+      "$oid": "676bff418a281b4943246187"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "660000000000000000000103"
+  },
+  "color": {
+    "$oid": "6783f90201747c6d5349b9e5"
+  },
+  "price": 80,
+  "oldPrice": null,
+  "count": 70,
+  "rating": 4.4,
+  "images": [
+    "/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
+    "/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp"
+  ],
+  "sizes": [
+    {
+      "$oid": "676bff418a281b494324618a"
+    },
+    {
+      "$oid": "676bff418a281b494324618b"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "660000000000000000000104"
+  },
+  "color": {
+    "$oid": "676bff288a281b494324617d"
+  },
+  "price": 150,
+  "oldPrice": 200,
+  "count": 40,
+  "rating": 4.5,
+  "images": [
+    "/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
+    "/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp"
+  ],
+  "sizes": [
+    {
+      "$oid": "676bff418a281b494324618a"
+    },
+    {
+      "$oid": "676bff418a281b4943246189"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "660000000000000000000105"
+  },
+  "color": {
+    "$oid": "6783f65101747c6d5349b9e4"
+  },
+  "price": 155,
+  "oldPrice": 200,
+  "count": 25,
+  "rating": 4.6,
+  "images": [
+    "/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
+    "/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
+  ],
+  "sizes": [
+    {
+      "$oid": "676bff418a281b4943246189"
+    },
+    {
+      "$oid": "676bff418a281b4943246186"
+    }
+  ]
+}]

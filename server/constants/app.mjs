@@ -5,4 +5,7 @@ export const appConstants = Object.freeze({
 	supportedLanguages: ['en', 'uk'],
 	defaultLanguage: 'en',
 	defaultCurrency: 'USD',
+	availableCategoryKeys: ['men', 'women'],
+	searchDepth: 100,
+	defaultSuggestionsLimit: 5,
 })

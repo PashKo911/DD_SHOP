@@ -110,6 +110,10 @@
 			"cartProductCard": {
 				"color": "колір",
 				"size": "розмір"
+			},
+			"emptyCart": {
+				"title": "Твій кошик порожній і сумний :(",
+				"text": "Додай щось, щоб його розвеселити!"
 			}
 		},
 		"pageNotFound": {
@@ -254,7 +258,8 @@
 			}
 		},
 		"discountLabel": "Знижка {discount}",
-		"userControl": "Відкрити меню навігації користувача"
+		"userControl": "Відкрити меню навігації користувача",
+		"amountInput": "Кількість для {title}"
 	},
 	"errors": {
 		"email": {
@@ -308,7 +313,8 @@
 		"clearFilterChip": "Очистити фільтр",
 		"clearAllFilterChips": "Очистити все",
 		"closeFilter": "Закрити фільтр",
-		"reloadButton": "Перезавантажити"
+		"reloadButton": "Перезавантажити",
+		"continueShopping": "Продовжити покупки"
 	},
 	"placeholders": {
 		"search": "Пошук",

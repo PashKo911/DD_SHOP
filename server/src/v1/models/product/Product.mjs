@@ -23,8 +23,8 @@ const localizedString = (field, min, max) => ({
 const variantSchema = new Schema(
 	{
 		color: { type: Schema.Types.ObjectId, ref: 'Color', required: true },
-		price: { type: Number, required: true, min: 0 },
-		oldPrice: { type: Number, min: 0 },
+		price: { type: Schema.Types.Decimal128, required: true, min: 0 },
+		oldPrice: { type: Schema.Types.Decimal128, min: 0 },
 		count: { type: Number, required: true, min: 0 },
 		rating: { type: Number, min: 0, max: 5 },
 		images: { type: [String], required: true },
@@ -96,20 +96,19 @@ const productSchema = new Schema(
 productSchema.pre('save', function (next) {
 	if (!this.variants || this.variants.length === 0) return next()
 
-	const prices = this.variants.map((v) => v.price)
-	const ratings = this.variants.map((v) => v.rating || 0)
-
+	const prices = this.variants.map((v) => parseFloat(v.price.toString()))
 	this.minPrice = Math.min(...prices)
 	this.maxPrice = Math.max(...prices)
-	this.maxRating = Math.max(...ratings)
 
 	if (!this.defaultVariant) {
-		const cheapest = this.variants.reduce((a, b) => (a.price < b.price ? a : b))
-		this.defaultVariant = cheapest.variantId
+		const cheapest = this.variants.reduce((a, b) =>
+			parseFloat(a.price.toString()) < parseFloat(b.price.toString()) ? a : b
+		)
+		this.defaultVariant = cheapest._id
 	}
-
 	next()
 })
+
 productSchema.pre('validate', async function (next) {
 	try {
 		if (this.categoryKey) return next()

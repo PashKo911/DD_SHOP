@@ -18,6 +18,9 @@
 import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth'
 import { useScriptTag } from '@vueuse/core'
+import { useCartStore } from '@/stores/cart'
+import { useRouter } from 'vue-router'
+import routeNames from '@/router/routeNames'
 
 import apiConfig from '@/config/api'
 
@@ -32,17 +35,26 @@ const props = defineProps({
 })
 const { t } = useI18n()
 
+const router = useRouter()
+
+const { initCart } = useCartStore()
+
 const authStore = useAuthStore()
-const { getTokenAndUserDataWithGoogle } = authStore
+const { signinWithGoogle } = authStore
 
 let googleClient
+
+const successCallback = () => {
+	router.push({ name: routeNames.HOME })
+}
 
 const initGoogleClient = () => {
 	googleClient = window.google.accounts.oauth2.initCodeClient({
 		client_id: apiConfig.googleClientId,
 		scope: 'openid profile email',
 		ux_mode: 'popup',
-		callback: getTokenAndUserDataWithGoogle,
+		callback: (googleAuthCode) =>
+			signinWithGoogle(googleAuthCode, { successCallback }),
 	})
 }
 

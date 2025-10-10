@@ -9,6 +9,7 @@ import { ptViewMerge } from '@/utils/volt'
 
 const ptOptions = computed(() => ({ mergeProps: ptViewMerge }))
 const theme = {
-	root: `overflow-hidden bg-surface-100 p-circle:rounded-full animate-pulse`,
+	root: `overflow-hidden bg-surface-100 p-circle:rounded-full `,
 }
+// animate-pulse
 </script>

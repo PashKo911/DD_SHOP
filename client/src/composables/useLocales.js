@@ -1,7 +1,7 @@
 import { useI18n } from 'vue-i18n'
 import { useRouter, useRoute } from 'vue-router'
-import routeNames from '@/router/routeNames'
 
+import routeNames from '@/router/routeNames'
 import { i18nMeta } from '@/config/i18n'
 
 export function useLocales() {

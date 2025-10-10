@@ -188,12 +188,6 @@ class MongooseCRUDManager {
 	async update(id, data) {
 		try {
 			const updated = await this.model.findByIdAndUpdate(id, data, { new: true, runValidators: true }).exec()
-			if (!updated) {
-				throw new HttpError(404, `Document with id:${id} not found`, {
-					code: errorCodes.NOT_FOUND,
-					expose: true,
-				})
-			}
 			return updated
 		} catch (err) {
 			if (err instanceof HttpError) throw err

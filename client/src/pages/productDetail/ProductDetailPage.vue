@@ -4,12 +4,12 @@
 	>
 		<component
 			:is="activeThumbSwiperComponent"
-			v-bind="descriptionAttributes"
+			v-bind="sliderAttributes"
 			class="lg:shrink-0 lg:basis-[max(40%,_32.5rem)]"
 		/>
 		<component
 			:is="activeDescriptionComponent"
-			v-bind="sliderAttributes"
+			v-bind="descriptionAttributes"
 			@change-variant="onVariantChange"
 			@form-submit="onFormSubmit"
 			class="w-full lg:grow"
@@ -85,6 +85,9 @@ const props = defineProps({
 		type: [String, Number],
 		required: true,
 	},
+	size: {
+		type: [String, Number],
+	},
 })
 
 const productsStore = useProductsStore()
@@ -106,6 +109,7 @@ const {
 } = storeToRefs(productsStore)
 
 const { addToCart } = cartStore
+const { isAddToCartLoading } = storeToRefs(cartStore)
 
 const { reviewsValue, isReviewsLoading, hasReviewsError } =
 	storeToRefs(reviewsStore)
@@ -122,9 +126,10 @@ const activeProductVariant = computed(() => {
 	)
 
 	if (!activeVariant) return null
+	const initialSize = props.size ?? null
 
 	const { variants, ...restProduct } = productDetailsValue.value
-	return { colors, ...restProduct, ...activeVariant }
+	return { colors, initialSize, ...restProduct, ...activeVariant }
 })
 
 const activeThumbSwiperComponent = computed(() => {
@@ -132,12 +137,13 @@ const activeThumbSwiperComponent = computed(() => {
 		? SliderThumbSkeleton
 		: SliderThumb
 })
-const sliderAttributes = computed(() => {
+const descriptionAttributes = computed(() => {
 	if (isProductDetailsLoading.value || !isProductDetailsLoaded.value) {
 		return {}
 	}
 	return {
 		productData: activeProductVariant.value,
+		isLoading: isAddToCartLoading.value,
 		altImageAttr: activeProductVariant?.value.title,
 	}
 })
@@ -146,7 +152,7 @@ const activeDescriptionComponent = computed(() => {
 		? ProductDetailDescriptionSkeleton
 		: ProductDetailDescription
 })
-const descriptionAttributes = computed(() => {
+const sliderAttributes = computed(() => {
 	if (isProductDetailsLoading.value || !isProductDetailsLoaded.value) {
 		return {}
 	}
@@ -203,13 +209,13 @@ const onVariantChange = (newColorId) => {
 	router.replace({ name: route.name, params: newParams })
 }
 
-const onFormSubmit = async ({ count, size }) => {
+const onFormSubmit = ({ count, size }) => {
 	const product = {
 		product: props.id,
 		variant: props.variant,
 		size,
 		amount: count,
 	}
-	await addToCart(product)
+	addToCart(product)
 }
 </script>

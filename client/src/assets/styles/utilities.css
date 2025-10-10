@@ -144,6 +144,10 @@
 	width: clamp(15.625rem, -5.576rem + 44.17vw, 40.25rem);
 }
 
+@utility h-38-31 {
+	height: clamp(1.938rem, 1.835rem + 0.51vw, 2.375rem);
+}
+
 @custom-variant any-hover {
 	@media (hover: hover) and (pointer: fine) {
 		@slot;

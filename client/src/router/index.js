@@ -6,6 +6,8 @@ import shopRoutes from './routes/shop'
 
 import { useCommonStore } from '@/stores/common'
 import { useAuthStore } from '@/stores/auth'
+import { useCartStore } from '@/stores/cart'
+
 import routeNames from './routeNames'
 
 import detectLocale from '@/utils/localeHelpers/detectLocale'
@@ -80,11 +82,18 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
 	const detectedLocale = detectLocale(to)
 	const authStore = useAuthStore()
+	const cartStore = useCartStore()
+	const { isCartInitialized, isInitCartLoading } = storeToRefs(cartStore)
+	const { initCart } = cartStore
 	const { isAuthenticated, token } = storeToRefs(authStore)
 	const { getUserProfileByToken } = authStore
 
 	if (!isAuthenticated.value && token.value) {
 		await getUserProfileByToken()
+	}
+
+	if (!isCartInitialized.value && !isInitCartLoading.value) {
+		initCart()
 	}
 
 	if (to.params.locale === detectedLocale) {

@@ -10,6 +10,7 @@ const shopConstants = Object.freeze({
 	shopCategories,
 	defaultCategory,
 	defaultSort,
+	suggestionCountLimit: 5,
 })
 
 export default shopConstants

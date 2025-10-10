@@ -3,6 +3,7 @@ import router from '@/router'
 import { useAuthStore } from '@/stores/auth'
 import { i18n } from '@/plugins/i18n'
 import { i18nMeta } from './i18n'
+import routeNames from '@/router/routeNames'
 import apiConfig from './api'
 
 const apiClient = axios.create({
@@ -46,10 +47,10 @@ apiClient.interceptors.response.use(
 		if (error.response?.status === 401) {
 			const authStore = useAuthStore()
 			authStore.signout()
-			router.push({ name: 'signin' })
+			router.push({ name: routeNames.signin })
 		}
 		if (error.response?.status === 403) {
-			router.push({ name: 'not-found-page' })
+			router.push({ name: routeNames.NOT_FOUND })
 		}
 		return Promise.reject(error)
 	},

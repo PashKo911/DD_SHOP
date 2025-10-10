@@ -32,8 +32,7 @@ class ProductController {
 	}
 	static async getSuggestions(req, res, next) {
 		try {
-			const language = resolveLocale(req)
-			const data = await ProductsDBService.getSuggestions(req.query, language)
+			const data = await ProductsDBService.getSuggestions(req.query)
 
 			res.status(200).json({
 				success: true,
@@ -46,14 +45,13 @@ class ProductController {
 
 	static async getProduct(req, res, next) {
 		try {
-			console.log('GET PRODUCT DETAIL CHECKING ++++++++++++++++++++++++++')
 			const language = resolveLocale(req)
 			const currency = req.headers.currency || appConstants.defaultCurrency
 			const id = req.params.id
 
 			const rate = await getRate(currency)
 
-			const product = await ProductsDBService.getById(id, language, currency, rate)
+			const product = await ProductsDBService.getById(id, language, rate)
 			res.status(200).json({ success: true, product })
 		} catch (err) {
 			next(err)

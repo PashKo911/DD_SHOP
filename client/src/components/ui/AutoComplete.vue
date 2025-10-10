@@ -85,9 +85,9 @@ const theme = {
 	listContainer: `w-full overflow-auto`,
 	list: `m-0 p-1 list-none flex flex-col`,
 	optionGroup: `m-0 px-3 py-1 text-primary font-semibold bg-transparent capitalize`,
-	option: `cursor-pointer whitespace-nowrap relative flex items-center px-3 py-1.5 rounded-[.75rem]
+	option: `cursor-pointer whitespace-nowrap relative flex items-center px-3 py-1.5 rounded-sm
         text-primary text-lg bg-transparent border-none font-heading
-        p-focus:bg-surface-100 p-focus:text-surface-800
+        p-focus:bg-select-hover p-focus:text-surface-800
         p-selected:bg-highlight p-focus:p-selected:bg-highlight-emphasis
         transition-colors duration-200`,
 	emptyMessage: `px-3 py-2`,

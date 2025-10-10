@@ -108,7 +108,6 @@ const duplicateKeyVal = computed(() => {
 })
 
 const subscribe = async ({ email }) => {
-	console.log(email)
 	return generalApiOperation({
 		operationName,
 		operation: async () => {
