@@ -8,7 +8,7 @@
 		<ul
 			class="gx-lg-32-16 col-span-full flex flex-wrap items-center gap-y-5 max-md:flex-col md:gap-y-1"
 		>
-			<li v-for="r in menuItems" :key="r.path">
+			<li v-for="r in menuItems" :key="r.label">
 				<router-link
 					class="hover:text-t-inverse-hover text-inverse font-heading focus-visible:outline-t-inverse-hover rounded-sm text-3xl capitalize outline outline-transparent transition-colors duration-300 md:text-2xl"
 					:active-class="activeLinkClass"

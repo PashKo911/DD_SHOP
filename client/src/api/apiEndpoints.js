@@ -16,8 +16,9 @@ const apiEndpoints = {
 		subscribe: '/subscriber',
 	},
 	cart: {
-		getCartDetails: '/cart',
-		addProduct: '/cart',
+		init: '/cart/init',
+		populateCart: '/cart/populate',
+		addProduct: '/cart/add',
 		updateProductAmount: '/cart/amount',
 		deleteProduct: '/cart/delete',
 	},

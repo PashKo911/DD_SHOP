@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "68c6a1bbd4867611c810ce4f"
+  },
+  "email": "hello@hello.com",
+  "createdAt": {
+    "$date": "2025-09-14T11:06:35.184Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c7be13d4867611c810ceab"
+  },
+  "email": "admin@gmail.com",
+  "createdAt": {
+    "$date": "2025-09-15T07:19:47.219Z"
+  },
+  "__v": 0
+}]

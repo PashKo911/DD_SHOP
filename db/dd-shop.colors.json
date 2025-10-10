@@ -1,62 +1,110 @@
-[
-	{
-		"_id": { "$oid": "676bff288a281b494324617b" },
-		"label": { "en": "purple", "uk": "фіолетовий" },
-		"value": "#410A56",
-		"slug": "fioletovyi"
-	},
-	{
-		"_id": { "$oid": "676bff288a281b494324617c" },
-		"label": { "en": "black", "uk": "чорний" },
-		"value": "#0A0A0A",
-		"slug": "chornyi"
-	},
-	{
-		"_id": { "$oid": "676bff288a281b494324617d" },
-		"label": { "en": "gray", "uk": "сірий" },
-		"value": "#BEB8B8",
-		"slug": "siryi"
-	},
-	{
-		"_id": { "$oid": "676bff288a281b494324617e" },
-		"label": { "en": "pink", "uk": "рожевий" },
-		"value": "#C60896",
-		"slug": "rozhevyi"
-	},
-	{
-		"_id": { "$oid": "676bff288a281b494324617f" },
-		"label": { "en": "red", "uk": "червоний" },
-		"value": "#F30004",
-		"slug": "chervonyi"
-	},
-	{
-		"_id": { "$oid": "676bff288a281b4943246180" },
-		"label": { "en": "golden", "uk": "золотий" },
-		"value": "#E4B003",
-		"slug": "zolotyi"
-	},
-	{
-		"_id": { "$oid": "6783f65101747c6d5349b9e4" },
-		"label": { "en": "yellow", "uk": "жовтий" },
-		"value": "#CFDD00",
-		"slug": "zhovtyi"
-	},
-	{
-		"_id": { "$oid": "6783f90201747c6d5349b9e5" },
-		"label": { "en": "green", "uk": "зелений" },
-		"value": "#80DB00",
-		"slug": "zelenyi"
-	},
-	{
-		"_id": { "$oid": "68284fba65b546018073c4fd" },
-		"label": { "en": "sky blue", "uk": "голубий" },
-		"value": "#05EEFF",
-		"slug": "holubyi"
-	},
-	{
-		"_id": { "$oid": "68284ffb65b546018073c4fe" },
-		"label": { "en": "blue", "uk": "синій" },
-		"value": "#0041BB",
-		"slug": "synii"
-	}
-]
+[{
+  "_id": {
+    "$oid": "676bff288a281b494324617b"
+  },
+  "label": {
+    "en": "purple",
+    "uk": "фіолетовий"
+  },
+  "value": "#410A56",
+  "slug": "fioletovyi"
+},
+{
+  "_id": {
+    "$oid": "676bff288a281b494324617c"
+  },
+  "label": {
+    "en": "black",
+    "uk": "чорний"
+  },
+  "value": "#0A0A0A",
+  "slug": "chornyi"
+},
+{
+  "_id": {
+    "$oid": "676bff288a281b494324617d"
+  },
+  "label": {
+    "en": "gray",
+    "uk": "сірий"
+  },
+  "value": "#BEB8B8",
+  "slug": "siryi"
+},
+{
+  "_id": {
+    "$oid": "676bff288a281b494324617e"
+  },
+  "label": {
+    "en": "pink",
+    "uk": "рожевий"
+  },
+  "value": "#C60896",
+  "slug": "rozhevyi"
+},
+{
+  "_id": {
+    "$oid": "676bff288a281b494324617f"
+  },
+  "label": {
+    "en": "red",
+    "uk": "червоний"
+  },
+  "value": "#F30004",
+  "slug": "chervonyi"
+},
+{
+  "_id": {
+    "$oid": "676bff288a281b4943246180"
+  },
+  "label": {
+    "en": "golden",
+    "uk": "золотий"
+  },
+  "value": "#E4B003",
+  "slug": "zolotyi"
+},
+{
+  "_id": {
+    "$oid": "6783f65101747c6d5349b9e4"
+  },
+  "label": {
+    "en": "yellow",
+    "uk": "жовтий"
+  },
+  "value": "#CFDD00",
+  "slug": "zhovtyi"
+},
+{
+  "_id": {
+    "$oid": "6783f90201747c6d5349b9e5"
+  },
+  "label": {
+    "en": "green",
+    "uk": "зелений"
+  },
+  "value": "#80DB00",
+  "slug": "zelenyi"
+},
+{
+  "_id": {
+    "$oid": "68284fba65b546018073c4fd"
+  },
+  "label": {
+    "en": "sky blue",
+    "uk": "голубий"
+  },
+  "value": "#05EEFF",
+  "slug": "holubyi"
+},
+{
+  "_id": {
+    "$oid": "68284ffb65b546018073c4fe"
+  },
+  "label": {
+    "en": "blue",
+    "uk": "синій"
+  },
+  "value": "#0041BB",
+  "slug": "synii"
+}]

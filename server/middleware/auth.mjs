@@ -2,7 +2,17 @@ import { errorCodes } from '../constants/errorCodes.mjs'
 import { parseBearer } from '../utils/jwtHelpers.mjs'
 import { HttpError } from '../errors/HttpError.mjs'
 
-export const authMiddleware = (req, res, next) => {
+export const attachUserFromBarrier = (req, res, next) => {
+	try {
+		const user = parseBearer(req.headers.authorization)
+		req.user = user
+	} catch (err) {
+		req.user = null
+	}
+	next()
+}
+
+export const checkAuth = (req, res, next) => {
 	try {
 		const user = parseBearer(req.headers.authorization)
 		req.user = user

@@ -117,7 +117,7 @@
 				{{ t('pages.signin.subButtonText') }}
 			</span>
 			<router-link
-				:to="{ name: 'signup' }"
+				:to="{ name: routeNames.SIGNUP }"
 				class="focus-visible:outline-t-inverse-hover hover:text-t-inverse-hover rounded-sm underline outline outline-transparent transition-colors duration-300"
 			>
 				{{ t('buttons.signup') }}
@@ -144,14 +144,18 @@
 <script setup>
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
+import { onBeforeRouteLeave } from 'vue-router'
 
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 import { object } from 'yup'
 import authSchema from '@/schemas/auth'
+import routeNames from '@/router/routeNames'
 import { mapServerErrorKeys } from '@/utils/errorHelpers/mapServerErrorKeys'
 
 import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth'
+import { useCartStore } from '@/stores/cart'
+import { useRouter } from 'vue-router'
 
 import { Form } from '@primevue/forms'
 import InputText from '@/components/ui/InputText.vue'
@@ -161,14 +165,16 @@ import Password from '@/components/ui/Password.vue'
 import ContinueWithGoogleButton from '@/components/formControls/ContinueWithGoogleButton.vue'
 import Backdrop from '@/components/ui/Backdrop.vue'
 import ProgressBar from '@/components/ui/ProgressBar.vue'
-import { onBeforeRouteLeave } from 'vue-router'
 
 const { t, tm } = useI18n()
+const router = useRouter()
 
 const authStore = useAuthStore()
 const { signin, clearSigninErrors } = authStore
 
-const { isSigninLoading, signinServerValidationErrors } = storeToRefs(authStore)
+const { isSigninLoading, signinServerValidationErrors, isAuthenticated } =
+	storeToRefs(authStore)
+const { initCart } = useCartStore()
 
 const resolver = yupResolver(object().shape(authSchema))
 
@@ -211,7 +217,9 @@ const authAvailableMethods = computed(() => {
 
 const onFormSubmit = async ({ valid, values }) => {
 	if (valid) {
-		await signin(values)
+		await signin(values, () => {
+			router.push({ name: routeNames.HOME })
+		})
 	}
 }
 

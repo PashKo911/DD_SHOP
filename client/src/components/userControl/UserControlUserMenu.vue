@@ -4,10 +4,11 @@
 		variant="text"
 		aria-haspopup="true"
 		rounded
+		contrast
 		aria-controls="overlay_menu"
 		:aria-label="t('accessibility.userControl')"
 		@click="toggle"
-		class="focus-visible:outline-t-inverse-hover [&:has(+_.wrp)]:text-t-inverse-hover relative aspect-square w-[36px] py-0! outline-1"
+		class="focus-visible:outline-t-inverse-hover [&_span]:text-creamy-cloud! [&:has(+_.wrp)]:text-t-inverse-hover relative aspect-square w-[2.25rem] py-0! outline-1"
 	>
 		<template #icon>
 			<img
@@ -23,9 +24,7 @@
 				v-else
 				class="text-creamy-cloud absolute inset-0 grid place-items-center bg-[#555]"
 			>
-				<span>
-					{{ userData.name[0].toUpperCase() }}
-				</span>
+				{{ userData.name[0].toUpperCase() }}
 			</span>
 		</template>
 	</Button>

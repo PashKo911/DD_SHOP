@@ -35,7 +35,8 @@
 						@click="toggleHeaderMenu"
 					/>
 					<teleport defer :to="curtPosition">
-						<router-link
+						<header-cart-button />
+						<!-- <router-link
 							:to="{ name: routeNames.CART }"
 							:aria-label="t('accessibility.cartLink')"
 							class="focus-visible:outline-t-inverse-hover z-30 order-3 flex items-center rounded-sm outline outline-transparent md:order-2"
@@ -43,7 +44,7 @@
 							<cart-icon
 								class="fill-inverse hover:fill-t-inverse-hover [.router-link-active_&]:fill-t-inverse-hover"
 							/>
-						</router-link>
+						</router-link> -->
 					</teleport>
 					<teleport defer :to="languageSelectPosition">
 						<user-control class="order-3" />
@@ -70,8 +71,10 @@ import CartIcon from '@/components/icons/CartIcon.vue'
 import HeaderMenuList from './HeaderMenuList.vue'
 import HeaderLanguageSelect from './HeaderLanguageSelect.vue'
 import HeaderMenuVisibilityToggler from './HeaderMenuVisibilityToggler.vue'
+import HeaderCartButton from './HeaderCartButton.vue'
 import MainSearchInput from '@/components/formControls/MainSearchInput.vue'
 import UserControl from '@/components/userControl/UserControl.vue'
+
 //========================================================================================================================================================
 
 const { menuItems } = getMenuItems()

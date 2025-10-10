@@ -1,31 +1,22 @@
 <template>
-	<Breadcrumb :home="home" :model="items">
+	<breadcrumb :home="home" :model="items">
 		<template #item="{ item, props }">
-			<router-link
+			<button-link
 				v-if="!item.isLast"
-				v-slot="{ href, navigate }"
 				:to="item.route"
-				custom
-			>
-				<a
-					:href="href"
-					v-bind="props.action"
-					@click="navigate"
-					class="hover:text-t-hover capitalize underline decoration-transparent transition-colors"
-				>
-					<span>{{ item.label }}</span>
-				</a>
-			</router-link>
+				:label="item.label"
+				variant="text"
+			/>
 			<span
 				v-else
 				v-bind="props.action"
 				aria-current="page"
 				class="text-t-hover font-bold capitalize"
 			>
-				<span>{{ item.label }}</span>
+				{{ item.label }}
 			</span>
 		</template>
-	</Breadcrumb>
+	</breadcrumb>
 </template>
 
 <script setup>
@@ -38,6 +29,7 @@ import { useProductsStore } from '@/stores/products'
 import routeNames from '@/router/routeNames'
 
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb.vue'
+import ButtonLink from '../ui/buttons/ButtonLink.vue'
 
 const route = useRoute()
 const { t } = useI18n()

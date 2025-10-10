@@ -1,75 +1,180 @@
+import { HttpError } from '../../../errors/HttpError.mjs'
 import CartDBService from '../models/cart/CartDBService.mjs'
 import ProductsDBService from '../models/product/ProductsDBService.mjs'
+import { resolveLocale } from '../../../utils/resolveLocale.mjs'
+import { getRate } from '../../../services/ratesCache.mjs'
+import { appConstants } from '../../../constants/app.mjs'
+import { errorCodes } from '../../../constants/errorCodes.mjs'
+import { normalizeExpressValidatorErrors } from '../../../utils/errorNormalizers/normalizeExpressValidatorErrors.mjs'
+import cartProductSchema from '../../../validators/cartProductSchema.mjs'
+import { validationResult, checkSchema } from 'express-validator'
 
 class CartController {
-	static async getCartDetails(req, res, next) {
+	static async initCart(req, res, next) {
 		try {
-			const userId = req.user.id // Отримання id користувача
+			const userId = req.user?._id || null
+			const cartData = Array.isArray(req.body) ? req.body : []
 
-			const cartDetails = await CartDBService.getCartDetails(userId)
-			res.status(200).json(
-				cartDetails
-				// user: req.user,
-			)
+			const cart = await CartDBService.initCart(userId, cartData)
+
+			res.status(200).json({ success: true, cart })
+		} catch (err) {
+			next(err)
+		}
+	}
+	static async populateCart(req, res, next) {
+		try {
+			const userId = req.user?._id || null
+			const cartData = Array.isArray(req.body) ? req.body : []
+			const language = resolveLocale(req)
+			const currency = req.headers.currency || appConstants.defaultCurrency
+
+			if (!cartData.length) {
+				return res.status(200).json({
+					success: true,
+					populatedCart: {
+						productsList: [],
+						productCount: 0,
+						total: 0,
+						totalDiscount: 0,
+						totalWithoutDiscount: 0,
+					},
+				})
+			}
+
+			const rate = await getRate(currency)
+
+			const populatedCart = await CartDBService.populateCart(cartData, userId, language, rate)
+
+			res.status(200).json({
+				success: true,
+				populatedCart,
+			})
 		} catch (err) {
 			next(err)
 		}
 	}
 	static async addProduct(req, res, next) {
-		// const userId = req.user.id
+		const expressErrors = validationResult(req)
+
+		if (!expressErrors.isEmpty()) {
+			const details = normalizeExpressValidatorErrors(expressErrors)
+			return next(
+				new HttpError(400, 'Validation failed', {
+					code: errorCodes.VALIDATION_ERROR,
+					details,
+					expose: true,
+				})
+			)
+		}
 
 		try {
-			console.log(req.body, 'addProduct ++++++++++')
-			// const { productId, options } = req.body // Отримання id продукту
-			// Перевірка чи існує продукт const
-			// const product = await ProductsDBService.getById(productId)
+			const userId = req.user?._id || null
+			const { product: productId, variant, size, amount } = req.body
 
-			// if (!product) {
-			// 	return res.status(404).json({ message: 'Product not found' }) // Відправка помилки, якщо продукт не знайдено
-			// }
+			const productDb = await ProductsDBService.getById(productId)
 
-			// Оновлення корзини або додавання нового продукту
-			// const cart = await CartDBService.addProduct({
-			// 	userId,
-			// 	productId,
-			// 	options,
-			// })
+			if (!productDb) {
+				throw new HttpError(404, 'Product not found', { code: errorCodes.NOT_FOUND })
+			}
 
-			res.status(200).json({ message: 'Product added successfully' })
-			// res.status(200).json({ message: 'Product added successfully', cart })
+			const productsList = await CartDBService.addProduct({
+				userId,
+				productId,
+				variant,
+				size,
+				amount,
+			})
+
+			res.status(200).json({ message: 'Product added successfully', cart: productsList })
 		} catch (err) {
 			next(err)
 		}
 	}
 	static async updateProductAmount(req, res, next) {
-		const userId = req.user.id // Отримання id користувача
+		const expressErrors = validationResult(req)
+
+		if (!expressErrors.isEmpty()) {
+			const details = normalizeExpressValidatorErrors(expressErrors)
+			return next(
+				new HttpError(400, 'Validation failed', {
+					code: errorCodes.VALIDATION_ERROR,
+					details,
+					expose: true,
+				})
+			)
+		}
 
 		try {
-			const { productId, amount } = req.body // Отримання id продукту та кількості з тіла запиту
-			// Перевірка чи існує продукт const
-			const product = await ProductsDBService.getById(productId)
-			if (!product) {
-				return res.status(404).json({ message: 'Product not found' }) // Відправка помилки, якщо продукт не знайдено
+			const userId = req.user?._id || null
+			const { product: productId, variant, size, amount } = req.body
+
+			const language = resolveLocale(req)
+			const currency = req.headers.currency || appConstants.defaultCurrency
+
+			const rate = await getRate(currency)
+
+			const productDb = await ProductsDBService.getById(productId)
+
+			if (!productDb) {
+				throw new HttpError(404, 'Product not found', { code: errorCodes.NOT_FOUND })
 			}
 
-			// Оновлення корзини або додавання нового продукту
-			const cart = await CartDBService.updateProductAmount({
+			const { productsList, populatedCart } = await CartDBService.updateProductAmount({
 				userId,
 				productId,
+				variant,
+				size,
 				amount,
+				language,
+				rate,
 			})
 
-			res.status(200).json({ message: 'Product amount updated successfully', cart })
+			res
+				.status(200)
+				.json({ message: 'Product amount updated successfully', cart: productsList, populatedCart })
 		} catch (err) {
 			next(err)
 		}
 	}
 	static async deleteProduct(req, res, next) {
-		const userId = req.user.id
+		await Promise.all(
+			['product', 'variant', 'size'].map((field) =>
+				checkSchema({ [field]: cartProductSchema[field] }).run(req)
+			)
+		)
+
+		const errors = validationResult(req)
+		if (!errors.isEmpty()) {
+			const details = normalizeExpressValidatorErrors(errors)
+			return next(
+				new HttpError(400, 'Validation failed', {
+					code: errorCodes.VALIDATION_ERROR,
+					details,
+					expose: true,
+				})
+			)
+		}
+
 		try {
-			const { id } = req.body
-			const cart = await CartDBService.deleteProduct({ userId, productId: id })
-			res.status(200).json({ message: 'Product deleted', cart })
+			const userId = req.user?._id || null
+			const { product: productId, variant, size } = req.body
+
+			const language = resolveLocale(req)
+			const currency = req.headers.currency || appConstants.defaultCurrency
+
+			const rate = await getRate(currency)
+
+			const { productsList, populatedCart } = await CartDBService.deleteProduct({
+				userId,
+				productId,
+				variant,
+				size,
+				language,
+				rate,
+			})
+
+			res.status(200).json({ message: 'Product deleted', cart: productsList, populatedCart })
 		} catch (err) {
 			next(err)
 		}

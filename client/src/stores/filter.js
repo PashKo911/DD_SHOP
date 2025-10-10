@@ -19,7 +19,7 @@ export const useFilterStore = defineStore('filter', () => {
 	const facetOptionsStore = useFacetOptionsStore()
 	const commonStore = useCommonStore()
 
-	const { t, locale } = useI18n()
+	const { t, n, locale } = useI18n()
 	const { facetOptions, currency } = storeToRefs(facetOptionsStore)
 	const { viewMode } = storeToRefs(commonStore)
 
@@ -85,13 +85,7 @@ export const useFilterStore = defineStore('filter', () => {
 	})
 
 	const activeChips = computed(() => {
-		return mapFilterToChips(
-			filter,
-			facetOptions.value,
-			defaultFilter.value,
-			locale.value,
-			currency.value,
-		)
+		return mapFilterToChips(filter, facetOptions.value, defaultFilter.value, n)
 	})
 	//========================================================================================================================================================
 
@@ -119,12 +113,12 @@ export const useFilterStore = defineStore('filter', () => {
 	const resetAllFilters = () => {
 		Object.assign(filter, defaultFilter.value)
 	}
-	const resetFiltersExceptGender = () => {
-		const currentGender = filter.gender
+	const resetFiltersExceptTitle = () => {
+		const currentTitle = filter.title
 
 		Object.assign(filter, defaultFilter.value)
 
-		filter.gender = currentGender
+		filter.title = currentTitle
 	}
 	function removeChip(chip) {
 		removeFilterChip(filter, defaultFilter.value, chip)
@@ -148,7 +142,7 @@ export const useFilterStore = defineStore('filter', () => {
 		setFilterProp,
 		resetPrice,
 		resetAllFilters,
-		resetFiltersExceptGender,
+		resetFiltersExceptTitle,
 		removeChip,
 	}
 })

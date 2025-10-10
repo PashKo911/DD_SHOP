@@ -15,7 +15,7 @@ const cartProductSchema = new Schema({
 	size: {
 		type: Schema.Types.ObjectId,
 		ref: 'Size',
-		required: [true, 'Size is required'],
+		required: true,
 	},
 	amount: {
 		type: Number,
@@ -28,7 +28,7 @@ const cartSchema = new Schema({
 	customer: {
 		type: Schema.Types.ObjectId,
 		ref: 'User',
-		required: true,
+		required: [true, 'Customer Id is required'],
 	},
 	productsList: [cartProductSchema],
 })

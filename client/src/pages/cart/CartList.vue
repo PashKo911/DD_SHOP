@@ -1,40 +1,53 @@
 <template>
 	<div class="p-35-15 border-border-color rounded-xl border">
-		<cart-product-card v-for="p in cartList" :key="p._id" :product-data="p" />
+		<component
+			:is="activeCardComponent"
+			v-for="(p, i) in itemsForRender"
+			:key="isSkeletonVisible ? i : `${p.productId}${p.variant}${p.size?._id}`"
+			:product-data="p"
+			:processing-item-key="processingItemKey"
+			:is-spinner-visible="isSpinnerVisible"
+			@amount-updated="emit('amount-updated', $event)"
+			@delete-product="emit('delete-product', $event)"
+		/>
 	</div>
 </template>
 
 <script setup>
-import CartProductCard from './CartProductCard.vue'
+import { computed } from 'vue'
 
-import img1 from '@/assets/img/products/1.jpg'
-import img2 from '@/assets/img/products/2.jpg'
-import img3 from '@/assets/img/products/3.jpg'
+import CartProductCard from './cartProductCart/CartProductCard.vue'
+import CartProductCardSkeleton from './cartProductCart/CartProductCardSkeleton.vue'
 
-const cartList = [
-	{
-		_id: '1',
-		imgSrc: img1,
-		title: "Stylish men's sweater (Color)",
-		color: 'Turquoise',
-		size: '2XL',
-		price: '239',
+const props = defineProps({
+	cartList: {
+		type: Array,
+		default: [],
 	},
-	{
-		_id: '2',
-		imgSrc: img2,
-		title: "Stylish men's sweater (Color)",
-		color: 'Turquoise',
-		size: '2XL',
-		price: '239',
+	isSkeletonVisible: {
+		type: Boolean,
+		default: false,
 	},
-	{
-		_id: '3',
-		imgSrc: img3,
-		title: "Stylish men's sweater (Color)",
-		color: 'Turquoise',
-		size: '2XL',
-		price: '239',
+	isSpinnerVisible: {
+		type: Boolean,
+		default: false,
 	},
-]
+	processingItemKey: {
+		type: String,
+	},
+})
+
+const emit = defineEmits(['amount-updated', 'delete-product'])
+
+const minCardsCount = 2
+
+const activeCardComponent = computed(() => {
+	return props.isSkeletonVisible ? CartProductCardSkeleton : CartProductCard
+})
+
+const itemsForRender = computed(() => {
+	return props.isSkeletonVisible
+		? Array.from({ length: minCardsCount })
+		: props.cartList
+})
 </script>

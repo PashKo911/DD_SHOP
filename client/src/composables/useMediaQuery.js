@@ -1,5 +1,15 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
+/**
+ * Reactive media query hook.
+ *
+ * @param {string} query CSS media query
+ * @returns {import('vue').Ref<boolean>} true if query matches
+ *
+ * @example
+ * const isMobile = useMediaQuery('(max-width: 767.98px)')
+ */
+
 export function useMediaQuery(query) {
 	const matches = ref(false)
 	let mediaQueryList = null

@@ -1,20 +1,19 @@
+import { Types } from 'mongoose'
 import Product from './Product.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
-import { createCurrencyFormatter } from '../../../../utils/currencyFormatter.mjs'
-import { createFieldsConfigurations } from './fieldsConfig.mjs'
+import { createFieldsConfigurations } from '../../../../utils/createFieldsConfigurations.mjs'
 import { HttpError } from '../../../../errors/HttpError.mjs'
-import { PRODUCT_POPULATE_FIELDS, PRODUCT_BASE_FIELDS_CONFIGURATIONS } from './constants.mjs'
-import { formatProductForResponse, formatReqPriceRange } from './formatters.mjs'
+import { productPopulateFields, productBaseFieldsConfigurations } from './constants.mjs'
+import { formatProductForResponse, formatReqPriceRange } from '../../../../utils/formatters/formatters.mjs'
 import { appConstants } from '../../../../constants/app.mjs'
 import { errorCodes } from '../../../../constants/errorCodes.mjs'
+import detectLang from '../../../../utils/detectLang.mjs'
+import buildProductSuggestionsPipeline from '../../agregations/productSuggestions/buildProductSuggestionsPipeline.mjs'
 
 class ProductsDBService extends MongooseCRUDManager {
-	static fieldsConfigurations = PRODUCT_BASE_FIELDS_CONFIGURATIONS
-
 	async getList(reqQuery, language, currency, rate) {
 		try {
-			const configurations = createFieldsConfigurations(ProductsDBService.fieldsConfigurations, language)
-			const formatter = createCurrencyFormatter(language, currency)
+			const configurations = createFieldsConfigurations(productBaseFieldsConfigurations, language)
 			const req = { ...reqQuery }
 
 			if (currency !== appConstants.defaultCurrency) {
@@ -25,11 +24,11 @@ class ProductsDBService extends MongooseCRUDManager {
 				req,
 				configurations,
 				{},
-				PRODUCT_POPULATE_FIELDS
+				productPopulateFields
 			)
-
 			const localized = documents.map((doc) => {
-				return formatProductForResponse(doc, language, rate, formatter)
+				const res = formatProductForResponse(doc, language, rate)
+				return res
 			})
 
 			return { documents: localized, count }
@@ -39,34 +38,27 @@ class ProductsDBService extends MongooseCRUDManager {
 		}
 	}
 
-	async getSuggestions(reqQuery, language) {
+	async getSuggestions(reqQuery) {
 		try {
-			const configurations = createFieldsConfigurations(ProductsDBService.fieldsConfigurations, language)
+			const { title, limit } = reqQuery
+			const sliceLimit = Number(limit) || appConstants.defaultSuggestionsLimit
+			const titleLang = detectLang(title)
 
-			const { documents } = await this.findManyWithSearchOptions(
-				reqQuery,
-				configurations,
-				{
-					title: 1,
-					gender: 1,
-					_id: 0,
-				},
-				['gender']
-			)
-			const res = documents.map((d) => ({ title: d.title[language], gender: d.gender }))
-			return res
+			const pipeline = buildProductSuggestionsPipeline(title, titleLang, sliceLimit, appConstants.searchDepth)
+
+			const suggestions = await Product.aggregate(pipeline)
+
+			return suggestions
 		} catch (err) {
 			if (err instanceof HttpError) throw err
 			throw new HttpError(500, 'Failed to get suggestions', { code: errorCodes.DATABASE_ERROR, cause: err })
 		}
 	}
 
-	async getById(id, language, currency, rate) {
+	async getById(id, language, rate) {
 		try {
-			const formatter = createCurrencyFormatter(language, currency)
-
-			const document = await super.getById(id, {}, PRODUCT_POPULATE_FIELDS)
-			const res = formatProductForResponse(document, language, rate, formatter)
+			const document = await super.getById(id, {}, productPopulateFields)
+			const res = formatProductForResponse(document, language, rate)
 
 			return res
 		} catch (err) {
@@ -112,3 +104,5 @@ class ProductsDBService extends MongooseCRUDManager {
 }
 
 export default new ProductsDBService(Product)
+
+//========================================================================================================================================================

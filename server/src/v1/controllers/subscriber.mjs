@@ -6,8 +6,6 @@ import { normalizeExpressValidatorErrors } from '../../../utils/errorNormalizers
 
 class SubscriberController {
 	static async createSubscriber(req, res, next) {
-		console.log('req.body subscribe +++++++++')
-		console.log(req.body)
 		const expressErrors = validationResult(req)
 
 		if (!expressErrors.isEmpty()) {

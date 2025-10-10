@@ -28,12 +28,13 @@
 		</div>
 		<div class="flex flex-wrap items-center gap-3 not-last:mb-4">
 			<span class="text-32-26 leading-tight font-semibold">
-				{{ productData.price }}
+				{{ n(productData.price, 'currency') }}
 			</span>
 			<span
+				v-if="productData.oldPrice"
 				class="text-32-26 text-dark-grey leading-tight font-semibold line-through decoration-2"
 			>
-				{{ productData.oldPrice }}
+				{{ n(productData.oldPrice, 'currency') }}
 			</span>
 		</div>
 		<div
@@ -90,7 +91,11 @@
 					{{ $form.size?.error.message }}
 				</message>
 			</div>
-			<size-radio-group :items="productData.sizes" @input="$field.onInput" />
+			<size-radio-group
+				v-model="$field.value"
+				:items="productData.sizes"
+				@input="$field.onInput"
+			/>
 		</form-field>
 		<div class="flex items-center gap-4 sm:gap-8">
 			<div class="relative">
@@ -116,6 +121,7 @@
 			</div>
 			<Button
 				fluid
+				:loading="isLoading"
 				type="submit"
 				:label="t('buttons.addToCart')"
 				class="max-w-[25rem] shadow-lg"
@@ -129,7 +135,6 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 import { object, string, number } from 'yup'
-import { useToast } from 'primevue/usetoast'
 
 import RatingComp from '@/components/ui/rating/RatingComp.vue'
 import SizeRadioGroup from '@/components/formControls/SizeRadioGroup.vue'
@@ -140,13 +145,15 @@ import { Form } from '@primevue/forms'
 import { FormField } from '@primevue/forms'
 import Message from '@/components/ui/Message.vue'
 
-const { t } = useI18n()
-const toast = useToast()
-
+const { t, n } = useI18n()
 const props = defineProps({
 	productData: {
 		type: Object,
 		required: true,
+	},
+	isLoading: {
+		type: Boolean,
+		default: false,
 	},
 })
 
@@ -163,7 +170,7 @@ const resolver = ref(yupResolver(schema))
 const initialValues = computed(() => {
 	return {
 		color: props.productData.color._id,
-		size: null,
+		size: props.productData.initialSize,
 		count: 1,
 	}
 })
@@ -172,11 +179,6 @@ const initialValues = computed(() => {
 const onFormSubmit = ({ values, valid }) => {
 	if (valid) {
 		emits('formSubmit', values)
-		toast.add({
-			severity: 'success',
-			summary: 'Form is submitted.',
-			life: 3000,
-		})
 	}
 }
 

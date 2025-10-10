@@ -7,7 +7,7 @@
 			optionGroupChildren="items"
 			fluid
 			dropdown
-			scrollHeight="20rem"
+			:scrollHeight="autocompleteScrollHeight"
 			:tabindex="1"
 			:suggestions="suggestionsValue"
 			:loading="isSuggestionsLoading"
@@ -38,15 +38,16 @@
 </template>
 
 <script setup>
+import { storeToRefs } from 'pinia'
+import { computed, ref, watch } from 'vue'
+
 import { useFilterStore } from '@/stores/filter'
 import { useProductsStore } from '@/stores/products'
 import { useRouter } from 'vue-router'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useMediaQuery } from '@/composables/useMediaQuery'
 import routeNames from '@/router/routeNames'
-
-import { storeToRefs } from 'pinia'
-import { computed, ref, watch } from 'vue'
 
 import AutoComplete from '../ui/AutoComplete.vue'
 import CloseIcon from '../icons/CloseIcon.vue'
@@ -59,7 +60,7 @@ const productStore = useProductsStore()
 const router = useRouter()
 const route = useRoute()
 
-const { filter } = storeToRefs(filterStore)
+const { filter, filterStrings } = storeToRefs(filterStore)
 const { setFilterProp } = filterStore
 
 const { suggestionsValue, isSuggestionsLoading } = storeToRefs(productStore)
@@ -69,6 +70,12 @@ const { t } = useI18n()
 
 const localState = ref(null)
 //========================================================================================================================================================
+const isSmallScreen = useMediaQuery(
+	'(max-width: 479.98px), (max-height: 479.98px)',
+)
+const autocompleteScrollHeight = computed(() => {
+	return isSmallScreen.value ? '20rem' : '30rem'
+})
 
 const isClearButtonVisible = computed(() => {
 	return !isSuggestionsLoading.value && localState.value
@@ -83,20 +90,25 @@ const onSearch = async ({ query }) => {
 }
 
 const applySearchFilter = ({ value }) => {
-	setFilterProp('gender', value.genderId)
-	setFilterProp('title', value.label)
-
-	if (route.name !== routeNames.SHOP_CATEGORY) {
-		router.push({
-			name: routeNames.SHOP_CATEGORY,
-			params: { category: value.genderName },
-		})
+	if (value.genderName === route.params.category) {
+		setFilterProp('title', value.label)
 	}
+
+	router.push({
+		name: routeNames.SHOP_CATEGORY,
+		query: { title: value.label },
+		params: { category: value.genderName },
+	})
 }
 
 const onClear = () => {
 	if (filter.value.title) {
 		setFilterProp('title', '')
+		router.replace({
+			name: route.name,
+			query: filterStrings.value,
+			params: { ...route.params },
+		})
 	} else {
 		localState.value = ''
 	}

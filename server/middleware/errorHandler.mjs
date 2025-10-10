@@ -13,14 +13,24 @@ export default function errorHandler(app) {
 
 		const time = new Date().toISOString()
 		const safeMsg = err && err.message ? err.message : String(err)
-		const messageForLog = `${time} ${req.method} ${req.originalUrl} → ${status}: ${safeMsg}`
+
+		let messageForLog = `${time} ${req.method} ${req.originalUrl} → ${status}: ${safeMsg}`
+
+		if (err.cause) {
+			messageForLog += `\n +++ Cause: ${
+				err.cause instanceof Error ? err.cause.stack || err.cause.message : JSON.stringify(err.cause)
+			}`
+		}
 
 		if (logLevel === 'warn') {
 			console.warn('[WARN]', messageForLog)
 		} else {
 			console.error('[ERROR]', messageForLog)
 			if (req.app.get('env') === 'development') {
-				console.error(err && err.stack ? err.stack : err)
+				console.error('Stack:', err.stack)
+				if (err.cause) {
+					console.error('Cause stack:', err.cause instanceof Error ? err.cause.stack : err.cause)
+				}
 			}
 		}
 

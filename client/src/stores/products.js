@@ -8,8 +8,8 @@ import { useI18n } from 'vue-i18n'
 import apiClient from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
 import applyColorFilterToProducts from '@/utils/productsHelpers/applyColorFilterToProducts'
-import buildSuggestionGroups from '@/utils/productsHelpers/buildSuggestionGroups'
 import routeNames from '@/router/routeNames'
+import shopConstants from '@/constants/shop'
 
 export const useProductsStore = defineStore('products', () => {
 	const generalStore = useGeneralStore()
@@ -49,9 +49,7 @@ export const useProductsStore = defineStore('products', () => {
 		suggestions: {
 			name: 'suggestions',
 			queryParams: {
-				gender: filter.value.gender,
-				perPage: 5,
-				page: 0,
+				limit: shopConstants.suggestionCountLimit,
 			},
 		},
 		productDetail: {
@@ -92,7 +90,7 @@ export const useProductsStore = defineStore('products', () => {
 	})
 
 	const suggestionsValue = computed(() => {
-		return buildSuggestionGroups(suggestions.value, locale.value)
+		return suggestions.value
 	})
 
 	const productDetailsValue = computed(() => {

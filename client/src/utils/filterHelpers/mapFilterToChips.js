@@ -1,42 +1,16 @@
 /**
- * Converts a filter object into an array of "chips" for displaying
- * the currently selected filter parameters in the UI.
+ * Build filter chips.
  *
- * @param {Record<string, any>} filter
- *   - An object whose keys are filter field names and values are the currently selected values.
- * @param {Record<string, Array<{
- *     _id: string;
- *     label: string;
- *   }>>} options
- *   - Metadata for options used by filters with predefined choices.
- *     Each option object must include `_id` and `label`, where `label`
- *     is a human-readable string (e.g. `'sport'` or `'спортивний'`).
- * @param {Record<string, any>} defaultFilter
- *   - The default filter state; fields equal to their default values are ignored.
- * @param {string} [locale='en']
- *   - Locale code used to format numbers/currencies via `Intl.NumberFormat`
- *     (examples: 'en', 'uk').
- * @param {{ currency: string }} currency
- *   - Currency settings (object with `.currency`), used for formatting price ranges.
- *
- * @returns {Array<{
- *   key: string;    // filter field name
- *   value: any;     // raw value or option id
- *   label: string;  // human-readable label for the chip (taken from meta.label or stringified value)
- * }>}
- *   - An array of chip objects representing all active, non-default filters.
+ * @param {Object} filter Active filter values
+ * @param {Object} options Option metadata ({ key: [{_id,label}] })
+ * @param {Object} defaultFilter Default filter state
+ * @param {(value:number, type?:string)=>string} numberFormatter Formatting function (e.g. from i18n)
+ * @returns {Array<{key:string,value:any,label:string}>} Chips
  */
-function mapFilterToChips(filter, options, defaultFilter, locale, currency) {
-	const ignoredKeys = new Set(['gender', 'perPage', 'page', 'sort'])
-	const chips = []
 
-	const priceFormatter = new Intl.NumberFormat(locale, {
-		style: 'currency',
-		currency: currency.currency,
-		currencyDisplay: 'narrowSymbol',
-		minimumFractionDigits: 0,
-		maximumFractionDigits: 0,
-	})
+function mapFilterToChips(filter, options, defaultFilter, numberFormatter) {
+	const ignoredKeys = new Set(['gender', 'perPage', 'page', 'sort', 'title'])
+	const chips = []
 
 	function isDefaultValue(key, value) {
 		const def = defaultFilter[key]
@@ -60,7 +34,7 @@ function mapFilterToChips(filter, options, defaultFilter, locale, currency) {
 			{
 				key: 'price',
 				value: `${min}-${max}`,
-				label: `${priceFormatter.format(min)} – ${priceFormatter.format(max)}`,
+				label: `${numberFormatter(min, 'currency')} – ${numberFormatter(max, 'currency')}`,
 			},
 		]
 	}

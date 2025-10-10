@@ -11,7 +11,7 @@
 			@reset-price="resetPrice"
 			@close-filter="filterVisibilityToggler"
 			@remove-chip="removeChip"
-			@remove-all="resetFiltersExceptGender"
+			@remove-all="resetAllFilters"
 			class="lg:w-md-340-290 lg:shrink-0 lg:self-start"
 		/>
 
@@ -67,8 +67,8 @@
 			<shop-chips-group
 				v-if="activeChips.length && isDesktop"
 				:items="activeChips"
-				@remove="removeChip"
-				@remove-all="resetFiltersExceptGender"
+				@remove="onRemoveChip"
+				@remove-all="resetAllFilters"
 				class="mb-6"
 			/>
 			<shop-list
@@ -107,7 +107,12 @@ import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 
 import { useI18n } from 'vue-i18n'
-import { useRoute, useRouter } from 'vue-router'
+import {
+	onBeforeRouteLeave,
+	onBeforeRouteUpdate,
+	useRoute,
+	useRouter,
+} from 'vue-router'
 import { useFilterModel } from '@/composables/useFilterModel'
 import { useProductsStore } from '@/stores/products'
 import { useCommonStore } from '@/stores/common'
@@ -166,7 +171,7 @@ const {
 	parseFilterFromQuery,
 	resetPrice,
 	resetAllFilters,
-	resetFiltersExceptGender,
+	resetFiltersExceptTitle,
 	removeChip,
 } = filterStore
 
@@ -177,6 +182,7 @@ const {
 	hasSelectedFilters,
 	hasQueryFilters,
 	activeChips,
+	apiQueryParams,
 } = storeToRefs(filterStore)
 
 const { getFacetOptions } = facetOptionsStore
@@ -211,6 +217,11 @@ const sortFilterValue = computed({
 	},
 	set(newVal) {
 		setFilterProp('sort', { ...newVal, label: newVal.label.toLowerCase() })
+		router.replace({
+			name: route.name,
+			query: filterStrings.value,
+			params: { ...route.params },
+		})
 	},
 })
 
@@ -219,7 +230,6 @@ const pageFilterValue = computed({
 		return filter.value.page * perPage.value
 	},
 	set(newVal) {
-		console.log(newVal)
 		const newPage = Math.floor(newVal / perPage.value)
 		setFilterProp('page', newPage)
 	},
@@ -304,7 +314,7 @@ watch(locale, async () => {
 
 watch(currentGenderId, async (newVal, oldVal) => {
 	if (oldVal) {
-		resetAllFilters()
+		resetFiltersExceptTitle()
 	}
 	setFilterProp('gender', newVal)
 })
@@ -315,28 +325,15 @@ let unwatch
 onMounted(async () => {
 	await getFacetOptions()
 
-	setFilterProp('gender', currentGenderId.value)
-
 	if (hasQueryFilters.value) {
 		parseFilterFromQuery(route.query)
 	}
 
-	if (hasSelectedFilters.value) {
-		router.push({
-			name: route.name,
-			query: filterStrings.value,
-			params: { ...route.params, locale: locale.value },
-		})
-	}
+	setFilterProp('gender', currentGenderId.value)
 
 	getDefaultProducts()
 
-	unwatch = watch(filter.value, async () => {
-		router.replace({
-			name: route.name,
-			query: filterStrings.value,
-			params: { ...route.params, locale: locale.value },
-		})
+	unwatch = watch(filter.value, () => {
 		getDefaultProducts()
 	})
 })
@@ -348,9 +345,19 @@ onUnmounted(() => {
 	resetAllFilters()
 	setFilterProp('gender', '')
 })
+
 //========================================================================================================================================================
 
 const filterVisibilityToggler = () => {
 	isFilterOpen.value = !isFilterOpen.value
+}
+
+const onRemoveChip = (chip) => {
+	removeChip(chip)
+	router.replace({
+		name: route.name,
+		query: filterStrings.value,
+		params: { ...route.params, locale: locale.value },
+	})
 }
 </script>

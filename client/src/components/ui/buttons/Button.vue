@@ -3,12 +3,21 @@
 		<template v-for="(_, name) in $slots" v-slot:[name]="slotProps">
 			<slot :name="name" v-bind="slotProps ?? {}" />
 		</template>
+		<template #loadingicon>
+			<spinner-icon
+				class="stroke-creamy-cloud size-[1.2em]"
+				:class="{
+					'stroke-primary': contrast,
+				}"
+			/>
+		</template>
 	</Button>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { ptViewMerge } from '@/utils/volt'
+import SpinnerIcon from '@/components/icons/SpinnerIcon.vue'
 
 import Button from 'primevue/button'
 
@@ -23,8 +32,8 @@ const currentTheme = computed(() => {
 })
 
 const DEFAULT_BUTTON_THEME = {
-	root: `inline-flex group cursor-pointer select-none items-center justify-center capitalize overflow-hidden relative
-	px-3 py-3 gap-2 rounded-md disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
+	root: `inline-flex group enabled:cursor-pointer select-none items-center justify-center capitalize overflow-hidden relative
+	px-3 py-3 gap-2 rounded-md disabled:cursor-default! disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
 	bg-primary border border-2 border-primary text-24-18 font-bold font-heading leading-[1.2]
 	hover:border-primary-t-inverse-hover active:border-primary-emphasis-alt
 	focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
@@ -37,12 +46,13 @@ const DEFAULT_BUTTON_THEME = {
 	active:p-outlined:bg-primary-100
 	p-outlined:border-primary-200 hover:p-outlined:border-primary-200
 	p-outlined:text-primary hover:p-outlined:text-primary
-	p-text:bg-transparent p-text:[&_span]:text-primary p-text:hover:[&_span]:text-t-hover hover:p-text:text-t-inverse-hover p-text:py-[.1875rem] hover:p-text:bg-transparent p-text:before:hidden p-text:border-none
+	p-text:bg-transparent p-text:[&_span]:text-primary p-text:hover:[&_span]:text-t-hover p-text:p-0 hover:p-text:text-t-inverse-hover hover:p-text:bg-transparent p-text:before:hidden p-text:border-none
 	before:rounded-[.4375rem] group before:bg-creamy-cloud
+	p-loading:[&_span]:hidden
 	before:absolute before:inset-[.1875rem] before:scale-0
 	p-large:before:rounded-[.75rem] before:opacity-0 before:transition-transform
 	before:duration-300 hover:before:scale-100 hover:before:opacity-100`,
-	loadingIcon: `animate-spin`,
+	loadingIcon: ``,
 	icon: `p-right:order-1 p-bottom:order-2`,
 	label: `p-icon-only:invisible p-icon-only:w-0 relative text-creamy-cloud group-hover:text-primary transition-colors duration-200`,
 	pcBadge: {

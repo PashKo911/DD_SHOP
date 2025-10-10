@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "68c2e6e3e025f4812abfcf32"
+  },
+  "email": "admin@gmail.com",
+  "password": "$2a$10$aRsFfuCAWpt2i8AHhipX..kyt.z4Nm9Drc1TezosdvwMud22ZUh8u",
+  "type": {
+    "$oid": "677c1233e3da04adc6ade35e"
+  },
+  "name": "User",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c43d05695fb0e634fa66de"
+  },
+  "email": "rabota.pashok@gmail.com",
+  "googleId": "116555717704657349482",
+  "avatar": "https://lh3.googleusercontent.com/a/ACg8ocKNdeVhWYXTiAJaQKQJpTvXqS-6qJhQLaqKeQpV9vi1vSQUselM=s96-c",
+  "type": {
+    "$oid": "677c1233e3da04adc6ade35e"
+  },
+  "name": "Павел Коваленко",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68d0ead9332930f2032dbd77"
+  },
+  "email": "pavlokovalenko3091@gmail.com",
+  "password": "$2a$10$fltF5ADVI0rvpE14Cwwi.eWiOHVIp4qTy4ciSCp9jJ5S23sk/i2pG",
+  "type": {
+    "$oid": "677c1233e3da04adc6ade35e"
+  },
+  "name": "User",
+  "__v": 0
+}]

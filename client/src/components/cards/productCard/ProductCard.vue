@@ -34,7 +34,7 @@
 				"
 				class="bg-primary absolute top-0 right-0 p-1.5 text-[max(min(6.5cqw,_1.6875rem),.875rem)] font-semibold text-white"
 			>
-				{{ currentVariant.discount }}
+				{{ discountValue }}
 			</span>
 		</router-link>
 		<div class="flex grow flex-col justify-between gap-2 px-[3.225806%]">
@@ -57,7 +57,7 @@
 						<rating-comp :model-value="currentVariant.rating" readonly />
 						<div class="flex flex-wrap items-center gap-x-[7.5%] gap-y-2">
 							<span class="text-xl leading-tight font-semibold">
-								{{ currentVariant.price }}
+								{{ $n(currentVariant.price, 'currency') }}
 							</span>
 						</div>
 					</div>
@@ -84,6 +84,7 @@ import slugify from '@sindresorhus/slugify'
 
 import RatingComp from '@/components/ui/rating/RatingComp.vue'
 import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
+import ButtonLink from '@/components/ui/buttons/ButtonLink.vue'
 
 const props = defineProps({
 	data: {
@@ -97,7 +98,7 @@ const props = defineProps({
 })
 //========================================================================================================================================================
 
-const { t } = useI18n()
+const { t, n } = useI18n()
 
 const activeVariantId = ref(null)
 
@@ -121,6 +122,12 @@ const activeColorValue = computed({
 			activeVariantId.value = found._id
 		}
 	},
+})
+
+const discountValue = computed(() => {
+	return currentVariant.value?.discount
+		? `-${Math.ceil(currentVariant.value?.discount)}%`
+		: null
 })
 
 const loadingAttr = computed(() => {

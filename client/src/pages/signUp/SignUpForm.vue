@@ -107,7 +107,7 @@
 				{{ t('pages.signup.subButtonText') }}
 			</span>
 			<router-link
-				:to="{ name: 'signin' }"
+				:to="{ name: routeNames.SIGNIN }"
 				class="focus-visible:outline-primary hover:text-t-hover rounded-sm underline outline outline-transparent transition-colors duration-300"
 			>
 				{{ t('buttons.signin') }}
@@ -131,13 +131,18 @@
 <script setup>
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
+import { onBeforeRouteLeave } from 'vue-router'
+
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 import { object } from 'yup'
 import { mapServerErrorKeys } from '@/utils/errorHelpers/mapServerErrorKeys'
-import authSchema from '../../schemas/auth'
 
 import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth'
+import { useCartStore } from '@/stores/cart'
+import { useRouter } from 'vue-router'
+
+import authSchema from '../../schemas/auth'
 
 import Backdrop from '@/components/ui/Backdrop.vue'
 import ProgressBar from '@/components/ui/ProgressBar.vue'
@@ -147,15 +152,19 @@ import Message from '@/components/ui/Message.vue'
 import Password from '@/components/ui/Password.vue'
 import ContinueWithGoogleButton from '@/components/formControls/ContinueWithGoogleButton.vue'
 import InputText from '@/components/ui/InputText.vue'
-import { onBeforeRouteLeave, useRouter } from 'vue-router'
+import routeNames from '@/router/routeNames'
 
 const { t, tm } = useI18n()
+const router = useRouter()
 
 const authStore = useAuthStore()
 
 const { signup, clearSignupErrors } = authStore
 
-const { signupServerValidationErrors, isSignupLoading } = storeToRefs(authStore)
+const { signupServerValidationErrors, isSignupLoading, isAuthenticated } =
+	storeToRefs(authStore)
+const { initCart } = useCartStore()
+
 const resolver = yupResolver(object().shape(authSchema))
 //========================================================================================================================================================
 
@@ -189,7 +198,9 @@ const duplicateKeyVal = computed(() => {
 
 const onFormSubmit = async ({ valid, values }) => {
 	if (valid) {
-		await signup(values)
+		await signup(values, () => {
+			router.push({ name: routeNames.HOME })
+		})
 	}
 }
 
