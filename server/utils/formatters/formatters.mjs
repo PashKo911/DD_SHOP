@@ -26,7 +26,6 @@ function formatProductForResponse(product, language, rate) {
 
 		const price = exchangedDec ? exchangedDec.toNumber() : null
 		const oldPrice = exchangedOldDec ? exchangedOldDec.toNumber() : null
-
 		return {
 			...v,
 			oldPrice,

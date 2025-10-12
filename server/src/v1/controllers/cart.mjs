@@ -70,7 +70,7 @@ class CartController {
 
 		try {
 			const userId = req.user?._id || null
-			const { product: productId, variant, size, amount } = req.body
+			const { product: productId, variant, size, quantity } = req.body
 
 			const productDb = await ProductsDBService.getById(productId)
 
@@ -83,7 +83,7 @@ class CartController {
 				productId,
 				variant,
 				size,
-				amount,
+				quantity,
 			})
 
 			res.status(200).json({ message: 'Product added successfully', cart: productsList })
@@ -91,7 +91,7 @@ class CartController {
 			next(err)
 		}
 	}
-	static async updateProductAmount(req, res, next) {
+	static async updateProductQuantity(req, res, next) {
 		const expressErrors = validationResult(req)
 
 		if (!expressErrors.isEmpty()) {
@@ -107,7 +107,7 @@ class CartController {
 
 		try {
 			const userId = req.user?._id || null
-			const { product: productId, variant, size, amount } = req.body
+			const { product: productId, variant, size, quantity } = req.body
 
 			const language = resolveLocale(req)
 			const currency = req.headers.currency || appConstants.defaultCurrency
@@ -120,19 +120,19 @@ class CartController {
 				throw new HttpError(404, 'Product not found', { code: errorCodes.NOT_FOUND })
 			}
 
-			const { productsList, populatedCart } = await CartDBService.updateProductAmount({
+			const { productsList, populatedCart } = await CartDBService.updateProductQuantity({
 				userId,
 				productId,
 				variant,
 				size,
-				amount,
+				quantity,
 				language,
 				rate,
 			})
 
 			res
 				.status(200)
-				.json({ message: 'Product amount updated successfully', cart: productsList, populatedCart })
+				.json({ message: 'Product quantity updated successfully', cart: productsList, populatedCart })
 		} catch (err) {
 			next(err)
 		}

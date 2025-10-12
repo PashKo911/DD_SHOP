@@ -6,7 +6,7 @@ import { errorCodes } from '../../../../constants/errorCodes.mjs'
 class SizeStyleDBService extends MongooseCRUDManager {
 	async getList() {
 		try {
-			const res = super.getList()
+			const res = await super.getList()
 			return res
 		} catch (err) {
 			if (err instanceof HttpError) throw err

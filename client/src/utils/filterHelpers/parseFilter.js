@@ -59,34 +59,37 @@ function parseFilter(
 				? numbers
 				: defaultFilter.price
 		},
+		gender: (v) => {
+			console.log(v, 'gender')
+			return v
+		},
 	}
 
 	for (const [key, def] of Object.entries(defaultFilter)) {
-		if (key === 'gender') continue
-
 		const raw = query[key]
-		if (!raw) {
-			filter[key] = def
-			continue
-		}
+		// if (!raw) {
+		// 	filter[key] = def
+		// 	continue
+		// }
 
 		if (parsers[key]) {
 			filter[key] = parsers[key](raw)
 			continue
 		}
 
-		const values = raw.split(',').filter(Boolean)
 		if (!Array.isArray(facetOptions[key])) {
 			filter[key] = raw
 		} else {
 			filter[key] = facetOptions[key]
-				.filter((opt) =>
-					values.includes(
+				.filter((opt) => {
+					const values = raw.split(',').filter(Boolean)
+					return values.includes(
 						String(opt[searchField].toLowerCase() ?? opt.label.toLowerCase()),
-					),
-				)
+					)
+				})
 				.map((opt) => opt._id)
 		}
+		return filter
 	}
 }
 

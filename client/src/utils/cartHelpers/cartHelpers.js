@@ -1,16 +1,16 @@
 /**
  * Build a canonical key string for a cart item.
- * Format: "productId|variantId|sizeId|amount" (when includeAmount = true).
+ * Format: "productId|variantId|sizeId|quantity" (when includeQuantity = true).
  * @param {Object} item
  * @param {boolean} [isPopulated=false] - true when item uses populated relations (objects).
- * @param {boolean} [includeAmount=true]
+ * @param {boolean} [includeQuantity=true]
  * @returns {string}
  */
 
 export function makeKeyFromCartItem(
 	item = {},
 	isPopulatedCart = false,
-	includeAmount = true,
+	includeQuantity = true,
 ) {
 	const productId = isPopulatedCart
 		? (item.productId ?? '')
@@ -22,15 +22,15 @@ export function makeKeyFromCartItem(
 		? ((item.size && item.size._id) ?? item.size ?? '')
 		: (item.size ?? '')
 
-	const amount = item.amount ?? 1
+	const quantity = item.quantity ?? 1
 
-	return includeAmount
-		? `${productId}|${variantId}|${sizeId}|${amount}`
+	return includeQuantity
+		? `${productId}|${variantId}|${sizeId}|${quantity}`
 		: `${productId}|${variantId}|${sizeId}`
 }
 
 /**
- * Create a Set of canonical keys (keys include amount).
+ * Create a Set of canonical keys (keys include quantity).
  * @param {Array<Object>} items
  * @param {boolean} [isPopulated=false]
  * @returns {Set<string>}
@@ -39,22 +39,22 @@ export function makeKeyFromCartItem(
 export function createSet(
 	items,
 	isPopulatedCart = false,
-	includeAmount = false,
+	includeQuantity = false,
 ) {
 	const set = new Set()
 
 	if (!Array.isArray(items)) return set
 
 	for (const i of items) {
-		const value = makeKeyFromCartItem(i, isPopulatedCart, includeAmount)
+		const value = makeKeyFromCartItem(i, isPopulatedCart, includeQuantity)
 		set.add(value)
 	}
 	return set
 }
 
 /**
- * Create a Map keyed by canonical item key (without amount) to amount number.
- * Key format: "productId|variantId|sizeId" -> amount
+ * Create a Map keyed by canonical item key (without quantity) to quantity number.
+ * Key format: "productId|variantId|sizeId" -> quantity
  * @param {Array<Object>} items
  * @param {boolean} [isPopulated=false]
  * @returns {Map<string, number>}
@@ -66,30 +66,30 @@ export function createMap(items) {
 
 	for (const i of items) {
 		const key = makeKeyFromCartItem(i)
-		const amount = i.amount ?? 1
-		map.set(key, amount)
+		const quantity = i.quantity ?? 1
+		map.set(key, quantity)
 	}
 	return map
 }
 
 /**
- * Sync amounts from plain cartItems into populatedCartItems.
- * Returns a new array; preserves original object references when amount is unchanged.
- * @param {Array<Object>} cartItems - source of truth for amounts
+ * Sync quantities from plain cartItems into populatedCartItems.
+ * Returns a new array; preserves original object references when quantity is unchanged.
+ * @param {Array<Object>} cartItems - source of truth for quantities
  * @param {Array<Object>} populatedCartItems - items with populated relations
  * @returns {Array<Object>}
  */
-export function syncProductsAmount(cartItems, populatedCart) {
+export function syncProductsQuantity(cartItems, populatedCart) {
 	const cartItemsMap = createMap(cartItems)
 
 	return populatedCart?.map((i) => {
 		const key = makeKeyFromCartItem(i, true)
-		const amount = cartItemsMap.has(key)
+		const quantity = cartItemsMap.has(key)
 			? cartItemsMap.get(key)
-			: (i.amount ?? 1)
+			: (i.quantity ?? 1)
 
-		if (i.amount === amount) return i
-		return { ...i, amount }
+		if (i.quantity === quantity) return i
+		return { ...i, quantity }
 	})
 }
 

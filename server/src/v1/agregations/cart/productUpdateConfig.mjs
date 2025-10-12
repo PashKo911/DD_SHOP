@@ -20,26 +20,26 @@ export function productsFilter(productId, variant, size) {
 		],
 	}
 }
-export function updateSet(amount) {
+export function updateSet(quantity) {
 	return {
-		$set: { 'productsList.$[elem].amount': amount },
+		$set: { 'productsList.$[elem].quantity': quantity },
 	}
 }
 
-export function updateInc(amount) {
+export function updateInc(quantity) {
 	return {
-		$inc: { 'productsList.$[elem].amount': amount },
+		$inc: { 'productsList.$[elem].quantity': quantity },
 	}
 }
 
-export function pushUpdate(product, variant, size, amount) {
+export function pushUpdate(product, variant, size, quantity) {
 	return {
 		$push: {
 			productsList: {
 				product,
 				variant,
 				size,
-				amount,
+				quantity,
 			},
 		},
 	}

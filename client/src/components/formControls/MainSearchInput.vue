@@ -1,7 +1,7 @@
 <template>
 	<div class="search-input relative z-20 order-3 min-w-[8.125rem] grow">
 		<auto-complete
-			v-model="localState"
+			v-model.trim="localState"
 			optionLabel="label"
 			optionGroupLabel="label"
 			optionGroupChildren="items"
@@ -90,13 +90,17 @@ const onSearch = async ({ query }) => {
 }
 
 const applySearchFilter = ({ value }) => {
-	if (value.genderName === route.params.category) {
-		setFilterProp('title', value.label)
-	}
+	const title = value.label.trim().toLowerCase()
+	// if (
+	// 	currentPageName === routeNames.SHOP_CATEGORY &&
+	// 	currentCategory === value.genderName
+	// ) {
+	// 	setFilterProp('title', title)
+	// }
 
 	router.push({
 		name: routeNames.SHOP_CATEGORY,
-		query: { title: value.label },
+		query: { title },
 		params: { category: value.genderName },
 	})
 }

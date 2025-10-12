@@ -6,7 +6,7 @@ import apiEndpoints from '@/api/apiEndpoints'
 import { defineStore, storeToRefs } from 'pinia'
 import {
 	compareCartItems,
-	syncProductsAmount,
+	syncProductsQuantity,
 } from '@/utils/cartHelpers/cartHelpers'
 
 export const useCartStore = defineStore('cart', () => {
@@ -40,7 +40,7 @@ export const useCartStore = defineStore('cart', () => {
 	})
 
 	const syncedPopulatedItems = computed(() => {
-		const syncedItems = syncProductsAmount(
+		const syncedItems = syncProductsQuantity(
 			cartItems.value,
 			populatedCart.value.productsList,
 		)
@@ -50,7 +50,7 @@ export const useCartStore = defineStore('cart', () => {
 
 	const cartItemsCount = computed(() => {
 		return Array.isArray(cartItems.value)
-			? cartItems.value.reduce((acc, p) => p.amount + acc, 0)
+			? cartItems.value.reduce((acc, p) => p.quantity + acc, 0)
 			: 0
 	})
 	//========================================================================================================================================================
@@ -67,8 +67,8 @@ export const useCartStore = defineStore('cart', () => {
 		return isLoading('addToCart')
 	})
 
-	const isUpdateAmountLoading = computed(() => {
-		return isLoading('updateAmount')
+	const isUpdateQuantityLoading = computed(() => {
+		return isLoading('updateQuantity')
 	})
 
 	const isDeleteProductLoading = computed(() => {
@@ -99,8 +99,8 @@ export const useCartStore = defineStore('cart', () => {
 		const { isAuthenticated } = storeToRefs(authStore)
 
 		if (!isAuthenticated.value) {
+			cartItems.value = getLocalCart()
 			isCartInitialized.value = true
-			cartItems.value = getLocalCart() || []
 			return
 		}
 
@@ -112,6 +112,7 @@ export const useCartStore = defineStore('cart', () => {
 					getLocalCart(),
 				)
 				const dbCart = response.data?.cart
+
 				cartItems.value = dbCart
 				setLocalCart(dbCart)
 				isCartInitialized.value = true
@@ -144,7 +145,7 @@ export const useCartStore = defineStore('cart', () => {
 					p.size === productData.size,
 			)
 
-			if (matchedProduct) matchedProduct.amount += productData.amount
+			if (matchedProduct) matchedProduct.quantity += productData.quantity
 			else cartItems.value.push({ ...productData })
 
 			localStorage.setItem('cart', JSON.stringify(cartItems.value))
@@ -168,7 +169,7 @@ export const useCartStore = defineStore('cart', () => {
 		})
 	}
 
-	const updateAmount = async (productData) => {
+	const updateQuantity = async (productData) => {
 		const authStore = useAuthStore()
 		const { isAuthenticated } = storeToRefs(authStore)
 
@@ -181,7 +182,7 @@ export const useCartStore = defineStore('cart', () => {
 			)
 
 			if (matchedProduct) {
-				matchedProduct.amount = productData.amount
+				matchedProduct.quantity = productData.quantity
 				setLocalCart(cartItems.value)
 			}
 
@@ -189,10 +190,10 @@ export const useCartStore = defineStore('cart', () => {
 		}
 
 		await generalApiOperation({
-			operationName: 'updateAmount',
+			operationName: 'updateQuantity',
 			operation: async () => {
 				const response = await apiClient.put(
-					apiEndpoints.cart.updateProductAmount,
+					apiEndpoints.cart.updateProductQuantity,
 					productData,
 				)
 				const dbProductsList = response.data?.cart
@@ -270,14 +271,14 @@ export const useCartStore = defineStore('cart', () => {
 		isInitCartLoading,
 		isCartPopulating,
 		isAddToCartLoading,
-		isUpdateAmountLoading,
+		isUpdateQuantityLoading,
 		isDeleteProductLoading,
 
 		// actions
 		populateCart,
 		initCart,
 		addToCart,
-		updateAmount,
+		updateQuantity,
 		deleteProduct,
 	}
 })

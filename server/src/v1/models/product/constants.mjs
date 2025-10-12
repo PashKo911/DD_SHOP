@@ -9,7 +9,7 @@ export const productBaseFieldsConfigurations = [
 	},
 	{
 		fieldName: 'title',
-		subField: 'label',
+		subField: null,
 		queryParam: 'title',
 		filterCategory: 'search',
 	},

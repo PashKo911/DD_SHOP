@@ -1,44 +1,50 @@
-[{
-  "_id": {
-    "$oid": "676bff378a281b4943246182"
-  },
-  "label": {
-    "en": "casual",
-    "uk": "звичайний"
-  },
-  "imgSrc": "/images/styleSection/casual.webp",
-  "slug": "zvychainyi"
-},
-{
-  "_id": {
-    "$oid": "676bff378a281b4943246183"
-  },
-  "label": {
-    "en": "sport",
-    "uk": "спортивний"
-  },
-  "imgSrc": "/images/styleSection/sport.webp",
-  "slug": "sportyvnyi"
-},
-{
-  "_id": {
-    "$oid": "676bff378a281b4943246184"
-  },
-  "label": {
-    "en": "party",
-    "uk": "святковий"
-  },
-  "imgSrc": "/images/styleSection/party.webp",
-  "slug": "sviatkovyi"
-},
-{
-  "_id": {
-    "$oid": "682859a865b546018073c513"
-  },
-  "label": {
-    "en": "office",
-    "uk": "офісний"
-  },
-  "imgSrc": "/images/styleSection/office.webp",
-  "slug": "ofisnyi"
-}]
+[
+	{
+		"_id": {
+			"$oid": "676bff378a281b4943246182"
+		},
+		"label": {
+			"en": "casual",
+			"uk": "звичайний"
+		},
+		"imgSrc": "/images/styleSection/casual.webp",
+		"slug": "zvychainyi",
+		"order": 1
+	},
+	{
+		"_id": {
+			"$oid": "676bff378a281b4943246183"
+		},
+		"label": {
+			"en": "sport",
+			"uk": "спортивний"
+		},
+		"imgSrc": "/images/styleSection/sport.webp",
+		"slug": "sportyvnyi",
+		"order": 2
+	},
+	{
+		"_id": {
+			"$oid": "676bff378a281b4943246184"
+		},
+		"label": {
+			"en": "party",
+			"uk": "святковий"
+		},
+		"imgSrc": "/images/styleSection/party.webp",
+		"slug": "sviatkovyi",
+		"order": 3
+	},
+	{
+		"_id": {
+			"$oid": "682859a865b546018073c513"
+		},
+		"label": {
+			"en": "office",
+			"uk": "офісний"
+		},
+		"imgSrc": "/images/styleSection/office.webp",
+		"slug": "ofisnyi",
+		"order": 4
+	}
+]

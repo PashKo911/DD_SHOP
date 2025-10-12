@@ -147,7 +147,7 @@ class ProductController {
 		try {
 			const language = resolveLocale(req)
 
-			const styles = await DressStyleDBService.getListWithImg(language)
+			const styles = await DressStyleDBService.getList(language)
 			res.status(200).json({
 				success: true,
 				styles,

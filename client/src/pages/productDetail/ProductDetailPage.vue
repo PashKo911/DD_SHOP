@@ -214,7 +214,7 @@ const onFormSubmit = ({ count, size }) => {
 		product: props.id,
 		variant: props.variant,
 		size,
-		amount: count,
+		quantity: count,
 	}
 	addToCart(product)
 }

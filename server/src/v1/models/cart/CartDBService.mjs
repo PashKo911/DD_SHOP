@@ -20,11 +20,11 @@ class CartDBService extends MongooseCRUDManager {
 
 			if (!userCart) {
 				if (!Array.isArray(cartItems) || cartItems.length === 0) {
-					return { customer, productsList: [] }
+					return []
 				}
 
 				const resCart = await super.create({ customer, productsList: cartItems })
-				return resCart
+				return resCart.productsList
 			}
 
 			const merged = mergeCarts(cartItems, userCart.productsList)
@@ -54,11 +54,11 @@ class CartDBService extends MongooseCRUDManager {
 		}
 	}
 
-	async addProduct({ userId, productId, variant, size, amount }) {
+	async addProduct({ userId, productId, variant, size, quantity }) {
 		try {
 			let cart = await Cart.findOneAndUpdate(
 				cartProductFilter(userId, productId, variant, size),
-				updateInc(amount),
+				updateInc(quantity),
 				{
 					...productsFilter(productId, variant, size),
 					new: true,
@@ -66,9 +66,18 @@ class CartDBService extends MongooseCRUDManager {
 			)
 			if (cart) return cart.productsList
 
-			cart = await Cart.findOneAndUpdate({ customer: userId }, pushUpdate(productId, variant, size, amount), {
-				new: true,
-			})
+			cart = await Cart.findOneAndUpdate(
+				{ customer: userId },
+				{
+					$setOnInsert: { customer: userId },
+					...pushUpdate(productId, variant, size, quantity),
+				},
+				{
+					new: true,
+					upsert: true,
+					setDefaultsOnInsert: true,
+				}
+			)
 
 			return cart.productsList
 		} catch (err) {
@@ -80,11 +89,11 @@ class CartDBService extends MongooseCRUDManager {
 		}
 	}
 
-	async updateProductAmount({ userId, productId, variant, size, amount, language, rate }) {
+	async updateProductQuantity({ userId, productId, variant, size, quantity, language, rate }) {
 		try {
 			const cart = await Cart.findOneAndUpdate(
 				cartProductFilter(userId, productId, variant, size),
-				updateSet(amount),
+				updateSet(quantity),
 				{
 					...productsFilter(productId, variant, size),
 					new: true,

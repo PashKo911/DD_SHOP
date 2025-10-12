@@ -103,7 +103,14 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import {
+	computed,
+	onBeforeUpdate,
+	onMounted,
+	onUnmounted,
+	ref,
+	watch,
+} from 'vue'
 import { storeToRefs } from 'pinia'
 
 import { useI18n } from 'vue-i18n'
@@ -313,23 +320,24 @@ watch(locale, async () => {
 })
 
 watch(currentGenderId, async (newVal, oldVal) => {
+	// console.log('watcher')
 	if (oldVal) {
-		resetFiltersExceptTitle()
+		// resetFiltersExceptTitle()
 	}
-	setFilterProp('gender', newVal)
+	// setFilterProp('gender', newVal)
 })
 
 //========================================================================================================================================================
 
 let unwatch
 onMounted(async () => {
+	// console.log('mount')
+
 	await getFacetOptions()
 
 	if (hasQueryFilters.value) {
 		parseFilterFromQuery(route.query)
 	}
-
-	setFilterProp('gender', currentGenderId.value)
 
 	getDefaultProducts()
 
@@ -342,8 +350,18 @@ onUnmounted(() => {
 	if (typeof unwatch === 'function') {
 		unwatch()
 	}
-	resetAllFilters()
-	setFilterProp('gender', '')
+	// resetAllFilters()
+	// setFilterProp('gender', '')
+})
+
+onBeforeRouteUpdate((to, from) => {
+	const toCategory = to.params.category
+	const fromCategory = from.params.category
+
+	if (fromCategory !== toCategory) {
+		console.log('onBeforeRouteUpdate')
+		parseFilterFromQuery(to.query)
+	}
 })
 
 //========================================================================================================================================================

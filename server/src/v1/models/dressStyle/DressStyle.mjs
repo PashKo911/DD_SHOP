@@ -26,6 +26,11 @@ const styleSchema = new Schema({
 		trim: true,
 		lowercase: true,
 	},
+	order: {
+		type: Number,
+		default: 9999,
+		min: 0,
+	},
 })
 
 const DressStyle = mongoose.model('Style', styleSchema)

@@ -37,6 +37,7 @@ class MongooseCRUDManager {
 			let query = this.model.find({}, projection)
 
 			query = FiltersHelper.applyFiltersOptionsFromQuery(reqQuery, fieldsConfiguration, query)
+
 			const count = await this.model.countDocuments(query)
 			query = FiltersHelper.applyActionsOptionsFromQuery(reqQuery, fieldsConfiguration, query)
 			this.addPopulationOptions(query, populateFields)

@@ -24,6 +24,7 @@ export const useFilterStore = defineStore('filter', () => {
 	const { viewMode } = storeToRefs(commonStore)
 
 	const defaultFilter = computed(() => ({
+		gender: '',
 		title: '',
 		styles: [],
 		price: [],
@@ -90,7 +91,7 @@ export const useFilterStore = defineStore('filter', () => {
 	//========================================================================================================================================================
 
 	function parseFilterFromQuery(query) {
-		parseFilter(
+		const res = parseFilter(
 			query,
 			filter,
 			defaultFilter.value,
@@ -99,6 +100,8 @@ export const useFilterStore = defineStore('filter', () => {
 			t,
 			locale.value,
 		)
+
+		console.log(res, 'parseFilterFromQuery')
 	}
 
 	const setFilterProp = (prop, value) => {
