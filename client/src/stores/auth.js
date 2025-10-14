@@ -9,6 +9,7 @@ import apiClient from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
 import serverErrorsFormatter from '@/utils/errorHelpers/serverErrorsFormatter'
 import supportedAuthErrorCodes from '@/constants/authErrorCodes'
+import shopConstants from '@/constants/shop'
 
 export const useAuthStore = defineStore('auth', () => {
 	const generalStore = useGeneralStore()
@@ -17,7 +18,9 @@ export const useAuthStore = defineStore('auth', () => {
 	const { generalApiOperation, isLoading, hasError, clearError } = generalStore
 
 	const user = ref(null)
-	const token = ref(localStorage.getItem('token') || null)
+	const token = ref(
+		localStorage.getItem(shopConstants.storageKeys.token) || null,
+	)
 	//========================================================================================================================================================
 
 	const currentUserPermissions = computed(() => user.value?.permissions || {})
@@ -47,12 +50,12 @@ export const useAuthStore = defineStore('auth', () => {
 	//========================================================================================================================================================
 
 	const setToken = (newToken) => {
-		token.value = newToken
 		if (newToken) {
-			localStorage.setItem('token', newToken)
+			localStorage.setItem(shopConstants.storageKeys.token, newToken)
 		} else {
-			localStorage.removeItem('token')
+			localStorage.removeItem(shopConstants.storageKeys.token)
 		}
+		token.value = newToken
 	}
 
 	const signinWithGoogle = async (googleAuthCode, { successCallback }) => {
@@ -157,5 +160,6 @@ export const useAuthStore = defineStore('auth', () => {
 		signout,
 		clearSigninErrors,
 		clearSignupErrors,
+		setToken,
 	}
 })

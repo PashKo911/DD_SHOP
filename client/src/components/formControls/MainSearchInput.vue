@@ -91,17 +91,10 @@ const onSearch = async ({ query }) => {
 
 const applySearchFilter = ({ value }) => {
 	const title = value.label.trim().toLowerCase()
-	// if (
-	// 	currentPageName === routeNames.SHOP_CATEGORY &&
-	// 	currentCategory === value.genderName
-	// ) {
-	// 	setFilterProp('title', title)
-	// }
-
 	router.push({
 		name: routeNames.SHOP_CATEGORY,
 		query: { title },
-		params: { category: value.genderName },
+		params: { category: value.categoryName },
 	})
 }
 

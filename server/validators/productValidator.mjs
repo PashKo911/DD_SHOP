@@ -81,12 +81,12 @@ class ProductValidator {
 				errorMessage: 'Invalid dress style ID',
 			},
 		},
-		gender: {
+		category: {
 			notEmpty: {
-				errorMessage: 'Gender is required',
+				errorMessage: 'Category is required',
 			},
 			isMongoId: {
-				errorMessage: 'Invalid gender ID',
+				errorMessage: 'Invalid category ID',
 			},
 		},
 	}

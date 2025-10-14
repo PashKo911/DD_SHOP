@@ -5,6 +5,11 @@
 				<ChevronDownIcon />
 			</slot>
 		</template>
+		<template #loader>
+			<spinner-icon
+				class="stroke-primary p-has-dropdown:end-4 absolute end-3 top-1/2 size-[1.2em] -translate-y-1/2"
+			/>
+		</template>
 		<template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
 			<slot :name="slotName" v-bind="slotProps ?? {}" />
 		</template>
@@ -13,6 +18,7 @@
 
 <script setup>
 import ChevronDownIcon from '@primevue/icons/chevrondown'
+import SpinnerIcon from '../icons/SpinnerIcon.vue'
 import AutoComplete from 'primevue/autocomplete'
 import { computed } from 'vue'
 import { ptViewMerge } from '@/utils/volt'

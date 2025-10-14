@@ -1,10 +1,10 @@
-export const productPopulateFields = ['variants.color', 'variants.sizes', 'style', 'gender']
+export const productPopulateFields = ['variants.color', 'variants.sizes', 'style', 'category']
 
 export const productBaseFieldsConfigurations = [
 	{
-		fieldName: 'gender',
+		fieldName: 'category',
 		subField: null,
-		queryParam: 'gender',
+		queryParam: 'category',
 		filterCategory: 'list',
 	},
 	{

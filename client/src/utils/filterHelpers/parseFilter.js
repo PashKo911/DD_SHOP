@@ -59,18 +59,21 @@ function parseFilter(
 				? numbers
 				: defaultFilter.price
 		},
-		gender: (v) => {
-			console.log(v, 'gender')
-			return v
+		category: (v) => {
+			const catId = facetOptions.categories.find((c) => c.label.en === v)
+			return catId._id
 		},
+	}
+	for (const [key, def] of Object.entries(defaultFilter)) {
 	}
 
 	for (const [key, def] of Object.entries(defaultFilter)) {
 		const raw = query[key]
-		// if (!raw) {
-		// 	filter[key] = def
-		// 	continue
-		// }
+
+		if (!raw) {
+			filter[key] = def
+			continue
+		}
 
 		if (parsers[key]) {
 			filter[key] = parsers[key](raw)
@@ -89,7 +92,6 @@ function parseFilter(
 				})
 				.map((opt) => opt._id)
 		}
-		return filter
 	}
 }
 

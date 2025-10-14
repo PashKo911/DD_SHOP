@@ -37,7 +37,7 @@
 			@reload-items="
 				() =>
 					getSameProducts(
-						productDetailsValue.gender._id,
+						productDetailsValue.category._id,
 						productDetailsValue.style._id,
 					)
 			"
@@ -163,7 +163,7 @@ const sliderAttributes = computed(() => {
 watch(locale, async () => {
 	await getProductDetails(props.id)
 	getSameProducts(
-		productDetailsValue.value.gender._id,
+		productDetailsValue.value.category._id,
 		productDetailsValue.value.style._id,
 	)
 	router.replace({
@@ -180,7 +180,7 @@ watch(
 	async (newId) => {
 		await getProductDetails(newId)
 		getSameProducts(
-			productDetailsValue.value.gender._id,
+			productDetailsValue.value.category._id,
 			productDetailsValue.value.style._id,
 		)
 	},
@@ -190,7 +190,7 @@ onMounted(async () => {
 	await getProductDetails(props.id)
 	getReviews()
 	getSameProducts(
-		productDetailsValue.value.gender._id,
+		productDetailsValue.value.category._id,
 		productDetailsValue.value.style._id,
 	)
 })

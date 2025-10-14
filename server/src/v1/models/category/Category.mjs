@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const { Schema } = mongoose
 
-const genderSchema = new Schema({
+const categorySchema = new Schema({
 	key: {
 		type: String,
 		enum: ['men', 'women'],
@@ -12,17 +12,17 @@ const genderSchema = new Schema({
 	label: {
 		en: {
 			type: String,
-			required: [true, 'English gender label is required'],
+			required: [true, 'English category label is required'],
 			trim: true,
 			set: (v) => v.toLowerCase(),
 		},
 		uk: {
 			type: String,
-			required: [true, 'Ukrainian gender label is required'],
+			required: [true, 'Ukrainian category label is required'],
 			trim: true,
 		},
 	},
 })
 
-const Gender = mongoose.model('Gender', genderSchema)
-export default Gender
+const Category = mongoose.model('Category', categorySchema)
+export default Category

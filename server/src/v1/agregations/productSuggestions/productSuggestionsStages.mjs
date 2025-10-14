@@ -2,38 +2,38 @@ export const projectTitle = (titlePath) => ({
 	$project: {
 		_id: 0,
 		title: titlePath,
-		gender: 1,
+		category: 1,
 	},
 })
 
-export const lookupGenders = {
+export const lookupCategories = {
 	$lookup: {
-		from: 'genders',
-		localField: 'gender',
+		from: 'categories',
+		localField: 'category',
 		foreignField: '_id',
-		as: 'gender',
+		as: 'category',
 	},
 }
 
-export const unwindGender = { $unwind: '$gender' }
+export const unwindCategory = { $unwind: '$category' }
 
 export const projectForGrouping = {
 	$project: {
 		title: 1,
-		genderId: '$gender._id',
-		genderName: '$gender.label.en',
+		categoryId: '$category._id',
+		categoryName: '$category.label.en',
 		label: '$title',
 	},
 }
 
-export const groupByGender = {
+export const groupByCategory = {
 	$group: {
-		_id: '$genderId',
-		label: { $first: '$genderName' },
+		_id: '$categoryId',
+		label: { $first: '$categoryName' },
 		items: {
 			$push: {
-				genderId: '$genderId',
-				genderName: '$genderName',
+				categoryId: '$categoryId',
+				categoryName: '$categoryName',
 				label: '$title',
 			},
 		},
@@ -49,9 +49,9 @@ export const projectSlice = (sliceLimit) => ({
 
 export const formatStages = (titlePath, sliceLimit) => [
 	projectTitle(titlePath),
-	lookupGenders,
-	unwindGender,
+	lookupCategories,
+	unwindCategory,
 	projectForGrouping,
-	groupByGender,
+	groupByCategory,
 	projectSlice(sliceLimit),
 ]

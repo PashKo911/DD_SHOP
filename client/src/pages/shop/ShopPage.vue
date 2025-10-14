@@ -103,23 +103,11 @@
 </template>
 
 <script setup>
-import {
-	computed,
-	onBeforeUpdate,
-	onMounted,
-	onUnmounted,
-	ref,
-	watch,
-} from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 
 import { useI18n } from 'vue-i18n'
-import {
-	onBeforeRouteLeave,
-	onBeforeRouteUpdate,
-	useRoute,
-	useRouter,
-} from 'vue-router'
+import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
 import { useFilterModel } from '@/composables/useFilterModel'
 import { useProductsStore } from '@/stores/products'
 import { useCommonStore } from '@/stores/common'
@@ -178,19 +166,11 @@ const {
 	parseFilterFromQuery,
 	resetPrice,
 	resetAllFilters,
-	resetFiltersExceptTitle,
 	removeChip,
 } = filterStore
 
-const {
-	filter,
-	perPage,
-	filterStrings,
-	hasSelectedFilters,
-	hasQueryFilters,
-	activeChips,
-	apiQueryParams,
-} = storeToRefs(filterStore)
+const { filter, perPage, filterStrings, hasSelectedFilters, activeChips } =
+	storeToRefs(filterStore)
 
 const { getFacetOptions } = facetOptionsStore
 const { facetOptionsValue, isFacetOptionsLoaded } =
@@ -239,13 +219,12 @@ const pageFilterValue = computed({
 	set(newVal) {
 		const newPage = Math.floor(newVal / perPage.value)
 		setFilterProp('page', newPage)
+		router.push({
+			name: route.name,
+			query: filterStrings.value,
+			params: { ...route.params },
+		})
 	},
-})
-const currentGenderId = computed(() => {
-	const found = facetOptionsValue.value.genders?.find(
-		(g) => g.label.en === props.category,
-	)
-	return found?._id ?? null
 })
 
 const optionsData = computed(() => {
@@ -254,13 +233,13 @@ const optionsData = computed(() => {
 
 const viewModeValue = computed({
 	get() {
-		const modeNum = perPage.value / 3
+		const modeNum = perPage.value / shopConstants.productRowsCount
 		const mode = viewModeData.find((m) => Number(m.value) === modeNum)
 
 		return mode
 	},
 	async set(newVal) {
-		const newPerPage = newVal.value * 3
+		const newPerPage = newVal.value * shopConstants.productRowsCount
 		const productsCount = defaultProducts.value.documents.length
 		const newPageByViewMode = Math.floor(
 			(filter.value.page * perPage.value) / newPerPage,
@@ -314,53 +293,39 @@ watch(locale, async () => {
 	if (hasSelectedFilters.value) {
 		resetAllFilters()
 	}
-	await getDefaultProducts()
-	if (!defaultProductsValue.value.length) {
-	}
-})
-
-watch(currentGenderId, async (newVal, oldVal) => {
-	// console.log('watcher')
-	if (oldVal) {
-		// resetFiltersExceptTitle()
-	}
-	// setFilterProp('gender', newVal)
+	getDefaultProducts()
 })
 
 //========================================================================================================================================================
 
-let unwatch
+let unmount
 onMounted(async () => {
-	// console.log('mount')
-
 	await getFacetOptions()
 
-	if (hasQueryFilters.value) {
-		parseFilterFromQuery(route.query)
-	}
+	parseFilterFromQuery({ ...route.query, category: route.params.category })
 
 	getDefaultProducts()
-
-	unwatch = watch(filter.value, () => {
+	unmount = watch(filter.value, () => {
 		getDefaultProducts()
 	})
 })
 
 onUnmounted(() => {
-	if (typeof unwatch === 'function') {
-		unwatch()
+	if (typeof unmount === 'function') {
+		unmount()
 	}
-	// resetAllFilters()
-	// setFilterProp('gender', '')
+	resetAllFilters()
 })
 
 onBeforeRouteUpdate((to, from) => {
-	const toCategory = to.params.category
-	const fromCategory = from.params.category
-
-	if (fromCategory !== toCategory) {
-		console.log('onBeforeRouteUpdate')
-		parseFilterFromQuery(to.query)
+	if (
+		from.params.category !== to.params.category ||
+		from.query.page !== to.query.page
+	) {
+		parseFilterFromQuery({
+			...to.query,
+			category: to.params.category,
+		})
 	}
 })
 

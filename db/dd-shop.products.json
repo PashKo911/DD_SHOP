@@ -11,7 +11,7 @@
 			"en": "A timeless classic shirt for any occasion.",
 			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
 		"categoryKey": "men",
@@ -98,7 +98,7 @@
 			"en": "Soft cotton T‑shirt with modern print.",
 			"uk": "М'яка бавовняна футболка з сучасним принтом."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
 		"categoryKey": "men",
@@ -157,7 +157,7 @@
 			"en": "Comfort-fit denim jeans with stretch.",
 			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246178"
 		},
 		"categoryKey": "women",
@@ -240,7 +240,7 @@
 			"en": "A timeless classic shirt for any occasion.",
 			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
 		"categoryKey": "men",
@@ -323,7 +323,7 @@
 			"en": "Soft cotton T‑shirt with modern print.",
 			"uk": "М'яка бавовняна футболка з сучасним принтом."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
 		"categoryKey": "men",
@@ -382,7 +382,7 @@
 			"en": "Comfort-fit denim jeans with stretch.",
 			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246178"
 		},
 		"categoryKey": "women",
@@ -465,7 +465,7 @@
 			"en": "A timeless classic shirt for any occasion.",
 			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
 		"categoryKey": "men",
@@ -548,7 +548,7 @@
 			"en": "Soft cotton T‑shirt with modern print.",
 			"uk": "М'яка бавовняна футболка з сучасним принтом."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
 		"categoryKey": "men",
@@ -607,7 +607,7 @@
 			"en": "Comfort-fit denim jeans with stretch.",
 			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246178"
 		},
 		"categoryKey": "women",
@@ -690,7 +690,7 @@
 			"en": "A timeless classic shirt for any occasion.",
 			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
 		"categoryKey": "men",
@@ -773,7 +773,7 @@
 			"en": "Soft cotton T‑shirt with modern print.",
 			"uk": "М'яка бавовняна футболка з сучасним принтом."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
 		"categoryKey": "men",
@@ -832,7 +832,7 @@
 			"en": "Comfort-fit denim jeans with stretch.",
 			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246178"
 		},
 		"categoryKey": "women",
@@ -915,7 +915,7 @@
 			"en": "A timeless classic shirt for any occasion.",
 			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
 		"categoryKey": "men",
@@ -998,7 +998,7 @@
 			"en": "Soft cotton T‑shirt with modern print.",
 			"uk": "М'яка бавовняна футболка з сучасним принтом."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246179"
 		},
 		"categoryKey": "men",
@@ -1057,7 +1057,7 @@
 			"en": "Comfort-fit denim jeans with stretch.",
 			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
 		},
-		"gender": {
+		"category": {
 			"$oid": "676bff1e8a281b4943246178"
 		},
 		"categoryKey": "women",

@@ -8,6 +8,7 @@ import {
 	compareCartItems,
 	syncProductsQuantity,
 } from '@/utils/cartHelpers/cartHelpers'
+import shopConstants from '@/constants/shop'
 
 export const useCartStore = defineStore('cart', () => {
 	const generalStore = useGeneralStore()
@@ -85,21 +86,26 @@ export const useCartStore = defineStore('cart', () => {
 	//========================================================================================================================================================
 
 	const getLocalCart = () => {
-		return JSON.parse(localStorage.getItem('cart')) || []
+		return (
+			JSON.parse(localStorage.getItem(shopConstants.storageKeys.cart)) || []
+		)
 	}
 
 	const setLocalCart = (newProductsList) => {
 		if (!Array.isArray(newProductsList)) return
 
-		localStorage.setItem('cart', JSON.stringify(newProductsList))
+		localStorage.setItem(
+			shopConstants.storageKeys.cart,
+			JSON.stringify(newProductsList),
+		)
 	}
 
-	const initCart = async () => {
+	const initCart = async (cartData) => {
 		const authStore = useAuthStore()
 		const { isAuthenticated } = storeToRefs(authStore)
 
 		if (!isAuthenticated.value) {
-			cartItems.value = getLocalCart()
+			cartItems.value = cartData ?? getLocalCart()
 			isCartInitialized.value = true
 			return
 		}
@@ -148,7 +154,10 @@ export const useCartStore = defineStore('cart', () => {
 			if (matchedProduct) matchedProduct.quantity += productData.quantity
 			else cartItems.value.push({ ...productData })
 
-			localStorage.setItem('cart', JSON.stringify(cartItems.value))
+			localStorage.setItem(
+				shopConstants.storageKeys.cart,
+				JSON.stringify(cartItems.value),
+			)
 			return
 		}
 

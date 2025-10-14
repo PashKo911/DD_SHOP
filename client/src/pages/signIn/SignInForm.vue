@@ -103,12 +103,13 @@
 			}}
 		</message>
 		<Button
+			:loading="isSigninLoading"
+			:label="t('buttons.signin')"
 			type="submit"
 			severity="secondary"
-			class="min-w-60 not-last:mb-4"
 			contrast
 			size="large"
-			:label="t('buttons.signin')"
+			class="min-w-60 not-last:mb-4"
 		/>
 		<div
 			class="text-creamy-cloud text-24-18 font-heading flex flex-wrap gap-x-1.5 align-bottom leading-tight"
@@ -123,21 +124,6 @@
 				{{ t('buttons.signup') }}
 			</router-link>
 		</div>
-		<backdrop
-			:visible="isSigninLoading"
-			background-class="bg-creamy-cloud/30"
-		/>
-		<progress-bar
-			mode="indeterminate"
-			v-show="isSigninLoading"
-			:style="{
-				position: 'fixed',
-				top: '0',
-				left: '0',
-				zIndex: '1010',
-				width: '100%',
-			}"
-		/>
 	</Form>
 </template>
 
@@ -163,8 +149,6 @@ import Button from '@/components/ui/buttons/Button.vue'
 import Message from '@/components/ui/Message.vue'
 import Password from '@/components/ui/Password.vue'
 import ContinueWithGoogleButton from '@/components/formControls/ContinueWithGoogleButton.vue'
-import Backdrop from '@/components/ui/Backdrop.vue'
-import ProgressBar from '@/components/ui/ProgressBar.vue'
 
 const { t, tm } = useI18n()
 const router = useRouter()

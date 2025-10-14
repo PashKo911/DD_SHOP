@@ -2,12 +2,13 @@
 	<div
 		:role="multiple ? 'group' : 'radiogroup'"
 		:aria-label="ariaLabel"
+		:aria-multiselectable="multiple ? 'true' : undefined"
 		:class="groupClass"
 	>
 		<label
 			v-for="(item, idx) in items"
 			:key="item._id ?? item.value"
-			role="radio"
+			:role="props.multiple ? 'checkbox' : 'radio'"
 			tabindex="0"
 			ref="labels"
 			:class="labelClass"
@@ -23,10 +24,11 @@
 		>
 			<input
 				:type="multiple ? 'checkbox' : 'radio'"
-				tabindex="-1"
 				:value="item._id"
-				@input="onInput"
+				:id="`${item._id}|${idx}`"
+				tabindex="-1"
 				v-model="model"
+				@input="onInput"
 				class="peer sr-only"
 			/>
 			<slot name="item" :item="item" :checked="getCheckedItem(item)">
@@ -41,7 +43,10 @@ import { ref } from 'vue'
 
 const props = defineProps({
 	items: Array,
-	multiple: { type: Boolean, default: false },
+	multiple: {
+		type: Boolean,
+		default: false,
+	},
 	ariaLabel: { type: String, default: 'Radio group' },
 	groupClass: { type: String, default: 'flex gap-2' },
 	labelClass: { type: String, default: '' },
@@ -50,17 +55,12 @@ const props = defineProps({
 
 const model = defineModel()
 const emit = defineEmits(['input'])
+//========================================================================================================================================================
 
 const labels = ref([])
 const focusIndex = ref(0)
 
-function onToggleOrSelect(value, idx) {
-	if (props.multiple) {
-		toggle(value, idx)
-	} else {
-		select(value, idx)
-	}
-}
+//========================================================================================================================================================
 
 function toggle(value, idx) {
 	const current = Array.isArray(model.value) ? model.value : []
@@ -73,6 +73,14 @@ function toggle(value, idx) {
 	emit('update:modelValue', next)
 	focusIndex.value = idx
 	labels.value[idx]?.focus()
+}
+
+function onToggleOrSelect(value, idx) {
+	if (props.multiple) {
+		toggle(value, idx)
+	} else {
+		select(value, idx)
+	}
 }
 
 const onInput = (e) => {
