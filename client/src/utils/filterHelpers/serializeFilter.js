@@ -2,7 +2,7 @@ import { getSearchField } from './getSearchField'
 
 /**
  * Serializes the filter into a query parameters object.
- * Skips any keys whose values match defaults, omits the 'gender' field,
+ * Skips any keys whose values match defaults, omits the 'category' field,
  * and applies special conversion logic for certain fields (e.g. page, price).
  *
  * @param {{ [key: string]: string|number|Array<any> }} filter
@@ -16,7 +16,7 @@ import { getSearchField } from './getSearchField'
  *
  * @example
   // Given:
-  // filter = { page: 0, price: [10,50], colors: [1,2], gender: 'M' }
+  // filter = { page: 0, price: [10,50], colors: [1,2], category: 'M' }
   // defaultFilter.page = 0, defaultFilter.price = [0,100]
   // options.colors = [{_id:1,label:'Red'},{_id:2,label:'Blue'}]
   // Result: { page: 1, price: '10,50', colors: 'Red,Blue' }
@@ -42,7 +42,7 @@ function serializeFilter(filter, options, defaultFilter, locale) {
 	}
 
 	for (const [key, val] of Object.entries(filter)) {
-		if (key === 'gender') continue
+		if (key === 'category') continue
 		const def = defaultFilter[key]
 
 		const isDefault = Array.isArray(def)

@@ -11,7 +11,7 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 	const { locale, numberFormats } = useI18n()
 
 	const facetOptions = reactive({
-		genders: [],
+		categories: [],
 		styles: [],
 		colors: [],
 		sizes: [],

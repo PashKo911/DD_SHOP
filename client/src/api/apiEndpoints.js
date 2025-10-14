@@ -19,7 +19,7 @@ const apiEndpoints = {
 		init: '/cart/init',
 		populateCart: '/cart/populate',
 		addProduct: '/cart/add',
-		updateProductAmount: '/cart/amount',
+		updateProductQuantity: '/cart/update',
 		deleteProduct: '/cart/delete',
 	},
 	users: {

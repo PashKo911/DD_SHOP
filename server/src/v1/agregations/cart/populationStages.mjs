@@ -84,13 +84,13 @@ export const finalProductProject = (language, rate) => {
 			},
 			totalPrice: {
 				$toDouble: {
-					$round: [{ $multiply: ['$variant.price', '$amount', { $toDecimal: rateStr }] }, 2],
+					$round: [{ $multiply: ['$variant.price', '$quantity', { $toDecimal: rateStr }] }, 2],
 				},
 			},
 			totalOldPrice: {
 				$toDouble: {
 					$round: [
-						{ $multiply: [{ $ifNull: ['$variant.oldPrice', 0] }, '$amount', { $toDecimal: rateStr }] },
+						{ $multiply: [{ $ifNull: ['$variant.oldPrice', 0] }, '$quantity', { $toDecimal: rateStr }] },
 						2,
 					],
 				},
@@ -98,7 +98,7 @@ export const finalProductProject = (language, rate) => {
 			categoryKey: '$product.categoryKey',
 			size: 1,
 			image: { $arrayElemAt: ['$variant.images', 0] },
-			amount: 1,
+			quantity: 1,
 		},
 	}
 }

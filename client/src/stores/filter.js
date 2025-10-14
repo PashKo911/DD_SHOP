@@ -24,17 +24,21 @@ export const useFilterStore = defineStore('filter', () => {
 	const { viewMode } = storeToRefs(commonStore)
 
 	const defaultFilter = computed(() => ({
+		category: '',
 		title: '',
 		styles: [],
 		price: [],
 		colors: [],
 		sizes: [],
-		sort: shopConstants.defaultSort,
+		sort: {
+			...shopConstants.defaultSort,
+			label: t(shopConstants.defaultSort.label),
+		},
 		page: 0,
 	}))
 
 	const perPage = computed(() => {
-		return viewMode.value.value * 3
+		return viewMode.value.value * shopConstants.productRowsCount
 	})
 
 	const filter = reactive({ ...defaultFilter.value })
@@ -50,7 +54,7 @@ export const useFilterStore = defineStore('filter', () => {
 
 	const apiQueryParams = computed(() => {
 		return {
-			gender: filter.gender,
+			category: filter.category,
 			title: filter.title.trim().toLowerCase(),
 			styles: filter.styles.join(','),
 			colors: filter.colors.join(','),
@@ -66,7 +70,7 @@ export const useFilterStore = defineStore('filter', () => {
 		return Object.entries(filter).some(([key, val]) => {
 			const def = defaultFilter.value[key]
 
-			if (key === 'gender') return false
+			if (key === 'category') return false
 
 			if (key === 'sort') {
 				return val.value !== def.value

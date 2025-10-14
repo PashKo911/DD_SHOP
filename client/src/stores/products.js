@@ -183,11 +183,11 @@ export const useProductsStore = defineStore('products', () => {
 			queryPresets.value.newest.name,
 		)
 
-	const getSameProducts = (genderId, styleId) => {
+	const getSameProducts = (categoryId, styleId) => {
 		getProducts(
 			{
 				...queryPresets.value.same,
-				gender: genderId,
+				category: categoryId,
 				styles: styleId,
 			},
 			sameProducts,

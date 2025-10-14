@@ -260,7 +260,7 @@
 		},
 		"discountLabel": "{discount} discount",
 		"userControl": "Open user navigation menu",
-		"amountInput": "Quantity for {title}"
+		"quantityInput": "Quantity for {title}"
 	},
 	"errors": {
 		"email": {

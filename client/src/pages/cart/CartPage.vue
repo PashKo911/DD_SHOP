@@ -14,7 +14,7 @@
 					:is-skeleton-visible="isSkeletonVisible"
 					:is-spinner-visible="isSpinnerVisible"
 					:processing-item-key="processingItemKey"
-					@amount-updated="onProductAmountUpdate"
+					@quantity-updated="onProductQuantityUpdate"
 					@delete-product="onDeleteProduct"
 					class="grow"
 				/>
@@ -58,11 +58,11 @@ const {
 	isCartItemsEmpty,
 	isCartInitialized,
 	isCartItemsMatched,
-	isUpdateAmountLoading,
+	isUpdateQuantityLoading,
 	isDeleteProductLoading,
 } = storeToRefs(cartStore)
 
-const { populateCart, updateAmount, deleteProduct } = cartStore
+const { populateCart, updateQuantity, deleteProduct } = cartStore
 const isInitialLoad = ref(true)
 const processingItemKey = ref(null)
 //========================================================================================================================================================
@@ -72,7 +72,7 @@ const isSkeletonVisible = computed(() => {
 
 const isSpinnerVisible = computed(() => {
 	return Boolean(
-		isUpdateAmountLoading.value ||
+		isUpdateQuantityLoading.value ||
 			isDeleteProductLoading.value ||
 			isCartPopulating.value,
 	)
@@ -110,9 +110,9 @@ onMounted(async () => {
 
 //========================================================================================================================================================
 
-const onProductAmountUpdate = async (newData) => {
+const onProductQuantityUpdate = async (newData) => {
 	processingItemKey.value = makeKeyFromCartItem(newData, false, false)
-	await updateAmount(newData)
+	await updateQuantity(newData)
 
 	if (!isAuthenticated.value) {
 		populateCart()

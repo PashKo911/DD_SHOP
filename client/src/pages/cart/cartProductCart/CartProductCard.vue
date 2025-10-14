@@ -85,17 +85,17 @@
 				class="flex flex-wrap items-start justify-between gap-6 max-sm:items-center"
 			>
 				<input-number
-					:default-value="productData.amount"
+					:default-value="productData.quantity"
 					showButtons
 					:aria-label="
-						$t('accessibility.amountInput', { title: productData.title })
+						$t('accessibility.quantityInput', { title: productData.title })
 					"
 					:step="1"
 					:min="1"
 					buttonLayout="horizontal"
 					size="small"
 					:disabled="isCardLoading"
-					@input="onUpdateAmount"
+					@input="onUpdateQuantity"
 					class="ml-auto"
 				/>
 			</div>
@@ -136,7 +136,7 @@ const props = defineProps({
 	},
 })
 
-const emit = defineEmits(['amount-updated', 'delete-product'])
+const emit = defineEmits(['quantity-updated', 'delete-product'])
 
 const debouncedUpdateEmit = debounce((newVal) => {
 	const product = props.productData?.productId
@@ -147,10 +147,10 @@ const debouncedUpdateEmit = debounce((newVal) => {
 		product,
 		variant,
 		size,
-		amount: newVal,
+		quantity: newVal,
 	}
 
-	emit('amount-updated', productData)
+	emit('quantity-updated', productData)
 })
 //========================================================================================================================================================
 
@@ -170,7 +170,7 @@ const isCardLoading = computed(() => {
 })
 //========================================================================================================================================================
 
-const onUpdateAmount = ({ value }) => {
+const onUpdateQuantity = ({ value }) => {
 	debouncedUpdateEmit(value)
 }
 

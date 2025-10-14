@@ -1,6 +1,6 @@
 <template>
 	<Select
-		v-model="selectedLanguage"
+		v-model="selectLanguage"
 		:options="languages"
 		:tabindex="0"
 		:ariaLabel="t('accessibility.languageSelect')"
@@ -37,14 +37,14 @@
 import { computed } from 'vue'
 
 import { useI18n } from 'vue-i18n'
-import { useLocales } from '@/composables/useLocales'
+import { useStorage } from '@/composables/useStorage'
 import { i18nMeta } from '@/config/i18n'
 
 import Select from '@/components/ui/Select.vue'
 
 const { t, locale } = useI18n()
 
-const { setLocale } = useLocales()
+const { setLocale } = useStorage()
 
 const languages = computed(() => {
 	return Object.entries(i18nMeta.supportedLocales).map(([code, locale]) => ({
@@ -54,7 +54,7 @@ const languages = computed(() => {
 	}))
 })
 
-const selectedLanguage = computed({
+const selectLanguage = computed({
 	get() {
 		return languages.value.find((l) => l.code === locale.value)
 	},

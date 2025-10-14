@@ -4,7 +4,7 @@
 			name: routeNames.SHOP,
 			params: { category: shopConstants.defaultCategory },
 			query: {
-				styles: productData.label,
+				styles: productData.slug,
 			},
 		}"
 		class="bg-primary p-maxmd-70-20 md:p-md-70-20 group relative flex aspect-[808/292] basis-[53.656915%] overflow-hidden rounded-lg nth-[4n+1]:aspect-[665/292] nth-[4n+1]:basis-[44.215426%] nth-[4n+4]:aspect-[665/292] nth-[4n+4]:basis-[44.215426%] sm:rounded-xl md:rounded-2xl"
@@ -47,6 +47,21 @@ import shopConstants from '@/constants/shop'
 import ArrowDownSimple from '@/components/icons/ArrowDownSimple.vue'
 import routeNames from '@/router/routeNames'
 
+const props = defineProps({
+	productData: {
+		type: Object,
+		required: true,
+	},
+	index: {
+		type: Number,
+		required: true,
+	},
+	lazy: {
+		type: Boolean,
+		default: true,
+	},
+})
+
 const imageConfigs = [
 	{
 		class: 'right-0 w-[70.37594%]',
@@ -69,21 +84,6 @@ const imageConfigs = [
 		height: 292,
 	},
 ]
-
-const props = defineProps({
-	productData: {
-		type: Object,
-		required: true,
-	},
-	index: {
-		type: Number,
-		required: true,
-	},
-	lazy: {
-		type: Boolean,
-		default: true,
-	},
-})
 
 const lazyAttr = computed(() => {
 	return props.lazy ? 'lazy' : 'eager'

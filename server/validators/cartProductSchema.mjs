@@ -25,7 +25,7 @@ const cartProductSchema = {
 			errorMessage: validationErrorCodes.INVALID,
 		},
 	},
-	amount: {
+	quantity: {
 		notEmpty: {
 			errorMessage: validationErrorCodes.REQUIRED,
 		},

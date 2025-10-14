@@ -259,7 +259,7 @@
 		},
 		"discountLabel": "Знижка {discount}",
 		"userControl": "Відкрити меню навігації користувача",
-		"amountInput": "Кількість для {title}"
+		"quantityInput": "Кількість для {title}"
 	},
 	"errors": {
 		"email": {

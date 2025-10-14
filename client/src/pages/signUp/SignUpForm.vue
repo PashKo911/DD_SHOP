@@ -94,11 +94,12 @@
 			{{ serverErrorMessages.general }}
 		</message>
 		<Button
+			:loading="isSignupLoading"
+			:label="t('buttons.signup')"
 			type="submit"
 			severity="secondary"
-			class="min-w-60 not-last:mb-4"
 			size="large"
-			:label="t('buttons.signup')"
+			class="min-w-60 not-last:mb-4"
 		/>
 		<div
 			class="text-primary text-24-18 font-heading flex flex-wrap gap-x-1.5 align-bottom leading-tight"
@@ -113,18 +114,6 @@
 				{{ t('buttons.signin') }}
 			</router-link>
 		</div>
-		<backdrop :visible="isSignupLoading" background-class="bg-black/30" />
-		<progress-bar
-			mode="indeterminate"
-			v-show="isSignupLoading"
-			:style="{
-				position: 'fixed',
-				top: '0',
-				left: '0',
-				zIndex: '1010',
-				width: '100%',
-			}"
-		/>
 	</Form>
 </template>
 
@@ -144,8 +133,6 @@ import { useRouter } from 'vue-router'
 
 import authSchema from '../../schemas/auth'
 
-import Backdrop from '@/components/ui/Backdrop.vue'
-import ProgressBar from '@/components/ui/ProgressBar.vue'
 import { Form } from '@primevue/forms'
 import Button from '@/components/ui/buttons/Button.vue'
 import Message from '@/components/ui/Message.vue'
@@ -161,9 +148,7 @@ const authStore = useAuthStore()
 
 const { signup, clearSignupErrors } = authStore
 
-const { signupServerValidationErrors, isSignupLoading, isAuthenticated } =
-	storeToRefs(authStore)
-const { initCart } = useCartStore()
+const { signupServerValidationErrors, isSignupLoading } = storeToRefs(authStore)
 
 const resolver = yupResolver(object().shape(authSchema))
 //========================================================================================================================================================

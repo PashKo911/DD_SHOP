@@ -1,4 +1,5 @@
 import QueryParser from './QueryParser.mjs'
+import { appConstants } from '../../constants/app.mjs'
 
 class FiltersHelper {
 	// Метод для застосування фільтрів до запиту
@@ -6,7 +7,12 @@ class FiltersHelper {
 		filters.forEach((filter) => {
 			switch (filter.filterType) {
 				case 'search':
-					query.where(filter.fieldName).regex(new RegExp(filter.filterContent, 'i'))
+					const regex = new RegExp(filter.filterContent, 'i')
+					const conditions = appConstants.supportedLanguages.map((l) => ({
+						[`${filter.fieldName}.${l}`]: regex,
+					}))
+
+					query.or(conditions)
 					break
 				case 'minValue':
 					// Фільтр для мінімального значення

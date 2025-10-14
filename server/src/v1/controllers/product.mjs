@@ -4,7 +4,7 @@ import { deleteUploadedFiles, deleteEditedFiles } from '../../../utils/fileUtils
 import ColorsDBService from '../models/colors/ColorsDBService.mjs'
 import DressStyleDBService from '../models/dressStyle/DressStyleDBService.mjs'
 import SizeDBService from '../models/size/SizeDBService.mjs'
-import GenderDBService from '../models/gender/GenderDBService.mjs'
+import CategoryDBService from '../models/category/CategoryDBService.mjs'
 import ProductsDBService from '../models/product/ProductsDBService.mjs'
 import { getRate } from '../../../services/ratesCache.mjs'
 import { appConstants } from '../../../constants/app.mjs'
@@ -126,13 +126,13 @@ class ProductController {
 			const colors = await ColorsDBService.getList(language)
 			const sizes = await SizeDBService.getList()
 			const styles = await DressStyleDBService.getList(language)
-			const genders = await GenderDBService.getList({})
+			const categories = await CategoryDBService.getList({})
 
 			const price = await ProductsDBService.getPriceRange(rate)
 
 			res.status(200).json({
 				success: true,
-				genders,
+				categories,
 				styles,
 				colors,
 				sizes,
@@ -147,7 +147,7 @@ class ProductController {
 		try {
 			const language = resolveLocale(req)
 
-			const styles = await DressStyleDBService.getListWithImg(language)
+			const styles = await DressStyleDBService.getList(language)
 			res.status(200).json({
 				success: true,
 				styles,

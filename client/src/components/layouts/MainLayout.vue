@@ -12,10 +12,12 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onBeforeUnmount } from 'vue'
+
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useHead } from '@vueuse/head'
+import { useStorage } from '@/composables/useStorage'
 
 import { i18nMeta } from '@/config/i18n'
 import getPathForLocale from '@/utils/localeHelpers/getPathForLocale'
@@ -30,6 +32,9 @@ const router = useRouter()
 const route = useRoute()
 
 const { locale } = useI18n()
+const { onStorageEvent } = useStorage()
+
+window.addEventListener('storage', onStorageEvent)
 
 const linkTags = computed(() => {
 	const canonical = {
@@ -56,4 +61,8 @@ useHead(() => ({
 	htmlAttrs: { lang: locale.value },
 	link: linkTags.value,
 }))
+//========================================================================================================================================================
+onBeforeUnmount(() => {
+	window.removeEventListener('storage', onStorageEvent)
+})
 </script>

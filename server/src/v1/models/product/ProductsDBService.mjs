@@ -13,19 +13,20 @@ import buildProductSuggestionsPipeline from '../../agregations/productSuggestion
 class ProductsDBService extends MongooseCRUDManager {
 	async getList(reqQuery, language, currency, rate) {
 		try {
-			const configurations = createFieldsConfigurations(productBaseFieldsConfigurations, language)
 			const req = { ...reqQuery }
-
+			console.log('req.title ++++++++++++++++')
+			console.log(req.title)
 			if (currency !== appConstants.defaultCurrency) {
 				formatReqPriceRange(req, rate)
 			}
 
 			const { documents, count } = await this.findManyWithSearchOptions(
 				req,
-				configurations,
+				productBaseFieldsConfigurations,
 				{},
 				productPopulateFields
 			)
+
 			const localized = documents.map((doc) => {
 				const res = formatProductForResponse(doc, language, rate)
 				return res

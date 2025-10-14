@@ -16,7 +16,7 @@ const createFolderIfNotExists = (folderPath) => {
 
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		const categoryId = req.body.gender
+		const categoryId = req.body.category
 
 		const category = ALLOWED_CATEGORIES.find((cat) => cat._id === categoryId)
 

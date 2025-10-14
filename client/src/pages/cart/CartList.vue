@@ -7,7 +7,7 @@
 			:product-data="p"
 			:processing-item-key="processingItemKey"
 			:is-spinner-visible="isSpinnerVisible"
-			@amount-updated="emit('amount-updated', $event)"
+			@quantity-updated="emit('quantity-updated', $event)"
 			@delete-product="emit('delete-product', $event)"
 		/>
 	</div>
@@ -37,7 +37,7 @@ const props = defineProps({
 	},
 })
 
-const emit = defineEmits(['amount-updated', 'delete-product'])
+const emit = defineEmits(['quantity-updated', 'delete-product'])
 
 const minCardsCount = 2
 

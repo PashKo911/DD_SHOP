@@ -59,12 +59,17 @@ function parseFilter(
 				? numbers
 				: defaultFilter.price
 		},
+		category: (v) => {
+			const catId = facetOptions.categories.find((c) => c.label.en === v)
+			return catId._id
+		},
+	}
+	for (const [key, def] of Object.entries(defaultFilter)) {
 	}
 
 	for (const [key, def] of Object.entries(defaultFilter)) {
-		if (key === 'gender') continue
-
 		const raw = query[key]
+
 		if (!raw) {
 			filter[key] = def
 			continue
@@ -75,16 +80,16 @@ function parseFilter(
 			continue
 		}
 
-		const values = raw.split(',').filter(Boolean)
 		if (!Array.isArray(facetOptions[key])) {
 			filter[key] = raw
 		} else {
 			filter[key] = facetOptions[key]
-				.filter((opt) =>
-					values.includes(
+				.filter((opt) => {
+					const values = raw.split(',').filter(Boolean)
+					return values.includes(
 						String(opt[searchField].toLowerCase() ?? opt.label.toLowerCase()),
-					),
-				)
+					)
+				})
 				.map((opt) => opt._id)
 		}
 	}

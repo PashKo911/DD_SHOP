@@ -1,12 +1,12 @@
 /**
  * Merge incoming cart items with stored cart items.
  * - Items are considered the same if product+variant+size match (stringified).
- * - Amounts coerced to numbers and summed.
+ * - Quantities coerced to numbers and summed.
  * - Returns array of plain objects (POJOs) safe to assign to a Mongoose document.
  *
  * @param {Array<Object>} incomingItems - items from frontend (e.g. req.body.productsList)
  * @param {Array<Object>} storedItems - items from DB (may be POJOs or Mongoose docs)
- * @returns {Array<Object>} mergedItems - array of plain objects with normalized `amount` (Number)
+ * @returns {Array<Object>} mergedItems - array of plain objects with normalized `quantity` (Number)
  */
 function mergeCartItems(incomingItems = [], storedItems = []) {
 	const makeKey = ({ product, variant, size }) => `${product ?? ''}:${variant ?? ''}:${size ?? ''}`
@@ -14,7 +14,7 @@ function mergeCartItems(incomingItems = [], storedItems = []) {
 	const map = new Map()
 	for (const p of storedItems) {
 		const obj = p && typeof p.toObject === 'function' ? p.toObject() : { ...p }
-		obj.amount = Number(obj.amount) || 0
+		obj.quantity = Number(obj.quantity) || 0
 		const key = makeKey(obj)
 		map.set(key, { ...obj })
 	}
@@ -23,18 +23,18 @@ function mergeCartItems(incomingItems = [], storedItems = []) {
 		if (!raw) continue
 
 		const item = { ...raw }
-		const amount = Number(item.amount)
+		const quantity = Number(item.quantity)
 
-		if (!Number.isFinite(amount) || amount <= 0) continue
+		if (!Number.isFinite(quantity) || quantity <= 0) continue
 
-		item.amount = amount
+		item.quantity = quantity
 		const key = makeKey(item)
 
 		if (map.has(key)) {
 			const matchedProduct = map.get(key)
 
-			if (matchedProduct.amount !== item.amount) {
-				matchedProduct.amount = item.amount
+			if (matchedProduct.quantity !== item.quantity) {
+				matchedProduct.quantity = item.quantity
 				map.set(key, matchedProduct)
 			}
 		} else {

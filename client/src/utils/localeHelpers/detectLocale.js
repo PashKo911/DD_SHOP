@@ -1,4 +1,5 @@
 import { i18nMeta } from '@/config/i18n'
+import shopConstants from '@/constants/shop'
 
 /**
  * Detects and resolves the appropriate locale for the application.
@@ -14,12 +15,12 @@ import { i18nMeta } from '@/config/i18n'
  * @returns {string} - The resolved locale code to be used in the application.
  */
 function detectLocale(route) {
-	const storageLocale = localStorage.getItem('locale')
+	const storageLocale = localStorage.getItem(shopConstants.storageKeys.locale)
 	const urlLocale = route?.params?.locale
 
 	if (urlLocale && i18nMeta.localeCodes.includes(urlLocale)) {
 		if (storageLocale !== urlLocale) {
-			localStorage.setItem('locale', urlLocale)
+			localStorage.setItem(shopConstants.storageKeys.locale, urlLocale)
 		}
 		return urlLocale
 	}

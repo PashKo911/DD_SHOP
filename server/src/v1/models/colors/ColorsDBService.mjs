@@ -6,14 +6,17 @@ import { errorCodes } from '../../../../constants/errorCodes.mjs'
 class ColorsDBService extends MongooseCRUDManager {
 	async getList(language) {
 		try {
-			const projection = {
-				[`label.${language}`]: 1,
-				value: 1,
-				slug: 1,
-			}
-
-			const docs = await super.getList({}, projection)
-			return docs.map((d) => ({ ...d, label: d.label[language] }))
+			const docs = await Color.aggregate([
+				{
+					$project: {
+						_id: 1,
+						value: 1,
+						slug: 1,
+						label: `$label.${language}`,
+					},
+				},
+			])
+			return docs
 		} catch (err) {
 			if (err instanceof HttpError) throw err
 			throw new HttpError(500, 'Failed to get available colors', {

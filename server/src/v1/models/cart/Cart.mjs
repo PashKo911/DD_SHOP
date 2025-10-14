@@ -17,7 +17,7 @@ const cartProductSchema = new Schema({
 		ref: 'Size',
 		required: true,
 	},
-	amount: {
+	quantity: {
 		type: Number,
 		required: true,
 		min: 1,
@@ -29,6 +29,7 @@ const cartSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'User',
 		required: [true, 'Customer Id is required'],
+		unique: true,
 	},
 	productsList: [cartProductSchema],
 })

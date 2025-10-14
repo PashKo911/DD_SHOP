@@ -9,7 +9,7 @@ const router = express.Router()
 router.post('/populate', attachUserFromBarrier, CartController.populateCart)
 router.post('/init', checkAuth, CartController.initCart)
 router.post('/add', checkAuth, checkSchema(cartProductSchema), CartController.addProduct)
-router.put('/amount', checkAuth, checkSchema(cartProductSchema), CartController.updateProductAmount)
+router.put('/update', checkAuth, checkSchema(cartProductSchema), CartController.updateProductQuantity)
 router.delete('/delete', checkAuth, CartController.deleteProduct)
 
 export default router

@@ -9,7 +9,7 @@
  */
 
 function mapFilterToChips(filter, options, defaultFilter, numberFormatter) {
-	const ignoredKeys = new Set(['gender', 'perPage', 'page', 'sort', 'title'])
+	const ignoredKeys = new Set(['category', 'perPage', 'page', 'sort', 'title'])
 	const chips = []
 
 	function isDefaultValue(key, value) {
