@@ -224,6 +224,11 @@ export const useProductsStore = defineStore('products', () => {
 		if (!result) return
 		productDetails.value = result.product
 	}
+
+	const clearDefaultProducts = () => {
+		defaultProducts.value = []
+	}
+
 	const clearProductDetails = () => {
 		productDetails.value = {}
 	}
@@ -270,5 +275,6 @@ export const useProductsStore = defineStore('products', () => {
 		getSuggestions,
 		getProductDetails,
 		clearProductDetails,
+		clearDefaultProducts,
 	}
 })

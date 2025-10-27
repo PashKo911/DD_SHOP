@@ -84,7 +84,6 @@ import slugify from '@sindresorhus/slugify'
 
 import RatingComp from '@/components/ui/rating/RatingComp.vue'
 import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
-import ButtonLink from '@/components/ui/buttons/ButtonLink.vue'
 
 const props = defineProps({
 	data: {
@@ -98,7 +97,7 @@ const props = defineProps({
 })
 //========================================================================================================================================================
 
-const { t, n } = useI18n()
+const { t } = useI18n()
 
 const activeVariantId = ref(null)
 

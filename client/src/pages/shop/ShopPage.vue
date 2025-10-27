@@ -74,6 +74,7 @@
 			<shop-list
 				:items="defaultProductsValue"
 				:view-mode="Number(viewMode.value)"
+				:is-loading="isProductsLoading"
 				class="mb-8 grow"
 			/>
 			<paginator
@@ -107,7 +108,12 @@ import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 
 import { useI18n } from 'vue-i18n'
-import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
+import {
+	onBeforeRouteLeave,
+	onBeforeRouteUpdate,
+	useRoute,
+	useRouter,
+} from 'vue-router'
 import { useFilterModel } from '@/composables/useFilterModel'
 import { useProductsStore } from '@/stores/products'
 import { useCommonStore } from '@/stores/common'
@@ -153,7 +159,7 @@ const isMobile = useMediaQuery('(min-width: 479.98px)')
 
 //========================================================================================================================================================
 
-const { getDefaultProducts } = productsStore
+const { getDefaultProducts, clearDefaultProducts } = productsStore
 const {
 	totalDefaultProductsCount,
 	defaultProducts,
@@ -317,11 +323,17 @@ onUnmounted(() => {
 	resetAllFilters()
 })
 
+onBeforeRouteLeave(() => {
+	clearDefaultProducts()
+})
+
 onBeforeRouteUpdate((to, from) => {
-	if (
-		from.params.category !== to.params.category ||
-		from.query.page !== to.query.page
-	) {
+	const categoryChanged = from.params.category !== to.params.category
+	const pageChanged = from.query.page !== to.query.page
+
+	if (categoryChanged) clearDefaultProducts()
+
+	if (categoryChanged || pageChanged) {
 		parseFilterFromQuery({
 			...to.query,
 			category: to.params.category,

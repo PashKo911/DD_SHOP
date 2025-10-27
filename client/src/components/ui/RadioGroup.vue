@@ -9,11 +9,11 @@
 			v-for="(item, idx) in items"
 			:key="item._id ?? item.value"
 			:role="props.multiple ? 'checkbox' : 'radio'"
-			tabindex="0"
 			ref="labels"
 			:class="labelClass"
 			:aria-checked="modelValue === item._id"
 			:aria-label="item.label"
+			tabindex="0"
 			@keydown.space.prevent="onToggleOrSelect(item._id, idx)"
 			@keydown.enter.prevent="onToggleOrSelect(item._id, idx)"
 			@keydown.arrow-right.prevent="moveFocus(1)"
@@ -25,7 +25,7 @@
 			<input
 				:type="multiple ? 'checkbox' : 'radio'"
 				:value="item._id"
-				:id="`${item._id}|${idx}`"
+				:id="uuidv4()"
 				tabindex="-1"
 				v-model="model"
 				@input="onInput"
@@ -40,6 +40,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { v4 as uuidv4 } from 'uuid'
 
 const props = defineProps({
 	items: Array,

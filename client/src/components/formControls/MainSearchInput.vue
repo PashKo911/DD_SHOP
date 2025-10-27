@@ -91,6 +91,12 @@ const onSearch = async ({ query }) => {
 
 const applySearchFilter = ({ value }) => {
 	const title = value.label.trim().toLowerCase()
+	if (
+		route.name === routeNames.SHOP_CATEGORY &&
+		route.params.category === value.categoryName
+	) {
+		setFilterProp('title', title)
+	}
 	router.push({
 		name: routeNames.SHOP_CATEGORY,
 		query: { title },
@@ -99,16 +105,13 @@ const applySearchFilter = ({ value }) => {
 }
 
 const onClear = () => {
-	if (filter.value.title) {
-		setFilterProp('title', '')
-		router.replace({
-			name: route.name,
-			query: filterStrings.value,
-			params: { ...route.params },
-		})
-	} else {
-		localState.value = ''
-	}
+	setFilterProp('title', '')
+	router.replace({
+		name: route.name,
+		query: filterStrings.value,
+		params: { ...route.params },
+	})
+	localState.value = ''
 }
 //========================================================================================================================================================
 

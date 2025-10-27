@@ -15,4 +15,11 @@
 </template>
 <script setup>
 import Skeleton from '@/components/skeleton/Skeleton.vue'
+
+defineProps({
+	productData: {
+		type: Object,
+		default: null,
+	},
+})
 </script>

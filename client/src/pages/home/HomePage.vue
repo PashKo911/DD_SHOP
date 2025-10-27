@@ -69,7 +69,10 @@
 			@reload-items="getReviews"
 		>
 			<template #default="{ item }">
-				<component :is="activeReviewsSliderComponent" :review-data="item" />
+				<component
+					:is="activeReviewsSliderComponent"
+					:review-data="isReviewsLoading ? {} : item"
+				/>
 			</template>
 		</slider-base>
 	</div>

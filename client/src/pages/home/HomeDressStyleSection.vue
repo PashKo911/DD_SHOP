@@ -19,7 +19,7 @@
 				:is="activeComponent"
 				v-for="(productData, idx) in isLoading ? itemsCount : items"
 				:key="isLoading ? idx : productData._id"
-				:product-data="isLoading ? {} : productData"
+				:product-data="productData"
 				:index="idx"
 			/>
 		</div>

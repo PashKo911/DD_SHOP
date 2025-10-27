@@ -46,10 +46,7 @@
 				class="h-auto"
 			>
 				<slot :item="item">
-					<component
-						:is="activeComponent"
-						v-bind="isLoading ? { data: {} } : { data: item }"
-					/>
+					<component :is="activeComponent" :data="isLoading ? {} : item" />
 				</slot>
 			</swiper-slide>
 			<span
