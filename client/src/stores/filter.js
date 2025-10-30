@@ -19,9 +19,9 @@ export const useFilterStore = defineStore('filter', () => {
 	const facetOptionsStore = useFacetOptionsStore()
 	const commonStore = useCommonStore()
 
-	const { t, n, locale } = useI18n()
-	const { facetOptions, currency } = storeToRefs(facetOptionsStore)
-	const { viewMode } = storeToRefs(commonStore)
+	const { t, n } = useI18n()
+	const { facetOptions } = storeToRefs(facetOptionsStore)
+	const { viewMode, locale } = storeToRefs(commonStore)
 
 	const defaultFilter = computed(() => ({
 		category: '',
@@ -114,16 +114,19 @@ export const useFilterStore = defineStore('filter', () => {
 	const resetPrice = () => {
 		filter.price = []
 	}
-	const resetAllFilters = () => {
-		Object.assign(filter, defaultFilter.value)
-	}
-	const resetFiltersExceptTitle = () => {
-		const currentTitle = filter.title
 
-		Object.assign(filter, defaultFilter.value)
+	const resetFilters = (exceptions = []) => {
+		const saved = exceptions.reduce((acc, key) => {
+			acc[key] = filter[key]
+			return acc
+		}, {})
 
-		filter.title = currentTitle
+		Object.assign(filter, defaultFilter.value, saved)
 	}
+	const resetFiltersExceptCategory = () => {
+		resetFilters(['category'])
+	}
+
 	function removeChip(chip) {
 		removeFilterChip(filter, defaultFilter.value, chip)
 	}
@@ -145,8 +148,8 @@ export const useFilterStore = defineStore('filter', () => {
 		parseFilterFromQuery,
 		setFilterProp,
 		resetPrice,
-		resetAllFilters,
-		resetFiltersExceptTitle,
+		resetFilters,
+		resetFiltersExceptCategory,
 		removeChip,
 	}
 })

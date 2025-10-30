@@ -14,11 +14,12 @@ class DressStyleDBService extends MongooseCRUDManager {
 						slug: 1,
 						label: `$label.${language}`,
 						imgSrc: 1,
+						order: 1,
 					},
 				},
 				{
 					$sort: {
-						order: -1,
+						order: 1,
 					},
 				},
 			])

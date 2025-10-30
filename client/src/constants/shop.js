@@ -1,5 +1,5 @@
 const shopCategories = Object.freeze(['women', 'men'])
-const defaultCategory = shopCategories[0]
+const defaultCategory = 'women'
 const defaultSort = Object.freeze({
 	value: 'maxRating:desc',
 	label: 'pages.shop.sortSelect.ratingDesc',
@@ -9,6 +9,7 @@ const storageKeys = Object.freeze({
 	locale: 'locale',
 	cart: 'cart',
 	token: 'token',
+	currency: 'currency',
 })
 
 const shopConstants = Object.freeze({

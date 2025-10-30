@@ -1,5 +1,5 @@
 <template>
-	<div class="search-input relative z-20 order-3 min-w-[8.125rem] grow">
+	<div class="relative">
 		<auto-complete
 			v-model.trim="localState"
 			optionLabel="label"

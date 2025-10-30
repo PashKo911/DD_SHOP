@@ -1,4 +1,5 @@
 import { markRaw } from 'vue'
+import { currencies } from '@/constants/currencies'
 import UaFlagIcon from '@/components/icons/UaFlagIcon.vue'
 import UsaFlagIcon from '@/components/icons/UsaFlagIcon.vue'
 
@@ -16,15 +17,6 @@ const supportedLocales = {
 		datetimeFormats: {
 			long: { year: 'numeric', month: 'long', day: 'numeric' },
 		},
-		numberFormat: {
-			currency: {
-				style: 'currency',
-				currency: 'USD',
-				currencyDisplay: 'symbol',
-				minimumFractionDigits: 0,
-				maximumFractionDigits: 0,
-			},
-		},
 	},
 	uk: {
 		displayCode: 'ua',
@@ -34,21 +26,9 @@ const supportedLocales = {
 		datetimeFormats: {
 			long: { year: 'numeric', month: 'long', day: 'numeric' },
 		},
-		numberFormat: {
-			currency: {
-				style: 'currency',
-				currency: 'UAH',
-				// currencyDisplay: 'narrowSymbol',
-				currencyDisplay: 'symbol',
-				minimumFractionDigits: 0,
-				maximumFractionDigits: 0,
-			},
-		},
 	},
 }
 
-const defaultCurrency =
-	supportedLocales[defaultLocale].numberFormat.currency.currency // 'USD'
 const localeCodes = Object.keys(supportedLocales) // ['en','uk']
 const localeRegex = localeCodes.join('|') // 'en|uk'
 const messages = Object.fromEntries(
@@ -60,7 +40,18 @@ const datetimeFormats = Object.fromEntries(
 )
 
 const numberFormats = Object.fromEntries(
-	localeCodes.map((key) => [key, supportedLocales[key].numberFormat]),
+	currencies.map((c) => [
+		c.locale,
+		{
+			currency: {
+				style: 'currency',
+				currency: c.code,
+				currencyDisplay: 'narrowSymbol',
+				minimumFractionDigits: 0,
+				maximumFractionDigits: 0,
+			},
+		},
+	]),
 )
 
 export const i18nConfig = Object.freeze({
@@ -75,7 +66,6 @@ export const i18nConfig = Object.freeze({
 
 export const i18nMeta = Object.freeze({
 	defaultLocale,
-	defaultCurrency,
 	supportedLocales,
 	localeCodes,
 	localeRegex,

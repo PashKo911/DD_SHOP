@@ -1,10 +1,12 @@
 import axios from 'axios'
 import router from '@/router'
 import { useAuthStore } from '@/stores/auth'
+import { useCommonStore } from '@/stores/common'
 import { i18n } from '@/plugins/i18n'
 import { i18nMeta } from './i18n'
 import routeNames from '@/router/routeNames'
 import apiConfig from './api'
+import { storeToRefs } from 'pinia'
 
 const apiClient = axios.create({
 	baseURL: apiConfig.apiUrl,
@@ -27,14 +29,12 @@ apiClient.interceptors.request.use(
 
 apiClient.interceptors.request.use(
 	(config) => {
-		const locale = i18n?.global.locale.value ?? i18nMeta.defaultLocale
-		const currency =
-			i18n?.global.numberFormats.value[locale].currency.currency ??
-			i18nMeta.defaultCurrency
+		const commonStore = useCommonStore()
+		const { locale, currency } = storeToRefs(commonStore)
 		config.headers = {
 			...config.headers,
-			'Accept-Language': locale,
-			Currency: currency,
+			'Accept-Language': locale.value,
+			Currency: currency.value,
 		}
 		return config
 	},

@@ -50,6 +50,7 @@ import { computed, watch, onMounted, ref, onUnmounted } from 'vue'
 import slugify from '@sindresorhus/slugify'
 
 import { useI18n } from 'vue-i18n'
+import { useCommonStore } from '@/stores/common'
 import { useRouter, useRoute } from 'vue-router'
 import { useProductsStore } from '@/stores/products'
 import { useReviewsStore } from '@/stores/reviews'
@@ -93,9 +94,12 @@ const props = defineProps({
 const productsStore = useProductsStore()
 const cartStore = useCartStore()
 const reviewsStore = useReviewsStore()
+const commonStore = useCommonStore()
 const route = useRoute()
 const router = useRouter()
-const { locale, t } = useI18n()
+const { t } = useI18n()
+
+const { locale, currency } = storeToRefs(commonStore)
 
 const { getProductDetails, clearProductDetails, getSameProducts } =
 	productsStore
@@ -173,6 +177,14 @@ watch(locale, async () => {
 			slug: slugify(activeProductVariant.value.title),
 		},
 	})
+})
+
+watch(currency, async () => {
+	await getProductDetails(props.id)
+	getSameProducts(
+		productDetailsValue.value.category._id,
+		productDetailsValue.value.style._id,
+	)
 })
 
 watch(

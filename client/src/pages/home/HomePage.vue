@@ -83,6 +83,7 @@ import { storeToRefs } from 'pinia'
 import { onMounted, watch, computed } from 'vue'
 
 import { useI18n } from 'vue-i18n'
+import { useCommonStore } from '@/stores/common'
 import { useProductsStore } from '@/stores/products'
 import { useReviewsStore } from '@/stores/reviews'
 import { useFacetOptionsStore } from '@/stores/facetOptions'
@@ -99,10 +100,12 @@ import HomeDressStyleSection from './HomeDressStyleSection.vue'
 
 const { t, locale } = useI18n()
 
+const commonStore = useCommonStore()
 const productsStore = useProductsStore()
 const reviewsStore = useReviewsStore()
 const facetOptionStore = useFacetOptionsStore()
 
+const { currency } = storeToRefs(commonStore)
 const {
 	availableStylesValue,
 	isAvailableStylesLoading,
@@ -134,6 +137,10 @@ watch(locale, () => {
 		getTopSalesProducts(),
 		getAvailableStyles(),
 	])
+})
+
+watch(currency, () => {
+	Promise.allSettled([getNewestProducts(), getTopSalesProducts()])
 })
 
 onMounted(() => {

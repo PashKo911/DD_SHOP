@@ -222,7 +222,8 @@
 	"accessibility": {
 		"logo": "Логотип сайту",
 		"searchInput": "Пошук",
-		"languageSelect": "Перемикач мови",
+		"languageSelect": "Вибір мови",
+		"currencySelect": "Вибір валюти",
 		"menuVisibilityToggler": "Відкрити, закрити навігаційне меню",
 		"cartLink": "Посилання на кошик",
 		"signin": "Посилання на сторінку входу",

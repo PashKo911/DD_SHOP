@@ -223,7 +223,8 @@
 	"accessibility": {
 		"logo": "Website Logo/ go to homepage",
 		"searchInput": "Input to search",
-		"languageSelect": "Choose the language",
+		"languageSelect": "Select language",
+		"currencySelect": "Select currency",
 		"menuVisibilityToggler": "Open, Close Navigation Menu",
 		"cartLink": "Go to Cart",
 		"signin": "Go to Sign-In Page",

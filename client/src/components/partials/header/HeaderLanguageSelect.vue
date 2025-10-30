@@ -7,7 +7,6 @@
 		optionLabel="name"
 		size="small"
 		transparent
-		append-to="self"
 	>
 		<template #value="slotProps">
 			<div v-if="slotProps.value" class="flex items-center">
@@ -35,16 +34,23 @@
 
 <script setup>
 import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
 
 import { useI18n } from 'vue-i18n'
-import { useStorage } from '@/composables/useStorage'
+import { useRouter, useRoute } from 'vue-router'
+import { useCommonStore } from '@/stores/common'
+
 import { i18nMeta } from '@/config/i18n'
 
 import Select from '@/components/ui/Select.vue'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
+const commonStore = useCommonStore()
 
-const { setLocale } = useStorage()
+const { locale } = storeToRefs(commonStore)
+const { setLocale } = commonStore
+const router = useRouter()
+const route = useRoute()
 
 const languages = computed(() => {
 	return Object.entries(i18nMeta.supportedLocales).map(([code, locale]) => ({
@@ -60,6 +66,12 @@ const selectLanguage = computed({
 	},
 	set(newVal) {
 		setLocale(newVal.code)
+
+		router.replace({
+			name: route.name || routeNames.HOME,
+			params: { ...route.params, locale: newVal.code },
+			query: route.query,
+		})
 	},
 })
 </script>

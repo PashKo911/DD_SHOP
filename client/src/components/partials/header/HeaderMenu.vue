@@ -1,17 +1,17 @@
 <template>
 	<header
-		class="bg-primary max-md:before:bg-primary fixed top-0 left-0 z-1002 w-full pr-(--p-scrollbar-width) max-md:before:absolute max-md:before:z-20 max-md:before:h-full max-md:before:w-full lg:min-h-[6.1875rem]"
+		class="bg-primary max-md:before:bg-primary sticky top-0 z-50 w-full max-md:before:absolute max-md:before:z-20 max-md:before:h-full max-md:before:w-full lg:min-h-[6.1875rem]"
 	>
 		<div id="headerContainer" class="container grid gap-y-1 py-3 md:py-6">
 			<div
 				id="headerTop"
-				class="md:gx-lg-100-30 flex items-center justify-between gap-x-4"
+				class="md:gx-lg-100-20 flex items-center justify-between gap-x-4"
 			>
 				<router-link
 					:to="{ name: routeNames.HOME }"
 					:aria-label="t('accessibility.logo')"
 					tabindex="0"
-					class="text-inverse font-heading focus-visible:outline-t-inverse-hover z-30 order-2 rounded-sm text-[34px] font-bold outline outline-transparent transition-colors md:order-1"
+					class="text-inverse font-heading focus-visible:outline-t-inverse-hover z-30 order-2 rounded-sm text-[1.875rem] font-bold outline outline-transparent transition-colors md:order-1 md:text-[2.125rem]"
 				>
 					DD_SHOP
 				</router-link>
@@ -21,33 +21,29 @@
 					class="md:order-2"
 				/>
 				<teleport defer :to="searchInputPosition">
-					<main-search-input />
+					<main-search-input class="z-20 order-3 grow lg:w-[12.5rem]" />
 				</teleport>
 				<div
 					id="headerActions"
 					class="md:gx-md-30-8 z-30 order-1 flex items-center gap-2 md:order-4"
 				>
-					<teleport defer :to="languageSelectPosition">
-						<header-language-select class="order-1" />
-					</teleport>
+					<div id="headerSelects" class="hidden items-center gap-0.5 md:flex">
+						<teleport defer :to="selectsPosition">
+							<header-language-select />
+						</teleport>
+						<teleport defer :to="selectsPosition">
+							<header-currency-select />
+						</teleport>
+					</div>
 					<header-menu-visibility-toggler
 						:is-header-menu-open="isHeaderMenuOpen"
 						@click="toggleHeaderMenu"
 					/>
 					<teleport defer :to="curtPosition">
 						<header-cart-button />
-						<!-- <router-link
-							:to="{ name: routeNames.CART }"
-							:aria-label="t('accessibility.cartLink')"
-							class="focus-visible:outline-t-inverse-hover z-30 order-3 flex items-center rounded-sm outline outline-transparent md:order-2"
-						>
-							<cart-icon
-								class="fill-inverse hover:fill-t-inverse-hover [.router-link-active_&]:fill-t-inverse-hover"
-							/>
-						</router-link> -->
 					</teleport>
-					<teleport defer :to="languageSelectPosition">
-						<user-control class="order-3" />
+					<teleport defer :to="userControlPosition">
+						<user-control class="order-5" />
 					</teleport>
 				</div>
 			</div>
@@ -70,6 +66,7 @@ import routeNames from '@/router/routeNames'
 import CartIcon from '@/components/icons/CartIcon.vue'
 import HeaderMenuList from './HeaderMenuList.vue'
 import HeaderLanguageSelect from './HeaderLanguageSelect.vue'
+import HeaderCurrencySelect from './HeaderCurrencySelect.vue'
 import HeaderMenuVisibilityToggler from './HeaderMenuVisibilityToggler.vue'
 import HeaderCartButton from './HeaderCartButton.vue'
 import MainSearchInput from '@/components/formControls/MainSearchInput.vue'
@@ -89,11 +86,14 @@ const isMobile = useMediaQuery('(max-width: 767.98px)')
 const isTablet = useMediaQuery('(max-width: 991.98px)')
 //========================================================================================================================================================
 
-const languageSelectPosition = computed(() =>
-	isMobile.value ? '#appNav' : '#headerActions',
+const selectsPosition = computed(() =>
+	isMobile.value ? '#appNav' : '#headerSelects',
 )
 const searchInputPosition = computed(() => {
 	return isTablet.value ? '#headerBottom' : '#headerTop'
+})
+const userControlPosition = computed(() => {
+	return isMobile.value ? '#appNav' : '#headerActions'
 })
 const curtPosition = computed(() => {
 	return isMobile.value ? '#headerTop' : '#headerActions'

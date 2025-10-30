@@ -35,6 +35,7 @@ import { onMounted, watch, ref, computed } from 'vue'
 
 import { useI18n } from 'vue-i18n'
 import { useCartStore } from '@/stores/cart'
+import { useCommonStore } from '@/stores/common'
 import { useAuthStore } from '@/stores/auth'
 import { makeKeyFromCartItem } from '@/utils/cartHelpers/cartHelpers'
 
@@ -48,6 +49,7 @@ const { t, locale } = useI18n()
 
 const authStore = useAuthStore()
 const cartStore = useCartStore()
+const commonStore = useCommonStore()
 
 const { isAuthenticated } = storeToRefs(authStore)
 
@@ -63,6 +65,8 @@ const {
 } = storeToRefs(cartStore)
 
 const { populateCart, updateQuantity, deleteProduct } = cartStore
+const { currency } = storeToRefs(commonStore)
+
 const isInitialLoad = ref(true)
 const processingItemKey = ref(null)
 //========================================================================================================================================================
@@ -85,6 +89,12 @@ const summaryComponent = computed(() => {
 //========================================================================================================================================================
 
 watch(locale, async () => {
+	isInitialLoad.value = true
+	await populateCart()
+	isInitialLoad.value = false
+})
+
+watch(currency, async () => {
 	isInitialLoad.value = true
 	await populateCart()
 	isInitialLoad.value = false

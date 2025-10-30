@@ -35,7 +35,7 @@ const DEFAULT_BUTTON_THEME = {
 	root: `inline-flex group enabled:cursor-pointer select-none items-center justify-center capitalize overflow-hidden relative
 	px-3 py-3 gap-2 rounded-md disabled:cursor-default! disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
 	bg-primary border border-2 border-primary text-24-18 font-bold font-heading leading-[1.2]
-	hover:border-primary-t-inverse-hover active:border-primary-emphasis-alt
+	hover:border-primary-t-inverse-hover active:border-creamy-cloud
 	focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
 	p-vertical:flex-col p-fluid:w-full
 	p-icon-only:px-0 p-icon-only:gap-0 p-icon-only:rounded-full
@@ -64,6 +64,7 @@ const CONTRAST_BUTTON_THEME = {
 	...DEFAULT_BUTTON_THEME,
 	root: DEFAULT_BUTTON_THEME.root
 		.replace('bg-primary', 'bg-inverse')
+		.replace('active:border-creamy-cloud', 'active:border-primary')
 		.replace('border-primary', 'border-transparent')
 		.replace(
 			'focus-visible:outline-primary',

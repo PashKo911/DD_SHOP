@@ -124,7 +124,7 @@
 				:loading="isLoading"
 				type="submit"
 				:label="t('buttons.addToCart')"
-				class="max-w-[25rem] shadow-lg"
+				class="max-w-[25rem]"
 			/>
 		</div>
 	</Form>

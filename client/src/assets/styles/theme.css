@@ -4,13 +4,14 @@
 	--font-title: 'Philosopher', sans-serif;
 
 	/* ! CLAMP */
+	--text-80-20: clamp(1.25rem, 0.354rem + 4.48vw, 5rem);
 	--text-58-22: clamp(1.375rem, 0.838rem + 2.69vw, 3.625rem);
 	--text-50-28: clamp(1.75rem, 1.422rem + 1.64vw, 3.125rem);
 	--text-35-20: clamp(1.25rem, 1.026rem + 1.12vw, 2.188rem);
 	--text-32-16: clamp(1rem, 0.722rem + 1.39vw, 2rem);
 	--text-32-26: clamp(1.625rem, 1.535rem + 0.45vw, 2rem);
+	--text-34-28: clamp(1.625rem, 1.508rem + 0.58vw, 2.125rem);
 	--text-24-18: clamp(1.125rem, 1.035rem + 0.45vw, 1.5rem);
-	--text-80-20: clamp(1.25rem, 0.354rem + 4.48vw, 5rem);
 
 	--text-md-34-28: clamp(1.75rem, 1.427rem + 0.67vw, 2.125rem);
 	--text-md-52-28: clamp(1.75rem, 0.459rem + 2.69vw, 3.25rem);
@@ -25,13 +26,14 @@
 	--text-lg-50-30: clamp(1.875rem, 0.019rem + 2.99vw, 3.125rem);
 	--text-lg-70-42: clamp(2.625rem, 0.026rem + 4.19vw, 4.375rem);
 	--text-lg-80-48: clamp(3rem, 0.03rem + 4.79vw, 5rem);
+	--text-lg-24-20: clamp(1.25rem, 0.895rem + 0.57vw, 1.5rem);
 
 	/*! BREAKPOINTS */
 	--breakpoint-sm: 29.9988rem; /* 479.9808px */
 	--breakpoint-md: 47.9988rem; /* 767.98px */
 	--breakpoint-lg: 61.9988rem; /* 991.98px */
 	--breakpoint-xl: 105.6238rem; /*! 1689.98px */
-	--breakpoint-2xl: 1920.9808px; /* 1919.98px */
+	--breakpoint-2xl: 1920.98px; /* 1919.98px */
 
 	/* ! border radius */
 	--radius-sm: 0.3125rem;

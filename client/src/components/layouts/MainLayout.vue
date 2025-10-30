@@ -1,8 +1,6 @@
 <template>
 	<header-menu />
-	<main
-		class="pb-80-30 mb-80-30 relative grow pt-[7.6875rem] md:pt-[9.4375rem] lg:pt-[6.1875rem]"
-	>
+	<main class="pb-80-30 mb-80-30 relative grow">
 		<separator-base class="absolute bottom-0 left-0" />
 		<toast />
 		<slot />
@@ -12,10 +10,11 @@
 </template>
 
 <script setup>
-import { computed, onBeforeUnmount } from 'vue'
+import { computed, onBeforeUnmount, onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
 
 import { useRouter, useRoute } from 'vue-router'
-import { useI18n } from 'vue-i18n'
+import { useCommonStore } from '@/stores/common'
 import { useHead } from '@vueuse/head'
 import { useStorage } from '@/composables/useStorage'
 
@@ -31,7 +30,9 @@ import SeparatorBase from '@/components/separators/SeparatorBase.vue'
 const router = useRouter()
 const route = useRoute()
 
-const { locale } = useI18n()
+const commonStore = useCommonStore()
+const { locale } = storeToRefs(commonStore)
+const { setCurrency } = commonStore
 const { onStorageEvent } = useStorage()
 
 window.addEventListener('storage', onStorageEvent)
@@ -62,6 +63,10 @@ useHead(() => ({
 	link: linkTags.value,
 }))
 //========================================================================================================================================================
+onMounted(() => {
+	setCurrency()
+})
+
 onBeforeUnmount(() => {
 	window.removeEventListener('storage', onStorageEvent)
 })

@@ -39,11 +39,11 @@ class ProductsDBService extends MongooseCRUDManager {
 		}
 	}
 
-	async getSuggestions(reqQuery) {
+	async getSuggestions(reqQuery, lang) {
 		try {
 			const { title, limit } = reqQuery
 			const sliceLimit = Number(limit) || appConstants.defaultSuggestionsLimit
-			const titleLang = detectLang(title)
+			const titleLang = title ? detectLang(title) : lang
 
 			const pipeline = buildProductSuggestionsPipeline(title, titleLang, sliceLimit, appConstants.searchDepth)
 

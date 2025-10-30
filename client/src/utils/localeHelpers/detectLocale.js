@@ -17,7 +17,6 @@ import shopConstants from '@/constants/shop'
 function detectLocale(route) {
 	const storageLocale = localStorage.getItem(shopConstants.storageKeys.locale)
 	const urlLocale = route?.params?.locale
-
 	if (urlLocale && i18nMeta.localeCodes.includes(urlLocale)) {
 		if (storageLocale !== urlLocale) {
 			localStorage.setItem(shopConstants.storageKeys.locale, urlLocale)

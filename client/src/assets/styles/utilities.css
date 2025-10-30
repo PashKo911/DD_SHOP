@@ -27,8 +27,8 @@
 @utility gx-lg-80-12 {
 	column-gap: clamp(0.75rem, -5.561rem + 10.18vw, 5rem);
 }
-@utility gx-lg-100-30 {
-	column-gap: clamp(1.875rem, -4.622rem + 10.48vw, 6.25rem);
+@utility gx-lg-100-20 {
+	column-gap: clamp(1.25rem, -5.856rem + 11.46vw, 6.25rem);
 }
 @utility gy-30-10 {
 	row-gap: clamp(0.625rem, 0.326rem + 1.49vw, 1.875rem);

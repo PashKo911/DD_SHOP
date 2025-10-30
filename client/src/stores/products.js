@@ -3,7 +3,6 @@ import { computed, ref } from 'vue'
 
 import { useGeneralStore } from './general'
 import { useFilterStore } from './filter'
-import { useI18n } from 'vue-i18n'
 
 import apiClient from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
@@ -15,7 +14,6 @@ export const useProductsStore = defineStore('products', () => {
 	const generalStore = useGeneralStore()
 	const filterStore = useFilterStore()
 
-	const { locale } = useI18n()
 	//========================================================================================================================================================
 
 	const { generalApiOperation, isLoading, hasError } = generalStore

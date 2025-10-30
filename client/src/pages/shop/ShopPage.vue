@@ -11,7 +11,7 @@
 			@reset-price="resetPrice"
 			@close-filter="filterVisibilityToggler"
 			@remove-chip="removeChip"
-			@remove-all="resetAllFilters"
+			@remove-all="resetFiltersExceptCategory"
 			class="lg:w-md-340-290 lg:shrink-0 lg:self-start"
 		/>
 
@@ -68,7 +68,7 @@
 				v-if="activeChips.length && isDesktop"
 				:items="activeChips"
 				@remove="onRemoveChip"
-				@remove-all="resetAllFilters"
+				@remove-all="resetFiltersExceptCategory"
 				class="mb-6"
 			/>
 			<shop-list
@@ -171,7 +171,8 @@ const {
 	setFilterProp,
 	parseFilterFromQuery,
 	resetPrice,
-	resetAllFilters,
+	resetFilters,
+	resetFiltersExceptCategory,
 	removeChip,
 } = filterStore
 
@@ -179,10 +180,9 @@ const { filter, perPage, filterStrings, hasSelectedFilters, activeChips } =
 	storeToRefs(filterStore)
 
 const { getFacetOptions } = facetOptionsStore
-const { facetOptionsValue, isFacetOptionsLoaded } =
-	storeToRefs(facetOptionsStore)
+const { facetOptionsValue } = storeToRefs(facetOptionsStore)
 
-const { viewMode } = storeToRefs(commonStore)
+const { viewMode, currency } = storeToRefs(commonStore)
 const { setViewMode } = commonStore
 const isFilterOpen = ref(false)
 //========================================================================================================================================================
@@ -297,8 +297,12 @@ const paginatorButtonsCount = computed(() => {
 watch(locale, async () => {
 	await getFacetOptions()
 	if (hasSelectedFilters.value) {
-		resetAllFilters()
+		resetFiltersExceptCategory()
 	}
+	getDefaultProducts()
+})
+
+watch(currency, () => {
 	getDefaultProducts()
 })
 
@@ -320,7 +324,7 @@ onUnmounted(() => {
 	if (typeof unmount === 'function') {
 		unmount()
 	}
-	resetAllFilters()
+	resetFilters()
 })
 
 onBeforeRouteLeave(() => {

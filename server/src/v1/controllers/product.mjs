@@ -32,7 +32,9 @@ class ProductController {
 	}
 	static async getSuggestions(req, res, next) {
 		try {
-			const data = await ProductsDBService.getSuggestions(req.query)
+			const lang = resolveLocale(req)
+
+			const data = await ProductsDBService.getSuggestions(req.query, lang)
 
 			res.status(200).json({
 				success: true,
@@ -148,6 +150,8 @@ class ProductController {
 			const language = resolveLocale(req)
 
 			const styles = await DressStyleDBService.getList(language)
+			console.log('styles +++++++++++++')
+			console.log(styles)
 			res.status(200).json({
 				success: true,
 				styles,

@@ -1,14 +1,17 @@
-import { defineStore } from 'pinia'
+import { defineStore, storeToRefs } from 'pinia'
 import { reactive, computed, ref } from 'vue'
 import { useGeneralStore } from './general'
 import { useI18n } from 'vue-i18n'
+import { useCommonStore } from './common'
 import apiClient from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
 
 export const useFacetOptionsStore = defineStore('facetOptions', () => {
 	const generalStore = useGeneralStore()
+	const commonStore = useCommonStore()
 	const { generalApiOperation, isLoading, hasError } = generalStore
-	const { locale, numberFormats } = useI18n()
+	const { numberFormats } = useI18n()
+	const { locale } = storeToRefs(commonStore)
 
 	const facetOptions = reactive({
 		categories: [],
