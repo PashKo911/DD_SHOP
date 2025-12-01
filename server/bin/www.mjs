@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import app from '../app.mjs'
 import debugLib from 'debug'
 import http from 'http'

@@ -1,0 +1,18 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Копируем package.json и package-lock.json
+COPY package*.json ./
+
+# Устанавливаем зависимости
+RUN npm install
+
+# Копируем весь проект
+COPY . .
+
+# Пробрасываем порт сервера
+EXPOSE 3000
+
+# Запуск сервера с перезагрузкой при изменении (если используешь nodemon)
+CMD ["npx", "nodemon", "index.js"]
