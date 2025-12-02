@@ -38,5 +38,6 @@ EXPOSE 3000
 
 # If your server entry is server/index.js and it uses process.env.PORT -> good.
 # Using node directly (avoid relying on npm start to reduce layers).
-CMD ["node", "server/app.mjs"]
+# CMD ["node", "server/app.mjs"]
+CMD ["node", "bin/www.mjs"]
 # ----------------------------------------------------
