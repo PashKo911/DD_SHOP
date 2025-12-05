@@ -12,5 +12,5 @@
 </template>
 
 <script setup>
-import SigninForm from '@/pages/signin/SigninPage.vue'
+import SigninForm from '@/pages/signin/SigninForm.vue'
 </script>
