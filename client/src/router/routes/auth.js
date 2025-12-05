@@ -22,7 +22,7 @@ export default [
 			{
 				path: 'signup',
 				name: routeNames.SIGNUP,
-				component: () => import('@/pages/signup/SignupPage.vue'),
+				// component: () => import('@/pages/signup/SignupPage.vue'),
 				meta: {
 					useInMenu: false,
 					requiredAuth: false,
