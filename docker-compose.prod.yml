@@ -2,19 +2,9 @@ services:
   server:
     build:
       context: ./server
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile
+      target: prod
     ports:
       - '3000:3000'
-    env_file:
-      - .env
-
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile.prod
-    ports:
-      - '8080:80'
-    depends_on:
-      - server
-    env_file:
-      - .env
+    environment:
+      NODE_ENV: production
