@@ -1,5 +1,4 @@
 import routeNames from '../routeNames'
-import SigninPage from '@/pages/signin/SigninPage.vue'
 
 export default [
 	{
@@ -14,7 +13,6 @@ export default [
 			{
 				path: 'signin',
 				name: routeNames.SIGNIN,
-				component: SigninPage,
 				// component: () => import('@/pages/signin/SigninPage.vue'),
 				meta: {
 					useInMenu: false,
