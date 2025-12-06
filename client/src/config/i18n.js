@@ -6,7 +6,7 @@ import UsaFlagIcon from '@/components/icons/UsaFlagIcon.vue'
 import localesEN from '@/locales/en.json'
 import localesUA from '@/locales/ua.json'
 
-const defaultLocale = 'en'
+export const defaultLocale = 'en'
 
 const supportedLocales = {
 	en: {

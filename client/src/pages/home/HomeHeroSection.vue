@@ -61,7 +61,6 @@ import { computed } from 'vue'
 
 import { useI18n } from 'vue-i18n'
 import { useMediaQuery } from '@/composables/useMediaQuery'
-import { useHead } from '@vueuse/head'
 
 import achievements from '@/data/achievements'
 import shopConstants from '@/constants/shop'
@@ -76,16 +75,4 @@ const achievementsPosition = computed(() => {
 })
 
 const { t } = useI18n()
-
-useHead({
-	link: [
-		{
-			rel: 'preload',
-			as: 'image',
-			href: heroImg,
-			type: 'image/webp',
-			fetchpriority: 'high',
-		},
-	],
-})
 </script>

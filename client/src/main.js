@@ -20,19 +20,16 @@ app.use(createPinia())
 
 app.use(router)
 
-await initI18n()
+function bootstrapApp() {
+	app.use(i18n)
+	app.use(PrimeVue, { unstyled: true })
+	app.use(head)
+	app.use(ToastService)
+	app.directive('lockScroll', lockScroll)
+	app.directive('styleclass', StyleClass)
+	app.mount('#app')
+}
 
-app.use(i18n)
-
-app.use(PrimeVue, {
-	unstyled: true,
-})
-
-app.use(head)
-
-app.use(ToastService)
-
-app.directive('lockScroll', lockScroll)
-app.directive('styleclass', StyleClass)
-
-app.mount('#app')
+initI18n()
+	.then(bootstrapApp)
+	.catch((err) => console.error('i18n init failed:', err))

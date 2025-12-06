@@ -12,6 +12,7 @@ import routeNames from './routeNames'
 
 import detectLocale from '@/utils/localeHelpers/detectLocale'
 import { i18nMeta } from '@/config/i18n'
+import { defaultLocale } from '@/config/i18n'
 
 const appInnerRoutes = [
 	{
@@ -57,7 +58,7 @@ const router = createRouter({
 	routes: [
 		{
 			path: '/',
-			redirect: { name: routeNames.HOME },
+			redirect: { name: routeNames.HOME, params: { locale: defaultLocale } },
 			meta: {
 				useInMenu: false,
 				requiredAuth: false,
