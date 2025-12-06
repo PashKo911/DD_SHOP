@@ -15,7 +15,6 @@ import FormatValidationErrors from '../../../validators/formatValidationErrors.m
 class ProductController {
 	static async getAllProducts(req, res, next) {
 		try {
-			console.log('GET PRODUCTS CHECKING ++++++++++++++++++++++++++')
 			const language = resolveLocale(req)
 			const currency = req.headers.currency || appConstants.defaultCurrency
 
@@ -150,8 +149,6 @@ class ProductController {
 			const language = resolveLocale(req)
 
 			const styles = await DressStyleDBService.getList(language)
-			console.log('styles +++++++++++++')
-			console.log(styles)
 			res.status(200).json({
 				success: true,
 				styles,

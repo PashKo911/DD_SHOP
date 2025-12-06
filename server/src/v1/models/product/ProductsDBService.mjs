@@ -14,8 +14,6 @@ class ProductsDBService extends MongooseCRUDManager {
 	async getList(reqQuery, language, currency, rate) {
 		try {
 			const req = { ...reqQuery }
-			console.log('req.title ++++++++++++++++')
-			console.log(req.title)
 			if (currency !== appConstants.defaultCurrency) {
 				formatReqPriceRange(req, rate)
 			}

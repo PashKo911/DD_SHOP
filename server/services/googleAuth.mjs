@@ -13,7 +13,7 @@ const { googleClientId, googleClientSecret, googleRedirectUri } = config
  * @returns {OAuth2Client}
  */
 function createOauthClient() {
-	return new OAuth2Client(googleClientId, googleClientSecret, googleRedirectUri)
+	return new OAuth2Client(googleClientId, googleClientSecret, 'postmessage')
 }
 
 /**
