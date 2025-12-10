@@ -1,61 +1,23 @@
 import { validationResult } from 'express-validator'
+import { isValidObjectId } from 'mongoose'
 import FormatValidationErrors from '../../../validators/formatValidationErrors.mjs'
+import { HttpError } from '../../../errors/HttpError.mjs'
 
 import UsersDBService from '../models/user/UsersDBService.mjs'
 import TypesDBService from '../models/type/TypesDBService.mjs'
+import { errorCodes } from '../../../constants/errorCodes.mjs'
 
 class UserController {
 	static async usersList(req, res, next) {
 		try {
-			const filters = {}
-			for (const key in req.query) {
-				if (req.query[key]) filters[key] = req.query[key]
-			}
-
-			const usersTypes = await TypesDBService.getList()
-			const users = await UsersDBService.getList(filters)
+			const usersTypes = await TypesDBService.getList({})
+			const data = await UsersDBService.getList({})
 
 			res.status(200).json({
-				users,
+				data,
 				types: usersTypes,
 			})
 		} catch (err) {
-			next(err)
-		}
-	}
-
-	// !! При необходимости del
-	static async getUser(req, res, next) {
-		try {
-			const id = req.params.id
-			const user = await UsersDBService.getById(id)
-			res.status(200).json(user)
-		} catch (err) {
-			next(err)
-		}
-	}
-
-	// !! При необходимости del
-	static async registerUser(req, res, next) {
-		const expressErrors = validationResult(req)
-
-		if (!expressErrors.isEmpty()) {
-			const errors = FormatValidationErrors.formatExpressErrors(expressErrors)
-			return res.status(400).json({ errors })
-		}
-
-		try {
-			const dataObj = req.body
-
-			if (req.params.id) {
-				await UsersDBService.update(req.params.id, dataObj)
-			} else {
-				await UsersDBService.create(dataObj)
-			}
-
-			res.status(200).json({ message: 'User registered successfully' })
-		} catch (err) {
-			// const errors = FormatValidationErrors.formatMongooseErrors(error.message, 'User')
 			next(err)
 		}
 	}
@@ -65,24 +27,24 @@ class UserController {
 			const id = req.params.id
 
 			if (!id) {
-				return res.status(400).json({ error: 'User ID is required' })
+				return next(new HttpError(400, 'User ID is required', { code: errorCodes.BAD_REQUEST }))
 			}
 
 			const { typeId } = req.body
 
 			if (!typeId) {
-				return res.status(400).json({ error: 'typeId is required' })
+				return next(new HttpError(400, 'TypeId ID is required', { code: errorCodes.BAD_REQUEST }))
 			}
 
-			const updatedUser = await UsersDBService.update(id, { type: typeId })
+			const data = await UsersDBService.updateUser(id, { type: typeId })
 
-			if (!updatedUser) {
-				return res.status(404).json({ error: 'User not found' })
+			if (!data) {
+				return next(new HttpError(404, 'User not found', { code: errorCodes.NOT_FOUND }))
 			}
 
 			res.status(200).json({
 				message: 'User updated successfully',
-				user: updatedUser,
+				data,
 			})
 		} catch (err) {
 			next(err)
@@ -91,8 +53,27 @@ class UserController {
 
 	static async deleteUser(req, res, next) {
 		try {
-			await UsersDBService.deleteById(req.body.id)
-			res.status(200).json({ success: true })
+			const id = req.params?.id
+
+			if (!id) {
+				return next(
+					new HttpError(400, 'Param id is required', {
+						code: errorCodes.BAD_REQUEST,
+					})
+				)
+			}
+
+			if (!isValidObjectId(id)) {
+				return next(new HttpError(400, 'Invalid user id', { code: errorCodes.BAD_REQUEST }))
+			}
+
+			const deleted = await UsersDBService.deleteById(id)
+
+			if (!deleted) {
+				return next(new HttpError(404, 'User not found', { code: errorCodes.NOT_FOUND }))
+			}
+
+			res.status(204).json({ success: true })
 		} catch (err) {
 			next(err)
 		}

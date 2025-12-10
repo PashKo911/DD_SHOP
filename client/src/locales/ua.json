@@ -116,6 +116,22 @@
 				"text": "Додай щось, щоб його розвеселити!"
 			}
 		},
+		"dashboard": {
+			"title": "Адмінка",
+			"sidebar": {
+				"users": "Користувачі",
+				"products": "Товари"
+			},
+			"users": {
+				"tableTitles": {
+					"image": "Аватар",
+					"name": "Імʼя",
+					"email": "Електронна адреса",
+					"type": "Роль користувача",
+					"actions": "Дії"
+				}
+			}
+		},
 		"pageNotFound": {
 			"title": {
 				"page": "Ой... щось пішло не так"
@@ -260,7 +276,12 @@
 		},
 		"discountLabel": "Знижка {discount}",
 		"userControl": "Відкрити меню навігації користувача",
-		"quantityInput": "Кількість для {title}"
+		"quantityInput": "Кількість для {title}",
+		"buttons": {
+			"openSidebar": "Відкрити меню",
+			"closeSidebar": "Закрити меню",
+			"deleteUser": "Видалити користувача"
+		}
 	},
 	"errors": {
 		"email": {

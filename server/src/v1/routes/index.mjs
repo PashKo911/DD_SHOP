@@ -7,6 +7,7 @@ import productRoutes from './product.mjs'
 import reviewsRoutes from './reviews.mjs'
 import dashboardRoutes from './dashboard.mjs'
 import cartRoutes from './cart.mjs'
+import typesRoutes from './types.mjs'
 
 const router = express.Router()
 
@@ -23,5 +24,7 @@ router.use('/reviews', reviewsRoutes)
 router.use('/dashboard', dashboardRoutes)
 
 router.use('/cart', cartRoutes)
+
+router.use('/types', typesRoutes)
 
 export default router

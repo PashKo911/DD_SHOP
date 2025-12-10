@@ -15,7 +15,7 @@
 	FROM base AS dev
 	ENV NODE_ENV=development
 	# Проброс порта для локальной разработки
-	EXPOSE 3000
+	EXPOSE 3001
 	# Используем nodemon для автоперезагрузки
 	CMD ["npx", "nodemon", "index.js"]
 	
@@ -30,7 +30,7 @@
 	COPY . .
 	
 	# Проброс порта для продакшена
-	EXPOSE 3000
+	EXPOSE 3001
 	# CMD ["node", "index.js"]
 	CMD ["npm", "start"]
 	

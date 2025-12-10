@@ -24,10 +24,15 @@ const apiEndpoints = {
 	},
 	users: {
 		getUsersWithAttempts: '/users/users-with-attempts',
+		fetchUsers: '/users',
+		updateUserType: (id) => `/users/${id}`,
 		deleteUser: (id) => `/users/${id}`,
 	},
 	reviews: {
 		getRandomReviews: '/reviews',
+	},
+	types: {
+		getTypes: '/types',
 	},
 }
 

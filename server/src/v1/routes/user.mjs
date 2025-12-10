@@ -6,8 +6,10 @@ import { checkSchema } from 'express-validator'
 
 const router = express.Router()
 
-router.get('/edit/:id', UserController.getUser)
+router.get('/', UserController.usersList)
 
-router.post('/add/:id?', checkSchema(userSchema), UserController.registerUser)
+router.patch('/:id', UserController.updateUser)
+
+router.delete('/:id', UserController.deleteUser)
 
 export default router

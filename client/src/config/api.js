@@ -1,5 +1,5 @@
 const apiVersion = import.meta.env.VITE_API_VERSION ?? 'v1'
-const apiBase = import.meta.env.VITE_API_BASE ?? 'http://localhost:3000'
+const apiBase = import.meta.env.VITE_API_BASE ?? 'http://localhost:3001'
 
 const apiConfig = Object.freeze({
 	googleClientId: import.meta.env.VITE_GOOGLE_CLIENT_ID,

@@ -1,6 +1,6 @@
 <template>
 	<aside
-		class="border-border-color fixed top-[7.6875rem] right-0 bottom-0 w-full max-w-[21.25rem] overflow-y-auto border-l bg-white px-8 py-5 transition-transform duration-300 ease-in max-lg:z-[1001] md:top-[9.4375rem] lg:static lg:rounded-2xl lg:border lg:px-[max(min(1.875vw,_2.25rem),_1.125rem)] lg:pt-9 lg:pb-6"
+		class="border-border-color fixed top-0 right-0 bottom-0 w-full max-w-[21.25rem] overflow-y-auto border-l bg-white px-8 py-5 transition-transform duration-300 ease-in max-lg:z-[1001] md:top-[9.4375rem] lg:static lg:rounded-2xl lg:border lg:px-[max(min(1.875vw,_2.25rem),_1.125rem)] lg:pt-9 lg:pb-6"
 		:class="filterToggleClass"
 	>
 		<div

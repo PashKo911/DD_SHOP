@@ -117,6 +117,22 @@
 				"text": "Add something to make it happy!"
 			}
 		},
+		"dashboard": {
+			"title": "Dashboard",
+			"sidebar": {
+				"users": "Users",
+				"products": "Products"
+			},
+			"users": {
+				"tableTitles": {
+					"image": "Avatar",
+					"name": "Name",
+					"email": "Email",
+					"type": "Role",
+					"actions": "Actions"
+				}
+			}
+		},
 		"pageNotFound": {
 			"title": {
 				"page": "Oops... something went wrong"
@@ -261,7 +277,13 @@
 		},
 		"discountLabel": "{discount} discount",
 		"userControl": "Open user navigation menu",
-		"quantityInput": "Quantity for {title}"
+		"quantityInput": "Quantity for {title}",
+
+		"buttons": {
+			"openSidebar": "Open sidebar",
+			"closeSidebar": "Close sidebar",
+			"deleteUser": "Delete user"
+		}
 	},
 	"errors": {
 		"email": {

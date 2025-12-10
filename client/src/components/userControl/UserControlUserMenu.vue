@@ -118,7 +118,7 @@ const userMenuItems = [
 	{
 		id: 2,
 		label: 'partials.userMenu.dashboard',
-		routeName: routeNames.HOME,
+		routeName: routeNames.dashboard,
 		icon: ListIcon,
 	},
 	{

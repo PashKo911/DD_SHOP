@@ -14,7 +14,7 @@
 		>
 			<SwiperSlide v-for="i in imagesList" :key="i">
 				<div
-					class="[.swiper-slide-thumb-active_&]:outline-primary flex aspect-[143.4/208] items-center justify-center overflow-hidden rounded-lg bg-[#FCF9F6] outline outline-offset-5 outline-transparent transition-colors sm:outline-offset-10 [.swiper-slide-visible_&]:shadow-lg"
+					class="[.swiper-slide-thumb-active_&]:outline-primary flex aspect-[143.4/208] items-center justify-center overflow-hidden rounded-lg bg-white outline outline-offset-5 outline-transparent transition-colors sm:outline-offset-10 [.swiper-slide-visible_&]:shadow-lg"
 				>
 					<img
 						:src="`${apiConfig.apiBase}${i}`"
@@ -41,7 +41,7 @@
 			<SwiperSlide
 				v-for="i in imagesList"
 				:key="i"
-				class="bg-[#FCF9F6]"
+				class="bg-white"
 				v-slot="{ isNext, isPrev }"
 			>
 				<div class="swiper-zoom-container aspect-[457/686]">

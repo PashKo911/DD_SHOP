@@ -13,28 +13,16 @@ class UsersDBService extends MongooseCRUDManager {
 			throw new HttpError(500, 'Failed to get users', { cause: err, code: errorCodes.DATABASE_ERROR })
 		}
 	}
-	async getById(id) {
+	async updateUser(userId, data) {
 		try {
-			const document = await super.getById(id, { googleId: 0, password: 0 }, ['type'])
-			return document
+			const res = await User.findByIdAndUpdate(userId, data, {
+				new: true,
+				select: '-password -googleId',
+			}).populate('type')
+			return res
 		} catch (err) {
 			if (err instanceof HttpError) throw err
-			throw new HttpError(500, `Failed to get user with id:${id}`, {
-				cause: err,
-				code: errorCodes.DATABASE_ERROR,
-			})
-		}
-	}
-	async findOne(filters) {
-		try {
-			const document = await super.findOne(filters, {}, ['type'])
-			return document
-		} catch (err) {
-			if (err instanceof HttpError) throw err
-			throw new HttpError(500, 'Failed to get user by filters', {
-				cause: err,
-				code: errorCodes.DATABASE_ERROR,
-			})
+			throw new HttpError(400, 'Failed to update user', { cause: err, code: errorCodes.DATABASE_ERROR })
 		}
 	}
 }

@@ -5,7 +5,7 @@ import { HttpError } from '../../../../errors/HttpError.mjs'
 class TypesDBService extends MongooseCRUDManager {
 	async getList({ filters }) {
 		try {
-			const res = await super.findOne(filters, { title: 1 })
+			const res = await super.getList(filters)
 			return res
 		} catch (err) {
 			if (err instanceof HttpError) throw err

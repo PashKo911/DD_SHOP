@@ -56,7 +56,7 @@
 							class="min-w-11 rounded-md!"
 						>
 							<template #icon>
-								<FilterIcon
+								<filter-icon
 									class="group-hover:stroke-primary relative shrink-0 stroke-white transition-colors"
 								/>
 							</template>

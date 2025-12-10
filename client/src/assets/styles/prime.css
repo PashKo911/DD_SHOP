@@ -49,13 +49,13 @@
 	/* !CUSTOM COLORS */
 	--color-snow-white: #fefefe;
 	--color-beige: #faeede;
-	--color-creamy-cloud: #f9f2f0;
+	--color-creamy-cloud: #fff;
 	--color-dark-grey: #8f8c8c;
-	--color-inverse: #fbf3f1;
+	--color-inverse: #fff;
 	--color-t-inverse-hover: var(--color-yellow-300);
 	--color-t-hover: #800000;
 	--color-b-hover: #ffd6cc;
 	--color-b-active: #ffc1b2;
 	--color-border-color: #c8c8c8;
-	--color-select-hover: #f2e6e3;
+	--color-select-hover: #f1f5f9;
 }

@@ -10,21 +10,21 @@
 				cy="32"
 				r="28"
 				fill="none"
-				stroke="inherit"
+				stroke="#000"
 				stroke-width="6"
 				stroke-linecap="round"
 				stroke-dasharray="20 156"
 			>
 				<animate
 					attributeName="stroke-dasharray"
-					dur="1.4s"
+					dur="2s"
 					values="20 156;120 56;20 156"
 					keyTimes="0;0.5;1"
 					repeatCount="indefinite"
 				/>
 				<animate
 					attributeName="stroke-dashoffset"
-					dur="1.4s"
+					dur="2s"
 					values="0;-176"
 					repeatCount="indefinite"
 				/>
@@ -36,7 +36,7 @@
 				type="rotate"
 				from="0 32 32"
 				to="360 32 32"
-				dur="1.5s"
+				dur="2.5s"
 				repeatCount="indefinite"
 			/>
 		</g>

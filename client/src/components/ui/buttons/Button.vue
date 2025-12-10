@@ -5,7 +5,7 @@
 		</template>
 		<template #loadingicon>
 			<spinner-icon
-				class="stroke-creamy-cloud size-[1.2em]"
+				class="stroke-creamy-cloud size-[1em]"
 				:class="{
 					'stroke-primary': contrast,
 				}"

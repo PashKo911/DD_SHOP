@@ -16,7 +16,7 @@
 					@click="slider.slideNext()"
 					:disabled="hasError || isLoading"
 					:aria-label="t('buttons.nextSlide')"
-					class="bg-[#FCF9F6] shadow-lg hover:shadow-md"
+					class="bg-white shadow-lg hover:shadow-md"
 				>
 					<arrow-right-icon class="aspect-square w-8" />
 				</slider-nav-button>
