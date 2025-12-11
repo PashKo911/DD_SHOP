@@ -19,7 +19,7 @@ export const useProductsStore = defineStore('products', () => {
 	const { generalApiOperation, isLoading, hasError } = generalStore
 	const { apiQueryParams, filter, perPage } = storeToRefs(filterStore)
 
-	const defaultProducts = ref([])
+	const defaultProducts = ref(null)
 	const topSalesProducts = ref([])
 	const newestProducts = ref([])
 	const sameProducts = ref([])
@@ -56,10 +56,10 @@ export const useProductsStore = defineStore('products', () => {
 	}))
 
 	const defaultProductsValue = computed(() => {
-		const products = defaultProducts.value.documents
+		const products = defaultProducts.value?.documents || null
 
 		if (!Array.isArray(products)) {
-			return []
+			return null
 		}
 		let productsCopy = [...products]
 
@@ -70,7 +70,7 @@ export const useProductsStore = defineStore('products', () => {
 	})
 
 	const totalDefaultProductsCount = computed(() => {
-		return defaultProducts.value.count
+		return defaultProducts?.value?.count ?? 0
 	})
 	const topSalesProductsValue = computed(() => {
 		const data = topSalesProducts.value

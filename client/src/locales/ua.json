@@ -54,6 +54,10 @@
 				"priceDesc": "Спочатку дорогі",
 				"newest": "Спочатку нові",
 				"ratingDesc": "Найпопулярніші"
+			},
+			"emptyBlock": {
+				"title": "Товарів не знайдено",
+				"text": "Немає результатів за обраними фільтрами"
 			}
 		},
 		"women": {
@@ -128,6 +132,18 @@
 					"name": "Імʼя",
 					"email": "Електронна адреса",
 					"type": "Роль користувача",
+					"actions": "Дії"
+				}
+			},
+			"products": {
+				"tableTitles": {
+					"image": "Зображення",
+					"title": "Заголовок",
+					"category": "Категорія",
+					"price": "Ціна",
+					"variantsCount": "Кількість моделей",
+					"totalCount": "В наявності",
+					"updatedAt": "Оновлено",
 					"actions": "Дії"
 				}
 			}
@@ -277,6 +293,10 @@
 		"discountLabel": "Знижка {discount}",
 		"userControl": "Відкрити меню навігації користувача",
 		"quantityInput": "Кількість для {title}",
+		"table": {
+			"emptyTitle": "Немає даних",
+			"emptyText": "Список наразі порожній."
+		},
 		"buttons": {
 			"openSidebar": "Відкрити меню",
 			"closeSidebar": "Закрити меню",

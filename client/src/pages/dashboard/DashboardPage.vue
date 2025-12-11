@@ -5,24 +5,12 @@
 			@close-sidebar="isSidebarOpen = false"
 		/>
 
-		<div class="relative min-w-0 flex-1 p-6">
-			<!-- <Button
-				size="small"
-				v-if="!isDesktop"
-				@click="filterVisibilityToggler"
-				class="min-w-11 rounded-md!"
-			>
-				<template #icon>
-					<FilterIcon
-						class="group-hover:stroke-primary relative shrink-0 stroke-white transition-colors"
-					/>
-				</template>
-			</Button> -->
+		<div class="relative min-w-0 grow p-6">
 			<Button
 				:aria-label="t('accessibility.buttons.openSidebar')"
 				size="small"
 				@click="isSidebarOpen = true"
-				class="fixed! left-[20px] w-8 min-w-11 rounded-md! sm:top-[150px] md:top-[170px] lg:hidden"
+				class="fixed! left-[1.25rem] z-10 w-8 min-w-11 rounded-md! sm:top-[9.375rem] md:top-[10.625rem] lg:hidden"
 			>
 				<template #icon>
 					<sidebar-icon
@@ -30,10 +18,11 @@
 					/>
 				</template>
 			</Button>
-
-			<section class="border-border-color rounded-2xl bg-white p-6 shadow-sm">
+			<div
+				class="border-border-color relative min-h-[22.5rem] overflow-hidden rounded-2xl bg-white p-6 shadow-sm"
+			>
 				<router-view />
-			</section>
+			</div>
 		</div>
 	</div>
 </template>

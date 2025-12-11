@@ -1,16 +1,14 @@
 <template>
-	<DataTable :value="usersValue" :loading="isUsersLoading">
+	<data-table :value="usersValue" :loading="isUsersLoading">
+		<template v-if="!isUsersLoading && usersValue.length !== 0" #empty>
+			<empty-list />
+		</template>
 		<Column
 			field="avatar"
 			:header="t('pages.dashboard.users.tableTitles.image')"
 		>
 			<template #body="slotProps">
-				<img
-					:src="slotProps.data.avatar"
-					alt="avatar"
-					class="shadow-lg"
-					width="64"
-				/>
+				<img :src="slotProps.data.avatar" alt="avatar" width="64" />
 			</template>
 		</Column>
 		<Column
@@ -58,7 +56,7 @@
 				</Button>
 			</template>
 		</Column>
-	</DataTable>
+	</data-table>
 </template>
 
 <script setup>
@@ -70,13 +68,13 @@ import { useI18n } from 'vue-i18n'
 
 import Column from 'primevue/column'
 import DataTable from '@/components/dataTable/DataTable.vue'
+import EmptyList from '@/components/dataTable/EmptyList.vue'
 import Select from '@/components/ui/Select.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import DeleteIcon from '@/components/icons/DeleteIcon.vue'
 
 const usersStore = useUsersStore()
 const { t } = useI18n()
-
 const { usersValue, isUsersLoading, isUserTypesLoading, userTypesValue } =
 	storeToRefs(usersStore)
 
@@ -95,8 +93,6 @@ const onUserTypeChange = async (user, { value }) => {
 	const updatedUser = await setUserType({ _id: user._id, typeId: value })
 	updateUserInState(updatedUser)
 }
-
-const test = ref(false)
 
 const onDeleteUser = async (id) => {
 	await deleteUser(id)

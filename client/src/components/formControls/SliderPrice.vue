@@ -10,7 +10,7 @@
 				mode="currency"
 				:currency="currency"
 				:locale="locale"
-				currencyDisplay="narrowSymbol"
+				currencyDisplay="symbol"
 				showButtons
 				:maxFractionDigits="0"
 				@input="onInput($event, 0)"
@@ -32,7 +32,7 @@
 				mode="currency"
 				:currency="currency"
 				:locale="locale"
-				currencyDisplay="narrowSymbol"
+				currencyDisplay="symbol"
 				showButtons
 				:maxFractionDigits="0"
 				@input="onInput($event, 1)"
@@ -63,11 +63,13 @@
 import { useI18n } from 'vue-i18n'
 import { ref, computed, watch, onMounted } from 'vue'
 import debounce from '@/utils/debounce'
+import { useCommonStore } from '@/stores/common'
 
 import InputNumber from '@/components/ui/InputNumber.vue'
 import SliderNumber from '@/components/sliderNumber/SliderNumber.vue'
 import ChevronDownIcon from '@primevue/icons/chevrondown'
 import ChevronUpIcon from '@primevue/icons/chevronup'
+import { storeToRefs } from 'pinia'
 
 const props = defineProps({
 	min: {
@@ -83,7 +85,10 @@ const props = defineProps({
 const price = defineModel()
 const localPrice = ref([props.min, props.max])
 
-const { numberFormats, locale } = useI18n()
+const { numberFormats } = useI18n()
+const commonStore = useCommonStore()
+
+const { locale } = storeToRefs(commonStore)
 
 const currency = computed(() => {
 	const { currency } = numberFormats.value[locale.value]

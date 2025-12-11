@@ -1,18 +1,33 @@
 <template>
 	<div class="grid content-start gap-4 lg:gap-5" :class="columnsClass">
-		<component
+		<template v-if="isLoading || items === null">
+			<product-card-skeleton v-for="n in renderList" :key="n" />
+		</template>
+		<empty-list v-else-if="items.length === 0" class="pt-[6vw]">
+			<template #title>
+				{{ t('pages.shop.emptyBlock.title') }}
+			</template>
+			<template #text>
+				{{ t('pages.shop.emptyBlock.text') }}
+			</template>
+		</empty-list>
+
+		<product-card
+			v-else
 			v-for="(item, idx) in renderList"
-			:is="activeComponent"
 			:key="idx"
-			:data="isLoading ? {} : item"
+			:data="item"
 		/>
 	</div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useMediaQuery } from '@/composables/useMediaQuery'
+import { computed, ref, onMounted } from 'vue'
 
+import { useMediaQuery } from '@/composables/useMediaQuery'
+import { useI18n } from 'vue-i18n'
+
+import EmptyList from '@/components/dataTable/EmptyList.vue'
 import ProductCard from '@/components/cards/productCard/ProductCard.vue'
 import ProductCardSkeleton from '@/components/cards/productCard/ProductCardSkeleton.vue'
 
@@ -33,6 +48,7 @@ const props = defineProps({
 
 const isMobileSmall = useMediaQuery('(min-width: 510px)')
 const isMobile = useMediaQuery('(min-width: 660px)')
+const { t } = useI18n()
 
 const columnsMap = {
 	3: [1, 2, 3],
@@ -50,6 +66,9 @@ const classMap = {
 }
 
 const columnsClass = computed(() => {
+	if (props.items?.length === 0 && !props.isLoading) {
+		return classMap[0]
+	}
 	const config = columnsMap[props.viewMode] || columnsMap[3]
 	let cols
 	switch (true) {
@@ -84,11 +103,13 @@ const skeletonsCount = computed(() => {
 })
 
 const activeComponent = computed(() => {
-	return props.isLoading ? ProductCardSkeleton : ProductCard
+	return props.isLoading || !props.items.length
+		? ProductCardSkeleton
+		: ProductCard
 })
 
 const renderList = computed(() => {
-	if (props.isLoading) {
+	if (props.isLoading || props.items === null) {
 		return Array.from({
 			length: skeletonsCount.value,
 		})

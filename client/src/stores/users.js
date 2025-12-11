@@ -30,7 +30,7 @@ export const useUsersStore = defineStore('users', () => {
 		return await generalApiOperation({
 			operationName: 'fetchUsers',
 			operation: async () => {
-				const response = await apiClient(apiEndpoints.users.fetchUsers)
+				const response = await apiClient(apiEndpoints.admin.fetchUsers)
 				users.value = response.data.data
 				return response.data.data
 			},
@@ -53,7 +53,7 @@ export const useUsersStore = defineStore('users', () => {
 			operationName: `setUserType-${_id}`,
 			operation: async () => {
 				const response = await apiClient.patch(
-					apiEndpoints.users.updateUserType(_id),
+					apiEndpoints.admin.updateUserType(_id),
 					{ typeId },
 				)
 				return response?.data?.data
@@ -74,7 +74,7 @@ export const useUsersStore = defineStore('users', () => {
 			operationName: `deleteUser-${_id}`,
 			operation: async () => {
 				const response = await apiClient.delete(
-					apiEndpoints.users.deleteUser(_id),
+					apiEndpoints.admin.deleteUser(_id),
 				)
 				return response.data
 			},

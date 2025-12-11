@@ -55,6 +55,10 @@
 				"priceDesc": "Expensive first",
 				"newest": "Newest",
 				"ratingDesc": "Most popular"
+			},
+			"emptyBlock": {
+				"title": "No products found",
+				"text": "No results for the selected filters"
 			}
 		},
 		"women": {
@@ -129,6 +133,18 @@
 					"name": "Name",
 					"email": "Email",
 					"type": "Role",
+					"actions": "Actions"
+				}
+			},
+			"products": {
+				"tableTitles": {
+					"image": "Image",
+					"title": "Title",
+					"category": "Category",
+					"price": "Price",
+					"variantsCount": "Models Count",
+					"totalCount": "In Stock",
+					"updatedAt": "Updated At",
 					"actions": "Actions"
 				}
 			}
@@ -278,7 +294,10 @@
 		"discountLabel": "{discount} discount",
 		"userControl": "Open user navigation menu",
 		"quantityInput": "Quantity for {title}",
-
+		"table": {
+			"emptyTitle": "No data available",
+			"emptyText": "The list is currently empty."
+		},
 		"buttons": {
 			"openSidebar": "Open sidebar",
 			"closeSidebar": "Close sidebar",

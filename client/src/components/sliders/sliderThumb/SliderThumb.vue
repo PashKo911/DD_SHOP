@@ -28,14 +28,12 @@
 		</Swiper>
 		<Swiper
 			:modules="modules"
-			:zoom="{
-				enabled: true,
-				limitToOriginalSize: true,
-				pan: true,
-			}"
+			:effect="'fade'"
+			:fadeEffect="{ crossFade: true }"
 			:thumbs="{ swiper: thumbsSwiper }"
 			:navigation="{ prevEl: '.btn-prev', nextEl: '.btn-next' }"
 			@swiper="setMainSwiper"
+			@slide-change="onSlideChange"
 			class="group max-w-full min-w-0 overflow-hidden rounded-lg shadow-lg sm:basis-[75.243781%]"
 		>
 			<SwiperSlide
@@ -44,7 +42,7 @@
 				class="bg-white"
 				v-slot="{ isNext, isPrev }"
 			>
-				<div class="swiper-zoom-container aspect-[457/686]">
+				<div class="aspect-[457/686]">
 					<img
 						:src="`${apiConfig.apiBase}${i}`"
 						:alt="altImageAttr"
@@ -78,15 +76,14 @@
 
 <script setup>
 import 'swiper/css'
-import 'swiper/css/zoom'
 
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useI18n } from 'vue-i18n'
 import apiConfig from '@/config/api'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Thumbs, Zoom } from 'swiper/modules'
+import { Thumbs, EffectFade } from 'swiper/modules'
 import SliderNavButton from '@/components/sliders/SliderNavButton.vue'
 import ArrowLeftIcon from '@/components/icons/ArrowLeftIcon.vue'
 import ArrowRightIcon from '@/components/icons/ArrowRightIcon.vue'
@@ -114,7 +111,9 @@ const setMainSwiper = (swiperInstance) => {
 	mainSwiper.value = swiperInstance
 }
 
-const modules = [Thumbs, Zoom]
+const activeIndex = ref(0)
+
+const modules = [Thumbs, EffectFade]
 
 const isMobileSmall = useMediaQuery('(max-width: 479.98px)')
 
@@ -123,12 +122,16 @@ const thumbSwiperDirection = computed(() => {
 })
 const isLastSlide = computed(() => {
 	if (!props.imagesList?.length) return null
-	return mainSwiper.value?.activeIndex === props.imagesList?.length - 1
+	return activeIndex.value === props.imagesList?.length - 1
 })
 const isFirstSlide = computed(() => {
 	if (!props.imagesList?.length) return null
-	return mainSwiper.value?.activeIndex === 0
+	return activeIndex.value === 0
 })
+
+const onSlideChange = (e) => {
+	activeIndex.value = e.activeIndex
+}
 </script>
 
 <style scoped>

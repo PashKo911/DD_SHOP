@@ -22,11 +22,10 @@ const apiEndpoints = {
 		updateProductQuantity: '/cart/update',
 		deleteProduct: '/cart/delete',
 	},
-	users: {
-		getUsersWithAttempts: '/users/users-with-attempts',
-		fetchUsers: '/users',
-		updateUserType: (id) => `/users/${id}`,
-		deleteUser: (id) => `/users/${id}`,
+	admin: {
+		fetchUsers: '/admin/users',
+		updateUserType: (id) => `admin/users/${id}`,
+		deleteUser: (id) => `admin/users/${id}`,
 	},
 	reviews: {
 		getRandomReviews: '/reviews',

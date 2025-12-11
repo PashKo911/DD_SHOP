@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { i18n } from '@/plugins/i18n'
 import { i18nMeta } from '@/config/i18n'
 
@@ -16,10 +16,7 @@ export const useCommonStore = defineStore('common', () => {
 	const isHeaderMenuOpen = ref(false)
 
 	//========================================================================================================================================================
-
-	const locale = computed(() => {
-		return i18n?.global?.locale?.value ?? i18nMeta.defaultLocale
-	})
+	const locale = ref(i18nMeta.defaultLocale)
 
 	const currencyValue = computed(() => {
 		return currencies.find((c) => c.code === currency.value)
@@ -32,7 +29,8 @@ export const useCommonStore = defineStore('common', () => {
 	//========================================================================================================================================================
 
 	function setLocale(lang) {
-		if (i18n.global.locale.value !== lang) {
+		locale.value = lang
+		if (i18n?.global?.locale) {
 			i18n.global.locale.value = lang
 		}
 	}
@@ -51,7 +49,8 @@ export const useCommonStore = defineStore('common', () => {
 			currency: {
 				style: 'currency',
 				currency: code,
-				currencyDisplay: 'narrowSymbol',
+				// currencyDisplay: 'narrowSymbol',
+				currencyDisplay: 'symbol',
 				minimumFractionDigits: 0,
 				maximumFractionDigits: 0,
 			},

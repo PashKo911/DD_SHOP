@@ -1,6 +1,5 @@
 <template>
 	<DataTable ref="el" unstyled :pt="theme" :ptOptions="ptOptions">
-		<slot />
 		<template
 			#paginatorcontainer="{
 				page,
@@ -74,7 +73,7 @@
 			<SpinnerIcon class="h-8 w-8 animate-spin text-[2rem]" />
 		</template>
 
-		<template v-for="(_, slotName) in $slots" #:[slotName]="slotProps">
+		<template v-for="(_, slotName) in $slots" #[slotName]="slotProps">
 			<slot :name="slotName" v-bind="slotProps ?? {}" />
 		</template>
 	</DataTable>
@@ -101,7 +100,7 @@ defineExpose({
 })
 
 const theme = {
-	root: `relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:h-full`,
+	root: `p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:h-full`,
 	tableContainer: `p-scrollable:relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:flex-1 p-flex-scrollable:h-full`,
 	header: `py-3 px-4 border-b border-border-color
         text-primary`,
@@ -114,7 +113,7 @@ const theme = {
 	footer: `py-3 px-4 border-b border-border-color
         bg-surface-0
         text-surface-700`,
-	mask: `bg-white/10 text-surface-200 absolute z-10 flex items-center justify-center w-full h-full backdrop-blur-md`,
+	mask: `bg-white/10 text-surface-200 top-0 left-0 absolute z-10 flex items-center justify-center w-full h-full backdrop-blur-sm`,
 	column: {
 		root: ``,
 		headerCell: `group py-3 px-4 font-bold font-heading text-24-18 text-start transition-colors duration-200
