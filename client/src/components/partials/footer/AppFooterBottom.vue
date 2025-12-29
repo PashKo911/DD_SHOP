@@ -9,7 +9,7 @@
 					{{ t('partials.footer.footerCopy') }}
 				</span>
 				<a
-					href="https://suncavefreelancer.github.io/Site_code_lg/index.html"
+					href="https://web-lg.fun/"
 					target="_blank"
 					class="hover:text-t-inverse-hover focus-visible:outline-t-inverse-hover rounded-sm font-bold underline outline outline-transparent transition-colors duration-300"
 				>
