@@ -7,6 +7,7 @@ import reviewsRoutes from './reviews.mjs'
 import adminRoutes from './admin.mjs'
 import cartRoutes from './cart.mjs'
 import typesRoutes from './types.mjs'
+import mockRoutes from './mock.mjs'
 
 const router = express.Router()
 
@@ -23,5 +24,7 @@ router.use('/admin', adminRoutes)
 router.use('/cart', cartRoutes)
 
 router.use('/types', typesRoutes)
+
+router.use('/mock', mockRoutes)
 
 export default router

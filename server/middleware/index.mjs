@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import loggerConfig from '../config/logger.mjs'
+import appLogger from '../utils/logger/appLogger.mjs'
 import helmet from 'helmet'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -24,7 +24,7 @@ const middleware = (app) => {
 	})
 
 	// Middleware для логування запитів
-	app.use(loggerConfig)
+	app.use(appLogger)
 
 	// Middleware для парсингу JSON запитів
 	app.use(express.json({ limit: '10mb' }))
