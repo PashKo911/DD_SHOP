@@ -1,6 +1,6 @@
 <template>
 	<article
-		class="group any-hover:bg-transparent any-hover:shadow-none any-hover:pb-0 @container flex h-full flex-col bg-white pb-2 shadow-lg duration-500 hover:bg-white hover:shadow-lg"
+		class="any-hover:bg-transparent any-hover:shadow-none any-hover:pb-0 group @container flex h-full flex-col bg-white pb-2 shadow-lg duration-500 hover:bg-white hover:shadow-lg"
 	>
 		<router-link
 			:to="{

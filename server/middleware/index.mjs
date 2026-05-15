@@ -33,7 +33,6 @@ const middleware = (app) => {
 	app.use(express.urlencoded({ extended: false, limit: '10mb' }))
 
 	// Middleware для обробки статичних файлів
-	console.log(__dirname)
 	app.use(express.static(path.join(__dirname, '../public')))
 }
 

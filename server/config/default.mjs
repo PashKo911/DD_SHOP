@@ -12,4 +12,8 @@ export const config = Object.freeze({
 	googleClientId: process.env.GOOGLE_CLIENT_ID,
 	googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
 	googleRedirectUri: process.env.GOOGLE_REDIRECT_URI,
+
+	// MONO BANK
+	// monoBankXToken: process.env.MONO_BANK_X_TOKEN,
+	// monoExpiresIn: convertDuration(process.env.MONO_EXPIRES_IN, 's'),
 })

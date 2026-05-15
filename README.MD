@@ -1,3 +1,3 @@
-docker compose -f 'docker-compose.dev.yml' up --build 'server'
+docker compose up --build
 
 https://dd-shop.netlify.app/
