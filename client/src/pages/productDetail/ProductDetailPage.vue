@@ -64,6 +64,7 @@ import ProductDetailDescription from './productDetailDescription/ProductDetailDe
 import ProductDetailDescriptionSkeleton from './productDetailDescription/ProductDetailDescriptionSkeleton.vue'
 import ProductDetailTabs from './ProductDetailTabs.vue'
 import SliderThumbSkeleton from '@/components/sliders/sliderThumb/SliderThumbSkeleton.vue'
+import { useWatcherAbortController } from '@/composables/useWatcherAbortController'
 
 const props = defineProps({
 	locale: {
@@ -165,11 +166,15 @@ const sliderAttributes = computed(() => {
 //========================================================================================================================================================
 
 watch(locale, async () => {
-	await getProductDetails(props.id)
+	const { signal } = useWatcherAbortController()
+
+	await getProductDetails(props.id, signal)
 	getSameProducts(
 		productDetailsValue.value.category._id,
 		productDetailsValue.value.style._id,
+		signal,
 	)
+
 	router.replace({
 		name: route.name,
 		params: {
@@ -180,20 +185,26 @@ watch(locale, async () => {
 })
 
 watch(currency, async () => {
-	await getProductDetails(props.id)
+	const { signal } = useWatcherAbortController()
+
+	await getProductDetails(props.id, signal)
 	getSameProducts(
 		productDetailsValue.value.category._id,
 		productDetailsValue.value.style._id,
+		signal,
 	)
 })
 
 watch(
 	() => props.id,
 	async (newId) => {
-		await getProductDetails(newId)
+		const { signal } = useWatcherAbortController()
+
+		await getProductDetails(newId, signal)
 		getSameProducts(
 			productDetailsValue.value.category._id,
 			productDetailsValue.value.style._id,
+			signal,
 		)
 	},
 )

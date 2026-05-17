@@ -87,6 +87,7 @@ import { useCommonStore } from '@/stores/common'
 import { useProductsStore } from '@/stores/products'
 import { useReviewsStore } from '@/stores/reviews'
 import { useFacetOptionsStore } from '@/stores/facetOptions'
+import { useWatcherAbortController } from '@/composables/useWatcherAbortController'
 
 import specialOfferItems from '@/data/specialOfferItems'
 import fashionPartners from '@/data/fashionPartners'
@@ -132,15 +133,19 @@ const activeReviewsSliderComponent = computed(() => {
 })
 
 watch(locale, () => {
+	const { signal } = useWatcherAbortController()
+
 	Promise.allSettled([
-		getNewestProducts(),
-		getTopSalesProducts(),
-		getAvailableStyles(),
+		getNewestProducts(signal),
+		getTopSalesProducts(signal),
+		getAvailableStyles(signal),
 	])
 })
 
 watch(currency, () => {
-	Promise.allSettled([getNewestProducts(), getTopSalesProducts()])
+	const { signal } = useWatcherAbortController()
+
+	Promise.allSettled([getNewestProducts(signal), getTopSalesProducts(signal)])
 })
 
 onMounted(() => {

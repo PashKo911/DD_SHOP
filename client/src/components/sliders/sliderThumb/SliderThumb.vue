@@ -77,7 +77,7 @@
 <script setup>
 import 'swiper/css'
 
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useI18n } from 'vue-i18n'
 import apiConfig from '@/config/api'

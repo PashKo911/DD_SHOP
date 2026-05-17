@@ -56,22 +56,26 @@ export const useFacetOptionsStore = defineStore('facetOptions', () => {
 	})
 	//========================================================================================================================================================
 
-	const getFacetOptions = async () => {
+	const getFacetOptions = async (signal) => {
 		const data = await generalApiOperation({
 			operationName: 'getFacetOptions',
 			operation: async () => {
-				const response = await apiClient.get(apiEndpoints.products.getOptions)
+				const response = await apiClient.get(apiEndpoints.products.getOptions, {
+					signal,
+				})
 				return response.data
 			},
 		})
 		Object.assign(facetOptions, data)
 	}
 
-	const getAvailableStyles = async () => {
+	const getAvailableStyles = async (signal) => {
 		availableStyles.value = await generalApiOperation({
 			operationName: 'getAvailableStyles',
 			operation: async () => {
-				const response = await apiClient.get(apiEndpoints.products.getStyles)
+				const response = await apiClient.get(apiEndpoints.products.getStyles, {
+					signal,
+				})
 				return response.data.styles
 			},
 		})

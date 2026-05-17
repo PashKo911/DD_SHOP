@@ -134,7 +134,7 @@ function onInput({ value }, idx) {
 }
 //========================================================================================================================================================
 onMounted(() => {
-	if (price.value.length) {
+	if (price.value?.length) {
 		localPrice.value = [...price.value]
 	}
 })

@@ -64,8 +64,6 @@ function parseFilter(
 			return catId._id
 		},
 	}
-	for (const [key, def] of Object.entries(defaultFilter)) {
-	}
 
 	for (const [key, def] of Object.entries(defaultFilter)) {
 		const raw = query[key]

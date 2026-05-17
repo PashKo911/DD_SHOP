@@ -126,13 +126,16 @@ export const useCartStore = defineStore('cart', () => {
 		})
 	}
 
-	const populateCart = async () => {
+	const populateCart = async (signal) => {
 		await generalApiOperation({
 			operationName: 'populateCart',
 			operation: async () => {
 				const response = await apiClient.post(
 					apiEndpoints.cart.populateCart,
 					cartItems.value,
+					{
+						signal,
+					},
 				)
 				populatedCart.value = response.data?.populatedCart
 			},

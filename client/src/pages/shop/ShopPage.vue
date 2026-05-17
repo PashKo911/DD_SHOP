@@ -1,10 +1,14 @@
 <template>
 	<div class="relative flex gap-5">
 		<shop-filter
-			v-model:styles="styleFilterValue"
-			v-model:price="priceFilterValue"
-			v-model:colors="colorFilterValue"
-			v-model:sizes="sizeFilterValue"
+			:styles="filter.styles"
+			@update:styles="updateFilter('styles', $event)"
+			:price="filter.price"
+			@update:price="updateFilter('price', $event)"
+			:colors="filter.colors"
+			@update:colors="updateFilter('colors', $event)"
+			:sizes="filter.sizes"
+			@update:sizes="updateFilter('sizes', $event)"
 			:facet-options="facetOptionsValue"
 			:is-filter-open="isFilterOpen"
 			:active-chips="activeChips"
@@ -25,10 +29,12 @@
 				<div class="flex flex-wrap items-center gap-3 md:gap-4">
 					<div class="min-w-[11.4375rem] grow">
 						<Select
-							v-model="sortFilterValue"
 							optionLabel="label"
 							fluid
 							checkmark
+							:modelValue="filter.sort"
+							@update:modelValue="updateFilter('sort', $event)"
+							@update="updateFilter('sort', $event)"
 							:options="optionsData"
 							:placeholder="t(shopConstants.defaultSort.label)"
 						/>
@@ -37,7 +43,8 @@
 						class="flex grow flex-wrap items-center justify-end gap-3 md:gap-4"
 					>
 						<select-button
-							v-model="viewModeValue"
+							:modelValue="viewModeValue"
+							@update:modelValue="updateViewMode"
 							:options="viewModeData"
 							:allowEmpty="false"
 							optionLabel="value"
@@ -78,8 +85,9 @@
 				class="mb-8 grow"
 			/>
 			<paginator
+				:first="pageFilterValue"
+				@update:first="updateFilter('page', $event)"
 				v-show="isPaginatorVisible"
-				v-model:first="pageFilterValue"
 				:page-link-size="paginatorButtonsCount"
 				:rows="perPage"
 				:totalRecords="totalDefaultProductsCount"
@@ -104,7 +112,14 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import {
+	computed,
+	onMounted,
+	onUnmounted,
+	ref,
+	watch,
+	onWatcherCleanup,
+} from 'vue'
 import { storeToRefs } from 'pinia'
 
 import { useI18n } from 'vue-i18n'
@@ -114,12 +129,12 @@ import {
 	useRoute,
 	useRouter,
 } from 'vue-router'
-import { useFilterModel } from '@/composables/useFilterModel'
 import { useProductsStore } from '@/stores/products'
 import { useCommonStore } from '@/stores/common'
 import { useFilterStore } from '@/stores/filter'
 import { useFacetOptionsStore } from '@/stores/facetOptions'
 import { useMediaQuery } from '@/composables/useMediaQuery'
+import { useWatcherAbortController } from '@/composables/useWatcherAbortController'
 
 import viewModeData from '@/data/viewMode'
 import sortOptionsData from '@/data/sortOptions'
@@ -160,12 +175,8 @@ const isMobile = useMediaQuery('(min-width: 479.98px)')
 //========================================================================================================================================================
 
 const { getDefaultProducts, clearDefaultProducts } = productsStore
-const {
-	totalDefaultProductsCount,
-	defaultProducts,
-	defaultProductsValue,
-	isProductsLoading,
-} = storeToRefs(productsStore)
+const { totalDefaultProductsCount, defaultProductsValue, isProductsLoading } =
+	storeToRefs(productsStore)
 
 const {
 	setFilterProp,
@@ -193,83 +204,21 @@ const isPaginatorVisible = computed(
 		Number(filter.value.page) !== 0,
 )
 
-const styleFilterValue = useFilterModel('styles')
-const priceFilterValue = useFilterModel('price')
-const colorFilterValue = useFilterModel('colors')
-const sizeFilterValue = useFilterModel('sizes')
-
-const sortFilterValue = computed({
-	get() {
-		const sort = filter.value.sort
-		const upperCaseLabel =
-			sort.label.charAt(0).toUpperCase() + sort.label.slice(1)
-		return {
-			...sort,
-			label: upperCaseLabel,
-		}
-	},
-	set(newVal) {
-		setFilterProp('sort', { ...newVal, label: newVal.label.toLowerCase() })
-		router.replace({
-			name: route.name,
-			query: filterStrings.value,
-			params: { ...route.params },
-		})
-	},
-})
-
-const pageFilterValue = computed({
-	get() {
-		return filter.value.page * perPage.value
-	},
-	set(newVal) {
-		const newPage = Math.floor(newVal / perPage.value)
-		setFilterProp('page', newPage)
-		router.push({
-			name: route.name,
-			query: filterStrings.value,
-			params: { ...route.params },
-		})
-	},
-})
-
 const optionsData = computed(() => {
 	return sortOptionsData.map((o) => ({ ...o, label: t(o.label) }))
 })
 
-const viewModeValue = computed({
-	get() {
-		const modeNum = perPage.value / shopConstants.productRowsCount
-		const mode = viewModeData.find((m) => Number(m.value) === modeNum)
+const viewModeValue = computed(() => {
+	const modeNum = perPage.value / shopConstants.productRowsCount
 
-		return mode
-	},
-	async set(newVal) {
-		const newPerPage = newVal.value * shopConstants.productRowsCount
-		const productsCount = defaultProducts.value.documents.length
-		const newPageByViewMode = Math.floor(
-			(filter.value.page * perPage.value) / newPerPage,
-		)
-
-		setViewMode(newVal)
-
-		if (newPageByViewMode !== filter.value.page) {
-			setFilterProp('page', newPageByViewMode)
-			return
-		}
-
-		if (
-			newPerPage > productsCount &&
-			totalDefaultProductsCount.value > productsCount
-		) {
-			await getDefaultProducts()
-		}
-	},
+	return viewModeData.find((m) => Number(m.value) === modeNum)
 })
 
 const activeChipsCountString = computed(() => {
 	return activeChips.value.length ? String(activeChips.value.length) : ''
 })
+
+const pageFilterValue = computed(() => filter.value.page * perPage.value)
 
 const paginatorButtonsCount = computed(() => {
 	let buttonsCount
@@ -291,40 +240,82 @@ const paginatorButtonsCount = computed(() => {
 	}
 	return buttonsCount
 })
+//========================================================================================================================================================
+function updateFilter(key, newValue) {
+	let value = newValue
+
+	if (key === 'page') {
+		const newPage = Math.floor(value / perPage.value)
+		value = newPage
+	}
+
+	setFilterProp(key, value)
+
+	router.replace({
+		name: route.name,
+		query: filterStrings.value,
+		params: { ...route.params },
+	})
+	getDefaultProducts()
+}
+
+function updateViewMode(newVal) {
+	const newPerPage = newVal.value * shopConstants.productRowsCount
+	const newPageByViewMode = Math.floor(
+		(filter.value.page * perPage.value) / newPerPage,
+	)
+
+	setViewMode(newVal)
+	setFilterProp('page', newPageByViewMode)
+
+	router.replace({
+		name: route.name,
+		query: filterStrings.value,
+		params: { ...route.params },
+	})
+	getDefaultProducts()
+}
 
 //========================================================================================================================================================
 
 watch(locale, async () => {
-	await getFacetOptions()
+	const { signal } = useWatcherSignal()
+
+	await getFacetOptions(signal)
+
 	if (hasSelectedFilters.value) {
 		resetFiltersExceptCategory()
 	}
-	getDefaultProducts()
+
+	await getDefaultProducts(signal)
 })
 
 watch(currency, () => {
-	getDefaultProducts()
-	getFacetOptions()
+	const { signal } = useWatcherAbortController()
+
+	getDefaultProducts(signal)
+	getFacetOptions(signal)
 })
 
-//========================================================================================================================================================
+watch(
+	() => route.params,
+	(newParam, oldParam) => {
+		const { signal } = useWatcherAbortController()
+		if (newParam.category === oldParam.category) return
+		parseFilterFromQuery({ ...route.query, category: route.params.category })
+		getDefaultProducts(signal)
+	},
+)
 
-let unmount
+//========================================================================================================================================================
 onMounted(async () => {
 	await getFacetOptions()
-
 	parseFilterFromQuery({ ...route.query, category: route.params.category })
 
 	getDefaultProducts()
-	unmount = watch(filter.value, () => {
-		getDefaultProducts()
-	})
 })
 
 onUnmounted(() => {
-	if (typeof unmount === 'function') {
-		unmount()
-	}
 	resetFilters()
 })
 

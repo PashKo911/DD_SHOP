@@ -37,6 +37,7 @@ import { useI18n } from 'vue-i18n'
 import { useCartStore } from '@/stores/cart'
 import { useCommonStore } from '@/stores/common'
 import { useAuthStore } from '@/stores/auth'
+import { useWatcherAbortController } from '@/composables/useWatcherAbortController'
 import { makeKeyFromCartItem } from '@/utils/cartHelpers/cartHelpers'
 
 import BreadcrumbWrapper from '@/components/breadcrumb/BreadcrumbWrapper.vue'
@@ -77,8 +78,8 @@ const isSkeletonVisible = computed(() => {
 const isSpinnerVisible = computed(() => {
 	return Boolean(
 		isUpdateQuantityLoading.value ||
-			isDeleteProductLoading.value ||
-			isCartPopulating.value,
+		isDeleteProductLoading.value ||
+		isCartPopulating.value,
 	)
 })
 
@@ -89,20 +90,26 @@ const summaryComponent = computed(() => {
 //========================================================================================================================================================
 
 watch(locale, async () => {
+	const { signal } = useWatcherAbortController()
+
 	isInitialLoad.value = true
-	await populateCart()
+	await populateCart(signal)
 	isInitialLoad.value = false
 })
 
 watch(currency, async () => {
+	const { signal } = useWatcherAbortController()
+
 	isInitialLoad.value = true
-	await populateCart()
+	await populateCart(signal)
 	isInitialLoad.value = false
 })
 
 watch(isCartInitialized, () => {
+	const { signal } = useWatcherAbortController()
+
 	if (isCartInitialized.value && !isCartItemsEmpty.value) {
-		populateCart()
+		populateCart(signal)
 	}
 })
 //========================================================================================================================================================

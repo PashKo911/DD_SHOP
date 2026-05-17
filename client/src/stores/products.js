@@ -146,12 +146,18 @@ export const useProductsStore = defineStore('products', () => {
 
 	//========================================================================================================================================================
 
-	const getProducts = async (queryParams = {}, targetRef, operationName) => {
+	const getProducts = async (
+		queryParams = {},
+		targetRef,
+		operationName,
+		signal,
+	) => {
 		const result = await generalApiOperation({
 			operationName: operationName,
 			operation: async () => {
 				const response = await apiClient(apiEndpoints.products.getProducts, {
 					params: queryParams,
+					signal,
 				})
 				return response.data
 			},
@@ -161,27 +167,30 @@ export const useProductsStore = defineStore('products', () => {
 		targetRef.value = result.data
 	}
 
-	const getDefaultProducts = async () =>
+	const getDefaultProducts = async (signal) =>
 		getProducts(
 			queryPresets.value.default.queryParams,
 			defaultProducts,
 			queryPresets.value.default.name,
+			signal,
 		)
 
-	const getTopSalesProducts = async () =>
+	const getTopSalesProducts = async (signal) =>
 		getProducts(
 			queryPresets.value.topSales.queryParams,
 			topSalesProducts,
 			queryPresets.value.topSales.name,
+			signal,
 		)
-	const getNewestProducts = async () =>
+	const getNewestProducts = async (signal) =>
 		getProducts(
 			queryPresets.value.newest.queryParams,
 			newestProducts,
 			queryPresets.value.newest.name,
+			signal,
 		)
 
-	const getSameProducts = (categoryId, styleId) => {
+	const getSameProducts = (categoryId, styleId, signal) => {
 		getProducts(
 			{
 				...queryPresets.value.same,
@@ -190,6 +199,7 @@ export const useProductsStore = defineStore('products', () => {
 			},
 			sameProducts,
 			queryPresets.value.same.name,
+			signal,
 		)
 	}
 
@@ -209,12 +219,13 @@ export const useProductsStore = defineStore('products', () => {
 		suggestions.value = result.data
 	}
 
-	const getProductDetails = async (id) => {
+	const getProductDetails = async (id, signal) => {
 		const result = await generalApiOperation({
 			operationName: queryPresets.value.productDetail.name,
 			operation: async () => {
 				const response = await apiClient(
 					apiEndpoints.products.getProductDetails(id),
+					{ signal },
 				)
 				return response.data
 			},

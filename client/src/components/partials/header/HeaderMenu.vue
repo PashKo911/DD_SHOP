@@ -63,7 +63,6 @@ import { useCommonStore } from '@/stores/common'
 import { getMenuItems } from '@/utils/getMenuItems'
 import routeNames from '@/router/routeNames'
 
-import CartIcon from '@/components/icons/CartIcon.vue'
 import HeaderMenuList from './HeaderMenuList.vue'
 import HeaderLanguageSelect from './HeaderLanguageSelect.vue'
 import HeaderCurrencySelect from './HeaderCurrencySelect.vue'
