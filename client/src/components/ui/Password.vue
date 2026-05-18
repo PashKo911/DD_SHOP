@@ -4,14 +4,16 @@
 			<EyeSlashIcon
 				@click="toggleCallback"
 				:aria-label="t('accessibility.passwordFieldTips.hidePassword')"
-				class="text-surface-500 absolute end-3 top-1/2 -mt-2 h-4 w-4 cursor-pointer"
+				class="absolute end-3 top-1/2 -mt-2 h-4 w-4 cursor-pointer"
+				:class="contrast ? 'text-surface-500' : 'text-creamy-cloud'"
 			/>
 		</template>
 		<template #unmaskicon="{ toggleCallback }">
 			<EyeIcon
 				@click="toggleCallback"
 				:aria-label="t('accessibility.passwordFieldTips.showPassword')"
-				class="text-surface-500 absolute end-3 top-1/2 -mt-2 h-4 w-4 cursor-pointer"
+				class="absolute end-3 top-1/2 -mt-2 h-4 w-4 cursor-pointer"
+				:class="contrast ? 'text-surface-500' : 'text-creamy-cloud'"
 			/>
 		</template>
 		<template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
