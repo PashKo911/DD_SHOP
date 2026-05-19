@@ -3,10 +3,7 @@ import path from 'path'
 import fs from 'fs'
 import { v4 as uuidv4 } from 'uuid'
 
-const ALLOWED_CATEGORIES = [
-	{ _id: '676bff1e8a281b4943246179', name: 'men' },
-	{ _id: '676bff1e8a281b4943246178', name: 'women' },
-]
+const ALLOWED_CATEGORIES = new Set(['men', 'women'])
 
 const createFolderIfNotExists = (folderPath) => {
 	if (!fs.existsSync(folderPath)) {
@@ -16,24 +13,26 @@ const createFolderIfNotExists = (folderPath) => {
 
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		const categoryId = req.body.category
+		const categoryKey = `${req.body.categoryKey || ''}`.trim().toLowerCase()
 
-		const category = ALLOWED_CATEGORIES.find((cat) => cat._id === categoryId)
-
-		if (!category) {
+		if (!ALLOWED_CATEGORIES.has(categoryKey)) {
 			return cb(new Error('Invalid category'), null)
 		}
 
-		const folderPath = path.join(req.__dirname, '../public/images/products', category.name)
+		const folderPath = path.join(
+			req.__dirname,
+			'../public/uploads/products',
+			categoryKey,
+		)
 		createFolderIfNotExists(folderPath)
 
 		req.uploadFolderPath = folderPath
-		req.category = category.name
+		req.category = categoryKey
 
 		cb(null, folderPath)
 	},
 	filename: (req, file, cb) => {
-		const ext = path.extname(file.originalname)
+		const ext = path.extname(file.originalname) || '.webp'
 		cb(null, `image-${uuidv4()}${ext}`)
 	},
 })

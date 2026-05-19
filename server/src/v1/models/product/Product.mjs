@@ -93,24 +93,57 @@ const productSchema = new Schema(
 	}
 )
 
-productSchema.pre('save', function (next) {
-	if (!this.variants || this.variants.length === 0) return next()
-
-	const prices = this.variants.map((v) => parseFloat(v.price.toString()))
-	this.minPrice = Math.min(...prices)
-	this.maxPrice = Math.max(...prices)
-
-	if (!this.defaultVariant) {
-		const cheapest = this.variants.reduce((a, b) =>
-			parseFloat(a.price.toString()) < parseFloat(b.price.toString()) ? a : b
-		)
-		this.defaultVariant = cheapest._id
+const applyComputedProductFields = (product) => {
+	if (!Array.isArray(product.variants) || product.variants.length === 0) {
+		return
 	}
+
+	const prices = product.variants
+		.map((variant) => Number.parseFloat(variant.price?.toString?.() ?? variant.price))
+		.filter((price) => Number.isFinite(price))
+	const ratings = product.variants
+		.map((variant) => Number.parseFloat(variant.rating?.toString?.() ?? variant.rating))
+		.filter((rating) => Number.isFinite(rating))
+
+	if (prices.length) {
+		product.minPrice = Math.min(...prices)
+		product.maxPrice = Math.max(...prices)
+	}
+
+	if (ratings.length) {
+		product.maxRating = Math.max(...ratings)
+	}
+
+	const hasDefaultVariant = product.variants.some((variant) =>
+		variant?._id?.equals?.(product.defaultVariant),
+	)
+
+	if (!hasDefaultVariant) {
+		const cheapestVariant = product.variants.reduce((bestVariant, currentVariant) => {
+			const bestPrice = Number.parseFloat(
+				bestVariant.price?.toString?.() ?? bestVariant.price,
+			)
+			const currentPrice = Number.parseFloat(
+				currentVariant.price?.toString?.() ?? currentVariant.price,
+			)
+
+			return currentPrice < bestPrice ? currentVariant : bestVariant
+		})
+
+		product.defaultVariant = cheapestVariant._id
+	}
+}
+
+productSchema.pre('save', function (next) {
+	applyComputedProductFields(this)
 	next()
 })
 
 productSchema.pre('validate', async function (next) {
+	if (!this.variants || this.variants.length === 0) return next()
 	try {
+		applyComputedProductFields(this)
+
 		if (this.categoryKey) return next()
 
 		if (!this.category) return next()

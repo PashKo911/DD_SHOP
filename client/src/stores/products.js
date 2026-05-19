@@ -25,6 +25,13 @@ export const useProductsStore = defineStore('products', () => {
 	const sameProducts = ref([])
 	const suggestions = ref([])
 	const productDetails = ref({})
+	const productOptions = ref({
+		categories: [],
+		styles: [],
+		colors: [],
+		sizes: [],
+	})
+	const editableProduct = ref(null)
 
 	//========================================================================================================================================================
 	const queryPresets = computed(() => ({
@@ -52,6 +59,18 @@ export const useProductsStore = defineStore('products', () => {
 		},
 		productDetail: {
 			name: routeNames.PRODUCT_DETAIL,
+		},
+		productOptions: {
+			name: 'dashboardProductOptions',
+		},
+		adminProduct: {
+			name: 'dashboardAdminProduct',
+		},
+		createProduct: {
+			name: 'dashboardCreateProduct',
+		},
+		updateProduct: {
+			name: 'dashboardUpdateProduct',
 		},
 	}))
 
@@ -158,6 +177,12 @@ export const useProductsStore = defineStore('products', () => {
 	const productDetailsValue = computed(() => {
 		return productDetails.value
 	})
+	const productOptionsValue = computed(() => {
+		return productOptions.value
+	})
+	const editableProductValue = computed(() => {
+		return editableProduct.value
+	})
 	//========================================================================================================================================================
 
 	const isSuggestionsLoading = computed(() => {
@@ -206,6 +231,18 @@ export const useProductsStore = defineStore('products', () => {
 
 	const hasProductDetailError = computed(() => {
 		return Boolean(hasError(queryPresets.value.productDetail.name))
+	})
+	const isProductOptionsLoading = computed(() => {
+		return isLoading(queryPresets.value.productOptions.name)
+	})
+	const isAdminProductLoading = computed(() => {
+		return isLoading(queryPresets.value.adminProduct.name)
+	})
+	const isCreateProductLoading = computed(() => {
+		return isLoading(queryPresets.value.createProduct.name)
+	})
+	const isUpdateProductLoading = computed(() => {
+		return isLoading(queryPresets.value.updateProduct.name)
 	})
 
 	//========================================================================================================================================================
@@ -298,12 +335,91 @@ export const useProductsStore = defineStore('products', () => {
 		productDetails.value = result.product
 	}
 
+	const getProductOptions = async () => {
+		const result = await generalApiOperation({
+			operationName: queryPresets.value.productOptions.name,
+			operation: async () => {
+				const response = await apiClient(apiEndpoints.products.getOptions)
+				return response.data
+			},
+		})
+
+		if (!result) return null
+
+		productOptions.value = {
+			categories: result.categories ?? [],
+			styles: result.styles ?? [],
+			colors: result.colors ?? [],
+			sizes: result.sizes ?? [],
+		}
+
+		return productOptions.value
+	}
+
+	const getAdminProduct = async (id) => {
+		const result = await generalApiOperation({
+			operationName: queryPresets.value.adminProduct.name,
+			operation: async () => {
+				const response = await apiClient(apiEndpoints.products.getAdminProduct(id))
+				return response.data
+			},
+		})
+
+		if (!result) return null
+		editableProduct.value = result.product
+		return result.product
+	}
+
+	const createProduct = async (formData) => {
+		const result = await generalApiOperation({
+			operationName: queryPresets.value.createProduct.name,
+			operation: async () => {
+				const response = await apiClient.post(
+					apiEndpoints.products.createProduct,
+					formData,
+					{
+						headers: {
+							'Content-Type': 'multipart/form-data',
+						},
+					},
+				)
+				return response.data
+			},
+		})
+
+		return result?.product ?? null
+	}
+
+	const updateProduct = async (id, formData) => {
+		const result = await generalApiOperation({
+			operationName: queryPresets.value.updateProduct.name,
+			operation: async () => {
+				const response = await apiClient.put(
+					apiEndpoints.products.updateProduct(id),
+					formData,
+					{
+						headers: {
+							'Content-Type': 'multipart/form-data',
+						},
+					},
+				)
+				return response.data
+			},
+		})
+
+		return result?.product ?? null
+	}
+
 	const clearDefaultProducts = () => {
 		defaultProducts.value = []
 	}
 
 	const clearProductDetails = () => {
 		productDetails.value = {}
+	}
+
+	const clearEditableProduct = () => {
+		editableProduct.value = null
 	}
 
 	return {
@@ -315,6 +431,8 @@ export const useProductsStore = defineStore('products', () => {
 		suggestions,
 		totalDefaultProductsCount,
 		productDetails,
+		productOptions,
+		editableProduct,
 
 		// computed
 		defaultProductsValue,
@@ -325,6 +443,8 @@ export const useProductsStore = defineStore('products', () => {
 		sameProductsValue,
 		queryPresets,
 		productDetailsValue,
+		productOptionsValue,
+		editableProductValue,
 
 		// status
 		isProductsLoading,
@@ -334,6 +454,10 @@ export const useProductsStore = defineStore('products', () => {
 		isSameProductsLoading,
 		isProductDetailsLoading,
 		isProductDetailsLoaded,
+		isProductOptionsLoading,
+		isAdminProductLoading,
+		isCreateProductLoading,
+		isUpdateProductLoading,
 
 		hasNewestProductsError,
 		hasTopSalesProductsError,
@@ -348,7 +472,12 @@ export const useProductsStore = defineStore('products', () => {
 		getSameProducts,
 		getSuggestions,
 		getProductDetails,
+		getProductOptions,
+		getAdminProduct,
+		createProduct,
+		updateProduct,
 		clearProductDetails,
 		clearDefaultProducts,
+		clearEditableProduct,
 	}
 })

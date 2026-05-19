@@ -22,6 +22,18 @@ export default [
 				component: () =>
 					import('@/pages/dashboard/products/DashboardProducts.vue'),
 			},
+			{
+				path: 'products/create',
+				name: routeNames.dashboardProductCreate,
+				component: () =>
+					import('@/pages/dashboard/products/ProductFormPage.vue'),
+			},
+			{
+				path: 'products/:id/edit',
+				name: routeNames.dashboardProductEdit,
+				component: () =>
+					import('@/pages/dashboard/products/ProductFormPage.vue'),
+			},
 		],
 	},
 ]

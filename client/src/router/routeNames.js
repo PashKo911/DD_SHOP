@@ -10,6 +10,8 @@ const routeNames = Object.freeze({
 	dashboard: 'dashboard',
 	dashboardUsers: 'dashboard.users',
 	dashboardProducts: 'dashboard.products',
+	dashboardProductCreate: 'dashboard.products.create',
+	dashboardProductEdit: 'dashboard.products.edit',
 	NOT_FOUND: 'NotFoundPage',
 })
 

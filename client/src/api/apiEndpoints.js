@@ -1,6 +1,9 @@
 const apiEndpoints = {
 	products: {
 		getProducts: '/products',
+		createProduct: '/products',
+		updateProduct: (id) => `/products/${id}`,
+		getAdminProduct: (id) => `/products/${id}`,
 		getSuggestions: '/products/suggestions',
 		getOptions: '/products/options',
 		getStyles: '/products/styles',

@@ -68,6 +68,82 @@ class ProductsDBService extends MongooseCRUDManager {
 			})
 		}
 	}
+
+	async getAdminById(id) {
+		try {
+			const document = await super.getById(id, {}, productPopulateFields)
+
+			return {
+				...document,
+				variants: (document?.variants || []).map((variant) => ({
+					...variant,
+					price: Number.parseFloat(variant?.price?.toString?.() ?? variant?.price),
+					oldPrice:
+						variant?.oldPrice == null
+							? null
+							: Number.parseFloat(
+									variant?.oldPrice?.toString?.() ?? variant?.oldPrice,
+							  ),
+				})),
+			}
+		} catch (err) {
+			if (err instanceof HttpError) throw err
+			throw new HttpError(500, `Failed to load product id:${id}`, {
+				code: errorCodes.DATABASE_ERROR,
+				cause: err,
+			})
+		}
+	}
+
+	async createProduct(data) {
+		try {
+			const product = new Product(data)
+			await product.save()
+
+			return product.toObject()
+		} catch (err) {
+			if (err instanceof HttpError) throw err
+			if (err && (err.code === 11000 || err.code === 11001 || err.name === 'ValidationError')) throw err
+			throw new HttpError(500, 'Failed to create product', {
+				code: errorCodes.DATABASE_ERROR,
+				cause: err,
+			})
+		}
+	}
+
+	async updateProduct(id, data) {
+		try {
+			const product = await Product.findById(id)
+
+			if (!product) {
+				throw new HttpError(404, `Product with id:${id} not found`, {
+					code: errorCodes.NOT_FOUND,
+					expose: true,
+				})
+			}
+
+			product.set(data)
+			await product.save()
+
+			return product.toObject()
+		} catch (err) {
+			if (err instanceof HttpError) throw err
+			if (
+				err &&
+				(err.code === 11000 ||
+					err.code === 11001 ||
+					err.name === 'ValidationError' ||
+					err.name === 'CastError')
+			) {
+				throw err
+			}
+			throw new HttpError(500, 'Failed to update product', {
+				code: errorCodes.DATABASE_ERROR,
+				cause: err,
+			})
+		}
+	}
+
 	async getPriceRange(rate) {
 		try {
 			const [result] = await this.model.aggregate([

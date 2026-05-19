@@ -137,6 +137,9 @@
 				}
 			},
 			"products": {
+				"title": "Products",
+				"subtitle": "Create and update the catalog without leaving the dashboard.",
+				"createProduct": "Create Product",
 				"tableTitles": {
 					"image": "Image",
 					"title": "Title",
@@ -146,6 +149,48 @@
 					"totalCount": "In Stock",
 					"updatedAt": "Updated At",
 					"actions": "Actions"
+				},
+				"form": {
+					"createTitle": "Create product",
+					"editTitle": "Edit product",
+					"createDescription": "Add a new product, then configure its variants and image gallery.",
+					"editDescription": "Update content, stock, pricing, and variant media from one place.",
+					"loading": "Loading product form...",
+					"variantsTitle": "Variants",
+					"variantsHint": "Each variant can have its own color, stock, sizes, and image set.",
+					"addVariant": "Add variant",
+					"variantTitle": "Variant {index}",
+					"uploadHint": "Click to upload one or more images",
+					"fields": {
+						"titleEn": "Title (EN)",
+						"titleUk": "Title (UK)",
+						"descriptionEn": "Description (EN)",
+						"descriptionUk": "Description (UK)",
+						"category": "Category",
+						"style": "Style",
+						"minPrice": "Min price",
+						"maxPrice": "Max price",
+						"maxRating": "Max rating",
+						"color": "Color",
+						"price": "Price",
+						"oldPrice": "Old price",
+						"count": "Stock count",
+						"rating": "Rating",
+						"sizes": "Sizes",
+						"images": "Images"
+					},
+					"validation": {
+						"required": "This field is required.",
+						"description": "Description must be at least 10 characters.",
+						"number": "Enter a valid non-negative number.",
+						"rating": "Enter a rating between 0 and 5.",
+						"images": "Add at least one image.",
+						"maxPriceRange": "Max price must be greater than or equal to min price."
+					},
+					"successTitle": "Saved",
+					"createSuccess": "Product created successfully.",
+					"updateSuccess": "Product updated successfully.",
+					"submitError": "We couldn't save the product. Please check the form and try again."
 				}
 			}
 		},
@@ -335,6 +380,7 @@
 		"edit": "Edit",
 		"create": "Create",
 		"add": "Add",
+		"remove": "Remove",
 		"save": "Save",
 		"cancel": "Cancel",
 

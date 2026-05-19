@@ -1,94 +1,140 @@
+import mongoose from 'mongoose'
+import { HttpError } from '../errors/HttpError.mjs'
+import { errorCodes } from '../constants/errorCodes.mjs'
+
+const isMongoId = (value) => mongoose.Types.ObjectId.isValid(value)
+
+const createValidationError = (details) => {
+	throw new HttpError(400, 'Incorrect product data', {
+		code: errorCodes.VALIDATION_ERROR,
+		details,
+		expose: true,
+	})
+}
+
+const parseLocalizedField = (value, field) => {
+	let parsedValue = value
+
+	if (typeof value === 'string') {
+		try {
+			parsedValue = JSON.parse(value)
+		} catch {
+			createValidationError([{ field, validationCode: 'invalid' }])
+		}
+	}
+
+	if (!parsedValue || typeof parsedValue !== 'object') {
+		createValidationError([{ field, validationCode: 'required' }])
+	}
+
+	const en = `${parsedValue.en || ''}`.trim()
+	const uk = `${parsedValue.uk || ''}`.trim()
+
+	if (en.length < 3 || uk.length < 3) {
+		createValidationError([{ field, validationCode: 'invalid' }])
+	}
+
+	return { en, uk }
+}
+
+const parseNumericField = (value, field, { min = 0, max = null, allowNull = false } = {}) => {
+	if ((value === null || value === undefined || value === '') && allowNull) {
+		return null
+	}
+
+	const numericValue = Number(value)
+	if (!Number.isFinite(numericValue) || numericValue < min || (max != null && numericValue > max)) {
+		createValidationError([{ field, validationCode: 'invalid', params: { value } }])
+	}
+
+	return numericValue
+}
+
+const parseVariants = (value) => {
+	let parsed = value
+
+	if (typeof value === 'string') {
+		try {
+			parsed = JSON.parse(value)
+		} catch {
+			createValidationError([{ field: 'variants', validationCode: 'invalid' }])
+		}
+	}
+
+	if (!Array.isArray(parsed) || parsed.length === 0) {
+		createValidationError([{ field: 'variants', validationCode: 'required' }])
+	}
+
+	return parsed.map((variant, index) => {
+		if (!variant || typeof variant !== 'object') {
+			createValidationError([{ field: `variants.${index}`, validationCode: 'invalid' }])
+		}
+
+		const images = Array.isArray(variant.images)
+			? variant.images.filter((imagePath) => typeof imagePath === 'string' && imagePath.length)
+			: []
+		const sizes = Array.isArray(variant.sizes) ? variant.sizes.filter(Boolean) : []
+
+		if (!isMongoId(variant.color)) {
+			createValidationError([{ field: `variants.${index}.color`, validationCode: 'invalid' }])
+		}
+
+		if (!sizes.length || sizes.some((sizeId) => !isMongoId(sizeId))) {
+			createValidationError([{ field: `variants.${index}.sizes`, validationCode: 'invalid' }])
+		}
+
+		return {
+			...(variant._id && isMongoId(variant._id) ? { _id: variant._id } : {}),
+			color: variant.color,
+			price: parseNumericField(variant.price, `variants.${index}.price`),
+			oldPrice: parseNumericField(variant.oldPrice, `variants.${index}.oldPrice`, {
+				min: 0,
+				allowNull: true,
+			}),
+			count: parseNumericField(variant.count, `variants.${index}.count`),
+			rating: parseNumericField(variant.rating, `variants.${index}.rating`, {
+				min: 0,
+				max: 5,
+			}),
+			images,
+			sizes,
+		}
+	})
+}
+
 class ProductValidator {
-	static productSchema = {
-		title: {
-			trim: true,
-			notEmpty: {
-				errorMessage: 'Title is required',
-			},
-			isLength: {
-				options: { min: 3, max: 100 },
-				errorMessage: 'Title must be between 3 and 100 characters long',
-			},
-			escape: true,
-		},
-		price: {
-			notEmpty: {
-				errorMessage: 'Price is required',
-			},
-			isFloat: {
-				options: { min: 0 },
-				errorMessage: 'Price must be a positive number',
-			},
-			toFloat: true,
-		},
-		rating: {
-			notEmpty: {
-				errorMessage: 'Rating is required',
-			},
-			isFloat: {
-				options: {
-					min: 2,
-					max: 5,
-				},
-				errorMessage: 'Rating must be an integer between 2 and 5',
-			},
-			toFloat: true,
-		},
-		count: {
-			notEmpty: {
-				errorMessage: 'Count is required',
-			},
-			isInt: {
-				options: {
-					min: 1,
-				},
-				errorMessage: 'Count must be at least 1',
-			},
-			toInt: true,
-		},
-		description: {
-			optional: true,
-			trim: true,
-			isLength: {
-				options: { min: 10 },
-				errorMessage: 'Description must be at least 10 characters long',
-			},
-			escape: true,
-		},
-		colors: {
-			isArray: {
-				errorMessage: 'Colors must be an array',
-			},
-			custom: {
-				options: (value) => Array.isArray(value) && value.length > 0,
-				errorMessage: 'At least one color is required',
-			},
-		},
-		sizes: {
-			isArray: {
-				errorMessage: 'Sizes must be an array',
-			},
-			custom: {
-				options: (value) => Array.isArray(value) && value.length > 0,
-				errorMessage: 'At least one size is required',
-			},
-		},
-		styles: {
-			notEmpty: {
-				errorMessage: 'Dress style is required',
-			},
-			isMongoId: {
-				errorMessage: 'Invalid dress style ID',
-			},
-		},
-		category: {
-			notEmpty: {
-				errorMessage: 'Category is required',
-			},
-			isMongoId: {
-				errorMessage: 'Invalid category ID',
-			},
-		},
+	static validatePayload(payload) {
+		const categoryKey = `${payload.categoryKey || ''}`.trim().toLowerCase()
+
+		if (!isMongoId(payload.category)) {
+			createValidationError([{ field: 'category', validationCode: 'invalid' }])
+		}
+
+		if (!isMongoId(payload.style)) {
+			createValidationError([{ field: 'style', validationCode: 'invalid' }])
+		}
+
+		if (!['men', 'women'].includes(categoryKey)) {
+			createValidationError([{ field: 'categoryKey', validationCode: 'invalid' }])
+		}
+
+		const variants = parseVariants(payload.variants)
+
+		return {
+			title: parseLocalizedField(payload.title, 'title'),
+			description: parseLocalizedField(payload.description, 'description'),
+			category: payload.category,
+			categoryKey,
+			style: payload.style,
+			minPrice: parseNumericField(payload.minPrice, 'minPrice'),
+			maxPrice: parseNumericField(payload.maxPrice, 'maxPrice'),
+			maxRating: parseNumericField(payload.maxRating, 'maxRating', { min: 0, max: 5 }),
+			defaultVariant:
+				payload.defaultVariant && isMongoId(payload.defaultVariant)
+					? payload.defaultVariant
+					: undefined,
+			variants,
+		}
 	}
 }
 
