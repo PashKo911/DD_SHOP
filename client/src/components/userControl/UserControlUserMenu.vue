@@ -87,7 +87,7 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import routeNames from '@/router/routeNames'
 
-import Menu from '@/volt/Menu.vue'
+import Menu from '@/components/menu/Menu.vue'
 import Button from '../ui/buttons/Button.vue'
 import SignInIcon from '@/components/icons/SignInIcon.vue'
 import ListIcon from '@/components/icons/ListIcon.vue'

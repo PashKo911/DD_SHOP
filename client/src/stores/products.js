@@ -69,6 +69,70 @@ export const useProductsStore = defineStore('products', () => {
 		return applyColorFilterToProducts(productsCopy, filter.value.colors)
 	})
 
+	const adminProductsValue = computed(() => {
+		const products = defaultProducts.value?.documents
+
+		if (!Array.isArray(products)) {
+			return []
+		}
+
+		const flat = products.flatMap((product) => {
+			const variants = Array.isArray(product.variants) ? product.variants : []
+
+			// fallback если нет вариантов
+			if (variants.length === 0) {
+				return [
+					{
+						id: product._id,
+						variantId: null,
+
+						image: product.style?.imgSrc || '/placeholder.png',
+
+						title: product.title,
+						category: product.category?.label || product.category?.categoryKey,
+
+						price: product.minPrice,
+
+						totalCount: 0,
+						variantsCount: 0,
+
+						updatedAt: product.updatedAt,
+					},
+				]
+			}
+
+			return variants.map((variant) => {
+				return {
+					id: product._id,
+					variantId: variant._id,
+
+					// 🔥 ВОТ ГЛАВНОЕ ИЗМЕНЕНИЕ
+					image: Array.isArray(variant.images)
+						? variant.images[0]
+						: product.style?.imgSrc || '/placeholder.png',
+
+					title: product.title,
+					category: product.category?.label || product.category?.categoryKey,
+
+					price: variant.price,
+					totalCount: variant.count,
+
+					variantsCount: product.variants.length,
+
+					updatedAt: product.updatedAt,
+				}
+			})
+		})
+
+		const filtered = applyColorFilterToProducts(flat, filter.value.colors)
+
+		if (filtered.length > perPage.value) {
+			return filtered.slice(0, perPage.value)
+		}
+
+		return filtered
+	})
+
 	const totalDefaultProductsCount = computed(() => {
 		return defaultProducts?.value?.count ?? 0
 	})
@@ -254,6 +318,7 @@ export const useProductsStore = defineStore('products', () => {
 
 		// computed
 		defaultProductsValue,
+		adminProductsValue,
 		suggestionsValue,
 		topSalesProductsValue,
 		newestProductsValue,
