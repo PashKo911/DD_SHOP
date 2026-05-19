@@ -1,12 +1,31 @@
 import { validationResult } from 'express-validator'
 import { normalizeExpressValidatorErrors } from '../../../utils/errorNormalizers/normalizeExpressValidatorErrors.mjs'
 import UsersDBService from '../models/user/UsersDBService.mjs'
-import { prepareToken } from '../../../utils/jwtHelpers.mjs'
 import { appConstants } from '../../../constants/app.mjs'
 import { exchangeCodeForTokens, verifyIdToken } from '../../../services/googleAuth.mjs'
+import {
+	issueTokenPair,
+	revokeRefreshToken,
+	rotateRefreshToken,
+} from '../../../services/authTokenService.mjs'
+import {
+	clearRefreshTokenCookie,
+	getRefreshTokenFromRequest,
+	setRefreshTokenCookie,
+} from '../../../utils/cookieHelpers.mjs'
 import { HttpError } from '../../../errors/HttpError.mjs'
 import { errorCodes } from '../../../constants/errorCodes.mjs'
 import { validationErrorCodes } from '../../../constants/validationErrorCodes.mjs'
+
+function sendAuthResponse(res, status, { accessToken, refreshToken, user }) {
+	setRefreshTokenCookie(res, refreshToken)
+
+	res.status(status).json({
+		success: true,
+		accessToken,
+		user,
+	})
+}
 
 class AuthController {
 	static async signup(req, res, next) {
@@ -39,13 +58,11 @@ class AuthController {
 			}
 
 			const { _id, email: e, name } = user
+			const { accessToken, refreshToken } = await issueTokenPair({ _id, email: e, name }, req)
 
-			const { token } = prepareToken({ _id, email: e, name }, req.headers)
-
-			res.status(201).json({
-				success: true,
-				message: 'User registered successfully',
-				token,
+			sendAuthResponse(res, 201, {
+				accessToken,
+				refreshToken,
 				user,
 			})
 		} catch (err) {
@@ -116,12 +133,11 @@ class AuthController {
 			}
 
 			const { _id, email: e, name, type } = user
+			const { accessToken, refreshToken } = await issueTokenPair({ _id, email: e, name }, req)
 
-			const { token } = prepareToken({ _id, email: e, name }, req.headers)
-
-			res.status(200).json({
-				success: true,
-				token,
+			sendAuthResponse(res, 200, {
+				accessToken,
+				refreshToken,
 				user: {
 					_id,
 					email: e,
@@ -185,11 +201,11 @@ class AuthController {
 			}
 
 			const { _id, email, avatar, type, name } = user
-			const { token } = prepareToken({ _id, email, name }, req.headers)
+			const { accessToken, refreshToken } = await issueTokenPair({ _id, email, name }, req)
 
-			res.status(200).json({
-				success: true,
-				token,
+			sendAuthResponse(res, 200, {
+				accessToken,
+				refreshToken,
 				user: {
 					_id,
 					email,
@@ -197,6 +213,60 @@ class AuthController {
 					type,
 					name,
 				},
+			})
+		} catch (err) {
+			next(err)
+		}
+	}
+
+	static async refresh(req, res, next) {
+		try {
+			const refreshToken = getRefreshTokenFromRequest(req)
+
+			if (!refreshToken) {
+				return res.status(200).json({
+					success: true,
+					data: {
+						accessToken: null,
+					},
+				})
+			}
+
+			const tokens = await rotateRefreshToken(refreshToken, req)
+
+			if (!tokens) {
+				clearRefreshTokenCookie(res)
+				return next(
+					new HttpError(401, 'Session expired', {
+						code: errorCodes.NO_SESSION,
+						expose: true,
+					})
+				)
+			}
+
+			setRefreshTokenCookie(res, tokens.refreshToken)
+
+			return res.status(200).json({
+				success: true,
+				data: {
+					accessToken: tokens.accessToken,
+				},
+			})
+		} catch (err) {
+			clearRefreshTokenCookie(res)
+			return next(err)
+		}
+	}
+
+	static async logout(req, res, next) {
+		try {
+			const refreshToken = getRefreshTokenFromRequest(req)
+			await revokeRefreshToken(refreshToken)
+			clearRefreshTokenCookie(res)
+
+			res.status(200).json({
+				success: true,
+				message: 'Logged out successfully',
 			})
 		} catch (err) {
 			next(err)

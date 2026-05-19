@@ -4,6 +4,8 @@ export const errorCodes = Object.freeze({
 	AUTH_METHOD_NOT_SUPPORTED: 'AUTH_METHOD_NOT_SUPPORTED', // Account does not support the requested authentication method (e.g. account created via Google — password sign-in is not allowed). Use with 400 Bad Request and a validation detail like { field: 'form', validationCode: validationErrorCodes.UNSUPPORTED_AUTH_METHOD } so frontend can show appropriate UI (e.g. "Sign in with Google").
 	BAD_REQUEST: 'BAD_REQUEST', // General bad request (malformed or invalid parameters)
 	UNAUTHORIZED: 'UNAUTHORIZED', // Not authenticated / authentication token required
+	INVALID_ACCESS_TOKEN: 'INVALID_ACCESS_TOKEN', // Access token expired or invalid — client should refresh
+	INVALID_REFRESH_TOKEN: 'INVALID_REFRESH_TOKEN', // Refresh token missing, expired, or revoked
 	FORBIDDEN: 'FORBIDDEN', // Authenticated but not permitted to perform the action
 	NOT_FOUND: 'NOT_FOUND', // Resource not found
 	CONFLICT: 'CONFLICT', // Conflict with current state (e.g. duplicate resource)

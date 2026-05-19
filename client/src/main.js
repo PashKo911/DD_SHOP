@@ -12,12 +12,13 @@ import { initI18n, i18n } from './plugins/i18n'
 
 import App from './App.vue'
 import router from './router'
+import { useAuthStore } from './stores/auth'
 
 const app = createApp(App)
 const head = createHead()
+const pinia = createPinia()
 
-app.use(createPinia())
-
+app.use(pinia)
 app.use(router)
 
 function bootstrapApp() {
@@ -31,5 +32,8 @@ function bootstrapApp() {
 }
 
 initI18n()
-	.then(bootstrapApp)
-	.catch((err) => console.error('i18n init failed:', err))
+	.then(async () => {
+		await useAuthStore().initialize()
+		bootstrapApp()
+	})
+	.catch((err) => console.error('App init failed:', err))

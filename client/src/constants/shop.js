@@ -8,7 +8,6 @@ const defaultSort = Object.freeze({
 const storageKeys = Object.freeze({
 	locale: 'locale',
 	cart: 'cart',
-	token: 'token',
 	currency: 'currency',
 })
 

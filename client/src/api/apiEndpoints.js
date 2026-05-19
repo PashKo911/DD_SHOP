@@ -10,7 +10,9 @@ const apiEndpoints = {
 		signin: '/auth/signin',
 		signup: '/auth/signup',
 		authWithGoogle: '/auth/google',
-		profileByToken: '/auth/profile',
+		profile: '/auth/profile',
+		refresh: '/auth/refresh',
+		logout: '/auth/logout',
 	},
 	subscriber: {
 		subscribe: '/subscriber',

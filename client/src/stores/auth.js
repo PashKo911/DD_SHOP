@@ -2,60 +2,92 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
 import { useGeneralStore } from './general'
-import { useUsersStore } from './users'
 import { useCartStore } from './cart'
 
-import apiClient from '@/config/axios'
+import apiClient, { setOnLogout } from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
 import serverErrorsFormatter from '@/utils/errorHelpers/serverErrorsFormatter'
 import supportedAuthErrorCodes from '@/constants/authErrorCodes'
-import shopConstants from '@/constants/shop'
+import { clearTokens, setTokens } from '@/utils/token'
 
 export const useAuthStore = defineStore('auth', () => {
 	const generalStore = useGeneralStore()
 	const { initCart } = useCartStore()
-	const usersStore = useUsersStore()
 	const { generalApiOperation, isLoading, hasError, clearError } = generalStore
 
 	const user = ref(null)
-	const token = ref(
-		localStorage.getItem(shopConstants.storageKeys.token) || null,
-	)
+	const isAuthResolved = ref(false)
+
+	let initializePromise = null
 	//========================================================================================================================================================
 
 	const currentUserPermissions = computed(() => user.value?.permissions || {})
 
-	const isAuthenticated = computed(() => {
-		return Boolean(user.value)
-	})
+	const isAuthenticated = computed(() => Boolean(user.value))
 
-	const isSignupLoading = computed(() => {
-		return isLoading('signup')
-	})
+	const isSignupLoading = computed(() => isLoading('signup'))
 
 	const signupServerValidationErrors = computed(() => {
 		const axiosErr = hasError('signup')
 		return serverErrorsFormatter(axiosErr, supportedAuthErrorCodes)
 	})
 
-	const isSigninLoading = computed(() => {
-		return isLoading('signin')
-	})
+	const isSigninLoading = computed(() => isLoading('signin'))
 
 	const signinServerValidationErrors = computed(() => {
 		const axiosErr = hasError('signin')
 		return serverErrorsFormatter(axiosErr, supportedAuthErrorCodes)
 	})
-
 	//========================================================================================================================================================
 
-	const setToken = (newToken) => {
-		if (newToken) {
-			localStorage.setItem(shopConstants.storageKeys.token, newToken)
-		} else {
-			localStorage.removeItem(shopConstants.storageKeys.token)
+	const clearAuthState = () => {
+		clearTokens()
+		user.value = null
+	}
+
+	const applyAuthResponse = (data) => {
+		if (data?.accessToken) {
+			setTokens({ accessToken: data.accessToken })
 		}
-		token.value = newToken
+		if (data?.user) {
+			user.value = data.user
+		}
+		isAuthResolved.value = true
+	}
+
+	const handleLogout = () => {
+		clearAuthState()
+	}
+
+	setOnLogout(handleLogout)
+
+	const initialize = async () => {
+		if (isAuthResolved.value) {
+			return user.value
+		}
+		if (initializePromise) {
+			return initializePromise
+		}
+		initializePromise = (async () => {
+			try {
+				const refreshResponse = await apiClient.post(apiEndpoints.auth.refresh)
+				const accessToken = refreshResponse.data?.data?.accessToken
+
+				if (!accessToken) return
+
+				setTokens({ accessToken })
+				const profileResponse = await apiClient.get(apiEndpoints.auth.profile)
+				user.value = profileResponse.data.user
+				return user.value
+			} catch {
+				clearAuthState()
+				return null
+			} finally {
+				isAuthResolved.value = true
+				initializePromise = null
+			}
+		})()
+		return initializePromise
 	}
 
 	const signinWithGoogle = async (googleAuthCode, { successCallback }) => {
@@ -72,22 +104,8 @@ export const useAuthStore = defineStore('auth', () => {
 			},
 			successCallback,
 		})
-		user.value = result.data.user
-		setToken(result.data.token)
+		applyAuthResponse(result.data)
 		initCart()
-	}
-
-	const getUserProfileByToken = async () => {
-		if (!token.value) return null
-		return generalApiOperation({
-			operationName: 'getUserProfileByToken',
-			operation: async () => {
-				const response = await apiClient.get(apiEndpoints.auth.profileByToken)
-
-				user.value = response.data.user
-				return response.data.user
-			},
-		})
 	}
 
 	const signin = async ({ email, password }, successCallback) => {
@@ -99,8 +117,7 @@ export const useAuthStore = defineStore('auth', () => {
 					password,
 				})
 
-				setToken(response.data.token)
-				user.value = response.data.user
+				applyAuthResponse(response.data)
 				initCart()
 			},
 			successCallback,
@@ -116,17 +133,21 @@ export const useAuthStore = defineStore('auth', () => {
 					password,
 				})
 
-				setToken(response.data.token)
-				user.value = response.data.user
+				applyAuthResponse(response.data)
 				initCart()
 			},
 			successCallback,
 		})
 	}
 
-	const signout = () => {
-		setToken(null)
-		user.value = null
+	const signout = async () => {
+		try {
+			await apiClient.post(apiEndpoints.auth.logout)
+		} catch {
+			console.warn('Logout request failed', error)
+		} finally {
+			clearAuthState()
+		}
 	}
 
 	const clearSigninErrors = () => {
@@ -138,28 +159,20 @@ export const useAuthStore = defineStore('auth', () => {
 	}
 
 	return {
-		// refs
 		user,
-		token,
-
-		// computed
+		isAuthResolved,
 		currentUserPermissions,
 		isAuthenticated,
 		signupServerValidationErrors,
 		signinServerValidationErrors,
-
-		// status
 		isSignupLoading,
 		isSigninLoading,
-
-		// actions
-		getUserProfileByToken,
+		initialize,
 		signin,
 		signinWithGoogle,
 		signup,
 		signout,
 		clearSigninErrors,
 		clearSignupErrors,
-		setToken,
 	}
 })

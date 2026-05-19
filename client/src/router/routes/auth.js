@@ -7,6 +7,7 @@ export default [
 		meta: {
 			useInMenu: false,
 			requiredAuth: false,
+			guestOnly: true,
 		},
 
 		children: [
@@ -16,7 +17,7 @@ export default [
 				component: () => import('@/pages/signin/SigninPage.vue'),
 				meta: {
 					useInMenu: false,
-					requiredAuth: false,
+					guestOnly: true,
 				},
 			},
 			{
@@ -25,7 +26,7 @@ export default [
 				component: () => import('@/pages/signup/SignupPage.vue'),
 				meta: {
 					useInMenu: false,
-					requiredAuth: false,
+					guestOnly: true,
 				},
 			},
 		],

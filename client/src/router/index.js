@@ -82,35 +82,51 @@ const router = createRouter({
 	],
 })
 
-router.beforeEach(async (to, from, next) => {
-	const detectedLocale = detectLocale(to)
+router.beforeEach((to) => {
 	const authStore = useAuthStore()
+	const detectedLocale = detectLocale(to)
+
+	const requiresAuth = to.matched.some((record) => record.meta.requiredAuth)
+	const guestOnly = to.matched.some((record) => record.meta.guestOnly)
+
+	if (requiresAuth && !authStore.isAuthenticated) {
+		return {
+			name: routeNames.SIGNIN,
+			params: { ...to.params, locale: detectedLocale },
+		}
+	}
+
+	if (guestOnly && authStore.isAuthenticated) {
+		return {
+			name: routeNames.HOME,
+			params: { ...to.params, locale: detectedLocale },
+		}
+	}
+
+	if (to.params.locale !== detectedLocale) {
+		return {
+			name: to.name || routeNames.HOME,
+			params: { ...to.params, locale: detectedLocale },
+			query: to.query,
+		}
+	}
+
+	return true
+})
+
+router.beforeEach((to) => {
 	const cartStore = useCartStore()
 	const { isCartInitialized, isInitCartLoading } = storeToRefs(cartStore)
 	const { initCart } = cartStore
-	const { isAuthenticated, token } = storeToRefs(authStore)
-	const { getUserProfileByToken } = authStore
-
-	if (!isAuthenticated.value && token.value) {
-		await getUserProfileByToken()
-	}
 
 	if (!isCartInitialized.value && !isInitCartLoading.value) {
 		initCart()
 	}
 
-	if (to.params.locale === detectedLocale) {
-		return next()
-	}
-
-	return next({
-		name: to.name || routeNames.HOME,
-		params: { ...to.params, locale: detectedLocale },
-		query: to.query,
-	})
+	return true
 })
 
-router.afterEach((to, from) => {
+router.afterEach(() => {
 	const commonStore = useCommonStore()
 	const { isHeaderMenuOpen } = storeToRefs(commonStore)
 	const { toggleHeaderMenu } = commonStore
@@ -119,4 +135,5 @@ router.afterEach((to, from) => {
 		toggleHeaderMenu()
 	}
 })
+
 export default router

@@ -20,6 +20,16 @@ const buildValidationDetails = (mongooseValidationError) => {
 	}))
 }
 
+const buildErrorBody = (code, message, details) => ({
+	success: false,
+	code,
+	error: {
+		code,
+		message,
+		...(details ? { details } : {}),
+	},
+})
+
 /**
  * Normalize different types of errors into a consistent response format for API clients.
  *
@@ -41,7 +51,7 @@ export function normalizeError(err) {
 	if (!err) {
 		return {
 			status: 500,
-			body: { success: false, error: { code: errorCodes.INTERNAL_ERROR, message: 'Internal Server Error' } },
+			body: buildErrorBody(errorCodes.INTERNAL_ERROR, 'Internal Server Error'),
 			logLevel: 'error',
 		}
 	}
@@ -59,14 +69,8 @@ export function normalizeError(err) {
 			? 'Internal Server Error'
 			: original.message || 'Error'
 
-		const body = {
-			success: false,
-			error: {
-				code: original.code || errorCodes.INTERNAL_ERROR,
-				message,
-				...(original.details ? { details: original.details } : {}),
-			},
-		}
+		const code = original.code || errorCodes.INTERNAL_ERROR
+		const body = buildErrorBody(code, message, original.details)
 		return { status, body, logLevel: status >= 500 ? 'error' : 'warn' }
 	}
 
@@ -79,24 +83,16 @@ export function normalizeError(err) {
 			: status >= 500
 			? 'Internal Server Error'
 			: original.message || 'Error'
-		const body = {
-			success: false,
-			error: {
-				code: original.code || (status === 404 ? errorCodes.NOT_FOUND : errorCodes.INTERNAL_ERROR),
-				message,
-				...(original.details ? { details: original.details } : {}),
-			},
-		}
+		const code =
+			original.code || (status === 404 ? errorCodes.NOT_FOUND : errorCodes.INTERNAL_ERROR)
+		const body = buildErrorBody(code, message, original.details)
 		return { status, body, logLevel: status >= 500 ? 'error' : 'warn' }
 	}
 
 	// Mongoose validation
 	if (original.name === 'ValidationError' && original.errors) {
 		const details = buildValidationDetails(original)
-		const body = {
-			success: false,
-			error: { code: errorCodes.VALIDATION_ERROR, message: 'Incorrect data', details },
-		}
+		const body = buildErrorBody(errorCodes.VALIDATION_ERROR, 'Incorrect data', details)
 		return { status: 400, body, logLevel: 'warn' }
 	}
 
@@ -104,14 +100,11 @@ export function normalizeError(err) {
 	if (original.name === 'CastError') {
 		const field = original.path || 'id'
 		const value = original.value
-		const body = {
-			success: false,
-			error: {
-				code: errorCodes.CAST_ERROR,
-				message: `Incorrect field value "${field}"`,
-				details: [{ field, validationCode: 'invalid', params: { value } }],
-			},
-		}
+		const body = buildErrorBody(
+			errorCodes.CAST_ERROR,
+			`Incorrect field value "${field}"`,
+			[{ field, validationCode: 'invalid', params: { value } }],
+		)
 		return { status: 400, body, logLevel: 'warn' }
 	}
 
@@ -120,14 +113,11 @@ export function normalizeError(err) {
 		const keyValue = original.keyValue || {}
 		const field = Object.keys(keyValue)[0] || 'unknown'
 		const value = keyValue[field]
-		const body = {
-			success: false,
-			error: {
-				code: errorCodes.DUPLICATE_KEY,
-				message: `Value for the field "${field}" already exists`,
-				details: [{ field, validationCode: validationErrorCodes.DUPLICATE, params: { value } }],
-			},
-		}
+		const body = buildErrorBody(
+			errorCodes.DUPLICATE_KEY,
+			`Value for the field "${field}" already exists`,
+			[{ field, validationCode: validationErrorCodes.DUPLICATE, params: { value } }],
+		)
 		return { status: 409, body, logLevel: 'warn' }
 	}
 
@@ -135,7 +125,7 @@ export function normalizeError(err) {
 	if (original.name === 'JsonWebTokenError' || original.name === 'TokenExpiredError') {
 		return {
 			status: 401,
-			body: { success: false, error: { code: errorCodes.UNAUTHORIZED, message: 'Unauthorized' } },
+			body: buildErrorBody(errorCodes.UNAUTHORIZED, 'Unauthorized'),
 			logLevel: 'warn',
 		}
 	}
@@ -143,7 +133,7 @@ export function normalizeError(err) {
 	// Fallback
 	return {
 		status: 500,
-		body: { success: false, error: { code: errorCodes.INTERNAL_ERROR, message: 'Internal Server Error' } },
+		body: buildErrorBody(errorCodes.INTERNAL_ERROR, 'Internal Server Error'),
 		logLevel: 'error',
 	}
 }

@@ -6,7 +6,7 @@ export const attachUserFromBarrier = (req, res, next) => {
 	try {
 		const user = parseBearer(req.headers.authorization)
 		req.user = user
-	} catch (err) {
+	} catch {
 		req.user = null
 	}
 	next()
@@ -21,9 +21,10 @@ export const checkAuth = (req, res, next) => {
 		return next(
 			new HttpError(401, 'Invalid or missing token', {
 				cause: err,
-				code: errorCodes.UNAUTHORIZED,
+				code: err.code || errorCodes.UNAUTHORIZED,
 				details: [{ field: 'token', message: 'Invalid or missing token' }],
-			})
+				expose: true,
+			}),
 		)
 	}
 }
@@ -33,7 +34,7 @@ export function checkAdmin(req, res, next) {
 		return next(
 			new HttpError(403, 'Access denied', {
 				code: errorCodes.FORBIDDEN,
-			})
+			}),
 		)
 	}
 	next()

@@ -1,9 +1,11 @@
 import express from 'express'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import appLogger from '../utils/logger/appLogger.mjs'
 import helmet from 'helmet'
+import { config } from '../config/default.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -13,26 +15,29 @@ const middleware = (app) => {
 		helmet({
 			crossOriginResourcePolicy: { policy: 'cross-origin' },
 			crossOriginEmbedderPolicy: false,
-		})
+		}),
 	)
 
-	app.use(cors())
+	app.use(
+		cors({
+			origin: config.clientOrigin,
+			credentials: true,
+		}),
+	)
+
+	app.use(cookieParser())
 
 	app.use((req, res, next) => {
 		req.__dirname = __dirname
 		next()
 	})
 
-	// Middleware для логування запитів
 	app.use(appLogger)
 
-	// Middleware для парсингу JSON запитів
 	app.use(express.json({ limit: '10mb' }))
 
-	// Middleware для парсингу URL-кодованих даних
 	app.use(express.urlencoded({ extended: false, limit: '10mb' }))
 
-	// Middleware для обробки статичних файлів
 	app.use(express.static(path.join(__dirname, '../public')))
 }
 

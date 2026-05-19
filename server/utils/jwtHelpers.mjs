@@ -1,44 +1,45 @@
+import crypto from 'crypto'
 import jwt from 'jsonwebtoken'
-import { config } from '../config/default.mjs'
 
-const expiresIn = config.expiredTime
-const tokenKey = config.tokenKey
+import { config } from '../config/default.mjs'
+import { errorCodes } from '../constants/errorCodes.mjs'
 
 /**
- * Parse and verify Bearer JWT token
+ * Parse and verify Bearer JWT access token
  * @param {string} bearer - Authorization header value
  * @returns {object} decoded payload
- * @throws {Error} if token is invalid or expired
  */
 export function parseBearer(bearer) {
-	let token
-	if (bearer.startsWith('Bearer ')) {
-		token = bearer.slice(7)
+	if (!bearer || typeof bearer !== 'string' || !bearer.startsWith('Bearer ')) {
+		const err = new Error('Missing token')
+		err.code = errorCodes.UNAUTHORIZED
+		throw err
 	}
+
+	const token = bearer.slice(7)
+
 	try {
-		return jwt.verify(token, tokenKey)
-	} catch {
-		throw new Error('Invalid token')
+		return jwt.verify(token, config.accessTokenKey)
+	} catch (cause) {
+		const err = new Error('Invalid token')
+		err.cause = cause
+		err.code = cause?.name === 'TokenExpiredError' ? errorCodes.INVALID_ACCESS_TOKEN : errorCodes.UNAUTHORIZED
+		throw err
 	}
 }
 
-/**
- * Generate a signed JWT token
- * @param {object} data - Payload to sign
- * @returns {{token: string, expireInMs: number}}
- */
-export function prepareToken(data) {
-	const token = jwt.sign(data, tokenKey, { expiresIn })
-	const expireInMs = convertDuration(expiresIn)
-	return { token, expireInMs }
+export function prepareAccessToken(data) {
+	const accessToken = jwt.sign(data, config.accessTokenKey, {
+		expiresIn: config.accessTokenExpiresIn,
+	})
+	const expireInMs = convertDuration(config.accessTokenExpiresIn)
+	return { accessToken, expireInMs }
 }
 
-/**
- * Convert duration string to milliseconds
- * @param {string} durationStr - e.g. "10m", "2h", "7d"
- * @returns {number} duration in ms
- * @throws {Error} if format is invalid
- */
+export function hashToken(token) {
+	return crypto.createHash('sha256').update(token).digest('hex')
+}
+
 export function convertDuration(durationStr) {
 	const timePattern = /^(\d+)([mhdwMy])$/
 	const match = durationStr.match(timePattern)
