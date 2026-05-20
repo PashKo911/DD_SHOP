@@ -62,32 +62,29 @@ export const useAuthStore = defineStore('auth', () => {
 	setOnLogout(handleLogout)
 
 	const initialize = async () => {
-		if (isAuthResolved.value) {
-			return user.value
-		}
-		if (initializePromise) {
-			return initializePromise
-		}
-		initializePromise = (async () => {
-			try {
-				const refreshResponse = await apiClient.post(apiEndpoints.auth.refresh)
-				const accessToken = refreshResponse.data?.data?.accessToken
+		if (isAuthResolved.value) return user.value
 
-				if (!accessToken) return
+		try {
+			const refreshResponse = await apiClient.post(apiEndpoints.auth.refresh)
 
-				setTokens({ accessToken })
-				const profileResponse = await apiClient.get(apiEndpoints.auth.profile)
-				user.value = profileResponse.data.user
-				return user.value
-			} catch {
+			const accessToken = refreshResponse.data?.data?.accessToken
+			if (!accessToken) {
 				clearAuthState()
 				return null
-			} finally {
-				isAuthResolved.value = true
-				initializePromise = null
 			}
-		})()
-		return initializePromise
+
+			setTokens({ accessToken })
+
+			const profileResponse = await apiClient.get(apiEndpoints.auth.profile)
+			user.value = profileResponse.data.user
+
+			return user.value
+		} catch {
+			clearAuthState()
+			return null
+		} finally {
+			isAuthResolved.value = true
+		}
 	}
 
 	const signinWithGoogle = async (googleAuthCode, { successCallback }) => {

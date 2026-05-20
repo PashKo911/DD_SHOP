@@ -14,5 +14,6 @@ router.get('/:id', ProductController.getProductForEdit)
 
 router.post('/', upload.any(), ProductController.createProduct)
 router.put('/:id', upload.any(), ProductController.updateProduct)
+router.delete('/:id', ProductController.deleteProduct)
 
 export default router

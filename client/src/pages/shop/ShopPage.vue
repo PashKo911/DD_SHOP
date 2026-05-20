@@ -279,7 +279,7 @@ function updateViewMode(newVal) {
 //========================================================================================================================================================
 
 watch(locale, async () => {
-	const { signal } = useWatcherSignal()
+	const { signal } = useWatcherAbortController()
 
 	await getFacetOptions(signal)
 

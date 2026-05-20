@@ -15,7 +15,7 @@ const ptOptions = computed(() => ({ mergeProps: ptViewMerge }))
 
 const theme = {
 	root: `inline-flex cursor-pointer select-none items-center justify-center overflow-hidden relative
-        px-3 py-2 gap-2 rounded-sm disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
+        px-3 py-2 gap-2 rounded-md disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
         bg-surface-700
         border border-primary
         hover:text-surface-700

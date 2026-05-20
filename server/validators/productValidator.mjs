@@ -104,8 +104,6 @@ const parseVariants = (value) => {
 
 class ProductValidator {
 	static validatePayload(payload) {
-		const categoryKey = `${payload.categoryKey || ''}`.trim().toLowerCase()
-
 		if (!isMongoId(payload.category)) {
 			createValidationError([{ field: 'category', validationCode: 'invalid' }])
 		}
@@ -114,25 +112,15 @@ class ProductValidator {
 			createValidationError([{ field: 'style', validationCode: 'invalid' }])
 		}
 
-		if (!['men', 'women'].includes(categoryKey)) {
-			createValidationError([{ field: 'categoryKey', validationCode: 'invalid' }])
-		}
-
 		const variants = parseVariants(payload.variants)
 
 		return {
 			title: parseLocalizedField(payload.title, 'title'),
 			description: parseLocalizedField(payload.description, 'description'),
 			category: payload.category,
-			categoryKey,
 			style: payload.style,
-			minPrice: parseNumericField(payload.minPrice, 'minPrice'),
-			maxPrice: parseNumericField(payload.maxPrice, 'maxPrice'),
-			maxRating: parseNumericField(payload.maxRating, 'maxRating', { min: 0, max: 5 }),
 			defaultVariant:
-				payload.defaultVariant && isMongoId(payload.defaultVariant)
-					? payload.defaultVariant
-					: undefined,
+				payload.defaultVariant && isMongoId(payload.defaultVariant) ? payload.defaultVariant : undefined,
 			variants,
 		}
 	}

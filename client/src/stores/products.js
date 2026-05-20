@@ -72,6 +72,9 @@ export const useProductsStore = defineStore('products', () => {
 		updateProduct: {
 			name: 'dashboardUpdateProduct',
 		},
+		deleteProduct: {
+			name: 'deleteProduct',
+		},
 	}))
 
 	const defaultProductsValue = computed(() => {
@@ -98,7 +101,6 @@ export const useProductsStore = defineStore('products', () => {
 		const flat = products.flatMap((product) => {
 			const variants = Array.isArray(product.variants) ? product.variants : []
 
-			// fallback если нет вариантов
 			if (variants.length === 0) {
 				return [
 					{
@@ -125,7 +127,6 @@ export const useProductsStore = defineStore('products', () => {
 					id: product._id,
 					variantId: variant._id,
 
-					// 🔥 ВОТ ГЛАВНОЕ ИЗМЕНЕНИЕ
 					image: Array.isArray(variant.images)
 						? variant.images[0]
 						: product.style?.imgSrc || '/placeholder.png',
@@ -360,7 +361,9 @@ export const useProductsStore = defineStore('products', () => {
 		const result = await generalApiOperation({
 			operationName: queryPresets.value.adminProduct.name,
 			operation: async () => {
-				const response = await apiClient(apiEndpoints.products.getAdminProduct(id))
+				const response = await apiClient(
+					apiEndpoints.products.getAdminProduct(id),
+				)
 				return response.data
 			},
 		})
@@ -402,6 +405,20 @@ export const useProductsStore = defineStore('products', () => {
 							'Content-Type': 'multipart/form-data',
 						},
 					},
+				)
+				return response.data
+			},
+		})
+
+		return result?.product ?? null
+	}
+	const deleteProduct = async (id) => {
+		console.log(id)
+		const result = await generalApiOperation({
+			operationName: queryPresets.value.deleteProduct.name,
+			operation: async () => {
+				const response = await apiClient.delete(
+					apiEndpoints.products.deleteProduct(id),
 				)
 				return response.data
 			},
@@ -476,6 +493,7 @@ export const useProductsStore = defineStore('products', () => {
 		getAdminProduct,
 		createProduct,
 		updateProduct,
+		deleteProduct,
 		clearProductDetails,
 		clearDefaultProducts,
 		clearEditableProduct,

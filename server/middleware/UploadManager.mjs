@@ -3,7 +3,7 @@ import path from 'path'
 import fs from 'fs'
 import { v4 as uuidv4 } from 'uuid'
 
-const ALLOWED_CATEGORIES = new Set(['men', 'women'])
+const TEMP_UPLOADS_FOLDER = 'public/uploads/temp'
 
 const createFolderIfNotExists = (folderPath) => {
 	if (!fs.existsSync(folderPath)) {
@@ -11,41 +11,36 @@ const createFolderIfNotExists = (folderPath) => {
 	}
 }
 
+const tempUploadPath = path.join(process.cwd(), TEMP_UPLOADS_FOLDER)
+
+createFolderIfNotExists(tempUploadPath)
+
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		const categoryKey = `${req.body.categoryKey || ''}`.trim().toLowerCase()
-
-		if (!ALLOWED_CATEGORIES.has(categoryKey)) {
-			return cb(new Error('Invalid category'), null)
-		}
-
-		const folderPath = path.join(
-			req.__dirname,
-			'../public/uploads/products',
-			categoryKey,
-		)
-		createFolderIfNotExists(folderPath)
-
-		req.uploadFolderPath = folderPath
-		req.category = categoryKey
-
-		cb(null, folderPath)
+		cb(null, tempUploadPath)
 	},
+
 	filename: (req, file, cb) => {
-		const ext = path.extname(file.originalname) || '.webp'
-		cb(null, `image-${uuidv4()}${ext}`)
+		const extension = path.extname(file.originalname) || '.webp'
+
+		cb(null, `temp-${uuidv4()}${extension}`)
 	},
 })
 
 const upload = multer({
-	storage: storage,
-	limits: { fileSize: 10 * 1024 * 1024 },
+	storage,
+
+	limits: {
+		fileSize: 10 * 1024 * 1024,
+	},
+
 	fileFilter: (req, file, cb) => {
 		if (file.mimetype.startsWith('image/')) {
 			cb(null, true)
-		} else {
-			cb(new Error('Only image files are allowed!'), false)
+			return
 		}
+
+		cb(new Error('Only image files are allowed'), false)
 	},
 })
 

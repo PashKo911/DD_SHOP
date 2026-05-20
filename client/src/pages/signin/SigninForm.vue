@@ -35,7 +35,7 @@
 				id="email"
 				name="email"
 				size="large"
-				contrast
+				variant="accent"
 				placeholder="hello@email.com"
 				fluid
 			/>
@@ -62,7 +62,7 @@
 				:placeholder="t('placeholders.passwordField')"
 				toggleMask
 				fluid
-				contrast=""
+				contrast
 				:promptLabel="t('accessibility.passwordFieldTips.promptLabel')"
 				:weakLabel="t('accessibility.passwordFieldTips.level.weakLabel')"
 				:mediumLabel="t('accessibility.passwordFieldTips.level.mediumLabel')"

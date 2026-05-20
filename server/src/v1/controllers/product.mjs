@@ -1,5 +1,8 @@
-import { deleteUploadedFiles, deleteEditedFiles } from '../../../utils/fileUtils.mjs'
+import fs from 'fs'
+import path from 'path'
+import { v4 as uuidv4 } from 'uuid'
 import { HttpError } from '../../../errors/HttpError.mjs'
+import mongoose from 'mongoose'
 import { errorCodes } from '../../../constants/errorCodes.mjs'
 import ColorsDBService from '../models/colors/ColorsDBService.mjs'
 import DressStyleDBService from '../models/dressStyle/DressStyleDBService.mjs'
@@ -11,51 +14,154 @@ import { getRate } from '../../../services/ratesCache.mjs'
 import { appConstants } from '../../../constants/app.mjs'
 import { resolveLocale } from '../../../utils/resolveLocale.mjs'
 
-const groupUploadedFilesByVariant = (files = [], categoryKey) => {
+const groupUploadedFilesByVariant = (files = []) => {
 	return files.reduce((acc, file) => {
 		const match = file.fieldname.match(/^variantImages-(\d+)$/)
-		if (!match) return acc
+
+		if (!match) {
+			return acc
+		}
 
 		const variantIndex = Number(match[1])
-		const relativePath = `/uploads/products/${categoryKey}/${file.filename}`
 
 		if (!Array.isArray(acc[variantIndex])) {
 			acc[variantIndex] = []
 		}
 
-		acc[variantIndex].push(relativePath)
+		acc[variantIndex].push(file)
+
 		return acc
 	}, {})
 }
 
-const mergeVariantImages = (variants, uploadedFilesMap) => {
-	return variants.map((variant, index) => ({
-		...variant,
-		images: [...variant.images, ...(uploadedFilesMap[index] || [])],
-	}))
+const moveVariantImages = ({ filesByVariant, categoryKey, productId }) => {
+	const productFolder = path.join(process.cwd(), 'public/uploads/products', categoryKey, productId)
+
+	fs.mkdirSync(productFolder, {
+		recursive: true,
+	})
+
+	return Object.entries(filesByVariant).reduce((acc, [variantIndex, files]) => {
+		acc[variantIndex] = files.map((file) => {
+			const extension = path.extname(file.originalname) || '.webp'
+			const filename = `image-${uuidv4()}${extension}`
+			const finalPath = path.join(productFolder, filename)
+			fs.renameSync(file.path, finalPath)
+			return `/uploads/products/${categoryKey}/${productId}/${filename}`
+		})
+
+		return acc
+	}, {})
 }
 
-const ensureVariantImages = (variants = []) => {
-	const invalidVariantIndex = variants.findIndex(
-		(variant) => !Array.isArray(variant.images) || variant.images.length === 0,
-	)
+const removeTempFiles = (files = []) => {
+	files.forEach((file) => {
+		if (!file?.path) {
+			return
+		}
 
-	if (invalidVariantIndex !== -1) {
-		throw new HttpError(400, 'Incorrect product data', {
-			code: errorCodes.VALIDATION_ERROR,
-			details: [
-				{
-					field: `variants.${invalidVariantIndex}.images`,
-					validationCode: 'required',
-				},
-			],
-			expose: true,
-		})
-	}
+		if (fs.existsSync(file.path)) {
+			fs.unlinkSync(file.path)
+		}
+	})
+}
+
+const mergeVariantImages = (variants, uploadedImagesMap) => {
+	return variants.map((variant, index) => {
+		const keptImages = Array.isArray(variant.images) ? variant.images : []
+
+		const uploadedImages = uploadedImagesMap[index] || []
+
+		return {
+			...variant,
+			images: [...keptImages, ...uploadedImages],
+		}
+	})
 }
 
 const collectVariantImages = (variants = []) =>
 	variants.flatMap((variant) => (Array.isArray(variant.images) ? variant.images : []))
+
+const buildComputedProductFields = (variants, categoryKey) => {
+	const prices = variants.map((variant) => Number(variant.price))
+	const ratings = variants
+		.map((variant) => Number(variant.rating))
+		.filter((rating) => Number.isFinite(rating))
+
+	const cheapestVariant = variants.reduce((best, current) =>
+		Number(current.price) < Number(best.price) ? current : best
+	)
+
+	return {
+		categoryKey,
+
+		minPrice: Math.min(...prices),
+
+		maxPrice: Math.max(...prices),
+
+		maxRating: ratings.length ? Math.max(...ratings) : 0,
+
+		defaultVariant: cheapestVariant._id,
+	}
+}
+
+const ensureVariantImages = (variants = []) => {
+	const invalidVariantIndex = variants.findIndex(
+		(variant) => !Array.isArray(variant.images) || variant.images.length === 0
+	)
+
+	if (invalidVariantIndex !== -1) {
+		createValidationError([
+			{
+				field: `variants.${invalidVariantIndex}.images`,
+				validationCode: 'required',
+			},
+		])
+	}
+}
+
+const removeProductImages = (imagePaths = []) => {
+	imagePaths.forEach((imagePath) => {
+		try {
+			if (!imagePath || typeof imagePath !== 'string') {
+				return
+			}
+
+			const normalizedPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath
+
+			const absolutePath = path.join(process.cwd(), 'public', normalizedPath)
+
+			if (!fs.existsSync(absolutePath)) {
+				console.warn(`File not found: ${absolutePath}`)
+
+				return
+			}
+
+			fs.unlinkSync(absolutePath)
+		} catch (err) {
+			console.warn(`Failed to remove image: ${imagePath}`, err)
+		}
+	})
+}
+
+const removeProductFolder = ({ categoryKey, productId }) => {
+	try {
+		const productFolderPath = path.join(process.cwd(), 'public/uploads/products', categoryKey, productId)
+
+		if (!fs.existsSync(productFolderPath)) {
+			console.warn(`Product folder not found: ${productFolderPath}`)
+
+			return
+		}
+
+		fs.rmSync(productFolderPath, {
+			recursive: true,
+			force: true,
+		})
+	} catch (err) {
+		console.warn(`Failed to remove product folder: ${productId}`, err)
+	}
+}
 
 class ProductController {
 	static async getAllProducts(req, res, next) {
@@ -114,11 +220,31 @@ class ProductController {
 	static async createProduct(req, res, next) {
 		try {
 			const payload = ProductValidator.validatePayload(req.body)
-			const uploadedFilesMap = groupUploadedFilesByVariant(req.files, payload.categoryKey)
+			const category = await CategoryDBService.getById(payload.category)
 
-			payload.variants = mergeVariantImages(payload.variants, uploadedFilesMap)
+			if (!category) {
+				throw new HttpError(400, 'Invalid category')
+			}
+
+			const filesByVariant = groupUploadedFilesByVariant(req.files)
+			const tempProductId = new mongoose.Types.ObjectId()
+
+			const uploadedImagesMap = moveVariantImages({
+				filesByVariant,
+				categoryKey: category.label.en,
+				productId: tempProductId.toString(),
+			})
+
+			payload.variants = mergeVariantImages(payload.variants, uploadedImagesMap)
+
 			ensureVariantImages(payload.variants)
-			const product = await ProductsDBService.createProduct(payload)
+
+			const computedFields = buildComputedProductFields(payload.variants, category.key)
+			const product = await ProductsDBService.createProduct({
+				...payload,
+				...computedFields,
+				_id: tempProductId,
+			})
 
 			res.status(201).json({
 				success: true,
@@ -126,7 +252,8 @@ class ProductController {
 				product,
 			})
 		} catch (err) {
-			deleteUploadedFiles(req.files, req.uploadFolderPath)
+			removeTempFiles(req.files)
+
 			next(err)
 		}
 	}
@@ -134,18 +261,41 @@ class ProductController {
 	static async updateProduct(req, res, next) {
 		try {
 			const existingProduct = await ProductsDBService.getAdminById(req.params.id)
-			const payload = ProductValidator.validatePayload(req.body)
-			const uploadedFilesMap = groupUploadedFilesByVariant(req.files, payload.categoryKey)
 
-			payload.variants = mergeVariantImages(payload.variants, uploadedFilesMap)
+			if (!existingProduct) {
+				throw new HttpError(404, 'Product not found')
+			}
+
+			const payload = ProductValidator.validatePayload(req.body)
+			const category = await CategoryDBService.getById(payload.category)
+
+			if (!category) {
+				throw new HttpError(400, 'Invalid category')
+			}
+
+			const existingImages = collectVariantImages(existingProduct?.variants)
+			const filesByVariant = groupUploadedFilesByVariant(req.files)
+
+			const uploadedImagesMap = moveVariantImages({
+				filesByVariant,
+				categoryKey: category.label.en,
+				productId: existingProduct._id.toString(),
+			})
+
+			payload.variants = mergeVariantImages(payload.variants, uploadedImagesMap)
+
 			ensureVariantImages(payload.variants)
 
-			const updatedProduct = await ProductsDBService.updateProduct(req.params.id, payload)
-			const existingImages = collectVariantImages(existingProduct?.variants)
+			const computedFields = buildComputedProductFields(payload.variants, category.key)
 			const nextImages = collectVariantImages(payload.variants)
 			const removedImages = existingImages.filter((imagePath) => !nextImages.includes(imagePath))
 
-			deleteEditedFiles(removedImages)
+			const updatedProduct = await ProductsDBService.updateProduct(req.params.id, {
+				...payload,
+				...computedFields,
+			})
+
+			removeProductImages(removedImages)
 
 			res.status(200).json({
 				success: true,
@@ -153,15 +303,31 @@ class ProductController {
 				product: updatedProduct,
 			})
 		} catch (err) {
-			deleteUploadedFiles(req.files, req.uploadFolderPath)
+			removeTempFiles(req.files)
+
 			next(err)
 		}
 	}
 
 	static async deleteProduct(req, res, next) {
 		try {
-			await ProductsDBService.deleteById(req.body.id)
-			res.status(200).json({ message: 'Product deleted' })
+			const product = await ProductsDBService.getAdminById(req.params.id)
+
+			if (!product) {
+				throw new HttpError(404, 'Product not found')
+			}
+
+			removeProductFolder({
+				categoryKey: product.categoryKey,
+				productId: product._id.toString(),
+			})
+
+			await ProductsDBService.deleteById(req.params.id)
+
+			res.status(200).json({
+				success: true,
+				message: 'Product deleted',
+			})
 		} catch (err) {
 			next(err)
 		}
@@ -176,10 +342,7 @@ class ProductController {
 			const colors = await ColorsDBService.getList(language)
 			const sizes = await SizeDBService.getList()
 			const styles = await DressStyleDBService.getList(language)
-			const categories = (await CategoryDBService.getList({})).map((category) => ({
-				...category,
-				label: category.label?.[language] || category.key,
-			}))
+			const categories = await CategoryDBService.getList({})
 			const price = await ProductsDBService.getPriceRange(rate)
 
 			res.status(200).json({

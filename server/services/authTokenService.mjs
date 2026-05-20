@@ -46,6 +46,9 @@ export async function rotateRefreshToken(refreshToken, req) {
 	const tokenHash = hashToken(refreshToken)
 	const storedToken = await RefreshTokenDBService.findValidByHash(tokenHash)
 
+	console.log(tokenHash, 'tokenHash')
+	console.log(storedToken, 'storedToken')
+
 	if (!storedToken) {
 		const existingToken = await RefreshTokenDBService.findByHash(tokenHash)
 

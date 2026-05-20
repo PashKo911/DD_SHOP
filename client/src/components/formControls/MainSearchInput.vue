@@ -61,10 +61,10 @@ const router = useRouter()
 const route = useRoute()
 
 const { filter, filterStrings } = storeToRefs(filterStore)
-const { setFilterProp } = filterStore
+const { setFilterProp, resetFiltersExceptCategory } = filterStore
 
 const { suggestionsValue, isSuggestionsLoading } = storeToRefs(productStore)
-const { getSuggestions } = productStore
+const { getSuggestions, getDefaultProducts } = productStore
 
 const { t } = useI18n()
 
@@ -105,13 +105,14 @@ const applySearchFilter = ({ value }) => {
 }
 
 const onClear = () => {
-	setFilterProp('title', '')
+	resetFiltersExceptCategory()
 	router.replace({
 		name: route.name,
 		query: filterStrings.value,
 		params: { ...route.params },
 	})
 	localState.value = ''
+	getDefaultProducts()
 }
 //========================================================================================================================================================
 

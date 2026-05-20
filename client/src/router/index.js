@@ -84,31 +84,17 @@ const router = createRouter({
 
 router.beforeEach((to) => {
 	const authStore = useAuthStore()
-	const detectedLocale = detectLocale(to)
 
-	const requiresAuth = to.matched.some((record) => record.meta.requiredAuth)
-	const guestOnly = to.matched.some((record) => record.meta.guestOnly)
-
-	if (requiresAuth && !authStore.isAuthenticated) {
-		return {
-			name: routeNames.SIGNIN,
-			params: { ...to.params, locale: detectedLocale },
-		}
+	if (!authStore.isAuthResolved) {
+		return true
 	}
 
-	if (guestOnly && authStore.isAuthenticated) {
-		return {
-			name: routeNames.HOME,
-			params: { ...to.params, locale: detectedLocale },
-		}
+	if (to.meta.requiredAuth && !authStore.isAuthenticated) {
+		return { name: routeNames.SIGNIN }
 	}
 
-	if (to.params.locale !== detectedLocale) {
-		return {
-			name: to.name || routeNames.HOME,
-			params: { ...to.params, locale: detectedLocale },
-			query: to.query,
-		}
+	if (to.meta.guestOnly && authStore.isAuthenticated) {
+		return { name: routeNames.HOME }
 	}
 
 	return true

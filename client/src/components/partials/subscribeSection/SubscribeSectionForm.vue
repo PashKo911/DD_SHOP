@@ -12,7 +12,8 @@
 				<template #input>
 					<input-text
 						name="email"
-						contrast
+						autocomplete="email"
+						variant="accent"
 						size="large"
 						:placeholder="t('placeholders.emailField')"
 						class="rounded-2xl! ps-12!"
