@@ -1,4 +1,4 @@
-import { normalizeError } from '../utils/errorNormalizers/normalizeError.mjs'
+import { normalizeError } from '../utils/error/normalizeError.mjs'
 
 export default function errorHandler(app) {
 	app.use((req, res, next) => {

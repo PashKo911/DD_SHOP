@@ -2,7 +2,7 @@ import { errorCodes } from '../../../constants/errorCodes.mjs'
 import SubscribersDBService from '../models/subscriber/SubscribersDBService.mjs'
 import { HttpError } from '../../../errors/HttpError.mjs'
 import { validationResult } from 'express-validator'
-import { normalizeExpressValidatorErrors } from '../../../utils/errorNormalizers/normalizeExpressValidatorErrors.mjs'
+import { normalizeExpressValidatorErrors } from '../../../utils/error/normalizeExpressValidatorErrors.mjs'
 
 class SubscriberController {
 	static async createSubscriber(req, res, next) {

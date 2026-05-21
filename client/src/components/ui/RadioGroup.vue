@@ -25,7 +25,7 @@
 			<input
 				:type="multiple ? 'checkbox' : 'radio'"
 				:value="item._id"
-				:id="uuidv4()"
+				:id="crypto.randomUUID()"
 				tabindex="-1"
 				v-model="model"
 				@input="onInput"
@@ -40,7 +40,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { v4 as uuidv4 } from 'uuid'
 
 const props = defineProps({
 	items: Array,

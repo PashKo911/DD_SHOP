@@ -1,20 +1,23 @@
+/**
+ * Parses query filters and actions.
+ */
+
 class QueryParser {
 	/**
-	 * range - Парсить фільтр діапазону значень.
+	 * range - Parses a range filter.
 	 *
-	 * @param {string} fieldName - Назва поля, для якого застосовується цей фільтр.
-	 * @param {string|string[]} filterValue - Значення фільтра, яке може мати такі формати:
-	 *   - Число (наприклад, 10)
-	 *   - Діапазон, розділений дефісом (наприклад, "10-20")
-	 *   - Масив об'єктів з операторами порівняння (наприклад, [{gte: 10}, {lte: 20}])
-	 * @returns {object[]} - Масив об'єктів фільтрів.
+	 * @param {string} fieldName - Name of the field the filter applies to.
+	 * @param {string|string[]} filterValue - Filter value, which can be:
+	 *   - A number (e.g. 10)
+	 *   - A dash-separated range (e.g. "10-20")
+	 *   - An array of comparison operator objects (e.g. [{gte: 10}, {lte: 20}])
+	 * @returns {object[]} Array of filter objects.
 	 */
 	static range(fieldName, filterValue) {
 		const [minValue, maxValue] = filterValue.map(Number)
 
 		const filtersContent = []
 
-		// Якщо мінімальне значення не NaN (число), додає його до масиву фільтрів
 		if (!isNaN(minValue)) {
 			filtersContent.push({
 				fieldName,
@@ -23,7 +26,6 @@ class QueryParser {
 			})
 		}
 
-		// Якщо максимальне значення не NaN (число), додає його до масиву фільтрів
 		if (!isNaN(maxValue)) {
 			filtersContent.push({
 				fieldName,
@@ -36,7 +38,6 @@ class QueryParser {
 		return filtersContent
 	}
 
-	//Парсить фільтр списку значень (розділених комою).
 	static list(fieldName, filterValue) {
 		return [
 			{
@@ -47,7 +48,6 @@ class QueryParser {
 		]
 	}
 
-	//Парсить фільтр значення для пошуку
 	static search(fieldName, filterValue) {
 		return [
 			{
@@ -58,7 +58,6 @@ class QueryParser {
 		]
 	}
 
-	//------- парсимо всі фільтри ---------
 	static filtersParser(fieldsConfigurations, query) {
 		const filters = []
 		fieldsConfigurations.forEach(({ fieldName, subField, queryParam, filterCategory }) => {
@@ -72,7 +71,6 @@ class QueryParser {
 		return filters
 	}
 
-	//------- парсимо всі дії (сортування, пагінація) ---------
 	static actionsParser(query) {
 		const actions = []
 		if (query.sort) {
@@ -87,7 +85,6 @@ class QueryParser {
 		return actions
 	}
 
-	//Загальний метод парсинга усіх параметрів
 	static parseQuery(query, fieldsConfigurations) {
 		const filters = this.filtersParser(fieldsConfigurations, query)
 		const actions = this.actionsParser(query)
@@ -95,19 +92,3 @@ class QueryParser {
 	}
 }
 export default QueryParser
-
-// ------------------ приклад параметрів ---------------------
-// const fieldsConfig = [
-//   { fieldName: 'price', filterCategory: 'range' },
-//   { fieldName: 'category', filterCategory: 'list' },
-//   { fieldName: 'name', filterCategory: 'search' },
-// ];
-
-// const query = {
-//   price: '10-20',
-//   category: 'electronics,books',
-//   name: 'iphone',
-//   sort: 'price:desc',
-//   page: 2,
-//   perPage: 10,
-// };

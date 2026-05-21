@@ -1,15 +1,15 @@
 /**
- * Перетворює кількість байтів у зручний для читання формат.
+ * Converts bytes into a human-readable format.
  *
- * Підтримуються одиниці:
+ * Supported units:
  * - B
  * - KB
  * - MB
  *
- * Якщо значення некоректне або відсутнє — повертає "-".
+ * Returns "-" if the value is invalid or missing.
  *
- * @param {number} bytes - Кількість байтів
- * @returns {string} Відформатований рядок
+ * @param {number} bytes - Number of bytes
+ * @returns {string} Formatted string
  */
 
 export default function formatBytes(bytes) {

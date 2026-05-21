@@ -1,13 +1,13 @@
 import { Types } from 'mongoose'
 import Product from './Product.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
-import { createFieldsConfigurations } from '../../../../utils/createFieldsConfigurations.mjs'
 import { HttpError } from '../../../../errors/HttpError.mjs'
 import { productPopulateFields, productBaseFieldsConfigurations } from './constants.mjs'
-import { formatProductForResponse, formatReqPriceRange } from '../../../../utils/formatters/formatters.mjs'
+import formatReqPriceRange from '../../../../utils/formatters/products/formatReqPriceRange.mjs'
+import formatProductForResponse from '../../../../utils/formatters/products/formatProductForResponse.mjs'
 import { appConstants } from '../../../../constants/app.mjs'
 import { errorCodes } from '../../../../constants/errorCodes.mjs'
-import detectLang from '../../../../utils/detectLang.mjs'
+import detectLang from '../../../../utils/locale/detectLang.mjs'
 import buildProductSuggestionsPipeline from '../../agregations/productSuggestions/buildProductSuggestionsPipeline.mjs'
 
 class ProductsDBService extends MongooseCRUDManager {
@@ -81,9 +81,7 @@ class ProductsDBService extends MongooseCRUDManager {
 					oldPrice:
 						variant?.oldPrice == null
 							? null
-							: Number.parseFloat(
-									variant?.oldPrice?.toString?.() ?? variant?.oldPrice,
-							  ),
+							: Number.parseFloat(variant?.oldPrice?.toString?.() ?? variant?.oldPrice),
 				})),
 			}
 		} catch (err) {

@@ -1,4 +1,4 @@
-import { toObjectId } from '../../../../utils/toObjectId.mjs'
+import { toObjectId } from '../../../../utils/mongo/toObjectId.mjs'
 
 export function cartProductFilter(customer, productId, variant, size) {
 	return {

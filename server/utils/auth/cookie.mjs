@@ -1,16 +1,20 @@
-import { authConstants } from '../constants/auth.mjs'
-import { convertDuration } from './jwtHelpers.mjs'
-import { config } from '../config/default.mjs'
+import { authConstants } from '../../constants/auth.mjs'
+import { convertDuration } from '../time/convertDuration.mjs'
+import { config } from '../../config/default.mjs'
 
-export function getRefreshCookieOptions() {
-	const maxAge = convertDuration(config.refreshTokenExpiresIn)
-
+function buildRefreshCookieBaseOptions() {
 	return {
 		httpOnly: true,
 		secure: config.cookieSecure,
 		sameSite: config.cookieSameSite,
 		path: authConstants.refreshCookiePath,
-		maxAge,
+	}
+}
+
+export function getRefreshCookieOptions() {
+	return {
+		...buildRefreshCookieBaseOptions(),
+		maxAge: convertDuration(config.refreshTokenExpiresIn),
 	}
 }
 
@@ -19,12 +23,7 @@ export function setRefreshTokenCookie(res, refreshToken) {
 }
 
 export function clearRefreshTokenCookie(res) {
-	res.clearCookie(authConstants.refreshTokenCookieName, {
-		httpOnly: true,
-		secure: config.cookieSecure,
-		sameSite: config.cookieSameSite,
-		path: authConstants.refreshCookiePath,
-	})
+	res.clearCookie(authConstants.refreshTokenCookieName, buildRefreshCookieBaseOptions())
 }
 
 export function getRefreshTokenFromRequest(req) {

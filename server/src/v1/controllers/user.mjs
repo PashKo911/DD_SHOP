@@ -1,6 +1,4 @@
-import { validationResult } from 'express-validator'
 import { isValidObjectId } from 'mongoose'
-import FormatValidationErrors from '../../../validators/formatValidationErrors.mjs'
 import { HttpError } from '../../../errors/HttpError.mjs'
 
 import UsersDBService from '../models/user/UsersDBService.mjs'

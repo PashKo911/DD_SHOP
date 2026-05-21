@@ -1,4 +1,4 @@
-import { appConstants } from '../constants/app.mjs'
+import { appConstants } from '../../constants/app.mjs'
 
 /**
  * Detects locale from input string.

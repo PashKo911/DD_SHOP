@@ -1,7 +1,7 @@
 import express from 'express'
+import { checkSchema } from 'express-validator'
 import CartController from '../controllers/cart.mjs'
 import { checkAuth, attachUserFromBarrier } from '../../../middleware/auth.mjs'
-import { checkSchema } from 'express-validator'
 import cartProductSchema from '../../../validators/cartProductSchema.mjs'
 
 const router = express.Router()

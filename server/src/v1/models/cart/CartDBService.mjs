@@ -1,6 +1,7 @@
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
 import Cart from './Cart.mjs'
-import mergeCarts from '../../../../utils/mergeCarts.mjs'
+import mergeCarts from '../../../../utils/products/mergeCarts.mjs'
+
 import { HttpError } from '../../../../errors/HttpError.mjs'
 import { errorCodes } from '../../../../constants/errorCodes.mjs'
 import { buildPopulationPipeline } from '../../agregations/cart/buildPopulationPipeline.mjs'

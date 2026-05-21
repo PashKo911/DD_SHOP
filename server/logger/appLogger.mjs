@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 import morgan from 'morgan'
-import formatBytes from '../files/formatBytes.mjs'
+import formatBytes from '../utils/files/formatBytes.mjs'
 
 const morganFormat = (tokens, req, res) => {
 	const method = chalk.cyan(tokens.method(req, res))

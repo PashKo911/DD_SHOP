@@ -24,7 +24,6 @@ import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRoute, useRouter } from 'vue-router'
 import { useToast } from 'primevue/usetoast'
-import { v4 as uuidv4 } from 'uuid'
 import { useI18n } from 'vue-i18n'
 
 import routeNames from '@/router/routeNames'
@@ -76,7 +75,7 @@ const isSaving = computed(() =>
 )
 
 const createEmptyVariant = () => ({
-	localId: uuidv4(),
+	localId: crypto.randomUUID(),
 	_id: null,
 	color: '',
 	price: null,
@@ -146,7 +145,7 @@ const hydrateForm = (product) => {
 	form.style = product?.style?._id || product?.style || ''
 
 	form.variants = (product?.variants || []).map((variant) => ({
-		localId: uuidv4(),
+		localId: crypto.randomUUID(),
 		_id: variant?._id || null,
 		color: variant?.color?._id || variant?.color || '',
 		price: Number(variant?.price ?? 0),

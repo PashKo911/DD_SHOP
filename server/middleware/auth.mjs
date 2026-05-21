@@ -1,5 +1,5 @@
 import { errorCodes } from '../constants/errorCodes.mjs'
-import { parseBearer } from '../utils/jwtHelpers.mjs'
+import { parseBearer } from '../utils/auth/jwt.mjs'
 import { HttpError } from '../errors/HttpError.mjs'
 
 export const attachUserFromBarrier = (req, res, next) => {
@@ -24,18 +24,33 @@ export const checkAuth = (req, res, next) => {
 				code: err.code || errorCodes.UNAUTHORIZED,
 				details: [{ field: 'token', message: 'Invalid or missing token' }],
 				expose: true,
-			}),
+			})
 		)
 	}
 }
 
-export function checkAdmin(req, res, next) {
-	if (!req.user || req.user.type.name !== 'admin') {
-		return next(
-			new HttpError(403, 'Access denied', {
-				code: errorCodes.FORBIDDEN,
-			}),
-		)
+export const allowTypes = (...allowedTypes) => {
+	return (req, res, next) => {
+		if (!req.user) {
+			return next(
+				new HttpError(401, 'Unauthorized', {
+					code: errorCodes.UNAUTHORIZED,
+					expose: true,
+				})
+			)
+		}
+
+		const userType = req.user.type?.name || req.user.type
+
+		if (!allowedTypes.includes(userType)) {
+			return next(
+				new HttpError(403, 'Access denied', {
+					code: errorCodes.FORBIDDEN,
+					expose: true,
+				})
+			)
+		}
+
+		next()
 	}
-	next()
 }

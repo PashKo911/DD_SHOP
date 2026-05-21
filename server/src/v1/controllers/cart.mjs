@@ -1,13 +1,15 @@
-import { HttpError } from '../../../errors/HttpError.mjs'
+import { validationResult, checkSchema } from 'express-validator'
+
 import CartDBService from '../models/cart/CartDBService.mjs'
 import ProductsDBService from '../models/product/ProductsDBService.mjs'
-import { resolveLocale } from '../../../utils/resolveLocale.mjs'
 import { getRate } from '../../../services/ratesCache.mjs'
+import { resolveLocale } from '../../../utils/locale/resolveLocale.mjs'
+import { normalizeExpressValidatorErrors } from '../../../utils/error/normalizeExpressValidatorErrors.mjs'
+
 import { appConstants } from '../../../constants/app.mjs'
 import { errorCodes } from '../../../constants/errorCodes.mjs'
-import { normalizeExpressValidatorErrors } from '../../../utils/errorNormalizers/normalizeExpressValidatorErrors.mjs'
 import cartProductSchema from '../../../validators/cartProductSchema.mjs'
-import { validationResult, checkSchema } from 'express-validator'
+import { HttpError } from '../../../errors/HttpError.mjs'
 
 class CartController {
 	static async initCart(req, res, next) {

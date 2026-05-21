@@ -1,4 +1,4 @@
-import { appConstants } from '../constants/app.mjs'
+import { appConstants } from '../../constants/app.mjs'
 
 /**
  * Resolves a valid locale from the request object.

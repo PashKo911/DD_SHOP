@@ -1,7 +1,6 @@
 import multer from 'multer'
 import path from 'path'
 import fs from 'fs'
-import { v4 as uuidv4 } from 'uuid'
 
 const TEMP_UPLOADS_FOLDER = 'public/uploads/temp'
 
@@ -23,7 +22,7 @@ const storage = multer.diskStorage({
 	filename: (req, file, cb) => {
 		const extension = path.extname(file.originalname) || '.webp'
 
-		cb(null, `temp-${uuidv4()}${extension}`)
+		cb(null, `temp-${crypto.randomUUID}${extension}`)
 	},
 })
 

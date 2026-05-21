@@ -3,7 +3,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import appLogger from '../utils/logger/appLogger.mjs'
+import appLogger from '../logger/appLogger.mjs'
 import helmet from 'helmet'
 import { config } from '../config/default.mjs'
 
@@ -15,14 +15,14 @@ const middleware = (app) => {
 		helmet({
 			crossOriginResourcePolicy: { policy: 'cross-origin' },
 			crossOriginEmbedderPolicy: false,
-		}),
+		})
 	)
 
 	app.use(
 		cors({
 			origin: config.clientOrigin,
 			credentials: true,
-		}),
+		})
 	)
 
 	app.use(cookieParser())

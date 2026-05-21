@@ -1,21 +1,24 @@
 import { validationResult } from 'express-validator'
-import { normalizeExpressValidatorErrors } from '../../../utils/errorNormalizers/normalizeExpressValidatorErrors.mjs'
+
 import UsersDBService from '../models/user/UsersDBService.mjs'
-import { appConstants } from '../../../constants/app.mjs'
 import { exchangeCodeForTokens, verifyIdToken } from '../../../services/googleAuth.mjs'
 import {
 	issueTokenPair,
 	revokeRefreshToken,
 	rotateRefreshToken,
 } from '../../../services/authTokenService.mjs'
+
+import { normalizeExpressValidatorErrors } from '../../../utils/error/normalizeExpressValidatorErrors.mjs'
 import {
 	clearRefreshTokenCookie,
 	getRefreshTokenFromRequest,
 	setRefreshTokenCookie,
-} from '../../../utils/cookieHelpers.mjs'
+} from '../../../utils/auth/cookie.mjs'
+
 import { HttpError } from '../../../errors/HttpError.mjs'
 import { errorCodes } from '../../../constants/errorCodes.mjs'
 import { validationErrorCodes } from '../../../constants/validationErrorCodes.mjs'
+import { appConstants } from '../../../constants/app.mjs'
 
 function sendAuthResponse(res, status, { accessToken, refreshToken, user }) {
 	setRefreshTokenCookie(res, refreshToken)
@@ -45,8 +48,7 @@ class AuthController {
 		try {
 			const { email, password } = req.body
 
-			let user
-			user = await UsersDBService.findOne({ email })
+			let user = await UsersDBService.findOne({ email })
 
 			if (user && !user.password && user.googleId) {
 				user.password = password
@@ -57,8 +59,17 @@ class AuthController {
 				user = await UsersDBService.getById(_id)
 			}
 
-			const { _id, email: e, name } = user
-			const { accessToken, refreshToken } = await issueTokenPair({ _id, email: e, name }, req)
+			const { _id, name, type } = user
+
+			const { accessToken, refreshToken } = await issueTokenPair(
+				{
+					_id,
+					email,
+					name,
+					type: type?.name || type,
+				},
+				req
+			)
 
 			sendAuthResponse(res, 201, {
 				accessToken,
@@ -133,7 +144,16 @@ class AuthController {
 			}
 
 			const { _id, email: e, name, type } = user
-			const { accessToken, refreshToken } = await issueTokenPair({ _id, email: e, name }, req)
+
+			const { accessToken, refreshToken } = await issueTokenPair(
+				{
+					_id,
+					email: e,
+					name,
+					type: type?.name || type,
+				},
+				req
+			)
 
 			sendAuthResponse(res, 200, {
 				accessToken,
@@ -142,7 +162,7 @@ class AuthController {
 					_id,
 					email: e,
 					name,
-					type,
+					type: type?.name || type,
 				},
 			})
 		} catch (err) {
@@ -153,6 +173,7 @@ class AuthController {
 	static async authWithGoogle(req, res, next) {
 		try {
 			const { code } = req.body
+
 			if (!code) {
 				return next(
 					new HttpError(400, 'Authentication code is required', {
@@ -163,6 +184,7 @@ class AuthController {
 			}
 
 			const tokenData = await exchangeCodeForTokens(code)
+
 			if (!tokenData?.id_token) {
 				return next(
 					new HttpError(400, 'No id_token returned from Google', {
@@ -173,15 +195,21 @@ class AuthController {
 			}
 
 			const googleUserData = await verifyIdToken(tokenData.id_token)
+
 			if (!googleUserData || !googleUserData.email) {
 				return next(
-					new HttpError(400, 'Invalid Google token', { code: errorCodes.BAD_REQUEST, expose: true })
+					new HttpError(400, 'Invalid Google token', {
+						code: errorCodes.BAD_REQUEST,
+						expose: true,
+					})
 				)
 			}
 
 			let user = await UsersDBService.findOne({ googleId: googleUserData.sub })
 
-			if (!user) user = await UsersDBService.findOne({ email: googleUserData.email })
+			if (!user) {
+				user = await UsersDBService.findOne({ email: googleUserData.email })
+			}
 
 			if (user) {
 				user.googleId = googleUserData.sub
@@ -190,18 +218,27 @@ class AuthController {
 
 				await user.save()
 			} else {
-				const newUser = {
+				await UsersDBService.create({
 					email: googleUserData.email,
 					googleId: googleUserData.sub,
 					avatar: googleUserData.picture,
 					name: googleUserData.name,
-				}
-				await UsersDBService.create(newUser)
+				})
+
 				user = await UsersDBService.findOne({ googleId: googleUserData.sub })
 			}
 
-			const { _id, email, avatar, type, name } = user
-			const { accessToken, refreshToken } = await issueTokenPair({ _id, email, name }, req)
+			const { _id, email, avatar, name, type } = user
+
+			const { accessToken, refreshToken } = await issueTokenPair(
+				{
+					_id,
+					email,
+					name,
+					type: type?.name || type,
+				},
+				req
+			)
 
 			sendAuthResponse(res, 200, {
 				accessToken,
@@ -210,8 +247,8 @@ class AuthController {
 					_id,
 					email,
 					avatar,
-					type,
 					name,
+					type: type?.name || type,
 				},
 			})
 		} catch (err) {
@@ -226,9 +263,7 @@ class AuthController {
 			if (!refreshToken) {
 				return res.status(200).json({
 					success: true,
-					data: {
-						accessToken: null,
-					},
+					data: { accessToken: null },
 				})
 			}
 
@@ -261,6 +296,7 @@ class AuthController {
 	static async logout(req, res, next) {
 		try {
 			const refreshToken = getRefreshTokenFromRequest(req)
+
 			await revokeRefreshToken(refreshToken)
 			clearRefreshTokenCookie(res)
 
@@ -278,7 +314,12 @@ class AuthController {
 			const user = await UsersDBService.getById(req.user._id)
 
 			if (!user) {
-				return next(new HttpError(404, 'User not found', { code: errorCodes.NOT_FOUND, expose: true }))
+				return next(
+					new HttpError(404, 'User not found', {
+						code: errorCodes.NOT_FOUND,
+						expose: true,
+					})
+				)
 			}
 
 			res.status(200).json({
