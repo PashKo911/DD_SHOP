@@ -1,5 +1,6 @@
 import multer from 'multer'
 import path from 'path'
+import crypto from 'crypto'
 import fs from 'fs'
 
 const TEMP_UPLOADS_FOLDER = 'public/uploads/temp'
@@ -22,7 +23,7 @@ const storage = multer.diskStorage({
 	filename: (req, file, cb) => {
 		const extension = path.extname(file.originalname) || '.webp'
 
-		cb(null, `temp-${crypto.randomUUID}${extension}`)
+		cb(null, `temp-${crypto.randomUUID()}${extension}`)
 	},
 })
 

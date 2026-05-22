@@ -114,18 +114,12 @@ const applyComputedProductFields = (product) => {
 		product.maxRating = Math.max(...ratings)
 	}
 
-	const hasDefaultVariant = product.variants.some((variant) =>
-		variant?._id?.equals?.(product.defaultVariant),
-	)
+	const hasDefaultVariant = product.variants.some((variant) => variant?._id?.equals?.(product.defaultVariant))
 
 	if (!hasDefaultVariant) {
 		const cheapestVariant = product.variants.reduce((bestVariant, currentVariant) => {
-			const bestPrice = Number.parseFloat(
-				bestVariant.price?.toString?.() ?? bestVariant.price,
-			)
-			const currentPrice = Number.parseFloat(
-				currentVariant.price?.toString?.() ?? currentVariant.price,
-			)
+			const bestPrice = Number.parseFloat(bestVariant.price?.toString?.() ?? bestVariant.price)
+			const currentPrice = Number.parseFloat(currentVariant.price?.toString?.() ?? currentVariant.price)
 
 			return currentPrice < bestPrice ? currentVariant : bestVariant
 		})

@@ -171,7 +171,6 @@ class ProductController {
 	static async deleteProduct(req, res, next) {
 		try {
 			const product = await ProductsDBService.getAdminById(req.params.id)
-
 			if (!product) {
 				throw new HttpError(404, 'Product not found')
 			}

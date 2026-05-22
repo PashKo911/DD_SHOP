@@ -1,5 +1,6 @@
 import path from 'path'
 import fs from 'fs'
+import crypto from 'crypto'
 import { fileConstants } from '../../../constants/files.mjs'
 
 /**

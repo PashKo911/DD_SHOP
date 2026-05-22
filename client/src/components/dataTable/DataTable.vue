@@ -99,7 +99,11 @@ defineExpose({
 	exportCSV: () => el.value.exportCSV(),
 })
 
-const theme = {
+const props = defineProps({
+	hoverableRows: { type: Boolean, default: false },
+})
+
+const BASE_THEME = {
 	root: `p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:h-full`,
 	tableContainer: `p-scrollable:relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:flex-1 p-flex-scrollable:h-full`,
 	header: `py-3 px-4 border-b border-border-color
@@ -108,7 +112,12 @@ const theme = {
 	thead: `p-scrollable:bg-surface-0 p-scrollable:top-0 p-scrollable:z-10`,
 	tbody: `p-hoverable:*:hover:bg-surface p-hoverable:*:hover:text-surface-800
         p-frozen:sticky p-frozen:z-10`,
-	bodyRow: `p-selectable:cursor-pointer p-selected:bg-highlight!`,
+	bodyRow: `
+    cursor-pointer
+    transition-colors duration-150
+    hover:bg-select-hover
+    p-selectable:cursor-pointer
+`,
 	tfoot: `p-scrollable:bg-surface-0 p-scrollable:bottom-0 p-scrollable:z-10`,
 	footer: `py-3 px-4 border-b border-border-color
         bg-surface-0
@@ -215,4 +224,16 @@ const theme = {
 	rowReorderIndicatorUp: `absolute hidden`,
 	rowReorderIndicatorDown: `absolute hidden`,
 }
+const theme = computed(() => ({
+	...BASE_THEME,
+	bodyRow: props.hoverableRows
+		? `
+			cursor-pointer
+			transition-colors duration-150
+			hover:bg-select-hover
+		`
+		: `
+			p-selectable:cursor-pointer p-selected:bg-highlight!
+		`,
+}))
 </script>

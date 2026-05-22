@@ -7,8 +7,7 @@ import { useFilterStore } from './filter'
 import apiClient from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
 import applyColorFilterToProducts from '@/utils/productsHelpers/applyColorFilterToProducts'
-import routeNames from '@/router/routeNames'
-import shopConstants from '@/constants/shop'
+import { queryPresets } from '@/constants/queryPresets'
 
 export const useProductsStore = defineStore('products', () => {
 	const generalStore = useGeneralStore()
@@ -31,51 +30,15 @@ export const useProductsStore = defineStore('products', () => {
 		colors: [],
 		sizes: [],
 	})
-	const editableProduct = ref(null)
 
 	//========================================================================================================================================================
-	const queryPresets = computed(() => ({
-		default: {
+
+	const defaultPreset = computed(() => {
+		return {
 			name: 'defaultProducts',
 			queryParams: apiQueryParams.value,
-		},
-		topSales: {
-			name: 'topSalesProducts',
-			queryParams: { sort: 'maxRating:desc,', page: 0, perPage: 15 },
-		},
-		newest: {
-			name: 'newestProducts',
-			queryParams: { sort: 'createdAt:desc', page: 0, perPage: 15 },
-		},
-		same: {
-			name: 'sameProducts',
-			queryParams: { sort: 'maxRating:desc,', page: 0, perPage: 15 },
-		},
-		suggestions: {
-			name: 'suggestions',
-			queryParams: {
-				limit: shopConstants.suggestionCountLimit,
-			},
-		},
-		productDetail: {
-			name: routeNames.PRODUCT_DETAIL,
-		},
-		productOptions: {
-			name: 'dashboardProductOptions',
-		},
-		adminProduct: {
-			name: 'dashboardAdminProduct',
-		},
-		createProduct: {
-			name: 'dashboardCreateProduct',
-		},
-		updateProduct: {
-			name: 'dashboardUpdateProduct',
-		},
-		deleteProduct: {
-			name: 'deleteProduct',
-		},
-	}))
+		}
+	})
 
 	const defaultProductsValue = computed(() => {
 		const products = defaultProducts.value?.documents || null
@@ -89,68 +52,6 @@ export const useProductsStore = defineStore('products', () => {
 			productsCopy = productsCopy.slice(0, perPage.value)
 		}
 		return applyColorFilterToProducts(productsCopy, filter.value.colors)
-	})
-
-	const adminProductsValue = computed(() => {
-		const products = defaultProducts.value?.documents
-
-		if (!Array.isArray(products)) {
-			return []
-		}
-
-		const flat = products.flatMap((product) => {
-			const variants = Array.isArray(product.variants) ? product.variants : []
-
-			if (variants.length === 0) {
-				return [
-					{
-						id: product._id,
-						variantId: null,
-
-						image: product.style?.imgSrc || '/placeholder.png',
-
-						title: product.title,
-						category: product.category?.label || product.category?.categoryKey,
-
-						price: product.minPrice,
-
-						totalCount: 0,
-						variantsCount: 0,
-
-						updatedAt: product.updatedAt,
-					},
-				]
-			}
-
-			return variants.map((variant) => {
-				return {
-					id: product._id,
-					variantId: variant._id,
-
-					image: Array.isArray(variant.images)
-						? variant.images[0]
-						: product.style?.imgSrc || '/placeholder.png',
-
-					title: product.title,
-					category: product.category?.label || product.category?.categoryKey,
-
-					price: variant.price,
-					totalCount: variant.count,
-
-					variantsCount: product.variants.length,
-
-					updatedAt: product.updatedAt,
-				}
-			})
-		})
-
-		const filtered = applyColorFilterToProducts(flat, filter.value.colors)
-
-		if (filtered.length > perPage.value) {
-			return filtered.slice(0, perPage.value)
-		}
-
-		return filtered
 	})
 
 	const totalDefaultProductsCount = computed(() => {
@@ -181,44 +82,41 @@ export const useProductsStore = defineStore('products', () => {
 	const productOptionsValue = computed(() => {
 		return productOptions.value
 	})
-	const editableProductValue = computed(() => {
-		return editableProduct.value
-	})
 	//========================================================================================================================================================
 
 	const isSuggestionsLoading = computed(() => {
-		return isLoading(queryPresets.value.suggestions.name)
+		return isLoading(queryPresets.suggestions.name)
 	})
 
 	const isProductsLoading = computed(() => {
-		return isLoading(queryPresets.value.default.name)
+		return isLoading(defaultPreset.value.name)
 	})
 
 	const isNewestProductsLoading = computed(() => {
-		return isLoading(queryPresets.value.newest.name)
+		return isLoading(queryPresets.newest.name)
 	})
 
 	const hasNewestProductsError = computed(() => {
-		return Boolean(hasError(queryPresets.value.newest.name))
+		return Boolean(hasError(queryPresets.newest.name))
 	})
 
 	const isTopSalesProductsLoading = computed(() => {
-		return isLoading(queryPresets.value.topSales.name)
+		return isLoading(queryPresets.topSales.name)
 	})
 	const hasTopSalesProductsError = computed(() => {
-		return Boolean(hasError(queryPresets.value.topSales.name))
+		return Boolean(hasError(queryPresets.topSales.name))
 	})
 
 	const isSameProductsLoading = computed(() => {
-		return isLoading(queryPresets.value.same.name)
+		return isLoading(queryPresets.same.name)
 	})
 
 	const hasSameProductsError = computed(() => {
-		return Boolean(hasError(queryPresets.value.same.name))
+		return Boolean(hasError(queryPresets.same.name))
 	})
 
 	const isProductDetailsLoading = computed(() => {
-		return isLoading(queryPresets.value.productDetail.name)
+		return isLoading(queryPresets.productDetail.name)
 	})
 
 	const isProductDetailsLoaded = computed(() => {
@@ -231,19 +129,10 @@ export const useProductsStore = defineStore('products', () => {
 	})
 
 	const hasProductDetailError = computed(() => {
-		return Boolean(hasError(queryPresets.value.productDetail.name))
+		return Boolean(hasError(queryPresets.productDetail.name))
 	})
 	const isProductOptionsLoading = computed(() => {
-		return isLoading(queryPresets.value.productOptions.name)
-	})
-	const isAdminProductLoading = computed(() => {
-		return isLoading(queryPresets.value.adminProduct.name)
-	})
-	const isCreateProductLoading = computed(() => {
-		return isLoading(queryPresets.value.createProduct.name)
-	})
-	const isUpdateProductLoading = computed(() => {
-		return isLoading(queryPresets.value.updateProduct.name)
+		return isLoading(queryPresets.productOptions.name)
 	})
 
 	//========================================================================================================================================================
@@ -271,44 +160,44 @@ export const useProductsStore = defineStore('products', () => {
 
 	const getDefaultProducts = async (signal) =>
 		getProducts(
-			queryPresets.value.default.queryParams,
+			defaultPreset.value.queryParams,
 			defaultProducts,
-			queryPresets.value.default.name,
+			defaultPreset.value.name,
 			signal,
 		)
 
 	const getTopSalesProducts = async (signal) =>
 		getProducts(
-			queryPresets.value.topSales.queryParams,
+			queryPresets.topSales.queryParams,
 			topSalesProducts,
-			queryPresets.value.topSales.name,
+			queryPresets.topSales.name,
 			signal,
 		)
 	const getNewestProducts = async (signal) =>
 		getProducts(
-			queryPresets.value.newest.queryParams,
+			queryPresets.newest.queryParams,
 			newestProducts,
-			queryPresets.value.newest.name,
+			queryPresets.newest.name,
 			signal,
 		)
 
 	const getSameProducts = (categoryId, styleId, signal) => {
 		getProducts(
 			{
-				...queryPresets.value.same,
+				...queryPresets.same,
 				category: categoryId,
 				styles: styleId,
 			},
 			sameProducts,
-			queryPresets.value.same.name,
+			queryPresets.same.name,
 			signal,
 		)
 	}
 
 	const getSuggestions = async (title) => {
-		const params = { ...queryPresets.value.suggestions.queryParams, title }
+		const params = { ...queryPresets.suggestions.queryParams, title }
 		const result = await generalApiOperation({
-			operationName: queryPresets.value.suggestions.name,
+			operationName: queryPresets.suggestions.name,
 			operation: async () => {
 				const response = await apiClient(apiEndpoints.products.getSuggestions, {
 					params,
@@ -323,7 +212,7 @@ export const useProductsStore = defineStore('products', () => {
 
 	const getProductDetails = async (id, signal) => {
 		const result = await generalApiOperation({
-			operationName: queryPresets.value.productDetail.name,
+			operationName: queryPresets.productDetail.name,
 			operation: async () => {
 				const response = await apiClient(
 					apiEndpoints.products.getProductDetails(id),
@@ -338,7 +227,7 @@ export const useProductsStore = defineStore('products', () => {
 
 	const getProductOptions = async () => {
 		const result = await generalApiOperation({
-			operationName: queryPresets.value.productOptions.name,
+			operationName: queryPresets.productOptions.name,
 			operation: async () => {
 				const response = await apiClient(apiEndpoints.products.getOptions)
 				return response.data
@@ -357,86 +246,12 @@ export const useProductsStore = defineStore('products', () => {
 		return productOptions.value
 	}
 
-	const getAdminProduct = async (id) => {
-		const result = await generalApiOperation({
-			operationName: queryPresets.value.adminProduct.name,
-			operation: async () => {
-				const response = await apiClient(
-					apiEndpoints.products.getAdminProduct(id),
-				)
-				return response.data
-			},
-		})
-
-		if (!result) return null
-		editableProduct.value = result.product
-		return result.product
-	}
-
-	const createProduct = async (formData) => {
-		const result = await generalApiOperation({
-			operationName: queryPresets.value.createProduct.name,
-			operation: async () => {
-				const response = await apiClient.post(
-					apiEndpoints.products.createProduct,
-					formData,
-					{
-						headers: {
-							'Content-Type': 'multipart/form-data',
-						},
-					},
-				)
-				return response.data
-			},
-		})
-
-		return result?.product ?? null
-	}
-
-	const updateProduct = async (id, formData) => {
-		const result = await generalApiOperation({
-			operationName: queryPresets.value.updateProduct.name,
-			operation: async () => {
-				const response = await apiClient.put(
-					apiEndpoints.products.updateProduct(id),
-					formData,
-					{
-						headers: {
-							'Content-Type': 'multipart/form-data',
-						},
-					},
-				)
-				return response.data
-			},
-		})
-
-		return result?.product ?? null
-	}
-	const deleteProduct = async (id) => {
-		console.log(id)
-		const result = await generalApiOperation({
-			operationName: queryPresets.value.deleteProduct.name,
-			operation: async () => {
-				const response = await apiClient.delete(
-					apiEndpoints.products.deleteProduct(id),
-				)
-				return response.data
-			},
-		})
-
-		return result?.product ?? null
-	}
-
 	const clearDefaultProducts = () => {
 		defaultProducts.value = []
 	}
 
 	const clearProductDetails = () => {
 		productDetails.value = {}
-	}
-
-	const clearEditableProduct = () => {
-		editableProduct.value = null
 	}
 
 	return {
@@ -449,11 +264,9 @@ export const useProductsStore = defineStore('products', () => {
 		totalDefaultProductsCount,
 		productDetails,
 		productOptions,
-		editableProduct,
 
 		// computed
 		defaultProductsValue,
-		adminProductsValue,
 		suggestionsValue,
 		topSalesProductsValue,
 		newestProductsValue,
@@ -461,7 +274,6 @@ export const useProductsStore = defineStore('products', () => {
 		queryPresets,
 		productDetailsValue,
 		productOptionsValue,
-		editableProductValue,
 
 		// status
 		isProductsLoading,
@@ -472,10 +284,6 @@ export const useProductsStore = defineStore('products', () => {
 		isProductDetailsLoading,
 		isProductDetailsLoaded,
 		isProductOptionsLoading,
-		isAdminProductLoading,
-		isCreateProductLoading,
-		isUpdateProductLoading,
-
 		hasNewestProductsError,
 		hasTopSalesProductsError,
 		hasSameProductsError,
@@ -490,12 +298,7 @@ export const useProductsStore = defineStore('products', () => {
 		getSuggestions,
 		getProductDetails,
 		getProductOptions,
-		getAdminProduct,
-		createProduct,
-		updateProduct,
-		deleteProduct,
 		clearProductDetails,
 		clearDefaultProducts,
-		clearEditableProduct,
 	}
 })

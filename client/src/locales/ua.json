@@ -140,14 +140,18 @@
 				"subtitle": "Створюйте та оновлюйте каталог прямо з адмінки.",
 				"createProduct": "Створити товар",
 				"tableTitles": {
+					"variantsTitle": "Моделі",
 					"image": "Зображення",
 					"title": "Заголовок",
 					"category": "Категорія",
 					"price": "Ціна",
+					"rating": "Рейтинг",
 					"variantsCount": "Кількість моделей",
 					"totalCount": "В наявності",
 					"updatedAt": "Оновлено",
-					"actions": "Дії"
+					"actions": "Дії",
+					"color": "Колір",
+					"sizes": "Розміри"
 				},
 				"form": {
 					"createTitle": "Створення товару",

@@ -141,14 +141,18 @@
 				"subtitle": "Create and update the catalog without leaving the dashboard.",
 				"createProduct": "Create Product",
 				"tableTitles": {
+					"variantsTitle": "Variants",
 					"image": "Image",
 					"title": "Title",
 					"category": "Category",
 					"price": "Price",
+					"rating": "Rating",
 					"variantsCount": "Models Count",
 					"totalCount": "In Stock",
 					"updatedAt": "Updated At",
-					"actions": "Actions"
+					"actions": "Actions",
+					"color": "Color",
+					"sizes": "Sizes"
 				},
 				"form": {
 					"createTitle": "Create product",

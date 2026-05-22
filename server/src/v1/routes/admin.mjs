@@ -8,10 +8,17 @@ import { checkAuth, allowTypes } from '../../../middleware/auth.mjs'
 
 const router = express.Router()
 
-router.get('/users', UserController.usersList)
+router.get('/users', checkAuth, allowTypes(userTypes.ADMIN, userTypes.MANAGER), UserController.usersList)
 router.patch('/users/:id', checkAuth, allowTypes(userTypes.ADMIN), UserController.updateUser)
 router.delete('/users/:id', checkAuth, allowTypes(userTypes.ADMIN), UserController.deleteUser)
 
+router.get('/products/:id', ProductController.getProductForEdit)
+router.get(
+	'/products',
+	checkAuth,
+	allowTypes(userTypes.ADMIN, userTypes.MANAGER),
+	ProductController.getAllProducts
+)
 router.post(
 	'/products',
 	checkAuth,

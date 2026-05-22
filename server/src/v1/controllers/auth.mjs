@@ -229,7 +229,6 @@ class AuthController {
 			}
 
 			const { _id, email, avatar, name, type } = user
-
 			const { accessToken, refreshToken } = await issueTokenPair(
 				{
 					_id,

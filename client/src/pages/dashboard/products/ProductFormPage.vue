@@ -30,6 +30,7 @@ import routeNames from '@/router/routeNames'
 import apiConfig from '@/config/api'
 
 import { useProductsStore } from '@/stores/products'
+import { useAdminProductsStore } from '@/stores/adminProducts'
 import { useGeneralStore } from '@/stores/general'
 
 import ProductForm from './ProductForm.vue'
@@ -41,24 +42,20 @@ const toast = useToast()
 const { t } = useI18n()
 
 const productsStore = useProductsStore()
+const adminProductsStore = useAdminProductsStore()
 const generalStore = useGeneralStore()
 
 const {
-	productOptionsValue,
-	isProductOptionsLoading,
 	isAdminProductLoading,
 	isCreateProductLoading,
 	isUpdateProductLoading,
-} = storeToRefs(productsStore)
+} = storeToRefs(adminProductsStore)
+const { getAdminProduct, createProduct, updateProduct, clearEditableProduct } =
+	adminProductsStore
 
-const {
-	getProductOptions,
-	getAdminProduct,
-	createProduct,
-	updateProduct,
-	getDefaultProducts,
-	clearEditableProduct,
-} = productsStore
+const { productOptionsValue, isProductOptionsLoading } =
+	storeToRefs(productsStore)
+const { getProductOptions, getDefaultProducts } = productsStore
 
 const isEditMode = computed(() => Boolean(route.params.id))
 

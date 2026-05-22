@@ -129,29 +129,25 @@ class MongooseCRUDManager {
 		}
 	}
 
-	async create(data) {
-		try {
-			const newItem = new this.model(data)
-			return await newItem.save()
-		} catch (err) {
-			if (err instanceof HttpError) throw err
-			if (err && (err.code === 11000 || err.code === 11001 || err.name === 'ValidationError')) throw err
-			throw new HttpError(500, 'Failed to create document', { cause: err, code: errorCodes.DATABASE_ERROR })
-		}
-	}
-
-	async getById(id, projection = null, populateFields = []) {
+	async getById(id, projection = null, populateFields = [], lean = true) {
 		try {
 			let query = this.model.findById(id, projection)
+
 			populateFields.forEach((field) => {
 				query = query.populate(field)
 			})
-			const document = await query.lean().exec()
+
+			if (lean) {
+				query = query.lean()
+			}
+
+			const document = await query.exec()
 
 			return document
 		} catch (err) {
 			if (err instanceof HttpError) throw err
 			if (err && err.name === 'CastError') throw err
+
 			throw new HttpError(500, `Failed to get document with id:${id}`, {
 				cause: err,
 				code: errorCodes.DATABASE_ERROR,
@@ -159,9 +155,10 @@ class MongooseCRUDManager {
 		}
 	}
 
-	async findOne(filters = {}, projection = null, populateFields = []) {
+	async findOne(filters = {}, projection = null, populateFields = [], lean = false) {
 		try {
 			let query = this.model.findOne(filters, projection)
+
 			populateFields.forEach((field) => {
 				if (typeof field === 'string') {
 					query = query.populate(field)
@@ -173,12 +170,18 @@ class MongooseCRUDManager {
 					query = query.populate(field.fieldForPopulation, field.requiredFieldsFromTargetObject)
 				}
 			})
-			filters
+
+			if (lean) {
+				query = query.lean()
+			}
+
 			const document = await query.exec()
+
 			return document
 		} catch (err) {
 			if (err instanceof HttpError) throw err
 			if (err && err.name === 'CastError') throw err
+
 			throw new HttpError(500, 'Failed to get document', {
 				cause: err,
 				code: errorCodes.DATABASE_ERROR,

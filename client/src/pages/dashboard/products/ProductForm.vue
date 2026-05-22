@@ -64,14 +64,13 @@
 						v-model="form.title.en"
 						fluid
 					/>
-
 					<Message
-						v-if="$form['title.en']?.invalid"
+						v-if="$form.title?.en?.invalid"
 						severity="error"
 						size="small"
 						variant="simple"
 					>
-						{{ $form['title.en']?.error?.message }}
+						{{ $form.title?.en?.error?.message }}
 					</Message>
 				</div>
 
@@ -92,12 +91,12 @@
 					/>
 
 					<Message
-						v-if="$form['title.uk']?.invalid"
+						v-if="$form.title?.uk?.invalid"
 						severity="error"
 						size="small"
 						variant="simple"
 					>
-						{{ $form['title.uk']?.error?.message }}
+						{{ $form.title?.uk?.error?.message }}
 					</Message>
 				</div>
 
@@ -117,12 +116,12 @@
 					/>
 
 					<Message
-						v-if="$form['description.en']?.invalid"
+						v-if="$form.description?.en?.invalid"
 						severity="error"
 						size="small"
 						variant="simple"
 					>
-						{{ $form['description.en']?.error?.message }}
+						{{ $form.description?.en?.error?.message }}
 					</Message>
 				</div>
 
@@ -142,12 +141,12 @@
 					/>
 
 					<Message
-						v-if="$form['description.uk']?.invalid"
+						v-if="$form.description?.uk?.invalid"
 						severity="error"
 						size="small"
 						variant="simple"
 					>
-						{{ $form['description.uk']?.error?.message }}
+						{{ $form.description?.uk?.error?.message }}
 					</Message>
 				</div>
 

@@ -9,6 +9,7 @@
 			v-for="(item, idx) in items"
 			:key="item._id ?? item.value"
 			:role="props.multiple ? 'checkbox' : 'radio'"
+			:for="`${baseId}-${idx}`"
 			ref="labels"
 			:class="labelClass"
 			:aria-checked="modelValue === item._id"
@@ -25,7 +26,7 @@
 			<input
 				:type="multiple ? 'checkbox' : 'radio'"
 				:value="item._id"
-				:id="crypto.randomUUID()"
+				:id="`${baseId}-${idx}`"
 				tabindex="-1"
 				v-model="model"
 				@input="onInput"
@@ -39,7 +40,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, useId } from 'vue'
 
 const props = defineProps({
 	items: Array,
@@ -59,6 +60,7 @@ const emit = defineEmits(['input'])
 
 const labels = ref([])
 const focusIndex = ref(0)
+const baseId = useId()
 
 //========================================================================================================================================================
 

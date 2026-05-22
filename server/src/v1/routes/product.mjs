@@ -9,6 +9,5 @@ router.get('/suggestions', ProductController.getSuggestions)
 router.get('/options', ProductController.getOptions)
 router.get('/styles', ProductController.getStyles)
 router.get('/detail/:id', ProductController.getProduct)
-router.get('/:id', ProductController.getProductForEdit)
 
 export default router

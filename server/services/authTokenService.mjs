@@ -47,9 +47,6 @@ export async function rotateRefreshToken(refreshToken, req) {
 	const tokenHash = hashToken(refreshToken)
 	const storedToken = await RefreshTokenDBService.findValidByHash(tokenHash)
 
-	console.log(tokenHash, 'tokenHash')
-	console.log(storedToken, 'storedToken')
-
 	if (!storedToken) {
 		const existingToken = await RefreshTokenDBService.findByHash(tokenHash)
 
@@ -65,7 +62,7 @@ export async function rotateRefreshToken(refreshToken, req) {
 
 	await RefreshTokenDBService.revokeById(storedToken._id)
 
-	const user = await UsersDBService.getById(storedToken.userId)
+	const user = await UsersDBService.getById(storedToken.userId, {}, ['type'])
 
 	if (!user) {
 		throw new HttpError(401, 'User not found', {
@@ -74,9 +71,9 @@ export async function rotateRefreshToken(refreshToken, req) {
 		})
 	}
 
-	const { _id, email, name } = user
+	const { _id, email, name, type } = user
 
-	return issueTokenPair({ _id, email, name }, req)
+	return issueTokenPair({ _id, email, name, type }, req)
 }
 
 export async function revokeRefreshToken(refreshToken) {

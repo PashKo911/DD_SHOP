@@ -196,7 +196,7 @@
 					<img
 						:src="`${apiBase}${imagePath}`"
 						alt="Product preview"
-						class="h-36 w-full object-cover"
+						class="aspect-[60/86] w-full object-cover"
 					/>
 
 					<div class="flex items-center justify-between gap-2 p-3">
@@ -209,7 +209,6 @@
 							type="button"
 							variant="outlined"
 							:label="t('buttons.remove')"
-							severity="secondary"
 							@click="$emit('remove-existing-image', imageIndex)"
 						/>
 					</div>
@@ -223,7 +222,7 @@
 					<img
 						:src="preview.url"
 						alt="New product preview"
-						class="h-36 w-full object-cover"
+						class="aspect-[60/86] w-full object-cover"
 					/>
 
 					<div class="flex items-center justify-between gap-2 p-3">
@@ -231,15 +230,13 @@
 							{{ preview.name }}
 						</span>
 
-						<Button
+						<SecondaryButton
 							type="button"
-							severity="secondary"
-							variant="text"
 							size="small"
+							variant="outlined"
+							:label="t('buttons.remove')"
 							@click="$emit('remove-new-image', imageIndex)"
-						>
-							{{ t('buttons.remove') }}
-						</Button>
+						/>
 					</div>
 				</div>
 			</div>
