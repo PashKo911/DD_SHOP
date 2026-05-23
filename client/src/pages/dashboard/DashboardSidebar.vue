@@ -60,7 +60,7 @@ import { useI18n } from 'vue-i18n'
 
 import Button from '@/components/ui/buttons/Button.vue'
 import CloseIcon from '@/components/icons/CloseIcon.vue'
-import Backdrop from '@/components/ui/Backdrop.vue'
+import Backdrop from '@/components/ui/overlays/Backdrop.vue'
 import routeNames from '@/router/routeNames'
 
 const props = defineProps({

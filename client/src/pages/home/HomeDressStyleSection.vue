@@ -30,9 +30,9 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import DressStyleCard from '@/components/cards/dressStyleCard/DressStyleCard.vue'
-import DressStyleCardSkeleton from '@/components/cards/dressStyleCard/DressStyleCardSkeleton.vue'
-import ErrorMessageBlock from '@/components/errorMessageBlock/ErrorMessageBlock.vue'
+import DressStyleCard from '@/components/shared/cards/dressStyle/DressStyleCard.vue'
+import DressStyleCardSkeleton from '@/components/shared/cards/dressStyle/DressStyleCardSkeleton.vue'
+import ErrorMessageBlock from '@/components/ui/feedback/ErrorMessageBlock.vue'
 
 const { t } = useI18n()
 

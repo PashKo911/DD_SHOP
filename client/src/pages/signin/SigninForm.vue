@@ -136,7 +136,7 @@ import { yupResolver } from '@primevue/forms/resolvers/yup'
 import { object } from 'yup'
 import authSchema from '@/schemas/auth'
 import routeNames from '@/router/routeNames'
-import { mapServerErrorKeys } from '@/utils/errorHelpers/mapServerErrorKeys'
+import { mapServerErrorKeys } from '@/utils/errors/mapServerErrorKeys'
 
 import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth'
@@ -144,11 +144,11 @@ import { useCartStore } from '@/stores/cart'
 import { useRouter } from 'vue-router'
 
 import { Form } from '@primevue/forms'
-import InputText from '@/components/ui/InputText.vue'
+import InputText from '@/components/ui/inputs/InputText.vue'
 import Button from '@/components/ui/buttons/Button.vue'
-import Message from '@/components/ui/Message.vue'
-import Password from '@/components/ui/Password.vue'
-import ContinueWithGoogleButton from '@/components/formControls/ContinueWithGoogleButton.vue'
+import Message from '@/components/ui/feedback/Message.vue'
+import Password from '@/components/ui/inputs/Password.vue'
+import ContinueWithGoogleButton from '@/components/features/auth/ContinueWithGoogleButton.vue'
 
 const { t, tm } = useI18n()
 const router = useRouter()

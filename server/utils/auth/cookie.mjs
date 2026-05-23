@@ -12,6 +12,11 @@ function buildRefreshCookieBaseOptions() {
 }
 
 export function getRefreshCookieOptions() {
+	console.log(
+		config.refreshTokenExpiresIn,
+		convertDuration(config.refreshTokenExpiresIn),
+		'convertDuration(config.refreshTokenExpiresIn)'
+	)
 	return {
 		...buildRefreshCookieBaseOptions(),
 		maxAge: convertDuration(config.refreshTokenExpiresIn),
@@ -23,6 +28,7 @@ export function setRefreshTokenCookie(res, refreshToken) {
 }
 
 export function clearRefreshTokenCookie(res) {
+	console.log('clearRefreshToken')
 	res.clearCookie(authConstants.refreshTokenCookieName, buildRefreshCookieBaseOptions())
 }
 

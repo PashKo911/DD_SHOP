@@ -136,14 +136,14 @@ import { useI18n } from 'vue-i18n'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 import { object, string, number } from 'yup'
 
-import RatingComp from '@/components/ui/rating/RatingComp.vue'
-import SizeRadioGroup from '@/components/formControls/SizeRadioGroup.vue'
-import ColorRadioGroup from '@/components/formControls/ColorRadioGroup.vue'
-import InputNumber from '@/components/ui/InputNumber.vue'
+import RatingComp from '@/components/ui/dataDisplay/rating/RatingComp.vue'
+import SizeRadioGroup from '@/components/features/catalog/filters/SizeRadioGroup.vue'
+import ColorRadioGroup from '@/components/features/catalog/filters/ColorRadioGroup.vue'
+import InputNumber from '@/components/ui/inputs/InputNumber.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import { Form } from '@primevue/forms'
 import { FormField } from '@primevue/forms'
-import Message from '@/components/ui/Message.vue'
+import Message from '@/components/ui/feedback/Message.vue'
 
 const { t, n } = useI18n()
 const props = defineProps({

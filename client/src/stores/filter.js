@@ -7,11 +7,11 @@ import { useCommonStore } from './common'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
-import parseFilter from '@/utils/filterHelpers/parseFilter'
-import serializeFilter from '@/utils/filterHelpers/serializeFilter'
+import parseFilter from '@/utils/catalog/filters/parseFilter'
+import serializeFilter from '@/utils/catalog/filters/serializeFilter'
 import sortOptionsData from '@/data/sortOptions'
-import mapFilterToChips from '@/utils/filterHelpers/mapFilterToChips'
-import { removeFilterChip } from '@/utils/filterHelpers/removeFilterChip'
+import mapFilterToChips from '@/utils/catalog/filters/mapFilterToChips'
+import { removeFilterChip } from '@/utils/catalog/filters/removeFilterChip'
 import shopConstants from '@/constants/shop'
 
 export const useFilterStore = defineStore('filter', () => {

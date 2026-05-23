@@ -67,9 +67,9 @@ import { useUsersStore } from '@/stores/users'
 import { useI18n } from 'vue-i18n'
 
 import Column from 'primevue/column'
-import DataTable from '@/components/dataTable/DataTable.vue'
-import EmptyList from '@/components/dataTable/EmptyList.vue'
-import Select from '@/components/ui/Select.vue'
+import DataTable from '@/components/shared/dataTable/DataTable.vue'
+import EmptyList from '@/components/shared/dataTable/EmptyList.vue'
+import Select from '@/components/ui/inputs/Select.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import DeleteIcon from '@/components/icons/DeleteIcon.vue'
 

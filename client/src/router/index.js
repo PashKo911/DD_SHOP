@@ -11,7 +11,7 @@ import { useCartStore } from '@/stores/cart'
 
 import routeNames from './routeNames'
 
-import detectLocale from '@/utils/localeHelpers/detectLocale'
+import detectLocale from '@/utils/locale/detectLocale'
 import { i18nMeta } from '@/config/i18n'
 import { defaultLocale } from '@/config/i18n'
 

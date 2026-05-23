@@ -107,13 +107,13 @@
 import { computed } from 'vue'
 
 import apiConfig from '@/config/api'
-import debounce from '@/utils/debounce'
+import debounce from '@/utils/common/debounce'
 import slugify from '@sindresorhus/slugify'
-import { makeKeyFromCartItem } from '@/utils/cartHelpers/cartHelpers'
+import { makeKeyFromCartItem } from '@/utils/cart/cartIdentity'
 
 import { useI18n } from 'vue-i18n'
 
-import InputNumber from '@/components/ui/InputNumber.vue'
+import InputNumber from '@/components/ui/inputs/InputNumber.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import ButtonLink from '@/components/ui/buttons/ButtonLink.vue'
 import routeNames from '@/router/routeNames'

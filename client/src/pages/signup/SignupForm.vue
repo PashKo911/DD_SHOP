@@ -124,7 +124,7 @@ import { onBeforeRouteLeave } from 'vue-router'
 
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 import { object } from 'yup'
-import { mapServerErrorKeys } from '@/utils/errorHelpers/mapServerErrorKeys'
+import { mapServerErrorKeys } from '@/utils/errors/mapServerErrorKeys'
 
 import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth'
@@ -135,10 +135,10 @@ import authSchema from '../../schemas/auth'
 
 import { Form } from '@primevue/forms'
 import Button from '@/components/ui/buttons/Button.vue'
-import Message from '@/components/ui/Message.vue'
-import Password from '@/components/ui/Password.vue'
-import ContinueWithGoogleButton from '@/components/formControls/ContinueWithGoogleButton.vue'
-import InputText from '@/components/ui/InputText.vue'
+import Message from '@/components/ui/feedback/Message.vue'
+import Password from '@/components/ui/inputs/Password.vue'
+import ContinueWithGoogleButton from '@/components/features/auth/ContinueWithGoogleButton.vue'
+import InputText from '@/components/ui/inputs/InputText.vue'
 import routeNames from '@/router/routeNames'
 
 const { t, tm } = useI18n()

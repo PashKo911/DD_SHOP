@@ -6,9 +6,9 @@ import { useCartStore } from './cart'
 
 import apiClient, { setOnLogout } from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
-import serverErrorsFormatter from '@/utils/errorHelpers/serverErrorsFormatter'
+import serverErrorsFormatter from '@/utils/errors/serverErrorsFormatter'
 import supportedAuthErrorCodes from '@/constants/authErrorCodes'
-import { clearTokens, setTokens } from '@/utils/token'
+import { clearTokens, setTokens } from '@/utils/auth/token'
 
 export const useAuthStore = defineStore('auth', () => {
 	const generalStore = useGeneralStore()

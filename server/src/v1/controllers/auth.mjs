@@ -268,6 +268,8 @@ class AuthController {
 
 			const tokens = await rotateRefreshToken(refreshToken, req)
 
+			console.log(tokens, 'tokens')
+
 			if (!tokens) {
 				clearRefreshTokenCookie(res)
 				return next(

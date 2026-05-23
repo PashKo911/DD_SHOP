@@ -142,13 +142,13 @@ import shopConstants from '@/constants/shop'
 
 import ShopFilter from './ShopFilter.vue'
 import ShopList from './ShopList.vue'
-import Paginator from '@/components/paginator/Paginator.vue'
+import Paginator from '@/components/ui/navigation/Paginator.vue'
 import SelectButton from '@/components/ui/buttons/SelectButton.vue'
-import Select from '@/components/ui/Select.vue'
+import Select from '@/components/ui/inputs/Select.vue'
 import ShopChipsGroup from './ShopChipsGroup.vue'
-import ProgressBar from '@/components/ui/ProgressBar.vue'
+import ProgressBar from '@/components/ui/feedback/ProgressBar.vue'
 import Button from '@/components/ui/buttons/Button.vue'
-import Backdrop from '@/components/ui/Backdrop.vue'
+import Backdrop from '@/components/ui/overlays/Backdrop.vue'
 import FilterIcon from '@/components/icons/FilterIcon.vue'
 //========================================================================================================================================================
 

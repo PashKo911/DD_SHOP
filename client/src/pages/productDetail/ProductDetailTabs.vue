@@ -38,13 +38,13 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import Tabs from '@/components/tab/Tabs.vue'
-import TabList from '@/components/tab/TabList.vue'
-import Tab from '@/components/tab/Tab.vue'
-import TabPanels from '@/components/tab/TabPanels.vue'
-import TabPanel from '@/components/tab/TabPanel.vue'
-import ReviewCard from '@/components/cards/reviewCard/ReviewCard.vue'
-import ReviewCardSkeleton from '@/components/cards/reviewCard/ReviewCardSkeleton.vue'
+import Tabs from '@/components/ui/tab/Tabs.vue'
+import TabList from '@/components/ui/tab/TabList.vue'
+import Tab from '@/components/ui/tab/Tab.vue'
+import TabPanels from '@/components/ui/tab/TabPanels.vue'
+import TabPanel from '@/components/ui/tab/TabPanel.vue'
+import ReviewCard from '@/components/shared/cards/review/ReviewCard.vue'
+import ReviewCardSkeleton from '@/components/shared/cards/review/ReviewCardSkeleton.vue'
 import Faqs from '@/components/partials/faqs/Faqs.vue'
 
 const { t } = useI18n()

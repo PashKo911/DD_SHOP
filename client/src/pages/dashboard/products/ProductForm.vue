@@ -262,11 +262,11 @@ import { yupResolver } from '@primevue/forms/resolvers/yup'
 
 import { object, string } from 'yup'
 
-import InputText from '@/components/ui/InputText.vue'
-import Textarea from '@/components/ui/Textarea.vue'
-import Select from '@/components/ui/Select.vue'
+import InputText from '@/components/ui/inputs/InputText.vue'
+import Textarea from '@/components/ui/inputs/Textarea.vue'
+import Select from '@/components/ui/inputs/Select.vue'
 import Button from '@/components/ui/buttons/Button.vue'
-import Message from '@/components/ui/Message.vue'
+import Message from '@/components/ui/feedback/Message.vue'
 import ProductVariantEditor from './ProductVariantEditor.vue'
 import SecondaryButton from '@/components/ui/buttons/SecondaryButton.vue'
 

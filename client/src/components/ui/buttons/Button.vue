@@ -16,7 +16,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { ptViewMerge } from '@/utils/volt'
+import { ptViewMerge } from '@/utils/ui/volt'
 import SpinnerIcon from '@/components/icons/SpinnerIcon.vue'
 
 import Button from 'primevue/button'

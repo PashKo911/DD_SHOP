@@ -22,14 +22,14 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from 'vue'
+import { computed } from 'vue'
 
 import { useMediaQuery } from '@/composables/useMediaQuery'
 import { useI18n } from 'vue-i18n'
 
-import EmptyList from '@/components/dataTable/EmptyList.vue'
-import ProductCard from '@/components/cards/productCard/ProductCard.vue'
-import ProductCardSkeleton from '@/components/cards/productCard/ProductCardSkeleton.vue'
+import EmptyList from '@/components/shared/dataTable/EmptyList.vue'
+import ProductCard from '@/components/shared/cards/product/ProductCard.vue'
+import ProductCardSkeleton from '@/components/shared/cards/product/ProductCardSkeleton.vue'
 
 const props = defineProps({
 	items: {

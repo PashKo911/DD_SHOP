@@ -252,10 +252,10 @@
 import { computed, useId } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import Select from '@/components/ui/Select.vue'
-import InputNumber from '@/components/ui/InputNumber.vue'
+import Select from '@/components/ui/inputs/Select.vue'
+import InputNumber from '@/components/ui/inputs/InputNumber.vue'
 import Button from '@/components/ui/buttons/Button.vue'
-import RadioGroup from '@/components/ui/RadioGroup.vue'
+import RadioGroup from '@/components/ui/inputs/RadioGroup.vue'
 import SecondaryButton from '@/components/ui/buttons/SecondaryButton.vue'
 
 const props = defineProps({

@@ -58,8 +58,8 @@ import { useCartStore } from '@/stores/cart'
 
 import { i18nMeta } from '@/config/i18n'
 
-import SliderThumb from '@/components/sliders/sliderThumb/SliderThumb.vue'
-import SliderBase from '@/components/sliders/SliderBase.vue'
+import SliderThumb from '@/components/shared/sliders/sliderThumb/SliderThumb.vue'
+import SliderBase from '@/components/shared/sliders/base/SliderBase.vue'
 import ProductDetailDescription from './productDetailDescription/ProductDetailDescription.vue'
 import ProductDetailDescriptionSkeleton from './productDetailDescription/ProductDetailDescriptionSkeleton.vue'
 import ProductDetailTabs from './ProductDetailTabs.vue'

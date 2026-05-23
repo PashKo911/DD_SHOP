@@ -7,7 +7,7 @@ import { useServerWakeState } from '@/composables/useServerWakeState'
 import routeNames from '@/router/routeNames'
 import apiConfig from './api'
 
-import { getAccessToken, setTokens, clearTokens } from '@/utils/token'
+import { getAccessToken, setTokens, clearTokens } from '@/utils/auth/token'
 import apiEndpoints from '@/api/apiEndpoints'
 import { errorCodes } from '@/constants/errorCodes'
 

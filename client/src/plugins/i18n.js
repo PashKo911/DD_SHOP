@@ -1,6 +1,6 @@
 import { createI18n } from 'vue-i18n'
 import router from '@/router'
-import detectLocale from '@/utils/localeHelpers/detectLocale'
+import detectLocale from '@/utils/locale/detectLocale'
 import { i18nConfig } from '@/config/i18n'
 import { useCommonStore } from '@/stores/common'
 

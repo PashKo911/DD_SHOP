@@ -1,13 +1,14 @@
 import { ref, computed } from 'vue'
+import { defineStore, storeToRefs } from 'pinia'
+
 import { useAuthStore } from './auth'
 import { useGeneralStore } from './general'
 import apiClient from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
-import { defineStore, storeToRefs } from 'pinia'
 import {
 	compareCartItems,
 	syncProductsQuantity,
-} from '@/utils/cartHelpers/cartHelpers'
+} from '@/utils/cart/cartIdentity'
 import shopConstants from '@/constants/shop'
 
 export const useCartStore = defineStore('cart', () => {

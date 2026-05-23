@@ -92,11 +92,11 @@ import { useWatcherAbortController } from '@/composables/useWatcherAbortControll
 import specialOfferItems from '@/data/specialOfferItems'
 import fashionPartners from '@/data/fashionPartners'
 
-import ReviewCard from '@/components/cards/reviewCard/ReviewCard.vue'
-import ReviewCardSkeleton from '@/components/cards/reviewCard/ReviewCardSkeleton.vue'
-import SliderBase from '@/components/sliders/SliderBase.vue'
+import ReviewCard from '@/components/shared/cards/review/ReviewCard.vue'
+import ReviewCardSkeleton from '@/components/shared/cards/review/ReviewCardSkeleton.vue'
+import SliderBase from '@/components/shared/sliders/base/SliderBase.vue'
 import HomeHeroSection from './HomeHeroSection.vue'
-import SliderSingle from '@/components/sliders/SliderSingle.vue'
+import SliderSingle from '@/components/shared/sliders/single/SliderSingle.vue'
 import HomeDressStyleSection from './HomeDressStyleSection.vue'
 
 const { t, locale } = useI18n()

@@ -6,7 +6,7 @@ import { useFilterStore } from './filter'
 
 import apiClient from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
-import applyColorFilterToProducts from '@/utils/productsHelpers/applyColorFilterToProducts'
+import applyColorFilterToProducts from '@/utils/product/applyColorFilterToProducts'
 import { queryPresets } from '@/constants/queryPresets'
 
 export const useProductsStore = defineStore('products', () => {

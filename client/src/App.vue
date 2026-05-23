@@ -9,7 +9,7 @@
 import { useServerWakeState } from './composables/useServerWakeState'
 
 import MainLayout from './components/layouts/MainLayout.vue'
-import Loader from './components/loader/Loader.vue'
+import Loader from './components/ui/feedback/Loader.vue'
 
 const { isServerWakeVisible } = useServerWakeState()
 </script>

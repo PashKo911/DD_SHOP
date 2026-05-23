@@ -6,5 +6,5 @@
 </template>
 
 <script setup>
-import BreadcrumbWrapper from '@/components/breadcrumb/BreadcrumbWrapper.vue'
+import BreadcrumbWrapper from '@/components/ui/navigation/breadcrumb/BreadcrumbWrapper.vue'
 </script>

@@ -12,20 +12,20 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
-
-import { useRouter, useRoute } from 'vue-router'
-import { useCommonStore } from '@/stores/common'
 import { useHead } from '@vueuse/head'
+import { useRouter, useRoute } from 'vue-router'
+
+import { useCommonStore } from '@/stores/common'
 import { useStorage } from '@/composables/useStorage'
 
 import { i18nMeta } from '@/config/i18n'
-import getPathForLocale from '@/utils/localeHelpers/getPathForLocale'
+import getPathForLocale from '@/utils/locale/getPathForLocale'
 
-import HeaderMenu from '@/components/partials/header/HeaderMenu.vue'
-import AppFooter from '@/components/partials/footer/AppFooter.vue'
-import Toast from '@/components/ui/Toast.vue'
-import SubscribeSection from '@/components/partials/subscribeSection/SubscribeSection.vue'
-import SeparatorBase from '@/components/separators/SeparatorBase.vue'
+import HeaderMenu from '@/components/sections/header/HeaderMenu.vue'
+import AppFooter from '@/components/sections/footer/AppFooter.vue'
+import Toast from '@/components/ui/feedback/Toast.vue'
+import SubscribeSection from '@/components/sections/subscribeSection/SubscribeSection.vue'
+import SeparatorBase from '@/components/ui/separators/SeparatorBase.vue'
 
 const router = useRouter()
 const route = useRoute()

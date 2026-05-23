@@ -9,7 +9,7 @@
 <script setup>
 import SelectButton from 'primevue/selectbutton'
 import { computed } from 'vue'
-import { ptViewMerge } from '@/utils/volt'
+import { ptViewMerge } from '@/utils/ui/volt'
 
 const ptOptions = computed(() => ({ mergeProps: ptViewMerge }))
 

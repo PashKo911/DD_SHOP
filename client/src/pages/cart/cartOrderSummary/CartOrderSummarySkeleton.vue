@@ -11,5 +11,5 @@
 </template>
 
 <script setup>
-import Skeleton from '@/components/skeleton/Skeleton.vue'
+import Skeleton from '@/components/ui/feedback/Skeleton.vue'
 </script>
