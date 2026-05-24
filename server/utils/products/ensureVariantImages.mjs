@@ -1,3 +1,5 @@
+import { createValidationError } from '../../validators/productValidator.mjs'
+
 /**
  * Checks that all variants have images.
  *

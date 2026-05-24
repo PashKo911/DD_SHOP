@@ -4,7 +4,7 @@ import { errorCodes } from '../constants/errorCodes.mjs'
 
 const isMongoId = (value) => mongoose.Types.ObjectId.isValid(value)
 
-const createValidationError = (details) => {
+export const createValidationError = (details) => {
 	throw new HttpError(400, 'Incorrect product data', {
 		code: errorCodes.VALIDATION_ERROR,
 		details,

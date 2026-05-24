@@ -10,8 +10,9 @@ import { useAuthStore } from '@/stores/auth'
 import { useCartStore } from '@/stores/cart'
 
 import routeNames from './routeNames'
+import { userRoles } from '@/constants/roles'
+import { canAccessRoute } from '@/utils/routing/canAccessRoute'
 
-import detectLocale from '@/utils/locale/detectLocale'
 import { i18nMeta } from '@/config/i18n'
 import { defaultLocale } from '@/config/i18n'
 
@@ -89,13 +90,17 @@ router.beforeEach((to) => {
 		return true
 	}
 
+	if (to.meta.guestOnly && authStore.isAuthenticated) {
+		return { name: routeNames.HOME }
+	}
+
 	if (to.meta.requiredAuth && !authStore.isAuthenticated) {
 		return { name: routeNames.SIGNIN }
 	}
 
-	if (to.meta.guestOnly && authStore.isAuthenticated) {
-		return { name: routeNames.HOME }
-	}
+	// if (!canAccessRoute(to, authStore.user)) {
+	// 	return { name: routeNames.HOME }
+	// }
 
 	return true
 })

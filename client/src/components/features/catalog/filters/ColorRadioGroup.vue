@@ -5,7 +5,7 @@
 		:multiple="multiple"
 		:aria-label="t('accessibility.colorRadioGroup.title')"
 		:group-class="`flex flex-wrap ${groupClassBySize}`"
-		label-class="relative rounded-full outline-1 outline-offset-2 outline-transparent group focus-visible:outline-primary transition-colors"
+		label-class="relative rounded-full outline-1 outline-offset-2 border border-border-color outline-transparent group focus-visible:outline-primary transition-colors"
 	>
 		<template #item="{ item, checked }">
 			<span
@@ -27,7 +27,7 @@
 					<path
 						ref="checkPath"
 						d="M1 5 L6 10 L15 1"
-						stroke="white"
+						:stroke="item.value === '#ffffff' ? '#000' : '#fff'"
 						stroke-width="2"
 						stroke-linecap="round"
 						stroke-linejoin="round"

@@ -44,7 +44,7 @@
 						name: routeNames.PRODUCT_DETAIL,
 						params: routeParams,
 					}"
-					class="font-heading focus-visible:outline-primary hover:decoration-primary line-clamp-2 w-max rounded-sm text-[max(min(9cqw,_1.625rem),1rem)] leading-tight font-bold underline decoration-transparent outline-1 outline-transparent transition-colors duration-300"
+					class="font-heading focus-visible:outline-primary hover:decoration-primary line-clamp-1 rounded-sm text-[max(min(9cqw,_1.625rem),1rem)] leading-tight font-bold underline decoration-transparent outline-1 outline-transparent transition-colors duration-300"
 				>
 					{{ data.title }}
 				</router-link>

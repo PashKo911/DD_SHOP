@@ -68,6 +68,7 @@
 		<template #item="{ item, props }">
 			<component
 				:is="item.routeName ? 'RouterLink' : 'button'"
+				v-if="item.isVisible"
 				v-bind="{
 					...props.action,
 					...(item.routeName
@@ -83,15 +84,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import routeNames from '@/router/routeNames'
+
+import { useAuthStore } from '@/stores/auth'
 
 import Menu from '@/components/ui/navigation/Menu.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import SignInIcon from '@/components/icons/SignInIcon.vue'
 import ListIcon from '@/components/icons/ListIcon.vue'
 import LogOutIcon from '@/components/icons/LogOutIcon.vue'
+import { storeToRefs } from 'pinia'
+import { userRoles } from '@/constants/roles'
 
 const props = defineProps({
 	userData: {
@@ -103,6 +108,15 @@ const props = defineProps({
 const emit = defineEmits(['signout'])
 
 const { t } = useI18n()
+const authStore = useAuthStore()
+
+const { userRole } = storeToRefs(authStore)
+
+const userHasPermissions = computed(
+	() =>
+		userRole.value === userRoles.admin || userRole.value === userRoles.manager,
+)
+
 const menu = ref()
 
 const userMenuItems = [
@@ -113,21 +127,25 @@ const userMenuItems = [
 		id: 1,
 		label: 'partials.userMenu.info',
 		routeName: routeNames.HOME,
+		isVisible: true,
 		icon: SignInIcon,
 	},
 	{
 		id: 2,
 		label: 'partials.userMenu.dashboard',
 		routeName: routeNames.dashboard,
+		isVisible: userHasPermissions.value,
 		icon: ListIcon,
 	},
 	{
 		separator: true,
+		isVisible: true,
 	},
 	{
 		id: 3,
 		label: 'buttons.signout',
 		routeName: null,
+		isVisible: true,
 		icon: LogOutIcon,
 		command: () => {
 			emit('signout')

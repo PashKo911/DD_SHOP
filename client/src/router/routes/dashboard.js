@@ -1,4 +1,5 @@
 import routeNames from '../routeNames'
+import { userRoles } from '@/constants/roles'
 
 export default [
 	{
@@ -9,30 +10,43 @@ export default [
 		meta: {
 			useInMenu: false,
 			requiredAuth: true,
+			roles: [userRoles.manager, userRoles.admin],
 		},
 		children: [
 			{
 				path: 'users',
 				name: routeNames.dashboardUsers,
 				component: () => import('@/pages/dashboard/users/DashboardUsers.vue'),
+				meta: {
+					roles: [userRoles.manager, userRoles.admin],
+				},
 			},
 			{
 				path: 'products',
 				name: routeNames.dashboardProducts,
 				component: () =>
 					import('@/pages/dashboard/products/DashboardProducts.vue'),
+				meta: {
+					roles: [userRoles.manager, userRoles.admin],
+				},
 			},
 			{
 				path: 'products/create',
 				name: routeNames.dashboardProductCreate,
 				component: () =>
 					import('@/pages/dashboard/products/ProductFormPage.vue'),
+				meta: {
+					roles: [userRoles.manager, userRoles.admin],
+				},
 			},
 			{
 				path: 'products/:id/edit',
 				name: routeNames.dashboardProductEdit,
 				component: () =>
 					import('@/pages/dashboard/products/ProductFormPage.vue'),
+				meta: {
+					roles: [userRoles.manager, userRoles.admin],
+				},
 			},
 		],
 	},

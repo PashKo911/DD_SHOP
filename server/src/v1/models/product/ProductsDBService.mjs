@@ -29,7 +29,6 @@ class ProductsDBService extends MongooseCRUDManager {
 				const res = formatProductForResponse(doc, language, rate)
 				return res
 			})
-
 			return { documents: localized, count }
 		} catch (err) {
 			if (err instanceof HttpError) throw err
@@ -156,18 +155,29 @@ class ProductsDBService extends MongooseCRUDManager {
 				{
 					$project: {
 						_id: 0,
-						minPrice: { $multiply: ['$minPrice', rate] },
-						maxPrice: { $multiply: ['$maxPrice', rate] },
+						minPrice: {
+							$toDouble: {
+								$multiply: ['$minPrice', rate],
+							},
+						},
+						maxPrice: {
+							$toDouble: {
+								$multiply: ['$maxPrice', rate],
+							},
+						},
 					},
 				},
 			])
 
 			if (!result) {
-				throw new HttpError(404, 'Price range not available', { code: errorCodes.NOT_FOUND })
+				console.error('Price range not available')
+				return []
 			}
+
 			return [result.minPrice, result.maxPrice]
 		} catch (err) {
 			if (err instanceof HttpError) throw err
+
 			throw new HttpError(500, 'Failed to retrieve price range', {
 				code: errorCodes.DATABASE_ERROR,
 				cause: err,

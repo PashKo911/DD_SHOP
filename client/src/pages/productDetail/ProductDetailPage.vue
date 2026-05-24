@@ -63,7 +63,7 @@ import SliderBase from '@/components/shared/sliders/base/SliderBase.vue'
 import ProductDetailDescription from './productDetailDescription/ProductDetailDescription.vue'
 import ProductDetailDescriptionSkeleton from './productDetailDescription/ProductDetailDescriptionSkeleton.vue'
 import ProductDetailTabs from './ProductDetailTabs.vue'
-import SliderThumbSkeleton from '@/components/sliders/sliderThumb/SliderThumbSkeleton.vue'
+import SliderThumbSkeleton from '@/components/shared/sliders/sliderThumb/SliderThumbSkeleton.vue'
 import { useWatcherAbortController } from '@/composables/useWatcherAbortController'
 
 const props = defineProps({

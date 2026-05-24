@@ -3,11 +3,11 @@
     "$oid": "676bff288a281b494324617b"
   },
   "label": {
-    "en": "purple",
-    "uk": "фіолетовий"
+    "en": "deep purple",
+    "uk": "темно-фіолетовий"
   },
-  "value": "#410A56",
-  "slug": "fioletovyi"
+  "value": "#4B2A5A",
+  "slug": "temno-fioletovyi"
 },
 {
   "_id": {
@@ -22,89 +22,89 @@
 },
 {
   "_id": {
-    "$oid": "676bff288a281b494324617d"
+    "$oid": "68284fba65b546018073c4fd"
   },
   "label": {
-    "en": "gray",
-    "uk": "сірий"
+    "en": "dusty blue",
+    "uk": "приглушений блакитний"
   },
-  "value": "#BEB8B8",
-  "slug": "siryi"
+  "value": "#7FA7B8",
+  "slug": "pryhlushenyi-blakytnyi"
 },
 {
   "_id": {
     "$oid": "676bff288a281b494324617e"
   },
   "label": {
-    "en": "pink",
-    "uk": "рожевий"
+    "en": "dusty rose",
+    "uk": "пильна троянда"
   },
-  "value": "#C60896",
-  "slug": "rozhevyi"
-},
-{
-  "_id": {
-    "$oid": "676bff288a281b494324617f"
-  },
-  "label": {
-    "en": "red",
-    "uk": "червоний"
-  },
-  "value": "#F30004",
-  "slug": "chervonyi"
-},
-{
-  "_id": {
-    "$oid": "676bff288a281b4943246180"
-  },
-  "label": {
-    "en": "golden",
-    "uk": "золотий"
-  },
-  "value": "#E4B003",
-  "slug": "zolotyi"
-},
-{
-  "_id": {
-    "$oid": "6783f65101747c6d5349b9e4"
-  },
-  "label": {
-    "en": "yellow",
-    "uk": "жовтий"
-  },
-  "value": "#CFDD00",
-  "slug": "zhovtyi"
-},
-{
-  "_id": {
-    "$oid": "6783f90201747c6d5349b9e5"
-  },
-  "label": {
-    "en": "green",
-    "uk": "зелений"
-  },
-  "value": "#80DB00",
-  "slug": "zelenyi"
-},
-{
-  "_id": {
-    "$oid": "68284fba65b546018073c4fd"
-  },
-  "label": {
-    "en": "sky blue",
-    "uk": "голубий"
-  },
-  "value": "#05EEFF",
-  "slug": "holubyi"
+  "value": "#C08A9A",
+  "slug": "pylna-troianda"
 },
 {
   "_id": {
     "$oid": "68284ffb65b546018073c4fe"
   },
   "label": {
-    "en": "blue",
-    "uk": "синій"
+    "en": "navy blue",
+    "uk": "темно-синій"
   },
-  "value": "#0041BB",
-  "slug": "synii"
+  "value": "#1F3A5F",
+  "slug": "temno-synii"
+},
+{
+  "_id": {
+    "$oid": "676bff288a281b494324617d"
+  },
+  "label": {
+    "en": "warm gray",
+    "uk": "теплий сірий"
+  },
+  "value": "#A9A39C",
+  "slug": "teplyi-siryi"
+},
+{
+  "_id": {
+    "$oid": "676bff288a281b4943246180"
+  },
+  "label": {
+    "en": "beige",
+    "uk": "бежевий"
+  },
+  "value": "#D8C3A5",
+  "slug": "bezhevyi"
+},
+{
+  "_id": {
+    "$oid": "6783f65101747c6d5349b9e4"
+  },
+  "label": {
+    "en": "mustard",
+    "uk": "гірчичний"
+  },
+  "value": "#C2A23A",
+  "slug": "hirchychyi"
+},
+{
+  "_id": {
+    "$oid": "6783f90201747c6d5349b9e5"
+  },
+  "label": {
+    "en": "khaki",
+    "uk": "хакі"
+  },
+  "value": "#78866B",
+  "slug": "khaki"
+},
+{
+  "_id": {
+    "$oid": "6a1176d94eeeef9a03d2f749"
+  },
+  "label": {
+    "en": "white",
+    "uk": "білий"
+  },
+  "value": "#FFFFFF",
+  "slug": "bilyi"
 }]

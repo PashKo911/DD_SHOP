@@ -8,32 +8,39 @@ import PrimeVue from 'primevue/config'
 import StyleClass from 'primevue/styleclass'
 import lockScroll from './directives/lockScroll'
 import ToastService from 'primevue/toastservice'
-import { initI18n, i18n } from './plugins/i18n'
 
 import App from './App.vue'
 import router from './router'
+
 import { useAuthStore } from './stores/auth'
+import { initI18n } from './plugins/i18n'
 
-const app = createApp(App)
-const head = createHead()
-const pinia = createPinia()
+async function bootstrap() {
+	const app = createApp(App)
+	const pinia = createPinia()
 
-app.use(pinia)
-app.use(router)
+	app.use(pinia)
 
-function bootstrapApp() {
+	const authStore = useAuthStore()
+	await authStore.initialize()
+
+	app.use(router)
+	await router.isReady()
+
+	const locale = router.currentRoute.value.params.locale || 'en'
+
+	const i18n = initI18n(locale)
 	app.use(i18n)
-	app.use(PrimeVue, { unstyled: true })
+
+	const head = createHead()
 	app.use(head)
+	app.use(PrimeVue, { unstyled: true })
 	app.use(ToastService)
+
 	app.directive('lockScroll', lockScroll)
 	app.directive('styleclass', StyleClass)
+
 	app.mount('#app')
 }
 
-initI18n()
-	.then(async () => {
-		await useAuthStore().initialize()
-		bootstrapApp()
-	})
-	.catch((err) => console.error('App init failed:', err))
+bootstrap().catch(console.error)

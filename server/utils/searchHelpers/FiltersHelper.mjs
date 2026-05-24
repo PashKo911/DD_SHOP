@@ -44,11 +44,13 @@ class FiltersHelper {
 		actions.forEach((action) => {
 			switch (action.type) {
 				case 'sort':
-					query.sort({ [action.field]: action.order })
+					query.sort(action.value)
 					break
+
 				case 'skip':
 					query.skip(action.value)
 					break
+
 				case 'limit':
 					query.limit(action.value)
 					break
@@ -57,6 +59,7 @@ class FiltersHelper {
 					console.warn(`Unsupported action type: ${action.type}`)
 			}
 		})
+
 		return query
 	}
 

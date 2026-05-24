@@ -106,7 +106,7 @@ export const useAdminProductsStore = defineStore('adminProducts', () => {
 			operationName: queryPresets.updateProduct.name,
 			operation: async () => {
 				const response = await apiClient.put(
-					apiEndpoints.admin.products.updateProduct(id),
+					apiEndpoints.admin.updateProduct(id),
 					formData,
 					{
 						headers: {

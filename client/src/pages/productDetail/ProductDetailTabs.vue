@@ -45,7 +45,7 @@ import TabPanels from '@/components/ui/tab/TabPanels.vue'
 import TabPanel from '@/components/ui/tab/TabPanel.vue'
 import ReviewCard from '@/components/shared/cards/review/ReviewCard.vue'
 import ReviewCardSkeleton from '@/components/shared/cards/review/ReviewCardSkeleton.vue'
-import Faqs from '@/components/partials/faqs/Faqs.vue'
+import Faqs from '@/components/sections/faqs/Faqs.vue'
 
 const { t } = useI18n()
 const props = defineProps({

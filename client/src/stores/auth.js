@@ -4,6 +4,7 @@ import { ref, computed } from 'vue'
 import { useGeneralStore } from './general'
 import { useCartStore } from './cart'
 
+import { userRoles } from '@/constants/roles'
 import apiClient, { setOnLogout } from '@/config/axios'
 import apiEndpoints from '@/api/apiEndpoints'
 import serverErrorsFormatter from '@/utils/errors/serverErrorsFormatter'
@@ -18,10 +19,9 @@ export const useAuthStore = defineStore('auth', () => {
 	const user = ref(null)
 	const isAuthResolved = ref(false)
 
-	let initializePromise = null
 	//========================================================================================================================================================
 
-	const currentUserPermissions = computed(() => user.value?.permissions || {})
+	const userRole = computed(() => user.value?.type?.name || userRoles.user)
 
 	const isAuthenticated = computed(() => Boolean(user.value))
 
@@ -158,7 +158,7 @@ export const useAuthStore = defineStore('auth', () => {
 	return {
 		user,
 		isAuthResolved,
-		currentUserPermissions,
+		userRole,
 		isAuthenticated,
 		signupServerValidationErrors,
 		signinServerValidationErrors,

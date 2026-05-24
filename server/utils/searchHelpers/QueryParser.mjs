@@ -73,13 +73,30 @@ class QueryParser {
 
 	static actionsParser(query) {
 		const actions = []
+
 		if (query.sort) {
 			const [field, order] = query.sort.split(':')
-			actions.push({ type: 'sort', field, order: order === 'desc' ? -1 : 1 })
+
+			actions.push({
+				type: 'sort',
+				value: {
+					[field]: order === 'desc' ? -1 : 1,
+					createdAt: -1,
+					_id: -1,
+				},
+			})
 		}
+
 		if (query.page && query.perPage) {
-			actions.push({ type: 'skip', value: query.page * query.perPage })
-			actions.push({ type: 'limit', value: parseInt(query.perPage) })
+			actions.push({
+				type: 'skip',
+				value: Number(query.page) * Number(query.perPage),
+			})
+
+			actions.push({
+				type: 'limit',
+				value: parseInt(query.perPage),
+			})
 		}
 
 		return actions

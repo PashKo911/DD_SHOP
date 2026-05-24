@@ -71,32 +71,26 @@ const isSaving = computed(() =>
 		: isCreateProductLoading.value,
 )
 
-const createEmptyVariant = () => ({
+const createEmptyVariant = (allSizes = []) => ({
 	localId: crypto.randomUUID(),
 	_id: null,
 	color: '',
 	price: null,
 	oldPrice: null,
-	count: 0,
-	rating: null,
-	sizes: [],
+	count: 50,
+	rating: 5,
+	sizes: allSizes.map((size) => size._id || size),
 	images: [],
 	newImages: [],
 	newImagePreviews: [],
 })
 
 const createEmptyFormState = () => ({
-	title: {
-		en: '',
-		uk: '',
-	},
-	description: {
-		en: '',
-		uk: '',
-	},
+	title: { en: '', uk: '' },
+	description: { en: '', uk: '' },
 	category: '',
 	style: '',
-	variants: [createEmptyVariant()],
+	variants: [createEmptyVariant(productOptionsValue.value?.sizes || [])],
 })
 
 const form = reactive(createEmptyFormState())

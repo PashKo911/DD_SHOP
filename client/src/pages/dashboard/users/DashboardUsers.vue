@@ -27,6 +27,7 @@
 						isUserTypesLoading ||
 						isSetUserTypeLoading(slotProps?.data?._id).value
 					"
+					v-if="userHasPermissions"
 					option-label="name"
 					option-value="_id"
 					checkmark
@@ -35,9 +36,15 @@
 					:default-value="slotProps?.data?.type?._id"
 					@change="onUserTypeChange(slotProps.data, $event)"
 				/>
+				<template v-else>
+					{{ slotProps?.data?.type?.name }}
+				</template>
 			</template>
 		</Column>
-		<Column :header="t('pages.dashboard.users.tableTitles.actions')">
+		<Column
+			v-if="userHasPermissions"
+			:header="t('pages.dashboard.users.tableTitles.actions')"
+		>
 			<template #body="slotProps">
 				<Button
 					severity="info"
@@ -60,10 +67,11 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 
 import { useUsersStore } from '@/stores/users'
+import { useAuthStore } from '@/stores/auth'
 import { useI18n } from 'vue-i18n'
 
 import Column from 'primevue/column'
@@ -72,11 +80,16 @@ import EmptyList from '@/components/shared/dataTable/EmptyList.vue'
 import Select from '@/components/ui/inputs/Select.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import DeleteIcon from '@/components/icons/DeleteIcon.vue'
+import { userRoles } from '@/constants/roles'
 
 const usersStore = useUsersStore()
+const authStore = useAuthStore()
+
 const { t } = useI18n()
 const { usersValue, isUsersLoading, isUserTypesLoading, userTypesValue } =
 	storeToRefs(usersStore)
+
+const { userRole } = storeToRefs(authStore)
 
 const {
 	fetchUsers,
@@ -87,6 +100,12 @@ const {
 	getUserTypes,
 	deleteUser,
 } = usersStore
+//========================================================================================================================================================
+const userHasPermissions = computed(() => {
+	console.log(userRole.value)
+	console.log(userRoles.admin)
+	return userRole.value === userRoles.admin
+})
 
 //========================================================================================================================================================
 const onUserTypeChange = async (user, { value }) => {

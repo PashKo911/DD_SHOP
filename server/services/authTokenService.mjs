@@ -47,13 +47,12 @@ export async function rotateRefreshToken(refreshToken, req) {
 	const tokenHash = hashToken(refreshToken)
 	const storedToken = await RefreshTokenDBService.findValidByHash(tokenHash)
 
-	console.log(storedToken, 'await RefreshTokenDBService.findValidByHash(tokenHash)')
 	if (!storedToken) {
 		const existingToken = await RefreshTokenDBService.findByHash(tokenHash)
 
 		if (existingToken?.revokedAt) {
-			console.log('await RefreshTokenDBService.revokeAllForUser(existingToken.userId)')
-			await RefreshTokenDBService.revokeAllForUser(existingToken.userId)
+			// await RefreshTokenDBService.revokeAllForUser(existingToken.userId)
+			throw new HttpError(401, 'Refresh token already rotated')
 		}
 
 		throw new HttpError(401, 'Invalid or expired refresh token', {

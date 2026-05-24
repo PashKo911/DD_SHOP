@@ -201,7 +201,7 @@ class ProductController {
 			const sizes = await SizeDBService.getList()
 			const styles = await DressStyleDBService.getList(language)
 			const categories = await CategoryDBService.getList({})
-			const price = await ProductsDBService.getPriceRange(rate)
+			const price = (await ProductsDBService.getPriceRange(rate)) || null
 
 			res.status(200).json({
 				success: true,

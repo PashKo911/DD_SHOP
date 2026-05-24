@@ -66,7 +66,7 @@ class AuthController {
 					_id,
 					email,
 					name,
-					type: type?.name || type,
+					type,
 				},
 				req
 			)
@@ -150,7 +150,7 @@ class AuthController {
 					_id,
 					email: e,
 					name,
-					type: type?.name || type,
+					type,
 				},
 				req
 			)
@@ -162,7 +162,7 @@ class AuthController {
 					_id,
 					email: e,
 					name,
-					type: type?.name || type,
+					type,
 				},
 			})
 		} catch (err) {
@@ -234,7 +234,7 @@ class AuthController {
 					_id,
 					email,
 					name,
-					type: type?.name || type,
+					type,
 				},
 				req
 			)
@@ -247,7 +247,7 @@ class AuthController {
 					email,
 					avatar,
 					name,
-					type: type?.name || type,
+					type,
 				},
 			})
 		} catch (err) {
@@ -267,8 +267,6 @@ class AuthController {
 			}
 
 			const tokens = await rotateRefreshToken(refreshToken, req)
-
-			console.log(tokens, 'tokens')
 
 			if (!tokens) {
 				clearRefreshTokenCookie(res)

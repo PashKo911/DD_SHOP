@@ -14,8 +14,8 @@
 			:active-chips="activeChips"
 			@reset-price="resetPrice"
 			@close-filter="filterVisibilityToggler"
-			@remove-chip="removeChip"
-			@remove-all="resetFiltersExceptCategory"
+			@remove-chip="onRemoveChip"
+			@remove-all="onRemoveAll"
 			class="lg:w-md-340-290 lg:shrink-0 lg:self-start"
 		/>
 
@@ -75,7 +75,7 @@
 				v-if="activeChips.length && isDesktop"
 				:items="activeChips"
 				@remove="onRemoveChip"
-				@remove-all="resetFiltersExceptCategory"
+				@remove-all="onRemoveAll"
 				class="mb-6"
 			/>
 			<shop-list
@@ -112,14 +112,7 @@
 </template>
 
 <script setup>
-import {
-	computed,
-	onMounted,
-	onUnmounted,
-	ref,
-	watch,
-	onWatcherCleanup,
-} from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 
 import { useI18n } from 'vue-i18n'
@@ -350,5 +343,16 @@ const onRemoveChip = (chip) => {
 		query: filterStrings.value,
 		params: { ...route.params, locale: locale.value },
 	})
+	getDefaultProducts()
+}
+
+const onRemoveAll = () => {
+	resetFiltersExceptCategory()
+	router.replace({
+		name: route.name,
+		query: filterStrings.value,
+		params: { ...route.params, locale: locale.value },
+	})
+	getDefaultProducts()
 }
 </script>

@@ -1,1131 +1,5443 @@
-[
-	{
-		"_id": {
-			"$oid": "0993493fd08a076bffd2167e"
-		},
-		"title": {
-			"en": "Classic Shirt",
-			"uk": "Класична сорочка"
-		},
-		"description": {
-			"en": "A timeless classic shirt for any occasion.",
-			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246179"
-		},
-		"categoryKey": "men",
-		"style": {
-			"$oid": "676bff378a281b4943246184"
-		},
-		"minPrice": 120,
-		"maxPrice": 125,
-		"maxRating": 4.7,
-		"defaultVariant": {
-			"$oid": "660000000000000000000101"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000101"
-				},
-				"color": {
-					"$oid": "6783f90201747c6d5349b9e5"
-				},
-				"price": 120,
-				"oldPrice": 150,
-				"count": 50,
-				"rating": 4.6,
-				"images": [
-					"/images/products/men/1.webp",
-					"/images/products/men/2.webp",
-					"/images/products/men/3.webp"
-				],
-				"sizes": [
-					"676bff418a281b4943246186",
-					"676bff418a281b4943246187",
-					"676bff418a281b4943246188",
-					"676bff418a281b4943246189",
-					"676bff418a281b494324618a",
-					"676bff418a281b494324618b",
-					"6828578465b546018073c50e",
-					"6828590965b546018073c511"
-				]
-			},
-			{
-				"_id": {
-					"$oid": "660000000000000000000102"
-				},
-				"color": {
-					"$oid": "676bff288a281b4943246180"
-				},
-				"price": 125,
-				"oldPrice": 150,
-				"count": 30,
-				"rating": 4.7,
-				"images": [
-					"/images/products/men/4.webp",
-					"/images/products/men/5.webp",
-					"/images/products/men/6.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246186"
-					},
-					{
-						"$oid": "676bff418a281b4943246187"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-10T12:00:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-10T12:00:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "716b3d2a4a0eb91c09f1796c"
-		},
-		"title": {
-			"en": "Printed T-Shirt",
-			"uk": "Футболка з принтом"
-		},
-		"description": {
-			"en": "Soft cotton T‑shirt with modern print.",
-			"uk": "М'яка бавовняна футболка з сучасним принтом."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246179"
-		},
-		"categoryKey": "men",
-		"style": {
-			"$oid": "676bff378a281b4943246182"
-		},
-		"minPrice": 80,
-		"maxPrice": 80,
-		"maxRating": 4.4,
-		"defaultVariant": {
-			"$oid": "660000000000000000000103"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000103"
-				},
-				"color": {
-					"$oid": "6783f90201747c6d5349b9e5"
-				},
-				"price": 80,
-				"oldPrice": null,
-				"count": 70,
-				"rating": 4.4,
-				"images": [
-					"/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
-					"/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b494324618a"
-					},
-					{
-						"$oid": "676bff418a281b494324618b"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-11T09:30:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-11T09:30:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "7ffbd5ef2c3843cab79ad0f3"
-		},
-		"title": {
-			"en": "Denim Jeans",
-			"uk": "Джинси"
-		},
-		"description": {
-			"en": "Comfort-fit denim jeans with stretch.",
-			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246178"
-		},
-		"categoryKey": "women",
-		"style": {
-			"$oid": "676bff378a281b4943246183"
-		},
-		"minPrice": 150,
-		"maxPrice": 155,
-		"maxRating": 4.6,
-		"defaultVariant": {
-			"$oid": "660000000000000000000104"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000104"
-				},
-				"color": {
-					"$oid": "676bff288a281b494324617d"
-				},
-				"price": 150,
-				"oldPrice": 200,
-				"count": 40,
-				"rating": 4.5,
-				"images": [
-					"/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
-					"/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b494324618a"
-					},
-					{
-						"$oid": "676bff418a281b4943246189"
-					}
-				]
-			},
-			{
-				"_id": {
-					"$oid": "660000000000000000000105"
-				},
-				"color": {
-					"$oid": "6783f65101747c6d5349b9e4"
-				},
-				"price": 155,
-				"oldPrice": 200,
-				"count": 25,
-				"rating": 4.6,
-				"images": [
-					"/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
-					"/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246189"
-					},
-					{
-						"$oid": "676bff418a281b4943246186"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-12T14:15:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-12T14:15:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "349881370265f683e95b75b8"
-		},
-		"title": {
-			"en": "Classic Shirt",
-			"uk": "Класична сорочка"
-		},
-		"description": {
-			"en": "A timeless classic shirt for any occasion.",
-			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246179"
-		},
-		"categoryKey": "men",
-		"style": {
-			"$oid": "676bff378a281b4943246184"
-		},
-		"minPrice": 120,
-		"maxPrice": 125,
-		"maxRating": 4.7,
-		"defaultVariant": {
-			"$oid": "660000000000000000000101"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000101"
-				},
-				"color": {
-					"$oid": "6783f90201747c6d5349b9e5"
-				},
-				"price": 120,
-				"oldPrice": 150,
-				"count": 50,
-				"rating": 4.6,
-				"images": [
-					"/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
-					"/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246188"
-					},
-					{
-						"$oid": "676bff418a281b4943246189"
-					}
-				]
-			},
-			{
-				"_id": {
-					"$oid": "660000000000000000000102"
-				},
-				"color": {
-					"$oid": "676bff288a281b4943246180"
-				},
-				"price": 125,
-				"oldPrice": 150,
-				"count": 30,
-				"rating": 4.7,
-				"images": [
-					"/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
-					"/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246186"
-					},
-					{
-						"$oid": "676bff418a281b4943246187"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-10T12:00:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-10T12:00:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "036c3b19e00b6ac733cdd90a"
-		},
-		"title": {
-			"en": "Printed T-Shirt",
-			"uk": "Футболка з принтом"
-		},
-		"description": {
-			"en": "Soft cotton T‑shirt with modern print.",
-			"uk": "М'яка бавовняна футболка з сучасним принтом."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246179"
-		},
-		"categoryKey": "men",
-		"style": {
-			"$oid": "676bff378a281b4943246182"
-		},
-		"minPrice": 80,
-		"maxPrice": 80,
-		"maxRating": 4.4,
-		"defaultVariant": {
-			"$oid": "660000000000000000000103"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000103"
-				},
-				"color": {
-					"$oid": "6783f90201747c6d5349b9e5"
-				},
-				"price": 80,
-				"oldPrice": null,
-				"count": 70,
-				"rating": 4.4,
-				"images": [
-					"/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
-					"/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b494324618a"
-					},
-					{
-						"$oid": "676bff418a281b494324618b"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-11T09:30:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-11T09:30:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "c70b89e7ad5ba17e8dab5f32"
-		},
-		"title": {
-			"en": "Denim Jeans",
-			"uk": "Джинси"
-		},
-		"description": {
-			"en": "Comfort-fit denim jeans with stretch.",
-			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246178"
-		},
-		"categoryKey": "women",
-		"style": {
-			"$oid": "676bff378a281b4943246183"
-		},
-		"minPrice": 150,
-		"maxPrice": 155,
-		"maxRating": 4.6,
-		"defaultVariant": {
-			"$oid": "660000000000000000000104"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000104"
-				},
-				"color": {
-					"$oid": "676bff288a281b494324617d"
-				},
-				"price": 150,
-				"oldPrice": 200,
-				"count": 40,
-				"rating": 4.5,
-				"images": [
-					"/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
-					"/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b494324618a"
-					},
-					{
-						"$oid": "676bff418a281b4943246189"
-					}
-				]
-			},
-			{
-				"_id": {
-					"$oid": "660000000000000000000105"
-				},
-				"color": {
-					"$oid": "6783f65101747c6d5349b9e4"
-				},
-				"price": 155,
-				"oldPrice": 200,
-				"count": 25,
-				"rating": 4.6,
-				"images": [
-					"/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
-					"/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246189"
-					},
-					{
-						"$oid": "676bff418a281b4943246186"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-12T14:15:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-12T14:15:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "04fca1e74471928454b62c65"
-		},
-		"title": {
-			"en": "Classic Shirt",
-			"uk": "Класична сорочка"
-		},
-		"description": {
-			"en": "A timeless classic shirt for any occasion.",
-			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246179"
-		},
-		"categoryKey": "men",
-		"style": {
-			"$oid": "676bff378a281b4943246184"
-		},
-		"minPrice": 120,
-		"maxPrice": 125,
-		"maxRating": 4.7,
-		"defaultVariant": {
-			"$oid": "660000000000000000000102"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000101"
-				},
-				"color": {
-					"$oid": "6783f90201747c6d5349b9e5"
-				},
-				"price": 120,
-				"oldPrice": 150,
-				"count": 50,
-				"rating": 4.6,
-				"images": [
-					"/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
-					"/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246188"
-					},
-					{
-						"$oid": "676bff418a281b4943246189"
-					}
-				]
-			},
-			{
-				"_id": {
-					"$oid": "660000000000000000000102"
-				},
-				"color": {
-					"$oid": "676bff288a281b4943246180"
-				},
-				"price": 125,
-				"oldPrice": 150,
-				"count": 30,
-				"rating": 4.7,
-				"images": [
-					"/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
-					"/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246186"
-					},
-					{
-						"$oid": "676bff418a281b4943246187"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-10T12:00:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-10T12:00:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "8112d2e5d39790a4a3bb815f"
-		},
-		"title": {
-			"en": "Printed T-Shirt",
-			"uk": "Футболка з принтом"
-		},
-		"description": {
-			"en": "Soft cotton T‑shirt with modern print.",
-			"uk": "М'яка бавовняна футболка з сучасним принтом."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246179"
-		},
-		"categoryKey": "men",
-		"style": {
-			"$oid": "676bff378a281b4943246182"
-		},
-		"minPrice": 80,
-		"maxPrice": 80,
-		"maxRating": 4.4,
-		"defaultVariant": {
-			"$oid": "660000000000000000000103"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000103"
-				},
-				"color": {
-					"$oid": "6783f90201747c6d5349b9e5"
-				},
-				"price": 80,
-				"oldPrice": null,
-				"count": 70,
-				"rating": 4.4,
-				"images": [
-					"/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
-					"/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b494324618a"
-					},
-					{
-						"$oid": "676bff418a281b494324618b"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-11T09:30:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-11T09:30:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "42735cd52d11f158564ded04"
-		},
-		"title": {
-			"en": "Denim Jeans",
-			"uk": "Джинси"
-		},
-		"description": {
-			"en": "Comfort-fit denim jeans with stretch.",
-			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246178"
-		},
-		"categoryKey": "women",
-		"style": {
-			"$oid": "676bff378a281b4943246183"
-		},
-		"minPrice": 150,
-		"maxPrice": 155,
-		"maxRating": 4.6,
-		"defaultVariant": {
-			"$oid": "660000000000000000000104"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000104"
-				},
-				"color": {
-					"$oid": "676bff288a281b494324617d"
-				},
-				"price": 150,
-				"oldPrice": 200,
-				"count": 40,
-				"rating": 4.5,
-				"images": [
-					"/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
-					"/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b494324618a"
-					},
-					{
-						"$oid": "676bff418a281b4943246189"
-					}
-				]
-			},
-			{
-				"_id": {
-					"$oid": "660000000000000000000105"
-				},
-				"color": {
-					"$oid": "6783f65101747c6d5349b9e4"
-				},
-				"price": 155,
-				"oldPrice": 200,
-				"count": 25,
-				"rating": 4.6,
-				"images": [
-					"/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
-					"/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246189"
-					},
-					{
-						"$oid": "676bff418a281b4943246186"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-12T14:15:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-12T14:15:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "2052cd29d890ab76f67047b0"
-		},
-		"title": {
-			"en": "Classic Shirt",
-			"uk": "Класична сорочка"
-		},
-		"description": {
-			"en": "A timeless classic shirt for any occasion.",
-			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246179"
-		},
-		"categoryKey": "men",
-		"style": {
-			"$oid": "676bff378a281b4943246184"
-		},
-		"minPrice": 120,
-		"maxPrice": 150,
-		"maxRating": 4.7,
-		"defaultVariant": {
-			"$oid": "660000000000000000000102"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000101"
-				},
-				"color": {
-					"$oid": "6783f90201747c6d5349b9e5"
-				},
-				"price": 120,
-				"oldPrice": 150,
-				"count": 50,
-				"rating": 4.6,
-				"images": [
-					"/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
-					"/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246188"
-					},
-					{
-						"$oid": "676bff418a281b4943246189"
-					}
-				]
-			},
-			{
-				"_id": {
-					"$oid": "660000000000000000000102"
-				},
-				"color": {
-					"$oid": "676bff288a281b4943246180"
-				},
-				"price": 125,
-				"oldPrice": 150,
-				"count": 30,
-				"rating": 4.7,
-				"images": [
-					"/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
-					"/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246186"
-					},
-					{
-						"$oid": "676bff418a281b4943246187"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-10T12:00:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-10T12:00:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "69d473e1ed163f5d18f5a3ba"
-		},
-		"title": {
-			"en": "Printed T-Shirt",
-			"uk": "Футболка з принтом"
-		},
-		"description": {
-			"en": "Soft cotton T‑shirt with modern print.",
-			"uk": "М'яка бавовняна футболка з сучасним принтом."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246179"
-		},
-		"categoryKey": "men",
-		"style": {
-			"$oid": "676bff378a281b4943246182"
-		},
-		"minPrice": 80,
-		"maxPrice": 80,
-		"maxRating": 4.4,
-		"defaultVariant": {
-			"$oid": "660000000000000000000103"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000103"
-				},
-				"color": {
-					"$oid": "6783f90201747c6d5349b9e5"
-				},
-				"price": 80,
-				"oldPrice": null,
-				"count": 70,
-				"rating": 4.4,
-				"images": [
-					"/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
-					"/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b494324618a"
-					},
-					{
-						"$oid": "676bff418a281b494324618b"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-11T09:30:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-11T09:30:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "b73f39e5dccb7fd8eccef5e7"
-		},
-		"title": {
-			"en": "Denim Jeans",
-			"uk": "Джинси"
-		},
-		"description": {
-			"en": "Comfort-fit denim jeans with stretch.",
-			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246178"
-		},
-		"categoryKey": "women",
-		"style": {
-			"$oid": "676bff378a281b4943246183"
-		},
-		"minPrice": 150,
-		"maxPrice": 155,
-		"maxRating": 4.6,
-		"defaultVariant": {
-			"$oid": "660000000000000000000104"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000104"
-				},
-				"color": {
-					"$oid": "676bff288a281b494324617d"
-				},
-				"price": 150,
-				"oldPrice": 200,
-				"count": 40,
-				"rating": 4.5,
-				"images": [
-					"/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
-					"/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b494324618a"
-					},
-					{
-						"$oid": "676bff418a281b4943246189"
-					}
-				]
-			},
-			{
-				"_id": {
-					"$oid": "660000000000000000000105"
-				},
-				"color": {
-					"$oid": "6783f65101747c6d5349b9e4"
-				},
-				"price": 155,
-				"oldPrice": 200,
-				"count": 25,
-				"rating": 4.6,
-				"images": [
-					"/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
-					"/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246189"
-					},
-					{
-						"$oid": "676bff418a281b4943246186"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-12T14:15:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-12T14:15:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "13e9e43313bf4ae3c543084d"
-		},
-		"title": {
-			"en": "Classic Shirt",
-			"uk": "Класична сорочка"
-		},
-		"description": {
-			"en": "A timeless classic shirt for any occasion.",
-			"uk": "Непідвладна часу класична сорочка для будь-яких випадків."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246179"
-		},
-		"categoryKey": "men",
-		"style": {
-			"$oid": "676bff378a281b4943246184"
-		},
-		"minPrice": 120,
-		"maxPrice": 125,
-		"maxRating": 4.7,
-		"defaultVariant": {
-			"$oid": "660000000000000000000101"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000101"
-				},
-				"color": {
-					"$oid": "6783f90201747c6d5349b9e5"
-				},
-				"price": 120,
-				"oldPrice": 150,
-				"count": 50,
-				"rating": 4.6,
-				"images": [
-					"/images/products/men/image-6f363001-4a63-4f3f-be09-c4bea705bb77.webp",
-					"/images/products/men/image-26a7651e-2b59-4b9e-b04c-6957b4eb76b5.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246188"
-					},
-					{
-						"$oid": "676bff418a281b4943246189"
-					}
-				]
-			},
-			{
-				"_id": {
-					"$oid": "660000000000000000000102"
-				},
-				"color": {
-					"$oid": "676bff288a281b4943246180"
-				},
-				"price": 125,
-				"oldPrice": 150,
-				"count": 30,
-				"rating": 4.7,
-				"images": [
-					"/images/products/men/image-30846968-03a4-4365-8114-ad95191b5fbc.webp",
-					"/images/products/men/image-9d86929b-8cad-4526-979f-fb712a382b19.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246186"
-					},
-					{
-						"$oid": "676bff418a281b4943246187"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-10T12:00:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-10T12:00:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "b951bf554ea739c147adabd1"
-		},
-		"title": {
-			"en": "Printed T-Shirt",
-			"uk": "Футболка з принтом"
-		},
-		"description": {
-			"en": "Soft cotton T‑shirt with modern print.",
-			"uk": "М'яка бавовняна футболка з сучасним принтом."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246179"
-		},
-		"categoryKey": "men",
-		"style": {
-			"$oid": "676bff378a281b4943246184"
-		},
-		"minPrice": 80,
-		"maxPrice": 80,
-		"maxRating": 4.4,
-		"defaultVariant": {
-			"$oid": "660000000000000000000101"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000101"
-				},
-				"color": {
-					"$oid": "6783f90201747c6d5349b9e5"
-				},
-				"price": 80,
-				"oldPrice": null,
-				"count": 70,
-				"rating": 4.4,
-				"images": [
-					"/images/products/men/image-5588c9d1-f6fe-4c87-ba15-93d04e005e5a.webp",
-					"/images/products/men/image-e3b18af2-ced0-401b-a324-426def0e1ce0.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b494324618a"
-					},
-					{
-						"$oid": "676bff418a281b494324618b"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-11T09:30:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-11T09:30:00.000Z"
-		},
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "734347133542a35047aa41a7"
-		},
-		"title": {
-			"en": "Denim Jeans",
-			"uk": "Джинси"
-		},
-		"description": {
-			"en": "Comfort-fit denim jeans with stretch.",
-			"uk": "Джинси з еластичної бавовни з комфортною посадкою."
-		},
-		"category": {
-			"$oid": "676bff1e8a281b4943246178"
-		},
-		"categoryKey": "women",
-		"style": {
-			"$oid": "676bff378a281b4943246183"
-		},
-		"minPrice": 150,
-		"maxPrice": 155,
-		"maxRating": 4.6,
-		"defaultVariant": {
-			"$oid": "660000000000000000000104"
-		},
-		"variants": [
-			{
-				"_id": {
-					"$oid": "660000000000000000000104"
-				},
-				"color": {
-					"$oid": "676bff288a281b494324617d"
-				},
-				"price": 150,
-				"oldPrice": 200,
-				"count": 40,
-				"rating": 4.5,
-				"images": [
-					"/images/products/men/image-95145be3-1c13-40a9-a2b4-94c8932a7db6.webp",
-					"/images/products/men/image-dbc9f972-1d33-4e12-8b3d-4395c7700c3e.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b494324618a"
-					},
-					{
-						"$oid": "676bff418a281b4943246189"
-					}
-				]
-			},
-			{
-				"_id": {
-					"$oid": "660000000000000000000105"
-				},
-				"color": {
-					"$oid": "6783f65101747c6d5349b9e4"
-				},
-				"price": 155,
-				"oldPrice": 200,
-				"count": 25,
-				"rating": 4.6,
-				"images": [
-					"/images/products/men/image-87d2fbc7-2555-4386-98f0-6a883afcded6.webp",
-					"/images/products/men/image-acff7a54-a7f4-480d-b796-13a12ede126d.webp"
-				],
-				"sizes": [
-					{
-						"$oid": "676bff418a281b4943246189"
-					},
-					{
-						"$oid": "676bff418a281b4943246186"
-					}
-				]
-			}
-		],
-		"createdAt": {
-			"$date": "2025-01-12T14:15:00.000Z"
-		},
-		"updatedAt": {
-			"$date": "2025-01-12T14:15:00.000Z"
-		},
-		"__v": 0
-	}
-]
+[{
+  "_id": {
+    "$oid": "6a11706cb24b2373fde0ccf8"
+  },
+  "title": {
+    "en": "Women’s Long Sleeve Top",
+    "uk": "Лонгслів жіночий"
+  },
+  "description": {
+    "en": "A long sleeve top is a stylish wardrobe essential made from soft and breathable cotton jersey fabric. The comfortable fit and versatile design make it perfect for everyday wear, layering under jackets or sweaters, and creating casual looks. An indispensable basic piece for any wardrobe.\n\n– model height: 166 cm;\n– model is wearing size “S”.",
+    "uk": "Лонгслів — стильний базовий одяг з м’якого і дихаючого бавовняного трикотажу. Комфортна посадка та універсальний дизайн роблять його ідеальним для повсякденного носіння, шарування під куртки чи светри та створення casual-образів. Незамінна базова річ у гардеробі.\n\n– зріст моделі : 166 cm;\n– розмір на моделі  “S”."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 16,
+  "maxPrice": 16,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11706cb24b2373fde0ccfa"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617c"
+      },
+      "price": {
+        "$numberDecimal": "16"
+      },
+      "oldPrice": {
+        "$numberDecimal": "21"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-dff2d92f-3f5f-4b68-9263-1cf395b6c87a.webp",
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-b6bf16ef-5666-4640-b1c4-2fab3d452049.webp",
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-97aed8eb-cd42-4bc1-a104-7faea6cc6e8e.webp",
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-dafabbc8-2313-45f5-8476-b4db4d282101.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11706cb24b2373fde0ccfa"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6783f65101747c6d5349b9e4"
+      },
+      "price": {
+        "$numberDecimal": "16"
+      },
+      "oldPrice": {
+        "$numberDecimal": "21"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-682fd367-a472-46aa-b5a8-26268be71c79.webp",
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-38de488a-1025-45e3-b83d-c74183d8c46d.webp",
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-5ac36597-3ff9-43f6-ba34-8ba0fe685d20.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11744eb24b2373fde0ce5b"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617e"
+      },
+      "price": {
+        "$numberDecimal": "16"
+      },
+      "oldPrice": {
+        "$numberDecimal": "21"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-9d65e2d1-6541-47ca-9ab0-22a6c0cf82ff.webp",
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-b3e7278d-c36f-4773-93eb-fe8cc5d4b4e6.webp",
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-0a9be5b6-c665-400e-b49f-838b44e8933c.webp",
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-c794cd84-c6a5-4f1d-819a-4e0b1441daed.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11744eb24b2373fde0ce5c"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617b"
+      },
+      "price": {
+        "$numberDecimal": "16"
+      },
+      "oldPrice": {
+        "$numberDecimal": "21"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-e6c919dc-26c7-4144-b2bc-89f44768815a.webp",
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-5fa54c0f-499f-431e-9434-90606f0f4b69.webp",
+        "/uploads/products/women/6a11706cb24b2373fde0ccf8/image-ab100e61-f699-4b06-ba3b-6abbba4e26da.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a1175c5b24b2373fde0ceb7"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T09:16:28.572Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T09:39:17.420Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6a11784cb24b2373fde0cf3a"
+  },
+  "title": {
+    "en": "Women’s Long Sleeve Top v.2",
+    "uk": "Лонгслів жіночий v.2"
+  },
+  "description": {
+    "en": "A women’s long sleeve top is a basic and stylish piece made from high-quality cotton jersey fabric. The comfortable fit and soft, breathable material make this model versatile for everyday wear, layering under sweaters or jackets. An ideal choice for a basic wardrobe and creating casual looks.\n\n– model height: 174 cm;\n– model is wearing size “S”.",
+    "uk": "Жіночий лонгслів — базовий і стильний лонгслів з якісного бавовняного трикотажу. Комфортна посадка, м’який та дихаючий матеріал роблять цю модель універсальною для повсякденного носіння, шарування під светри або жакети. Ідеальний вибір для базового гардеробу та створення casual-образів. – зріст моделі – 174 см; – розмір на моделі – “S”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 13,
+  "maxPrice": 13,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11784cb24b2373fde0cf3c"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "13"
+      },
+      "oldPrice": {
+        "$numberDecimal": "17"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-93d1b6d8-b8f3-44be-b7db-8b089a56af7c.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-7d33dadb-d3b3-402d-8fea-7edd121ff71a.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-a6f93f37-c8cd-4e0e-af9b-72b0ba40033d.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-1ab8d8d4-1b89-4546-b8b0-f80b51828513.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11784cb24b2373fde0cf3c"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6783f90201747c6d5349b9e5"
+      },
+      "price": {
+        "$numberDecimal": "13"
+      },
+      "oldPrice": {
+        "$numberDecimal": "17"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-246e02d5-8e10-4a0d-bc13-098305fa0a13.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-48a3aed3-da6e-4e9e-b95d-74140d21eee7.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-5284b8d4-bf12-4ddf-ba28-96a7ba5543f7.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-92971cf6-26bc-4894-b21d-6a050efb6fd7.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-b5fd5a31-9584-4ebd-861a-0e2839e9c50f.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a117a18b24b2373fde0cffb"
+      }
+    },
+    {
+      "color": {
+        "$oid": "68284fba65b546018073c4fd"
+      },
+      "price": {
+        "$numberDecimal": "13"
+      },
+      "oldPrice": {
+        "$numberDecimal": "17"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-53f1dd26-13f6-4170-897f-cf81694e56ba.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-7629a3e7-f763-4f94-a4c0-569b1027ecbe.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-43ac36ee-937f-4ee9-b46f-f319776822ff.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-19b93fb7-fadc-4038-b05e-591ff9adc0f8.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-3e11de73-afe1-4dfd-b86b-e2c56211716b.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a117a18b24b2373fde0cffc"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617e"
+      },
+      "price": {
+        "$numberDecimal": "13"
+      },
+      "oldPrice": {
+        "$numberDecimal": "17"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-2a8400eb-24e1-4aa9-8b0e-578ab46d9f08.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-b72c3c82-8f89-49f9-8363-0887b93f3788.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-c198f71d-cb06-4811-902e-3da6c5aba10f.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-93ce7ce9-e067-47b9-a408-8161f0e1986e.webp",
+        "/uploads/products/women/6a11784cb24b2373fde0cf3a/image-eb05c132-38db-4032-b256-c999c99b7c5d.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a117a18b24b2373fde0cffd"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T09:50:04.183Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T09:57:44.696Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6a117d03b24b2373fde0d06a"
+  },
+  "title": {
+    "en": "Women’s Linen Trousers",
+    "uk": "Лляні штани жіночі"
+  },
+  "description": {
+    "en": "Women’s linen trousers are stylish pants made from soft linen with a loose silhouette and a comfortable fit. The relaxed cut allows freedom of movement, while the versatile color makes this model perfect for everyday outfits, work, or evening wear. They easily pair with tops, sweatshirts, or blazers for a modern wardrobe.\n\n– model height: 174 cm;\n– model is wearing size “S”",
+    "uk": "Жіночі лляні штани — стильні брюки з м’якого лльону з вільним силуетом і комфортною посадкою. Вільний крій дає свободу рухів, а універсальний колір робить цю модель ідеальною для повсякденних образів, роботи або вечірніх виходів. Легко поєднуються з топами, світшотами або жакетами для сучасного гардеробу. – зріст моделі – 174 см; – розмір на моделі – “S”."
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 19,
+  "maxPrice": 19,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a117d03b24b2373fde0d06c"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617c"
+      },
+      "price": {
+        "$numberDecimal": "19"
+      },
+      "oldPrice": {
+        "$numberDecimal": "26"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-0e6522ae-afbc-4411-8987-b3ab90e7f507.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-17a4903a-8333-4ed7-993f-54e71c3612c2.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-58ab5b95-9d0a-4bf5-beba-f0a233cc5739.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-d6d4c1ae-a130-4831-a2c8-45ce30b161af.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-4c54446b-40b7-4702-b5fa-0c81ec3c2f88.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a117d03b24b2373fde0d06c"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "19"
+      },
+      "oldPrice": {
+        "$numberDecimal": "26"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-6bee2cab-1dae-4769-88d9-1b9a5a9f2115.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-0412223d-1a58-4bf4-bd80-3658a7c41933.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-bcaf1a45-3ebf-4d6f-a775-c6b58ced58af.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-99095379-a2d7-451c-9e2c-2ddf09961956.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-85af40ca-6944-4865-90af-456b6a46ef9a.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a117d03b24b2373fde0d06d"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "19"
+      },
+      "oldPrice": {
+        "$numberDecimal": "26"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-fe2577de-925c-4891-bcae-5356f9b05b68.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-988b2e16-7db9-459e-8aaf-588b17650fe1.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-f5db57e5-7912-4924-a656-249a37ccc62e.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-107990bf-d22c-4085-a222-98e809967fc1.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-7f4c84c0-413a-4e8e-9003-266d2adac42f.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a117d03b24b2373fde0d06e"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617d"
+      },
+      "price": {
+        "$numberDecimal": "19"
+      },
+      "oldPrice": {
+        "$numberDecimal": "26"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-c3ce3894-dc20-4cea-8def-73505840f09e.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-0da64a10-6108-409f-9fa3-c73b31fdeea6.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-637f01e1-4b41-466d-a230-aa62d33ef7de.webp",
+        "/uploads/products/women/6a117d03b24b2373fde0d06a/image-4dd827f3-67c1-4d51-ace5-93d33b7ca296.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        }
+      ],
+      "_id": {
+        "$oid": "6a117d03b24b2373fde0d06f"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T10:10:11.260Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T10:10:11.260Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a117e35b24b2373fde0d10d"
+  },
+  "title": {
+    "en": "Women’s Loose Pants",
+    "uk": "Штани жіночі вільні"
+  },
+  "description": {
+    "en": "Women’s loose-fit pants are a basic model that combines style and maximum comfort. Made from high-quality dense knit fabric, they provide durability and a premium feel. The relaxed fit and elastic waistband make this model versatile and comfortable to wear regardless of body shape.\n\n– model height: 166 cm;\n– model is wearing size “S”.",
+    "uk": "Жіночі штани вільні — базова модель, яка поєднує стиль та максимум комфорту. Виготовлений з щільної трикотажної тканини  преміум-якості. Вільна посадка та еластичний пояс роблять модель універсальною й комфортною у носінні незалежно від фігури.\n\n– зріст моделі – 166 см; – розмір на моделі – S"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 25,
+  "maxPrice": 27,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a117f8bb24b2373fde0d18a"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617e"
+      },
+      "price": {
+        "$numberDecimal": "27"
+      },
+      "oldPrice": {
+        "$numberDecimal": "37"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a117e35b24b2373fde0d10d/image-3303709b-7ba7-415e-bdb6-6349ff4ea62a.webp",
+        "/uploads/products/women/6a117e35b24b2373fde0d10d/image-aaf2df94-c2fd-463c-80c3-02807ec1b32d.webp",
+        "/uploads/products/women/6a117e35b24b2373fde0d10d/image-7bea61c4-a444-4dcf-ad40-222fa5229fe4.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a117e35b24b2373fde0d10f"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "25"
+      },
+      "oldPrice": {
+        "$numberDecimal": "33"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a117e35b24b2373fde0d10d/image-2b1d0400-0b21-41b9-a819-1270aa97ea7e.webp",
+        "/uploads/products/women/6a117e35b24b2373fde0d10d/image-01c1167a-ca02-4742-b5f4-9dee35781c66.webp",
+        "/uploads/products/women/6a117e35b24b2373fde0d10d/image-e0891623-645d-4b56-bfd9-1a0fbda6015e.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a117f8bb24b2373fde0d18a"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617d"
+      },
+      "price": {
+        "$numberDecimal": "27"
+      },
+      "oldPrice": {
+        "$numberDecimal": "37"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a117e35b24b2373fde0d10d/image-806fb1e6-442f-4a15-923d-a517be3cb781.webp",
+        "/uploads/products/women/6a117e35b24b2373fde0d10d/image-d0859d36-7656-41c3-b7ef-8c8b60a04f3c.webp",
+        "/uploads/products/women/6a117e35b24b2373fde0d10d/image-126072c1-7bcc-43fd-8309-0d8d4c212a56.webp",
+        "/uploads/products/women/6a117e35b24b2373fde0d10d/image-6a0a24a8-e29a-4745-b5c2-eeef30e9a6ec.webp",
+        "/uploads/products/women/6a117e35b24b2373fde0d10d/image-e9fddbc0-937a-4cf2-9b0c-753632268c83.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        }
+      ],
+      "_id": {
+        "$oid": "6a117f8bb24b2373fde0d18b"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T10:15:17.365Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T10:20:59.294Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "6a11801db24b2373fde0d1a5"
+  },
+  "title": {
+    "en": "Women’s Oversized T-Shirt",
+    "uk": "Футболка оверсайз жіноча"
+  },
+  "description": {
+    "en": "An oversized t-shirt is a stylish basic piece with a relaxed oversized fit made from premium cotton. Comfortable, breathable, and versatile, it is perfect for everyday wear and easily pairs with trousers, jeans, or shorts to create a modern casual look.\n\n– model height: 166 cm;\n– model is wearing size “S”.",
+    "uk": "Футболка оверсайз — стильна базова футболка з вільним оверсайз-кроєм з преміальної бавовни. Комфортна, дихаюча та універсальна модель для повсякденного носіння, легко поєднується зі штанами, джинсами або шортами для створення сучасного casual-образу. – зріст моделі – 166 см; – розмір на моделі – “S”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 14,
+  "maxPrice": 14,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11801db24b2373fde0d1a7"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617e"
+      },
+      "price": {
+        "$numberDecimal": "14"
+      },
+      "oldPrice": {
+        "$numberDecimal": "19"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11801db24b2373fde0d1a5/image-258e92c5-e575-4041-9be9-6e17c7251a84.webp",
+        "/uploads/products/women/6a11801db24b2373fde0d1a5/image-b621adac-866e-492e-9ff1-7063af1526a1.webp",
+        "/uploads/products/women/6a11801db24b2373fde0d1a5/image-3831f3c7-5cf6-41b3-bec4-1f1982974745.webp",
+        "/uploads/products/women/6a11801db24b2373fde0d1a5/image-fe34ece6-b88e-478a-871d-5bb106c30ef0.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11801db24b2373fde0d1a7"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6783f65101747c6d5349b9e4"
+      },
+      "price": {
+        "$numberDecimal": "14"
+      },
+      "oldPrice": {
+        "$numberDecimal": "19"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11801db24b2373fde0d1a5/image-5afae99c-b201-499c-8a14-a6671665e4e7.webp",
+        "/uploads/products/women/6a11801db24b2373fde0d1a5/image-1b1eac75-4384-4794-a6ca-e72c00be3d40.webp",
+        "/uploads/products/women/6a11801db24b2373fde0d1a5/image-581746f6-d0f6-4a2b-b387-7b7fb08c1de0.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a118081b24b2373fde0d1ce"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T10:23:25.792Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T10:25:05.859Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a118166b24b2373fde0d1e8"
+  },
+  "title": {
+    "en": "Women’s Polo Shirt vers.2",
+    "uk": "Жіноче поло vers.2"
+  },
+  "description": {
+    "en": "A short-sleeve polo shirt is a stylish and versatile everyday piece made from premium cotton piqué (lacoste knit). Classic colors, a regular fit, and high-quality buttons make this model perfect for both casual and smart-casual outfits. The polo is comfortable, breathable, and easy to pair with jeans or tailored trousers.\n\n– model height: 174 cm;\n– model is wearing size “S”.",
+    "uk": "Поло з короткими рукавами — стильна універсальна сорочка-поло на кожен день із преміального бавовняного трикотажу лакоста. Класичні кольори, посадка стандарт і якісні гудзики роблять цю модель ідеальною для повсякденного та smart-casual образу. Поло зручне, дихає і легко поєднується як з джинсами, так і зі строгими штанами. – зріст моделі – 174 см; – розмір на моделі – “S”"
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 18,
+  "maxPrice": 18,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a118166b24b2373fde0d1ea"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "68284ffb65b546018073c4fe"
+      },
+      "price": {
+        "$numberDecimal": "18"
+      },
+      "oldPrice": {
+        "$numberDecimal": "24"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a118166b24b2373fde0d1e8/image-321f73f8-012f-4842-93f5-0963df1a8054.webp",
+        "/uploads/products/women/6a118166b24b2373fde0d1e8/image-c2aa981c-4ff8-4560-bdeb-f203d192aaa9.webp",
+        "/uploads/products/women/6a118166b24b2373fde0d1e8/image-1788b598-c95d-4af3-a8cd-58689c9c9ebf.webp",
+        "/uploads/products/women/6a118166b24b2373fde0d1e8/image-23df37b6-7878-4116-b6f2-b83c0fc0125c.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a118166b24b2373fde0d1ea"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "18"
+      },
+      "oldPrice": {
+        "$numberDecimal": "24"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a118166b24b2373fde0d1e8/image-e62cef7e-5aa9-4444-b00e-0e22323f3249.webp",
+        "/uploads/products/women/6a118166b24b2373fde0d1e8/image-c8ab34a7-82b8-4eae-9b89-ed412b8362f0.webp",
+        "/uploads/products/women/6a118166b24b2373fde0d1e8/image-18af570a-3f06-46ae-8923-bae6c8dff973.webp",
+        "/uploads/products/women/6a118166b24b2373fde0d1e8/image-54454e65-535d-4197-a0b9-911828c7123b.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a1181d4b24b2373fde0d211"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T10:28:54.479Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T10:30:44.549Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a11830bb24b2373fde0d231"
+  },
+  "title": {
+    "en": "Women’s Linen Set",
+    "uk": "Лляний комплект жіночий"
+  },
+  "description": {
+    "en": "A linen set consisting of a shirt and shorts made from premium linen and polyester blend with high-quality buttons and a relaxed fit. This lightweight summer outfit ensures comfort and breathability in warm weather, making it perfect for everyday wear and smart-casual looks.\n\n– model height: 166 cm;\n– model is wearing size “XS”.",
+    "uk": "Лляний комплект — стильна жіноча сорочка та шорти з преміального льону та поліестеру з якісними ґудзиками і вільним кроєм. Легкий комплект на літо, який забезпечує комфорт і повітропроникність у теплу пору року, ідеальна для повсякденних та smart-casual образів. – зріст моделі – 166 см; – розмір на моделі – “XS”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 42,
+  "maxPrice": 42,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11830bb24b2373fde0d233"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617d"
+      },
+      "price": {
+        "$numberDecimal": "42"
+      },
+      "oldPrice": {
+        "$numberDecimal": "58"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11830bb24b2373fde0d231/image-2b5c1332-b8be-43ee-805e-defa732ec5f5.webp",
+        "/uploads/products/women/6a11830bb24b2373fde0d231/image-cb782d9a-5acb-47c4-8415-019ed41c5231.webp",
+        "/uploads/products/women/6a11830bb24b2373fde0d231/image-c1edb2d8-3009-4306-bafd-c05d2046e17f.webp",
+        "/uploads/products/women/6a11830bb24b2373fde0d231/image-81aff9e6-4ed6-4c0e-b3b5-8bb6afed5832.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11830bb24b2373fde0d233"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617e"
+      },
+      "price": {
+        "$numberDecimal": "42"
+      },
+      "oldPrice": {
+        "$numberDecimal": "58"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11830bb24b2373fde0d231/image-0f33a7a3-45bd-4284-b951-8f985a36582c.webp",
+        "/uploads/products/women/6a11830bb24b2373fde0d231/image-8fe34c7d-e4f5-40bb-a109-d5f5d8a449e9.webp",
+        "/uploads/products/women/6a11830bb24b2373fde0d231/image-9540121a-cb57-4766-9560-cf28d4651ed3.webp",
+        "/uploads/products/women/6a11830bb24b2373fde0d231/image-e489435d-a64a-41be-8036-c4e5e5dc4bb3.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11837ab24b2373fde0d25a"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T10:35:55.955Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T10:37:46.579Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a118444b24b2373fde0d2b5"
+  },
+  "title": {
+    "en": "Women’s Oversized Set",
+    "uk": "Комплект оверсайз жіночий"
+  },
+  "description": {
+    "en": "A set with oversized t-shirt and shorts is a comfortable everyday outfit made from stretch cotton jersey and double-knit fabric. The elastic and breathable material ensures comfort and freedom of movement, while the relaxed cut makes it perfect for leisure, walks, and an active lifestyle. A practical choice for warm weather and home wear.\n\n– model height: 174 cm;\n– model is wearing size “XS”.",
+    "uk": "Комплект з шортами та футболкою оверсайз — зручний повсякденний набір, виготовлений зі стрейч-куліру та двониткового трикотажу. Еластичний і дихаючий матеріал забезпечує комфорт і свободу рухів, а продуманий крій робить комплект ідеальним для відпочинку, прогулянок і активного способу життя. Практичний вибір для теплої пори року та домашнього використання. – зріст моделі – 174 см; – розмір на моделі – “XS”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 25,
+  "maxPrice": 25,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a118444b24b2373fde0d2b7"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "6783f90201747c6d5349b9e5"
+      },
+      "price": {
+        "$numberDecimal": "25"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a118444b24b2373fde0d2b5/image-65468fce-2c08-4491-971c-a19bbc6be5ef.webp",
+        "/uploads/products/women/6a118444b24b2373fde0d2b5/image-4bf8b6e8-7e53-4340-9977-9074f05bcf1e.webp",
+        "/uploads/products/women/6a118444b24b2373fde0d2b5/image-7547d6cb-adb3-4c90-b325-7f105b799dbc.webp",
+        "/uploads/products/women/6a118444b24b2373fde0d2b5/image-c03f036e-5d0b-4d0e-891b-6a95fbf0f3d5.webp",
+        "/uploads/products/women/6a118444b24b2373fde0d2b5/image-547265c1-41a6-416b-bbd3-b72f239574a1.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a118444b24b2373fde0d2b7"
+      }
+    },
+    {
+      "color": {
+        "$oid": "68284fba65b546018073c4fd"
+      },
+      "price": {
+        "$numberDecimal": "25"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a118444b24b2373fde0d2b5/image-fc2a5e21-754e-4062-8039-b1703feaf3b4.webp",
+        "/uploads/products/women/6a118444b24b2373fde0d2b5/image-20ac65e3-7c8c-4222-a421-bc3b432498d6.webp",
+        "/uploads/products/women/6a118444b24b2373fde0d2b5/image-c9969c19-1605-484e-9ce3-11dd33cb7cd5.webp",
+        "/uploads/products/women/6a118444b24b2373fde0d2b5/image-5c97d0a5-4c6f-4ed0-8a19-2d1f7d118770.webp",
+        "/uploads/products/women/6a118444b24b2373fde0d2b5/image-b72a3332-2b05-43e0-bdc8-a447d13a17eb.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a1184f4b24b2373fde0d302"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T10:41:08.789Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T10:44:04.469Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a118597b24b2373fde0d31c"
+  },
+  "title": {
+    "en": "Women’s Linen Set v.2",
+    "uk": "Лляний комплект жіночий v.2"
+  },
+  "description": {
+    "en": "A linen set consisting of a shirt and trousers made from a premium linen and polyester blend with high-quality buttons and a relaxed fit. This lightweight summer outfit ensures comfort and breathability in warm weather, making it ideal for everyday wear and smart-casual looks.\n\n– model height: 174 cm;\n– model is wearing size “S”.",
+    "uk": "Лляний комплект — стильна сорочка та штани з преміального льону та поліестеру з якісними ґудзиками і вільним кроєм. Легкий комплект на літо, який забезпечує комфорт і повітропроникність у теплу пору року, ідеальна для повсякденних та smart-casual образів. – зріст моделі – 174 см; – розмір на моделі – “S”"
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 42,
+  "maxPrice": 42,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a118597b24b2373fde0d31e"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "42"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-a0a7b7d9-b197-4876-8594-f6ecd7016866.webp",
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-92ad682e-d43f-4a57-891c-c961f0ece489.webp",
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-0b428e3d-980d-4445-9ca2-6a4e51d2ae4a.webp",
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-05559f04-ff96-4a7c-bcdc-9942a805a47c.webp",
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-8bed693c-a6a9-4fbd-aeeb-cc74aad13f12.webp",
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-65242a95-f996-4aef-8132-8524d8c90ed0.webp",
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-8ce4861d-9709-4a8c-877b-32ee0f7c5190.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a118597b24b2373fde0d31e"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617d"
+      },
+      "price": {
+        "$numberDecimal": "42"
+      },
+      "oldPrice": {
+        "$numberDecimal": "57"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-7a7b7d7a-5d63-4687-bb19-be2f43d44773.webp",
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-ecdc629b-6d80-4eeb-af0c-c4d21b6d521f.webp",
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-1cf73a48-648c-4953-a4af-80ba12f2e16c.webp",
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-d4011f28-4c69-4f39-a0bf-01a0f4361eb7.webp",
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-35a81840-483a-48de-b690-63c4b2a49e7a.webp",
+        "/uploads/products/women/6a118597b24b2373fde0d31c/image-4caf21a7-78cd-42a4-8250-7efb99f7a435.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        }
+      ],
+      "_id": {
+        "$oid": "6a118635b24b2373fde0d35e"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T10:46:47.790Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T10:49:25.195Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a1186f5b24b2373fde0d37e"
+  },
+  "title": {
+    "en": "Women’s Linen Shirt",
+    "uk": "Лляна сорочка жіноча"
+  },
+  "description": {
+    "en": "A linen shirt is a lightweight and stylish women’s shirt made from natural linen, providing breathability and comfort in warm weather. The minimalist design, relaxed fit, and versatile shade make this model perfect for everyday wear and smart-casual outfits.\n\n– model height: 166 cm;\n– model is wearing size “S”.",
+    "uk": "Лляна сорочка — легка та стильна жіноча сорочка з натурального льону, що забезпечує повітропроникність і комфорт у теплу пору року. Мінімалістичний дизайн, вільний крій і універсальний відтінок роблять цю модель ідеальною для повсякденних та smart-casual образів. – зріст моделі – 166 см; – розмір на моделі – “S”."
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 26,
+  "maxPrice": 26,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a1186f5b24b2373fde0d380"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "26"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a1186f5b24b2373fde0d37e/image-50523905-107a-4122-a37d-cd5ecc8877b8.webp",
+        "/uploads/products/women/6a1186f5b24b2373fde0d37e/image-c149f7fb-fb81-4c7e-bf14-8ac851d08d33.webp",
+        "/uploads/products/women/6a1186f5b24b2373fde0d37e/image-f225b71c-b56f-4440-b53c-04071b131382.webp",
+        "/uploads/products/women/6a1186f5b24b2373fde0d37e/image-a288446a-daf4-4386-bc3b-e42694404b46.webp",
+        "/uploads/products/women/6a1186f5b24b2373fde0d37e/image-f090da33-f204-4288-8b59-1555661c4755.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a1186f5b24b2373fde0d380"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "26"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a1186f5b24b2373fde0d37e/image-88e4686f-bc24-40e2-9d07-ecbacf0707ae.webp",
+        "/uploads/products/women/6a1186f5b24b2373fde0d37e/image-ad5173a0-e1e6-4116-b053-6b8d871b1624.webp",
+        "/uploads/products/women/6a1186f5b24b2373fde0d37e/image-6eaa6589-0f02-4185-8971-26f3cbcde812.webp",
+        "/uploads/products/women/6a1186f5b24b2373fde0d37e/image-772f2b7f-8dce-4a92-95c8-859a3614f9ce.webp",
+        "/uploads/products/women/6a1186f5b24b2373fde0d37e/image-60c72d52-dfd4-4fae-9ebe-f124a7a83778.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11875eb24b2373fde0d3bc"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T10:52:37.316Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T10:54:22.698Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a1187ffb24b2373fde0d3d6"
+  },
+  "title": {
+    "en": "Women’s Linen Shirt",
+    "uk": "Лляна сорочка жіноча"
+  },
+  "description": {
+    "en": "A stylish women’s linen shirt made from a premium linen and polyester blend with high-quality buttons and a relaxed fit. It pairs easily with jeans, trousers, or shorts, ensuring comfort and breathability in warm weather, making it perfect for everyday outfits.",
+    "uk": "Лляна сорочка — стильна жіноча сорочка з преміального льону та поліестеру з якісними ґудзиками і вільним кроєм. Легко поєднується з джинсами або брюками та шортами, забезпечує комфорт і повітропроникність у теплу пору року, ідеальна для повсякденних образів. – зріст моделі – 174 см; – розмір на моделі – “S”"
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 26,
+  "maxPrice": 26,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a1187ffb24b2373fde0d3d8"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617e"
+      },
+      "price": {
+        "$numberDecimal": "26"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a1187ffb24b2373fde0d3d6/image-e3cd8d1b-94c8-475f-9489-eef4f3f7520f.webp",
+        "/uploads/products/women/6a1187ffb24b2373fde0d3d6/image-179cb4a9-0668-499a-ae48-20f935219ce3.webp",
+        "/uploads/products/women/6a1187ffb24b2373fde0d3d6/image-44d062a4-4c25-4aba-9c48-2dab70087f42.webp",
+        "/uploads/products/women/6a1187ffb24b2373fde0d3d6/image-cb0cd26f-38a9-49bc-8f3e-3c1ace62f5b5.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a1187ffb24b2373fde0d3d8"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "26"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a1187ffb24b2373fde0d3d6/image-2dd33abe-c89b-4de1-80e9-f59887a9b468.webp",
+        "/uploads/products/women/6a1187ffb24b2373fde0d3d6/image-cc2f14ea-19fd-4c14-aff1-5c3371bccc12.webp",
+        "/uploads/products/women/6a1187ffb24b2373fde0d3d6/image-1992a994-3402-416b-8511-0bd09cc2de84.webp",
+        "/uploads/products/women/6a1187ffb24b2373fde0d3d6/image-abe60a3a-8d7b-48a1-9568-9695e3097103.webp",
+        "/uploads/products/women/6a1187ffb24b2373fde0d3d6/image-efc3a5a0-b135-4c2c-9dc3-35833ad3e236.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        }
+      ],
+      "_id": {
+        "$oid": "6a118861b24b2373fde0d405"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T10:57:03.434Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T10:58:41.903Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a11af2eb24b2373fde0d495"
+  },
+  "title": {
+    "en": "Women’s Shorts Black",
+    "uk": "Шорти жіночі Black"
+  },
+  "description": {
+    "en": "Women’s shorts are stylish and comfortable shorts made from high-quality knit fabric for everyday wear during warm weather. The straight cut, comfortable fit, and durable material provide freedom of movement and long-lasting wear. They pair perfectly with t-shirts, polo shirts, and sneakers for a casual everyday look.\n\n– model height: 174 cm;\n– model is wearing size “XS”.",
+    "uk": "Шорти жіночі — стильні та комфортні шорти з якісного трикотажу для повсякденного носіння у теплу пору року. Прямий крій, зручна посадка та міцний матеріал забезпечують свободу рухів і довговічність. Ідеально поєднуються з футболками, поло та кросівками для щоденного образу. – зріст моделі – 174 см; – розмір на моделі – “XS”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246183"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 17,
+  "maxPrice": 17,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11af2eb24b2373fde0d497"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617c"
+      },
+      "price": {
+        "$numberDecimal": "17"
+      },
+      "oldPrice": {
+        "$numberDecimal": "23"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11af2eb24b2373fde0d495/image-69d5d8a2-2b3b-4af0-89d4-5bf435d12ff3.webp",
+        "/uploads/products/women/6a11af2eb24b2373fde0d495/image-25bc5252-c733-4a72-8dd4-6ca0ea26963a.webp",
+        "/uploads/products/women/6a11af2eb24b2373fde0d495/image-e8308257-41d8-4022-bfeb-b5f732069334.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11af2eb24b2373fde0d497"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "17"
+      },
+      "oldPrice": {
+        "$numberDecimal": "23"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11af2eb24b2373fde0d495/image-ecfe7002-3a16-4f31-859d-5c9efd369e5e.webp",
+        "/uploads/products/women/6a11af2eb24b2373fde0d495/image-423ca934-b4f1-4779-ae95-8ed610f53d9e.webp",
+        "/uploads/products/women/6a11af2eb24b2373fde0d495/image-d4bf8bfd-59d8-44a1-99ab-3153deee553d.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11afb9b24b2373fde0d4d9"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T13:44:14.083Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T13:46:33.661Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a11b14c884c641213cfd80c"
+  },
+  "title": {
+    "en": "Women’s Linen Shorts",
+    "uk": "Лляні шорти жіночі"
+  },
+  "description": {
+    "en": "Linen shorts are lightweight and stylish summer shorts made from premium linen with a relaxed fit, practical pockets, and a comfortable drawstring waistband. The loose cut and natural fabric provide comfort, breathability, and versatility for everyday wear during the summer season.\n\n– model height: 166 cm;\n– model is wearing size “S”.",
+    "uk": "Лляні шорти — легкі та стильні літні шорти з преміального льону, та вільною посадкою, кишенями та зручним поясом зі шнурками. Вільний крій і натуральний матеріал забезпечують комфорт, повітропроникність і універсальність для щоденного носіння влітку. – зріст моделі – 166 см; – розмір на моделі – “S”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 16,
+  "maxPrice": 16,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11b14c884c641213cfd80e"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "16"
+      },
+      "oldPrice": {
+        "$numberDecimal": "22"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11b14c884c641213cfd80c/image-aed17db6-1921-4661-82bf-e1c0eeb08fcf.webp",
+        "/uploads/products/women/6a11b14c884c641213cfd80c/image-a1db3924-51b9-4bdb-993f-f67631d786e3.webp",
+        "/uploads/products/women/6a11b14c884c641213cfd80c/image-0eaa0383-cb03-446f-b73d-25e97b183317.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11b14c884c641213cfd80e"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "16"
+      },
+      "oldPrice": {
+        "$numberDecimal": "22"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11b14c884c641213cfd80c/image-4eb95b65-abb0-4171-8c54-094ef747dd74.webp",
+        "/uploads/products/women/6a11b14c884c641213cfd80c/image-4e461574-6eeb-4fdc-b4d5-6d6830766a61.webp",
+        "/uploads/products/women/6a11b14c884c641213cfd80c/image-12cfbba4-c9eb-4ce0-94b7-8a68142863e2.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11b38b251397e07cadc775"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T13:53:16.895Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T14:02:51.773Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a11b49d251397e07cadc7b3"
+  },
+  "title": {
+    "en": "Women’s Linen Shorts v.1",
+    "uk": "Лляні шорти жіночі v.1"
+  },
+  "description": {
+    "en": "Women’s linen shorts are lightweight and stylish shorts made from natural linen with a relaxed fit and a comfortable waistband. The breathable fabric and comfortable cut provide maximum comfort during warm weather, while the versatile design makes them perfect for everyday, summer, and casual looks.\n\n– model height: 166 cm;\n– model is wearing size “S”.",
+    "uk": "Лляні шорти жіночі — легкі та стильні шорти з натурального льону з вільним кроєм і зручним поясом. Повітропроникний матеріал і комфортна посадка забезпечують максимальний комфорт у теплу пору року, а універсальний дизайн робить їх ідеальними для повсякденних, літніх та casual-образів. – зріст моделі – 166 см; – розмір на моделі – “S”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246183"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 14,
+  "maxPrice": 14,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11b49d251397e07cadc7b5"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "14"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11b49d251397e07cadc7b3/image-ae7f7b0a-b6cf-40fc-b51d-d043f97202ce.webp",
+        "/uploads/products/women/6a11b49d251397e07cadc7b3/image-97603c1e-a148-4a47-89bc-89af688cbbab.webp",
+        "/uploads/products/women/6a11b49d251397e07cadc7b3/image-50abe664-688f-481d-973f-90e2c4f673b9.webp",
+        "/uploads/products/women/6a11b49d251397e07cadc7b3/image-0cee7abd-f7f1-4f02-9109-b1fa331dfd33.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11b49d251397e07cadc7b5"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617c"
+      },
+      "price": {
+        "$numberDecimal": "14"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11b49d251397e07cadc7b3/image-d551fc11-09ea-49cd-97a0-709ca5a4e881.webp",
+        "/uploads/products/women/6a11b49d251397e07cadc7b3/image-1525b231-3d3f-431e-a0ca-7dde85059772.webp",
+        "/uploads/products/women/6a11b49d251397e07cadc7b3/image-46591fe9-7e3d-459d-b4e3-aaa9a172fcf2.webp",
+        "/uploads/products/women/6a11b49d251397e07cadc7b3/image-2b9c7fbf-a839-46eb-994d-4577aa1b0253.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11b4f8251397e07cadc7e2"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T14:07:25.649Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T14:08:56.909Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a11b5fe251397e07cadc83b"
+  },
+  "title": {
+    "en": "Women’s Top",
+    "uk": "Топ жіночий"
+  },
+  "description": {
+    "en": "A women’s top made from soft cotton jersey fabric that provides comfort and an excellent fit. The stylish minimalist design and versatile color make it perfect for casual outfits, sporty sets, or summer looks. It pairs easily with jeans, shorts, or skirts.\n\n– model height: 174 cm;\n– model is wearing size “S”.",
+    "uk": "Жіночий топ — базовий топ з м’якого бавовняного трикотажу, який забезпечує комфорт та відмінну посадку. Стильний мінімалістичний дизайн і універсальний колір роблять його ідеальним для повсякденних образів, спортивних комплектів або літніх луків. Легко поєднується з джинсами, шортами або спідницями. – зріст моделі – 174 см; – розмір на моделі – “S”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246183"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 8,
+  "maxPrice": 8,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11b5fe251397e07cadc83d"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "68284fba65b546018073c4fd"
+      },
+      "price": {
+        "$numberDecimal": "8"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11b5fe251397e07cadc83b/image-53c3324a-4268-4ed0-9ab3-452c521493d8.webp",
+        "/uploads/products/women/6a11b5fe251397e07cadc83b/image-7ba2a6a1-0a23-4571-b0d7-e6c91b165199.webp",
+        "/uploads/products/women/6a11b5fe251397e07cadc83b/image-c533131f-e9d2-4fd4-ba9b-2ce3d7d1a0e1.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11b5fe251397e07cadc83d"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6783f90201747c6d5349b9e5"
+      },
+      "price": {
+        "$numberDecimal": "8"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11b5fe251397e07cadc83b/image-fddaab9d-d009-4978-9c7a-8f5320cf28af.webp",
+        "/uploads/products/women/6a11b5fe251397e07cadc83b/image-1846c0a0-144a-4dc8-a546-eb238c29176a.webp",
+        "/uploads/products/women/6a11b5fe251397e07cadc83b/image-79df17c1-9c83-4e0d-8d9f-48091d194a3a.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11b690251397e07cadc864"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6783f65101747c6d5349b9e4"
+      },
+      "price": {
+        "$numberDecimal": "8"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11b5fe251397e07cadc83b/image-951afeee-7654-45ac-ae08-ec582c8126c4.webp",
+        "/uploads/products/women/6a11b5fe251397e07cadc83b/image-de1eb4ad-6661-439a-82e3-3a16cfec1968.webp",
+        "/uploads/products/women/6a11b5fe251397e07cadc83b/image-e38fbf34-700b-40d1-a515-9c2c1d7491f9.webp",
+        "/uploads/products/women/6a11b5fe251397e07cadc83b/image-0133c1e8-7c7d-4f8d-8ba1-8ac001abff30.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11b76e251397e07cadc893"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T14:13:18.160Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T14:19:26.894Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6a11b836251397e07cadc8ad"
+  },
+  "title": {
+    "en": "Women’s Top v.4",
+    "uk": "Топ жіночий v.4"
+  },
+  "description": {
+    "en": "A women’s top made from soft and breathable knit fabric with a versatile silhouette and minimalist design. The comfortable fit and elegant color make it perfect for everyday wear, layering under blazers, or wearing as a standalone piece. It pairs easily with jeans, shorts, or skirts for a modern casual style.\n\n– model height: 174 cm;\n– model is wearing size “S-M”.",
+    "uk": "Топ жіночий — базовий топ з м’якого та дихаючого трикотажу, з універсальним силуетом і minimalistичним дизайном. Комфортна посадка та елегантний колір роблять його ідеальним для щоденного носіння, шарування під жакети або як самостійний елемент образу. Легко поєднується з джинсами, шортами чи спідницями для сучасного casual-стилю. – зріст моделі – 174 см; – розмір на моделі – “S-M”."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 8,
+  "maxPrice": 8,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11b836251397e07cadc8af"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "8"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11b836251397e07cadc8ad/image-3384a8ee-8710-4c77-9216-7d4f1214cbbb.webp",
+        "/uploads/products/women/6a11b836251397e07cadc8ad/image-cf5d55c7-ae3b-4a4d-b2ac-ae6b1abce228.webp",
+        "/uploads/products/women/6a11b836251397e07cadc8ad/image-13041c51-b2dd-48f3-bc16-f934d5cb36b9.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11b836251397e07cadc8af"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "8"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a11b836251397e07cadc8ad/image-2c6aed5e-aa55-43e3-b4c1-ede96ee0c962.webp",
+        "/uploads/products/women/6a11b836251397e07cadc8ad/image-aa78a290-e0f4-422c-b0c5-45474405fb60.webp",
+        "/uploads/products/women/6a11b836251397e07cadc8ad/image-5d690f8a-4af1-4058-8284-dc4e29f4c1a9.webp",
+        "/uploads/products/women/6a11b836251397e07cadc8ad/image-df2da7a5-af13-4768-bc1d-99df49058008.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11b8c1251397e07cadc8d6"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T14:22:46.471Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T14:25:05.983Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a11b9ba251397e07cadc909"
+  },
+  "title": {
+    "en": "Men’s Oversized T-Shirt",
+    "uk": "Футболка оверсайз чоловіча"
+  },
+  "description": {
+    "en": "An oversized t-shirt is a stylish piece with a relaxed oversized fit made from premium cotton. Comfortable, breathable, and versatile, it is perfect for everyday wear and easily pairs with trousers, jeans, or shorts to create a modern casual look.\n\n– model height: 180 cm;\n– model is wearing size “L”.",
+    "uk": "Футболка оверсайз — стильна футболка з вільним оверсайз-кроєм з преміальної бавовни. Комфортна, дихаюча та універсальна модель для повсякденного носіння, легко поєднується зі штанами, джинсами або шортами для створення сучасного casual-образу. – зріст моделі – 180 см; – розмір на моделі – “L”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 14,
+  "maxPrice": 14,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11b9ba251397e07cadc90b"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617e"
+      },
+      "price": {
+        "$numberDecimal": "14"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a11b9ba251397e07cadc909/image-e615c370-f5d6-4d8c-9548-485112f69d22.webp",
+        "/uploads/products/men/6a11b9ba251397e07cadc909/image-2bbc087a-54bd-436e-94c5-6e9a63ad4c67.webp",
+        "/uploads/products/men/6a11b9ba251397e07cadc909/image-5b96f35b-1c62-46ab-96cf-eb29253cd8f1.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11b9ba251397e07cadc90b"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6783f65101747c6d5349b9e4"
+      },
+      "price": {
+        "$numberDecimal": "14"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a11b9ba251397e07cadc909/image-52b388f1-c520-4d47-9358-ad29e46c849f.webp",
+        "/uploads/products/men/6a11b9ba251397e07cadc909/image-9ccf46ed-d83f-4250-8afc-6bb3897ce7ea.webp",
+        "/uploads/products/men/6a11b9ba251397e07cadc909/image-c25d4268-cfc5-4231-bf21-c984680874ee.webp",
+        "/uploads/products/men/6a11b9ba251397e07cadc909/image-e9a99978-ccc6-41b1-92e1-480205046462.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b494324618a"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11ba22251397e07cadc932"
+      }
+    },
+    {
+      "color": {
+        "$oid": "68284ffb65b546018073c4fe"
+      },
+      "price": {
+        "$numberDecimal": "14"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a11b9ba251397e07cadc909/image-ca60b8b2-a9ae-4224-a4cf-c56a5c3f36eb.webp",
+        "/uploads/products/men/6a11b9ba251397e07cadc909/image-023e13b6-4b27-4c4c-8696-d7a56862d563.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b494324618a"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11ba8b251397e07cadc95b"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T14:29:14.930Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T14:32:43.177Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6a11bb4c251397e07cadc975"
+  },
+  "title": {
+    "en": "Men’s Polo Shirt v.1",
+    "uk": "Чоловіче поло v.1"
+  },
+  "description": {
+    "en": "A short-sleeve polo shirt is a stylish and versatile everyday piece made from premium cotton piqué (lacoste knit). Classic colors, a regular fit, and high-quality buttons make this model perfect for both casual and smart-casual outfits. The polo is comfortable, breathable, and easy to pair with jeans or tailored trousers.\n\n– model height: 190 cm;\n– model is wearing size “L”.",
+    "uk": "Поло з короткими рукавами — стильна універсальна сорочка-поло на кожен день із преміального бавовняного трикотажу лакоста. Класичні кольори, посадка стандарт і якісні гудзики роблять цю модель ідеальною для повсякденного та smart-casual образу. Поло зручне, дихає і легко поєднується як з джинсами, так і зі строгими штанами. – зріст моделі – 190 см; – розмір на моделі – “L”"
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 18,
+  "maxPrice": 18,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11bb4c251397e07cadc977"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "18"
+      },
+      "oldPrice": {
+        "$numberDecimal": "23"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a11bb4c251397e07cadc975/image-1b2219ef-2598-41ac-9878-1d42f86120c7.webp",
+        "/uploads/products/men/6a11bb4c251397e07cadc975/image-58086544-c172-47c5-b71b-48bc50047c07.webp",
+        "/uploads/products/men/6a11bb4c251397e07cadc975/image-05d80385-931a-4e51-ac93-1f7b857de843.webp",
+        "/uploads/products/men/6a11bb4c251397e07cadc975/image-c6e0b54d-aaaa-4ec2-874a-0d93d3b03d2b.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11bb4c251397e07cadc977"
+      }
+    },
+    {
+      "color": {
+        "$oid": "68284ffb65b546018073c4fe"
+      },
+      "price": {
+        "$numberDecimal": "18"
+      },
+      "oldPrice": {
+        "$numberDecimal": "23"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a11bb4c251397e07cadc975/image-c1dc60f6-fb12-4c61-a0bc-ab73c67e25d6.webp",
+        "/uploads/products/men/6a11bb4c251397e07cadc975/image-9362747c-900e-498a-aef7-146506c6a801.webp",
+        "/uploads/products/men/6a11bb4c251397e07cadc975/image-b6efe26c-4aa8-4395-b8d1-a095273f56a0.webp",
+        "/uploads/products/men/6a11bb4c251397e07cadc975/image-97192037-37cf-4dba-9c36-0c84f446bbec.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11bc50251397e07cadc9c7"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T14:35:56.089Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T09:03:54.102Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6a11bdba251397e07cadc9e7"
+  },
+  "title": {
+    "en": "Men’s Long Sleeve Polo Shirt",
+    "uk": "Чоловіче поло з довгими рукавами"
+  },
+  "description": {
+    "en": "A long sleeve polo shirt is a stylish and versatile everyday piece made from premium cotton piqué (lacoste knit). Classic colors, a regular fit, and high-quality buttons make this model ideal for both casual and smart-casual outfits. It is comfortable, breathable, and easy to pair with jeans or tailored trousers.\n\n– model height: 180 cm;\n– model is wearing size “M”.",
+    "uk": "Поло з довгими рукавами — стильна універсальна сорочка-поло на кожен день із преміального бавовняного трикотажу лакоста. Класичні кольори, посадка стандарт і якісні ґудзики роблять цю модель ідеальною для повсякденного та smart-casual образу. Поло зручне, дихає і легко поєднується як з джинсами, так і зі строгими штанами. – зріст моделі – 180 см; – розмір на моделі – “М”"
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 19,
+  "maxPrice": 19,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11bdba251397e07cadc9e9"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617c"
+      },
+      "price": {
+        "$numberDecimal": "19"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a11bdba251397e07cadc9e7/image-8d123c11-76fe-49aa-ba22-fed23c4eb7a7.webp",
+        "/uploads/products/men/6a11bdba251397e07cadc9e7/image-28e5150a-9587-4478-8b34-e6197cd59240.webp",
+        "/uploads/products/men/6a11bdba251397e07cadc9e7/image-369db281-f124-4557-9b80-601b465a304a.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11bdba251397e07cadc9e9"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "19"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a11bdba251397e07cadc9e7/image-eaba948a-b04a-44e8-b380-2e472136fc72.webp",
+        "/uploads/products/men/6a11bdba251397e07cadc9e7/image-65a813b7-d0c3-4b24-a27d-3d4bfd53f496.webp",
+        "/uploads/products/men/6a11bdba251397e07cadc9e7/image-d82027b7-041b-4e9b-a670-b6c4ffed233b.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b494324618a"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11bfc2251397e07cadca10"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T14:46:19.052Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T14:54:58.757Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a11c4d4251397e07cadca4f"
+  },
+  "title": {
+    "en": "Men’s Oversized T-Shirt with White Inserts",
+    "uk": "Футболка чоловіча оверсайз з білими вставками"
+  },
+  "description": {
+    "en": "An oversized t-shirt is a stylish basic piece with a relaxed oversized fit made from premium cotton. Comfortable, breathable, and versatile, it is perfect for everyday wear and easily pairs with trousers, jeans, or shorts to create a modern casual look. The white inserts add a subtle design accent.\n\n– model height: 180 cm;\n– model is wearing size “L”.",
+    "uk": "Футболка оверсайз — стильна базова футболка з вільним оверсайз-кроєм з преміальної бавовни. Комфортна, дихаюча та універсальна модель для повсякденного носіння, легко поєднується зі штанами, джинсами або шортами для створення сучасного casual-образу. – зріст моделі – 180 см; – розмір на моделі – “L”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 17,
+  "maxPrice": 17,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11c4d4251397e07cadca51"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617e"
+      },
+      "price": {
+        "$numberDecimal": "17"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a11c4d4251397e07cadca4f/image-68f3fb02-2503-4db5-a8ee-86c5fce9c691.webp",
+        "/uploads/products/men/6a11c4d4251397e07cadca4f/image-a77e0c60-72b3-4492-a2f0-578265c7465b.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11c4d4251397e07cadca51"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617c"
+      },
+      "price": {
+        "$numberDecimal": "17"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a11c4d4251397e07cadca4f/image-38b6ba2a-d42a-4213-9acb-2442e971c198.webp",
+        "/uploads/products/men/6a11c4d4251397e07cadca4f/image-feeae255-5b59-4584-9983-9817e0713068.webp",
+        "/uploads/products/men/6a11c4d4251397e07cadca4f/image-676fada2-d08c-4d2c-8839-193bbc4150e8.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11c51e251397e07cadca78"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T15:16:36.784Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T15:17:50.437Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a11c60f251397e07cadca92"
+  },
+  "title": {
+    "en": "Men’s Linen Set",
+    "uk": "Лляний комплект чоловічий"
+  },
+  "description": {
+    "en": "A linen set consisting of a shirt and trousers made from a premium linen and polyester blend with quality seams, buttons, and a relaxed fit. This lightweight summer outfit ensures comfort and breathability in warm weather, making it perfect for everyday wear and smart-casual looks.\n\n– model height: 180 cm;\n– model is wearing size “M”.",
+    "uk": "Лляний комплект — стильна чоловіча сорочка та штанами з преміального льону та поліестеру з якісними швами, гудзиками і вільним кроєм. Легкий комплект на літо, який забезпечує комфорт і повітропроникність у теплу пору року, ідеальна для повсякденних та smart-casual образів. – зріст моделі – 180 см; – розмір на моделі – “М”"
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 45,
+  "maxPrice": 58,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a11c60f251397e07cadca94"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617d"
+      },
+      "price": {
+        "$numberDecimal": "45"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a11c60f251397e07cadca92/image-562c0764-d44f-4fd8-8b53-a35f03a01064.webp",
+        "/uploads/products/men/6a11c60f251397e07cadca92/image-b2ff327f-1b16-4054-8e8a-febdcd5b4b27.webp",
+        "/uploads/products/men/6a11c60f251397e07cadca92/image-c70e44d5-88ac-4869-8c59-9775cb82c71f.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11c60f251397e07cadca94"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617e"
+      },
+      "price": {
+        "$numberDecimal": "58"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a11c60f251397e07cadca92/image-81714fee-d64d-499c-843f-6cfccf7763a7.webp",
+        "/uploads/products/men/6a11c60f251397e07cadca92/image-1931ecc1-efb9-4e67-a1df-31c958a006af.webp",
+        "/uploads/products/men/6a11c60f251397e07cadca92/image-b53d7b06-9f35-414b-a149-6c9385f4953e.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11c66e251397e07cadcac1"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "45"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a11c60f251397e07cadca92/image-7d150ae6-a4a1-461c-ab5c-211880ece83b.webp",
+        "/uploads/products/men/6a11c60f251397e07cadca92/image-d8b8de66-5a5e-4067-b933-b5c99d682836.webp",
+        "/uploads/products/men/6a11c60f251397e07cadca92/image-6313739a-5f37-459e-babb-187d4743fa6b.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        }
+      ],
+      "_id": {
+        "$oid": "6a11c6b5251397e07cadcaea"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-23T15:21:51.696Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-23T15:24:37.738Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6a129b85251397e07cadcb6e"
+  },
+  "title": {
+    "en": "Men’s Linen Set v.2",
+    "uk": "Лляний комплект чоловічий v.2"
+  },
+  "description": {
+    "en": "A linen set featuring an oversized t-shirt and shorts made from a premium linen and polyester blend with high-quality stitching and a relaxed fit. This lightweight summer outfit provides comfort and breathability in warm weather, making it perfect for everyday wear and smart-casual looks.\n\n– model height: 180 cm;\n– model is wearing size “M”.",
+    "uk": "Лляний комплект — стильна чоловіча оверсайз футболка та шорти з преміального льону та поліестеру з якісними швами і вільним кроєм. Легкий комплект на літо, який забезпечує комфорт і повітропроникність у теплу пору року, ідеальна для повсякденних та smart-casual образів. – зріст моделі – 180 см; – розмір на моделі – “М”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 30,
+  "maxPrice": 30,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a129b85251397e07cadcb70"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617d"
+      },
+      "price": {
+        "$numberDecimal": "30"
+      },
+      "oldPrice": {
+        "$numberDecimal": "41"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a129b85251397e07cadcb6e/image-36f9b6d2-0953-48e0-9fd5-8d40233a20c7.webp",
+        "/uploads/products/men/6a129b85251397e07cadcb6e/image-6c345521-60d6-4704-b484-10ee6f3933be.webp",
+        "/uploads/products/men/6a129b85251397e07cadcb6e/image-bd695fe6-41b6-4fbb-ac5f-67ddf5de8f11.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a129b85251397e07cadcb70"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "30"
+      },
+      "oldPrice": {
+        "$numberDecimal": "41"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a129b85251397e07cadcb6e/image-d0379a5c-9e06-4643-bfaa-617f68923350.webp",
+        "/uploads/products/men/6a129b85251397e07cadcb6e/image-133c3c7d-d391-46eb-9cee-11c28f0f1de3.webp",
+        "/uploads/products/men/6a129b85251397e07cadcb6e/image-5c8f9127-15ed-4ead-9883-be394285e2e4.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        }
+      ],
+      "_id": {
+        "$oid": "6a129bd6251397e07cadcba3"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T06:32:37.430Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T06:33:59.049Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a129c62251397e07cadcbbd"
+  },
+  "title": {
+    "en": "Men’s Linen Set v.3",
+    "uk": "Лляний комплект чоловічий v.3"
+  },
+  "description": {
+    "en": "A linen set consisting of a men’s shirt and shorts made from a premium linen and polyester blend with high-quality buttons and a relaxed fit. This lightweight summer outfit provides comfort and breathability in warm weather, making it perfect for everyday wear and smart-casual looks.\n\n– model height: 180 cm;\n– model is wearing size “L”.",
+    "uk": "Лляний комплект — стильна чоловіча сорочка та шорти з преміального льону та поліестеру з якісними ґудзиками і вільним кроєм. Легкий комплект на літо, який забезпечує комфорт і повітропроникність у теплу пору року, ідеальна для повсякденних та smart-casual образів. – зріст моделі – 180 см; – розмір на моделі – “L”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 35,
+  "maxPrice": 35,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a129c62251397e07cadcbbf"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "35"
+      },
+      "oldPrice": {
+        "$numberDecimal": "47"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a129c62251397e07cadcbbd/image-5cfcccb7-93aa-4706-b25b-c5c2dc154459.webp",
+        "/uploads/products/men/6a129c62251397e07cadcbbd/image-2e95eefc-52f7-4a8f-b436-3d067d953f26.webp",
+        "/uploads/products/men/6a129c62251397e07cadcbbd/image-79d4cb1d-8aec-4645-83a2-81dbdfaa987a.webp",
+        "/uploads/products/men/6a129c62251397e07cadcbbd/image-c073730d-96d0-419f-b7a5-2752bfbbcf20.webp",
+        "/uploads/products/men/6a129c62251397e07cadcbbd/image-ea5e1d8e-35ff-45f3-88f8-48d5a4ec4452.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a129c62251397e07cadcbbf"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617c"
+      },
+      "price": {
+        "$numberDecimal": "35"
+      },
+      "oldPrice": {
+        "$numberDecimal": "47"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a129c62251397e07cadcbbd/image-29ae7519-a903-4689-b1e6-90fd1235d64a.webp",
+        "/uploads/products/men/6a129c62251397e07cadcbbd/image-7923604b-247b-4bac-89e1-870fada23484.webp",
+        "/uploads/products/men/6a129c62251397e07cadcbbd/image-3381bc72-fe81-42a4-b2e4-ca2c8532f1e5.webp",
+        "/uploads/products/men/6a129c62251397e07cadcbbd/image-964b1dee-bfdf-4cf8-afc5-44f27c266fc2.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        }
+      ],
+      "_id": {
+        "$oid": "6a129cb1251397e07cadcbe6"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T06:36:19.004Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T06:37:37.085Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a129de0251397e07cadcc00"
+  },
+  "title": {
+    "en": "Men’s Linen Shirt v.1",
+    "uk": "Лляна сорочка чоловіча v.1"
+  },
+  "description": {
+    "en": "A men’s linen shirt is a lightweight and stylish piece made from natural linen, providing comfort and breathability during warm weather. The relaxed fit and minimalist design make this model versatile for both casual and smart-casual looks. It pairs perfectly with shorts, jeans, or classic trousers for a summer wardrobe.\n\n– model height: 180 cm;\n– model is wearing size “L”.",
+    "uk": "Лляна сорочка чоловіча — легка та стильна сорочка з натурального льону, що забезпечує комфорт і повітропроникність у теплу пору року. Вільний крій і мінімалістичний дизайн роблять цю модель універсальною для повсякденних та smart-casual образів. Ідеально поєднується з шортами, джинсами або класичними брюками для літнього гардеробу. – зріст моделі – 180 см; – розмір на моделі – “L”."
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 26,
+  "maxPrice": 26,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a129de0251397e07cadcc02"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "26"
+      },
+      "oldPrice": {
+        "$numberDecimal": "34"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a129de0251397e07cadcc00/image-014f6fd2-21c1-40cd-a907-f6e9ed9a1c53.webp",
+        "/uploads/products/men/6a129de0251397e07cadcc00/image-5e11ad0e-6907-4ac0-9463-96e7234a4683.webp",
+        "/uploads/products/men/6a129de0251397e07cadcc00/image-b3adb37a-a6a1-48e4-889f-9191408c9778.webp",
+        "/uploads/products/men/6a129de0251397e07cadcc00/image-e192b617-d645-4395-9a8a-f1a57210f01e.webp",
+        "/uploads/products/men/6a129de0251397e07cadcc00/image-df5964b1-2f47-4e1c-a3c8-2e23e734e67f.webp",
+        "/uploads/products/men/6a129de0251397e07cadcc00/image-999afdc7-2ccc-450d-b7c3-7d82271e3fb5.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a129de0251397e07cadcc02"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "26"
+      },
+      "oldPrice": {
+        "$numberDecimal": "34"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a129de0251397e07cadcc00/image-e62f5c12-cf64-4c33-9abf-ac827ee2051a.webp",
+        "/uploads/products/men/6a129de0251397e07cadcc00/image-a4c8d06e-f269-4e84-8453-735aaddb43c3.webp",
+        "/uploads/products/men/6a129de0251397e07cadcc00/image-57891c50-4490-4d52-9d50-1fd05a10d430.webp",
+        "/uploads/products/men/6a129de0251397e07cadcc00/image-e0d113fa-d40b-4b43-a5e4-652b59a061a4.webp",
+        "/uploads/products/men/6a129de0251397e07cadcc00/image-d467b7b9-9568-449e-8f78-39da3ba90819.webp",
+        "/uploads/products/men/6a129de0251397e07cadcc00/image-7316dfc3-453d-443e-b80e-6ac0847e7b74.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a129e37251397e07cadcc29"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T06:42:41.042Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T06:44:07.639Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a129eca251397e07cadcc49"
+  },
+  "title": {
+    "en": "Men’s Short Sleeve Linen Shirt v.1",
+    "uk": "Лляна сорочка з короткими рукавами чоловіча v.1"
+  },
+  "description": {
+    "en": "A short sleeve linen shirt made from premium linen with classic buttons and a timeless design. The natural lightweight fabric provides breathability and comfort during warm weather, while the clean silhouette highlights a versatile casual and smart-casual style for everyday wear.\n\n– model height: 180 cm;\n– model is wearing size “L”.",
+    "uk": "Лляна сорочка з короткими рукавами — стильна сорочка з преміального льону з короткими рукавами та ґудзиками. Натуральний легкий матеріал забезпечує повітропроникність і комфорт у теплу пору року, а класичний дизайн підкреслює базовий кежуал-стиль для повсякденного та smart-casual образу. – зріст моделі – 180 см; – розмір на моделі – “L”"
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 17,
+  "maxPrice": 17,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a129eca251397e07cadcc4b"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "17"
+      },
+      "oldPrice": {
+        "$numberDecimal": "22"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a129eca251397e07cadcc49/image-a17c7884-c81d-4291-bbdc-480ea7a93346.webp",
+        "/uploads/products/men/6a129eca251397e07cadcc49/image-5d2c372f-8ac5-421b-a916-48255d791c48.webp",
+        "/uploads/products/men/6a129eca251397e07cadcc49/image-9ed0497e-6949-4430-ac3f-d0e5e7256bde.webp",
+        "/uploads/products/men/6a129eca251397e07cadcc49/image-bbf01603-827c-4d99-95b3-56807238a9e9.webp",
+        "/uploads/products/men/6a129eca251397e07cadcc49/image-9ee2a157-a9e8-4971-8beb-763f5723e3c0.webp",
+        "/uploads/products/men/6a129eca251397e07cadcc49/image-664fadc8-5fc3-4037-bef8-ca7deef322ef.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a129eca251397e07cadcc4b"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617c"
+      },
+      "price": {
+        "$numberDecimal": "17"
+      },
+      "oldPrice": {
+        "$numberDecimal": "22"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a129eca251397e07cadcc49/image-24ad5a5a-f0c9-42be-a68e-0438872a1b92.webp",
+        "/uploads/products/men/6a129eca251397e07cadcc49/image-e918839b-d307-41a5-adb6-96a1eea3e8fa.webp",
+        "/uploads/products/men/6a129eca251397e07cadcc49/image-d371174d-383c-461d-a4b5-4b061bf52a29.webp",
+        "/uploads/products/men/6a129eca251397e07cadcc49/image-3a7f701d-5d1d-42ea-8947-6cd31dc77fe8.webp",
+        "/uploads/products/men/6a129eca251397e07cadcc49/image-b2c69fd2-edd0-409b-8752-67785f161495.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        }
+      ],
+      "_id": {
+        "$oid": "6a129f16251397e07cadcc72"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T06:46:34.223Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T06:47:50.832Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a12a013251397e07cadccf9"
+  },
+  "title": {
+    "en": "Men’s Poplin Shirt",
+    "uk": "Сорочка чоловіча поплін"
+  },
+  "description": {
+    "en": "A men’s poplin shirt is a stylish classic shirt made from lightweight and breathable poplin fabric. The tailored fit, high-quality buttons, and elegant basic design make it a versatile choice for both casual and business outfits. Comfortable and practical, it pairs easily with trousers, jeans, or under a blazer for a smart-casual look.\n\n– model height: 177 cm;\n– model is wearing size “L”.",
+    "uk": "Сорочка чоловіча поплін — стильна класична сорочка з легкого і дихаючого попліну. Чіткий крій, якісні ґудзики та елегантний базовий дизайн роблять її універсальним вибором для повсякденних і ділових образів. Комфортна та практична модель, яка легко поєднується з брюками, джинсами або під піджак для smart-casual стилю. – зріст моделі – 177 см; – розмір на моделі – L"
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 22,
+  "maxPrice": 22,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12a013251397e07cadccfb"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "22"
+      },
+      "oldPrice": {
+        "$numberDecimal": "30"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a013251397e07cadccf9/image-47307c30-a66d-4896-be56-7e253df69494.webp",
+        "/uploads/products/men/6a12a013251397e07cadccf9/image-214a2220-ee57-476c-be4c-6d7b93010f0f.webp",
+        "/uploads/products/men/6a12a013251397e07cadccf9/image-cea73b5c-81e2-4a9c-9223-e343f1efc028.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a013251397e07cadccfb"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "22"
+      },
+      "oldPrice": {
+        "$numberDecimal": "30"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a013251397e07cadccf9/image-e0f96ce8-88ad-46b9-a0af-33c6a2b374b4.webp",
+        "/uploads/products/men/6a12a013251397e07cadccf9/image-ba101a2f-4260-4b39-be13-f789f779a7aa.webp",
+        "/uploads/products/men/6a12a013251397e07cadccf9/image-72033e71-0925-487a-9e23-08515f8d7d36.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a04e251397e07cadcd22"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T06:52:03.353Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T06:53:02.951Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a12a0f6251397e07cadcd3c"
+  },
+  "title": {
+    "en": "Men’s Shorts Mustard",
+    "uk": "Шорти чоловічі Mustard"
+  },
+  "description": {
+    "en": "Men’s shorts are stylish and comfortable shorts made from high-quality knit fabric for everyday wear during warm weather. The straight fit, comfortable waistband, and durable material provide freedom of movement and long-lasting comfort. They pair perfectly with t-shirts, polo shirts, and sneakers for an active everyday look.\n\n– model height: 180 cm;\n– model is wearing size “L”.",
+    "uk": "Шорти чоловічі — стильні та комфортні шорти з якісного трикотажу для повсякденного носіння у теплу пору року. Прямий крій, зручна посадка та міцний матеріал забезпечують свободу рухів і довговічність. Ідеально поєднуються з футболками, поло та кросівками для щоденного образу. – зріст моделі – 180 см; – розмір на моделі – “L”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246183"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 6,
+  "maxPrice": 6,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12a0f6251397e07cadcd3e"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "6783f65101747c6d5349b9e4"
+      },
+      "price": {
+        "$numberDecimal": "6"
+      },
+      "oldPrice": {
+        "$numberDecimal": "8"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a0f6251397e07cadcd3c/image-c4705e36-e3a9-4ce2-9dc0-b9dca84fefe3.webp",
+        "/uploads/products/men/6a12a0f6251397e07cadcd3c/image-2a63e9cb-310e-43a6-a2c4-5f638fe1b60f.webp",
+        "/uploads/products/men/6a12a0f6251397e07cadcd3c/image-f5c6f022-3366-4c09-8d87-41434342be48.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a0f6251397e07cadcd3e"
+      }
+    },
+    {
+      "color": {
+        "$oid": "6783f90201747c6d5349b9e5"
+      },
+      "price": {
+        "$numberDecimal": "6"
+      },
+      "oldPrice": {
+        "$numberDecimal": "8"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a0f6251397e07cadcd3c/image-ad310fc8-3acb-48ce-91b9-46374beaeb5f.webp",
+        "/uploads/products/men/6a12a0f6251397e07cadcd3c/image-f22c28ae-803d-46e6-902b-99b43010ebdf.webp",
+        "/uploads/products/men/6a12a0f6251397e07cadcd3c/image-498c2912-6f85-4df6-9462-3a28ef5df125.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a135251397e07cadcd65"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T06:55:51.016Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T06:56:53.696Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a12a1f1251397e07cadcd92"
+  },
+  "title": {
+    "en": "Men’s Longline Shorts",
+    "uk": "Шорти чоловічі видовжені"
+  },
+  "description": {
+    "en": "Men’s longline shorts are stylish shorts with an extended fit made from high-quality knit fabric for comfort and freedom of movement. The relaxed cut and versatile design make them perfect for everyday outfits, leisure, and walks during warm weather.\n\n– model height: 180 cm;\n– model is wearing size “L”.",
+    "uk": "Шорти чоловічі видовжені — стильні шорти з подовженою посадкою, виготовлені з якісного трикотажу для комфорту і свободи рухів. Вільний крій і універсальний дизайн роблять їх ідеальними для повсякденних образів, відпочинку та прогулянок у теплу пору року. – зріст моделі – 180 см; – розмір на моделі – “L”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 19,
+  "maxPrice": 19,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12a1f1251397e07cadcd94"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "19"
+      },
+      "oldPrice": {
+        "$numberDecimal": "25"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a1f1251397e07cadcd92/image-eb27ea35-d592-468d-835b-7e980c6610f6.webp",
+        "/uploads/products/men/6a12a1f1251397e07cadcd92/image-acc5f567-681b-4e02-8908-aef9e1744a1c.webp",
+        "/uploads/products/men/6a12a1f1251397e07cadcd92/image-ee4727c3-47d8-4b6f-a986-6abf3d204e3c.webp",
+        "/uploads/products/men/6a12a1f1251397e07cadcd92/image-9097a28c-fa86-4c7c-8494-5857ba8933d6.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a1f1251397e07cadcd94"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617c"
+      },
+      "price": {
+        "$numberDecimal": "19"
+      },
+      "oldPrice": {
+        "$numberDecimal": "25"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a1f1251397e07cadcd92/image-12ba045a-5d4c-4355-a59b-b40988b92fe2.webp",
+        "/uploads/products/men/6a12a1f1251397e07cadcd92/image-94d2cebb-5e5e-4b9d-b304-5424d5ff3cec.webp",
+        "/uploads/products/men/6a12a1f1251397e07cadcd92/image-75a386b3-8c48-4362-8f29-ceabd25d21a0.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a238251397e07cadcdbb"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T07:00:01.914Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T07:01:12.602Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a12a2d4251397e07cadcddb"
+  },
+  "title": {
+    "en": "Men’s Shorts",
+    "uk": "Шорти чоловічі"
+  },
+  "description": {
+    "en": "Men’s shorts are stylish and comfortable shorts made from high-quality knit fabric for everyday wear during warm weather. The straight fit, comfortable waistband, and durable material provide freedom of movement and long-lasting comfort. They pair perfectly with t-shirts, polo shirts, and sneakers for a casual everyday look.\n\n– model height: 180 cm;\n– model is wearing size “L”.",
+    "uk": "Шорти чоловічі — стильні та комфортні шорти з якісного трикотажу для повсякденного носіння у теплу пору року. Прямий крій, зручна посадка та міцний матеріал забезпечують свободу рухів і довговічність. Ідеально поєднуються з футболками, поло та кросівками для щоденного образу. – зріст моделі – 180 см; – розмір на моделі – “L”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246183"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 9,
+  "maxPrice": 9,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12a2d4251397e07cadcddd"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617b"
+      },
+      "price": {
+        "$numberDecimal": "9"
+      },
+      "oldPrice": {
+        "$numberDecimal": "14"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a2d4251397e07cadcddb/image-3561ab9a-1cea-4638-9a01-9a0ece1f9a61.webp",
+        "/uploads/products/men/6a12a2d4251397e07cadcddb/image-7042f310-e530-46e0-a893-b47d3a310b29.webp",
+        "/uploads/products/men/6a12a2d4251397e07cadcddb/image-b062275d-e045-4f39-931a-a8f468d99d7f.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a2d4251397e07cadcddd"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "9"
+      },
+      "oldPrice": {
+        "$numberDecimal": "14"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a2d4251397e07cadcddb/image-1947a93f-0988-490b-ad59-fd0389ff4d54.webp",
+        "/uploads/products/men/6a12a2d4251397e07cadcddb/image-b4ea869e-6a65-47e6-af5d-69dd015b93b8.webp",
+        "/uploads/products/men/6a12a2d4251397e07cadcddb/image-40481d58-b85a-4570-872f-b8446ae73f19.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a32d251397e07cadce04"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T07:03:48.246Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T07:05:17.335Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a12a3ed251397e07cadce43"
+  },
+  "title": {
+    "en": "Men’s Linen Shorts",
+    "uk": "Лляні шорти чоловічі"
+  },
+  "description": {
+    "en": "Men’s linen shorts are lightweight and stylish summer shorts made from premium linen with a relaxed fit, practical pockets, and a comfortable drawstring waistband. The loose cut and natural fabric provide comfort, breathability, and versatility for everyday wear during the summer season.\n\n– model height: 180 cm;\n– model is wearing size “M”.",
+    "uk": "Лляні шорти чоловічі  — легкі та стильні літні шорти з преміального льону, та вільною посадкою, кишенями та зручним поясом зі шнурками. Вільний крій і натуральний матеріал забезпечують комфорт, повітропроникність і універсальність для щоденного носіння влітку. – зріст моделі – 180 см; – розмір на моделі – “М”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 16,
+  "maxPrice": 16,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12a3ed251397e07cadce45"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617e"
+      },
+      "price": {
+        "$numberDecimal": "16"
+      },
+      "oldPrice": {
+        "$numberDecimal": "21"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a3ed251397e07cadce43/image-62b0176e-6439-4040-a425-1ef1f95e0107.webp",
+        "/uploads/products/men/6a12a3ed251397e07cadce43/image-057581e5-465c-4099-8374-74ef9e394868.webp",
+        "/uploads/products/men/6a12a3ed251397e07cadce43/image-99147ff1-d532-43cc-b368-f3a560090f09.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a3ed251397e07cadce45"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617d"
+      },
+      "price": {
+        "$numberDecimal": "16"
+      },
+      "oldPrice": {
+        "$numberDecimal": "21"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a3ed251397e07cadce43/image-087b180f-f55d-4423-9899-ddcda0d8f487.webp",
+        "/uploads/products/men/6a12a3ed251397e07cadce43/image-9575daf7-28ed-4f11-a76b-52ee2d7ee520.webp",
+        "/uploads/products/men/6a12a3ed251397e07cadce43/image-d87a7e3c-5590-4846-b7ec-93d2a6c7dcd2.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a43b251397e07cadce6c"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T07:08:29.484Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T07:09:47.418Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a12a502251397e07cadcebd"
+  },
+  "title": {
+    "en": "Men’s Linen Trousers",
+    "uk": "Лляні штани чоловічі"
+  },
+  "description": {
+    "en": "Men’s linen trousers are lightweight and stylish pants made from natural linen, providing excellent breathability and comfort during warm weather. The relaxed fit and versatile design make them ideal for everyday wear, leisure, or smart-casual outfits. They pair easily with t-shirts, shirts, or sweatshirts for a modern wardrobe.\n\n– model height: 190 cm;\n– model is wearing size “XL”.",
+    "uk": "Лляні штани чоловічі — легкі та стильні штани з натурального льону, які забезпечують відмінну повітропроникність і комфорт у теплу пору року. Вільний крій і універсальний дизайн роблять їх ідеальними для повсякденного носіння, відпочинку або smart‑casual образів. Легко поєднуються з футболками, сорочками або світшотами для сучасного гардеробу. – зріст моделі – 190 см; – розмір на моделі – “XL”"
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 27,
+  "maxPrice": 27,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12a502251397e07cadcebf"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "27"
+      },
+      "oldPrice": {
+        "$numberDecimal": "38"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a502251397e07cadcebd/image-c143fafc-9a54-4854-91b5-fefcedc9552e.webp",
+        "/uploads/products/men/6a12a502251397e07cadcebd/image-eba86e40-64f8-4a4c-800b-ca965d419bc5.webp",
+        "/uploads/products/men/6a12a502251397e07cadcebd/image-b9fcc7eb-b3ba-4587-9dc0-c804624ec1d1.webp",
+        "/uploads/products/men/6a12a502251397e07cadcebd/image-6c0eb149-f8d2-42ab-9c30-31564f2863a4.webp",
+        "/uploads/products/men/6a12a502251397e07cadcebd/image-e84dd264-5c8a-4373-9786-8d95e279db77.webp",
+        "/uploads/products/men/6a12a502251397e07cadcebd/image-69434d9e-37e3-425a-8eb3-aff18d275548.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a502251397e07cadcebf"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617d"
+      },
+      "price": {
+        "$numberDecimal": "27"
+      },
+      "oldPrice": {
+        "$numberDecimal": "38"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a502251397e07cadcebd/image-496df2a1-9d72-460b-a760-1bbc33897c80.webp",
+        "/uploads/products/men/6a12a502251397e07cadcebd/image-fb51c3f3-daf7-4880-b12b-a798e934e39e.webp",
+        "/uploads/products/men/6a12a502251397e07cadcebd/image-c5e646c7-1096-4380-9a15-1dd555778ea1.webp",
+        "/uploads/products/men/6a12a502251397e07cadcebd/image-58f34b75-f6d4-407d-b2ad-15d74cd20cd2.webp",
+        "/uploads/products/men/6a12a502251397e07cadcebd/image-6d116339-515c-4921-a4d9-29cd706ef750.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a558251397e07cadcee6"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T07:13:07.030Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T07:14:32.226Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a12a5f7251397e07cadcf00"
+  },
+  "title": {
+    "en": "Men’s Cargo Pants",
+    "uk": "Карго штани чоловічі"
+  },
+  "description": {
+    "en": "Cargo pants are stylish trousers with functional side pockets and a comfortable fit. The durable, high-quality fabric ensures comfort and long-lasting wear, while the versatile design makes them ideal for everyday, streetwear, and casual outfits.\n\n– model height: 180 cm;\n– model is wearing size “L”.",
+    "uk": "Кaрго штани — стильні штани у стилі карго з функціональними накладними кишенями та зручним крієм. Міцний та якісний матеріал забезпечує комфорт і довговічність, а універсальний дизайн робить їх ідеальними для повсякденних, вуличних та casual-образів. – зріст моделі – 180 см; – розмір на моделі – “L”"
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246182"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 33,
+  "maxPrice": 33,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12a5f7251397e07cadcf02"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "6783f90201747c6d5349b9e5"
+      },
+      "price": {
+        "$numberDecimal": "33"
+      },
+      "oldPrice": {
+        "$numberDecimal": "46"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a5f7251397e07cadcf00/image-e96eb918-f096-415c-a988-6e714c507c4b.webp",
+        "/uploads/products/men/6a12a5f7251397e07cadcf00/image-9f72d2da-2a0d-4826-b6d4-4d5eb06f64df.webp",
+        "/uploads/products/men/6a12a5f7251397e07cadcf00/image-162e6886-5a97-467b-8fb3-3c280efbd513.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a5f7251397e07cadcf02"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617c"
+      },
+      "price": {
+        "$numberDecimal": "33"
+      },
+      "oldPrice": {
+        "$numberDecimal": "46"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a5f7251397e07cadcf00/image-714dda80-d85d-4fd8-8fd7-9e3c1a67e746.webp",
+        "/uploads/products/men/6a12a5f7251397e07cadcf00/image-7f384224-1f41-48f9-8ec9-50ac0f5110f7.webp",
+        "/uploads/products/men/6a12a5f7251397e07cadcf00/image-dc070ba7-6aff-4722-8383-0b1da2a6b2ab.webp",
+        "/uploads/products/men/6a12a5f7251397e07cadcf00/image-8344e046-1f08-4472-89f6-fcf61f90d52c.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a63e251397e07cadcf29"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T07:17:11.426Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T07:18:23.048Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a12a75e251397e07cadcf6f"
+  },
+  "title": {
+    "en": "Men’s Linen Trousers",
+    "uk": "Лляні штани чоловічі"
+  },
+  "description": {
+    "en": "Men’s linen trousers are lightweight and stylish pants made from natural linen, offering excellent breathability and comfort in warm weather. The relaxed fit and versatile design make them perfect for everyday wear, leisure, or smart-casual outfits. They pair easily with t-shirts, shirts, or sweatshirts for a modern wardrobe.\n\n– model height: 190 cm;\n– model is wearing size “XL”.",
+    "uk": "Лляні штани чоловічі — легкі та стильні штани з натурального льону, які забезпечують відмінну повітропроникність і комфорт у теплу пору року. Вільний крій і універсальний дизайн роблять їх ідеальними для повсякденного носіння, відпочинку або smart‑casual образів. Легко поєднуються з футболками, сорочками або світшотами для сучасного гардеробу. – зріст моделі – 190 см; – розмір на моделі – “XL”"
+  },
+  "style": {
+    "$oid": "682859a865b546018073c513"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 27,
+  "maxPrice": 27,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12a75e251397e07cadcf71"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b4943246180"
+      },
+      "price": {
+        "$numberDecimal": "27"
+      },
+      "oldPrice": {
+        "$numberDecimal": "37"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a75e251397e07cadcf6f/image-ab95257d-7db3-4c67-8f2d-a23916fc963a.webp",
+        "/uploads/products/men/6a12a75e251397e07cadcf6f/image-27e25c18-aff7-4e3e-a30f-6637e5c10682.webp",
+        "/uploads/products/men/6a12a75e251397e07cadcf6f/image-ce7d7687-dea9-4d91-87de-a4c5252268c6.webp",
+        "/uploads/products/men/6a12a75e251397e07cadcf6f/image-685dfeda-8f5b-427b-8601-9bd41f53a2ff.webp",
+        "/uploads/products/men/6a12a75e251397e07cadcf6f/image-e7e0ad6c-197e-4db4-bc1e-1cd1591f2865.webp",
+        "/uploads/products/men/6a12a75e251397e07cadcf6f/image-55882eef-c7dd-4604-af97-501ea3896b9f.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a75e251397e07cadcf71"
+      }
+    },
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617d"
+      },
+      "price": {
+        "$numberDecimal": "27"
+      },
+      "oldPrice": {
+        "$numberDecimal": "37"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12a75e251397e07cadcf6f/image-572e2e47-4385-4b80-8960-91f75ca26bbc.webp",
+        "/uploads/products/men/6a12a75e251397e07cadcf6f/image-49d2bc04-313b-4a4d-b3d2-2fce192f49b3.webp",
+        "/uploads/products/men/6a12a75e251397e07cadcf6f/image-4cbccaa5-4166-4393-ab9f-f66115433cb2.webp",
+        "/uploads/products/men/6a12a75e251397e07cadcf6f/image-319fe33e-cb39-488a-ac33-66bf7d44f605.webp",
+        "/uploads/products/men/6a12a75e251397e07cadcf6f/image-27ef194e-cba7-4b7e-bd90-ad7a9b905f59.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618a"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12a7d7251397e07cadcf98"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T07:23:10.400Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T07:25:11.345Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a12aa0c251397e07cadd055"
+  },
+  "title": {
+    "en": "White Richelieu Embroidered Set",
+    "uk": "Білий костюм з вишивкою рішельє"
+  },
+  "description": {
+    "en": "A Mediterranean-style set made from premium Turkish cotton. The lightweight fabric with delicate perforated embroidery creates an airy silhouette and ensures comfort in hot weather.\n\nThe oversized blouse features a classic collar and short loose sleeves, decorated with circular and teardrop cut-out patterns and a shaped hem. The high-waisted shorts are finished with an elastic waistband and drawstring, along with decorative lace detailing at the hem.\n\nThis set is perfect for seaside holidays, summer walks, gatherings, and travel during the warm season. Pair it with a woven bag, sandals, statement earrings, and a straw hat for a complete summer look.",
+    "uk": "Костюм в середземноморському стилі із преміальної турецької бавовни. Легка тканина з делікатною перфорацією створює повітряний силует і дарує комфорт у спекотну погоду.\n\nБлузка oversize має класичний комір і короткі просторі рукави. З перфорацією круглими та краплеподібними візерунками та фігурним краєм. Шорти з високою посадкою доповнені еластичною талією зі шнурком, а також ажурною обробкою по низу.\n\nКомплект підходить для відпочинку біля моря, прогулянок, літніх зустрічей і подорожей у теплий сезон.\n\nПоєднуйте його з плетеною сумкою, сандалями, великими сережками та солом’яним капелюхом для завершеного образу."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246184"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 82,
+  "maxPrice": 82,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12aa0c251397e07cadd057"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "82"
+      },
+      "oldPrice": {
+        "$numberDecimal": "113"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a12aa0c251397e07cadd055/image-e6f6a024-bda9-4dbc-ac0f-7283def811cf.jpg",
+        "/uploads/products/women/6a12aa0c251397e07cadd055/image-f4fac586-985b-449a-ba0e-6b6809f8ff5d.jpg",
+        "/uploads/products/women/6a12aa0c251397e07cadd055/image-ec4a3049-be3c-455a-8296-9b62b4af6b87.jpg",
+        "/uploads/products/women/6a12aa0c251397e07cadd055/image-f5b6856a-dbc5-458a-9efa-b61f54e92400.jpg"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12aa0c251397e07cadd057"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T07:34:36.442Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T07:34:36.442Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a12ab43251397e07cadd0b3"
+  },
+  "title": {
+    "en": "Yellow Flared Dress with Petticoat",
+    "uk": "Сукня-кльош жовтого кольору з під'юбником"
+  },
+  "description": {
+    "en": "A romantic-style dress featuring a drawstring neckline that allows the shoulders to be exposed. It has a fitted cut under the bust and at the waist for a flattering silhouette. The ¾ sleeves are gathered with elastic cuffs. The dress fastens with a back zipper and comes with a contrasting petticoat (50% cotton, 50% polyester).",
+    "uk": "Сукня в романтичному стилі. Верхня частина на кулісці, що дозволяє відкрити плечі. Відрізна під грудьми та по талії. Рукави ¾ призібрані на гумку. Застібається на блискавку по спинці. Комплектується контрастним під'юбником (склад 50% бавовна, 50% поліестер)."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246184"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 28,
+  "maxPrice": 28,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12ab43251397e07cadd0b5"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "6783f65101747c6d5349b9e4"
+      },
+      "price": {
+        "$numberDecimal": "28"
+      },
+      "oldPrice": {
+        "$numberDecimal": "38"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a12ab43251397e07cadd0b3/image-ffea6657-880a-4bec-9a60-43cc02d9102a.jpg",
+        "/uploads/products/women/6a12ab43251397e07cadd0b3/image-ee97aee1-1e61-484f-a368-c47b0a966dd1.jpg",
+        "/uploads/products/women/6a12ab43251397e07cadd0b3/image-db593cfb-e755-4360-8ce8-4dbb1000b5aa.jpg",
+        "/uploads/products/women/6a12ab43251397e07cadd0b3/image-c38a1c7f-dfe8-466d-b608-a4aca38592a2.jpg"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12ab43251397e07cadd0b5"
+      }
+    },
+    {
+      "color": {
+        "$oid": "68284fba65b546018073c4fd"
+      },
+      "price": {
+        "$numberDecimal": "28"
+      },
+      "oldPrice": {
+        "$numberDecimal": "38"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a12ab43251397e07cadd0b3/image-b6c99d40-0450-4a93-9ace-fa85af09d3b3.jpg",
+        "/uploads/products/women/6a12ab43251397e07cadd0b3/image-273f02a3-e187-4402-9ad5-c3f280d3d25d.jpg",
+        "/uploads/products/women/6a12ab43251397e07cadd0b3/image-da16d4c9-43fa-40fd-8b10-d9e0faab8d00.jpg",
+        "/uploads/products/women/6a12ab43251397e07cadd0b3/image-54c4fab4-dd0a-46d6-96a5-f4b99a240243.jpg"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12aba8251397e07cadd0dc"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T07:39:47.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T07:41:28.869Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a12ad09251397e07cadd177"
+  },
+  "title": {
+    "en": "Pink Chiffon Mini Dress with Ruffles",
+    "uk": "Рожева шифонова сукня міні з воланами"
+  },
+  "description": {
+    "en": "A pink chiffon mini dress with a semi-fitted silhouette. The upper part features an off-shoulder design with thin adjustable straps. Vertical seams run along the full length of the dress, enhancing the shape. The lower part is decorated with symmetrical cascading ruffles that create a soft flowing effect. It fastens with a hidden side zipper and is fully lined for comfort.",
+    "uk": "Рожева шифонова сукня напівприлеглого силуету довжини міні. Верх сукні з відкритими плечима на тонких брителях-регуляторах. Сукня має вертикальні рельєфи по всій довжині виробу. На нижній частині сукні симетрично пришиті волани, які спадають до низу. Застібається на потаємну блискавку в бічному шві. Сукня має підкладку."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246184"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 92,
+  "maxPrice": 92,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12ad09251397e07cadd179"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617e"
+      },
+      "price": {
+        "$numberDecimal": "92"
+      },
+      "oldPrice": {
+        "$numberDecimal": "127"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a12ad09251397e07cadd177/image-8a6a0db0-c251-471f-8cf1-ea2fb56d90c4.webp",
+        "/uploads/products/women/6a12ad09251397e07cadd177/image-85822f8b-51f4-4791-9d12-4d073a81c1f8.webp",
+        "/uploads/products/women/6a12ad09251397e07cadd177/image-ce3d0a05-1c77-4a42-85ee-a9d68cb49e6e.webp",
+        "/uploads/products/women/6a12ad09251397e07cadd177/image-b9028595-cd6b-450b-8c3e-33c4247789a1.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12ad09251397e07cadd179"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T07:47:21.203Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T07:47:21.203Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a12ada4251397e07cadd193"
+  },
+  "title": {
+    "en": "Blue Satin Top",
+    "uk": "Блакитий топ з щільного сатину"
+  },
+  "description": {
+    "en": "A blue top made from dense satin with a bias cut that enhances the silhouette and allows the fabric to drape smoothly. The halter-style armholes leave the shoulders open, while the back slit with thin ties allows adjustment of the neckline depth. The bust area is lined to ensure coverage and prevent transparency. The slightly flared hem adds a soft flowing shape.",
+    "uk": "Блакитний топ з щільного сатину. Крій по косій підкреслює фігуру та дозволяє тканині вільно низпадати. Пройма-американка відкриває плечі, розріз і тонкі зав'язки на спинці дозволяють регулювати глибину горловини. Ліф топу не просвічується завдяки підкладці по грудях. Крій злегка розкльошений донизу."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246184"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 46,
+  "maxPrice": 46,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12ada4251397e07cadd195"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "68284fba65b546018073c4fd"
+      },
+      "price": {
+        "$numberDecimal": "46"
+      },
+      "oldPrice": {
+        "$numberDecimal": "63"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a12ada4251397e07cadd193/image-fdc0b587-7176-4796-b67d-0692c4463dda.webp",
+        "/uploads/products/women/6a12ada4251397e07cadd193/image-0787116d-605a-48b7-93d6-d5a4ca077ec0.webp",
+        "/uploads/products/women/6a12ada4251397e07cadd193/image-53a58bc6-79ea-4383-90a7-3f4eb6164450.webp",
+        "/uploads/products/women/6a12ada4251397e07cadd193/image-efea59b7-16d7-463c-b5f8-6f0521d6910c.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12ada4251397e07cadd195"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T07:49:56.166Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T07:49:56.166Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a12b14b251397e07cadd407"
+  },
+  "title": {
+    "en": "Linen Set K.O.R",
+    "uk": "Костюм льон K.O.R"
+  },
+  "description": {
+    "en": "The K.O.R linen set is a stylish outfit made from lightweight premium linen fabric that ensures comfort and breathability in warm weather. The relaxed fit creates an easy, effortless silhouette and allows full freedom of movement. Its versatile design makes it suitable for both everyday wear and smart-casual looks. A perfect choice for summer, travel, and leisure.",
+    "uk": "Лляний костюм K.O.R — стильний комплект із легкої преміальної лляної тканини, що забезпечує комфорт і повітропроникність у теплу пору року. Вільний крій створює розслаблений силует і не сковує рухів. Універсальний дизайн дозволяє носити костюм як у повсякденних образах, так і в smart-casual поєднаннях. Ідеальний вибір для літа, відпочинку та подорожей."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246184"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 89,
+  "maxPrice": 89,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12b14b251397e07cadd409"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617d"
+      },
+      "price": {
+        "$numberDecimal": "89"
+      },
+      "oldPrice": {
+        "$numberDecimal": "122"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12b14b251397e07cadd407/image-1b0174d6-a293-4148-836f-0a68865cb96d.jpg",
+        "/uploads/products/men/6a12b14b251397e07cadd407/image-408a7435-85f3-4103-9a5d-ec8e43a40d07.jpg",
+        "/uploads/products/men/6a12b14b251397e07cadd407/image-d00b93fb-888e-49c2-86ec-4c915739cfb4.jpg",
+        "/uploads/products/men/6a12b14b251397e07cadd407/image-571c6a9c-ec4d-4863-a50c-c0b164a114b7.jpg"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12b14b251397e07cadd409"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T08:05:31.629Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T08:05:31.629Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a12b209251397e07cadd423"
+  },
+  "title": {
+    "en": "Trend Collection Suit",
+    "uk": "Костюм Trend Collection"
+  },
+  "description": {
+    "en": "The Trend Collection suit from the Spring–Summer 2026 line is a stylish casual set in light grey. It is made from a premium fabric blend with viscose and elastane, ensuring comfort, lightness, and a great fit. The material feels soft on the skin, is breathable, and maintains its shape.\n\nThe modern casual cut makes it suitable for everyday wear, work, and urban outfits during warm seasons. Made in Turkey.",
+    "uk": "Костюм Trend Collection із колекції Весна–Літо 2026 — стильний повсякденний комплект у світло-сірому кольорі. Виготовлений із преміальної тканини з віскозою та додаванням еластану, що забезпечує комфорт, легкість і гарну посадку. Матеріал приємний до тіла, добре пропускає повітря та зберігає форму.\n\nМодель має сучасний кежуал-крій і підходить для щоденного носіння, роботи та міських образів у теплу пору року. Виробництво — Туреччина."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246184"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 192,
+  "maxPrice": 192,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12b209251397e07cadd425"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617d"
+      },
+      "price": {
+        "$numberDecimal": "192"
+      },
+      "oldPrice": {
+        "$numberDecimal": "265"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12b209251397e07cadd423/image-0dd683af-f636-48fe-92bb-86941d0cfaf3.jpg",
+        "/uploads/products/men/6a12b209251397e07cadd423/image-9feb3bdc-e16f-4cb3-9521-5ed70a2b38fb.jpg",
+        "/uploads/products/men/6a12b209251397e07cadd423/image-ce6c476a-37e6-4868-9c70-513960fcae31.jpg",
+        "/uploads/products/men/6a12b209251397e07cadd423/image-40fdf19c-286e-48c4-8ea4-5f9c59350df4.jpg"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12b209251397e07cadd425"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T08:08:41.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T08:11:56.008Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a12b29b251397e07cadd43f"
+  },
+  "title": {
+    "en": "Trend Collection Suit",
+    "uk": "Костюм Trend Collection"
+  },
+  "description": {
+    "en": "The Trend Collection suit from the Spring–Summer 2026 line is a modern casual set in light blue. It is made from a high-quality fabric blend with viscose and elastane, ensuring comfort, lightness, and a great fit. The material is soft, breathable, and maintains its shape throughout the day.\n\nThis model is ideal for everyday wear, work, and urban outfits during warm seasons. Made in Turkey.",
+    "uk": "Костюм Trend Collection із колекції Весна–Літо 2026 — сучасний повсякденний комплект у блакитному кольорі. Виконаний із якісної тканини з віскозою та еластаном, що забезпечує комфорт, легкість і гарну посадку по фігурі. Матеріал м’який, приємний до тіла, добре пропускає повітря та зберігає форму протягом дня.\n\nМодель підходить для щоденного носіння, роботи та міських образів у теплу пору року. Виробництво — Туреччина."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246184"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 192,
+  "maxPrice": 192,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12b29b251397e07cadd441"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "68284fba65b546018073c4fd"
+      },
+      "price": {
+        "$numberDecimal": "192"
+      },
+      "oldPrice": null,
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12b29b251397e07cadd43f/image-904ce11a-815c-4d6c-ab51-a89cdb173b2e.jpg",
+        "/uploads/products/men/6a12b29b251397e07cadd43f/image-a4a99fee-adaa-4883-8f19-e7e1ff02b9ba.jpg",
+        "/uploads/products/men/6a12b29b251397e07cadd43f/image-ea742bbf-ba5a-4b81-b134-36975b0b7b97.jpg",
+        "/uploads/products/men/6a12b29b251397e07cadd43f/image-4c600fde-acaa-4a5a-af72-24cc5bf102d4.jpg",
+        "/uploads/products/men/6a12b29b251397e07cadd43f/image-587ff280-77f1-46ef-9a5c-da955f03f9a8.jpg"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12b29b251397e07cadd441"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T08:11:07.436Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T08:11:07.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a12b397251397e07cadd49f"
+  },
+  "title": {
+    "en": "TREND Suit",
+    "uk": "Костюм TREND"
+  },
+  "description": {
+    "en": "The TREND suit from the Spring–Summer 2020 collection is a classic men’s set in a peach color with a subtle print. It features a modern Slim Fit cut that highlights the silhouette and creates a clean, stylish look.\n\nThe blazer has a single-breasted two-button closure, multiple functional pockets, and decorative sleeve buttons. The trousers are also tailored in Slim Fit with practical pockets and a zip-and-button fastening.\n\nThis suit easily pairs with shirts, t-shirts, and different footwear styles, from classic to casual and streetwear.",
+    "uk": "Костюм TREND із колекції Весна–Літо 2020 — класичний чоловічий комплект у персиковому кольорі з дрібним принтом. Виконаний у сучасному Slim Fit крої, який підкреслює силует і створює охайний, стильний вигляд.\n\nПіджак має однобортну конструкцію на два ґудзики, кілька функціональних кишень та декоративні ґудзики на манжетах. Брюки також виконані у Slim Fit крої, мають зручні кишені та застібку на блискавку і ґудзик.\n\nКостюм легко поєднується з сорочками, футболками та різними стилями взуття — від класичного до casual і streetwear."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246184"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 79,
+  "maxPrice": 79,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12b397251397e07cadd4a1"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "68284fba65b546018073c4fd"
+      },
+      "price": {
+        "$numberDecimal": "79"
+      },
+      "oldPrice": {
+        "$numberDecimal": "113"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12b397251397e07cadd49f/image-c2236051-cdff-4b17-8028-a63ff00ac952.jpg",
+        "/uploads/products/men/6a12b397251397e07cadd49f/image-341be9a2-1eca-4853-a151-c9b977fad5ab.jpg",
+        "/uploads/products/men/6a12b397251397e07cadd49f/image-8ecba9b4-83e6-424e-83a3-1ea215cf374e.jpg",
+        "/uploads/products/men/6a12b397251397e07cadd49f/image-63161aa6-c851-4467-824e-68eba6de5468.jpg"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12b397251397e07cadd4a1"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T08:15:19.285Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T08:15:19.285Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a12c954565df77f418be716"
+  },
+  "title": {
+    "en": "Men’s Hoodie Sport Set ROVER",
+    "uk": "Чоловічий спортивний костюм з худі ROVER"
+  },
+  "description": {
+    "en": "The ROVER men’s sports suit in a minimalist branded style is designed for comfortable everyday wear during the spring and autumn seasons. The set is made from dense cotton three-thread fleece, providing warmth, comfort, and durability.\n\nHigh-quality cotton accessories and TEAMV branding emphasize the premium look of the model. The fabric blend with polyester and elastane helps maintain shape, prevents deformation, and ensures freedom of movement.\n\nThis tracksuit is perfect for casual outfits, walking, and active leisure.",
+    "uk": "Чоловічий спортивний костюм ROVER у мінімалістичному брендовому стилі створений для комфортного повсякденного носіння у весняно-осінній сезон. Комплект виконаний із щільного бавовняного футера тринитка (петля), який забезпечує тепло, комфорт і зносостійкість.\n\nЯкісна бавовняна фурнітура та брендування TEAMV підкреслюють преміальний вигляд моделі. Тканина з додаванням поліестеру та еластану добре тримає форму, не деформується та забезпечує свободу рухів.\n\nКостюм ідеально підходить для повсякденних образів, прогулянок та активного відпочинку."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246183"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 53,
+  "maxPrice": 53,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12c954565df77f418be718"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617d"
+      },
+      "price": {
+        "$numberDecimal": "53"
+      },
+      "oldPrice": {
+        "$numberDecimal": "58"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12c954565df77f418be716/image-d4ff873a-20df-469e-a0ca-3c276b849aec.webp",
+        "/uploads/products/men/6a12c954565df77f418be716/image-f1c215b6-cfec-490e-b15e-7a61c1ce0fa4.webp",
+        "/uploads/products/men/6a12c954565df77f418be716/image-002f976f-a42c-446b-8dad-bb873c0561e6.webp",
+        "/uploads/products/men/6a12c954565df77f418be716/image-97b2be91-8a98-47af-90eb-e91533a44103.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12c954565df77f418be718"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T09:48:04.484Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T09:48:04.484Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a12ca2c565df77f418be737"
+  },
+  "title": {
+    "en": "Men’s ROVER Hoodie Tracksuit Set",
+    "uk": "Чоловічий спортивний костюм з худі та штанами"
+  },
+  "description": {
+    "en": "The ROVER men’s demi-season tracksuit in a branded minimalist style is designed for comfortable everyday wear during spring and autumn. The set includes a hoodie and matching sweatpants.\n\nMade from dense cotton three-thread fleece, it provides warmth, comfort, and durability. The fabric is soft to the touch, holds its shape well, and does not deform during wear.\n\nHigh-quality cotton accessories and TEAMV branded details emphasize the premium look of the model. Thanks to the cotton, polyester, and elastane blend, the set ensures comfort and freedom of movement.\n\nPerfect for everyday use, walking, and active leisure.",
+    "uk": "Чоловічий демісезонний спортивний костюм ROVER у фірмовому мінімалістичному стилі створений для комфортного щоденного носіння у весняно-осінній період. Комплект складається з худі та спортивних штанів.\n\nВиконаний із щільного бавовняного футера тринитка (петля), який забезпечує тепло, комфорт і довговічність. Матеріал приємний до тіла, добре тримає форму та не деформується під час носіння.\n\nЯкісна бавовняна фурнітура та брендовані елементи TEAMV преміум якості підкреслюють сучасний вигляд моделі. Завдяки складу з бавовни, поліестеру та еластану костюм забезпечує зручність і свободу рухів.\n\nІдеально підходить для повсякденного використання, прогулянок та активного відпочинку."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246183"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246179"
+  },
+  "categoryKey": "men",
+  "minPrice": 53,
+  "maxPrice": 53,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12ca2c565df77f418be739"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617c"
+      },
+      "price": {
+        "$numberDecimal": "53"
+      },
+      "oldPrice": {
+        "$numberDecimal": "58"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/men/6a12ca2c565df77f418be737/image-ae7e7aef-8950-417c-86d2-c7c2de1e9786.webp",
+        "/uploads/products/men/6a12ca2c565df77f418be737/image-ce5bd555-8438-4920-9869-f0f73afc1459.webp",
+        "/uploads/products/men/6a12ca2c565df77f418be737/image-3856eb56-db27-416d-8a1c-adb9efc37cb6.webp",
+        "/uploads/products/men/6a12ca2c565df77f418be737/image-1f72e5dc-ee19-490b-8022-cbb4a2536484.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12ca2c565df77f418be739"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T09:51:40.248Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T09:51:40.248Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a12cb0689599a8dfea67a9d"
+  },
+  "title": {
+    "en": "Women’s Teamv NIKEL ZIP Zip-Up Tracksuit Set",
+    "uk": "Жіночий спортивний костюм на блискавці"
+  },
+  "description": {
+    "en": "The NIKEL ZIP women’s spring tracksuit is designed for those who value quality and comfort in everyday wear. The set features a modern sporty style and is perfect for daily outfits.\n\nThe oversized hoodie with a loose fit, voluminous hood, and metal zipper provides comfort and a stylish look. The high-waisted pants are tapered with cuffs, enhancing the silhouette while allowing full freedom of movement.\n\nMade from dense three-thread cotton fleece with a blend of cotton, polyester, and elastane. The fabric is soft, comfortable, holds its shape well, and is suitable for everyday wear.",
+    "uk": "Жіночий весняний спортивний костюм NIKEL ZIP створений для тих, хто цінує якість і комфорт у повсякденному носінні. Комплект виконаний у сучасному спортивному стилі та ідеально підходить для щоденних образів.\n\nКофта вільного оверсайз-крою з об’ємним капюшоном і металевою блискавкою забезпечує комфорт і стильний вигляд. Штани високої посадки, звужені донизу з манжетами, підкреслюють силует і не обмежують рухів.\n\nВиконаний із щільного футера тринитка (петля), що складається з бавовни, поліестеру та еластану. Матеріал м’який, приємний до тіла, добре тримає форму та підходить для щоденного носіння."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246183"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 53,
+  "maxPrice": 53,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12cb0689599a8dfea67a9f"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "6a1176d94eeeef9a03d2f749"
+      },
+      "price": {
+        "$numberDecimal": "53"
+      },
+      "oldPrice": {
+        "$numberDecimal": "58"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a12cb0689599a8dfea67a9d/image-cbcbf20e-1b27-484a-b000-5f0c0c3f2bed.webp",
+        "/uploads/products/women/6a12cb0689599a8dfea67a9d/image-b972beb4-ca67-4fd8-b3f7-8e5f7c21987c.webp",
+        "/uploads/products/women/6a12cb0689599a8dfea67a9d/image-922299fc-3631-47c0-91c5-d78b8dfac4d6.webp",
+        "/uploads/products/women/6a12cb0689599a8dfea67a9d/image-f34c07df-72be-44b3-abd6-cd7ec2ecaba4.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12cb0689599a8dfea67a9f"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T09:55:18.202Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T09:55:18.202Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a12cb8b89599a8dfea67ab9"
+  },
+  "title": {
+    "en": "Women’s Team Tracksuit Set",
+    "uk": "Жіночий спортивний костюм Team"
+  },
+  "description": {
+    "en": "The Team women’s spring tracksuit is designed for those who value quality and comfort in everyday wear. The set features a modern sporty style and is perfect for daily use.\n\nThe oversized hoodie with a loose fit and voluminous hood provides comfort and a stylish look. The high-waisted pants create a clean silhouette while allowing full freedom of movement.\n\nMade from dense three-thread cotton fleece with a blend of cotton, polyester, and elastane. The fabric is soft, comfortable, holds its shape well, and is suitable for everyday wear.",
+    "uk": "Жіночий весняний спортивний костюм Team створений для тих, хто цінує якість і комфорт у повсякденному носінні. Комплект виконаний у сучасному спортивному стилі та ідеально підходить для щоденного використання.\n\nХуді вільного оверсайз-крою з об’ємним капюшоном забезпечує комфорт і стильний вигляд. Штани з високою посадкою формують акуратний силует і не обмежують рухів.\n\nВиконаний із щільного футера тринитка (петля) зі складом бавовна, поліестер та еластан. Матеріал м’який, приємний до тіла, добре тримає форму та підходить для щоденного носіння."
+  },
+  "style": {
+    "$oid": "676bff378a281b4943246183"
+  },
+  "category": {
+    "$oid": "676bff1e8a281b4943246178"
+  },
+  "categoryKey": "women",
+  "minPrice": 44,
+  "maxPrice": 44,
+  "maxRating": 5,
+  "defaultVariant": {
+    "$oid": "6a12cb8b89599a8dfea67abb"
+  },
+  "variants": [
+    {
+      "color": {
+        "$oid": "676bff288a281b494324617e"
+      },
+      "price": {
+        "$numberDecimal": "44"
+      },
+      "oldPrice": {
+        "$numberDecimal": "54"
+      },
+      "count": 50,
+      "rating": 5,
+      "images": [
+        "/uploads/products/women/6a12cb8b89599a8dfea67ab9/image-86f90952-2a88-48cf-abf1-c1d8e971f7a9.webp",
+        "/uploads/products/women/6a12cb8b89599a8dfea67ab9/image-729d15fa-ada8-448d-91b3-77a1a16e6bdc.webp",
+        "/uploads/products/women/6a12cb8b89599a8dfea67ab9/image-aaf6f76a-936c-4552-a8c8-a3a941ba96db.webp",
+        "/uploads/products/women/6a12cb8b89599a8dfea67ab9/image-f0266766-4687-419b-9322-7a6337497c9e.webp"
+      ],
+      "sizes": [
+        {
+          "$oid": "676bff418a281b494324618a"
+        },
+        {
+          "$oid": "6828590965b546018073c511"
+        },
+        {
+          "$oid": "676bff418a281b4943246186"
+        },
+        {
+          "$oid": "676bff418a281b4943246187"
+        },
+        {
+          "$oid": "676bff418a281b4943246189"
+        },
+        {
+          "$oid": "676bff418a281b4943246188"
+        },
+        {
+          "$oid": "676bff418a281b494324618b"
+        },
+        {
+          "$oid": "6828578465b546018073c50e"
+        }
+      ],
+      "_id": {
+        "$oid": "6a12cb8b89599a8dfea67abb"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-05-24T09:57:31.493Z"
+  },
+  "updatedAt": {
+    "$date": "2026-05-24T09:57:31.493Z"
+  },
+  "__v": 0
+}]
