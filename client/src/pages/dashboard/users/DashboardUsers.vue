@@ -102,8 +102,6 @@ const {
 } = usersStore
 //========================================================================================================================================================
 const userHasPermissions = computed(() => {
-	console.log(userRole.value)
-	console.log(userRoles.admin)
 	return userRole.value === userRoles.admin
 })
 

@@ -10,7 +10,7 @@
 	FROM base AS dev
 	ENV NODE_ENV=development
 	EXPOSE 3001
-	CMD ["npx", "nodemon", "index.js"]
+	CMD ["npm", "run", "dev"]
 	
 	FROM node:18-alpine AS prod
 	WORKDIR /app

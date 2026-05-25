@@ -10,6 +10,12 @@ import typesRoutes from './types.mjs'
 
 const router = express.Router()
 
+router.get('/health', (req, res) => {
+	res.status(200).json({
+		status: 'ok',
+	})
+})
+
 router.use('/auth', authRoutes)
 
 router.use('/subscriber', subscriberRoutes)
