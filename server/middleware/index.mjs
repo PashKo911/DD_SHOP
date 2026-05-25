@@ -4,11 +4,15 @@ import cookieParser from 'cookie-parser'
 import compression from 'compression'
 import helmet from 'helmet'
 
+import compression from 'compression'
+import helmet from 'helmet'
+
 import path from 'path'
 import { fileURLToPath } from 'url'
 
 import appLogger from '../logger/appLogger.mjs'
 import { config } from '../config/default.mjs'
+import globalRateLimiter from '../services/rateLimit.mjs'
 import { globalRateLimiter } from '../services/rateLimit.mjs'
 import { isProduction } from '../config/default.mjs'
 
