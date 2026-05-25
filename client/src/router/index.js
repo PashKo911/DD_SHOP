@@ -10,10 +10,8 @@ import { useAuthStore } from '@/stores/auth'
 import { useCartStore } from '@/stores/cart'
 
 import routeNames from './routeNames'
-import { userRoles } from '@/constants/roles'
 import { canAccessRoute } from '@/utils/routing/canAccessRoute'
 
-import { i18nMeta } from '@/config/i18n'
 import { defaultLocale } from '@/config/i18n'
 
 const appInnerRoutes = [
@@ -77,7 +75,7 @@ const router = createRouter({
 			path: '/:pathMatch(.*)*',
 			redirect: {
 				name: routeNames.NOT_FOUND,
-				params: { locale: i18nMeta.defaultLocale },
+				params: { locale: defaultLocale },
 			},
 		},
 	],
@@ -98,9 +96,9 @@ router.beforeEach((to) => {
 		return { name: routeNames.SIGNIN }
 	}
 
-	// if (!canAccessRoute(to, authStore.user)) {
-	// 	return { name: routeNames.HOME }
-	// }
+	if (!canAccessRoute(to, authStore.userRole)) {
+		return { name: routeNames.HOME }
+	}
 
 	return true
 })

@@ -152,7 +152,7 @@ const props = defineProps({
 	},
 })
 //========================================================================================================================================================
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const router = useRouter()
 const route = useRoute()
 
@@ -186,7 +186,7 @@ const { filter, perPage, filterStrings, hasSelectedFilters, activeChips } =
 const { getFacetOptions } = facetOptionsStore
 const { facetOptionsValue } = storeToRefs(facetOptionsStore)
 
-const { viewMode, currency } = storeToRefs(commonStore)
+const { viewMode, currency, locale } = storeToRefs(commonStore)
 const { setViewMode } = commonStore
 const isFilterOpen = ref(false)
 //========================================================================================================================================================

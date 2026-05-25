@@ -4,7 +4,7 @@
 			name: routeNames.SHOP,
 			params: { category: shopConstants.defaultCategory },
 			query: {
-				styles: productData.slug,
+				styles: productData[getSearchField(locale)],
 			},
 		}"
 		class="bg-primary p-maxmd-70-20 md:p-md-70-20 group relative flex aspect-[808/292] basis-[53.656915%] overflow-hidden rounded-lg nth-[4n+1]:aspect-[665/292] nth-[4n+1]:basis-[44.215426%] nth-[4n+4]:aspect-[665/292] nth-[4n+4]:basis-[44.215426%] sm:rounded-xl md:rounded-2xl"
@@ -41,11 +41,15 @@
 
 <script setup>
 import { computed } from 'vue'
+
 import apiConfig from '@/config/api'
 import shopConstants from '@/constants/shop'
+import { getSearchField } from '@/utils/common/getSearchField'
+import { useCommonStore } from '@/stores/common'
 
 import ArrowDownSimple from '@/components/icons/ArrowDownSimple.vue'
 import routeNames from '@/router/routeNames'
+import { storeToRefs } from 'pinia'
 
 const props = defineProps({
 	productData: {
@@ -61,6 +65,9 @@ const props = defineProps({
 		default: true,
 	},
 })
+
+const commonStore = useCommonStore()
+const { locale } = storeToRefs(commonStore)
 
 const imageConfigs = [
 	{

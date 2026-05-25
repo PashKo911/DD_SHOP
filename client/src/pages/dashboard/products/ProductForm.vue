@@ -257,6 +257,7 @@
 import { computed, useId } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { useCommonStore } from '@/stores/common'
 import { Form } from '@primevue/forms'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 
@@ -269,6 +270,7 @@ import Button from '@/components/ui/buttons/Button.vue'
 import Message from '@/components/ui/feedback/Message.vue'
 import ProductVariantEditor from './ProductVariantEditor.vue'
 import SecondaryButton from '@/components/ui/buttons/SecondaryButton.vue'
+import { storeToRefs } from 'pinia'
 
 const props = defineProps({
 	form: {
@@ -315,7 +317,10 @@ const emit = defineEmits([
 	'remove-new-image',
 ])
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
+
+const commonStore = useCommonStore()
+const { locale } = storeToRefs(commonStore)
 
 const baseId = useId()
 

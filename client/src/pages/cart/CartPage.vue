@@ -46,7 +46,7 @@ import CartOrderSummarySkeleton from './cartOrderSummary/CartOrderSummarySkeleto
 import CartList from './CartList.vue'
 import CartEmptyComponent from './CartEmptyComponent.vue'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 
 const authStore = useAuthStore()
 const cartStore = useCartStore()
@@ -66,7 +66,7 @@ const {
 } = storeToRefs(cartStore)
 
 const { populateCart, updateQuantity, deleteProduct } = cartStore
-const { currency } = storeToRefs(commonStore)
+const { currency, locale } = storeToRefs(commonStore)
 
 const isInitialLoad = ref(true)
 const processingItemKey = ref(null)

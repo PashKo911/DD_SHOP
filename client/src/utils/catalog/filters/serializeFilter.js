@@ -1,4 +1,4 @@
-import { getSearchField } from './getSearchField'
+import { getSearchField } from '../../common/getSearchField'
 
 /**
  * Serializes the filter into a query parameters object.
