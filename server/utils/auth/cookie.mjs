@@ -3,6 +3,11 @@ import { convertDuration } from '../time/convertDuration.mjs'
 import { config } from '../../config/default.mjs'
 
 function buildRefreshCookieBaseOptions() {
+	console.log(config.cookieSecure, 'secure: config.cookieSecure,')
+	console.log(config.cookieSameSite, 'sameSite: config.cookieSameSite,')
+	console.log(authConstants.refreshCookiePath, 'path: authConstants.refreshCookiePath,')
+	console.log(config.isProduction, 'isProduction')
+
 	return {
 		httpOnly: true,
 		secure: config.cookieSecure,
