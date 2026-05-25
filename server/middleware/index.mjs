@@ -9,13 +9,14 @@ import { fileURLToPath } from 'url'
 
 import appLogger from '../logger/appLogger.mjs'
 import { config } from '../config/default.mjs'
-import globalRateLimiter from '../services/rateLimit.mjs'
+import { globalRateLimiter } from '../services/rateLimit.mjs'
+import { isProduction } from '../config/default.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const middleware = (app) => {
-	app.set('trust proxy', env.isProduction ? 1 : 0)
+	app.set('trust proxy', isProduction ? 1 : 0)
 
 	app.use(
 		helmet({
