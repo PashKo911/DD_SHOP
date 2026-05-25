@@ -13,6 +13,7 @@ import App from './App.vue'
 import router from './router'
 
 import { useAuthStore } from './stores/auth'
+import { useCommonStore } from './stores/common'
 import { initI18n } from './plugins/i18n'
 
 async function bootstrap() {
@@ -30,6 +31,8 @@ async function bootstrap() {
 	const locale = router.currentRoute.value.params.locale || 'en'
 
 	const i18n = initI18n(locale)
+	const commonStore = useCommonStore()
+	commonStore.setLocale(locale)
 	app.use(i18n)
 
 	const head = createHead()

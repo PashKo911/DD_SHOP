@@ -99,14 +99,14 @@ import HomeHeroSection from './HomeHeroSection.vue'
 import SliderSingle from '@/components/shared/sliders/single/SliderSingle.vue'
 import HomeDressStyleSection from './HomeDressStyleSection.vue'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 
 const commonStore = useCommonStore()
 const productsStore = useProductsStore()
 const reviewsStore = useReviewsStore()
 const facetOptionStore = useFacetOptionsStore()
 
-const { currency } = storeToRefs(commonStore)
+const { currency, locale } = storeToRefs(commonStore)
 const {
 	availableStylesValue,
 	isAvailableStylesLoading,

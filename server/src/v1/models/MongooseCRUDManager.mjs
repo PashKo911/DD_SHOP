@@ -188,7 +188,16 @@ class MongooseCRUDManager {
 			})
 		}
 	}
-
+	async create(data) {
+		try {
+			const newItem = new this.model(data)
+			return await newItem.save()
+		} catch (err) {
+			if (err instanceof HttpError) throw err
+			if (err && (err.code === 11000 || err.code === 11001 || err.name === 'ValidationError')) throw err
+			throw new HttpError(500, 'Failed to create document', { cause: err, code: errorCodes.DATABASE_ERROR })
+		}
+	}
 	async update(id, data) {
 		try {
 			const updated = await this.model.findByIdAndUpdate(id, data, { new: true, runValidators: true }).exec()

@@ -1,4 +1,4 @@
-import { getSearchField } from './getSearchField'
+import { getSearchField } from '../../common/getSearchField'
 
 /**
  * Parses URL query parameters into the internal filter object, restoring defaults and mapping values.
