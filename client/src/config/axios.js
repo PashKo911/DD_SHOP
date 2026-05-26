@@ -115,7 +115,7 @@ apiClient.interceptors.response.use(
 				clearTokens()
 				onLogout?.()
 
-				router.push({ name: routeNames.SIGNIN })
+				router.push({ name: routeNames.AUTH })
 
 				return Promise.reject(refreshError)
 			}

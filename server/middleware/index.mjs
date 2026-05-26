@@ -9,7 +9,6 @@ import { fileURLToPath } from 'url'
 
 import appLogger from '../logger/appLogger.mjs'
 import { config } from '../config/default.mjs'
-import { globalRateLimiter } from '../services/rateLimit.mjs'
 import { isProduction } from '../config/default.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -31,8 +30,6 @@ const middleware = (app) => {
 			credentials: true,
 		})
 	)
-
-	app.use(globalRateLimiter)
 
 	app.use(cookieParser())
 

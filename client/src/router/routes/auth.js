@@ -3,6 +3,7 @@ import routeNames from '../routeNames'
 export default [
 	{
 		path: 'auth',
+		name: routeNames.AUTH,
 		redirect: { name: routeNames.SIGNIN },
 		meta: {
 			useInMenu: false,

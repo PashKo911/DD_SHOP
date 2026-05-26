@@ -14,6 +14,7 @@ import {
 	getRefreshTokenFromRequest,
 	setRefreshTokenCookie,
 } from '../../../utils/auth/cookie.mjs'
+import { buildAccessTokenPayload, serializeUserForClient } from '../../../utils/auth/serializeUser.mjs'
 
 import { HttpError } from '../../../errors/HttpError.mjs'
 import { errorCodes } from '../../../constants/errorCodes.mjs'
@@ -26,7 +27,7 @@ function sendAuthResponse(res, status, { accessToken, refreshToken, user }) {
 	res.status(status).json({
 		success: true,
 		accessToken,
-		user,
+		user: serializeUserForClient(user),
 	})
 }
 
@@ -48,7 +49,7 @@ class AuthController {
 		try {
 			const { email, password } = req.body
 
-			let user = await UsersDBService.findOne({ email })
+			let user = await UsersDBService.findOneForAuth({ email })
 
 			if (user && !user.password && user.googleId) {
 				user.password = password
@@ -59,17 +60,7 @@ class AuthController {
 				user = await UsersDBService.getById(_id)
 			}
 
-			const { _id, name, type } = user
-
-			const { accessToken, refreshToken } = await issueTokenPair(
-				{
-					_id,
-					email,
-					name,
-					type,
-				},
-				req
-			)
+			const { accessToken, refreshToken } = await issueTokenPair(buildAccessTokenPayload(user), req)
 
 			sendAuthResponse(res, 201, {
 				accessToken,
@@ -97,7 +88,7 @@ class AuthController {
 
 		try {
 			const { email, password } = req.body
-			const user = await UsersDBService.findOne({ email })
+			const user = await UsersDBService.findOneForAuth({ email })
 
 			if (!user) {
 				return next(
@@ -143,27 +134,12 @@ class AuthController {
 				)
 			}
 
-			const { _id, email: e, name, type } = user
-
-			const { accessToken, refreshToken } = await issueTokenPair(
-				{
-					_id,
-					email: e,
-					name,
-					type,
-				},
-				req
-			)
+			const { accessToken, refreshToken } = await issueTokenPair(buildAccessTokenPayload(user), req)
 
 			sendAuthResponse(res, 200, {
 				accessToken,
 				refreshToken,
-				user: {
-					_id,
-					email: e,
-					name,
-					type,
-				},
+				user,
 			})
 		} catch (err) {
 			next(err)
@@ -228,27 +204,12 @@ class AuthController {
 				user = await UsersDBService.findOne({ googleId: googleUserData.sub })
 			}
 
-			const { _id, email, avatar, name, type } = user
-			const { accessToken, refreshToken } = await issueTokenPair(
-				{
-					_id,
-					email,
-					name,
-					type,
-				},
-				req
-			)
+			const { accessToken, refreshToken } = await issueTokenPair(buildAccessTokenPayload(user), req)
 
 			sendAuthResponse(res, 200, {
 				accessToken,
 				refreshToken,
-				user: {
-					_id,
-					email,
-					avatar,
-					name,
-					type,
-				},
+				user,
 			})
 		} catch (err) {
 			next(err)
@@ -323,7 +284,7 @@ class AuthController {
 
 			res.status(200).json({
 				success: true,
-				user,
+				user: serializeUserForClient(user),
 			})
 		} catch (err) {
 			next(err)

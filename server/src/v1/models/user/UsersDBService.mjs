@@ -4,9 +4,22 @@ import { HttpError } from '../../../../errors/HttpError.mjs'
 import { errorCodes } from '../../../../constants/errorCodes.mjs'
 
 class UsersDBService extends MongooseCRUDManager {
+	async findOneForAuth(filters = {}) {
+		try {
+			const user = await super.findOne(filters, '+password', ['type'])
+			return user
+		} catch (err) {
+			if (err instanceof HttpError) throw err
+			throw new HttpError(500, 'Failed to find user for auth', {
+				cause: err,
+				code: errorCodes.DATABASE_ERROR,
+			})
+		}
+	}
+
 	async getList(filters) {
 		try {
-			const res = await super.getList(filters, { password: 0 }, ['type'])
+			const res = await super.getList(filters, null, ['type'])
 			return res
 		} catch (err) {
 			if (err instanceof HttpError) throw err
@@ -21,7 +34,7 @@ class UsersDBService extends MongooseCRUDManager {
 		try {
 			const res = await User.findByIdAndUpdate(userId, data, {
 				new: true,
-				select: '-password -googleId',
+				select: '-password',
 			}).populate('type')
 
 			return res

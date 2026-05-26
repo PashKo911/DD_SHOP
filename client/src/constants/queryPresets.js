@@ -4,7 +4,7 @@ import shopConstants from './shop'
 export const queryPresets = {
 	topSales: {
 		name: 'topSalesProducts',
-		queryParams: { sort: 'maxRating:desc,', page: 0, perPage: 15 },
+		queryParams: { sort: 'maxRating:desc', page: 0, perPage: 15 },
 	},
 	newest: {
 		name: 'newestProducts',
@@ -12,7 +12,7 @@ export const queryPresets = {
 	},
 	same: {
 		name: 'sameProducts',
-		queryParams: { sort: 'maxRating:desc,', page: 0, perPage: 15 },
+		queryParams: { sort: 'maxRating:desc', page: 0, perPage: 15 },
 	},
 	suggestions: {
 		name: 'suggestions',

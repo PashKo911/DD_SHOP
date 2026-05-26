@@ -76,7 +76,7 @@ class QueryParser {
 
 		if (query.sort) {
 			const [field, order] = query.sort.split(':')
-
+			console.log(order, 'const [field, order] = query.sort.split()')
 			actions.push({
 				type: 'sort',
 				value: {

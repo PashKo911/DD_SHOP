@@ -29,8 +29,6 @@
 		<img
 			src="@/assets/img/hero/black-friday-section.webp"
 			:alt="t('pages.home.sectionTitles.blackFriday')"
-			width="1920"
-			height="480"
 			loading="lazy"
 		/>
 	</div>
@@ -56,8 +54,6 @@
 			src="@/assets/img/hero/new-collection.webp"
 			:alt="t('pages.home.imgAltAttr.newCollection')"
 			loading="lazy"
-			width="1920"
-			height="480"
 		/>
 	</div>
 	<div class="not-last:mb-80-50 container">

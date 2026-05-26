@@ -27,7 +27,7 @@
 					<path
 						ref="checkPath"
 						d="M1 5 L6 10 L15 1"
-						:stroke="item.value === '#ffffff' ? '#000' : '#fff'"
+						:stroke="item.value.toLowerCase() === '#ffffff' ? '#000' : '#fff'"
 						stroke-width="2"
 						stroke-linecap="round"
 						stroke-linejoin="round"

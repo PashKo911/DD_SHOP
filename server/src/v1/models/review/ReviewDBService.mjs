@@ -2,6 +2,7 @@ import Review from './Review.mjs'
 import MongooseCRUDManager from '../MongooseCRUDManager.mjs'
 import { HttpError } from '../../../../errors/HttpError.mjs'
 import { errorCodes } from '../../../../constants/errorCodes.mjs'
+import { serializeUserForClient } from '../../../../utils/auth/serializeUser.mjs'
 
 class ReviewsDBService extends MongooseCRUDManager {
 	async getRandomReviews(limit, minRating) {
@@ -21,7 +22,10 @@ class ReviewsDBService extends MongooseCRUDManager {
 				},
 			]
 			const reviews = await super.getRandomList({ limit, match, populateFields })
-			return reviews
+			return reviews.map((review) => ({
+				...review,
+				author: serializeUserForClient(review.author),
+			}))
 		} catch (err) {
 			if (err instanceof HttpError) throw err
 			throw new HttpError(500, 'Failed to get reviews', { cause: err, code: errorCodes.DATABASE_ERROR })

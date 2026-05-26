@@ -24,11 +24,11 @@ class ProductsDBService extends MongooseCRUDManager {
 				{},
 				productPopulateFields
 			)
-
 			const localized = documents.map((doc) => {
 				const res = formatProductForResponse(doc, language, rate)
 				return res
 			})
+
 			return { documents: localized, count }
 		} catch (err) {
 			if (err instanceof HttpError) throw err

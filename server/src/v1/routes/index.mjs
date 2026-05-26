@@ -1,5 +1,7 @@
 import express from 'express'
 
+import { apiRateLimiter } from '../../../services/rateLimit.mjs'
+
 import authRoutes from './auth.mjs'
 import subscriberRoutes from './subscriber.mjs'
 import productRoutes from './product.mjs'
@@ -15,6 +17,8 @@ router.get('/health', (req, res) => {
 		status: 'ok',
 	})
 })
+
+router.use(apiRateLimiter)
 
 router.use('/auth', authRoutes)
 

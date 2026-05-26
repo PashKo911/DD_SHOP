@@ -7,6 +7,7 @@
 			v-bind="sliderAttributes"
 			class="lg:shrink-0 lg:basis-[max(40%,_32.5rem)]"
 		/>
+
 		<component
 			:is="activeDescriptionComponent"
 			v-bind="descriptionAttributes"
@@ -29,21 +30,17 @@
 				class="font-heading not-last:mb-50-30 text-50-28 leading-tight font-semibold uppercase"
 			></h2>
 		</div>
+
 		<slider-base
 			:items="sameProductsValue"
 			:title="t('pages.productDetail.title.sameProductsSection')"
 			:is-loading="isSameProductsLoading"
 			:has-error="hasSameProductsError"
-			@reload-items="
-				() =>
-					getSameProducts(
-						productDetailsValue.category._id,
-						productDetailsValue.style._id,
-					)
-			"
+			@reload-items="reloadSameProducts"
 		/>
 	</section>
 </template>
+
 <script setup>
 import { storeToRefs } from 'pinia'
 import { computed, watch, onMounted, ref, onUnmounted } from 'vue'
@@ -55,55 +52,42 @@ import { useRouter, useRoute } from 'vue-router'
 import { useProductsStore } from '@/stores/products'
 import { useReviewsStore } from '@/stores/reviews'
 import { useCartStore } from '@/stores/cart'
-
 import { i18nMeta } from '@/config/i18n'
+import { useWatcherAbortController } from '@/composables/useWatcherAbortController'
 
 import SliderThumb from '@/components/shared/sliders/sliderThumb/SliderThumb.vue'
+import SliderThumbSkeleton from '@/components/shared/sliders/sliderThumb/SliderThumbSkeleton.vue'
+
 import SliderBase from '@/components/shared/sliders/base/SliderBase.vue'
 import ProductDetailDescription from './productDetailDescription/ProductDetailDescription.vue'
 import ProductDetailDescriptionSkeleton from './productDetailDescription/ProductDetailDescriptionSkeleton.vue'
 import ProductDetailTabs from './ProductDetailTabs.vue'
-import SliderThumbSkeleton from '@/components/shared/sliders/sliderThumb/SliderThumbSkeleton.vue'
-import { useWatcherAbortController } from '@/composables/useWatcherAbortController'
+
+// ----------------------------------------------------------------------
 
 const props = defineProps({
-	locale: {
-		type: String,
-		default: i18nMeta.defaultLocale,
-	},
-	category: {
-		type: String,
-		required: true,
-	},
-	slug: {
-		type: [String, Number],
-		required: true,
-	},
-	id: {
-		type: [String, Number],
-		required: true,
-	},
-	variant: {
-		type: [String, Number],
-		required: true,
-	},
-	size: {
-		type: [String, Number],
-	},
+	locale: { type: String, default: i18nMeta.defaultLocale },
+	category: { type: String, required: true },
+	slug: { type: [String, Number], required: true },
+	id: { type: [String, Number], required: true },
+	variant: { type: [String, Number], required: true },
+	size: { type: [String, Number] },
 })
 
-const productsStore = useProductsStore()
-const cartStore = useCartStore()
-const reviewsStore = useReviewsStore()
-const commonStore = useCommonStore()
-const route = useRoute()
 const router = useRouter()
+const route = useRoute()
 const { t } = useI18n()
+
+const productsStore = useProductsStore()
+const reviewsStore = useReviewsStore()
+const cartStore = useCartStore()
+const commonStore = useCommonStore()
 
 const { locale, currency } = storeToRefs(commonStore)
 
 const { getProductDetails, clearProductDetails, getSameProducts } =
 	productsStore
+
 const {
 	productDetailsValue,
 	isProductDetailsLoading,
@@ -114,131 +98,177 @@ const {
 } = storeToRefs(productsStore)
 
 const { addToCart } = cartStore
-const { isAddToCartLoading } = storeToRefs(cartStore)
-
-const { reviewsValue, isReviewsLoading, hasReviewsError } =
-	storeToRefs(reviewsStore)
+const { reviewsValue, isReviewsLoading } = storeToRefs(reviewsStore)
 const { getReviews } = reviewsStore
-//========================================================================================================================================================
 
-const activeProductVariant = computed(() => {
-	if (!isProductDetailsLoaded.value || !productDetailsValue.value.variants)
-		return null
-	const colors = productDetailsValue.value.variants.map((v) => v.color)
+// ----------------------------------------------------------------------
 
-	const activeVariant = productDetailsValue.value.variants.find(
-		({ _id }) => _id === props.variant,
-	)
+const activeProductVariant = ref(null)
 
-	if (!activeVariant) return null
+// ----------------------------------------------------------------------
+
+const buildActiveVariant = () => {
+	if (!productDetailsValue.value?.variants) return null
+
+	const variants = productDetailsValue.value.variants
+
+	const found = variants.find((v) => v._id === props.variant)
+	if (!found) return null
+
+	const colors = variants.map((v) => v.color)
 	const initialSize = props.size ?? null
 
-	const { variants, ...restProduct } = productDetailsValue.value
-	return { colors, initialSize, ...restProduct, ...activeVariant }
-})
+	const { variants: _omit, ...rest } = productDetailsValue.value
 
-const activeThumbSwiperComponent = computed(() => {
-	return isProductDetailsLoading.value || !isProductDetailsLoaded.value
-		? SliderThumbSkeleton
-		: SliderThumb
-})
-const descriptionAttributes = computed(() => {
-	if (isProductDetailsLoading.value || !isProductDetailsLoaded.value) {
-		return {}
+	return {
+		...rest,
+		...found,
+		colors,
+		initialSize,
 	}
+}
+
+const syncActiveVariant = () => {
+	const v = buildActiveVariant()
+	if (v) activeProductVariant.value = v
+}
+
+// ----------------------------------------------------------------------
+// UI guards
+
+const isReady = computed(() => !!activeProductVariant.value?.images)
+
+// ----------------------------------------------------------------------
+
+const activeThumbSwiperComponent = computed(() =>
+	isProductDetailsLoading.value || !isReady.value
+		? SliderThumbSkeleton
+		: SliderThumb,
+)
+
+const activeDescriptionComponent = computed(() =>
+	isProductDetailsLoading.value || !isReady.value
+		? ProductDetailDescriptionSkeleton
+		: ProductDetailDescription,
+)
+
+// ----------------------------------------------------------------------
+
+const descriptionAttributes = computed(() => {
+	if (!isReady.value) return {}
+
 	return {
 		productData: activeProductVariant.value,
-		isLoading: isAddToCartLoading.value,
-		altImageAttr: activeProductVariant?.value.title,
+		isLoading: isProductDetailsLoading.value,
 	}
 })
-const activeDescriptionComponent = computed(() => {
-	return isProductDetailsLoading.value || !isProductDetailsLoaded.value
-		? ProductDetailDescriptionSkeleton
-		: ProductDetailDescription
-})
+
 const sliderAttributes = computed(() => {
-	if (isProductDetailsLoading.value || !isProductDetailsLoaded.value) {
-		return {}
+	if (!isReady.value) return {}
+
+	return {
+		imagesList: activeProductVariant.value?.images,
 	}
-	return { imagesList: activeProductVariant.value.images }
-})
-//========================================================================================================================================================
-
-watch(locale, async () => {
-	const { signal } = useWatcherAbortController()
-
-	await getProductDetails(props.id, signal)
-	getSameProducts(
-		productDetailsValue.value.category._id,
-		productDetailsValue.value.style._id,
-		signal,
-	)
-
-	router.replace({
-		name: route.name,
-		params: {
-			...route.params,
-			slug: slugify(activeProductVariant.value.title),
-		},
-	})
 })
 
-watch(currency, async () => {
-	const { signal } = useWatcherAbortController()
+// ----------------------------------------------------------------------
 
-	await getProductDetails(props.id, signal)
-	getSameProducts(
-		productDetailsValue.value.category._id,
-		productDetailsValue.value.style._id,
-		signal,
-	)
-})
+const fetchAll = async (id, signal) => {
+	await getProductDetails(id, signal)
 
-watch(
-	() => props.id,
-	async (newId) => {
-		const { signal } = useWatcherAbortController()
+	syncActiveVariant()
 
-		await getProductDetails(newId, signal)
+	if (productDetailsValue.value?.category && productDetailsValue.value?.style) {
 		getSameProducts(
 			productDetailsValue.value.category._id,
 			productDetailsValue.value.style._id,
 			signal,
 		)
+	}
+}
+
+// ----------------------------------------------------------------------
+// watchers
+
+watch(
+	() => props.id,
+	async (newId) => {
+		const { signal } = useWatcherAbortController()
+		await fetchAll(newId, signal)
 	},
 )
 
-onMounted(async () => {
-	await getProductDetails(props.id)
-	getReviews()
-	getSameProducts(
-		productDetailsValue.value.category._id,
-		productDetailsValue.value.style._id,
-	)
+watch(
+	() => props.variant,
+	() => {
+		syncActiveVariant()
+	},
+)
+
+watch(locale, async () => {
+	const { signal } = useWatcherAbortController()
+
+	await fetchAll(props.id, signal)
+
+	if (activeProductVariant.value?.title) {
+		router.replace({
+			name: route.name,
+			params: {
+				...route.params,
+				slug: slugify(activeProductVariant.value.title),
+			},
+		})
+	}
 })
+
+watch(currency, async () => {
+	const { signal } = useWatcherAbortController()
+	await fetchAll(props.id, signal)
+})
+
+// ----------------------------------------------------------------------
+
+onMounted(async () => {
+	await fetchAll(props.id)
+	getReviews()
+})
+
 onUnmounted(clearProductDetails)
-//========================================================================================================================================================
+
+// ----------------------------------------------------------------------
+
 const onVariantChange = (newColorId) => {
-	const variant = productDetailsValue.value.variants.find(
+	const variant = productDetailsValue.value?.variants?.find(
 		(v) => v.color._id === newColorId,
 	)
 
 	if (!variant) return
 
-	const variantId = variant._id
-	const newParams = { ...route.params, variant: variantId }
-
-	router.replace({ name: route.name, params: newParams })
+	router.replace({
+		name: route.name,
+		params: {
+			...route.params,
+			variant: variant._id,
+		},
+	})
 }
 
 const onFormSubmit = ({ count, size }) => {
-	const product = {
+	addToCart({
 		product: props.id,
 		variant: props.variant,
 		size,
 		quantity: count,
-	}
-	addToCart(product)
+	})
+}
+
+const reloadSameProducts = () => {
+	if (!productDetailsValue.value?.category || !productDetailsValue.value?.style)
+		return
+
+	getSameProducts(
+		productDetailsValue.value.category._id,
+		productDetailsValue.value.style._id,
+	)
 }
 </script>

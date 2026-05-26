@@ -257,7 +257,7 @@ const timeline = computed(() => [
 		description: t('pages.account.timeline.created.description'),
 		date:
 			user.value?.updatedAt || user.value?.createdAt
-				? d(new Date(user.value.updatedAt || user.value.createdAt), 'short')
+				? d(new Date(user.value.updatedAt || user.value.createdAt))
 				: t('pages.account.timeline.recently'),
 	},
 	{
@@ -267,7 +267,7 @@ const timeline = computed(() => [
 			: t('pages.account.timeline.authentication.credentials'),
 		date:
 			user.value?.updatedAt || user.value?.createdAt
-				? d(new Date(user.value.updatedAt || user.value.createdAt), 'short')
+				? d(new Date(user.value.updatedAt || user.value.createdAt))
 				: t('pages.account.timeline.recently'),
 	},
 	{
