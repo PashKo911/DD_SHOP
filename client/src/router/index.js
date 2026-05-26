@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia'
 import authRoutes from './routes/auth'
 import shopRoutes from './routes/shop'
 import dashboardRoutes from './routes/dashboard'
+import accountRoutes from './routes/account'
 
 import { useCommonStore } from '@/stores/common'
 import { useAuthStore } from '@/stores/auth'
@@ -28,6 +29,7 @@ const appInnerRoutes = [
 	...authRoutes,
 	shopRoutes,
 	...dashboardRoutes,
+	...accountRoutes,
 	{
 		path: 'cart',
 		name: routeNames.CART,

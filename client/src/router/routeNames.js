@@ -8,6 +8,7 @@ const routeNames = Object.freeze({
 	SHOP_CATEGORY: 'shopCategory',
 	PRODUCT_DETAIL: 'productDetail',
 	dashboard: 'dashboard',
+	account: 'account',
 	dashboardUsers: 'dashboard.users',
 	dashboardProducts: 'dashboard.products',
 	dashboardProductCreate: 'dashboard.products.create',

@@ -126,7 +126,7 @@ const userMenuItems = [
 	{
 		id: 1,
 		label: 'partials.userMenu.info',
-		routeName: routeNames.HOME,
+		routeName: routeNames.account,
 		isVisible: true,
 		icon: SignInIcon,
 	},

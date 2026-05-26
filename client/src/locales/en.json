@@ -198,6 +198,82 @@
 				}
 			}
 		},
+		"account": {
+			"customer": "Customer",
+			"standard": "Standard",
+			"google": "Google",
+
+			"hero": {
+				"cartItems": "Cart items",
+				"accountType": "Account type"
+			},
+
+			"infoCards": {
+				"email": {
+					"label": "Email",
+					"note": "Primary email used for authentication and order updates."
+				},
+				"authentication": {
+					"label": "Authentication",
+					"google": "Google OAuth",
+					"credentials": "Credentials",
+					"note": "Current sign-in provider connected to your account."
+				},
+				"role": {
+					"label": "Role",
+					"note": "Access level and permissions assigned to this account."
+				}
+			},
+
+			"overview": {
+				"title": "Account overview",
+				"subtitle": "Shopping activity",
+				"badge": "Live account data"
+			},
+
+			"stats": {
+				"cartItems": {
+					"label": "Cart items",
+					"caption": "Products currently in cart"
+				},
+				"favorites": {
+					"label": "Favorites",
+					"caption": "Wishlist functionality coming soon"
+				},
+				"reviews": {
+					"label": "Reviews",
+					"caption": "Published product reviews"
+				},
+				"orders": {
+					"label": "Orders",
+					"caption": "Completed purchases"
+				}
+			},
+
+			"timeline": {
+				"title": "Recent activity",
+				"subtitle": "Account timeline",
+
+				"created": {
+					"title": "Account created",
+					"description": "Your account was successfully registered and is now active."
+				},
+
+				"authentication": {
+					"title": "Authentication connected",
+					"google": "Google account connected for secure authentication.",
+					"credentials": "Credentials authentication enabled for this account."
+				},
+
+				"session": {
+					"title": "Shopping session active",
+					"description": "Your cart and account data are currently synced across the store.",
+					"date": "Now"
+				},
+
+				"recently": "Recently"
+			}
+		},
 		"pageNotFound": {
 			"title": {
 				"page": "Oops... something went wrong"
