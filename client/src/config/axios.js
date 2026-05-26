@@ -3,7 +3,6 @@ import { storeToRefs } from 'pinia'
 
 import router from '@/router'
 import { useCommonStore } from '@/stores/common'
-import { useServerWakeState } from '@/composables/useServerWakeState'
 import routeNames from '@/router/routeNames'
 import apiConfig from './api'
 
@@ -19,8 +18,6 @@ const apiClient = axios.create({
 	},
 })
 
-const { beginBackendWakeCheck, markBackendAwake } = useServerWakeState()
-
 let onLogout = null
 let refreshPromise = null
 
@@ -30,7 +27,6 @@ export const setOnLogout = (handler) => {
 
 apiClient.interceptors.request.use(
 	(config) => {
-		beginBackendWakeCheck()
 		const accessToken = getAccessToken()
 
 		if (accessToken) {
@@ -60,12 +56,8 @@ apiClient.interceptors.request.use(
 )
 
 apiClient.interceptors.response.use(
-	(response) => {
-		markBackendAwake()
-		return response
-	},
+	(response) => response,
 	async (error) => {
-		markBackendAwake()
 		const originalRequest = error.config
 
 		if (!originalRequest) {

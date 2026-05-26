@@ -1,15 +1,32 @@
 <template>
 	<main-layout>
 		<router-view />
-		<Loader :loading="isServerWakeVisible" />
+		<Loader
+			:loading="shouldShowWarmupLoader"
+			:error="warmupError"
+			@retry="retryWarmup"
+		/>
 	</main-layout>
 </template>
 
 <script setup>
-import { useServerWakeState } from './composables/useServerWakeState'
+import { onMounted } from 'vue'
+
+import { useBackendWarmup } from './composables/useBackendWarmup'
+import { useAuthStore } from './stores/auth'
 
 import MainLayout from './components/layouts/MainLayout.vue'
 import Loader from './components/ui/feedback/Loader.vue'
 
-const { isServerWakeVisible } = useServerWakeState()
+const authStore = useAuthStore()
+const { shouldShowWarmupLoader, warmupError, warmupBackend } = useBackendWarmup()
+
+function retryWarmup() {
+	warmupBackend().catch(() => {})
+}
+
+onMounted(() => {
+	retryWarmup()
+	authStore.initialize()
+})
 </script>

@@ -1,52 +1,76 @@
 <template>
 	<Transition name="overlay">
 		<div
-			v-if="loading"
+			v-if="isVisible"
 			class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md"
 		>
 			<div
 				class="mx-4 w-full max-w-md rounded-3xl border border-white/10 bg-zinc-900/90 p-8 shadow-2xl"
 			>
 				<div class="flex flex-col items-center text-center">
-					<!-- Loader -->
-					<div class="relative mb-6 flex h-20 w-20 items-center justify-center">
-						<div
-							class="absolute h-20 w-20 animate-spin rounded-full border-4 border-zinc-700 border-t-white"
-						/>
+					<template v-if="loading">
+						<div class="relative mb-6 flex h-20 w-20 items-center justify-center">
+							<div
+								class="absolute h-20 w-20 animate-spin rounded-full border-4 border-zinc-700 border-t-white"
+							/>
+
+							<div
+								class="absolute h-14 w-14 rounded-full border border-zinc-600"
+							/>
+
+							<span class="text-sm font-semibold text-white">
+								{{ secondsLeft }}s
+							</span>
+						</div>
+
+						<h2 class="mb-3 text-2xl font-semibold tracking-tight text-white">
+							Waking up the server...
+						</h2>
+
+						<p class="mb-6 leading-relaxed text-zinc-300">
+							This project is hosted on a free Render instance. After inactivity,
+							the server goes into sleep mode and may take up to 50 seconds to
+							start again.
+						</p>
 
 						<div
-							class="absolute h-14 w-14 rounded-full border border-zinc-600"
-						/>
+							class="mb-4 h-2 w-full overflow-hidden rounded-full bg-zinc-800"
+						>
+							<div
+								class="h-full rounded-full bg-white transition-all duration-1000"
+								:style="{ width: `${progress}%` }"
+							/>
+						</div>
 
-						<span class="text-sm font-semibold text-white">
-							{{ secondsLeft }}s
-						</span>
-					</div>
+						<p class="text-sm text-zinc-500">
+							Thanks for waiting. The app should be available shortly.
+						</p>
+					</template>
 
-					<!-- Title -->
-					<h2 class="mb-3 text-2xl font-semibold tracking-tight text-white">
-						Waking up the server...
-					</h2>
-
-					<!-- Description -->
-					<p class="mb-6 leading-relaxed text-zinc-300">
-						This project is hosted on a free Render instance. After inactivity,
-						the server goes into sleep mode and may take up to 50 seconds to
-						start again.
-					</p>
-
-					<!-- Progress -->
-					<div class="mb-4 h-2 w-full overflow-hidden rounded-full bg-zinc-800">
+					<template v-else>
 						<div
-							class="h-full rounded-full bg-white transition-all duration-1000"
-							:style="{ width: `${progress}%` }"
-						/>
-					</div>
+							class="mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-red-400/40 bg-red-400/10 text-3xl text-red-200"
+						>
+							!
+						</div>
 
-					<!-- Footer text -->
-					<p class="text-sm text-zinc-500">
-						Thanks for waiting — the app should be available shortly.
-					</p>
+						<h2 class="mb-3 text-2xl font-semibold tracking-tight text-white">
+							Backend is still unavailable
+						</h2>
+
+						<p class="mb-6 leading-relaxed text-zinc-300">
+							The wake-up check could not reach the backend yet. Please retry once
+							the connection is available.
+						</p>
+
+						<button
+							type="button"
+							class="rounded-full bg-white px-5 py-3 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-200"
+							@click="$emit('retry')"
+						>
+							Retry warmup
+						</button>
+					</template>
 				</div>
 			</div>
 		</div>
@@ -61,6 +85,10 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	error: {
+		type: Object,
+		default: null,
+	},
 
 	duration: {
 		type: Number,
@@ -68,9 +96,13 @@ const props = defineProps({
 	},
 })
 
+defineEmits(['retry'])
+
 const secondsLeft = ref(props.duration)
 
 let interval = null
+
+const isVisible = computed(() => props.loading || Boolean(props.error))
 
 const progress = computed(() => {
 	const passed = props.duration - secondsLeft.value

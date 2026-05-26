@@ -12,23 +12,23 @@ import ToastService from 'primevue/toastservice'
 import App from './App.vue'
 import router from './router'
 
-import { useAuthStore } from './stores/auth'
 import { useCommonStore } from './stores/common'
 import { initI18n } from './plugins/i18n'
+import detectLocale from './utils/locale/detectLocale'
 
-async function bootstrap() {
+function bootstrap() {
 	const app = createApp(App)
 	const pinia = createPinia()
 
 	app.use(pinia)
 
-	const authStore = useAuthStore()
-	await authStore.initialize()
-
 	app.use(router)
-	await router.isReady()
 
-	const locale = router.currentRoute.value.params.locale || 'en'
+	const locale = detectLocale({
+		params: {
+			locale: window.location.pathname.match(/^\/(en|uk)(?:\/|$)/)?.[1],
+		},
+	})
 
 	const i18n = initI18n(locale)
 	const commonStore = useCommonStore()
@@ -46,4 +46,4 @@ async function bootstrap() {
 	app.mount('#app')
 }
 
-bootstrap().catch(console.error)
+bootstrap()
