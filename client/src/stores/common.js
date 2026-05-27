@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { i18n } from '@/plugins/i18n'
 import { i18nMeta } from '@/config/i18n'
 
@@ -31,7 +31,7 @@ export const useCommonStore = defineStore('common', () => {
 	function setLocale(lang) {
 		locale.value = lang
 		if (i18n?.global?.locale) {
-			i18n.global.locale.value = locale.value
+			i18n.global.locale.value = lang
 		}
 	}
 

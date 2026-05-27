@@ -1,17 +1,10 @@
 import routeNames from '../routeNames'
-import { getRouteLocale } from '../../utils/locale/getRouteLocale'
 
 export default {
 	path: 'shop/:category?',
 	name: routeNames.SHOP,
 	component: () => import('@/components/layouts/BreadcrumbLayout.vue'),
-	redirect: (to) => ({
-		name: routeNames.SHOP_CATEGORY,
-		params: {
-			locale: getRouteLocale(to),
-			category: to.params.category,
-		},
-	}),
+	redirect: { name: routeNames.SHOP_CATEGORY },
 	meta: {
 		useInMenu: true,
 		requiredAuth: false,

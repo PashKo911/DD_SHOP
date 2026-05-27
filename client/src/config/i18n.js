@@ -31,7 +31,6 @@ const supportedLocales = {
 
 const localeCodes = Object.keys(supportedLocales) // ['en','uk']
 const localeRegex = localeCodes.join('|') // 'en|uk'
-const localeRouteParam = `:locale(${localeRegex})`
 const messages = Object.fromEntries(
 	localeCodes.map((key) => [key, supportedLocales[key].messages]),
 )
@@ -70,5 +69,4 @@ export const i18nMeta = Object.freeze({
 	supportedLocales,
 	localeCodes,
 	localeRegex,
-	localeRouteParam,
 })

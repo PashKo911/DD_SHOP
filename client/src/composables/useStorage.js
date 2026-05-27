@@ -4,7 +4,7 @@ import { useCommonStore } from '@/stores/common'
 import shopConstants from '@/constants/shop'
 
 /**
- * Syncs cart and currency state across browser tabs using localStorage events.
+ * Syncs locale and cart state across browser tabs using localStorage events.
  *
  * @returns {Object} Methods
  * @property {Function} onStorageEvent(e: StorageEvent): void - Handle storage event updates.
@@ -12,7 +12,7 @@ import shopConstants from '@/constants/shop'
 
 export function useStorage() {
 	const { initCart } = useCartStore()
-	const { setCurrency } = useCommonStore()
+	const { setLocale, setCurrency } = useCommonStore()
 
 	function onCartChange(e) {
 		if (!e.newValue) {
@@ -26,6 +26,9 @@ export function useStorage() {
 		if (!e) return
 
 		switch (e.key) {
+			case shopConstants.storageKeys.locale:
+				setLocale(e.newValue)
+				break
 			case shopConstants.storageKeys.currency:
 				setCurrency(e.newValue)
 				break

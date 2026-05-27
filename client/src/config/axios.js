@@ -9,7 +9,6 @@ import apiConfig from './api'
 import { getAccessToken, setTokens, clearTokens } from '@/utils/auth/token'
 import apiEndpoints from '@/api/apiEndpoints'
 import { errorCodes } from '@/constants/errorCodes'
-import { getRouteLocale } from '@/utils/locale/getRouteLocale'
 
 const apiClient = axios.create({
 	baseURL: apiConfig.apiUrl,
@@ -108,24 +107,14 @@ apiClient.interceptors.response.use(
 				clearTokens()
 				onLogout?.()
 
-				router.push({
-					name: routeNames.AUTH,
-					params: {
-						locale: getRouteLocale(router.currentRoute.value),
-					},
-				})
+				router.push({ name: routeNames.AUTH })
 
 				return Promise.reject(refreshError)
 			}
 		}
 
 		if (status === 403) {
-			router.push({
-				name: routeNames.NOT_FOUND,
-				params: {
-					locale: getRouteLocale(router.currentRoute.value),
-				},
-			})
+			router.push({ name: routeNames.NOT_FOUND })
 			return null
 		}
 

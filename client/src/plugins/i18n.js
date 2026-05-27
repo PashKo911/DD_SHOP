@@ -3,9 +3,10 @@ import { i18nConfig } from '@/config/i18n'
 
 let i18n
 
-export function initI18n() {
+export function initI18n(locale) {
 	i18n = createI18n({
 		...i18nConfig,
+		locale,
 	})
 
 	return i18n
