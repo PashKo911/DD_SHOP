@@ -29,6 +29,7 @@ import { useRouter } from 'vue-router'
 import UserControlUserMenu from './UserControlUserMenu.vue'
 import SignInIcon from '@/components/icons/SignInIcon.vue'
 import routeNames from '@/router/routeNames'
+import { getRouteLocale } from '@/utils/locale/getRouteLocale'
 
 const { t } = useI18n()
 const authStore = useAuthStore()
@@ -42,6 +43,7 @@ const onSignout = () => {
 	signout()
 	router.push({
 		name: routeNames.HOME,
+		params: { locale: getRouteLocale(route) },
 	})
 }
 

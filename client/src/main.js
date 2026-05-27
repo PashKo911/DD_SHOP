@@ -14,36 +14,31 @@ import router from './router'
 
 import { useCommonStore } from './stores/common'
 import { initI18n } from './plugins/i18n'
-import detectLocale from './utils/locale/detectLocale'
 
-function bootstrap() {
-	const app = createApp(App)
-	const pinia = createPinia()
+import { getRouteLocale } from './utils/locale/getRouteLocale'
 
-	app.use(pinia)
+const app = createApp(App)
+const pinia = createPinia()
 
-	app.use(router)
+app.use(pinia)
+app.use(router)
 
-	const locale = detectLocale({
-		params: {
-			locale: window.location.pathname.match(/^\/(en|uk)(?:\/|$)/)?.[1],
-		},
-	})
+await router.isReady()
 
-	const i18n = initI18n(locale)
-	const commonStore = useCommonStore()
-	commonStore.setLocale(locale)
-	app.use(i18n)
+const locale = getRouteLocale(router.currentRoute.value)
 
-	const head = createHead()
-	app.use(head)
-	app.use(PrimeVue, { unstyled: true })
-	app.use(ToastService)
+const i18n = initI18n(locale)
+const commonStore = useCommonStore()
 
-	app.directive('lockScroll', lockScroll)
-	app.directive('styleclass', StyleClass)
+commonStore.setLocale(locale)
+app.use(i18n)
 
-	app.mount('#app')
-}
+const head = createHead()
+app.use(head)
+app.use(PrimeVue, { unstyled: true })
+app.use(ToastService)
 
-bootstrap()
+app.directive('lockScroll', lockScroll)
+app.directive('styleclass', StyleClass)
+
+app.mount('#app')

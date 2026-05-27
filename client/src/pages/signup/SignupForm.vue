@@ -120,16 +120,16 @@
 <script setup>
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { onBeforeRouteLeave } from 'vue-router'
+import { onBeforeRouteLeave, useRoute, useRouter } from 'vue-router'
 
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 import { object } from 'yup'
 import { mapServerErrorKeys } from '@/utils/errors/mapServerErrorKeys'
+import { getRouteLocale } from '@/utils/locale/getRouteLocale'
 
 import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth'
 import { useCartStore } from '@/stores/cart'
-import { useRouter } from 'vue-router'
 
 import authSchema from '../../schemas/auth'
 
@@ -143,6 +143,7 @@ import routeNames from '@/router/routeNames'
 
 const { t, tm } = useI18n()
 const router = useRouter()
+const route = useRoute()
 
 const authStore = useAuthStore()
 
@@ -184,7 +185,10 @@ const duplicateKeyVal = computed(() => {
 const onFormSubmit = async ({ valid, values }) => {
 	if (valid) {
 		await signup(values, () => {
-			router.push({ name: routeNames.HOME })
+			router.push({
+				name: routeNames.HOME,
+				params: { locale: getRouteLocale(route) },
+			})
 		})
 	}
 }

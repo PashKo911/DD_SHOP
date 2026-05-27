@@ -19,8 +19,9 @@ import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth'
 import { useScriptTag } from '@vueuse/core'
 import { useCartStore } from '@/stores/cart'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import routeNames from '@/router/routeNames'
+import { getRouteLocale } from '@/utils/locale/getRouteLocale'
 
 import apiConfig from '@/config/api'
 
@@ -36,6 +37,7 @@ const props = defineProps({
 const { t } = useI18n()
 
 const router = useRouter()
+const route = useRoute()
 
 const { initCart } = useCartStore()
 
@@ -45,7 +47,10 @@ const { signinWithGoogle } = authStore
 let googleClient
 
 const successCallback = () => {
-	router.push({ name: routeNames.HOME })
+	router.push({
+		name: routeNames.HOME,
+		params: { locale: getRouteLocale(route) },
+	})
 }
 
 const initGoogleClient = () => {

@@ -1,10 +1,14 @@
 import routeNames from '../routeNames'
+import { getRouteLocale } from '../../utils/locale/getRouteLocale'
 
 export default [
 	{
 		path: 'auth',
 		name: routeNames.AUTH,
-		redirect: { name: routeNames.SIGNIN },
+		redirect: (to) => ({
+			name: routeNames.SIGNIN,
+			params: { locale: getRouteLocale(to) },
+		}),
 		meta: {
 			useInMenu: false,
 			requiredAuth: false,

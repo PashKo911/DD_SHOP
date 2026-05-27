@@ -1,11 +1,15 @@
 import routeNames from '../routeNames'
 import { userRoles } from '@/constants/roles'
+import { getRouteLocale } from '../../utils/locale/getRouteLocale'
 
 export default [
 	{
 		path: 'dashboard',
 		name: routeNames.dashboard,
-		redirect: { name: routeNames.dashboardProducts },
+		redirect: (to) => ({
+			name: routeNames.dashboardProducts,
+			params: { locale: getRouteLocale(to) },
+		}),
 		component: () => import('@/pages/dashboard/DashboardPage.vue'),
 		meta: {
 			useInMenu: false,

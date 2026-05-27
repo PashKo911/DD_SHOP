@@ -12,8 +12,9 @@ import { useCartStore } from '@/stores/cart'
 
 import routeNames from './routeNames'
 import { canAccessRoute } from '@/utils/routing/canAccessRoute'
+import { getRouteLocale } from '../utils/locale/getRouteLocale'
 
-import { defaultLocale } from '@/config/i18n'
+import { i18nMeta } from '@/config/i18n'
 
 const appInnerRoutes = [
 	{
@@ -61,7 +62,10 @@ const router = createRouter({
 	routes: [
 		{
 			path: '/',
-			redirect: { name: routeNames.HOME, params: { locale: defaultLocale } },
+			redirect: {
+				name: routeNames.HOME,
+				params: { locale: i18nMeta.defaultLocale },
+			},
 			meta: {
 				useInMenu: false,
 				requiredAuth: false,
@@ -69,22 +73,40 @@ const router = createRouter({
 		},
 
 		{
-			path: '/:locale(en|uk)?',
-			children: appInnerRoutes,
+			path: `/${i18nMeta.localeRouteParam}`,
+			children: [
+				{
+					path: '',
+					redirect: (to) => ({
+						name: routeNames.HOME,
+						params: { locale: getRouteLocale(to) },
+					}),
+				},
+				...appInnerRoutes,
+			],
 		},
 
 		{
 			path: '/:pathMatch(.*)*',
 			redirect: {
 				name: routeNames.NOT_FOUND,
-				params: { locale: defaultLocale },
+				params: { locale: i18nMeta.defaultLocale },
 			},
 		},
 	],
 })
 
+router.beforeEach((to) => {
+	const commonStore = useCommonStore()
+
+	commonStore.setLocale(getRouteLocale(to))
+
+	return true
+})
+
 router.beforeEach(async (to) => {
 	const authStore = useAuthStore()
+	const locale = getRouteLocale(to)
 	const needsResolvedAuth =
 		Boolean(to.meta.requiredAuth) ||
 		Boolean(to.meta.guestOnly) ||
@@ -95,15 +117,15 @@ router.beforeEach(async (to) => {
 	}
 
 	if (to.meta.guestOnly && authStore.isAuthenticated) {
-		return { name: routeNames.HOME }
+		return { name: routeNames.HOME, params: { locale } }
 	}
 
 	if (to.meta.requiredAuth && !authStore.isAuthenticated) {
-		return { name: routeNames.SIGNIN }
+		return { name: routeNames.SIGNIN, params: { locale } }
 	}
 
 	if (!canAccessRoute(to, authStore.userRole)) {
-		return { name: routeNames.HOME }
+		return { name: routeNames.HOME, params: { locale } }
 	}
 
 	return true
