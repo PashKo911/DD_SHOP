@@ -199,6 +199,7 @@
 			}
 		},
 		"account": {
+			"title": "Account",
 			"customer": "Customer",
 			"standard": "Standard",
 			"google": "Google",

@@ -1,5 +1,6 @@
 <template>
-	<section class="my-100-30 container grid gap-6 md:gap-8">
+	<section class="container grid gap-6 pt-6 pb-8 md:gap-8">
+		<breadcrumb-wrapper class="not-last:mb-8" />
 		<div
 			class="border-border-color overflow-hidden rounded-[1.5rem] border bg-white p-5 shadow-[0_24px_80px_rgba(0,0,0,0.06)] md:p-6"
 		>
@@ -186,7 +187,9 @@ import { storeToRefs } from 'pinia'
 import { useAuthStore } from '@/stores/auth'
 import { useCartStore } from '@/stores/cart'
 
-const { t, locale, d } = useI18n()
+import BreadcrumbWrapper from '@/components/ui/navigation/breadcrumb/BreadcrumbWrapper.vue'
+
+const { t, d } = useI18n()
 
 const authStore = useAuthStore()
 const cartStore = useCartStore()

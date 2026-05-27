@@ -9,6 +9,7 @@ export default [
 			useInMenu: false,
 			requiredAuth: true,
 			guestOnly: false,
+			localeName: 'pages.account.title',
 		},
 	},
 ]

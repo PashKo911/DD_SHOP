@@ -198,6 +198,7 @@
 			}
 		},
 		"account": {
+			"title": "Особистий кабінет",
 			"customer": "Користувач",
 			"standard": "Стандартний",
 			"google": "Google",

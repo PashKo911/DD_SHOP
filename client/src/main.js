@@ -22,6 +22,7 @@ const pinia = createPinia()
 app.use(pinia)
 
 app.use(router)
+await router.isReady()
 
 const locale = detectLocale(router.currentRoute.value)
 
