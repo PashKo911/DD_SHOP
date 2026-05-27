@@ -14,19 +14,16 @@ import router from './router'
 
 import { useCommonStore } from './stores/common'
 import { initI18n } from './plugins/i18n'
-import detectLocale from './utils/locale/detectLocale'
+import { getLocaleFromPath } from './utils/locale/getLocaleFromPath'
 
 const app = createApp(App)
 const pinia = createPinia()
 
 app.use(pinia)
-
 app.use(router)
-await router.isReady()
 
-const locale = detectLocale(router.currentRoute.value)
-
-const i18n = initI18n(locale)
+const locale = getLocaleFromPath(window.location.pathname)
+const i18n = initI18n()
 const commonStore = useCommonStore()
 commonStore.setLocale(locale)
 app.use(i18n)
